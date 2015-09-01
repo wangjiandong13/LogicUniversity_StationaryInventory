@@ -63,57 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Product.cs">
-      <DependentUpon>Team5Entity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Team5Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tabel2.cs">
-      <DependentUpon>Team5Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Team5Entity.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Team5Entity.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Team5Entity.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Team5Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Team5Entity.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Team5Entity.edmx</DependentUpon>
-    </Compile>
     <Compile Include="UploadedFile.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Team5Entity.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Team5Entity.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <None Include="Team5Entity.edmx.diagram">
-      <DependentUpon>Team5Entity.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Team5Entity.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Team5Entity.edmx</DependentUpon>
-      <LastGenOutput>Team5Entity.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Team5Entity.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Team5Entity.edmx</DependentUpon>
-      <LastGenOutput>Team5Entity.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
