@@ -36,6 +36,11 @@ namespace BusinessLogic
             return result;
         }
         
+        public bool restock(string PoID)
+        {
+            
+        }
+
     }
 
 }

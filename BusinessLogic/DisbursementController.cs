@@ -60,10 +60,9 @@ namespace BusinessLogic
         public bool createDisbursement(Disbursement disb)
         {
             bool result = false;
-
-            ctx.Disbursement.Add(disb);
-            ctx.SaveChanges();
-
+            
+                ctx.Disbursement.Add(disb);
+                ctx.SaveChanges();
             return result;
         }
 
