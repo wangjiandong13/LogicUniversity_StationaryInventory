@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DCD9EB0F-8BD8-4F14-B044-4B7D6E887AEB}</ProjectGuid>
+    <ProjectGuid>{ABE992F0-2650-41A7-952D-148D15CE2D78}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Model</RootNamespace>
@@ -63,12 +63,128 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdjustmentDetail.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdjustmentVoucher.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CartItems.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CollectionPoint.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Delegate.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Department.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Disbursement.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DisbursementDetail.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemCategory.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPrice.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogicUniversityEntitie.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogicUniversityEntitie.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogicUniversityEntitie.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogicUniversityEntitie.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogicUniversityEntitie.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MobileNotification.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Priority.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UploadedFile.cs" />
+    <Compile Include="PurchaseOrder.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderDetail.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Requisition.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequisitionDetail.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Retrieval.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RetrievalDetail.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockCard.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="LogicUniversityEntitie.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LogicUniversityEntitie.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="LogicUniversityEntitie.edmx.diagram">
+      <DependentUpon>LogicUniversityEntitie.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LogicUniversityEntitie.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LogicUniversityEntitie.edmx</DependentUpon>
+      <LastGenOutput>LogicUniversityEntitie.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LogicUniversityEntitie.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LogicUniversityEntitie.edmx</DependentUpon>
+      <LastGenOutput>LogicUniversityEntitie.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

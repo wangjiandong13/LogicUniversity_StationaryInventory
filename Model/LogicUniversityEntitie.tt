@@ -25,7 +25,7 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
 #>
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
 [JsonObject(IsReference = true)]
-[DataContract(IsReference = true, Namespace = "http://schemas.datacontract.org/2004/07/TrackableEntities.Models")]
+[DataContract]
 <#=codeStringGenerator.EntityClassOpening(entity)#>
 {
 <#

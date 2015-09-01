@@ -16,7 +16,7 @@ namespace Model
     using TrackableEntities;
     
     [JsonObject(IsReference = true)]
-    [DataContract(IsReference = true, Namespace = "http://schemas.datacontract.org/2004/07/TrackableEntities.Models")]
+    [DataContract]
     public partial class ItemPrice : ITrackable
     {
         [DataMember]

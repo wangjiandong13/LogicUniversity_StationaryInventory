@@ -13,17 +13,11 @@ namespace Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LogicUniversityEntitie : DbContext
+    public partial class StationeryInventory_Team_05Entities : DbContext
     {
-        static LogicUniversityEntitie()
+        public StationeryInventory_Team_05Entities()
+            : base("name=StationeryInventory_Team_05Entities")
         {
-            Database.SetInitializer(new NullDatabaseInitializer<LogicUniversityEntitie>());
-        }
-    
-        public LogicUniversityEntitie()
-            : base("name=LogicUniversityEntitie")
-        {
-    		Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

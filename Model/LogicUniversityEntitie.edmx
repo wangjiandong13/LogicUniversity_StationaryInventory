@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="StationeryInventory.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LogicUniversityEntitie.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdjustmentDetail">
           <Key>
             <PropertyRef Name="AdjSN" />
@@ -669,7 +669,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="StationeryInventoryStoreContainer">
+        <EntityContainer Name="LogicUniversityEntitieStoreContainer">
           <EntitySet Name="AdjustmentDetail" EntityType="Self.AdjustmentDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdjustmentVoucher" EntityType="Self.AdjustmentVoucher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CartItems" EntityType="Self.CartItems" Schema="dbo" store:Type="Tables" />
@@ -830,7 +830,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="StationeryInventory" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="LogicUniversityEntitie" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AdjustmentDetail">
           <Key>
             <PropertyRef Name="AdjSN" />
@@ -1559,7 +1559,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LogicUniversityEntitie" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="StationeryInventory_Team_05Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdjustmentDetail" EntityType="Self.AdjustmentDetail" />
           <EntitySet Name="AdjustmentVoucher" EntityType="Self.AdjustmentVoucher" />
           <EntitySet Name="CartItems" EntityType="Self.CartItems" />
@@ -1721,9 +1721,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="StationeryInventoryStoreContainer" CdmEntityContainer="LogicUniversityEntitie">
+        <EntityContainerMapping StorageEntityContainer="LogicUniversityEntitieStoreContainer" CdmEntityContainer="StationeryInventory_Team_05Entities">
           <EntitySetMapping Name="AdjustmentDetail">
-            <EntityTypeMapping TypeName="StationeryInventory.AdjustmentDetail">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.AdjustmentDetail">
               <MappingFragment StoreEntitySet="AdjustmentDetail">
                 <ScalarProperty Name="AdjSN" ColumnName="AdjSN" />
                 <ScalarProperty Name="AdjID" ColumnName="AdjID" />
@@ -1736,7 +1736,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AdjustmentVoucher">
-            <EntityTypeMapping TypeName="StationeryInventory.AdjustmentVoucher">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.AdjustmentVoucher">
               <MappingFragment StoreEntitySet="AdjustmentVoucher">
                 <ScalarProperty Name="AdjID" ColumnName="AdjID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -1748,7 +1748,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CartItems">
-            <EntityTypeMapping TypeName="StationeryInventory.CartItems">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.CartItems">
               <MappingFragment StoreEntitySet="CartItems">
                 <ScalarProperty Name="EmpID" ColumnName="EmpID" />
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
@@ -1758,7 +1758,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CollectionPoint">
-            <EntityTypeMapping TypeName="StationeryInventory.CollectionPoint">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.CollectionPoint">
               <MappingFragment StoreEntitySet="CollectionPoint">
                 <ScalarProperty Name="CPID" ColumnName="CPID" />
                 <ScalarProperty Name="CPName" ColumnName="CPName" />
@@ -1769,7 +1769,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Delegate">
-            <EntityTypeMapping TypeName="StationeryInventory.Delegate">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Delegate">
               <MappingFragment StoreEntitySet="Delegate">
                 <ScalarProperty Name="DelegateSN" ColumnName="DelegateSN" />
                 <ScalarProperty Name="EmpID" ColumnName="EmpID" />
@@ -1781,7 +1781,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Department">
-            <EntityTypeMapping TypeName="StationeryInventory.Department">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Department">
               <MappingFragment StoreEntitySet="Department">
                 <ScalarProperty Name="DeptID" ColumnName="DeptID" />
                 <ScalarProperty Name="DeptName" ColumnName="DeptName" />
@@ -1795,7 +1795,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Disbursement">
-            <EntityTypeMapping TypeName="StationeryInventory.Disbursement">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Disbursement">
               <MappingFragment StoreEntitySet="Disbursement">
                 <ScalarProperty Name="DisID" ColumnName="DisID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -1808,7 +1808,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DisbursementDetail">
-            <EntityTypeMapping TypeName="StationeryInventory.DisbursementDetail">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.DisbursementDetail">
               <MappingFragment StoreEntitySet="DisbursementDetail">
                 <ScalarProperty Name="DisSN" ColumnName="DisSN" />
                 <ScalarProperty Name="DisID" ColumnName="DisID" />
@@ -1818,7 +1818,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="StationeryInventory.Employee">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="EmpID" ColumnName="EmpID" />
                 <ScalarProperty Name="EmpName" ColumnName="EmpName" />
@@ -1831,7 +1831,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Item">
-            <EntityTypeMapping TypeName="StationeryInventory.Item">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Item">
               <MappingFragment StoreEntitySet="Item">
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
@@ -1845,7 +1845,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ItemCategory">
-            <EntityTypeMapping TypeName="StationeryInventory.ItemCategory">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.ItemCategory">
               <MappingFragment StoreEntitySet="ItemCategory">
                 <ScalarProperty Name="ItemCatID" ColumnName="ItemCatID" />
                 <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
@@ -1853,7 +1853,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ItemPrice">
-            <EntityTypeMapping TypeName="StationeryInventory.ItemPrice">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.ItemPrice">
               <MappingFragment StoreEntitySet="ItemPrice">
                 <ScalarProperty Name="IPID" ColumnName="IPID" />
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
@@ -1863,7 +1863,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MobileNotification">
-            <EntityTypeMapping TypeName="StationeryInventory.MobileNotification">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.MobileNotification">
               <MappingFragment StoreEntitySet="MobileNotification">
                 <ScalarProperty Name="MobileNoti" ColumnName="MobileNoti" />
                 <ScalarProperty Name="EmpID" ColumnName="EmpID" />
@@ -1872,7 +1872,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Notification">
-            <EntityTypeMapping TypeName="StationeryInventory.Notification">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Notification">
               <MappingFragment StoreEntitySet="Notification">
                 <ScalarProperty Name="NotifID" ColumnName="NotifID" />
                 <ScalarProperty Name="NotifName" ColumnName="NotifName" />
@@ -1884,7 +1884,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Priority">
-            <EntityTypeMapping TypeName="StationeryInventory.Priority">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Priority">
               <MappingFragment StoreEntitySet="Priority">
                 <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
                 <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
@@ -1892,7 +1892,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PurchaseOrder">
-            <EntityTypeMapping TypeName="StationeryInventory.PurchaseOrder">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.PurchaseOrder">
               <MappingFragment StoreEntitySet="PurchaseOrder">
                 <ScalarProperty Name="PoID" ColumnName="PoID" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
@@ -1905,7 +1905,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PurchaseOrderDetail">
-            <EntityTypeMapping TypeName="StationeryInventory.PurchaseOrderDetail">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.PurchaseOrderDetail">
               <MappingFragment StoreEntitySet="PurchaseOrderDetail">
                 <ScalarProperty Name="PoSN" ColumnName="PoSN" />
                 <ScalarProperty Name="PoID" ColumnName="PoID" />
@@ -1918,7 +1918,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Report">
-            <EntityTypeMapping TypeName="StationeryInventory.Report">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Report">
               <MappingFragment StoreEntitySet="Report">
                 <ScalarProperty Name="ReportID" ColumnName="ReportID" />
                 <ScalarProperty Name="ReportContent" ColumnName="ReportContent" />
@@ -1926,7 +1926,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Requisition">
-            <EntityTypeMapping TypeName="StationeryInventory.Requisition">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Requisition">
               <MappingFragment StoreEntitySet="Requisition">
                 <ScalarProperty Name="ReqID" ColumnName="ReqID" />
                 <ScalarProperty Name="DisID" ColumnName="DisID" />
@@ -1944,7 +1944,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RequisitionDetail">
-            <EntityTypeMapping TypeName="StationeryInventory.RequisitionDetail">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.RequisitionDetail">
               <MappingFragment StoreEntitySet="RequisitionDetail">
                 <ScalarProperty Name="ReqSN" ColumnName="ReqSN" />
                 <ScalarProperty Name="ReqID" ColumnName="ReqID" />
@@ -1956,7 +1956,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Retrieval">
-            <EntityTypeMapping TypeName="StationeryInventory.Retrieval">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Retrieval">
               <MappingFragment StoreEntitySet="Retrieval">
                 <ScalarProperty Name="RetID" ColumnName="RetID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -1966,7 +1966,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RetrievalDetail">
-            <EntityTypeMapping TypeName="StationeryInventory.RetrievalDetail">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.RetrievalDetail">
               <MappingFragment StoreEntitySet="RetrievalDetail">
                 <ScalarProperty Name="RetSN" ColumnName="RetSN" />
                 <ScalarProperty Name="RetID" ColumnName="RetID" />
@@ -1977,7 +1977,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="StationeryInventory.Role">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
@@ -1985,7 +1985,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="StationeryInventory.Status">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Status">
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="StatusID" ColumnName="StatusID" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
@@ -1993,7 +1993,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StockCard">
-            <EntityTypeMapping TypeName="StationeryInventory.StockCard">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.StockCard">
               <MappingFragment StoreEntitySet="StockCard">
                 <ScalarProperty Name="StockCardSN" ColumnName="StockCardSN" />
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
@@ -2005,7 +2005,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Supplier">
-            <EntityTypeMapping TypeName="StationeryInventory.Supplier">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
@@ -2019,7 +2019,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="StationeryInventory.sysdiagrams">
+            <EntityTypeMapping TypeName="LogicUniversityEntitie.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{dcd9eb0f-8bd8-4f14-b044-4b7d6e887aeb}</Project>
+      <Project>{abe992f0-2650-41a7-952d-148d15ce2d78}</Project>
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>

@@ -72,6 +72,7 @@
   <ItemGroup>
     <Content Include="adjustvoucher.svc" />
     <Content Include="analytics.svc" />
+    <Content Include="employee.svc" />
     <Content Include="IWCFUploader.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
@@ -83,8 +84,12 @@
     <Compile Include="analytics.svc.cs">
       <DependentUpon>analytics.svc</DependentUpon>
     </Compile>
+    <Compile Include="employee.svc.cs">
+      <DependentUpon>employee.svc</DependentUpon>
+    </Compile>
     <Compile Include="Iadjustvoucher.cs" />
     <Compile Include="Ianalytics.cs" />
+    <Compile Include="Iemployee.cs" />
     <Compile Include="IIWCFUploader.cs" />
     <Compile Include="IWCFUploader.svc.cs">
       <DependentUpon>IWCFUploader.svc</DependentUpon>
@@ -111,10 +116,6 @@
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
       <Project>{e6ca6f6a-15b5-4022-a2ae-603def54e1c4}</Project>
       <Name>BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{dcd9eb0f-8bd8-4f14-b044-4b7d6e887aeb}</Project>
-      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
