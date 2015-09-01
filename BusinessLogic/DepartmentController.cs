@@ -35,28 +35,35 @@ namespace BusinessLogic
             return dept;
         }
 
-        public Department editDepartment (String DepID, String contact, int phone, int fax, String DeptHead, String Rep )
+        /// <summary>
+        /// Edit the Department by Dept Head
+        /// </summary>
+        /// <param name="DepID"></param>
+        /// <param name="contact"></param>
+        /// <param name="phone"></param>
+        /// <param name="fax"></param>
+        /// <param name="DeptHead"></param>
+        /// <param name="Rep"></param>
+        /// <returns></returns>
+        public bool editDepartment (String DepID, String contact, String phone, String fax, String DeptHead, String Rep )
         {
-            //Supplier s = new Supplier();
-            //s.SupplierID = supplierId;
-            //s.SupplierName = supplierName;
-            //s.Contact = contact;
-            //s.RegNo = regno;
-            //s.Phone = phone;
-            //s.Address = address;
-            //s.Fax = fax;
-            //s.Rank = "4";
-
-            //ctx.Supplier.Add(s);
-            //ctx.SaveChanges();
-
-            //return true;
-
             Department dept = new Department();
-            return dept;
-         
+            dept = (from c in ctx.Department
+                   where DepID == c.DeptID
+                   select c).First();
 
+            dept.Contact = contact;
+            dept.Phone = phone;
+            dept.Fax = fax;
+            dept.DeptHead = DeptHead;
+            dept.DeptRep = Rep;
+
+            //ctx.Department.Add(dept);
+            ctx.SaveChanges();
+
+            return true;
         }
+
         
     }
 }

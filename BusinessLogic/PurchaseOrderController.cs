@@ -36,11 +36,42 @@ namespace BusinessLogic
             return result;
         }
         
-        public bool restock(string PoID)
+        public bool restock(PurchaseOrderDetail PoDetail)
         {
-            
+            bool result = false;
+
+            ctx.PurchaseOrderDetail.Add(PoDetail);
+            int count = ctx.SaveChanges();
+
+            if (count > 0)
+                result = true;
+
+            return result;
         }
 
+        public List<ProposePo> propose()
+        {
+            //retrieve items that are low on stock
+            List<Item> items = ctx.Item.Where(x => x.Stock < x.RoLvl).ToList();
+
+            List<ProposePo> poList = new List<ProposePo>();
+
+            // format to ProposePo class
+            foreach (Item i in items)
+            {
+                ProposePo po = new ProposePo();
+                po.ItemID = i.ItemID;
+                po.ItemName = i.ItemName;
+                po.totalQty = i.RoQty;
+                po.supplier1Qty = i.RoQty;
+
+                poList.Add(po);
+            }
+
+            return poList;
+        }
+
+       
     }
 
 }
