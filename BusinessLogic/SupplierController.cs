@@ -11,6 +11,10 @@ namespace BusinessLogic
     {
         StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
 
+        /// <summary>
+        /// GetAllSupplierList
+        /// </summary>
+        /// <returns></returns>
         public List<Supplier> getSupplierList()
         {
             var supplierlist = from s in ctx.Supplier
@@ -19,15 +23,31 @@ namespace BusinessLogic
             return supplierlist.ToList();
         }
 
-        public List<Supplier> getBySupplierID(string supplierid)
+        /// <summary>
+        /// GetBySupplierID
+        /// </summary>
+        /// <param name="supplierid">Supplier ID</param>
+        /// <returns></returns>
+        public Supplier getBySupplierID(string supplierid)
         {
-            var sl = from s in ctx.Supplier
+            var sl = (from s in ctx.Supplier
                      where s.SupplierID == supplierid
-                     select s;
+                     select s).First();
 
-            return sl.ToList();
+            return (Supplier)sl;
         }
 
+        /// <summary>
+        /// Create/UpdateSupplier
+        /// </summary>
+        /// <param name="supplierId">Supplier ID</param>
+        /// <param name="supplierName">Supplier Name</param>
+        /// <param name="contact">Contact Person Name</param>
+        /// <param name="regno">Reg No</param>
+        /// <param name="phone">Phone</param>
+        /// <param name="address">Address</param>
+        /// <param name="fax">Fax</param>
+        /// <returns></returns>
         public bool createSupplier(string supplierId, string supplierName, string contact,int regno, string phone, string address, string fax)
         {
             Supplier s = new Supplier();
@@ -45,5 +65,17 @@ namespace BusinessLogic
 
             return true;
         }
+
+        public bool updateSupplierRank(string supplierId, string rank)
+        {
+            Supplier s = new Supplier();
+            s = (from x in ctx.Supplier
+                 where x.SupplierID == supplierId
+                 select x).First();
+            
+            return true;
+        }
+
+        
     }
 }
