@@ -16,3 +16,6 @@ C:\Users\Jiandong\Documents\Visual Studio 2015\Projects\Team5ADproject\RestServi
 C:\Users\Jiandong\Documents\Visual Studio 2015\Projects\Team5ADproject\RestService\obj\Debug\RestService.pdb
 C:\Users\Jiandong\Documents\Visual Studio 2015\Projects\Team5ADproject\RestService\bin\EntityFramework.SqlServer.dll
 C:\Users\Jiandong\Documents\Visual Studio 2015\Projects\Team5ADproject\RestService\bin\EntityFramework.SqlServer.xml
+C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.csprojResolveAssemblyReference.cache
+C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.dll
+C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.pdb

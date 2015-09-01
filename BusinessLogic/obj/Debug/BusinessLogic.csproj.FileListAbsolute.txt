@@ -14,3 +14,6 @@ c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessL
 c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
 c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\Newtonsoft.Json.xml
 c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\TrackableEntities.Common.xml
+C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.pdb
