@@ -18,6 +18,7 @@ namespace Model
         public StationeryInventory_Team_05Entities()
             : base("name=StationeryInventory_Team_05Entities")
         {
+
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
