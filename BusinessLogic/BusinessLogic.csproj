@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Adjustvoucher.cs" />
     <Compile Include="Delegate.cs" />
+    <Compile Include="DepartmentController.cs" />
     <Compile Include="DisbursementController.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="PurchaseOrderController.cs" />
