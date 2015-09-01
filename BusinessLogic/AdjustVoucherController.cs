@@ -45,10 +45,17 @@ namespace BusinessLogic
             return adjustlist;
         }
 
+        /// <summary>
+        /// Get Adjustment Detail by AdjustmentVoucher ID
+        /// </summary>
+        /// <param name="adjId"></param>
+        /// <returns></returns>
         public List<AdjustmentDetail> getAdjVoucherDetail(string adjId)
         {
-            //var detail = from x in 
-            return null;
+            var detail = from x in ctx.AdjustmentDetail
+                         where x.AdjID == adjId
+                         select x;
+            return detail.ToList();
         }
     }
 }
