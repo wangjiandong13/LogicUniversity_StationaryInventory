@@ -51,9 +51,11 @@
   <ItemGroup>
     <Compile Include="Adjustvoucher.cs" />
     <Compile Include="Delegate.cs" />
-    <Compile Include="DepartmentController.cs" />
+    <Compile Include="DisbursementController.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="PurchaseOrderController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SupplierController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
