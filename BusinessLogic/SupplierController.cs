@@ -66,16 +66,38 @@ namespace BusinessLogic
             return true;
         }
 
+        /// <summary>
+        /// UpdateSupplierRank
+        /// </summary>
+        /// <param name="supplierId">Supplier ID</param>
+        /// <param name="rank">Rank</param>
+        /// <returns></returns>
         public bool updateSupplierRank(string supplierId, string rank)
         {
             Supplier s = new Supplier();
             s = (from x in ctx.Supplier
                  where x.SupplierID == supplierId
                  select x).First();
-            
+            s.Rank = rank;
+            ctx.SaveChanges();
             return true;
         }
 
+        /// <summary>
+        /// Delete Supplier
+        /// </summary>
+        /// <param name="supplierId"></param>
+        /// <returns></returns>
+        public bool deleteSupplier(string supplierId)
+        {
+            Supplier s = new Supplier();
+            s = (from x in ctx.Supplier
+                 where x.SupplierID == supplierId
+                 select x).First();
+            ctx.Supplier.Remove(s);
+            ctx.SaveChanges();
+            return true;
+        }
         
     }
 }

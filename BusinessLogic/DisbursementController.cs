@@ -61,8 +61,12 @@ namespace BusinessLogic
         {
             bool result = false;
             
-                ctx.Disbursement.Add(disb);
-                ctx.SaveChanges();
+            ctx.Disbursement.Add(disb);
+            int count = ctx.SaveChanges();
+
+            if (count > 0)
+                result = true;
+
             return result;
         }
 
