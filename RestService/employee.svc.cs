@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Model;
 
 namespace RestService
 {
@@ -11,9 +12,16 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select employee.svc or employee.svc.cs at the Solution Explorer and start debugging.
     public class employee : Iemployee
     {
-        public void DoWork()
+        public List<Employee> getemployeebyDeptID(string DeptID)
         {
-            BusinessLogic.Employee em = new BusinessLogic.Employee();
+            BusinessLogic.Employee BL = new BusinessLogic.Employee();
+            return BL.getemployeebyrole(DeptID);
+        }
+
+        public List<Employee> getemployeebyrole(string role)
+        {
+            BusinessLogic.Employee BL = new BusinessLogic.Employee();
+            return BL.getemployeebyrole(role);
         }
     }
 }

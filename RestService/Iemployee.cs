@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace RestService
@@ -12,6 +13,15 @@ namespace RestService
     public interface Iemployee
     {
         [OperationContract]
-        void DoWork();
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                   BodyStyle = WebMessageBodyStyle.Bare,
+                                   UriTemplate = "/getemployeebyrole/{role}")]
+        List<Model.Employee> getemployeebyrole(string role);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getemployeebyDeptID/{DeptID}")]
+        List<Model.Employee> getemployeebyDeptID(string DeptID);
     }
 }

@@ -14,8 +14,9 @@ namespace RestService
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                   RequestFormat =WebMessageFormat.Json,
                                    BodyStyle = WebMessageBodyStyle.Bare,
-                                   UriTemplate = "createVoucher/{ItemCode}")]
-        Product GetProduct();
+                                   UriTemplate = "/createVoucher/{ItemCode}")]
+        Product createVoucher()
     }
 }
