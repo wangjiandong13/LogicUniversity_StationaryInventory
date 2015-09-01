@@ -70,34 +70,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="adjustvoucher.svc" />
-    <Content Include="analytics.svc" />
-    <Content Include="employee.svc" />
     <Content Include="IWCFUploader.svc" />
-    <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adjustvoucher.svc.cs">
-      <DependentUpon>adjustvoucher.svc</DependentUpon>
-    </Compile>
-    <Compile Include="analytics.svc.cs">
-      <DependentUpon>analytics.svc</DependentUpon>
-    </Compile>
-    <Compile Include="employee.svc.cs">
-      <DependentUpon>employee.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Iadjustvoucher.cs" />
-    <Compile Include="Ianalytics.cs" />
-    <Compile Include="Iemployee.cs" />
     <Compile Include="IIWCFUploader.cs" />
     <Compile Include="IWCFUploader.svc.cs">
       <DependentUpon>IWCFUploader.svc</DependentUpon>
     </Compile>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
-    </Compile>
-    <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
