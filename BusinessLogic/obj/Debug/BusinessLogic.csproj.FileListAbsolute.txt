@@ -1,0 +1,16 @@
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\BusinessLogic.dll
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\BusinessLogic.pdb
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\obj\Debug\BusinessLogic.dll
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\obj\Debug\BusinessLogic.pdb
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\BusinessLogic.dll.config
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\EntityFramework.dll
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\Model.dll
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\Newtonsoft.Json.dll
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\TrackableEntities.Common.dll
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\Model.pdb
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\EntityFramework.xml
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\Newtonsoft.Json.xml
+c:\users\jiandong\documents\visual studio 2015\Projects\Team5ADproject\BusinessLogic\bin\Debug\TrackableEntities.Common.xml
