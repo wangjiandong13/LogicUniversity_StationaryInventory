@@ -48,13 +48,13 @@ namespace BusinessLogic
 
             return result;
         }
-        
+
         /// <summary>
         /// Restock
         /// </summary>
-        /// <param name="PoDetail">Purchase Order Detail</param>
+        /// <param name="PoDetailList">PoDetailList(PoID, ItemID, ActualQty)</param>
         /// <returns></returns>
-        public bool restock(PurchaseOrderDetail PoDetail)
+        public bool restock(List<PurchaseOrderDetail> PoDetailList)
         {
             bool result = false;
 
