@@ -21,7 +21,7 @@ namespace BusinessLogic
                                select s;
 
             return supplierlist.ToList();
-        }
+        } 
 
         /// <summary>
         /// GetBySupplierID
@@ -48,17 +48,10 @@ namespace BusinessLogic
         /// <param name="address">Address</param>
         /// <param name="fax">Fax</param>
         /// <returns></returns>
-        public bool createSupplier(string supplierId, string supplierName, string contact,int regno, string phone, string address, string fax)
+        public bool createSupplier(Supplier s)
         {
-            Supplier s = new Supplier();
-            s.SupplierID = supplierId;
-            s.SupplierName = supplierName;
-            s.Contact = contact;
-            s.RegNo = regno;
-            s.Phone = phone;
-            s.Address = address;
-            s.Fax = fax;
-            s.Rank = "4";
+            
+            s.Rank = 4;
 
             ctx.Supplier.Add(s);
             ctx.SaveChanges();
@@ -77,19 +70,19 @@ namespace BusinessLogic
         /// <param name="address">Address</param>
         /// <param name="fax">Fax</param>
         /// <returns></returns>
-        public bool updateSupplier(string supplierId, string supplierName, string contact, int regno, string phone, string address, string fax)
+        public bool updateSupplier(Supplier os)
         {
             Supplier s = new Supplier();
             s = (from x in ctx.Supplier
-                where x.SupplierID == supplierId
+                where x.SupplierID == os.SupplierID
                 select x).First();
-            s.SupplierID = supplierId;
-            s.SupplierName = supplierName;
-            s.Contact = contact;
-            s.RegNo = regno;
-            s.Phone = phone;
-            s.Address = address;
-            s.Fax = fax;
+            s.SupplierID = os.SupplierID;
+            s.SupplierName = os.SupplierName;
+            s.Contact = os.Contact;
+            s.RegNo = os.RegNo;
+            s.Phone = os.Phone;
+            s.Address = os.Address;
+            s.Fax = os.Fax;
             
 
             
@@ -104,7 +97,7 @@ namespace BusinessLogic
         /// <param name="supplierId">Supplier ID</param>
         /// <param name="rank">Rank</param>
         /// <returns></returns>
-        public bool updateSupplierRank(string supplierId, string rank)
+        public bool updateSupplierRank(string supplierId, int rank)
         {
             Supplier s = new Supplier();
             s = (from x in ctx.Supplier

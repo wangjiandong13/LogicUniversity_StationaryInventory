@@ -14,7 +14,7 @@ namespace BusinessLogic
         /// Get All Department
         /// </summary>
         /// <returns></returns>
-        public List<Department> getAllDepartment()
+        public List<Department> getAllDept()
         {
             var departments = from c in ctx.Department
                               select c;
@@ -36,34 +36,23 @@ namespace BusinessLogic
         }
 
         /// <summary>
-        /// Edit the Department by Dept Head
+        /// update department information
         /// </summary>
-        /// <param name="DepID"></param>
-        /// <param name="contact"></param>
-        /// <param name="phone"></param>
-        /// <param name="fax"></param>
-        /// <param name="DeptHead"></param>
-        /// <param name="Rep"></param>
-        /// <returns></returns>
-        public bool editDepartment (String DepID, String contact, String phone, String fax, String DeptHead, String Rep )
+        /// <param name="d"></param>
+        public bool updateDept(Department d)
         {
-            Department dept = new Department();
-            dept = (from c in ctx.Department
-                   where DepID == c.DeptID
+         var dept = (from c in ctx.Department
+                   where d.DeptID == c.DeptID
                    select c).First();
 
-            dept.Contact = contact;
-            dept.Phone = phone;
-            dept.Fax = fax;
-            dept.DeptHead = DeptHead;
-            dept.DeptRep = Rep;
-
-            //ctx.Department.Add(dept);
+            dept.Contact = d.Contact;
+            dept.Phone = d.Phone;
+            dept.Fax = d.Fax;
+            dept.DeptHead = d.DeptHead;
+            dept.DeptRep = d.DeptRep;
             ctx.SaveChanges();
-
             return true;
         }
 
-        
     }
 }

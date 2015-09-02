@@ -29,9 +29,9 @@ namespace Model
         [DataMember]
         public Nullable<int> DisID { get; set; }
         [DataMember]
-        public string RetID { get; set; }
+        public Nullable<int> RetID { get; set; }
         [DataMember]
-        public string EmpID { get; set; }
+        public Nullable<int> EmpID { get; set; }
         [DataMember]
         public string DeptID { get; set; }
         [DataMember]
@@ -43,11 +43,11 @@ namespace Model
         [DataMember]
         public Nullable<int> StatusID { get; set; }
         [DataMember]
-        public string HandledBy { get; set; }
+        public Nullable<int> HandledBy { get; set; }
         [DataMember]
         public string Remark { get; set; }
         [DataMember]
-        public string ReceivedBy { get; set; }
+        public Nullable<int> ReceivedBy { get; set; }
     
         [DataMember]
         public Department Department { get; set; }
@@ -56,7 +56,13 @@ namespace Model
         [DataMember]
         public Employee Employee { get; set; }
         [DataMember]
+        public Employee Employee1 { get; set; }
+        [DataMember]
+        public Employee Employee2 { get; set; }
+        [DataMember]
         public Priority Priority { get; set; }
+        [DataMember]
+        public Retrieval Retrieval { get; set; }
         [DataMember]
         public Status Status { get; set; }
         [DataMember]

@@ -20,7 +20,7 @@ namespace Model
     public partial class CartItems : ITrackable
     {
         [DataMember]
-        public string EmpID { get; set; }
+        public int EmpID { get; set; }
         [DataMember]
         public string ItemID { get; set; }
         [DataMember]

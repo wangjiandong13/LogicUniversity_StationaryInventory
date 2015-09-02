@@ -23,8 +23,8 @@
           </Key>
           <Property Name="AdjID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="date" />
-          <Property Name="ReportedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportedBy" Type="int" />
+          <Property Name="ApprovedBy" Type="int" />
           <Property Name="Status" Type="nvarchar" MaxLength="100" />
           <Property Name="TotalAmt" Type="float" />
         </EntityType>
@@ -32,7 +32,7 @@
           <Key>
             <PropertyRef Name="CartItemID" />
           </Key>
-          <Property Name="EmpID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmpID" Type="int" Nullable="false" />
           <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
           <Property Name="Qty" Type="int" />
           <Property Name="CartItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -43,7 +43,7 @@
           </Key>
           <Property Name="CPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CPName" Type="nvarchar" MaxLength="50" />
-          <Property Name="CPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="CPAddress" Type="nvarchar" MaxLength="100" />
           <Property Name="CPLat" Type="float" />
           <Property Name="CPLgt" Type="float" />
         </EntityType>
@@ -52,7 +52,7 @@
             <PropertyRef Name="DelegateSN" />
           </Key>
           <Property Name="DelegateSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpID" Type="int" />
           <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
           <Property Name="StartDate" Type="date" />
           <Property Name="EndDate" Type="date" />
@@ -65,9 +65,9 @@
           <Property Name="DeptID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DeptName" Type="nvarchar" MaxLength="50" />
           <Property Name="CPID" Type="int" />
-          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
-          <Property Name="DeptHead" Type="nvarchar" MaxLength="50" />
-          <Property Name="DeptRep" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact" Type="int" />
+          <Property Name="DeptHead" Type="int" />
+          <Property Name="DeptRep" Type="int" />
           <Property Name="Phone" Type="int" />
           <Property Name="Fax" Type="int" />
         </EntityType>
@@ -77,10 +77,10 @@
           </Key>
           <Property Name="DisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" />
-          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpID" Type="int" />
           <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
-          <Property Name="CPID" Type="nvarchar" MaxLength="50" />
-          <Property Name="ReceivedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CPID" Type="int" />
+          <Property Name="ReceivedBy" Type="int" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DisbursementDetail">
@@ -96,7 +96,7 @@
           <Key>
             <PropertyRef Name="EmpID" />
           </Key>
-          <Property Name="EmpID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmpID" Type="int" Nullable="false" />
           <Property Name="EmpName" Type="nvarchar" MaxLength="50" />
           <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
           <Property Name="RoleID" Type="nvarchar" MaxLength="50" />
@@ -138,7 +138,7 @@
             <PropertyRef Name="MobileNoti" />
           </Key>
           <Property Name="MobileNoti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpID" Type="int" />
           <Property Name="RegID" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Notification">
@@ -148,7 +148,7 @@
           <Property Name="NotifID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NotifName" Type="nvarchar" MaxLength="50" />
           <Property Name="NotifDesc" Type="nvarchar" MaxLength="255" />
-          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpID" Type="int" />
           <Property Name="DateTime" Type="datetime" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -165,7 +165,7 @@
           </Key>
           <Property Name="PoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SupplierID" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpID" Type="int" />
           <Property Name="Date" Type="date" />
           <Property Name="EstDate" Type="date" />
           <Property Name="TotalAmt" Type="int" />
@@ -187,8 +187,9 @@
           <Key>
             <PropertyRef Name="ReportID" />
           </Key>
-          <Property Name="ReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ReportContent" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmpID" Type="int" />
         </EntityType>
         <EntityType Name="Requisition">
           <Key>
@@ -196,16 +197,16 @@
           </Key>
           <Property Name="ReqID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DisID" Type="int" />
-          <Property Name="RetID" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RetID" Type="int" />
+          <Property Name="EmpID" Type="int" />
           <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
           <Property Name="Date" Type="date" />
           <Property Name="PriorityID" Type="int" />
           <Property Name="PRemark" Type="nvarchar" MaxLength="100" />
           <Property Name="StatusID" Type="int" />
-          <Property Name="HandledBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="HandledBy" Type="int" />
           <Property Name="Remark" Type="nvarchar" MaxLength="100" />
-          <Property Name="ReceivedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceivedBy" Type="int" />
         </EntityType>
         <EntityType Name="RequisitionDetail">
           <Key>
@@ -224,7 +225,7 @@
           </Key>
           <Property Name="RetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" />
-          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpID" Type="int" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="RetrievalDetail">
@@ -393,6 +394,90 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Department_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Employee1">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="DeptHead" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Employee2">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="DeptRep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disbursement_CollectionPoint">
+          <End Role="CollectionPoint" Type="Self.CollectionPoint" Multiplicity="0..1" />
+          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollectionPoint">
+              <PropertyRef Name="CPID" />
+            </Principal>
+            <Dependent Role="Disbursement">
+              <PropertyRef Name="CPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disbursement_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="Disbursement">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disbursement_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Disbursement">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disbursement_Employee1">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Disbursement">
+              <PropertyRef Name="ReceivedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DisbursementDetail_Disbursement">
           <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="0..1" />
           <End Role="DisbursementDetail" Type="Self.DisbursementDetail" Multiplicity="*" />
@@ -414,6 +499,18 @@
             </Principal>
             <Dependent Role="DisbursementDetail">
               <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DeptID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -537,6 +634,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Report_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Requisition_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
@@ -573,6 +682,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Requisition_Employee1">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Requisition">
+              <PropertyRef Name="HandledBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisition_Employee2">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Requisition">
+              <PropertyRef Name="ReceivedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Requisition_Priority">
           <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
           <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
@@ -582,6 +715,18 @@
             </Principal>
             <Dependent Role="Requisition">
               <PropertyRef Name="PriorityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisition_Retrieval">
+          <End Role="Retrieval" Type="Self.Retrieval" Multiplicity="0..1" />
+          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Retrieval">
+              <PropertyRef Name="RetID" />
+            </Principal>
+            <Dependent Role="Requisition">
+              <PropertyRef Name="RetID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -733,6 +878,34 @@
             <End Role="CollectionPoint" EntitySet="CollectionPoint" />
             <End Role="Department" EntitySet="Department" />
           </AssociationSet>
+          <AssociationSet Name="FK_Department_Employee" Association="Self.FK_Department_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Employee1" Association="Self.FK_Department_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Employee2" Association="Self.FK_Department_Employee2">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_CollectionPoint" Association="Self.FK_Disbursement_CollectionPoint">
+            <End Role="CollectionPoint" EntitySet="CollectionPoint" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_Department" Association="Self.FK_Disbursement_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_Employee" Association="Self.FK_Disbursement_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_Employee1" Association="Self.FK_Disbursement_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
           <AssociationSet Name="FK_DisbursementDetail_Disbursement" Association="Self.FK_DisbursementDetail_Disbursement">
             <End Role="Disbursement" EntitySet="Disbursement" />
             <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
@@ -740,6 +913,10 @@
           <AssociationSet Name="FK_DisbursementDetail_Item" Association="Self.FK_DisbursementDetail_Item">
             <End Role="Item" EntitySet="Item" />
             <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
             <End Role="Role" EntitySet="Role" />
@@ -781,6 +958,10 @@
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
           </AssociationSet>
+          <AssociationSet Name="FK_Report_Employee" Association="Self.FK_Report_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
           <AssociationSet Name="FK_Requisition_Department" Association="Self.FK_Requisition_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Requisition" EntitySet="Requisition" />
@@ -793,8 +974,20 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Requisition" EntitySet="Requisition" />
           </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Employee1" Association="Self.FK_Requisition_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Employee2" Association="Self.FK_Requisition_Employee2">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
           <AssociationSet Name="FK_Requisition_Priority" Association="Self.FK_Requisition_Priority">
             <End Role="Priority" EntitySet="Priority" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Retrieval" Association="Self.FK_Requisition_Retrieval">
+            <End Role="Retrieval" EntitySet="Retrieval" />
             <End Role="Requisition" EntitySet="Requisition" />
           </AssociationSet>
           <AssociationSet Name="FK_Requisition_Status" Association="Self.FK_Requisition_Status">
@@ -886,6 +1079,10 @@
             <End Role="CollectionPoint" EntitySet="CollectionPoint" />
             <End Role="Department" EntitySet="Department" />
           </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_CollectionPoint" Association="LogicUniversityEntitie.FK_Disbursement_CollectionPoint">
+            <End Role="CollectionPoint" EntitySet="CollectionPoint" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
           <AssociationSet Name="FK_Delegate_Department" Association="LogicUniversityEntitie.FK_Delegate_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Delegate" EntitySet="Delegate" />
@@ -894,9 +1091,37 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Delegate" EntitySet="Delegate" />
           </AssociationSet>
+          <AssociationSet Name="FK_Department_Employee" Association="LogicUniversityEntitie.FK_Department_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Employee1" Association="LogicUniversityEntitie.FK_Department_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Employee2" Association="LogicUniversityEntitie.FK_Department_Employee2">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_Department" Association="LogicUniversityEntitie.FK_Disbursement_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Department" Association="LogicUniversityEntitie.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
           <AssociationSet Name="FK_Requisition_Department" Association="LogicUniversityEntitie.FK_Requisition_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_Employee" Association="LogicUniversityEntitie.FK_Disbursement_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_Employee1" Association="LogicUniversityEntitie.FK_Disbursement_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
           </AssociationSet>
           <AssociationSet Name="FK_DisbursementDetail_Disbursement" Association="LogicUniversityEntitie.FK_DisbursementDetail_Disbursement">
             <End Role="Disbursement" EntitySet="Disbursement" />
@@ -926,7 +1151,19 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
           </AssociationSet>
+          <AssociationSet Name="FK_Report_Employee" Association="LogicUniversityEntitie.FK_Report_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
           <AssociationSet Name="FK_Requisition_Employee" Association="LogicUniversityEntitie.FK_Requisition_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Employee1" Association="LogicUniversityEntitie.FK_Requisition_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Employee2" Association="LogicUniversityEntitie.FK_Requisition_Employee2">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Requisition" EntitySet="Requisition" />
           </AssociationSet>
@@ -974,6 +1211,10 @@
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
           </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Retrieval" Association="LogicUniversityEntitie.FK_Requisition_Retrieval">
+            <End Role="Retrieval" EntitySet="Retrieval" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
           <AssociationSet Name="FK_Requisition_Status" Association="LogicUniversityEntitie.FK_Requisition_Status">
             <End Role="Status" EntitySet="Status" />
             <End Role="Requisition" EntitySet="Requisition" />
@@ -1007,8 +1248,8 @@
           </Key>
           <Property Name="AdjID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="ReportedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportedBy" Type="Int32" />
+          <Property Name="ApprovedBy" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TotalAmt" Type="Double" />
           <NavigationProperty Name="AdjustmentDetail" Relationship="LogicUniversityEntitie.FK_AdjustmentDetail_AdjustmentVoucher" FromRole="AdjustmentVoucher" ToRole="AdjustmentDetail" />
@@ -1019,7 +1260,7 @@
           <Key>
             <PropertyRef Name="CartItemID" />
           </Key>
-          <Property Name="EmpID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpID" Type="Int32" Nullable="false" />
           <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Int32" />
           <Property Name="CartItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
@@ -1032,17 +1273,18 @@
           </Key>
           <Property Name="CPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CPName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CPAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CPLat" Type="Double" />
           <Property Name="CPLgt" Type="Double" />
           <NavigationProperty Name="Department" Relationship="LogicUniversityEntitie.FK_Department_CollectionPoint" FromRole="CollectionPoint" ToRole="Department" />
+          <NavigationProperty Name="Disbursement" Relationship="LogicUniversityEntitie.FK_Disbursement_CollectionPoint" FromRole="CollectionPoint" ToRole="Disbursement" />
         </EntityType>
         <EntityType Name="Delegate">
           <Key>
             <PropertyRef Name="DelegateSN" />
           </Key>
           <Property Name="DelegateSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpID" Type="Int32" />
           <Property Name="DeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="StartDate" Type="DateTime" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Precision="0" />
@@ -1057,13 +1299,18 @@
           <Property Name="DeptID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CPID" Type="Int32" />
-          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DeptHead" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DeptRep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="Int32" />
+          <Property Name="DeptHead" Type="Int32" />
+          <Property Name="DeptRep" Type="Int32" />
           <Property Name="Phone" Type="Int32" />
           <Property Name="Fax" Type="Int32" />
           <NavigationProperty Name="CollectionPoint" Relationship="LogicUniversityEntitie.FK_Department_CollectionPoint" FromRole="Department" ToRole="CollectionPoint" />
           <NavigationProperty Name="Delegate" Relationship="LogicUniversityEntitie.FK_Delegate_Department" FromRole="Department" ToRole="Delegate" />
+          <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Department_Employee" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="LogicUniversityEntitie.FK_Department_Employee1" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Employee2" Relationship="LogicUniversityEntitie.FK_Department_Employee2" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Disbursement" Relationship="LogicUniversityEntitie.FK_Disbursement_Department" FromRole="Department" ToRole="Disbursement" />
+          <NavigationProperty Name="Employee3" Relationship="LogicUniversityEntitie.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
           <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Department" FromRole="Department" ToRole="Requisition" />
         </EntityType>
         <EntityType Name="Disbursement">
@@ -1072,11 +1319,15 @@
           </Key>
           <Property Name="DisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpID" Type="Int32" />
           <Property Name="DeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CPID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ReceivedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CPID" Type="Int32" />
+          <Property Name="ReceivedBy" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CollectionPoint" Relationship="LogicUniversityEntitie.FK_Disbursement_CollectionPoint" FromRole="Disbursement" ToRole="CollectionPoint" />
+          <NavigationProperty Name="Department" Relationship="LogicUniversityEntitie.FK_Disbursement_Department" FromRole="Disbursement" ToRole="Department" />
+          <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Disbursement_Employee" FromRole="Disbursement" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="LogicUniversityEntitie.FK_Disbursement_Employee1" FromRole="Disbursement" ToRole="Employee" />
           <NavigationProperty Name="DisbursementDetail" Relationship="LogicUniversityEntitie.FK_DisbursementDetail_Disbursement" FromRole="Disbursement" ToRole="DisbursementDetail" />
           <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Disbursement" FromRole="Disbursement" ToRole="Requisition" />
         </EntityType>
@@ -1095,7 +1346,7 @@
           <Key>
             <PropertyRef Name="EmpID" />
           </Key>
-          <Property Name="EmpID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpID" Type="Int32" Nullable="false" />
           <Property Name="EmpName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1106,11 +1357,20 @@
           <NavigationProperty Name="AdjustmentVoucher1" Relationship="LogicUniversityEntitie.FK_AdjustmentVoucher_Employee1" FromRole="Employee" ToRole="AdjustmentVoucher" />
           <NavigationProperty Name="CartItems" Relationship="LogicUniversityEntitie.FK_CartItems_Employee" FromRole="Employee" ToRole="CartItems" />
           <NavigationProperty Name="Delegate" Relationship="LogicUniversityEntitie.FK_Delegate_Employee" FromRole="Employee" ToRole="Delegate" />
+          <NavigationProperty Name="Department" Relationship="LogicUniversityEntitie.FK_Department_Employee" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Department1" Relationship="LogicUniversityEntitie.FK_Department_Employee1" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Department2" Relationship="LogicUniversityEntitie.FK_Department_Employee2" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Department3" Relationship="LogicUniversityEntitie.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Disbursement" Relationship="LogicUniversityEntitie.FK_Disbursement_Employee" FromRole="Employee" ToRole="Disbursement" />
+          <NavigationProperty Name="Disbursement1" Relationship="LogicUniversityEntitie.FK_Disbursement_Employee1" FromRole="Employee" ToRole="Disbursement" />
           <NavigationProperty Name="Role" Relationship="LogicUniversityEntitie.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="MobileNotification" Relationship="LogicUniversityEntitie.FK_MobileNotification_Employee" FromRole="Employee" ToRole="MobileNotification" />
           <NavigationProperty Name="Notification" Relationship="LogicUniversityEntitie.FK_Notification_Employee" FromRole="Employee" ToRole="Notification" />
           <NavigationProperty Name="PurchaseOrder" Relationship="LogicUniversityEntitie.FK_PurchaseOrder_Employee" FromRole="Employee" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="Report" Relationship="LogicUniversityEntitie.FK_Report_Employee" FromRole="Employee" ToRole="Report" />
           <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Employee" FromRole="Employee" ToRole="Requisition" />
+          <NavigationProperty Name="Requisition1" Relationship="LogicUniversityEntitie.FK_Requisition_Employee1" FromRole="Employee" ToRole="Requisition" />
+          <NavigationProperty Name="Requisition2" Relationship="LogicUniversityEntitie.FK_Requisition_Employee2" FromRole="Employee" ToRole="Requisition" />
           <NavigationProperty Name="Retrieval" Relationship="LogicUniversityEntitie.FK_Retrieval_Employee" FromRole="Employee" ToRole="Retrieval" />
         </EntityType>
         <EntityType Name="Item">
@@ -1159,7 +1419,7 @@
             <PropertyRef Name="MobileNoti" />
           </Key>
           <Property Name="MobileNoti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpID" Type="Int32" />
           <Property Name="RegID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_MobileNotification_Employee" FromRole="MobileNotification" ToRole="Employee" />
         </EntityType>
@@ -1170,7 +1430,7 @@
           <Property Name="NotifID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NotifName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NotifDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpID" Type="Int32" />
           <Property Name="DateTime" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Notification_Employee" FromRole="Notification" ToRole="Employee" />
@@ -1189,7 +1449,7 @@
           </Key>
           <Property Name="PoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SupplierID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpID" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="EstDate" Type="DateTime" Precision="0" />
           <Property Name="TotalAmt" Type="Int32" />
@@ -1216,8 +1476,10 @@
           <Key>
             <PropertyRef Name="ReportID" />
           </Key>
-          <Property Name="ReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ReportContent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmpID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Report_Employee" FromRole="Report" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Requisition">
           <Key>
@@ -1225,20 +1487,23 @@
           </Key>
           <Property Name="ReqID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DisID" Type="Int32" />
-          <Property Name="RetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RetID" Type="Int32" />
+          <Property Name="EmpID" Type="Int32" />
           <Property Name="DeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="PriorityID" Type="Int32" />
           <Property Name="PRemark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="StatusID" Type="Int32" />
-          <Property Name="HandledBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HandledBy" Type="Int32" />
           <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ReceivedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivedBy" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="LogicUniversityEntitie.FK_Requisition_Department" FromRole="Requisition" ToRole="Department" />
           <NavigationProperty Name="Disbursement" Relationship="LogicUniversityEntitie.FK_Requisition_Disbursement" FromRole="Requisition" ToRole="Disbursement" />
           <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Requisition_Employee" FromRole="Requisition" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="LogicUniversityEntitie.FK_Requisition_Employee1" FromRole="Requisition" ToRole="Employee" />
+          <NavigationProperty Name="Employee2" Relationship="LogicUniversityEntitie.FK_Requisition_Employee2" FromRole="Requisition" ToRole="Employee" />
           <NavigationProperty Name="Priority" Relationship="LogicUniversityEntitie.FK_Requisition_Priority" FromRole="Requisition" ToRole="Priority" />
+          <NavigationProperty Name="Retrieval" Relationship="LogicUniversityEntitie.FK_Requisition_Retrieval" FromRole="Requisition" ToRole="Retrieval" />
           <NavigationProperty Name="Status" Relationship="LogicUniversityEntitie.FK_Requisition_Status" FromRole="Requisition" ToRole="Status" />
           <NavigationProperty Name="RequisitionDetail" Relationship="LogicUniversityEntitie.FK_RequisitionDetail_Requisition" FromRole="Requisition" ToRole="RequisitionDetail" />
         </EntityType>
@@ -1261,9 +1526,10 @@
           </Key>
           <Property Name="RetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpID" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Retrieval_Employee" FromRole="Retrieval" ToRole="Employee" />
+          <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Retrieval" FromRole="Retrieval" ToRole="Requisition" />
           <NavigationProperty Name="RetrievalDetail" Relationship="LogicUniversityEntitie.FK_RetrievalDetail_Retrieval" FromRole="Retrieval" ToRole="RetrievalDetail" />
         </EntityType>
         <EntityType Name="RetrievalDetail">
@@ -1415,6 +1681,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Disbursement_CollectionPoint">
+          <End Type="LogicUniversityEntitie.CollectionPoint" Role="CollectionPoint" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollectionPoint">
+              <PropertyRef Name="CPID" />
+            </Principal>
+            <Dependent Role="Disbursement">
+              <PropertyRef Name="CPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Delegate_Department">
           <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="0..1" />
           <End Type="LogicUniversityEntitie.Delegate" Role="Delegate" Multiplicity="*" />
@@ -1439,6 +1717,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Department_Employee">
+          <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Employee1">
+          <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="DeptHead" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Employee2">
+          <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="DeptRep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disbursement_Department">
+          <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="Disbursement">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Department">
+          <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Requisition_Department">
           <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="0..1" />
           <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
@@ -1448,6 +1786,30 @@
             </Principal>
             <Dependent Role="Requisition">
               <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disbursement_Employee">
+          <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Disbursement">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disbursement_Employee1">
+          <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Disbursement">
+              <PropertyRef Name="ReceivedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1535,6 +1897,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Report_Employee">
+          <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Report" Role="Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Requisition_Employee">
           <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
           <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
@@ -1544,6 +1918,30 @@
             </Principal>
             <Dependent Role="Requisition">
               <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisition_Employee1">
+          <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Requisition">
+              <PropertyRef Name="HandledBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisition_Employee2">
+          <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="Requisition">
+              <PropertyRef Name="ReceivedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1679,6 +2077,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Requisition_Retrieval">
+          <End Type="LogicUniversityEntitie.Retrieval" Role="Retrieval" Multiplicity="0..1" />
+          <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Retrieval">
+              <PropertyRef Name="RetID" />
+            </Principal>
+            <Dependent Role="Requisition">
+              <PropertyRef Name="RetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Requisition_Status">
           <End Type="LogicUniversityEntitie.Status" Role="Status" Multiplicity="0..1" />
           <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
@@ -1715,7 +2125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1919,6 +2329,7 @@
           <EntitySetMapping Name="Report">
             <EntityTypeMapping TypeName="LogicUniversityEntitie.Report">
               <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
                 <ScalarProperty Name="ReportContent" ColumnName="ReportContent" />
                 <ScalarProperty Name="ReportID" ColumnName="ReportID" />
               </MappingFragment>

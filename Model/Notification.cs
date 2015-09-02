@@ -26,7 +26,7 @@ namespace Model
         [DataMember]
         public string NotifDesc { get; set; }
         [DataMember]
-        public string EmpID { get; set; }
+        public Nullable<int> EmpID { get; set; }
         [DataMember]
         public Nullable<System.DateTime> DateTime { get; set; }
         [DataMember]

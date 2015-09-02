@@ -20,9 +20,14 @@ namespace Model
     public partial class Report : ITrackable
     {
         [DataMember]
-        public int ReportID { get; set; }
+        public string ReportID { get; set; }
         [DataMember]
         public string ReportContent { get; set; }
+        [DataMember]
+        public Nullable<int> EmpID { get; set; }
+    
+        [DataMember]
+        public Employee Employee { get; set; }
     
         [DataMember]
         public TrackingState TrackingState { get; set; }

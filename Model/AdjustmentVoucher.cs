@@ -29,9 +29,9 @@ namespace Model
         [DataMember]
         public Nullable<System.DateTime> Date { get; set; }
         [DataMember]
-        public string ReportedBy { get; set; }
+        public Nullable<int> ReportedBy { get; set; }
         [DataMember]
-        public string ApprovedBy { get; set; }
+        public Nullable<int> ApprovedBy { get; set; }
         [DataMember]
         public string Status { get; set; }
         [DataMember]
