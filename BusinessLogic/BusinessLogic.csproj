@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdjustVoucherController.cs" />
-    <Compile Include="Catalog.cs" />
     <Compile Include="CatalogController.cs" />
     <Compile Include="DelegateController.cs" />
     <Compile Include="DepartmentController.cs" />
