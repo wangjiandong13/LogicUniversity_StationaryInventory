@@ -19,12 +19,12 @@ namespace BusinessLogic
         /// <param name="EmpID">Employee ID</param>
         /// <param name="PoID">Purchase Order ID</param>
         /// <returns></returns>
-        public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, string EmpID, string PoID)
+        public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, string EmpID, int PoID)
         {
             if (EmpID == null)
                 EmpID = "";
-            if (PoID == null)
-                PoID = "";
+            if (PoID == 0)
+                PoId = null;
             
             List<PurchaseOrder> result = ctx.PurchaseOrder
                 .Where(x=> x.Date > startDate && x.Date < endDate)
@@ -40,7 +40,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="PoID">Purchase Order ID</param>
         /// <returns></returns>
-        public List<PurchaseOrderDetail> getPoDetail(string PoID)
+        public List<PurchaseOrderDetail> getPoDetail(int PoID)
         {
             List<PurchaseOrderDetail> result = ctx.PurchaseOrderDetail
                 .Where(x => x.PoID == PoID)
