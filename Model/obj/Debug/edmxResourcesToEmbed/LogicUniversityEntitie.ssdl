@@ -163,7 +163,7 @@
     <Property Name="EmpID" Type="int" />
     <Property Name="Date" Type="date" />
     <Property Name="EstDate" Type="date" />
-    <Property Name="TotalAmt" Type="int" />
+    <Property Name="TotalAmt" Type="float" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PurchaseOrderDetail">

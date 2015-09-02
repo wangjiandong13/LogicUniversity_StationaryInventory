@@ -59,7 +59,7 @@ namespace BusinessLogic
         /// <param name="startdate"></param>
         /// <param name="enddate"></param>
         /// <param name="status"></param>
-        public void editDelegate(string empID, DateTime startdate, DateTime enddate, String status)
+        public void editDelegate(int empID, DateTime startdate, DateTime enddate, String status)
         {
             var dele = (from c in ctx.Delegate
                         where c.EmpID == empID

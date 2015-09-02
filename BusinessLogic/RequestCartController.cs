@@ -14,13 +14,18 @@ namespace BusinessLogic
         /// <summary>
         /// AddItem
         /// </summary>
-        /// <param name="item">CartItem</param>
+        /// <param name="item">CartItem (EmpID, ItemID, Qty)</param>
         /// <returns></returns>
         public bool addItem(CartItems item)
         {
             bool result = false;
 
-            ctx.CartItems.Add(item);
+            CartItems cartItem = new CartItems();
+            cartItem.EmpID = item.EmpID;
+            cartItem.ItemID = item.ItemID;
+            cartItem.Qty = item.Qty;
+
+            ctx.CartItems.Add(cartItem);
             int count = ctx.SaveChanges();
 
             if (count > 0)
@@ -32,7 +37,7 @@ namespace BusinessLogic
         /// <summary>
         /// UpdateItem
         /// </summary>
-        /// <param name="item">CartItem</param>
+        /// <param name="item">CartItem (EmpID, ItemID, Qty)</param>
         /// <returns></returns>
         public bool updateItem(CartItems item)
         {
@@ -52,13 +57,18 @@ namespace BusinessLogic
         /// <summary>
         /// DeleteItem
         /// </summary>
-        /// <param name="item">CartItem</param>
+        /// <param name="item">CartItem (EmpID, ItemID)</param>
         /// <returns></returns>
         public bool deleteItem(CartItems item)
         {
             bool result = false;
 
-            ctx.CartItems.Remove(item);
+            CartItems cartItem = ctx.CartItems.Where(x => x.EmpID == item.EmpID && x.ItemID == item.ItemID).FirstOrDefault();
+
+            if (cartItem == null)
+                return result;
+
+            ctx.CartItems.Remove(cartItem);
             int count = ctx.SaveChanges();
 
             if (count > 0)
@@ -72,7 +82,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="EmpID">EmployeeID</param>
         /// <returns></returns>
-        public List<CartItems> getItems(string EmpID)
+        public List<CartItems> getItems(int EmpID)
         {
             List<CartItems> result = ctx.CartItems.Where(x => x.EmpID == EmpID).ToList();
 

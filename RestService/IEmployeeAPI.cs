@@ -24,5 +24,13 @@ namespace RestService
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/getemployeebyDeptID/{DeptID}")]
         List<Employee> getemployeebyDeptID(string DeptID);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", 
+            RequestFormat = WebMessageFormat.Json,
+                            ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/login")]
+        Employee login(Employee e);
     }
 }

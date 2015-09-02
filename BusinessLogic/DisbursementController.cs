@@ -32,25 +32,25 @@ namespace BusinessLogic
         /// <param name="startdate">Start Date</param>
         /// <param name="enddate">End Date</param>
         /// <returns></returns>
-        public List<Disbursement> getDisbursement(string DeptID,string CPID, int DisID, DateTime startdate, DateTime enddate)
-        {
-            if (DeptID == null)
-                DeptID = "";
-            if (CPID == null)
-                CPID = "";
-            if (DisID == null)
-                DisID = "";
+        //public List<Disbursement> getDisbursement(string DeptID,string CPID, int DisID, DateTime startdate, DateTime enddate)
+        //{
+        //    if (DeptID == null)
+        //        DeptID = "";
+        //    if (CPID == null)
+        //        CPID = "";
+        //    if (DisID == null)
+        //        DisID = "";
 
-            //Need to verify the output
-            List<Disbursement> result = ctx.Disbursement
-                .Where(x => x.DeptID == DeptID)
-                .Where(x => x.CPID == CPID)
-                .Where(x => x.DisID == DisID)
-                .Where(x => x.Date > startdate && x.Date < enddate)
-                .ToList();
+        //    //Need to verify the output
+        //    List<Disbursement> result = ctx.Disbursement
+        //        .Where(x => x.DeptID == DeptID)
+        //        .Where(x => x.CPID == CPID)
+        //        .Where(x => x.DisID == DisID)
+        //        .Where(x => x.Date > startdate && x.Date < enddate)
+        //        .ToList();
 
-            return result;
-        }
+        //    return result;
+        //}
 
         /// <summary>
         /// CreateDisbursement

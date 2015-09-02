@@ -19,21 +19,21 @@ namespace BusinessLogic
         /// <param name="EmpID">Employee ID</param>
         /// <param name="PoID">Purchase Order ID</param>
         /// <returns></returns>
-        public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, int EmpID, int PoID)
-        {
-            if (EmpID == null)
-                EmpID = "";
-            if (PoID == 0)
-                PoId = null;
+        //public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, int EmpID, int PoID)
+        //{
+        //    if (EmpID == null)
+        //        EmpID = "";
+        //    if (PoID == 0)
+        //        PoId = null;
             
-            List<PurchaseOrder> result = ctx.PurchaseOrder
-                .Where(x=> x.Date > startDate && x.Date < endDate)
-                .Where(x => x.EmpID == EmpID)
-                .Where(x => x.PoID == PoID)
-                .ToList();
+        //    List<PurchaseOrder> result = ctx.PurchaseOrder
+        //        .Where(x=> x.Date > startDate && x.Date < endDate)
+        //        .Where(x => x.EmpID == EmpID)
+        //        .Where(x => x.PoID == PoID)
+        //        .ToList();
 
-            return result;
-        }
+        //    return result;
+        //}
 
         /// <summary>
         /// GetPoDetail
@@ -111,10 +111,12 @@ namespace BusinessLogic
         /// <summary>
         /// GeneratePo
         /// </summary>
-        /// <param name="proposePoList">proposePoList(EmpID, ItemID, supplier1Qty, supplier2Qty, supplier3Qty)</param>
+        /// <param name="proposePoList">proposePoList(EmpID, EstDate, ItemID, supplier1Qty, supplier2Qty, supplier3Qty)</param>
         /// <returns></returns>
         public bool generatePo(List<ProposePo> proposePoList)
         {
+            bool result = false;
+
             //filter the proposePoList by supplier
             List<ProposePo> supplier1 = proposePoList.Where(x => x.supplier1Qty != 0).ToList();
             List<ProposePo> supplier2 = proposePoList.Where(x => x.supplier2Qty != 0).ToList();
@@ -226,12 +228,14 @@ namespace BusinessLogic
                 ctx.PurchaseOrder.Last().TotalAmt = totalamt;
             }
 
-            return true;
+            int count = ctx.SaveChanges();
+
+            if (count > 0)
+                result = true;
+
+            return result;
         }
        
-
-
-
     }
 
 }

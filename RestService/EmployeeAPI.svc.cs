@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -12,16 +14,33 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select EmployeeAPI.svc or EmployeeAPI.svc.cs at the Solution Explorer and start debugging.
     public class EmployeeAPI : IEmployeeAPI
     {
+
         public List<Employee> getemployeebyDeptID(string DeptID)
         {
             BusinessLogic.EmployeeController BL = new BusinessLogic.EmployeeController();
-            return BL.getemployeebyrole(DeptID);
+            return BL.getemployeebyDeptID(DeptID);
         }
 
         public List<Employee> getemployeebyrole(string role)
         {
             BusinessLogic.EmployeeController BL = new BusinessLogic.EmployeeController();
             return BL.getemployeebyrole(role);
+        }
+
+        public Employee login(Employee e)
+        {
+            BusinessLogic.EmployeeController BL = new BusinessLogic.EmployeeController();
+            Employee re = BL.login(e);
+            if (re != null)
+            {
+                return re;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return null;
+            }
         }
     }
 }

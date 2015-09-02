@@ -10,7 +10,7 @@ namespace BusinessLogic
     /// UI 4.7 , 4.7.1 Store Clerk : Inventory List & Tile
     /// UI 4.7 Store Clerk : Inventory List
     /// </summary>
-    class Inventory
+   public class InventoryController
     {
         Model.StationeryInventory_Team_05Entities ctx = new Model.StationeryInventory_Team_05Entities();
 
@@ -71,19 +71,32 @@ namespace BusinessLogic
             return items.ToList();
         }
 
-        public bool createItemDetails(Model.Item i, Model.ItemPrice ip)
+        /// <summary>
+        /// Creating Item Details UI 4.7.2 Inventory New
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public bool createItemDetails(Model.Item item,List<Model.ItemPrice> ip)
         {
-            //Model.ItemCategory cat = new Model.ItemCategory();
-            //if (i.ItemCatID == cat.ItemCatID)
-            //{
-            //    cat.ItemDescription = category;
-            //}
+            //Add item obj to db
+            ctx.Item.Add(item);
 
-            ctx.Item.Add(i);
+            //add item price
+            //loop
+            foreach (Model.ItemPrice  itemprice in ip){
+                ctx.ItemPrice.Add(itemprice);
+            }
+
             ctx.SaveChanges();
             return true;
         }
 
+        /// <summary>
+        /// UI 4.7.3 SC : Inventory Stock Card by item ID
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <returns></returns>
         public Model.StockCard getStockCard(string itemID)
         {
             Model.StockCard stockcard = (from c in ctx.StockCard
@@ -91,6 +104,36 @@ namespace BusinessLogic
                                          select c).First();
 
             return stockcard;
+        }
+
+        /// <summary>
+        /// UpdateItem Details 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="itemprice"></param>
+        /// <returns></returns>
+        public bool updateItemDetail(Model.Item item, List<Model.ItemPrice> itemprice)
+        {
+            Model.Item i = new Model.Item();
+            Model.ItemPrice ip = new Model.ItemPrice();
+            i = (from c in ctx.Item
+                 where item.ItemID == i.ItemID
+                 select c).First();
+
+            i.ItemName = item.ItemName;
+            i.ItemCatID = item.ItemCatID;
+            i.RoLvl = item.RoLvl;
+            i.RoQty = item.RoQty;
+            i.UOM = item.UOM;
+            i.Bin = item.Bin;
+
+            foreach (Model.ItemPrice ip1 in itemprice)
+            {
+                ip.Price = ip1.Price;
+            }
+
+            ctx.SaveChanges();
+            return true;
         }
 
     }
