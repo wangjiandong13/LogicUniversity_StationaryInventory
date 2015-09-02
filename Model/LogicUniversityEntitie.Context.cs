@@ -15,10 +15,15 @@ namespace Model
     
     public partial class StationeryInventory_Team_05Entities : DbContext
     {
+        static StationeryInventory_Team_05Entities()
+        {
+            Database.SetInitializer(new NullDatabaseInitializer<StationeryInventory_Team_05Entities>());
+        }
+    
         public StationeryInventory_Team_05Entities()
             : base("name=StationeryInventory_Team_05Entities")
         {
-
+    		Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

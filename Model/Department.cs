@@ -30,7 +30,7 @@ namespace Model
         [DataMember]
         public string DeptName { get; set; }
         [DataMember]
-        public string CPID { get; set; }
+        public Nullable<int> CPID { get; set; }
         [DataMember]
         public string Contact { get; set; }
         [DataMember]
@@ -38,9 +38,9 @@ namespace Model
         [DataMember]
         public string DeptRep { get; set; }
         [DataMember]
-        public string Phone { get; set; }
+        public Nullable<int> Phone { get; set; }
         [DataMember]
-        public string Fax { get; set; }
+        public Nullable<int> Fax { get; set; }
     
         [DataMember]
         public CollectionPoint CollectionPoint { get; set; }

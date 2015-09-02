@@ -84,8 +84,8 @@ namespace BusinessLogic
                 ProposePo po = new ProposePo();
                 po.ItemID = i.ItemID;
                 po.ItemName = i.ItemName;
-                po.totalQty = i.RoQty;
-                po.supplier1Qty = i.RoQty;
+                po.totalQty = (int)i.RoQty;
+                po.supplier1Qty = (int)i.RoQty;
 
                 poList.Add(po);
             }
@@ -106,9 +106,9 @@ namespace BusinessLogic
 
             foreach(ProposePo po in poList)
             {
-                if(po.)
+                
             }
-
+            return true;
         }
 
     }

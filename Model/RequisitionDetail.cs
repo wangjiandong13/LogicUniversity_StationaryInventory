@@ -22,7 +22,7 @@ namespace Model
         [DataMember]
         public int ReqSN { get; set; }
         [DataMember]
-        public string ReqID { get; set; }
+        public Nullable<int> ReqID { get; set; }
         [DataMember]
         public string ItemID { get; set; }
         [DataMember]

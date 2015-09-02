@@ -26,7 +26,7 @@ namespace Model
         }
     
         [DataMember]
-        public string DisID { get; set; }
+        public int DisID { get; set; }
         [DataMember]
         public Nullable<System.DateTime> Date { get; set; }
         [DataMember]
