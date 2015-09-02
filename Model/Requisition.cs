@@ -25,9 +25,9 @@ namespace Model
         }
     
         [DataMember]
-        public string ReqID { get; set; }
+        public int ReqID { get; set; }
         [DataMember]
-        public string DisID { get; set; }
+        public Nullable<int> DisID { get; set; }
         [DataMember]
         public string RetID { get; set; }
         [DataMember]

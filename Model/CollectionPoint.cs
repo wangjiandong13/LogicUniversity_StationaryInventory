@@ -25,7 +25,7 @@ namespace Model
         }
     
         [DataMember]
-        public string CPID { get; set; }
+        public int CPID { get; set; }
         [DataMember]
         public string CPName { get; set; }
         [DataMember]

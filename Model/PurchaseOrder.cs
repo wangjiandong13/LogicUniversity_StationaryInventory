@@ -25,7 +25,7 @@ namespace Model
         }
     
         [DataMember]
-        public string PoID { get; set; }
+        public int PoID { get; set; }
         [DataMember]
         public string SupplierID { get; set; }
         [DataMember]
