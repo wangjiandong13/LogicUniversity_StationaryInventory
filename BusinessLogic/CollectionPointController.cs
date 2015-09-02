@@ -35,5 +35,23 @@ namespace BusinessLogic
 
             return cp.ToList();
         }
+
+        /// <summary>
+        /// Change collection point according to Dept
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public bool updateCollectionPoint(Model.Department d)
+        {
+            Model.Department dept = new Model.Department();
+
+            dept = (from c in ctx.Department
+                    where c.DeptID == d.DeptID
+                    select c).First();
+            dept.CPID = d.CPID;
+            ctx.SaveChanges();
+            return true;
+
+        }
     }
 }
