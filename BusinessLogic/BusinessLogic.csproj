@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestCartController.cs" />
     <Compile Include="RequisitionController.cs" />
+    <Compile Include="RetrievalController.cs" />
     <Compile Include="SupplierController.cs" />
   </ItemGroup>
   <ItemGroup>
