@@ -67,6 +67,38 @@ namespace BusinessLogic
         }
 
         /// <summary>
+        /// Update Supplier Info
+        /// </summary>
+        /// <param name="supplierId">Supplier ID</param>
+        /// <param name="supplierName">Supplier Name</param>
+        /// <param name="contact">Contact Person Name</param>
+        /// <param name="regno">Reg No</param>
+        /// <param name="phone">Phone</param>
+        /// <param name="address">Address</param>
+        /// <param name="fax">Fax</param>
+        /// <returns></returns>
+        public bool updateSupplier(string supplierId, string supplierName, string contact, int regno, string phone, string address, string fax)
+        {
+            Supplier s = new Supplier();
+            s = (from x in ctx.Supplier
+                where x.SupplierID == supplierId
+                select x).First();
+            s.SupplierID = supplierId;
+            s.SupplierName = supplierName;
+            s.Contact = contact;
+            s.RegNo = regno;
+            s.Phone = phone;
+            s.Address = address;
+            s.Fax = fax;
+            
+
+            
+            ctx.SaveChanges();
+
+            return true;
+        }
+
+        /// <summary>
         /// UpdateSupplierRank
         /// </summary>
         /// <param name="supplierId">Supplier ID</param>

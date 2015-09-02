@@ -39,7 +39,7 @@ namespace BusinessLogic
         /// update department information
         /// </summary>
         /// <param name="d"></param>
-        public void updateDept(Department d)
+        public bool updateDept(Department d)
         {
          var dept = (from c in ctx.Department
                    where d.DeptID == c.DeptID
@@ -51,7 +51,7 @@ namespace BusinessLogic
             dept.DeptHead = d.DeptHead;
             dept.DeptRep = d.DeptRep;
             ctx.SaveChanges();
-            
+            return true;
         }
 
     }

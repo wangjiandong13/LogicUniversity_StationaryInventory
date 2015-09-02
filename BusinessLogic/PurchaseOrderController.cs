@@ -11,6 +11,14 @@ namespace BusinessLogic
     {
         StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
 
+        /// <summary>
+        /// GetPo
+        /// </summary>
+        /// <param name="startDate">Start Date</param>
+        /// <param name="endDate">End Date</param>
+        /// <param name="EmpID">Employee ID</param>
+        /// <param name="PoID">Purchase Order ID</param>
+        /// <returns></returns>
         public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, string EmpID, string PoID)
         {
             if (EmpID == null)
@@ -27,6 +35,11 @@ namespace BusinessLogic
             return result;
         }
 
+        /// <summary>
+        /// GetPoDetail
+        /// </summary>
+        /// <param name="PoID">Purchase Order ID</param>
+        /// <returns></returns>
         public List<PurchaseOrderDetail> getPoDetail(string PoID)
         {
             List<PurchaseOrderDetail> result = ctx.PurchaseOrderDetail
@@ -36,6 +49,11 @@ namespace BusinessLogic
             return result;
         }
         
+        /// <summary>
+        /// Restock
+        /// </summary>
+        /// <param name="PoDetail">Purchase Order Detail</param>
+        /// <returns></returns>
         public bool restock(PurchaseOrderDetail PoDetail)
         {
             bool result = false;
@@ -49,6 +67,10 @@ namespace BusinessLogic
             return result;
         }
 
+        /// <summary>
+        /// Propose
+        /// </summary>
+        /// <returns></returns>
         public List<ProposePo> propose()
         {
             //retrieve items that are low on stock
@@ -71,7 +93,24 @@ namespace BusinessLogic
             return poList;
         }
 
-       
+        /// <summary>
+        /// GeneratePo
+        /// </summary>
+        /// <param name="poList">Purchase Order List</param>
+        /// <returns></returns>
+       public bool generatePo(List<ProposePo> poList)
+        {
+            List<ProposePo> supplier1 = new List<ProposePo>();
+            List<ProposePo> supplier2 = new List<ProposePo>();
+            List<ProposePo> supplier3 = new List<ProposePo>();
+
+            foreach(ProposePo po in poList)
+            {
+                if(po.)
+            }
+
+        }
+
     }
 
 }

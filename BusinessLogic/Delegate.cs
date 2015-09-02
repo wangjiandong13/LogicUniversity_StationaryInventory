@@ -9,12 +9,13 @@ namespace BusinessLogic
     public class Delegate
     {
         Model.StationeryInventory_Team_05Entities ctx = new Model.StationeryInventory_Team_05Entities();
+
         /// <summary>
-        /// GetDelegate
+        /// get delegate by DeptID
         /// </summary>
-        /// <param name="DeptID">Department ID</param>
+        /// <param name="DeptID"></param>
         /// <returns></returns>
-        public List<Model.Delegate> getDelegate(string DeptID)
+        public List<Model.Delegate> getDelegatebyID(string DeptID)
         {
             var delegates = from c in ctx.Delegate
                             where c.DeptID == DeptID
@@ -23,20 +24,32 @@ namespace BusinessLogic
         }
 
         /// <summary>
+        /// get delegate
+        /// </summary>
+        /// <returns></returns>
+        public List<Model.Delegate> getDelegate()
+        {
+            var delegates = from c in ctx.Delegate
+                            select c;
+            return delegates.ToList();
+        }
+
+        /// <summary>
         /// create delegate
         /// </summary>
         /// <param name="dele"></param>
-        public void createDelegate(Model.Delegate dele)
+        public bool createDelegate(Model.Delegate dele)
         {
             ctx.Delegate.Add(dele);
             ctx.SaveChanges();
+            return true;
         }
 
        /// <summary>
        /// delete Delegate
        /// </summary>
        /// <param name="EmpName"></param>
-        public void deleteDelegate(string EmpName)
+        public bool deleteDelegate(string EmpName)
         {
             Model.Employee emp = new Model.Employee();
             Model.Delegate dele = new Model.Delegate();
@@ -50,6 +63,7 @@ namespace BusinessLogic
                             select c).First();
             ctx.Delegate.Remove(dele);
             ctx.SaveChanges();
+            return true;
         }
         
         /// <summary>
@@ -59,7 +73,7 @@ namespace BusinessLogic
         /// <param name="startdate"></param>
         /// <param name="enddate"></param>
         /// <param name="status"></param>
-        public void editDelegate(string empID, DateTime startdate, DateTime enddate, String status)
+        public bool editDelegate(string empID, DateTime startdate, DateTime enddate, String status)
         {
             var dele = (from c in ctx.Delegate
                        where c.EmpID == empID
@@ -68,6 +82,7 @@ namespace BusinessLogic
             dele.EndDate = enddate;
             dele.Status = status;
             ctx.SaveChanges();
+            return true;
         }
 
     }
