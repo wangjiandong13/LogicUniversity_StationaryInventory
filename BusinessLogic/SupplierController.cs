@@ -21,7 +21,7 @@ namespace BusinessLogic
                                select s;
 
             return supplierlist.ToList();
-        }
+        } 
 
         /// <summary>
         /// GetBySupplierID
@@ -48,17 +48,27 @@ namespace BusinessLogic
         /// <param name="address">Address</param>
         /// <param name="fax">Fax</param>
         /// <returns></returns>
-        public bool createSupplier(string supplierId, string supplierName, string contact,int regno, string phone, string address, string fax)
+        //public bool createSupplier(string supplierId, string supplierName, string contact,int regno, string phone, string address, string fax)
+        //{
+        //    Supplier s = new Supplier();
+        //    s.SupplierID = supplierId;
+        //    s.SupplierName = supplierName;
+        //    s.Contact = contact;
+        //    s.RegNo = regno;
+        //    s.Phone = phone;
+        //    s.Address = address;
+        //    s.Fax = fax;
+        //    s.Rank = "4";
+
+        //    ctx.Supplier.Add(s);
+        //    ctx.SaveChanges();
+
+        //    return true;
+        //}
+        public bool createSupplier(Supplier s)
         {
-            Supplier s = new Supplier();
-            s.SupplierID = supplierId;
-            s.SupplierName = supplierName;
-            s.Contact = contact;
-            s.RegNo = regno;
-            s.Phone = phone;
-            s.Address = address;
-            s.Fax = fax;
-            s.Rank = "4";
+            
+            s.Rank = 4;
 
             ctx.Supplier.Add(s);
             ctx.SaveChanges();
