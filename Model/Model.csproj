@@ -124,6 +124,7 @@
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="ProcessRetrieval.cs" />
+    <Compile Include="ProcessRetSuccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProposePo.cs" />
     <Compile Include="PurchaseOrder.cs">
@@ -135,6 +136,7 @@
     <Compile Include="Report.cs">
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReqAllocation.cs" />
     <Compile Include="Requisition.cs">
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>
