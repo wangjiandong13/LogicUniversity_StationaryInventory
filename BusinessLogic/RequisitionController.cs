@@ -16,7 +16,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="DisID">Disbursement ID</param>
         /// <returns></returns>
-        public List<Requisition> getRequisitionList(string DisID)
+        public List<Requisition> getRequisitionList(int DisID)
         {
             List<Requisition> result = ctx.Requisition.Where(x => x.DisID == DisID).ToList();
 
@@ -30,7 +30,7 @@ namespace BusinessLogic
         /// <param name="HandledBy">Handled By</param>
         /// <param name="Remark">Remark</param>
         /// <returns></returns>
-        public bool approve(string ReqId, string HandledBy, string Remark)
+        public bool approve(int ReqId, string HandledBy, string Remark)
         {
             bool result = false;
 
@@ -53,7 +53,7 @@ namespace BusinessLogic
         /// <param name="HandledBy">Handled By</param>
         /// <param name="Remark">Remark</param>
         /// <returns></returns>
-        public bool reject(string ReqId, string HandledBy, string Remark)
+        public bool reject(int ReqId, string HandledBy, string Remark)
         {
             bool result = false;
 
@@ -76,7 +76,7 @@ namespace BusinessLogic
         /// <param name="ReqID">Requisition ID</param>
         /// <param name="EmpID">Employee ID</param>
         /// <returns></returns>
-        public List<Requisition> getRequisition(int StatusID, string ReqID, string EmpID)
+        public List<Requisition> getRequisition(int StatusID, int ReqID, string EmpID)
         {
             List<Requisition> result = ctx.Requisition
                 .Where(x => x.StatusID == StatusID)
@@ -128,7 +128,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="ReqID">Requisition ID</param>
         /// <returns></returns>
-        public bool deleteRequisition(string ReqID)
+        public bool deleteRequisition(int ReqID)
         {
             bool result = false;
 
@@ -149,7 +149,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="ReqId">Requisition ID</param>
         /// <returns></returns>
-        public List<RequisitionDetail> getRequisitionDetail(string ReqId)
+        public List<RequisitionDetail> getRequisitionDetail(int ReqId)
         {
             List<RequisitionDetail> result = ctx.RequisitionDetail.Where(x => x.ReqID == ReqId).ToList();
 
