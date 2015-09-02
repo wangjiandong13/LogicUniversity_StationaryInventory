@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B28CED53-E0CF-4A99-A382-279935FF5802}</ProjectGuid>
+    <ProjectGuid>{1E858D59-4E82-4E3D-A3A1-D7A55209C749}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -70,14 +70,19 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IWCFUploader.svc" />
+    <Content Include="DepartmentAPI.svc" />
+    <Content Include="EmployeeAPI.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IIWCFUploader.cs" />
-    <Compile Include="IWCFUploader.svc.cs">
-      <DependentUpon>IWCFUploader.svc</DependentUpon>
+    <Compile Include="DepartmentAPI.svc.cs">
+      <DependentUpon>DepartmentAPI.svc</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeAPI.svc.cs">
+      <DependentUpon>EmployeeAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IDepartmentAPI.cs" />
+    <Compile Include="IEmployeeAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +120,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>8425</DevelopmentServerPort>
+          <DevelopmentServerPort>6644</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:8425/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

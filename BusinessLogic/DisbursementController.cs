@@ -17,7 +17,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="DisID">Disbursement ID</param>
         /// <returns></returns>
-        public DisbursementDetail getDisbursementDetail(string DisID)
+        public DisbursementDetail getDisbursementDetail(int DisID)
         {
             DisbursementDetail result = ctx.DisbursementDetail.Where(x => x.DisID == DisID).FirstOrDefault();
             return result;
@@ -32,7 +32,7 @@ namespace BusinessLogic
         /// <param name="startdate">Start Date</param>
         /// <param name="enddate">End Date</param>
         /// <returns></returns>
-        public List<Disbursement> getDisbursement(string DeptID,string CPID, string DisID, DateTime startdate, DateTime enddate)
+        public List<Disbursement> getDisbursement(string DeptID,string CPID, int DisID, DateTime startdate, DateTime enddate)
         {
             if (DeptID == null)
                 DeptID = "";
@@ -55,13 +55,45 @@ namespace BusinessLogic
         /// <summary>
         /// CreateDisbursement
         /// </summary>
-        /// <param name="disb">Disbursement Object</param>
+        /// <param name="EmpID">Employee ID(Clerk)</param>
         /// <returns></returns>
-        public bool createDisbursement(Disbursement disb)
+        public bool createDisbursement(int EmpID)
         {
             bool result = false;
-            
-            ctx.Disbursement.Add(disb);
+
+            string[] deptId = new string[] { "ENGL", "CPSC", "COMM", "REGR", "ZOOL" };
+
+            for (int i = 0; i < deptId.Length; i++)
+            {
+                List<Requisition> reqList = ctx.Requisition.Where(x => x.StatusID == 3 && x.DeptID == deptId[i]).ToList();
+
+                if (reqList.FirstOrDefault() != null)
+                {
+                    Department dept = ctx.Department.Where(x => x.DeptID == deptId[i]).FirstOrDefault();
+
+                    Disbursement disb = new Disbursement();
+                    disb.Date = DateTime.Now;
+                    disb.EmpID = EmpID;
+                    disb.DeptID = deptId[i];
+                    disb.CPID = dept.CPID;
+                    disb.Status = "Pending";
+
+                    ctx.Disbursement.Add(disb);
+
+                    Disbursement lastDisb = ctx.Disbursement.LastOrDefault();
+                    int DisID = 0;
+                    if(lastDisb != null)
+                    {
+                        DisID = lastDisb.DisID;
+                    }
+
+                    foreach(Requisition req in reqList)
+                    {
+                        req.DisID = DisID;
+                    }
+                }
+            }
+
             int count = ctx.SaveChanges();
 
             if (count > 0)

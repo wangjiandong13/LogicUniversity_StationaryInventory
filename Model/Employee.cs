@@ -41,7 +41,7 @@ namespace Model
         [DataMember]
         public string RoleID { get; set; }
         [DataMember]
-        public string Contact { get; set; }
+        public Nullable<int> Phone { get; set; }
         [DataMember]
         public string Email { get; set; }
         [DataMember]

@@ -32,15 +32,15 @@ namespace Model
         [DataMember]
         public string Contact { get; set; }
         [DataMember]
-        public Nullable<int> RegNo { get; set; }
+        public string RegNo { get; set; }
         [DataMember]
-        public string Phone { get; set; }
+        public Nullable<int> Phone { get; set; }
         [DataMember]
         public string Address { get; set; }
         [DataMember]
-        public string Fax { get; set; }
+        public Nullable<int> Fax { get; set; }
         [DataMember]
-        public string Rank { get; set; }
+        public Nullable<int> Rank { get; set; }
     
         [DataMember]
         public ICollection<ItemPrice> ItemPrice { get; set; }
