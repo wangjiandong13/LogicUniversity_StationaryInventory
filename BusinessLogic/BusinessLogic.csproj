@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AdjustVoucherController.cs" />
     <Compile Include="CatalogController.cs" />
+    <Compile Include="CollectionPointController.cs" />
     <Compile Include="DelegateController.cs" />
     <Compile Include="DepartmentController.cs" />
     <Compile Include="DisbursementController.cs" />
