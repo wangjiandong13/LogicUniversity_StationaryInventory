@@ -19,7 +19,7 @@ namespace BusinessLogic
         /// <param name="EmpID">Employee ID</param>
         /// <param name="PoID">Purchase Order ID</param>
         /// <returns></returns>
-        public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, string EmpID, int PoID)
+        public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, int EmpID, int PoID)
         {
             if (EmpID == null)
                 EmpID = "";
@@ -57,8 +57,21 @@ namespace BusinessLogic
         public bool restock(List<PurchaseOrderDetail> PoDetailList)
         {
             bool result = false;
+            
+            //Update the actual qty for every poDetail
+            foreach(PurchaseOrderDetail poDetail in PoDetailList)
+            {
+                PurchaseOrderDetail poDetailSearch = ctx.PurchaseOrderDetail
+                    .Where(x => x.PoID == poDetail.PoID && x.ItemID == poDetail.ItemID)
+                    .FirstOrDefault();
 
-            ctx.PurchaseOrderDetail.Add(PoDetail);
+                poDetailSearch.ActualQty = poDetail.ActualQty;
+            }
+
+            //change status of purchase order to "Delivered"
+            PurchaseOrder po = ctx.PurchaseOrder.Where(x => x.PoID == PoDetailList.First().PoID).First();
+            po.Status = "Delivered";
+            
             int count = ctx.SaveChanges();
 
             if (count > 0)
@@ -76,7 +89,7 @@ namespace BusinessLogic
             //retrieve items that are low on stock
             List<Item> items = ctx.Item.Where(x => x.Stock < x.RoLvl).ToList();
 
-            List<ProposePo> poList = new List<ProposePo>();
+            List<ProposePo> proposePoList = new List<ProposePo>();
 
             // format to ProposePo class
             foreach (Item i in items)
@@ -86,30 +99,138 @@ namespace BusinessLogic
                 po.ItemName = i.ItemName;
                 po.totalQty = (int)i.RoQty;
                 po.supplier1Qty = (int)i.RoQty;
+                po.supplier2Qty = 0;
+                po.supplier3Qty = 0;
 
-                poList.Add(po);
+                proposePoList.Add(po);
             }
 
-            return poList;
+            return proposePoList;
         }
 
         /// <summary>
         /// GeneratePo
         /// </summary>
-        /// <param name="poList">Purchase Order List</param>
+        /// <param name="proposePoList">proposePoList(EmpID, ItemID, supplier1Qty, supplier2Qty, supplier3Qty)</param>
         /// <returns></returns>
-       public bool generatePo(List<ProposePo> poList)
+        public bool generatePo(List<ProposePo> proposePoList)
         {
-            List<ProposePo> supplier1 = new List<ProposePo>();
-            List<ProposePo> supplier2 = new List<ProposePo>();
-            List<ProposePo> supplier3 = new List<ProposePo>();
+            //filter the proposePoList by supplier
+            List<ProposePo> supplier1 = proposePoList.Where(x => x.supplier1Qty != 0).ToList();
+            List<ProposePo> supplier2 = proposePoList.Where(x => x.supplier2Qty != 0).ToList();
+            List<ProposePo> supplier3 = proposePoList.Where(x => x.supplier3Qty != 0).ToList();
 
-            foreach(ProposePo po in poList)
+            //obtain supplier1 ID
+            string supplier1ID = ctx.Supplier.Where(x => x.Rank == 1).First().SupplierID;
+            //obtain supplier2 ID
+            string supplier2ID = ctx.Supplier.Where(x => x.Rank == 2).First().SupplierID;
+            //obtain supplier3 ID
+            string supplier3ID = ctx.Supplier.Where(x => x.Rank == 3).First().SupplierID;
+
+            //generate po for supplier 1
+            if (supplier1.FirstOrDefault() != null)
             {
-                
+                //create and add new po to db
+                PurchaseOrder po = new PurchaseOrder();
+                po.SupplierID = supplier1ID;
+                po.EmpID = supplier1.First().EmpID;
+                po.Date = DateTime.Now;
+                po.EstDate = supplier1.First().EstDate;
+                po.Status = "Pending";
+                ctx.PurchaseOrder.Add(po);
+
+                //obtain the PoID of the newly added Po
+                int poLastID = ctx.PurchaseOrder.Last().PoID;
+       
+                double totalamt = 0;
+
+                //create and add poDetail to db
+                foreach (ProposePo proposepo in proposePoList)
+                {
+                    PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
+                    poDetail.PoID = poLastID;
+                    poDetail.ItemID = proposepo.ItemID;
+                    poDetail.Qty = proposepo.supplier1Qty;
+                    poDetail.Price = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID).First().Price;
+                    ctx.PurchaseOrderDetail.Add(poDetail);
+                    totalamt += Convert.ToDouble(poDetail.Qty) * (double)poDetail.Price;
+                }
+
+                //Update the po total amount
+                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
             }
+
+            //generate po for supplier 2
+            if (supplier2.FirstOrDefault() != null)
+            {
+                //create and add new po to db
+                PurchaseOrder po = new PurchaseOrder();
+                po.SupplierID = supplier1ID;
+                po.EmpID = supplier2.First().EmpID;
+                po.Date = DateTime.Now;
+                po.EstDate = supplier2.First().EstDate;
+                po.Status = "Pending";
+                ctx.PurchaseOrder.Add(po);
+
+                //obtain the PoID of the newly added Po
+                int poLastID = ctx.PurchaseOrder.Last().PoID;
+
+                double totalamt = 0;
+
+                //create and add poDetail to db
+                foreach (ProposePo proposepo in proposePoList)
+                {
+                    PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
+                    poDetail.PoID = poLastID;
+                    poDetail.ItemID = proposepo.ItemID;
+                    poDetail.Qty = proposepo.supplier2Qty;
+                    poDetail.Price = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID).First().Price;
+                    ctx.PurchaseOrderDetail.Add(poDetail);
+                    totalamt += Convert.ToDouble(poDetail.Qty) * (double)poDetail.Price;
+                }
+
+                //Update the po total amount
+                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+            }
+
+            //generate po for supplier 3
+            if (supplier2.FirstOrDefault() != null)
+            {
+                //create and add new po to db
+                PurchaseOrder po = new PurchaseOrder();
+                po.SupplierID = supplier1ID;
+                po.EmpID = supplier3.First().EmpID;
+                po.Date = DateTime.Now;
+                po.EstDate = supplier3.First().EstDate;
+                po.Status = "Pending";
+                ctx.PurchaseOrder.Add(po);
+
+                //obtain the PoID of the newly added Po
+                int poLastID = ctx.PurchaseOrder.Last().PoID;
+
+                double totalamt = 0;
+
+                //create and add poDetail to db
+                foreach (ProposePo proposepo in proposePoList)
+                {
+                    PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
+                    poDetail.PoID = poLastID;
+                    poDetail.ItemID = proposepo.ItemID;
+                    poDetail.Qty = proposepo.supplier3Qty;
+                    poDetail.Price = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID).First().Price;
+                    ctx.PurchaseOrderDetail.Add(poDetail);
+                    totalamt += Convert.ToDouble(poDetail.Qty) * (double)poDetail.Price;
+                }
+
+                //Update the po total amount
+                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+            }
+
             return true;
         }
+       
+
+
 
     }
 

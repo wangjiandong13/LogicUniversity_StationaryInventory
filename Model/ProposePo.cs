@@ -16,6 +16,10 @@ namespace Model
         public ProposePo() { }
 
         [DataMember]
+        public int EmpID { get; set; }
+        [DataMember]
+        public DateTime EstDate { get; set; }
+        [DataMember]
         public string ItemID { get; set; }
         [DataMember]
         public string ItemName { get; set; }

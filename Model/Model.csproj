@@ -149,6 +149,12 @@
     <Compile Include="Role.cs">
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
+    </Compile>
     <Compile Include="Status.cs">
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>

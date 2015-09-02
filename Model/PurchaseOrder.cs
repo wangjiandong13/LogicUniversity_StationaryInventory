@@ -29,13 +29,13 @@ namespace Model
         [DataMember]
         public string SupplierID { get; set; }
         [DataMember]
-        public string EmpID { get; set; }
+        public Nullable<int> EmpID { get; set; }
         [DataMember]
         public Nullable<System.DateTime> Date { get; set; }
         [DataMember]
         public Nullable<System.DateTime> EstDate { get; set; }
         [DataMember]
-        public Nullable<int> TotalAmt { get; set; }
+        public Nullable<double> TotalAmt { get; set; }
         [DataMember]
         public string Status { get; set; }
     

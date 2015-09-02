@@ -22,6 +22,8 @@ namespace Model
         public Department()
         {
             this.Delegate = new List<Delegate>();
+            this.Disbursement = new List<Disbursement>();
+            this.Employee3 = new List<Employee>();
             this.Requisition = new List<Requisition>();
         }
     
@@ -32,11 +34,11 @@ namespace Model
         [DataMember]
         public Nullable<int> CPID { get; set; }
         [DataMember]
-        public string Contact { get; set; }
+        public Nullable<int> Contact { get; set; }
         [DataMember]
-        public string DeptHead { get; set; }
+        public Nullable<int> DeptHead { get; set; }
         [DataMember]
-        public string DeptRep { get; set; }
+        public Nullable<int> DeptRep { get; set; }
         [DataMember]
         public Nullable<int> Phone { get; set; }
         [DataMember]
@@ -46,6 +48,16 @@ namespace Model
         public CollectionPoint CollectionPoint { get; set; }
         [DataMember]
         public ICollection<Delegate> Delegate { get; set; }
+        [DataMember]
+        public Employee Employee { get; set; }
+        [DataMember]
+        public Employee Employee1 { get; set; }
+        [DataMember]
+        public Employee Employee2 { get; set; }
+        [DataMember]
+        public ICollection<Disbursement> Disbursement { get; set; }
+        [DataMember]
+        public ICollection<Employee> Employee3 { get; set; }
         [DataMember]
         public ICollection<Requisition> Requisition { get; set; }
     
