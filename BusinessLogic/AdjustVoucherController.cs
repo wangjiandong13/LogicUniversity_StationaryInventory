@@ -97,9 +97,67 @@ namespace BusinessLogic
             return newID;
         }
 
+        /// <summary>
+        /// Create Ajustment Voucher
+        /// </summary>
+        /// <param name="adj"></param>
+        /// <param name="adjDetail"></param>
+        /// <returns></returns>
         public bool createVoucher(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail)
         {
+            double totAmt = 0.0;
+
+            string newID = getAdjVoucherId();
+            adj.AdjID = newID;
+            ctx.AdjustmentVoucher.Add(adj);
+
+            AdjustmentDetail adjVoucherDetail = new AdjustmentDetail();
+            foreach(AdjustmentDetail adjVoucher in adjDetail)
+            {
+                ctx.AdjustmentDetail.Add(adjVoucher);                
+            }
+
             return true;
+        }
+
+        /// <summary>
+        /// Update Item qty according to Adjustment Approval
+        /// </summary>
+        /// <param name="adj"></param>
+        /// <param name="adjDetail"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public bool updateAdjustmentDetail(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail, string status)
+        {
+            AdjustmentVoucher adjvoucher = new AdjustmentVoucher();
+            Item item = new Item();
+            if(status == "Approve")
+            {
+                var list = (from l in ctx.AdjustmentDetail
+                           where l.AdjID == adj.AdjID
+                           select l).ToList();
+
+                for(int i=0;i<list.Count;i++)
+                {
+                    item = (from a in ctx.Item
+                            where a.ItemID == list[i].ItemID
+                            select a).First();
+                    item.Stock += list[i].Qty;
+                    ctx.SaveChanges();
+                }
+
+            }
+            else
+            {
+                adjvoucher = (from x in ctx.AdjustmentVoucher
+                              where x.AdjID == adj.AdjID
+                              select x).First();
+                adjvoucher.Status = "Reject";
+                ctx.SaveChanges();
+            }
+
+            return true;
+
         }
     }
 }

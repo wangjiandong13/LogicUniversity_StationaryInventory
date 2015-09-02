@@ -26,17 +26,18 @@ namespace BusinessLogic
         /// create delegate
         /// </summary>
         /// <param name="dele"></param>
-        public void createDelegate(Model.Delegate dele)
+        public bool createDelegate(Model.Delegate dele)
         {
             ctx.Delegate.Add(dele);
             ctx.SaveChanges();
+            return true;
         }
 
         /// <summary>
         /// delete Delegate
         /// </summary>
         /// <param name="EmpName"></param>
-        public void deleteDelegate(string EmpName)
+        public bool deleteDelegate(string EmpName)
         {
             Model.Employee emp = new Model.Employee();
             Model.Delegate dele = new Model.Delegate();
@@ -50,6 +51,7 @@ namespace BusinessLogic
                     select c).First();
             ctx.Delegate.Remove(dele);
             ctx.SaveChanges();
+            return true;
         }
 
         /// <summary>
@@ -59,7 +61,7 @@ namespace BusinessLogic
         /// <param name="startdate"></param>
         /// <param name="enddate"></param>
         /// <param name="status"></param>
-        public void editDelegate(string empID, DateTime startdate, DateTime enddate, String status)
+        public bool editDelegate(int empID, DateTime startdate, DateTime enddate, String status)
         {
             var dele = (from c in ctx.Delegate
                         where c.EmpID == empID
@@ -68,6 +70,7 @@ namespace BusinessLogic
             dele.EndDate = enddate;
             dele.Status = status;
             ctx.SaveChanges();
+            return true;
         }
 
     }
