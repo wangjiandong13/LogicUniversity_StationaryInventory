@@ -27,14 +27,15 @@ namespace BusinessLogic
         /// Approve
         /// </summary>
         /// <param name="ReqId">Requisition ID</param>
-        /// <param name="HandledBy">Handled By</param>
+        /// <param name="HandledBy">Handled By (Dept Head EmpID)</param>
         /// <param name="Remark">Remark</param>
         /// <returns></returns>
-        public bool approve(int ReqId, string HandledBy, string Remark)
+        public bool approve(int ReqId, int HandledBy, string Remark)
         {
             bool result = false;
 
             Requisition req = ctx.Requisition.Where(x => x.ReqID == ReqId).FirstOrDefault();
+            req.StatusID = 2;
             req.HandledBy = HandledBy;
             req.Remark = Remark;
 
@@ -50,14 +51,15 @@ namespace BusinessLogic
         /// Reject
         /// </summary>
         /// <param name="ReqId">Requisition ID</param>
-        /// <param name="HandledBy">Handled By</param>
+        /// <param name="HandledBy">Handled By (Dept Head EmpID)</param>
         /// <param name="Remark">Remark</param>
         /// <returns></returns>
-        public bool reject(int ReqId, string HandledBy, string Remark)
+        public bool reject(int ReqId, int HandledBy, string Remark)
         {
             bool result = false;
 
             Requisition req = ctx.Requisition.Where(x => x.ReqID == ReqId).FirstOrDefault();
+            req.StatusID = 5;
             req.HandledBy = HandledBy;
             req.Remark = Remark;
 
@@ -76,7 +78,7 @@ namespace BusinessLogic
         /// <param name="ReqID">Requisition ID</param>
         /// <param name="EmpID">Employee ID</param>
         /// <returns></returns>
-        public List<Requisition> getRequisition(int StatusID, int ReqID, string EmpID)
+        public List<Requisition> getRequisition(int StatusID, int ReqID, int EmpID)
         {
             List<Requisition> result = ctx.Requisition
                 .Where(x => x.StatusID == StatusID)
@@ -90,31 +92,62 @@ namespace BusinessLogic
         /// <summary>
         /// CreateRequisition
         /// </summary>
-        /// <param name="req">Requisition Object</param>
+        /// <param name="itemList">CartItems List (EmpID, ItemID, Qty)</param>
         /// <returns></returns>
-        public bool createRequisition(Requisition req)
+        public int createRequisition(List<CartItems> itemList)
         {
-            bool result = false;
+            int result = 0;
+            int ReqID = 0;
 
-            ctx.Requisition.Add(req);
+            if (itemList.FirstOrDefault() != null)
+            {
+                //create and add new requisition
+                Requisition req = new Requisition();
+                req.EmpID = itemList.First().EmpID;
+                req.DeptID = ctx.Employee.Where(x => x.EmpID == itemList.First().EmpID).First().DeptID;
+                req.Date = DateTime.Now;
+                req.StatusID = 1;
+                ctx.Requisition.Add(req);
+
+                //obtain the ReqID of the newly added requisition
+                ReqID = ctx.Requisition.Last().ReqID;
+
+                //create and add new requisition details
+                foreach(CartItems item in itemList)
+                {
+                    RequisitionDetail reqDetail = new RequisitionDetail();
+                    reqDetail.ReqID = ReqID;
+                    reqDetail.ItemID = item.ItemID;
+                    reqDetail.RequestQty = item.Qty;
+                    ctx.RequisitionDetail.Add(reqDetail);
+                }
+            }
+            
             int count = ctx.SaveChanges();
 
             if (count > 0)
-                result = true;
-
+                result = ReqID;
             return result;
         }
 
         /// <summary>
-        /// CreateRequisitionDetail
+        /// SetReqPriority
         /// </summary>
-        /// <param name="reqDetail">Requisition Detail</param>
+        /// <param name="ReqID">Requisition ID</param>
+        /// <param name="PriorityID">Priority ID</param>
+        /// <param name="Remark">Remark</param>
         /// <returns></returns>
-        public bool createRequisitionDetail(RequisitionDetail reqDetail)
+        public bool setReqPriority(int ReqID, int PriorityID, string Remark)
         {
             bool result = false;
 
-            ctx.RequisitionDetail.Add(reqDetail);
+            Requisition req = ctx.Requisition.Where(x => x.ReqID == ReqID).FirstOrDefault();
+            if (req != null)
+            {
+                req.PriorityID = PriorityID;
+                req.Remark = Remark;
+            }
+
             int count = ctx.SaveChanges();
 
             if (count > 0)

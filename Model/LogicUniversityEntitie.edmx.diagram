@@ -5,32 +5,32 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="720a36c5a5aa4525a8da16fd38ff5b2d" Name="Diagram1" ZoomLevel="93">
-        <EntityTypeShape EntityType="LogicUniversityEntitie.AdjustmentDetail" Width="1.5" PointX="9.75" PointY="25" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.AdjustmentVoucher" Width="1.5" PointX="7.5" PointY="24" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.CartItems" Width="1.5" PointX="13.5" PointY="20.75" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.AdjustmentDetail" Width="1.5" PointX="9.75" PointY="29.75" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.AdjustmentVoucher" Width="1.5" PointX="7.5" PointY="29.75" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.CartItems" Width="1.5" PointX="12.5" PointY="21.75" />
         <EntityTypeShape EntityType="LogicUniversityEntitie.CollectionPoint" Width="1.5" PointX="0.75" PointY="17.625" />
         <EntityTypeShape EntityType="LogicUniversityEntitie.Delegate" Width="1.5" PointX="10.5" PointY="17.5" />
         <EntityTypeShape EntityType="LogicUniversityEntitie.Department" Width="1.5" PointX="3" PointY="16.75" />
         <EntityTypeShape EntityType="LogicUniversityEntitie.Disbursement" Width="1.5" PointX="7.5" PointY="17" />
         <EntityTypeShape EntityType="LogicUniversityEntitie.DisbursementDetail" Width="1.5" PointX="12.75" PointY="17.75" />
         <EntityTypeShape EntityType="LogicUniversityEntitie.Employee" Width="1.5" PointX="5.25" PointY="15.75" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Item" Width="1.5" PointX="12.75" PointY="5.625" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.ItemCategory" Width="1.5" PointX="10.5" PointY="7" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.ItemPrice" Width="1.5" PointX="16" PointY="19.875" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.MobileNotification" Width="1.5" PointX="7.5" PointY="30.625" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Notification" Width="1.5" PointX="7.5" PointY="27.5" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Priority" Width="1.5" PointX="7.5" PointY="5.875" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.PurchaseOrder" Width="1.5" PointX="10.5" PointY="21.375" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.PurchaseOrderDetail" Width="1.5" PointX="12.75" PointY="24.5" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Report" Width="1.5" PointX="7.5" PointY="8.875" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Requisition" Width="1.5" PointX="9.75" PointY="11.25" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.RequisitionDetail" Width="1.5" PointX="15" PointY="12.5" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Retrieval" Width="1.5" PointX="7.5" PointY="11.75" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.RetrievalDetail" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.Item" Width="1.5" PointX="10.5" PointY="6.625" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.ItemCategory" Width="1.5" PointX="8.25" PointY="8" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.ItemPrice" Width="1.5" PointX="12.75" PointY="6.125" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.MobileNotification" Width="1.5" PointX="7.5" PointY="27.125" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.Notification" Width="1.5" PointX="7.5" PointY="11.75" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.Priority" Width="1.5" PointX="7.5" PointY="33.875" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.PurchaseOrder" Width="1.5" PointX="10.5" PointY="13.375" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.PurchaseOrderDetail" Width="1.5" PointX="12.75" PointY="13.5" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.Report" Width="1.5" PointX="7.5" PointY="24.625" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.Requisition" Width="1.5" PointX="9.75" PointY="21.375" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.RequisitionDetail" Width="1.5" PointX="15" PointY="22.625" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.Retrieval" Width="1.5" PointX="7.5" PointY="21.5" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.RetrievalDetail" Width="1.5" PointX="12.75" PointY="25.5" />
         <EntityTypeShape EntityType="LogicUniversityEntitie.Role" Width="1.5" PointX="3" PointY="14" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Status" Width="1.5" PointX="7.5" PointY="3.125" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.StockCard" Width="1.5" PointX="15" PointY="6.625" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Supplier" Width="1.5" PointX="8.25" PointY="33.375" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.Status" Width="1.5" PointX="7.5" PointY="36.25" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.StockCard" Width="1.5" PointX="12.75" PointY="9.625" />
+        <EntityTypeShape EntityType="LogicUniversityEntitie.Supplier" Width="1.5" PointX="8.25" PointY="3.375" />
         <EntityTypeShape EntityType="LogicUniversityEntitie.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="LogicUniversityEntitie.FK_AdjustmentDetail_AdjustmentVoucher" />
         <AssociationConnector Association="LogicUniversityEntitie.FK_AdjustmentDetail_Item" />
