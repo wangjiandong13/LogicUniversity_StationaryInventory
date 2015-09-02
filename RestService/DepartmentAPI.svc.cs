@@ -19,7 +19,7 @@ namespace RestService
         public List<Model.Department> getAllDepartment()
         {
             BusinessLogic.DepartmentController bl = new BusinessLogic.DepartmentController();
-            return bl.getAllDepartment();
+            return bl.getAllDept();
         }
 
         public Model.Department getDeptByID(String DepID)

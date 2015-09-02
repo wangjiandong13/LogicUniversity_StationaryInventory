@@ -36,16 +36,16 @@ namespace Model
         [DataMember]
         public Nullable<double> CPLgt { get; set; }
     
-        [DataMember]
+         
         public ICollection<Department> Department { get; set; }
-        [DataMember]
+         
         public ICollection<Disbursement> Disbursement { get; set; }
     
-        [DataMember]
+         
         public TrackingState TrackingState { get; set; }
-        [DataMember]
+         
         public ICollection<string> ModifiedProperties { get; set; }
-        [JsonProperty, DataMember]
+         
         private Guid EntityIdentifier { get; set; }
     }
 }

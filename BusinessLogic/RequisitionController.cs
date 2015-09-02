@@ -78,15 +78,27 @@ namespace BusinessLogic
         /// <param name="ReqID">Requisition ID</param>
         /// <param name="EmpID">Employee ID</param>
         /// <returns></returns>
-        public List<Requisition> getRequisition(int StatusID, int ReqID, int EmpID)
+        public List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID)
         {
-            List<Requisition> result = ctx.Requisition
-                .Where(x => x.StatusID == StatusID)
-                .Where(x => x.ReqID == ReqID)
-                .Where(x => x.EmpID == EmpID)
-                .ToList();
+            //start with all the records
+            var query = from req in ctx.Requisition select req;
 
-            return result;
+            //filter the result set based on user inputs
+            if (!string.IsNullOrEmpty(StatusID))
+            {
+                query = query.Where(x => x.StatusID.ToString().Contains(StatusID));
+            }
+            if (!string.IsNullOrEmpty(ReqID))
+            {
+                query = query.Where(x => x.ReqID.ToString().Contains(ReqID));
+            }
+            if (!string.IsNullOrEmpty(EmpID))
+            {
+                query = query.Where(x => x.EmpID.ToString().Contains(EmpID));
+            }
+
+            //run the query on database and grab the results
+            return query.ToList();
         }
 
         /// <summary>
@@ -188,6 +200,18 @@ namespace BusinessLogic
 
             return result;
         }
+
+        /// <summary>
+        /// GetRequisition
+        /// </summary>
+        /// <param name="RetID">Retrieval ID</param>
+        /// <returns></returns>
+        public List<Requisition> getRequisition(int RetID)
+        {
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
+            return reqList;
+        }
+
 
         /// <summary>
         /// GetReqDetailByRetrieval

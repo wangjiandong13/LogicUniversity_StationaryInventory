@@ -34,16 +34,16 @@ namespace Model
         [DataMember]
         public string Remarks { get; set; }
     
-        [DataMember]
+         
         public Item Item { get; set; }
-        [DataMember]
+         
         public PurchaseOrder PurchaseOrder { get; set; }
     
-        [DataMember]
+         
         public TrackingState TrackingState { get; set; }
-        [DataMember]
+         
         public ICollection<string> ModifiedProperties { get; set; }
-        [JsonProperty, DataMember]
+         
         private Guid EntityIdentifier { get; set; }
     }
 }
