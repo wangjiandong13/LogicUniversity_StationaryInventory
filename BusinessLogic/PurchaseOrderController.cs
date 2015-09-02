@@ -19,7 +19,7 @@ namespace BusinessLogic
         /// <param name="EmpID">Employee ID</param>
         /// <param name="PoID">Purchase Order ID</param>
         /// <returns></returns>
-        public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, string EmpID, int PoID)
+        public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, int EmpID, int PoID)
         {
             if (EmpID == null)
                 EmpID = "";
@@ -127,23 +127,110 @@ namespace BusinessLogic
             //obtain supplier3 ID
             string supplier3ID = ctx.Supplier.Where(x => x.Rank == 3).First().SupplierID;
 
+            //generate po for supplier 1
             if (supplier1.FirstOrDefault() != null)
             {
-
-
+                //create and add new po to db
                 PurchaseOrder po = new PurchaseOrder();
                 po.SupplierID = supplier1ID;
                 po.EmpID = supplier1.First().EmpID;
                 po.Date = DateTime.Now;
                 po.EstDate = supplier1.First().EstDate;
-                po.TotalAmt = ;
                 po.Status = "Pending";
+                ctx.PurchaseOrder.Add(po);
 
+                //obtain the PoID of the newly added Po
+                int poLastID = ctx.PurchaseOrder.Last().PoID;
+       
+                double totalamt = 0;
 
+                //create and add poDetail to db
+                foreach (ProposePo proposepo in proposePoList)
+                {
+                    PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
+                    poDetail.PoID = poLastID;
+                    poDetail.ItemID = proposepo.ItemID;
+                    poDetail.Qty = proposepo.supplier1Qty;
+                    poDetail.Price = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID).First().Price;
+                    ctx.PurchaseOrderDetail.Add(poDetail);
+                    totalamt += Convert.ToDouble(poDetail.Qty) * (double)poDetail.Price;
+                }
+
+                //Update the po total amount
+                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+            }
+
+            //generate po for supplier 2
+            if (supplier2.FirstOrDefault() != null)
+            {
+                //create and add new po to db
+                PurchaseOrder po = new PurchaseOrder();
+                po.SupplierID = supplier1ID;
+                po.EmpID = supplier2.First().EmpID;
+                po.Date = DateTime.Now;
+                po.EstDate = supplier2.First().EstDate;
+                po.Status = "Pending";
+                ctx.PurchaseOrder.Add(po);
+
+                //obtain the PoID of the newly added Po
+                int poLastID = ctx.PurchaseOrder.Last().PoID;
+
+                double totalamt = 0;
+
+                //create and add poDetail to db
+                foreach (ProposePo proposepo in proposePoList)
+                {
+                    PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
+                    poDetail.PoID = poLastID;
+                    poDetail.ItemID = proposepo.ItemID;
+                    poDetail.Qty = proposepo.supplier2Qty;
+                    poDetail.Price = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID).First().Price;
+                    ctx.PurchaseOrderDetail.Add(poDetail);
+                    totalamt += Convert.ToDouble(poDetail.Qty) * (double)poDetail.Price;
+                }
+
+                //Update the po total amount
+                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+            }
+
+            //generate po for supplier 3
+            if (supplier2.FirstOrDefault() != null)
+            {
+                //create and add new po to db
+                PurchaseOrder po = new PurchaseOrder();
+                po.SupplierID = supplier1ID;
+                po.EmpID = supplier3.First().EmpID;
+                po.Date = DateTime.Now;
+                po.EstDate = supplier3.First().EstDate;
+                po.Status = "Pending";
+                ctx.PurchaseOrder.Add(po);
+
+                //obtain the PoID of the newly added Po
+                int poLastID = ctx.PurchaseOrder.Last().PoID;
+
+                double totalamt = 0;
+
+                //create and add poDetail to db
+                foreach (ProposePo proposepo in proposePoList)
+                {
+                    PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
+                    poDetail.PoID = poLastID;
+                    poDetail.ItemID = proposepo.ItemID;
+                    poDetail.Qty = proposepo.supplier3Qty;
+                    poDetail.Price = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID).First().Price;
+                    ctx.PurchaseOrderDetail.Add(poDetail);
+                    totalamt += Convert.ToDouble(poDetail.Qty) * (double)poDetail.Price;
+                }
+
+                //Update the po total amount
+                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
             }
 
             return true;
         }
+       
+
+
 
     }
 
