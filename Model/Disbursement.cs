@@ -30,16 +30,24 @@ namespace Model
         [DataMember]
         public Nullable<System.DateTime> Date { get; set; }
         [DataMember]
-        public string EmpID { get; set; }
+        public Nullable<int> EmpID { get; set; }
         [DataMember]
         public string DeptID { get; set; }
         [DataMember]
-        public string CPID { get; set; }
+        public Nullable<int> CPID { get; set; }
         [DataMember]
-        public string ReceivedBy { get; set; }
+        public Nullable<int> ReceivedBy { get; set; }
         [DataMember]
         public string Status { get; set; }
     
+        [DataMember]
+        public CollectionPoint CollectionPoint { get; set; }
+        [DataMember]
+        public Department Department { get; set; }
+        [DataMember]
+        public Employee Employee { get; set; }
+        [DataMember]
+        public Employee Employee1 { get; set; }
         [DataMember]
         public ICollection<DisbursementDetail> DisbursementDetail { get; set; }
         [DataMember]

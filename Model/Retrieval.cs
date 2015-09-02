@@ -21,6 +21,7 @@ namespace Model
     {
         public Retrieval()
         {
+            this.Requisition = new List<Requisition>();
             this.RetrievalDetail = new List<RetrievalDetail>();
         }
     
@@ -29,12 +30,14 @@ namespace Model
         [DataMember]
         public Nullable<System.DateTime> Date { get; set; }
         [DataMember]
-        public string EmpID { get; set; }
+        public Nullable<int> EmpID { get; set; }
         [DataMember]
         public string Status { get; set; }
     
         [DataMember]
         public Employee Employee { get; set; }
+        [DataMember]
+        public ICollection<Requisition> Requisition { get; set; }
         [DataMember]
         public ICollection<RetrievalDetail> RetrievalDetail { get; set; }
     

@@ -22,6 +22,7 @@ namespace Model
         public CollectionPoint()
         {
             this.Department = new List<Department>();
+            this.Disbursement = new List<Disbursement>();
         }
     
         [DataMember]
@@ -37,6 +38,8 @@ namespace Model
     
         [DataMember]
         public ICollection<Department> Department { get; set; }
+        [DataMember]
+        public ICollection<Disbursement> Disbursement { get; set; }
     
         [DataMember]
         public TrackingState TrackingState { get; set; }

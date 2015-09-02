@@ -25,15 +25,23 @@ namespace Model
             this.AdjustmentVoucher1 = new List<AdjustmentVoucher>();
             this.CartItems = new List<CartItems>();
             this.Delegate = new List<Delegate>();
+            this.Department = new List<Department>();
+            this.Department1 = new List<Department>();
+            this.Department2 = new List<Department>();
+            this.Disbursement = new List<Disbursement>();
+            this.Disbursement1 = new List<Disbursement>();
             this.MobileNotification = new List<MobileNotification>();
             this.Notification = new List<Notification>();
             this.PurchaseOrder = new List<PurchaseOrder>();
+            this.Report = new List<Report>();
             this.Requisition = new List<Requisition>();
+            this.Requisition1 = new List<Requisition>();
+            this.Requisition2 = new List<Requisition>();
             this.Retrieval = new List<Retrieval>();
         }
     
         [DataMember]
-        public string EmpID { get; set; }
+        public int EmpID { get; set; }
         [DataMember]
         public string EmpName { get; set; }
         [DataMember]
@@ -56,6 +64,18 @@ namespace Model
         [DataMember]
         public ICollection<Delegate> Delegate { get; set; }
         [DataMember]
+        public ICollection<Department> Department { get; set; }
+        [DataMember]
+        public ICollection<Department> Department1 { get; set; }
+        [DataMember]
+        public ICollection<Department> Department2 { get; set; }
+        [DataMember]
+        public Department Department3 { get; set; }
+        [DataMember]
+        public ICollection<Disbursement> Disbursement { get; set; }
+        [DataMember]
+        public ICollection<Disbursement> Disbursement1 { get; set; }
+        [DataMember]
         public Role Role { get; set; }
         [DataMember]
         public ICollection<MobileNotification> MobileNotification { get; set; }
@@ -64,7 +84,13 @@ namespace Model
         [DataMember]
         public ICollection<PurchaseOrder> PurchaseOrder { get; set; }
         [DataMember]
+        public ICollection<Report> Report { get; set; }
+        [DataMember]
         public ICollection<Requisition> Requisition { get; set; }
+        [DataMember]
+        public ICollection<Requisition> Requisition1 { get; set; }
+        [DataMember]
+        public ICollection<Requisition> Requisition2 { get; set; }
         [DataMember]
         public ICollection<Retrieval> Retrieval { get; set; }
     

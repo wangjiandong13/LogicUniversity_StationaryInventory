@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,18 +12,18 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select DepartmentAPI.svc or DepartmentAPI.svc.cs at the Solution Explorer and start debugging.
     public class DepartmentAPI : IDepartmentAPI
     {
-        public bool editDepartment(Model.Department dept)
+        public bool editDepartment(Department dept)
         {
             return true;
         }
 
-        public List<Model.Department> getAllDepartment()
+        public List<Department> getAllDepartment()
         {
             BusinessLogic.DepartmentController bl = new BusinessLogic.DepartmentController();
             return bl.getAllDepartment();
         }
 
-        public Model.Department getDeptByID(String DepID)
+        public Department getDeptByID(int DepID)
         {
             BusinessLogic.DepartmentController bl = new BusinessLogic.DepartmentController();
             return bl.getDeptByID(DepID);
