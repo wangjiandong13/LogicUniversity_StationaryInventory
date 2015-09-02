@@ -16,7 +16,7 @@ namespace Model
         public ProposePo() { }
 
         [DataMember]
-        public string EmpID { get; set; }
+        public int EmpID { get; set; }
         [DataMember]
         public DateTime EstDate { get; set; }
         [DataMember]
