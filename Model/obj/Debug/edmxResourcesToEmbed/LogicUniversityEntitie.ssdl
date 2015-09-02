@@ -18,8 +18,8 @@
     </Key>
     <Property Name="AdjID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Date" Type="date" />
-    <Property Name="ReportedBy" Type="nvarchar" MaxLength="50" />
-    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReportedBy" Type="int" />
+    <Property Name="ApprovedBy" Type="int" />
     <Property Name="Status" Type="nvarchar" MaxLength="100" />
     <Property Name="TotalAmt" Type="float" />
   </EntityType>
@@ -27,7 +27,7 @@
     <Key>
       <PropertyRef Name="CartItemID" />
     </Key>
-    <Property Name="EmpID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmpID" Type="int" Nullable="false" />
     <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
     <Property Name="Qty" Type="int" />
     <Property Name="CartItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -36,9 +36,9 @@
     <Key>
       <PropertyRef Name="CPID" />
     </Key>
-    <Property Name="CPID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CPName" Type="nvarchar" MaxLength="50" />
-    <Property Name="CPAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="CPAddress" Type="nvarchar" MaxLength="100" />
     <Property Name="CPLat" Type="float" />
     <Property Name="CPLgt" Type="float" />
   </EntityType>
@@ -47,7 +47,7 @@
       <PropertyRef Name="DelegateSN" />
     </Key>
     <Property Name="DelegateSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmpID" Type="int" />
     <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
     <Property Name="StartDate" Type="date" />
     <Property Name="EndDate" Type="date" />
@@ -59,23 +59,23 @@
     </Key>
     <Property Name="DeptID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DeptName" Type="nvarchar" MaxLength="50" />
-    <Property Name="CPID" Type="nvarchar" MaxLength="50" />
-    <Property Name="Contact" Type="nvarchar" MaxLength="50" />
-    <Property Name="DeptHead" Type="nvarchar" MaxLength="50" />
-    <Property Name="DeptRep" Type="nvarchar" MaxLength="50" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="CPID" Type="int" />
+    <Property Name="Contact" Type="int" />
+    <Property Name="DeptHead" Type="int" />
+    <Property Name="DeptRep" Type="int" />
+    <Property Name="Phone" Type="int" />
+    <Property Name="Fax" Type="int" />
   </EntityType>
   <EntityType Name="Disbursement">
     <Key>
       <PropertyRef Name="DisID" />
     </Key>
-    <Property Name="DisID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="date" />
-    <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmpID" Type="int" />
     <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
-    <Property Name="CPID" Type="nvarchar" MaxLength="50" />
-    <Property Name="ReceivedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CPID" Type="int" />
+    <Property Name="ReceivedBy" Type="int" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="DisbursementDetail">
@@ -83,7 +83,7 @@
       <PropertyRef Name="DisSN" />
     </Key>
     <Property Name="DisSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DisID" Type="nvarchar" MaxLength="50" />
+    <Property Name="DisID" Type="int" />
     <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
     <Property Name="Qty" Type="int" />
   </EntityType>
@@ -91,11 +91,11 @@
     <Key>
       <PropertyRef Name="EmpID" />
     </Key>
-    <Property Name="EmpID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmpID" Type="int" Nullable="false" />
     <Property Name="EmpName" Type="nvarchar" MaxLength="50" />
     <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
     <Property Name="RoleID" Type="nvarchar" MaxLength="50" />
-    <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="int" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" />
   </EntityType>
@@ -133,7 +133,7 @@
       <PropertyRef Name="MobileNoti" />
     </Key>
     <Property Name="MobileNoti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmpID" Type="int" />
     <Property Name="RegID" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Notification">
@@ -143,7 +143,7 @@
     <Property Name="NotifID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NotifName" Type="nvarchar" MaxLength="50" />
     <Property Name="NotifDesc" Type="nvarchar" MaxLength="255" />
-    <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmpID" Type="int" />
     <Property Name="DateTime" Type="datetime" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
   </EntityType>
@@ -158,9 +158,9 @@
     <Key>
       <PropertyRef Name="PoID" />
     </Key>
-    <Property Name="PoID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SupplierID" Type="nvarchar" MaxLength="50" />
-    <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmpID" Type="int" />
     <Property Name="Date" Type="date" />
     <Property Name="EstDate" Type="date" />
     <Property Name="TotalAmt" Type="int" />
@@ -171,7 +171,7 @@
       <PropertyRef Name="PoSN" />
     </Key>
     <Property Name="PoSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PoID" Type="nvarchar" MaxLength="50" />
+    <Property Name="PoID" Type="int" />
     <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
     <Property Name="Qty" Type="int" />
     <Property Name="ActualQty" Type="int" />
@@ -184,30 +184,31 @@
     </Key>
     <Property Name="ReportID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ReportContent" Type="nvarchar" MaxLength="255" />
+    <Property Name="EmpID" Type="int" />
   </EntityType>
   <EntityType Name="Requisition">
     <Key>
       <PropertyRef Name="ReqID" />
     </Key>
-    <Property Name="ReqID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="DisID" Type="nvarchar" MaxLength="50" />
-    <Property Name="RetID" Type="nvarchar" MaxLength="50" />
-    <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReqID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisID" Type="int" />
+    <Property Name="RetID" Type="int" />
+    <Property Name="EmpID" Type="int" />
     <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
     <Property Name="Date" Type="date" />
     <Property Name="PriorityID" Type="int" />
     <Property Name="PRemark" Type="nvarchar" MaxLength="100" />
     <Property Name="StatusID" Type="int" />
-    <Property Name="HandledBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="HandledBy" Type="int" />
     <Property Name="Remark" Type="nvarchar" MaxLength="100" />
-    <Property Name="ReceivedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceivedBy" Type="int" />
   </EntityType>
   <EntityType Name="RequisitionDetail">
     <Key>
       <PropertyRef Name="ReqSN" />
     </Key>
     <Property Name="ReqSN" Type="int" Nullable="false" />
-    <Property Name="ReqID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReqID" Type="int" />
     <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
     <Property Name="RequestQty" Type="int" />
     <Property Name="IssueQty" Type="int" />
@@ -217,9 +218,9 @@
     <Key>
       <PropertyRef Name="RetID" />
     </Key>
-    <Property Name="RetID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="date" />
-    <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmpID" Type="int" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="RetrievalDetail">
@@ -227,7 +228,7 @@
       <PropertyRef Name="RetSN" />
     </Key>
     <Property Name="RetSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RetID" Type="nvarchar" MaxLength="50" />
+    <Property Name="RetID" Type="int" />
     <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
     <Property Name="RequestQty" Type="int" />
     <Property Name="ActualQty" Type="int" />
@@ -264,11 +265,11 @@
     <Property Name="SupplierID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="SupplierName" Type="nvarchar" MaxLength="50" />
     <Property Name="Contact" Type="nvarchar" MaxLength="50" />
-    <Property Name="RegNo" Type="int" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-    <Property Name="Address" Type="nvarchar" MaxLength="50" />
-    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
-    <Property Name="Rank" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="int" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Fax" Type="int" />
+    <Property Name="Rank" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -388,6 +389,90 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Department_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="Contact" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Department_Employee1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="DeptHead" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Department_Employee2">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="DeptRep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Disbursement_CollectionPoint">
+    <End Role="CollectionPoint" Type="Self.CollectionPoint" Multiplicity="0..1" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CollectionPoint">
+        <PropertyRef Name="CPID" />
+      </Principal>
+      <Dependent Role="Disbursement">
+        <PropertyRef Name="CPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Disbursement_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DeptID" />
+      </Principal>
+      <Dependent Role="Disbursement">
+        <PropertyRef Name="DeptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Disbursement_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Disbursement">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Disbursement_Employee1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Disbursement">
+        <PropertyRef Name="ReceivedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DisbursementDetail_Disbursement">
     <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="0..1" />
     <End Role="DisbursementDetail" Type="Self.DisbursementDetail" Multiplicity="*" />
@@ -409,6 +494,18 @@
       </Principal>
       <Dependent Role="DisbursementDetail">
         <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DeptID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DeptID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -532,6 +629,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Report_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Requisition_Department">
     <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
     <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
@@ -568,6 +677,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Requisition_Employee1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Requisition">
+        <PropertyRef Name="HandledBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requisition_Employee2">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Requisition">
+        <PropertyRef Name="ReceivedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Requisition_Priority">
     <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
     <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
@@ -577,6 +710,18 @@
       </Principal>
       <Dependent Role="Requisition">
         <PropertyRef Name="PriorityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requisition_Retrieval">
+    <End Role="Retrieval" Type="Self.Retrieval" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Retrieval">
+        <PropertyRef Name="RetID" />
+      </Principal>
+      <Dependent Role="Requisition">
+        <PropertyRef Name="RetID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -664,6 +809,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="LogicUniversityEntitieStoreContainer">
     <EntitySet Name="AdjustmentDetail" EntityType="Self.AdjustmentDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AdjustmentVoucher" EntityType="Self.AdjustmentVoucher" Schema="dbo" store:Type="Tables" />
@@ -728,6 +904,34 @@
       <End Role="CollectionPoint" EntitySet="CollectionPoint" />
       <End Role="Department" EntitySet="Department" />
     </AssociationSet>
+    <AssociationSet Name="FK_Department_Employee" Association="Self.FK_Department_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Employee1" Association="Self.FK_Department_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Employee2" Association="Self.FK_Department_Employee2">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Disbursement_CollectionPoint" Association="Self.FK_Disbursement_CollectionPoint">
+      <End Role="CollectionPoint" EntitySet="CollectionPoint" />
+      <End Role="Disbursement" EntitySet="Disbursement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Disbursement_Department" Association="Self.FK_Disbursement_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Disbursement" EntitySet="Disbursement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Disbursement_Employee" Association="Self.FK_Disbursement_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Disbursement" EntitySet="Disbursement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Disbursement_Employee1" Association="Self.FK_Disbursement_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Disbursement" EntitySet="Disbursement" />
+    </AssociationSet>
     <AssociationSet Name="FK_DisbursementDetail_Disbursement" Association="Self.FK_DisbursementDetail_Disbursement">
       <End Role="Disbursement" EntitySet="Disbursement" />
       <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
@@ -735,6 +939,10 @@
     <AssociationSet Name="FK_DisbursementDetail_Item" Association="Self.FK_DisbursementDetail_Item">
       <End Role="Item" EntitySet="Item" />
       <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
     <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
       <End Role="Role" EntitySet="Role" />
@@ -776,6 +984,10 @@
       <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
       <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
     </AssociationSet>
+    <AssociationSet Name="FK_Report_Employee" Association="Self.FK_Report_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
     <AssociationSet Name="FK_Requisition_Department" Association="Self.FK_Requisition_Department">
       <End Role="Department" EntitySet="Department" />
       <End Role="Requisition" EntitySet="Requisition" />
@@ -788,8 +1000,20 @@
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Requisition" EntitySet="Requisition" />
     </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Employee1" Association="Self.FK_Requisition_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Employee2" Association="Self.FK_Requisition_Employee2">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
     <AssociationSet Name="FK_Requisition_Priority" Association="Self.FK_Requisition_Priority">
       <End Role="Priority" EntitySet="Priority" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Retrieval" Association="Self.FK_Requisition_Retrieval">
+      <End Role="Retrieval" EntitySet="Retrieval" />
       <End Role="Requisition" EntitySet="Requisition" />
     </AssociationSet>
     <AssociationSet Name="FK_Requisition_Status" Association="Self.FK_Requisition_Status">
