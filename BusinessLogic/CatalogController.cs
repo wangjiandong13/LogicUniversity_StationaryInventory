@@ -9,7 +9,7 @@ namespace BusinessLogic
     /// <summary>
     /// UI 2.2.1 Employee : Catalog
     /// </summary>
-   public class Catalog
+   public class CatalogController
     {
         Model.StationeryInventory_Team_05Entities ctx = new Model.StationeryInventory_Team_05Entities();
 

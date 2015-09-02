@@ -10,7 +10,7 @@ namespace BusinessLogic
     /// UI 4.7 , 4.7.1 Store Clerk : Inventory List & Tile
     /// UI 4.7 Store Clerk : Inventory List
     /// </summary>
-    class Inventory
+    class InventoryController
     {
         Model.StationeryInventory_Team_05Entities ctx = new Model.StationeryInventory_Team_05Entities();
 
