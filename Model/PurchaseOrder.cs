@@ -35,7 +35,7 @@ namespace Model
         [DataMember]
         public Nullable<System.DateTime> EstDate { get; set; }
         [DataMember]
-        public Nullable<int> TotalAmt { get; set; }
+        public Nullable<double> TotalAmt { get; set; }
         [DataMember]
         public string Status { get; set; }
     
