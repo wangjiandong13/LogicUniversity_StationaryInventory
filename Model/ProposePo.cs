@@ -11,7 +11,7 @@ namespace Model
 {
     [JsonObject(IsReference = true)]
     [DataContract]
-    class ProposePo
+    public class ProposePo
     {
         public ProposePo() { }
 
