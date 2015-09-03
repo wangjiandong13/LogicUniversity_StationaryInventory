@@ -28,7 +28,7 @@ namespace BusinessLogic
         /// <summary>
         /// get items by category
         /// </summary>
-        /// <param name="category"></param>
+        /// <param name="category">Category Description</param>
         /// <returns></returns>
         public List<Model.Item> getItemByCategory(string category)
         {
@@ -46,7 +46,7 @@ namespace BusinessLogic
         /// <summary>
         /// search item by name
         /// </summary>
-        /// <param name="itemName"></param>
+        /// <param name="itemName">Item Name</param>
         /// <returns></returns>
         public List<Model.Item> getItemByName(string itemName)
         {

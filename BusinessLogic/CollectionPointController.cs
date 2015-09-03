@@ -11,9 +11,9 @@ namespace BusinessLogic
         Model.StationeryInventory_Team_05Entities ctx = new Model.StationeryInventory_Team_05Entities();
 
         /// <summary>
-        /// I think no need 
+        /// get all collection points
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of Collection Point</returns>
         public List<Model.CollectionPoint> getCollectionPoint()
         {
             var cp = from c in ctx.CollectionPoint
@@ -23,10 +23,10 @@ namespace BusinessLogic
         }
 
         /// <summary>
-        /// get collection point according to Dept ID
+        /// get collection point according to Dept ID (one Dept may have one or more collection point)
         /// </summary>
-        /// <param name="d"></param>
-        /// <returns></returns>
+        /// <param name="d">Department Object</param>
+        /// <returns>Collection Point List</returns>
         public List<Model.CollectionPoint> getCollectionPoint(Model.Department d)
         {
             var cp = from c in ctx.CollectionPoint
@@ -40,7 +40,7 @@ namespace BusinessLogic
         /// Change collection point according to Dept
         /// </summary>
         /// <param name="d"></param>
-        /// <returns></returns>
+        /// <returns>true if the </returns>
         public bool updateCollectionPoint(Model.Department d)
         {
             Model.Department dept = new Model.Department();
