@@ -212,12 +212,11 @@
           <Key>
             <PropertyRef Name="ReqSN" />
           </Key>
-          <Property Name="ReqSN" Type="int" Nullable="false" />
+          <Property Name="ReqSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReqID" Type="int" />
           <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
           <Property Name="RequestQty" Type="int" />
           <Property Name="IssueQty" Type="int" />
-          <Property Name="ItemStatus" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Retrieval">
           <Key>
@@ -1583,12 +1582,11 @@
           <Key>
             <PropertyRef Name="ReqSN" />
           </Key>
-          <Property Name="ReqSN" Type="Int32" Nullable="false" />
+          <Property Name="ReqSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReqID" Type="Int32" />
           <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RequestQty" Type="Int32" />
           <Property Name="IssueQty" Type="Int32" />
-          <Property Name="ItemStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_RequisitionDetail_Item" FromRole="RequisitionDetail" ToRole="Item" />
           <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_RequisitionDetail_Requisition" FromRole="RequisitionDetail" ToRole="Requisition" />
         </EntityType>
@@ -2452,7 +2450,6 @@
           <EntitySetMapping Name="RequisitionDetail">
             <EntityTypeMapping TypeName="LogicUniversityEntitie.RequisitionDetail">
               <MappingFragment StoreEntitySet="RequisitionDetail">
-                <ScalarProperty Name="ItemStatus" ColumnName="ItemStatus" />
                 <ScalarProperty Name="IssueQty" ColumnName="IssueQty" />
                 <ScalarProperty Name="RequestQty" ColumnName="RequestQty" />
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />

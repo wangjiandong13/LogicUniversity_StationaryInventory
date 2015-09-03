@@ -29,8 +29,6 @@ namespace Model
         public Nullable<int> RequestQty { get; set; }
         [DataMember]
         public Nullable<int> IssueQty { get; set; }
-        [DataMember]
-        public string ItemStatus { get; set; }
     
          
         public Item Item { get; set; }

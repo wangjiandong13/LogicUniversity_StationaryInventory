@@ -11,11 +11,6 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select DepartmentAPI.svc or DepartmentAPI.svc.cs at the Solution Explorer and start debugging.
     public class DepartmentAPI : IDepartmentAPI
     {
-        public bool editDepartment(Model.Department dept)
-        {
-            return true;
-        }
-
         public List<Model.Department> getAllDepartment()
         {
             BusinessLogic.DepartmentController bl = new BusinessLogic.DepartmentController();
