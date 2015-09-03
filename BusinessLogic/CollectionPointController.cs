@@ -25,12 +25,12 @@ namespace BusinessLogic
         /// <summary>
         /// get collection point according to Dept ID (one Dept may have one or more collection point)
         /// </summary>
-        /// <param name="d">Department Object</param>
+        /// <param name="CPID">Collection Point ID</param>
         /// <returns>Collection Point List</returns>
-        public List<Model.CollectionPoint> getCollectionPoint(Model.Department d)
+        public List<Model.CollectionPoint> getCollectionPoint(int CPID)
         {
             var cp = from c in ctx.CollectionPoint
-                     where c.CPID == d.CPID
+                     where c.CPID == CPID
                      select c;
 
             return cp.ToList();
@@ -39,16 +39,15 @@ namespace BusinessLogic
         /// <summary>
         /// Change collection point according to Dept
         /// </summary>
-        /// <param name="d"></param>
+        /// <param name="DeptID">Department ID</param>
+        /// <param name="CPID">Collection Point ID</param>
         /// <returns>true if the </returns>
-        public bool updateCollectionPoint(Model.Department d)
+        public bool updateCollectionPoint(string DeptID, int CPID)
         {
-            Model.Department dept = new Model.Department();
-
-            dept = (from c in ctx.Department
-                    where c.DeptID == d.DeptID
+            Model.Department dept = (from c in ctx.Department
+                    where c.DeptID == DeptID
                     select c).First();
-            dept.CPID = d.CPID;
+            dept.CPID = CPID;
             ctx.SaveChanges();
             return true;
 
