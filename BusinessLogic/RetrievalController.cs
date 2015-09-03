@@ -85,15 +85,27 @@ namespace BusinessLogic
         /// <param name="Status">Status (Pending / Retrieved)</param>
         /// <param name="RetID">Retrieval ID</param>
         /// <returns></returns>
-        public List<Retrieval> getRetrieval(int EmpID, string Status, int RetID)
+        public List<Retrieval> getRetrieval(string EmpID, string Status, string RetID)
         {
-            List<Retrieval> retList = ctx.Retrieval
-                .Where(x => x.EmpID == EmpID)
-                .Where(x => x.Status == Status)
-                .Where(x => x.RetID == RetID)
-                .ToList();
+            //start with all the records
+            var query = from ret in ctx.Retrieval select ret;
 
-            return retList;
+            //filter the result set based on user inputs
+            if (!string.IsNullOrEmpty(EmpID))
+            {
+                query = query.Where(x => x.EmpID.ToString().Contains(EmpID));
+            }
+            if (!string.IsNullOrEmpty(Status))
+            {
+                query = query.Where(x => x.Status.Contains(Status));
+            }
+            if (!string.IsNullOrEmpty(RetID))
+            {
+                query = query.Where(x => x.RetID.ToString().Contains(RetID));
+            }
+
+            //run the query on database and grab the results
+            return query.ToList();
         }
 
         /// <summary>

@@ -32,25 +32,38 @@ namespace BusinessLogic
         /// <param name="startdate">Start Date</param>
         /// <param name="enddate">End Date</param>
         /// <returns></returns>
-        //public List<Disbursement> getDisbursement(string DeptID,string CPID, int DisID, DateTime startdate, DateTime enddate)
-        //{
-        //    if (DeptID == null)
-        //        DeptID = "";
-        //    if (CPID == null)
-        //        CPID = "";
-        //    if (DisID == null)
-        //        DisID = "";
+        public List<Disbursement> getDisbursement(string DeptID, string CPID, string DisID, string startdate, string enddate)
+        {
+            //start with all the records
+            var query = from disb in ctx.Disbursement select disb;
 
-        //    //Need to verify the output
-        //    List<Disbursement> result = ctx.Disbursement
-        //        .Where(x => x.DeptID == DeptID)
-        //        .Where(x => x.CPID == CPID)
-        //        .Where(x => x.DisID == DisID)
-        //        .Where(x => x.Date > startdate && x.Date < enddate)
-        //        .ToList();
+            //filter the result set based on user inputs
+            if (!string.IsNullOrEmpty(DeptID))
+            {
+                query = query.Where(x => x.DeptID.Contains(DeptID));
+            }
+            if (!string.IsNullOrEmpty(CPID))
+            {
+                query = query.Where(x => x.CPID.ToString().Contains(CPID));
+            }
+            if (!string.IsNullOrEmpty(DisID))
+            {
+                query = query.Where(x => x.DisID.ToString().Contains(DisID));
+            }
+            if (!string.IsNullOrEmpty(startdate))
+            {
+                DateTime sd = Convert.ToDateTime(startdate).Date;
+                query = query.Where(x => x.Date >= sd);
+            }
+            if (!string.IsNullOrEmpty(enddate))
+            {
+                DateTime ed = Convert.ToDateTime(enddate).Date;
+                query = query.Where(x => x.Date <= ed);
+            }
 
-        //    return result;
-        //}
+            //run the query on database and grab the results
+            return query.ToList();
+        }
 
         /// <summary>
         /// CreateDisbursement

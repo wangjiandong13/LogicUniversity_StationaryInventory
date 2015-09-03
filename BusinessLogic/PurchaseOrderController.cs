@@ -19,21 +19,34 @@ namespace BusinessLogic
         /// <param name="EmpID">Employee ID</param>
         /// <param name="PoID">Purchase Order ID</param>
         /// <returns></returns>
-        //public List<PurchaseOrder> getPo(DateTime startDate, DateTime endDate, int EmpID, int PoID)
-        //{
-        //    if (EmpID == null)
-        //        EmpID = "";
-        //    if (PoID == 0)
-        //        PoId = null;
-            
-        //    List<PurchaseOrder> result = ctx.PurchaseOrder
-        //        .Where(x=> x.Date > startDate && x.Date < endDate)
-        //        .Where(x => x.EmpID == EmpID)
-        //        .Where(x => x.PoID == PoID)
-        //        .ToList();
+        public List<PurchaseOrder> getPo(string startdate, string enddate, string EmpID, string PoID)
+        {
+            //start with all the records
+            var query = from po in ctx.PurchaseOrder select po;
 
-        //    return result;
-        //}
+            //filter the result set based on user inputs
+            if (!string.IsNullOrEmpty(EmpID))
+            {
+                query = query.Where(x => x.EmpID.ToString().Contains(EmpID));
+            }
+            if (!string.IsNullOrEmpty(PoID))
+            {
+                query = query.Where(x => x.PoID.ToString().Contains(PoID));
+            }
+            if (!string.IsNullOrEmpty(startdate))
+            {
+                DateTime sd = Convert.ToDateTime(startdate).Date;
+                query = query.Where(x => x.Date >= sd);
+            }
+            if (!string.IsNullOrEmpty(enddate))
+            {
+                DateTime ed = Convert.ToDateTime(enddate).Date;
+                query = query.Where(x => x.Date <= ed);
+            }
+
+            //run the query on database and grab the results
+            return query.ToList();
+        }
 
         /// <summary>
         /// GetPoDetail
