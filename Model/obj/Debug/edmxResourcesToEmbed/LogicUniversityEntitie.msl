@@ -250,7 +250,6 @@
     <EntitySetMapping Name="RequisitionDetail">
       <EntityTypeMapping TypeName="LogicUniversityEntitie.RequisitionDetail">
         <MappingFragment StoreEntitySet="RequisitionDetail">
-          <ScalarProperty Name="ItemStatus" ColumnName="ItemStatus" />
           <ScalarProperty Name="IssueQty" ColumnName="IssueQty" />
           <ScalarProperty Name="RequestQty" ColumnName="RequestQty" />
           <ScalarProperty Name="ItemID" ColumnName="ItemID" />

@@ -207,12 +207,11 @@
     <Key>
       <PropertyRef Name="ReqSN" />
     </Key>
-    <Property Name="ReqSN" Type="int" Nullable="false" />
+    <Property Name="ReqSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ReqID" Type="int" />
     <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
     <Property Name="RequestQty" Type="int" />
     <Property Name="IssueQty" Type="int" />
-    <Property Name="ItemStatus" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Retrieval">
     <Key>
