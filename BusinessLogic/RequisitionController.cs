@@ -202,6 +202,18 @@ namespace BusinessLogic
         }
 
         /// <summary>
+        /// GetRequisition
+        /// </summary>
+        /// <param name="RetID">Retrieval ID</param>
+        /// <returns></returns>
+        public List<Requisition> getRequisition(int RetID)
+        {
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
+            return reqList;
+        }
+
+
+        /// <summary>
         /// GetReqDetailByRetrieval
         /// </summary>
         /// <param name="RetID">Requisition ID</param>
