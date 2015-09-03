@@ -85,7 +85,7 @@ namespace BusinessLogic
         /// <param name="Status">Status (Pending / Retrieved)</param>
         /// <param name="RetID">Retrieval ID</param>
         /// <returns></returns>
-        public List<Retrieval> getList(int EmpID, string Status, int RetID)
+        public List<Retrieval> getRetrieval(int EmpID, string Status, int RetID)
         {
             List<Retrieval> retList = ctx.Retrieval
                 .Where(x => x.EmpID == EmpID)
@@ -103,7 +103,25 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool submit(List<RetrievalDetail> retDetailList)
         {
-            return true;
+            bool result = false;
+
+            //update actual quantity of retrieval detail
+            foreach (RetrievalDetail retDetail in retDetailList)
+            {
+                RetrievalDetail retDetailSearch = ctx.RetrievalDetail.Where(x => x.RetID == retDetail.RetID && x.ItemID == retDetail.ItemID).FirstOrDefault();
+                retDetailSearch.ActualQty = retDetail.ActualQty;
+            }
+
+            //update status of retrieval to "Retrieved"
+            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retDetailList.First().RetID).FirstOrDefault();
+            ret.Status = "Retrieved";
+
+            int count = ctx.SaveChanges();
+
+            if (count > 0)
+                result = true;
+
+            return result;
         }
 
         /// <summary>
@@ -113,7 +131,111 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool save(List<RetrievalDetail> retDetailList)
         {
-            return true;
+            bool result = false;
+
+            //update actual quantity of retrieval detail
+            foreach (RetrievalDetail retDetail in retDetailList)
+            {
+                RetrievalDetail retDetailSearch = ctx.RetrievalDetail.Where(x => x.RetID == retDetail.RetID && x.ItemID == retDetail.ItemID).FirstOrDefault();
+                retDetailSearch.ActualQty = retDetail.ActualQty;
+            }
+            
+            int count = ctx.SaveChanges();
+
+            if (count > 0)
+                result = true;
+
+            return result;
+        }
+
+        /// <summary>
+        /// GetRetrievalDetail
+        /// </summary>
+        /// <param name="RetID">Retrieval ID</param>
+        /// <returns></returns>
+        public List<ProcessRetSuccess> getRetrievalDetail(int RetID)
+        {
+            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == RetID).FirstOrDefault();
+            List<RetrievalDetail> retDetailList = ctx.RetrievalDetail.Where(x => x.RetID == RetID).ToList();
+
+            List<ProcessRetSuccess> retSuccessList = new List<ProcessRetSuccess>();
+
+            foreach(RetrievalDetail retDetail in retDetailList)
+            {
+                Item i = ctx.Item.Where(x => x.ItemID == retDetail.ItemID).FirstOrDefault();
+                ProcessRetSuccess retSuccess = new ProcessRetSuccess();
+                retSuccess.Date = (DateTime) ret.Date;
+                retSuccess.Bin = i.Bin;
+                retSuccess.ItemID = i.ItemID;
+                retSuccess.ItemName = i.ItemName;
+                retSuccess.TotalQty = (int) retDetail.RequestQty;
+                retSuccess.ActualQty = (int) retDetail.ActualQty;
+
+                retSuccessList.Add(retSuccess);
+            }
+
+            return retSuccessList;
+        }
+
+        /// <summary>
+        /// GetReqAllocation
+        /// </summary>
+        /// <param name="RetID">Requisition ID</param>
+        /// <returns></returns>
+        public List<ReqAllocation> getReqAllocation(int RetID)
+        {
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
+
+            List<ReqAllocation> reqAllocationList = new List<ReqAllocation>();
+
+            foreach(Requisition req in reqList)
+            {
+                List<RequisitionDetail> reqDetailList = ctx.RequisitionDetail.Where(x => x.ReqID == req.ReqID).ToList();
+
+                foreach (RequisitionDetail reqDetail in reqDetailList)
+                {
+                    ReqAllocation reqAllocation = new ReqAllocation();
+                    reqAllocation.ItemID = reqDetail.ItemID;
+                    reqAllocation.ReqID = req.ReqID;
+                    reqAllocation.Dept = req.DeptID;
+                    if(req.PriorityID == 1)
+                        reqAllocation.Priority = "High";
+                    else
+                        reqAllocation.Priority = "Low";
+                    reqAllocation.RequestQty = (int) reqDetail.RequestQty;
+                    reqAllocation.IssueQty = (int)reqDetail.IssueQty;
+
+                    reqAllocationList.Add(reqAllocation);
+                }
+            }
+            return reqAllocationList;
+        }
+
+
+        /// <summary>
+        /// confirmAllocation
+        /// </summary>
+        /// <param name="reqDetailList">RequisitionDetail List (ReqID, ItemID, IssueQty)</param>
+        /// <returns></returns>
+        public bool confirmAllocation(List<RequisitionDetail> reqDetailList)
+        {
+            bool result = false;
+
+            foreach(RequisitionDetail reqDetail in reqDetailList)
+            {
+                RequisitionDetail reqDetailSearch = ctx.RequisitionDetail
+                    .Where(x => x.ReqID == reqDetail.ReqID && x.ItemID == reqDetail.ItemID)
+                    .FirstOrDefault();
+
+                reqDetailSearch.IssueQty = reqDetail.IssueQty;
+            }
+
+            int count = ctx.SaveChanges();
+
+            if (count > 0)
+                result = true;
+
+            return result;
         }
 
     }

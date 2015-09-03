@@ -9,7 +9,7 @@ namespace BusinessLogic
 {
     public class EmployeeController
     {
-        Model.StationeryInventory_Team_05Entities ctx = new Model.StationeryInventory_Team_05Entities();
+        StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
         /// <summary>
         /// GetEmployeebyRole
         /// </summary>

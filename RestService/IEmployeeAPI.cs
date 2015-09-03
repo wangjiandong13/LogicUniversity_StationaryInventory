@@ -27,8 +27,8 @@ namespace RestService
 
         [OperationContract]
         [WebInvoke(Method = "POST", 
-            RequestFormat = WebMessageFormat.Json,
-                            ResponseFormat = WebMessageFormat.Json,
+                           RequestFormat = WebMessageFormat.Json,
+                           ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/login")]
         Employee login(Employee e);
