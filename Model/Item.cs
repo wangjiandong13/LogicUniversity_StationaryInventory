@@ -48,30 +48,30 @@ namespace Model
         [DataMember]
         public string Bin { get; set; }
     
-        [DataMember]
+         
         public ICollection<AdjustmentDetail> AdjustmentDetail { get; set; }
-        [DataMember]
+         
         public ICollection<CartItems> CartItems { get; set; }
-        [DataMember]
+         
         public ICollection<DisbursementDetail> DisbursementDetail { get; set; }
-        [DataMember]
+         
         public ItemCategory ItemCategory { get; set; }
-        [DataMember]
+         
         public ICollection<ItemPrice> ItemPrice { get; set; }
-        [DataMember]
+         
         public ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
-        [DataMember]
+         
         public ICollection<RequisitionDetail> RequisitionDetail { get; set; }
-        [DataMember]
+         
         public ICollection<RetrievalDetail> RetrievalDetail { get; set; }
-        [DataMember]
+         
         public ICollection<StockCard> StockCard { get; set; }
     
-        [DataMember]
+         
         public TrackingState TrackingState { get; set; }
-        [DataMember]
+         
         public ICollection<string> ModifiedProperties { get; set; }
-        [JsonProperty, DataMember]
+         
         private Guid EntityIdentifier { get; set; }
     }
 }

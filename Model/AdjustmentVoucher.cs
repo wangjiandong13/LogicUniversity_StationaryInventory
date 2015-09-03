@@ -37,18 +37,18 @@ namespace Model
         [DataMember]
         public Nullable<double> TotalAmt { get; set; }
     
-        [DataMember]
+         
         public ICollection<AdjustmentDetail> AdjustmentDetail { get; set; }
-        [DataMember]
+         
         public Employee Employee { get; set; }
-        [DataMember]
+         
         public Employee Employee1 { get; set; }
     
-        [DataMember]
+         
         public TrackingState TrackingState { get; set; }
-        [DataMember]
+         
         public ICollection<string> ModifiedProperties { get; set; }
-        [JsonProperty, DataMember]
+         
         private Guid EntityIdentifier { get; set; }
     }
 }
