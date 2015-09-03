@@ -7,7 +7,7 @@ using Model;
 
 namespace BusinessLogic
 {
-    class PurchaseOrderController
+    public class PurchaseOrderController
     {
         StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
 

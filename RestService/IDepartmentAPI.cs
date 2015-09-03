@@ -33,17 +33,5 @@ namespace RestService
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getDeptByID/{DeptID}")]
         Department getDeptByID(String DepID);
-
-        /// <summary>
-        /// Edit Department
-        /// </summary>
-        /// <param name="dept">Department model</param>
-        /// <returns></returns>
-        [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                                           RequestFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/editDepartment")]
-        Boolean editDepartment(Department dept);
     }
 }
