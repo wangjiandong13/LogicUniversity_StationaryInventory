@@ -18,7 +18,7 @@ namespace BusinessLogic
         /// <param name="adjId">AdjustVoucher ID</param>
         /// <param name="startDate">Date</param>
         /// <param name="endDate">Date</param>
-        /// <returns></returns>
+        /// <returns>Adjustment Voucher List search by ID, Date</returns>
         public List<AdjustmentVoucher> getAdjVoucher(string adjId,DateTime startDate,DateTime endDate)
         {
             List<AdjustmentVoucher> adjustlist = new List<AdjustmentVoucher>();
@@ -48,8 +48,8 @@ namespace BusinessLogic
         /// <summary>
         /// Get Adjustment Detail by AdjustmentVoucher ID
         /// </summary>
-        /// <param name="adjId"></param>
-        /// <returns></returns>
+        /// <param name="adjId">Adjustment Voucher ID</param>
+        /// <returns>AdjustmentDetail List by AdjID</returns>
         public List<AdjustmentDetail> getAdjVoucherDetail(string adjId)
         {
             var detail = from x in ctx.AdjustmentDetail
@@ -61,7 +61,7 @@ namespace BusinessLogic
         /// <summary>
         /// Get new Adjustment Voucher ID
         /// </summary>
-        /// <returns></returns>
+        /// <returns>New Adj ID</returns>
         public string getAdjVoucherId()
         {
             AdjustmentVoucher adj = new AdjustmentVoucher();
@@ -100,9 +100,9 @@ namespace BusinessLogic
         /// <summary>
         /// Create Ajustment Voucher
         /// </summary>
-        /// <param name="adj"></param>
-        /// <param name="adjDetail"></param>
-        /// <returns></returns>
+        /// <param name="adj">AdjustVoucher Object</param>
+        /// <param name="adjDetail">AdjustVoucherDetail Object</param>
+        /// <returns>True or False</returns>
         public bool createVoucher(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail)
         {
             double totAmt = 0.0;
@@ -123,14 +123,16 @@ namespace BusinessLogic
         /// <summary>
         /// Update Item qty according to Adjustment Approval
         /// </summary>
-        /// <param name="adj"></param>
-        /// <param name="adjDetail"></param>
-        /// <param name="status"></param>
-        /// <returns></returns>
+        /// <param name="adj">AdjustmentVoucher Object</param>
+        /// <param name="adjDetail">AdjustmentDetail Object</param>
+        /// <param name="status">Status</param>
+        /// <returns>true or false</returns>
         public bool updateAdjustmentDetail(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail, string status)
         {
             AdjustmentVoucher adjvoucher = new AdjustmentVoucher();
             Item item = new Item();
+            StockCard sc = new StockCard();
+
             if(status == "Approve")
             {
                 var list = (from l in ctx.AdjustmentDetail
@@ -142,7 +144,14 @@ namespace BusinessLogic
                     item = (from a in ctx.Item
                             where a.ItemID == list[i].ItemID
                             select a).First();
-                    item.Stock += list[i].Qty;
+                    item.Stock += list[i].Qty;                    
+                    ctx.SaveChanges();
+                    sc.ItemID = item.ItemID;
+                    sc.Date = System.DateTime.Now;
+                    sc.Description = "Stock Adjustment " + adj.AdjID;
+                    sc.Qty = list[i].Qty;
+                    sc.Balance = item.Stock;
+                    ctx.StockCard.Add(sc);
                     ctx.SaveChanges();
                 }
 
