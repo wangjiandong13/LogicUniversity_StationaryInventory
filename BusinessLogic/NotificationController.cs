@@ -46,7 +46,7 @@ namespace BusinessLogic
             bool result = true;
 
             Notification notif = ctx.Notification.Where(x => x.NotifID == NotifID).FirstOrDefault();
-            notif.Status = "read";
+            notif.Status = "READ";
 
             int count = ctx.SaveChanges();
 
