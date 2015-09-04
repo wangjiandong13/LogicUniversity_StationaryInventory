@@ -89,7 +89,7 @@ namespace BusinessLogic
                     disb.EmpID = EmpID;
                     disb.DeptID = deptId[i];
                     disb.CPID = dept.CPID;
-                    disb.Status = "Pending";
+                    disb.Status = "PENDING";
 
                     ctx.Disbursement.Add(disb);
 
