@@ -529,12 +529,11 @@
     <Key>
       <PropertyRef Name="ReqSN" />
     </Key>
-    <Property Name="ReqSN" Type="Int32" Nullable="false" />
+    <Property Name="ReqSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ReqID" Type="Int32" />
     <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RequestQty" Type="Int32" />
     <Property Name="IssueQty" Type="Int32" />
-    <Property Name="ItemStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_RequisitionDetail_Item" FromRole="RequisitionDetail" ToRole="Item" />
     <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_RequisitionDetail_Requisition" FromRole="RequisitionDetail" ToRole="Requisition" />
   </EntityType>

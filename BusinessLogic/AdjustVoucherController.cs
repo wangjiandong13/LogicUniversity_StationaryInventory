@@ -19,7 +19,7 @@ namespace BusinessLogic
         /// <param name="startDate">Date</param>
         /// <param name="endDate">Date</param>
         /// <returns>Adjustment Voucher List search by ID, Date</returns>
-        public List<AdjustmentVoucher> getAdjVoucher(string adjId,DateTime startDate,DateTime endDate)
+        public List<AdjustmentVoucher> getAdjVoucher(string adjId,string startDate,string endDate)
         {
             List<AdjustmentVoucher> adjustlist = new List<AdjustmentVoucher>();
             
@@ -31,7 +31,7 @@ namespace BusinessLogic
             else if(startDate == null && endDate == null)
             {
                 adjustlist = (from x in ctx.AdjustmentVoucher
-                              where x.Date == startDate && x.Date == endDate
+                              where x.Date == Convert.ToDateTime(startDate).Date && x.Date == Convert.ToDateTime(endDate).Date
                               select x).ToList();
             }
             else

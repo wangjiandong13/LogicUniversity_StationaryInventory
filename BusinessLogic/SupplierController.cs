@@ -97,13 +97,13 @@ namespace BusinessLogic
         /// <param name="supplierId">Supplier ID</param>
         /// <param name="rank">Rank</param>
         /// <returns>True or False</returns>
-        public bool updateSupplierRank(string supplierId, int rank)
+        public bool updateSupplierRank(string supplierId, string rank)
         {
             Supplier s = new Supplier();
             s = (from x in ctx.Supplier
                  where x.SupplierID == supplierId
                  select x).First();
-            s.Rank = rank;
+            s.Rank = Convert.ToInt32(rank);
             ctx.SaveChanges();
             return true;
         }
