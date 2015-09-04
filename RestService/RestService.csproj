@@ -70,20 +70,55 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdjustvoucherAPI.svc" />
+    <Content Include="CatalogAPI.svc" />
+    <Content Include="CollectionAPI.svc" />
+    <Content Include="DelegateAPI.svc" />
     <Content Include="DepartmentAPI.svc" />
+    <Content Include="DisbursementAPI.svc" />
     <Content Include="EmployeeAPI.svc" />
+    <Content Include="InventoryAPI.svc" />
+    <Content Include="POAPI.svc" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdjustvoucherAPI.svc.cs">
+      <DependentUpon>AdjustvoucherAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogAPI.svc.cs">
+      <DependentUpon>CatalogAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="CollectionAPI.svc.cs">
+      <DependentUpon>CollectionAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DelegateAPI.svc.cs">
+      <DependentUpon>DelegateAPI.svc</DependentUpon>
+    </Compile>
     <Compile Include="DepartmentAPI.svc.cs">
       <DependentUpon>DepartmentAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DisbursementAPI.svc.cs">
+      <DependentUpon>DisbursementAPI.svc</DependentUpon>
     </Compile>
     <Compile Include="EmployeeAPI.svc.cs">
       <DependentUpon>EmployeeAPI.svc</DependentUpon>
     </Compile>
+    <Compile Include="IAdjustvoucherAPI.cs" />
+    <Compile Include="ICatalogAPI.cs" />
+    <Compile Include="ICollectionAPI.cs" />
+    <Compile Include="IDelegateAPI.cs" />
     <Compile Include="IDepartmentAPI.cs" />
+    <Compile Include="IDisbursementAPI.cs" />
     <Compile Include="IEmployeeAPI.cs" />
+    <Compile Include="IInventoryAPI.cs" />
+    <Compile Include="InventoryAPI.svc.cs">
+      <DependentUpon>InventoryAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IPOAPI.cs" />
+    <Compile Include="POAPI.svc.cs">
+      <DependentUpon>POAPI.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
