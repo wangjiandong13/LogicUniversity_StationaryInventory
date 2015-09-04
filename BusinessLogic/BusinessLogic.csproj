@@ -55,6 +55,7 @@
     <Compile Include="DelegateController.cs" />
     <Compile Include="DepartmentController.cs" />
     <Compile Include="DisbursementController.cs" />
+    <Compile Include="EmailController.cs" />
     <Compile Include="EmployeeController.cs" />
     <Compile Include="InventoryController.cs" />
     <Compile Include="NotificationController.cs" />
