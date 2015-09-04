@@ -18,7 +18,7 @@ namespace Model
         [DataMember]
         public int EmpID { get; set; }
         [DataMember]
-        public DateTime EstDate { get; set; }
+        public string EstDate { get; set; }
         [DataMember]
         public string ItemID { get; set; }
         [DataMember]

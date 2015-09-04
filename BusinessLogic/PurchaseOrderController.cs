@@ -166,7 +166,7 @@ namespace BusinessLogic
                 po.SupplierID = supplier1ID;
                 po.EmpID = supplier1.First().EmpID;
                 po.Date = DateTime.Now;
-                po.EstDate = supplier1.First().EstDate;
+                po.EstDate = Convert.ToDateTime(supplier1.First().EstDate).Date;
                 po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
 
@@ -199,7 +199,7 @@ namespace BusinessLogic
                 po.SupplierID = supplier1ID;
                 po.EmpID = supplier2.First().EmpID;
                 po.Date = DateTime.Now;
-                po.EstDate = supplier2.First().EstDate;
+                po.EstDate = Convert.ToDateTime(supplier2.First().EstDate);
                 po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
 
@@ -232,7 +232,7 @@ namespace BusinessLogic
                 po.SupplierID = supplier1ID;
                 po.EmpID = supplier3.First().EmpID;
                 po.Date = DateTime.Now;
-                po.EstDate = supplier3.First().EstDate;
+                po.EstDate = Convert.ToDateTime(supplier3.First().EstDate);
                 po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
 
