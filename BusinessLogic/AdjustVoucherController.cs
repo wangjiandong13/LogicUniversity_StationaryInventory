@@ -105,7 +105,7 @@ namespace BusinessLogic
         /// <returns>True or False</returns>
         public bool createVoucher(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail)
         {
-            double totAmt = 0.0;
+            //double totAmt = 0.0;
 
             string newID = getAdjVoucherId();
             adj.AdjID = newID;

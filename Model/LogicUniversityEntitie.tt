@@ -104,11 +104,8 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     }
 #>
 
-    [DataMember]
     public TrackingState TrackingState { get; set; }
-    [DataMember]
     public ICollection<string> ModifiedProperties { get; set; }
-    [JsonProperty, DataMember]
     private Guid EntityIdentifier { get; set; }
 }
 <#
@@ -302,7 +299,7 @@ public class CodeStringGenerator
         return string.Format(
             CultureInfo.InvariantCulture,
             "{0}    {1} {2} {3} {{ {4}get; {5}set; }}",
-			"[DataMember]" + Environment.NewLine,
+			Environment.NewLine,
             AccessibilityAndVirtual(Accessibility.ForNavigationProperty(navProp)),
             navProp.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many ? ("ICollection<" + endType + ">") : endType,
             _code.Escape(navProp),

@@ -55,50 +55,47 @@ namespace Model
         [DataMember]
         public string Password { get; set; }
     
-        [DataMember]
+        
         public ICollection<AdjustmentVoucher> AdjustmentVoucher { get; set; }
-        [DataMember]
+        
         public ICollection<AdjustmentVoucher> AdjustmentVoucher1 { get; set; }
-        [DataMember]
+        
         public ICollection<CartItems> CartItems { get; set; }
-        [DataMember]
+        
         public ICollection<Delegate> Delegate { get; set; }
-        [DataMember]
+        
         public ICollection<Department> Department { get; set; }
-        [DataMember]
+        
         public ICollection<Department> Department1 { get; set; }
-        [DataMember]
+        
         public ICollection<Department> Department2 { get; set; }
-        [DataMember]
+        
         public Department Department3 { get; set; }
-        [DataMember]
+        
         public ICollection<Disbursement> Disbursement { get; set; }
-        [DataMember]
+        
         public ICollection<Disbursement> Disbursement1 { get; set; }
-        [DataMember]
+        
         public Role Role { get; set; }
-        [DataMember]
+        
         public ICollection<MobileNotification> MobileNotification { get; set; }
-        [DataMember]
+        
         public ICollection<Notification> Notification { get; set; }
-        [DataMember]
+        
         public ICollection<PurchaseOrder> PurchaseOrder { get; set; }
-        [DataMember]
+        
         public ICollection<Report> Report { get; set; }
-        [DataMember]
+        
         public ICollection<Requisition> Requisition { get; set; }
-        [DataMember]
+        
         public ICollection<Requisition> Requisition1 { get; set; }
-        [DataMember]
+        
         public ICollection<Requisition> Requisition2 { get; set; }
-        [DataMember]
+        
         public ICollection<Retrieval> Retrieval { get; set; }
     
-        [DataMember]
         public TrackingState TrackingState { get; set; }
-        [DataMember]
         public ICollection<string> ModifiedProperties { get; set; }
-        [JsonProperty, DataMember]
         private Guid EntityIdentifier { get; set; }
     }
 }

@@ -39,18 +39,15 @@ namespace Model
         [DataMember]
         public string Status { get; set; }
     
-        [DataMember]
+        
         public Employee Employee { get; set; }
-        [DataMember]
+        
         public Supplier Supplier { get; set; }
-        [DataMember]
+        
         public ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
     
-        [DataMember]
         public TrackingState TrackingState { get; set; }
-        [DataMember]
         public ICollection<string> ModifiedProperties { get; set; }
-        [JsonProperty, DataMember]
         private Guid EntityIdentifier { get; set; }
     }
 }
