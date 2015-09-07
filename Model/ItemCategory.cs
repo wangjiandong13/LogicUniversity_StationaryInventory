@@ -29,14 +29,14 @@ namespace Model
         [DataMember]
         public string ItemDescription { get; set; }
     
-         
+        [DataMember]
         public ICollection<Item> Item { get; set; }
     
-         
+        [DataMember]
         public TrackingState TrackingState { get; set; }
-         
+        [DataMember]
         public ICollection<string> ModifiedProperties { get; set; }
-         
+        [JsonProperty, DataMember]
         private Guid EntityIdentifier { get; set; }
     }
 }

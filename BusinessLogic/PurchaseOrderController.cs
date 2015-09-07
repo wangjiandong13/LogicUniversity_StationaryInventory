@@ -70,21 +70,37 @@ namespace BusinessLogic
         public bool restock(List<PurchaseOrderDetail> PoDetailList)
         {
             bool result = false;
-            
-            //Update the actual qty for every poDetail
+
+            //search for purchase order to obtain supplier ID
+            PurchaseOrder po = ctx.PurchaseOrder.Where(x => x.PoID == PoDetailList.First().PoID).FirstOrDefault();
+
             foreach(PurchaseOrderDetail poDetail in PoDetailList)
             {
+                //Update the actual qty for every poDetail
                 PurchaseOrderDetail poDetailSearch = ctx.PurchaseOrderDetail
                     .Where(x => x.PoID == poDetail.PoID && x.ItemID == poDetail.ItemID)
                     .FirstOrDefault();
 
                 poDetailSearch.ActualQty = poDetail.ActualQty;
+
+                //update stock card
+                List<StockCard> stockCardList = ctx.StockCard.Where(x => x.ItemID == poDetail.ItemID).ToList();
+                int balance = 0;
+                if (stockCardList.FirstOrDefault() != null)
+                    balance = (int)stockCardList.Last().Balance;
+
+                StockCard stockCard = new StockCard();
+                stockCard.ItemID = poDetail.ItemID;
+                stockCard.Date = DateTime.Now;
+                stockCard.Description = "Supplier - " + po.SupplierID;
+                stockCard.Qty = poDetail.ActualQty;
+                stockCard.Balance = balance + poDetail.ActualQty;
+                ctx.StockCard.Add(stockCard);
             }
 
             //change status of purchase order to "Delivered"
-            PurchaseOrder po = ctx.PurchaseOrder.Where(x => x.PoID == PoDetailList.First().PoID).First();
-            po.Status = "Delivered";
-            
+            po.Status = "DELIVERED";
+
             int count = ctx.SaveChanges();
 
             if (count > 0)
@@ -150,8 +166,8 @@ namespace BusinessLogic
                 po.SupplierID = supplier1ID;
                 po.EmpID = supplier1.First().EmpID;
                 po.Date = DateTime.Now;
-                po.EstDate = supplier1.First().EstDate;
-                po.Status = "Pending";
+                po.EstDate = Convert.ToDateTime(supplier1.First().EstDate).Date;
+                po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
 
                 //obtain the PoID of the newly added Po
@@ -183,8 +199,8 @@ namespace BusinessLogic
                 po.SupplierID = supplier1ID;
                 po.EmpID = supplier2.First().EmpID;
                 po.Date = DateTime.Now;
-                po.EstDate = supplier2.First().EstDate;
-                po.Status = "Pending";
+                po.EstDate = Convert.ToDateTime(supplier2.First().EstDate);
+                po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
 
                 //obtain the PoID of the newly added Po
@@ -216,8 +232,8 @@ namespace BusinessLogic
                 po.SupplierID = supplier1ID;
                 po.EmpID = supplier3.First().EmpID;
                 po.Date = DateTime.Now;
-                po.EstDate = supplier3.First().EstDate;
-                po.Status = "Pending";
+                po.EstDate = Convert.ToDateTime(supplier3.First().EstDate);
+                po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
 
                 //obtain the PoID of the newly added Po

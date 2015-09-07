@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +24,7 @@ namespace BusinessLogic
             Retrieval ret = new Retrieval();
             ret.Date = DateTime.Now;
             ret.EmpID = processRetList.First().EmpID;
-            ret.Status = "Pending";
+            ret.Status = "PENDING";
             ctx.Retrieval.Add(ret);
 
             //obtain retID of newly added retrieval
@@ -116,17 +116,17 @@ namespace BusinessLogic
         public bool submit(List<RetrievalDetail> retDetailList)
         {
             bool result = false;
-
-            //update actual quantity of retrieval detail
+            
             foreach (RetrievalDetail retDetail in retDetailList)
             {
+                //update actual quantity of retrieval detail
                 RetrievalDetail retDetailSearch = ctx.RetrievalDetail.Where(x => x.RetID == retDetail.RetID && x.ItemID == retDetail.ItemID).FirstOrDefault();
                 retDetailSearch.ActualQty = retDetail.ActualQty;
             }
 
             //update status of retrieval to "Retrieved"
             Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retDetailList.First().RetID).FirstOrDefault();
-            ret.Status = "Retrieved";
+            ret.Status = "RETRIEVED";
 
             int count = ctx.SaveChanges();
 
@@ -211,9 +211,9 @@ namespace BusinessLogic
                     reqAllocation.ReqID = req.ReqID;
                     reqAllocation.Dept = req.DeptID;
                     if(req.PriorityID == 1)
-                        reqAllocation.Priority = "High";
+                        reqAllocation.Priority = "HIGH";
                     else
-                        reqAllocation.Priority = "Low";
+                        reqAllocation.Priority = "LOW";
                     reqAllocation.RequestQty = (int) reqDetail.RequestQty;
                     reqAllocation.IssueQty = (int)reqDetail.IssueQty;
 
@@ -232,14 +232,34 @@ namespace BusinessLogic
         public bool confirmAllocation(List<RequisitionDetail> reqDetailList)
         {
             bool result = false;
-
+            
             foreach(RequisitionDetail reqDetail in reqDetailList)
             {
+                //update requisition detail issue quantity
                 RequisitionDetail reqDetailSearch = ctx.RequisitionDetail
                     .Where(x => x.ReqID == reqDetail.ReqID && x.ItemID == reqDetail.ItemID)
                     .FirstOrDefault();
 
                 reqDetailSearch.IssueQty = reqDetail.IssueQty;
+
+                //search for requisition to obtain the DeptID
+                Requisition req = ctx.Requisition.Where(x => x.ReqID == reqDetail.ReqID).FirstOrDefault();
+                //search for department name
+                string deptName = ctx.Department.Where(x => x.DeptID == req.DeptID).FirstOrDefault().DeptName;
+
+                //update stock card
+                List<StockCard> stockCardList = ctx.StockCard.Where(x => x.ItemID == reqDetail.ItemID).ToList();
+                int balance = 0;
+                if (stockCardList.FirstOrDefault() != null)
+                    balance = (int)stockCardList.Last().Balance;
+
+                StockCard stockCard = new StockCard();
+                stockCard.ItemID = reqDetail.ItemID;
+                stockCard.Date = DateTime.Now;
+                stockCard.Description = deptName;
+                stockCard.Qty = -reqDetail.IssueQty;
+                stockCard.Balance = balance - reqDetail.IssueQty;
+                ctx.StockCard.Add(stockCard);
             }
 
             int count = ctx.SaveChanges();

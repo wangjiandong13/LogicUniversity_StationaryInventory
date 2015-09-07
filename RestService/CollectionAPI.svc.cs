@@ -18,7 +18,7 @@ namespace RestService
             return BL.getCollectionPoint();
         }
 
-        public List<CollectionPoint> getCollectionPoint(string CPID)
+        public List<CollectionPoint> getCollectionPointbyID(string CPID)
         {
             throw new NotImplementedException();
         }

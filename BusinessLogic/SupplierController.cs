@@ -14,7 +14,7 @@ namespace BusinessLogic
         /// <summary>
         /// GetAllSupplierList
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Supplier List</returns>
         public List<Supplier> getSupplierList()
         {
             var supplierlist = from s in ctx.Supplier
@@ -27,7 +27,7 @@ namespace BusinessLogic
         /// GetBySupplierID
         /// </summary>
         /// <param name="supplierid">Supplier ID</param>
-        /// <returns></returns>
+        /// <returns> Supplier Object</returns>
         public Supplier getBySupplierID(string supplierid)
         {
             var sl = (from s in ctx.Supplier
@@ -47,7 +47,7 @@ namespace BusinessLogic
         /// <param name="phone">Phone</param>
         /// <param name="address">Address</param>
         /// <param name="fax">Fax</param>
-        /// <returns></returns>
+        /// <returns> True or False</returns>
         public bool createSupplier(Supplier s)
         {
             
@@ -69,7 +69,7 @@ namespace BusinessLogic
         /// <param name="phone">Phone</param>
         /// <param name="address">Address</param>
         /// <param name="fax">Fax</param>
-        /// <returns></returns>
+        /// <returns>True or False</returns>
         public bool updateSupplier(Supplier os)
         {
             Supplier s = new Supplier();
@@ -96,14 +96,14 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="supplierId">Supplier ID</param>
         /// <param name="rank">Rank</param>
-        /// <returns></returns>
-        public bool updateSupplierRank(string supplierId, int rank)
+        /// <returns>True or False</returns>
+        public bool updateSupplierRank(string supplierId, string rank)
         {
             Supplier s = new Supplier();
             s = (from x in ctx.Supplier
                  where x.SupplierID == supplierId
                  select x).First();
-            s.Rank = rank;
+            s.Rank = Convert.ToInt32(rank);
             ctx.SaveChanges();
             return true;
         }
@@ -112,7 +112,7 @@ namespace BusinessLogic
         /// Delete Supplier
         /// </summary>
         /// <param name="supplierId"></param>
-        /// <returns></returns>
+        /// <returns>True or False</returns>
         public bool deleteSupplier(string supplierId)
         {
             Supplier s = new Supplier();

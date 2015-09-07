@@ -42,16 +42,16 @@ namespace Model
         [DataMember]
         public Nullable<int> Rank { get; set; }
     
-         
+        [DataMember]
         public ICollection<ItemPrice> ItemPrice { get; set; }
-         
+        [DataMember]
         public ICollection<PurchaseOrder> PurchaseOrder { get; set; }
     
-         
+        [DataMember]
         public TrackingState TrackingState { get; set; }
-         
+        [DataMember]
         public ICollection<string> ModifiedProperties { get; set; }
-         
+        [JsonProperty, DataMember]
         private Guid EntityIdentifier { get; set; }
     }
 }

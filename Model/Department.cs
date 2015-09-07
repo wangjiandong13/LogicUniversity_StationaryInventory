@@ -44,28 +44,28 @@ namespace Model
         [DataMember]
         public Nullable<int> Fax { get; set; }
     
-         
+        [DataMember]
         public CollectionPoint CollectionPoint { get; set; }
-         
+        [DataMember]
         public ICollection<Delegate> Delegate { get; set; }
-         
+        [DataMember]
         public Employee Employee { get; set; }
-         
+        [DataMember]
         public Employee Employee1 { get; set; }
-         
+        [DataMember]
         public Employee Employee2 { get; set; }
-         
+        [DataMember]
         public ICollection<Disbursement> Disbursement { get; set; }
-         
+        [DataMember]
         public ICollection<Employee> Employee3 { get; set; }
-         
+        [DataMember]
         public ICollection<Requisition> Requisition { get; set; }
     
-         
+        [DataMember]
         public TrackingState TrackingState { get; set; }
-         
+        [DataMember]
         public ICollection<string> ModifiedProperties { get; set; }
-         
+        [JsonProperty, DataMember]
         private Guid EntityIdentifier { get; set; }
     }
 }

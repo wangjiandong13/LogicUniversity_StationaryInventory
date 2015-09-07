@@ -211,28 +211,6 @@ namespace BusinessLogic
             List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
             return reqList;
         }
-
-
-        /// <summary>
-        /// GetReqDetailByRetrieval
-        /// </summary>
-        /// <param name="RetID">Requisition ID</param>
-        /// <returns></returns>
-        //public List<RequisitionDetail> getReqDetailByRetrieval(string RetID)
-        //{
-        //    List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
-
-        //    List<RequisitionDetail> result = new List<RequisitionDetail>();
-        //    foreach (Requisition req in reqList)
-        //    {
-        //        RequisitionDetail reqDetail = ctx.RequisitionDetail.Where(x => x.ReqID == req.ReqID).FirstOrDefault();
-        //        result.Add(reqDetail);
-        //    }
-
-        //    //how to collate the items and respective quantity
-
-        //    return result;
-        //}
-
+        
     }
 }

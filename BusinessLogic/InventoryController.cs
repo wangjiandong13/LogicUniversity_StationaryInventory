@@ -26,6 +26,26 @@ namespace BusinessLogic
             return item.ToList();
         }
 
+        public List<Model.Item> getFirst20Items()
+        {
+            var items = (from c in ctx.Item
+                         orderby c.ItemID ascending
+                         select c).Take(20);
+
+            return items.ToList();
+        }
+
+        public List<Model.Item> get20Items(string count) 
+        {
+            
+            var items = (from c in ctx.Item 
+                         orderby c.ItemID ascending
+                         select c).Skip(20*Convert.ToInt32(count)).Take(20);
+
+            return items.ToList();
+        }
+
+         
         /// <summary>
         /// get item details (UI 4.7.3)
         /// </summary>

@@ -1,251 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="LogicUniversityEntitie" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="StationeryInventory_Team_05Entities" annotation:LazyLoadingEnabled="true">
-    <FunctionImport Name="sp_alterdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_creatediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_dropdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(LogicUniversityEntitie.sp_helpdiagramdefinition_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(LogicUniversityEntitie.sp_helpdiagrams_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_renamediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="new_diagramname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="AdjustmentDetail" EntityType="LogicUniversityEntitie.AdjustmentDetail" />
-    <EntitySet Name="AdjustmentVoucher" EntityType="LogicUniversityEntitie.AdjustmentVoucher" />
-    <EntitySet Name="CartItems" EntityType="LogicUniversityEntitie.CartItems" />
-    <EntitySet Name="CollectionPoint" EntityType="LogicUniversityEntitie.CollectionPoint" />
-    <EntitySet Name="Delegate" EntityType="LogicUniversityEntitie.Delegate" />
-    <EntitySet Name="Department" EntityType="LogicUniversityEntitie.Department" />
-    <EntitySet Name="Disbursement" EntityType="LogicUniversityEntitie.Disbursement" />
-    <EntitySet Name="DisbursementDetail" EntityType="LogicUniversityEntitie.DisbursementDetail" />
-    <EntitySet Name="Employee" EntityType="LogicUniversityEntitie.Employee" />
-    <EntitySet Name="Item" EntityType="LogicUniversityEntitie.Item" />
-    <EntitySet Name="ItemCategory" EntityType="LogicUniversityEntitie.ItemCategory" />
-    <EntitySet Name="ItemPrice" EntityType="LogicUniversityEntitie.ItemPrice" />
-    <EntitySet Name="MobileNotification" EntityType="LogicUniversityEntitie.MobileNotification" />
-    <EntitySet Name="Notification" EntityType="LogicUniversityEntitie.Notification" />
-    <EntitySet Name="Priority" EntityType="LogicUniversityEntitie.Priority" />
-    <EntitySet Name="PurchaseOrder" EntityType="LogicUniversityEntitie.PurchaseOrder" />
-    <EntitySet Name="PurchaseOrderDetail" EntityType="LogicUniversityEntitie.PurchaseOrderDetail" />
-    <EntitySet Name="Report" EntityType="LogicUniversityEntitie.Report" />
-    <EntitySet Name="Requisition" EntityType="LogicUniversityEntitie.Requisition" />
-    <EntitySet Name="RequisitionDetail" EntityType="LogicUniversityEntitie.RequisitionDetail" />
-    <EntitySet Name="Retrieval" EntityType="LogicUniversityEntitie.Retrieval" />
-    <EntitySet Name="RetrievalDetail" EntityType="LogicUniversityEntitie.RetrievalDetail" />
-    <EntitySet Name="Role" EntityType="LogicUniversityEntitie.Role" />
-    <EntitySet Name="Status" EntityType="LogicUniversityEntitie.Status" />
-    <EntitySet Name="StockCard" EntityType="LogicUniversityEntitie.StockCard" />
-    <EntitySet Name="Supplier" EntityType="LogicUniversityEntitie.Supplier" />
-    <EntitySet Name="sysdiagrams" EntityType="LogicUniversityEntitie.sysdiagrams" />
-    <AssociationSet Name="FK_AdjustmentDetail_AdjustmentVoucher" Association="LogicUniversityEntitie.FK_AdjustmentDetail_AdjustmentVoucher">
-      <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
-      <End Role="AdjustmentDetail" EntitySet="AdjustmentDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AdjustmentDetail_Item" Association="LogicUniversityEntitie.FK_AdjustmentDetail_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="AdjustmentDetail" EntitySet="AdjustmentDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AdjustmentVoucher_Employee" Association="LogicUniversityEntitie.FK_AdjustmentVoucher_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AdjustmentVoucher_Employee1" Association="LogicUniversityEntitie.FK_AdjustmentVoucher_Employee1">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CartItems_Employee" Association="LogicUniversityEntitie.FK_CartItems_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="CartItems" EntitySet="CartItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CartItems_Item" Association="LogicUniversityEntitie.FK_CartItems_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="CartItems" EntitySet="CartItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Department_CollectionPoint" Association="LogicUniversityEntitie.FK_Department_CollectionPoint">
-      <End Role="CollectionPoint" EntitySet="CollectionPoint" />
-      <End Role="Department" EntitySet="Department" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Disbursement_CollectionPoint" Association="LogicUniversityEntitie.FK_Disbursement_CollectionPoint">
-      <End Role="CollectionPoint" EntitySet="CollectionPoint" />
-      <End Role="Disbursement" EntitySet="Disbursement" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Delegate_Department" Association="LogicUniversityEntitie.FK_Delegate_Department">
-      <End Role="Department" EntitySet="Department" />
-      <End Role="Delegate" EntitySet="Delegate" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Delegate_Employee" Association="LogicUniversityEntitie.FK_Delegate_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Delegate" EntitySet="Delegate" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Department_Employee" Association="LogicUniversityEntitie.FK_Department_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Department" EntitySet="Department" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Department_Employee1" Association="LogicUniversityEntitie.FK_Department_Employee1">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Department" EntitySet="Department" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Department_Employee2" Association="LogicUniversityEntitie.FK_Department_Employee2">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Department" EntitySet="Department" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Disbursement_Department" Association="LogicUniversityEntitie.FK_Disbursement_Department">
-      <End Role="Department" EntitySet="Department" />
-      <End Role="Disbursement" EntitySet="Disbursement" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Employee_Department" Association="LogicUniversityEntitie.FK_Employee_Department">
-      <End Role="Department" EntitySet="Department" />
-      <End Role="Employee" EntitySet="Employee" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Requisition_Department" Association="LogicUniversityEntitie.FK_Requisition_Department">
-      <End Role="Department" EntitySet="Department" />
-      <End Role="Requisition" EntitySet="Requisition" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Disbursement_Employee" Association="LogicUniversityEntitie.FK_Disbursement_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Disbursement" EntitySet="Disbursement" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Disbursement_Employee1" Association="LogicUniversityEntitie.FK_Disbursement_Employee1">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Disbursement" EntitySet="Disbursement" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DisbursementDetail_Disbursement" Association="LogicUniversityEntitie.FK_DisbursementDetail_Disbursement">
-      <End Role="Disbursement" EntitySet="Disbursement" />
-      <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Requisition_Disbursement" Association="LogicUniversityEntitie.FK_Requisition_Disbursement">
-      <End Role="Disbursement" EntitySet="Disbursement" />
-      <End Role="Requisition" EntitySet="Requisition" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DisbursementDetail_Item" Association="LogicUniversityEntitie.FK_DisbursementDetail_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Employee_Role" Association="LogicUniversityEntitie.FK_Employee_Role">
-      <End Role="Role" EntitySet="Role" />
-      <End Role="Employee" EntitySet="Employee" />
-    </AssociationSet>
-    <AssociationSet Name="FK_MobileNotification_Employee" Association="LogicUniversityEntitie.FK_MobileNotification_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="MobileNotification" EntitySet="MobileNotification" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Notification_Employee" Association="LogicUniversityEntitie.FK_Notification_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Notification" EntitySet="Notification" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PurchaseOrder_Employee" Association="LogicUniversityEntitie.FK_PurchaseOrder_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Report_Employee" Association="LogicUniversityEntitie.FK_Report_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Report" EntitySet="Report" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Requisition_Employee" Association="LogicUniversityEntitie.FK_Requisition_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Requisition" EntitySet="Requisition" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Requisition_Employee1" Association="LogicUniversityEntitie.FK_Requisition_Employee1">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Requisition" EntitySet="Requisition" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Requisition_Employee2" Association="LogicUniversityEntitie.FK_Requisition_Employee2">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Requisition" EntitySet="Requisition" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Retrieval_Employee" Association="LogicUniversityEntitie.FK_Retrieval_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Retrieval" EntitySet="Retrieval" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Item_ItemCategory" Association="LogicUniversityEntitie.FK_Item_ItemCategory">
-      <End Role="ItemCategory" EntitySet="ItemCategory" />
-      <End Role="Item" EntitySet="Item" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ItemPrice_Item" Association="LogicUniversityEntitie.FK_ItemPrice_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="ItemPrice" EntitySet="ItemPrice" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PurchaseOrderDetail_Item" Association="LogicUniversityEntitie.FK_PurchaseOrderDetail_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RequisitionDetail_Item" Association="LogicUniversityEntitie.FK_RequisitionDetail_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="RequisitionDetail" EntitySet="RequisitionDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RetrievalDetail_Item" Association="LogicUniversityEntitie.FK_RetrievalDetail_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="RetrievalDetail" EntitySet="RetrievalDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StockCard_Item" Association="LogicUniversityEntitie.FK_StockCard_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="StockCard" EntitySet="StockCard" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ItemPrice_Supplier" Association="LogicUniversityEntitie.FK_ItemPrice_Supplier">
-      <End Role="Supplier" EntitySet="Supplier" />
-      <End Role="ItemPrice" EntitySet="ItemPrice" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Requisition_Priority" Association="LogicUniversityEntitie.FK_Requisition_Priority">
-      <End Role="Priority" EntitySet="Priority" />
-      <End Role="Requisition" EntitySet="Requisition" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="LogicUniversityEntitie.FK_PurchaseOrder_Supplier">
-      <End Role="Supplier" EntitySet="Supplier" />
-      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PurchaseOrderDetail_PurchaseOrder" Association="LogicUniversityEntitie.FK_PurchaseOrderDetail_PurchaseOrder">
-      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
-      <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Requisition_Retrieval" Association="LogicUniversityEntitie.FK_Requisition_Retrieval">
-      <End Role="Retrieval" EntitySet="Retrieval" />
-      <End Role="Requisition" EntitySet="Requisition" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Requisition_Status" Association="LogicUniversityEntitie.FK_Requisition_Status">
-      <End Role="Status" EntitySet="Status" />
-      <End Role="Requisition" EntitySet="Requisition" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RequisitionDetail_Requisition" Association="LogicUniversityEntitie.FK_RequisitionDetail_Requisition">
-      <End Role="Requisition" EntitySet="Requisition" />
-      <End Role="RequisitionDetail" EntitySet="RequisitionDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RetrievalDetail_Retrieval" Association="LogicUniversityEntitie.FK_RetrievalDetail_Retrieval">
-      <End Role="Retrieval" EntitySet="Retrieval" />
-      <End Role="RetrievalDetail" EntitySet="RetrievalDetail" />
-    </AssociationSet>
-  </EntityContainer>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
-  </ComplexType>
+<Schema Namespace="StationeryInventory_Team_05Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="AdjustmentDetail">
     <Key>
       <PropertyRef Name="AdjSN" />
@@ -257,22 +11,22 @@
     <Property Name="Price" Type="Double" />
     <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AdjustmentVoucher" Relationship="LogicUniversityEntitie.FK_AdjustmentDetail_AdjustmentVoucher" FromRole="AdjustmentDetail" ToRole="AdjustmentVoucher" />
-    <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_AdjustmentDetail_Item" FromRole="AdjustmentDetail" ToRole="Item" />
+    <NavigationProperty Name="AdjustmentVoucher" Relationship="Self.FK_AdjustmentDetail_AdjustmentVoucher" FromRole="AdjustmentDetail" ToRole="AdjustmentVoucher" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_AdjustmentDetail_Item" FromRole="AdjustmentDetail" ToRole="Item" />
   </EntityType>
   <EntityType Name="AdjustmentVoucher">
     <Key>
       <PropertyRef Name="AdjID" />
     </Key>
-    <Property Name="AdjID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AdjID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Date" Type="DateTime" Precision="0" />
     <Property Name="ReportedBy" Type="Int32" />
     <Property Name="ApprovedBy" Type="Int32" />
     <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="TotalAmt" Type="Double" />
-    <NavigationProperty Name="AdjustmentDetail" Relationship="LogicUniversityEntitie.FK_AdjustmentDetail_AdjustmentVoucher" FromRole="AdjustmentVoucher" ToRole="AdjustmentDetail" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_AdjustmentVoucher_Employee" FromRole="AdjustmentVoucher" ToRole="Employee" />
-    <NavigationProperty Name="Employee1" Relationship="LogicUniversityEntitie.FK_AdjustmentVoucher_Employee1" FromRole="AdjustmentVoucher" ToRole="Employee" />
+    <NavigationProperty Name="AdjustmentDetail" Relationship="Self.FK_AdjustmentDetail_AdjustmentVoucher" FromRole="AdjustmentVoucher" ToRole="AdjustmentDetail" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_AdjustmentVoucher_Employee" FromRole="AdjustmentVoucher" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK_AdjustmentVoucher_Employee1" FromRole="AdjustmentVoucher" ToRole="Employee" />
   </EntityType>
   <EntityType Name="CartItems">
     <Key>
@@ -282,8 +36,8 @@
     <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Qty" Type="Int32" />
     <Property Name="CartItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_CartItems_Employee" FromRole="CartItems" ToRole="Employee" />
-    <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_CartItems_Item" FromRole="CartItems" ToRole="Item" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_CartItems_Employee" FromRole="CartItems" ToRole="Employee" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_CartItems_Item" FromRole="CartItems" ToRole="Item" />
   </EntityType>
   <EntityType Name="CollectionPoint">
     <Key>
@@ -294,8 +48,8 @@
     <Property Name="CPAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="CPLat" Type="Double" />
     <Property Name="CPLgt" Type="Double" />
-    <NavigationProperty Name="Department" Relationship="LogicUniversityEntitie.FK_Department_CollectionPoint" FromRole="CollectionPoint" ToRole="Department" />
-    <NavigationProperty Name="Disbursement" Relationship="LogicUniversityEntitie.FK_Disbursement_CollectionPoint" FromRole="CollectionPoint" ToRole="Disbursement" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Department_CollectionPoint" FromRole="CollectionPoint" ToRole="Department" />
+    <NavigationProperty Name="Disbursement" Relationship="Self.FK_Disbursement_CollectionPoint" FromRole="CollectionPoint" ToRole="Disbursement" />
   </EntityType>
   <EntityType Name="Delegate">
     <Key>
@@ -307,14 +61,14 @@
     <Property Name="StartDate" Type="DateTime" Precision="0" />
     <Property Name="EndDate" Type="DateTime" Precision="0" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Department" Relationship="LogicUniversityEntitie.FK_Delegate_Department" FromRole="Delegate" ToRole="Department" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Delegate_Employee" FromRole="Delegate" ToRole="Employee" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Delegate_Department" FromRole="Delegate" ToRole="Department" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Delegate_Employee" FromRole="Delegate" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
       <PropertyRef Name="DeptID" />
     </Key>
-    <Property Name="DeptID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CPID" Type="Int32" />
     <Property Name="Contact" Type="Int32" />
@@ -322,14 +76,14 @@
     <Property Name="DeptRep" Type="Int32" />
     <Property Name="Phone" Type="Int32" />
     <Property Name="Fax" Type="Int32" />
-    <NavigationProperty Name="CollectionPoint" Relationship="LogicUniversityEntitie.FK_Department_CollectionPoint" FromRole="Department" ToRole="CollectionPoint" />
-    <NavigationProperty Name="Delegate" Relationship="LogicUniversityEntitie.FK_Delegate_Department" FromRole="Department" ToRole="Delegate" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Department_Employee" FromRole="Department" ToRole="Employee" />
-    <NavigationProperty Name="Employee1" Relationship="LogicUniversityEntitie.FK_Department_Employee1" FromRole="Department" ToRole="Employee" />
-    <NavigationProperty Name="Employee2" Relationship="LogicUniversityEntitie.FK_Department_Employee2" FromRole="Department" ToRole="Employee" />
-    <NavigationProperty Name="Disbursement" Relationship="LogicUniversityEntitie.FK_Disbursement_Department" FromRole="Department" ToRole="Disbursement" />
-    <NavigationProperty Name="Employee3" Relationship="LogicUniversityEntitie.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
-    <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Department" FromRole="Department" ToRole="Requisition" />
+    <NavigationProperty Name="CollectionPoint" Relationship="Self.FK_Department_CollectionPoint" FromRole="Department" ToRole="CollectionPoint" />
+    <NavigationProperty Name="Delegate" Relationship="Self.FK_Delegate_Department" FromRole="Department" ToRole="Delegate" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Department_Employee" FromRole="Department" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK_Department_Employee1" FromRole="Department" ToRole="Employee" />
+    <NavigationProperty Name="Employee2" Relationship="Self.FK_Department_Employee2" FromRole="Department" ToRole="Employee" />
+    <NavigationProperty Name="Disbursement" Relationship="Self.FK_Disbursement_Department" FromRole="Department" ToRole="Disbursement" />
+    <NavigationProperty Name="Employee3" Relationship="Self.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
+    <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Department" FromRole="Department" ToRole="Requisition" />
   </EntityType>
   <EntityType Name="Disbursement">
     <Key>
@@ -342,12 +96,12 @@
     <Property Name="CPID" Type="Int32" />
     <Property Name="ReceivedBy" Type="Int32" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="CollectionPoint" Relationship="LogicUniversityEntitie.FK_Disbursement_CollectionPoint" FromRole="Disbursement" ToRole="CollectionPoint" />
-    <NavigationProperty Name="Department" Relationship="LogicUniversityEntitie.FK_Disbursement_Department" FromRole="Disbursement" ToRole="Department" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Disbursement_Employee" FromRole="Disbursement" ToRole="Employee" />
-    <NavigationProperty Name="Employee1" Relationship="LogicUniversityEntitie.FK_Disbursement_Employee1" FromRole="Disbursement" ToRole="Employee" />
-    <NavigationProperty Name="DisbursementDetail" Relationship="LogicUniversityEntitie.FK_DisbursementDetail_Disbursement" FromRole="Disbursement" ToRole="DisbursementDetail" />
-    <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Disbursement" FromRole="Disbursement" ToRole="Requisition" />
+    <NavigationProperty Name="CollectionPoint" Relationship="Self.FK_Disbursement_CollectionPoint" FromRole="Disbursement" ToRole="CollectionPoint" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Disbursement_Department" FromRole="Disbursement" ToRole="Department" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Disbursement_Employee" FromRole="Disbursement" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK_Disbursement_Employee1" FromRole="Disbursement" ToRole="Employee" />
+    <NavigationProperty Name="DisbursementDetail" Relationship="Self.FK_DisbursementDetail_Disbursement" FromRole="Disbursement" ToRole="DisbursementDetail" />
+    <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Disbursement" FromRole="Disbursement" ToRole="Requisition" />
   </EntityType>
   <EntityType Name="DisbursementDetail">
     <Key>
@@ -357,8 +111,8 @@
     <Property Name="DisID" Type="Int32" />
     <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Qty" Type="Int32" />
-    <NavigationProperty Name="Disbursement" Relationship="LogicUniversityEntitie.FK_DisbursementDetail_Disbursement" FromRole="DisbursementDetail" ToRole="Disbursement" />
-    <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_DisbursementDetail_Item" FromRole="DisbursementDetail" ToRole="Item" />
+    <NavigationProperty Name="Disbursement" Relationship="Self.FK_DisbursementDetail_Disbursement" FromRole="DisbursementDetail" ToRole="Disbursement" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_DisbursementDetail_Item" FromRole="DisbursementDetail" ToRole="Item" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -371,31 +125,31 @@
     <Property Name="Phone" Type="Int32" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AdjustmentVoucher" Relationship="LogicUniversityEntitie.FK_AdjustmentVoucher_Employee" FromRole="Employee" ToRole="AdjustmentVoucher" />
-    <NavigationProperty Name="AdjustmentVoucher1" Relationship="LogicUniversityEntitie.FK_AdjustmentVoucher_Employee1" FromRole="Employee" ToRole="AdjustmentVoucher" />
-    <NavigationProperty Name="CartItems" Relationship="LogicUniversityEntitie.FK_CartItems_Employee" FromRole="Employee" ToRole="CartItems" />
-    <NavigationProperty Name="Delegate" Relationship="LogicUniversityEntitie.FK_Delegate_Employee" FromRole="Employee" ToRole="Delegate" />
-    <NavigationProperty Name="Department" Relationship="LogicUniversityEntitie.FK_Department_Employee" FromRole="Employee" ToRole="Department" />
-    <NavigationProperty Name="Department1" Relationship="LogicUniversityEntitie.FK_Department_Employee1" FromRole="Employee" ToRole="Department" />
-    <NavigationProperty Name="Department2" Relationship="LogicUniversityEntitie.FK_Department_Employee2" FromRole="Employee" ToRole="Department" />
-    <NavigationProperty Name="Department3" Relationship="LogicUniversityEntitie.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
-    <NavigationProperty Name="Disbursement" Relationship="LogicUniversityEntitie.FK_Disbursement_Employee" FromRole="Employee" ToRole="Disbursement" />
-    <NavigationProperty Name="Disbursement1" Relationship="LogicUniversityEntitie.FK_Disbursement_Employee1" FromRole="Employee" ToRole="Disbursement" />
-    <NavigationProperty Name="Role" Relationship="LogicUniversityEntitie.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
-    <NavigationProperty Name="MobileNotification" Relationship="LogicUniversityEntitie.FK_MobileNotification_Employee" FromRole="Employee" ToRole="MobileNotification" />
-    <NavigationProperty Name="Notification" Relationship="LogicUniversityEntitie.FK_Notification_Employee" FromRole="Employee" ToRole="Notification" />
-    <NavigationProperty Name="PurchaseOrder" Relationship="LogicUniversityEntitie.FK_PurchaseOrder_Employee" FromRole="Employee" ToRole="PurchaseOrder" />
-    <NavigationProperty Name="Report" Relationship="LogicUniversityEntitie.FK_Report_Employee" FromRole="Employee" ToRole="Report" />
-    <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Employee" FromRole="Employee" ToRole="Requisition" />
-    <NavigationProperty Name="Requisition1" Relationship="LogicUniversityEntitie.FK_Requisition_Employee1" FromRole="Employee" ToRole="Requisition" />
-    <NavigationProperty Name="Requisition2" Relationship="LogicUniversityEntitie.FK_Requisition_Employee2" FromRole="Employee" ToRole="Requisition" />
-    <NavigationProperty Name="Retrieval" Relationship="LogicUniversityEntitie.FK_Retrieval_Employee" FromRole="Employee" ToRole="Retrieval" />
+    <NavigationProperty Name="AdjustmentVoucher" Relationship="Self.FK_AdjustmentVoucher_Employee" FromRole="Employee" ToRole="AdjustmentVoucher" />
+    <NavigationProperty Name="AdjustmentVoucher1" Relationship="Self.FK_AdjustmentVoucher_Employee1" FromRole="Employee" ToRole="AdjustmentVoucher" />
+    <NavigationProperty Name="CartItems" Relationship="Self.FK_CartItems_Employee" FromRole="Employee" ToRole="CartItems" />
+    <NavigationProperty Name="Delegate" Relationship="Self.FK_Delegate_Employee" FromRole="Employee" ToRole="Delegate" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Department_Employee" FromRole="Employee" ToRole="Department" />
+    <NavigationProperty Name="Department1" Relationship="Self.FK_Department_Employee1" FromRole="Employee" ToRole="Department" />
+    <NavigationProperty Name="Department2" Relationship="Self.FK_Department_Employee2" FromRole="Employee" ToRole="Department" />
+    <NavigationProperty Name="Department3" Relationship="Self.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+    <NavigationProperty Name="Disbursement" Relationship="Self.FK_Disbursement_Employee" FromRole="Employee" ToRole="Disbursement" />
+    <NavigationProperty Name="Disbursement1" Relationship="Self.FK_Disbursement_Employee1" FromRole="Employee" ToRole="Disbursement" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+    <NavigationProperty Name="MobileNotification" Relationship="Self.FK_MobileNotification_Employee" FromRole="Employee" ToRole="MobileNotification" />
+    <NavigationProperty Name="Notification" Relationship="Self.FK_Notification_Employee" FromRole="Employee" ToRole="Notification" />
+    <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK_PurchaseOrder_Employee" FromRole="Employee" ToRole="PurchaseOrder" />
+    <NavigationProperty Name="Report" Relationship="Self.FK_Report_Employee" FromRole="Employee" ToRole="Report" />
+    <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Employee" FromRole="Employee" ToRole="Requisition" />
+    <NavigationProperty Name="Requisition1" Relationship="Self.FK_Requisition_Employee1" FromRole="Employee" ToRole="Requisition" />
+    <NavigationProperty Name="Requisition2" Relationship="Self.FK_Requisition_Employee2" FromRole="Employee" ToRole="Requisition" />
+    <NavigationProperty Name="Retrieval" Relationship="Self.FK_Retrieval_Employee" FromRole="Employee" ToRole="Retrieval" />
   </EntityType>
   <EntityType Name="Item">
     <Key>
       <PropertyRef Name="ItemID" />
     </Key>
-    <Property Name="ItemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ItemName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
     <Property Name="ItemCatID" Type="Int32" />
     <Property Name="RoLvl" Type="Int32" />
@@ -403,15 +157,15 @@
     <Property Name="UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Stock" Type="Int32" />
     <Property Name="Bin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AdjustmentDetail" Relationship="LogicUniversityEntitie.FK_AdjustmentDetail_Item" FromRole="Item" ToRole="AdjustmentDetail" />
-    <NavigationProperty Name="CartItems" Relationship="LogicUniversityEntitie.FK_CartItems_Item" FromRole="Item" ToRole="CartItems" />
-    <NavigationProperty Name="DisbursementDetail" Relationship="LogicUniversityEntitie.FK_DisbursementDetail_Item" FromRole="Item" ToRole="DisbursementDetail" />
-    <NavigationProperty Name="ItemCategory" Relationship="LogicUniversityEntitie.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
-    <NavigationProperty Name="ItemPrice" Relationship="LogicUniversityEntitie.FK_ItemPrice_Item" FromRole="Item" ToRole="ItemPrice" />
-    <NavigationProperty Name="PurchaseOrderDetail" Relationship="LogicUniversityEntitie.FK_PurchaseOrderDetail_Item" FromRole="Item" ToRole="PurchaseOrderDetail" />
-    <NavigationProperty Name="RequisitionDetail" Relationship="LogicUniversityEntitie.FK_RequisitionDetail_Item" FromRole="Item" ToRole="RequisitionDetail" />
-    <NavigationProperty Name="RetrievalDetail" Relationship="LogicUniversityEntitie.FK_RetrievalDetail_Item" FromRole="Item" ToRole="RetrievalDetail" />
-    <NavigationProperty Name="StockCard" Relationship="LogicUniversityEntitie.FK_StockCard_Item" FromRole="Item" ToRole="StockCard" />
+    <NavigationProperty Name="AdjustmentDetail" Relationship="Self.FK_AdjustmentDetail_Item" FromRole="Item" ToRole="AdjustmentDetail" />
+    <NavigationProperty Name="CartItems" Relationship="Self.FK_CartItems_Item" FromRole="Item" ToRole="CartItems" />
+    <NavigationProperty Name="DisbursementDetail" Relationship="Self.FK_DisbursementDetail_Item" FromRole="Item" ToRole="DisbursementDetail" />
+    <NavigationProperty Name="ItemCategory" Relationship="Self.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
+    <NavigationProperty Name="ItemPrice" Relationship="Self.FK_ItemPrice_Item" FromRole="Item" ToRole="ItemPrice" />
+    <NavigationProperty Name="PurchaseOrderDetail" Relationship="Self.FK_PurchaseOrderDetail_Item" FromRole="Item" ToRole="PurchaseOrderDetail" />
+    <NavigationProperty Name="RequisitionDetail" Relationship="Self.FK_RequisitionDetail_Item" FromRole="Item" ToRole="RequisitionDetail" />
+    <NavigationProperty Name="RetrievalDetail" Relationship="Self.FK_RetrievalDetail_Item" FromRole="Item" ToRole="RetrievalDetail" />
+    <NavigationProperty Name="StockCard" Relationship="Self.FK_StockCard_Item" FromRole="Item" ToRole="StockCard" />
   </EntityType>
   <EntityType Name="ItemCategory">
     <Key>
@@ -419,7 +173,7 @@
     </Key>
     <Property Name="ItemCatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ItemDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_Item_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_Item_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
   </EntityType>
   <EntityType Name="ItemPrice">
     <Key>
@@ -429,8 +183,8 @@
     <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SupplierID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Double" />
-    <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_ItemPrice_Item" FromRole="ItemPrice" ToRole="Item" />
-    <NavigationProperty Name="Supplier" Relationship="LogicUniversityEntitie.FK_ItemPrice_Supplier" FromRole="ItemPrice" ToRole="Supplier" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_ItemPrice_Item" FromRole="ItemPrice" ToRole="Item" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_ItemPrice_Supplier" FromRole="ItemPrice" ToRole="Supplier" />
   </EntityType>
   <EntityType Name="MobileNotification">
     <Key>
@@ -439,7 +193,7 @@
     <Property Name="MobileNoti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="EmpID" Type="Int32" />
     <Property Name="RegID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_MobileNotification_Employee" FromRole="MobileNotification" ToRole="Employee" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_MobileNotification_Employee" FromRole="MobileNotification" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Notification">
     <Key>
@@ -451,7 +205,7 @@
     <Property Name="EmpID" Type="Int32" />
     <Property Name="DateTime" Type="DateTime" Precision="3" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Notification_Employee" FromRole="Notification" ToRole="Employee" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Notification_Employee" FromRole="Notification" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Priority">
     <Key>
@@ -459,7 +213,7 @@
     </Key>
     <Property Name="PriorityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PriorityName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Priority" FromRole="Priority" ToRole="Requisition" />
+    <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Priority" FromRole="Priority" ToRole="Requisition" />
   </EntityType>
   <EntityType Name="PurchaseOrder">
     <Key>
@@ -472,9 +226,9 @@
     <Property Name="EstDate" Type="DateTime" Precision="0" />
     <Property Name="TotalAmt" Type="Double" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_PurchaseOrder_Employee" FromRole="PurchaseOrder" ToRole="Employee" />
-    <NavigationProperty Name="Supplier" Relationship="LogicUniversityEntitie.FK_PurchaseOrder_Supplier" FromRole="PurchaseOrder" ToRole="Supplier" />
-    <NavigationProperty Name="PurchaseOrderDetail" Relationship="LogicUniversityEntitie.FK_PurchaseOrderDetail_PurchaseOrder" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_PurchaseOrder_Employee" FromRole="PurchaseOrder" ToRole="Employee" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="PurchaseOrder" ToRole="Supplier" />
+    <NavigationProperty Name="PurchaseOrderDetail" Relationship="Self.FK_PurchaseOrderDetail_PurchaseOrder" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
   </EntityType>
   <EntityType Name="PurchaseOrderDetail">
     <Key>
@@ -487,17 +241,17 @@
     <Property Name="ActualQty" Type="Int32" />
     <Property Name="Price" Type="Double" />
     <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_PurchaseOrderDetail_Item" FromRole="PurchaseOrderDetail" ToRole="Item" />
-    <NavigationProperty Name="PurchaseOrder" Relationship="LogicUniversityEntitie.FK_PurchaseOrderDetail_PurchaseOrder" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_PurchaseOrderDetail_Item" FromRole="PurchaseOrderDetail" ToRole="Item" />
+    <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK_PurchaseOrderDetail_PurchaseOrder" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
   </EntityType>
   <EntityType Name="Report">
     <Key>
       <PropertyRef Name="ReportID" />
     </Key>
-    <Property Name="ReportID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReportID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ReportContent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="EmpID" Type="Int32" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Report_Employee" FromRole="Report" ToRole="Employee" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Report_Employee" FromRole="Report" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Requisition">
     <Key>
@@ -515,28 +269,27 @@
     <Property Name="HandledBy" Type="Int32" />
     <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="ReceivedBy" Type="Int32" />
-    <NavigationProperty Name="Department" Relationship="LogicUniversityEntitie.FK_Requisition_Department" FromRole="Requisition" ToRole="Department" />
-    <NavigationProperty Name="Disbursement" Relationship="LogicUniversityEntitie.FK_Requisition_Disbursement" FromRole="Requisition" ToRole="Disbursement" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Requisition_Employee" FromRole="Requisition" ToRole="Employee" />
-    <NavigationProperty Name="Employee1" Relationship="LogicUniversityEntitie.FK_Requisition_Employee1" FromRole="Requisition" ToRole="Employee" />
-    <NavigationProperty Name="Employee2" Relationship="LogicUniversityEntitie.FK_Requisition_Employee2" FromRole="Requisition" ToRole="Employee" />
-    <NavigationProperty Name="Priority" Relationship="LogicUniversityEntitie.FK_Requisition_Priority" FromRole="Requisition" ToRole="Priority" />
-    <NavigationProperty Name="Retrieval" Relationship="LogicUniversityEntitie.FK_Requisition_Retrieval" FromRole="Requisition" ToRole="Retrieval" />
-    <NavigationProperty Name="Status" Relationship="LogicUniversityEntitie.FK_Requisition_Status" FromRole="Requisition" ToRole="Status" />
-    <NavigationProperty Name="RequisitionDetail" Relationship="LogicUniversityEntitie.FK_RequisitionDetail_Requisition" FromRole="Requisition" ToRole="RequisitionDetail" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Requisition_Department" FromRole="Requisition" ToRole="Department" />
+    <NavigationProperty Name="Disbursement" Relationship="Self.FK_Requisition_Disbursement" FromRole="Requisition" ToRole="Disbursement" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Requisition_Employee" FromRole="Requisition" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK_Requisition_Employee1" FromRole="Requisition" ToRole="Employee" />
+    <NavigationProperty Name="Employee2" Relationship="Self.FK_Requisition_Employee2" FromRole="Requisition" ToRole="Employee" />
+    <NavigationProperty Name="Priority" Relationship="Self.FK_Requisition_Priority" FromRole="Requisition" ToRole="Priority" />
+    <NavigationProperty Name="Retrieval" Relationship="Self.FK_Requisition_Retrieval" FromRole="Requisition" ToRole="Retrieval" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_Requisition_Status" FromRole="Requisition" ToRole="Status" />
+    <NavigationProperty Name="RequisitionDetail" Relationship="Self.FK_RequisitionDetail_Requisition" FromRole="Requisition" ToRole="RequisitionDetail" />
   </EntityType>
   <EntityType Name="RequisitionDetail">
     <Key>
       <PropertyRef Name="ReqSN" />
     </Key>
-    <Property Name="ReqSN" Type="Int32" Nullable="false" />
+    <Property Name="ReqSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ReqID" Type="Int32" />
     <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RequestQty" Type="Int32" />
     <Property Name="IssueQty" Type="Int32" />
-    <Property Name="ItemStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_RequisitionDetail_Item" FromRole="RequisitionDetail" ToRole="Item" />
-    <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_RequisitionDetail_Requisition" FromRole="RequisitionDetail" ToRole="Requisition" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_RequisitionDetail_Item" FromRole="RequisitionDetail" ToRole="Item" />
+    <NavigationProperty Name="Requisition" Relationship="Self.FK_RequisitionDetail_Requisition" FromRole="RequisitionDetail" ToRole="Requisition" />
   </EntityType>
   <EntityType Name="Retrieval">
     <Key>
@@ -546,9 +299,9 @@
     <Property Name="Date" Type="DateTime" Precision="0" />
     <Property Name="EmpID" Type="Int32" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Retrieval_Employee" FromRole="Retrieval" ToRole="Employee" />
-    <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Retrieval" FromRole="Retrieval" ToRole="Requisition" />
-    <NavigationProperty Name="RetrievalDetail" Relationship="LogicUniversityEntitie.FK_RetrievalDetail_Retrieval" FromRole="Retrieval" ToRole="RetrievalDetail" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Retrieval_Employee" FromRole="Retrieval" ToRole="Employee" />
+    <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Retrieval" FromRole="Retrieval" ToRole="Requisition" />
+    <NavigationProperty Name="RetrievalDetail" Relationship="Self.FK_RetrievalDetail_Retrieval" FromRole="Retrieval" ToRole="RetrievalDetail" />
   </EntityType>
   <EntityType Name="RetrievalDetail">
     <Key>
@@ -559,16 +312,16 @@
     <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RequestQty" Type="Int32" />
     <Property Name="ActualQty" Type="Int32" />
-    <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_RetrievalDetail_Item" FromRole="RetrievalDetail" ToRole="Item" />
-    <NavigationProperty Name="Retrieval" Relationship="LogicUniversityEntitie.FK_RetrievalDetail_Retrieval" FromRole="RetrievalDetail" ToRole="Retrieval" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_RetrievalDetail_Item" FromRole="RetrievalDetail" ToRole="Item" />
+    <NavigationProperty Name="Retrieval" Relationship="Self.FK_RetrievalDetail_Retrieval" FromRole="RetrievalDetail" ToRole="Retrieval" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="RoleID" />
     </Key>
-    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Employee" Relationship="LogicUniversityEntitie.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
@@ -576,7 +329,7 @@
     </Key>
     <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Requisition" Relationship="LogicUniversityEntitie.FK_Requisition_Status" FromRole="Status" ToRole="Requisition" />
+    <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Status" FromRole="Status" ToRole="Requisition" />
   </EntityType>
   <EntityType Name="StockCard">
     <Key>
@@ -588,13 +341,13 @@
     <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Qty" Type="Int32" />
     <Property Name="Balance" Type="Int32" />
-    <NavigationProperty Name="Item" Relationship="LogicUniversityEntitie.FK_StockCard_Item" FromRole="StockCard" ToRole="Item" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_StockCard_Item" FromRole="StockCard" ToRole="Item" />
   </EntityType>
   <EntityType Name="Supplier">
     <Key>
       <PropertyRef Name="SupplierID" />
     </Key>
-    <Property Name="SupplierID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -602,22 +355,22 @@
     <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Fax" Type="Int32" />
     <Property Name="Rank" Type="Int32" />
-    <NavigationProperty Name="ItemPrice" Relationship="LogicUniversityEntitie.FK_ItemPrice_Supplier" FromRole="Supplier" ToRole="ItemPrice" />
-    <NavigationProperty Name="PurchaseOrder" Relationship="LogicUniversityEntitie.FK_PurchaseOrder_Supplier" FromRole="Supplier" ToRole="PurchaseOrder" />
+    <NavigationProperty Name="ItemPrice" Relationship="Self.FK_ItemPrice_Supplier" FromRole="Supplier" ToRole="ItemPrice" />
+    <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="Supplier" ToRole="PurchaseOrder" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="principal_id" Type="Int32" Nullable="false" />
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_AdjustmentDetail_AdjustmentVoucher">
-    <End Type="LogicUniversityEntitie.AdjustmentVoucher" Role="AdjustmentVoucher" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.AdjustmentDetail" Role="AdjustmentDetail" Multiplicity="*" />
+    <End Role="AdjustmentVoucher" Type="Self.AdjustmentVoucher" Multiplicity="0..1" />
+    <End Role="AdjustmentDetail" Type="Self.AdjustmentDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AdjustmentVoucher">
         <PropertyRef Name="AdjID" />
@@ -628,8 +381,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_AdjustmentDetail_Item">
-    <End Type="LogicUniversityEntitie.Item" Role="Item" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.AdjustmentDetail" Role="AdjustmentDetail" Multiplicity="*" />
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="AdjustmentDetail" Type="Self.AdjustmentDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="ItemID" />
@@ -640,8 +393,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_AdjustmentVoucher_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.AdjustmentVoucher" Role="AdjustmentVoucher" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="AdjustmentVoucher" Type="Self.AdjustmentVoucher" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -652,8 +405,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_AdjustmentVoucher_Employee1">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.AdjustmentVoucher" Role="AdjustmentVoucher" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="AdjustmentVoucher" Type="Self.AdjustmentVoucher" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -664,8 +417,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CartItems_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="1" />
-    <End Type="LogicUniversityEntitie.CartItems" Role="CartItems" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="CartItems" Type="Self.CartItems" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -676,8 +429,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CartItems_Item">
-    <End Type="LogicUniversityEntitie.Item" Role="Item" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.CartItems" Role="CartItems" Multiplicity="*" />
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="CartItems" Type="Self.CartItems" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="ItemID" />
@@ -688,8 +441,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Department_CollectionPoint">
-    <End Type="LogicUniversityEntitie.CollectionPoint" Role="CollectionPoint" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="*" />
+    <End Role="CollectionPoint" Type="Self.CollectionPoint" Multiplicity="0..1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CollectionPoint">
         <PropertyRef Name="CPID" />
@@ -700,8 +453,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Disbursement_CollectionPoint">
-    <End Type="LogicUniversityEntitie.CollectionPoint" Role="CollectionPoint" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="*" />
+    <End Role="CollectionPoint" Type="Self.CollectionPoint" Multiplicity="0..1" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CollectionPoint">
         <PropertyRef Name="CPID" />
@@ -712,8 +465,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Delegate_Department">
-    <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Delegate" Role="Delegate" Multiplicity="*" />
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Delegate" Type="Self.Delegate" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Department">
         <PropertyRef Name="DeptID" />
@@ -724,8 +477,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Delegate_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Delegate" Role="Delegate" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Delegate" Type="Self.Delegate" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -736,8 +489,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Department_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -748,8 +501,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Department_Employee1">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -760,8 +513,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Department_Employee2">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -772,8 +525,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Disbursement_Department">
-    <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="*" />
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Department">
         <PropertyRef Name="DeptID" />
@@ -784,8 +537,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Employee_Department">
-    <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="*" />
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Department">
         <PropertyRef Name="DeptID" />
@@ -796,8 +549,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Requisition_Department">
-    <End Type="LogicUniversityEntitie.Department" Role="Department" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Department">
         <PropertyRef Name="DeptID" />
@@ -808,8 +561,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Disbursement_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -820,8 +573,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Disbursement_Employee1">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -832,8 +585,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DisbursementDetail_Disbursement">
-    <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.DisbursementDetail" Role="DisbursementDetail" Multiplicity="*" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="0..1" />
+    <End Role="DisbursementDetail" Type="Self.DisbursementDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Disbursement">
         <PropertyRef Name="DisID" />
@@ -844,8 +597,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Requisition_Disbursement">
-    <End Type="LogicUniversityEntitie.Disbursement" Role="Disbursement" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+    <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Disbursement">
         <PropertyRef Name="DisID" />
@@ -856,8 +609,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DisbursementDetail_Item">
-    <End Type="LogicUniversityEntitie.Item" Role="Item" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.DisbursementDetail" Role="DisbursementDetail" Multiplicity="*" />
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="DisbursementDetail" Type="Self.DisbursementDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="ItemID" />
@@ -868,8 +621,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Employee_Role">
-    <End Type="LogicUniversityEntitie.Role" Role="Role" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="*" />
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Role">
         <PropertyRef Name="RoleID" />
@@ -880,8 +633,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_MobileNotification_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.MobileNotification" Role="MobileNotification" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="MobileNotification" Type="Self.MobileNotification" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -892,8 +645,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Notification_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Notification" Role="Notification" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -904,8 +657,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PurchaseOrder_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -916,8 +669,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Report_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Report" Role="Report" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -928,8 +681,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Requisition_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -940,8 +693,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Requisition_Employee1">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -952,8 +705,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Requisition_Employee2">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -964,8 +717,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Retrieval_Employee">
-    <End Type="LogicUniversityEntitie.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Retrieval" Role="Retrieval" Multiplicity="*" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Retrieval" Type="Self.Retrieval" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmpID" />
@@ -976,8 +729,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Item_ItemCategory">
-    <End Type="LogicUniversityEntitie.ItemCategory" Role="ItemCategory" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Item" Role="Item" Multiplicity="*" />
+    <End Role="ItemCategory" Type="Self.ItemCategory" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ItemCategory">
         <PropertyRef Name="ItemCatID" />
@@ -988,8 +741,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ItemPrice_Item">
-    <End Type="LogicUniversityEntitie.Item" Role="Item" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.ItemPrice" Role="ItemPrice" Multiplicity="*" />
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="ItemPrice" Type="Self.ItemPrice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="ItemID" />
@@ -1000,8 +753,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PurchaseOrderDetail_Item">
-    <End Type="LogicUniversityEntitie.Item" Role="Item" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="ItemID" />
@@ -1012,8 +765,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_RequisitionDetail_Item">
-    <End Type="LogicUniversityEntitie.Item" Role="Item" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.RequisitionDetail" Role="RequisitionDetail" Multiplicity="*" />
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="RequisitionDetail" Type="Self.RequisitionDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="ItemID" />
@@ -1024,8 +777,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_RetrievalDetail_Item">
-    <End Type="LogicUniversityEntitie.Item" Role="Item" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.RetrievalDetail" Role="RetrievalDetail" Multiplicity="*" />
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="RetrievalDetail" Type="Self.RetrievalDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="ItemID" />
@@ -1036,8 +789,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_StockCard_Item">
-    <End Type="LogicUniversityEntitie.Item" Role="Item" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.StockCard" Role="StockCard" Multiplicity="*" />
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="StockCard" Type="Self.StockCard" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="ItemID" />
@@ -1048,8 +801,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ItemPrice_Supplier">
-    <End Type="LogicUniversityEntitie.Supplier" Role="Supplier" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.ItemPrice" Role="ItemPrice" Multiplicity="*" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="ItemPrice" Type="Self.ItemPrice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Supplier">
         <PropertyRef Name="SupplierID" />
@@ -1060,8 +813,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Requisition_Priority">
-    <End Type="LogicUniversityEntitie.Priority" Role="Priority" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+    <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Priority">
         <PropertyRef Name="PriorityID" />
@@ -1072,8 +825,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PurchaseOrder_Supplier">
-    <End Type="LogicUniversityEntitie.Supplier" Role="Supplier" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Supplier">
         <PropertyRef Name="SupplierID" />
@@ -1084,8 +837,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PurchaseOrderDetail_PurchaseOrder">
-    <End Type="LogicUniversityEntitie.PurchaseOrder" Role="PurchaseOrder" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+    <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PurchaseOrder">
         <PropertyRef Name="PoID" />
@@ -1096,8 +849,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Requisition_Retrieval">
-    <End Type="LogicUniversityEntitie.Retrieval" Role="Retrieval" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+    <End Role="Retrieval" Type="Self.Retrieval" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Retrieval">
         <PropertyRef Name="RetID" />
@@ -1108,8 +861,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Requisition_Status">
-    <End Type="LogicUniversityEntitie.Status" Role="Status" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="*" />
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Status">
         <PropertyRef Name="StatusID" />
@@ -1120,8 +873,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_RequisitionDetail_Requisition">
-    <End Type="LogicUniversityEntitie.Requisition" Role="Requisition" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.RequisitionDetail" Role="RequisitionDetail" Multiplicity="*" />
+    <End Role="Requisition" Type="Self.Requisition" Multiplicity="0..1" />
+    <End Role="RequisitionDetail" Type="Self.RequisitionDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Requisition">
         <PropertyRef Name="ReqID" />
@@ -1132,8 +885,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_RetrievalDetail_Retrieval">
-    <End Type="LogicUniversityEntitie.Retrieval" Role="Retrieval" Multiplicity="0..1" />
-    <End Type="LogicUniversityEntitie.RetrievalDetail" Role="RetrievalDetail" Multiplicity="*" />
+    <End Role="Retrieval" Type="Self.Retrieval" Multiplicity="0..1" />
+    <End Role="RetrievalDetail" Type="Self.RetrievalDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Retrieval">
         <PropertyRef Name="RetID" />
@@ -1143,4 +896,209 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityContainer Name="StationeryInventory_Team_05Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdjustmentDetail" EntityType="Self.AdjustmentDetail" />
+    <EntitySet Name="AdjustmentVoucher" EntityType="Self.AdjustmentVoucher" />
+    <EntitySet Name="CartItems" EntityType="Self.CartItems" />
+    <EntitySet Name="CollectionPoint" EntityType="Self.CollectionPoint" />
+    <EntitySet Name="Delegate" EntityType="Self.Delegate" />
+    <EntitySet Name="Department" EntityType="Self.Department" />
+    <EntitySet Name="Disbursement" EntityType="Self.Disbursement" />
+    <EntitySet Name="DisbursementDetail" EntityType="Self.DisbursementDetail" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="Item" EntityType="Self.Item" />
+    <EntitySet Name="ItemCategory" EntityType="Self.ItemCategory" />
+    <EntitySet Name="ItemPrice" EntityType="Self.ItemPrice" />
+    <EntitySet Name="MobileNotification" EntityType="Self.MobileNotification" />
+    <EntitySet Name="Notification" EntityType="Self.Notification" />
+    <EntitySet Name="Priority" EntityType="Self.Priority" />
+    <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" />
+    <EntitySet Name="PurchaseOrderDetail" EntityType="Self.PurchaseOrderDetail" />
+    <EntitySet Name="Report" EntityType="Self.Report" />
+    <EntitySet Name="Requisition" EntityType="Self.Requisition" />
+    <EntitySet Name="RequisitionDetail" EntityType="Self.RequisitionDetail" />
+    <EntitySet Name="Retrieval" EntityType="Self.Retrieval" />
+    <EntitySet Name="RetrievalDetail" EntityType="Self.RetrievalDetail" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="StockCard" EntityType="Self.StockCard" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_AdjustmentDetail_AdjustmentVoucher" Association="Self.FK_AdjustmentDetail_AdjustmentVoucher">
+      <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
+      <End Role="AdjustmentDetail" EntitySet="AdjustmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdjustmentDetail_Item" Association="Self.FK_AdjustmentDetail_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="AdjustmentDetail" EntitySet="AdjustmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdjustmentVoucher_Employee" Association="Self.FK_AdjustmentVoucher_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdjustmentVoucher_Employee1" Association="Self.FK_AdjustmentVoucher_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CartItems_Employee" Association="Self.FK_CartItems_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CartItems" EntitySet="CartItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CartItems_Item" Association="Self.FK_CartItems_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="CartItems" EntitySet="CartItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_CollectionPoint" Association="Self.FK_Department_CollectionPoint">
+      <End Role="CollectionPoint" EntitySet="CollectionPoint" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Disbursement_CollectionPoint" Association="Self.FK_Disbursement_CollectionPoint">
+      <End Role="CollectionPoint" EntitySet="CollectionPoint" />
+      <End Role="Disbursement" EntitySet="Disbursement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Delegate_Department" Association="Self.FK_Delegate_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Delegate" EntitySet="Delegate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Delegate_Employee" Association="Self.FK_Delegate_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Delegate" EntitySet="Delegate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Employee" Association="Self.FK_Department_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Employee1" Association="Self.FK_Department_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Employee2" Association="Self.FK_Department_Employee2">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Disbursement_Department" Association="Self.FK_Disbursement_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Disbursement" EntitySet="Disbursement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Department" Association="Self.FK_Requisition_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Disbursement_Employee" Association="Self.FK_Disbursement_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Disbursement" EntitySet="Disbursement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Disbursement_Employee1" Association="Self.FK_Disbursement_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Disbursement" EntitySet="Disbursement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DisbursementDetail_Disbursement" Association="Self.FK_DisbursementDetail_Disbursement">
+      <End Role="Disbursement" EntitySet="Disbursement" />
+      <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Disbursement" Association="Self.FK_Requisition_Disbursement">
+      <End Role="Disbursement" EntitySet="Disbursement" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DisbursementDetail_Item" Association="Self.FK_DisbursementDetail_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MobileNotification_Employee" Association="Self.FK_MobileNotification_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="MobileNotification" EntitySet="MobileNotification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notification_Employee" Association="Self.FK_Notification_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Notification" EntitySet="Notification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrder_Employee" Association="Self.FK_PurchaseOrder_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Report_Employee" Association="Self.FK_Report_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Employee" Association="Self.FK_Requisition_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Employee1" Association="Self.FK_Requisition_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Employee2" Association="Self.FK_Requisition_Employee2">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Retrieval_Employee" Association="Self.FK_Retrieval_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Retrieval" EntitySet="Retrieval" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_ItemCategory" Association="Self.FK_Item_ItemCategory">
+      <End Role="ItemCategory" EntitySet="ItemCategory" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemPrice_Item" Association="Self.FK_ItemPrice_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemPrice" EntitySet="ItemPrice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrderDetail_Item" Association="Self.FK_PurchaseOrderDetail_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequisitionDetail_Item" Association="Self.FK_RequisitionDetail_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="RequisitionDetail" EntitySet="RequisitionDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RetrievalDetail_Item" Association="Self.FK_RetrievalDetail_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="RetrievalDetail" EntitySet="RetrievalDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StockCard_Item" Association="Self.FK_StockCard_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="StockCard" EntitySet="StockCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemPrice_Supplier" Association="Self.FK_ItemPrice_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="ItemPrice" EntitySet="ItemPrice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Priority" Association="Self.FK_Requisition_Priority">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="Self.FK_PurchaseOrder_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrderDetail_PurchaseOrder" Association="Self.FK_PurchaseOrderDetail_PurchaseOrder">
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+      <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Retrieval" Association="Self.FK_Requisition_Retrieval">
+      <End Role="Retrieval" EntitySet="Retrieval" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisition_Status" Association="Self.FK_Requisition_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Requisition" EntitySet="Requisition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequisitionDetail_Requisition" Association="Self.FK_RequisitionDetail_Requisition">
+      <End Role="Requisition" EntitySet="Requisition" />
+      <End Role="RequisitionDetail" EntitySet="RequisitionDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RetrievalDetail_Retrieval" Association="Self.FK_RetrievalDetail_Retrieval">
+      <End Role="Retrieval" EntitySet="Retrieval" />
+      <End Role="RetrievalDetail" EntitySet="RetrievalDetail" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

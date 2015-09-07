@@ -14,16 +14,15 @@ namespace RestService
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           BodyStyle = WebMessageBodyStyle.Wrapped,
                                            UriTemplate = "/getCollectionPoint")]
         List<Model.CollectionPoint> getCollectionPoint();
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/getCollectionPoint/{CPID}")]
-        List<Model.CollectionPoint> getCollectionPoint(string CPID);
+                                           UriTemplate = "/getCollectionPointbyID/{CPID}")]
+        List<Model.CollectionPoint> getCollectionPointbyID(string CPID);
 
-        
     }
 }

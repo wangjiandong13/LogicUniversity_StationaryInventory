@@ -49,30 +49,30 @@ namespace Model
         [DataMember]
         public Nullable<int> ReceivedBy { get; set; }
     
-         
+        [DataMember]
         public Department Department { get; set; }
-         
+        [DataMember]
         public Disbursement Disbursement { get; set; }
-         
+        [DataMember]
         public Employee Employee { get; set; }
-         
+        [DataMember]
         public Employee Employee1 { get; set; }
-         
+        [DataMember]
         public Employee Employee2 { get; set; }
-         
+        [DataMember]
         public Priority Priority { get; set; }
-         
+        [DataMember]
         public Retrieval Retrieval { get; set; }
-         
+        [DataMember]
         public Status Status { get; set; }
-         
+        [DataMember]
         public ICollection<RequisitionDetail> RequisitionDetail { get; set; }
     
-         
+        [DataMember]
         public TrackingState TrackingState { get; set; }
-         
+        [DataMember]
         public ICollection<string> ModifiedProperties { get; set; }
-         
+        [JsonProperty, DataMember]
         private Guid EntityIdentifier { get; set; }
     }
 }

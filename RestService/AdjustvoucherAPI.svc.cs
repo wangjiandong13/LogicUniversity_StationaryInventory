@@ -12,13 +12,14 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select AdjustvoucherAPI.svc or AdjustvoucherAPI.svc.cs at the Solution Explorer and start debugging.
     public class AdjustvoucherAPI : IAdjustvoucherAPI
     {
-        public bool createVoucher(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail)
+        public bool createVoucher(AdjustmentVoucher adj)
         {
             BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();
-            return BL.createVoucher(adj, adjDetail);
+            //return BL.createVoucher(adj, adjDetail);
+            return true;
         }
 
-        public List<AdjustmentVoucher> getAdjVoucher(string AdjID, DateTime startDate, DateTime endDate)
+        public List<AdjustmentVoucher> getAdjVoucher(string AdjID, string startDate, string endDate)
         {
             BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();
             return BL.getAdjVoucher(AdjID,startDate,endDate);
@@ -28,6 +29,12 @@ namespace RestService
         {
             BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();
             return BL.getAdjVoucherDetail(adjId);
+        }
+
+        public string getAdjVoucherId()
+        {
+            BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();
+            return BL.getAdjVoucherId();
         }
     }
 }

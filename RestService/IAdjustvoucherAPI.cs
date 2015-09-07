@@ -18,18 +18,26 @@ namespace RestService
                                     RequestFormat =  WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/createVoucher")]
-        bool createVoucher(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail);
+        bool createVoucher(AdjustmentVoucher adj);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/getAdjVoucher/{AdjID}/{startdate}/{enddate}")]
-        List<AdjustmentVoucher> getAdjVoucher(string AdjID, DateTime startDate, DateTime endDate);
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                    RequestFormat =WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Wrapped,
+                                           UriTemplate = "/getAdjVoucher")]
+        List<AdjustmentVoucher> getAdjVoucher(string AdjID, string startDate, string endDate);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/getAdjVoucherDetail/{AdjID}")]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                    RequestFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+                                           UriTemplate = "/getAdjVoucherDetail")]
         List<AdjustmentDetail> getAdjVoucherDetail(string adjId);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/getAdjVoucherId")]
+        string getAdjVoucherId();
     }
 }

@@ -4,78 +4,78 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="720a36c5a5aa4525a8da16fd38ff5b2d" Name="Diagram1" ZoomLevel="93">
-        <EntityTypeShape EntityType="LogicUniversityEntitie.AdjustmentDetail" Width="1.5" PointX="9.75" PointY="29.75" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.AdjustmentVoucher" Width="1.5" PointX="7.5" PointY="29.75" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.CartItems" Width="1.5" PointX="12.5" PointY="21.75" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.CollectionPoint" Width="1.5" PointX="0.75" PointY="17.625" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Delegate" Width="1.5" PointX="10.5" PointY="17.5" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Department" Width="1.5" PointX="3" PointY="16.75" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Disbursement" Width="1.5" PointX="7.5" PointY="17" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.DisbursementDetail" Width="1.5" PointX="12.75" PointY="17.75" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Employee" Width="1.5" PointX="5.25" PointY="15.75" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Item" Width="1.5" PointX="10.5" PointY="6.625" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.ItemCategory" Width="1.5" PointX="8.25" PointY="8" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.ItemPrice" Width="1.5" PointX="12.75" PointY="6.125" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.MobileNotification" Width="1.5" PointX="7.5" PointY="27.125" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Notification" Width="1.5" PointX="7.5" PointY="11.75" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Priority" Width="1.5" PointX="7.5" PointY="33.875" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.PurchaseOrder" Width="1.5" PointX="10.5" PointY="13.375" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.PurchaseOrderDetail" Width="1.5" PointX="12.75" PointY="13.5" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Report" Width="1.5" PointX="7.5" PointY="24.625" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Requisition" Width="1.5" PointX="9.75" PointY="21.375" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.RequisitionDetail" Width="1.5" PointX="15" PointY="22.625" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Retrieval" Width="1.5" PointX="7.5" PointY="21.5" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.RetrievalDetail" Width="1.5" PointX="12.75" PointY="25.5" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Role" Width="1.5" PointX="3" PointY="14" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Status" Width="1.5" PointX="7.5" PointY="36.25" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.StockCard" Width="1.5" PointX="12.75" PointY="9.625" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.Supplier" Width="1.5" PointX="8.25" PointY="3.375" />
-        <EntityTypeShape EntityType="LogicUniversityEntitie.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_AdjustmentDetail_AdjustmentVoucher" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_AdjustmentDetail_Item" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_AdjustmentVoucher_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_AdjustmentVoucher_Employee1" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_CartItems_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_CartItems_Item" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Department_CollectionPoint" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Disbursement_CollectionPoint" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Delegate_Department" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Delegate_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Department_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Department_Employee1" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Department_Employee2" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Disbursement_Department" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Employee_Department" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Requisition_Department" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Disbursement_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Disbursement_Employee1" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_DisbursementDetail_Disbursement" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Requisition_Disbursement" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_DisbursementDetail_Item" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Employee_Role" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_MobileNotification_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Notification_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_PurchaseOrder_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Report_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Requisition_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Requisition_Employee1" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Requisition_Employee2" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Retrieval_Employee" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Item_ItemCategory" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_ItemPrice_Item" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_PurchaseOrderDetail_Item" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_RequisitionDetail_Item" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_RetrievalDetail_Item" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_StockCard_Item" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_ItemPrice_Supplier" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Requisition_Priority" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_PurchaseOrder_Supplier" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_PurchaseOrderDetail_PurchaseOrder" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Requisition_Retrieval" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_Requisition_Status" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_RequisitionDetail_Requisition" />
-        <AssociationConnector Association="LogicUniversityEntitie.FK_RetrievalDetail_Retrieval" />
+      <Diagram DiagramId="40097d969ee44bf797c0728a3c99be5a" Name="Diagram1">
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.AdjustmentDetail" Width="1.5" PointX="9.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.AdjustmentVoucher" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.CartItems" Width="1.5" PointX="10.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.CollectionPoint" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Delegate" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Department" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Disbursement" Width="1.5" PointX="8.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.DisbursementDetail" Width="1.5" PointX="10.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Employee" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Item" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.ItemCategory" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.ItemPrice" Width="1.5" PointX="15.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.MobileNotification" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Notification" Width="1.5" PointX="7.5" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Priority" Width="1.5" PointX="11.25" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.PurchaseOrder" Width="1.5" PointX="10.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.PurchaseOrderDetail" Width="1.5" PointX="12.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Report" Width="1.5" PointX="7.5" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Requisition" Width="1.5" PointX="13.5" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.RequisitionDetail" Width="1.5" PointX="15.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Retrieval" Width="1.5" PointX="7.5" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.RetrievalDetail" Width="1.5" PointX="9.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Role" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Status" Width="1.5" PointX="11.25" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.StockCard" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.Supplier" Width="1.5" PointX="8.25" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StationeryInventory_Team_05Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_AdjustmentDetail_AdjustmentVoucher" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_AdjustmentDetail_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_AdjustmentVoucher_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_AdjustmentVoucher_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_CartItems_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_CartItems_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Department_CollectionPoint" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Disbursement_CollectionPoint" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Delegate_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Delegate_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Department_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Department_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Department_Employee2" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Disbursement_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Employee_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Requisition_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Disbursement_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Disbursement_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_DisbursementDetail_Disbursement" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Requisition_Disbursement" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_DisbursementDetail_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Employee_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_MobileNotification_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Notification_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_PurchaseOrder_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Report_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Requisition_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Requisition_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Requisition_Employee2" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Retrieval_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Item_ItemCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_ItemPrice_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_PurchaseOrderDetail_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_RequisitionDetail_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_RetrievalDetail_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_StockCard_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_ItemPrice_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Requisition_Priority" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_PurchaseOrder_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_PurchaseOrderDetail_PurchaseOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Requisition_Retrieval" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_Requisition_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_RequisitionDetail_Requisition" ManuallyRouted="false" />
+        <AssociationConnector Association="StationeryInventory_Team_05Model.FK_RetrievalDetail_Retrieval" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

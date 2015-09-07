@@ -29,14 +29,14 @@ namespace Model
         [DataMember]
         public string RoleName { get; set; }
     
-         
+        [DataMember]
         public ICollection<Employee> Employee { get; set; }
     
-         
+        [DataMember]
         public TrackingState TrackingState { get; set; }
-         
+        [DataMember]
         public ICollection<string> ModifiedProperties { get; set; }
-         
+        [JsonProperty, DataMember]
         private Guid EntityIdentifier { get; set; }
     }
 }
