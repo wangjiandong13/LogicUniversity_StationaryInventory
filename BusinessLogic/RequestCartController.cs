@@ -7,7 +7,7 @@ using Model;
 
 namespace BusinessLogic
 {
-    class RequestCartController
+    public class RequestCartController
     {
         StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
 
