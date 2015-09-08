@@ -22,7 +22,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
-                           UriTemplate = "/getRequisition/{RetID}")]
+                           UriTemplate = "/getRequisitionbyId/{RetID}")]
         List<Requisition> getRequisition(string RetID);
 
         [OperationContract]
