@@ -41,11 +41,11 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="NotifID">Notification ID</param>
         /// <returns></returns>
-        public bool changeStatusToRead(int NotifID)
+        public bool changeStatusToRead(string NotifID)
         {
             bool result = true;
 
-            Notification notif = ctx.Notification.Where(x => x.NotifID == NotifID).FirstOrDefault();
+            Notification notif = ctx.Notification.Where(x => x.NotifID == Convert.ToInt32(NotifID)).FirstOrDefault();
             notif.Status = "READ";
 
             int count = ctx.SaveChanges();
@@ -61,9 +61,9 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="EmpID">Employee ID</param>
         /// <returns></returns>
-        public List<Notification> getNotification (int EmpID)
+        public List<Notification> getNotification (string EmpID)
         {
-            List<Notification> notifList = ctx.Notification.Where(x => x.EmpID == EmpID).ToList();
+            List<Notification> notifList = ctx.Notification.Where(x => x.EmpID == Convert.ToInt32(EmpID)).ToList();
             return notifList;
         }
 

@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -15,19 +17,59 @@ namespace RestService
         public bool deleteDelegate(string EmpName)
         {
             BusinessLogic.DelegateController BL = new BusinessLogic.DelegateController();
-            return BL.deleteDelegate(EmpName);
+            if (BL.deleteDelegate(EmpName))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotAcceptable;
+                return false;
+            }
         }
 
-        public bool createDelegate(Model.Delegate dele)
+        public bool createDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status)
         {
             BusinessLogic.DelegateController BL = new BusinessLogic.DelegateController();
-            return BL.createDelegate(dele);
+            if (BL.createDelegate(EmpID, DeptID, StartDate,EndDate,Status))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotAcceptable;
+                return false;
+            }
         }
 
         public List<Model.Delegate> getDelegate(string DeptID)
         {
             BusinessLogic.DelegateController BL = new BusinessLogic.DelegateController();
+
             return BL.getDelegate(DeptID);
+        }
+
+        public bool editDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status)
+        {
+            BusinessLogic.DelegateController BL = new BusinessLogic.DelegateController();
+            if (BL.editDelegate(EmpID, DeptID,StartDate,EndDate,Status))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotAcceptable;
+                return false;
+            }
         }
     }
 }

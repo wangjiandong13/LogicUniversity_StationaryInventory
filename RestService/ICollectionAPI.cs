@@ -14,7 +14,7 @@ namespace RestService
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Wrapped,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getCollectionPoint")]
         List<Model.CollectionPoint> getCollectionPoint();
 
@@ -24,5 +24,11 @@ namespace RestService
                                            UriTemplate = "/getCollectionPointbyID/{CPID}")]
         List<Model.CollectionPoint> getCollectionPointbyID(string CPID);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, 
+                                    RequestFormat =WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Wrapped,
+                                           UriTemplate = "/updateCollectionPoint")]
+        bool updateCollectionPoint(string DeptID, string CPID);
     }
 }

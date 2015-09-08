@@ -82,9 +82,9 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="EmpID">EmployeeID</param>
         /// <returns></returns>
-        public List<CartItems> getItems(int EmpID)
+        public List<CartItems> getItems(string EmpID)
         {
-            List<CartItems> result = ctx.CartItems.Where(x => x.EmpID == EmpID).ToList();
+            List<CartItems> result = ctx.CartItems.Where(x => x.EmpID == Convert.ToInt32(EmpID)).ToList();
 
             return result;
         }

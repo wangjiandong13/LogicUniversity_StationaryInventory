@@ -23,7 +23,7 @@ namespace RestService
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getPoDetail/{PoID}")]
-        List<PurchaseOrderDetail> getPoDetail(int PoID);
+        List<PurchaseOrderDetail> getPoDetail(string PoID);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,

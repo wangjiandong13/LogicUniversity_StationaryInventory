@@ -165,10 +165,10 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="RetID">Retrieval ID</param>
         /// <returns></returns>
-        public List<ProcessRetSuccess> getRetrievalDetail(int RetID)
+        public List<ProcessRetSuccess> getRetrievalDetail(string RetID)
         {
-            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == RetID).FirstOrDefault();
-            List<RetrievalDetail> retDetailList = ctx.RetrievalDetail.Where(x => x.RetID == RetID).ToList();
+            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == Convert.ToInt32(RetID)).FirstOrDefault();
+            List<RetrievalDetail> retDetailList = ctx.RetrievalDetail.Where(x => x.RetID == Convert.ToInt32(RetID)).ToList();
 
             List<ProcessRetSuccess> retSuccessList = new List<ProcessRetSuccess>();
 
@@ -194,9 +194,9 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="RetID">Requisition ID</param>
         /// <returns></returns>
-        public List<ReqAllocation> getReqAllocation(int RetID)
+        public List<ReqAllocation> getReqAllocation(string RetID)
         {
-            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == Convert.ToInt32(RetID)).ToList();
 
             List<ReqAllocation> reqAllocationList = new List<ReqAllocation>();
 
@@ -275,7 +275,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="RetID">Retrieval ID</param>
         /// <returns></returns>
-        public List<ReqAllocation> getRetByDept(int RetID)
+        public List<ReqAllocation> getRetByDept(string RetID)
         {
             List<ReqAllocation> reqAllocationList = new List<ReqAllocation>();
 
@@ -287,7 +287,7 @@ namespace BusinessLogic
             Dictionary<string, int> itemQtyZOOL = new Dictionary<string, int>();
 
             //obtain list of requisition with specified RetID
-            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == Convert.ToInt32(RetID)).ToList();
 
             foreach(Requisition req in reqList)
             {
