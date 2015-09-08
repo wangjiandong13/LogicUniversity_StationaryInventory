@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -12,10 +14,21 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select DisbursementAPI.svc or DisbursementAPI.svc.cs at the Solution Explorer and start debugging.
     public class DisbursementAPI : IDisbursementAPI
     {
-        public bool createDisbursement(int EmpID)
+        public bool createDisbursement(string EmpID)
         {
             BusinessLogic.DisbursementController BL = new BusinessLogic.DisbursementController();
-            return BL.createDisbursement(EmpID);
+            if (BL.createDisbursement(0))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotAcceptable;
+                return false;
+            }
         }
 
         public List<Disbursement> getDisbursement(string DeptID, string CPID, string DisID, string startdate, string enddate)
@@ -24,10 +37,10 @@ namespace RestService
             return BL.getDisbursement(DeptID, CPID, DisID, startdate, enddate);
         }
 
-        public DisbursementDetail getDisbursementDetail(int DisID)
+        public DisbursementDetail getDisbursementDetail(string DisID)
         {
             BusinessLogic.DisbursementController BL = new BusinessLogic.DisbursementController();
-            return BL.getDisbursementDetail(DisID);
+            return BL.getDisbursementDetail(0);
         }
     }
 }
