@@ -21,6 +21,12 @@ namespace RestService
             return BL.getemployeebyDeptID(DeptID);
         }
 
+        public Employee getemployeebyId(string EmpID)
+        {
+            BusinessLogic.EmployeeController BL = new BusinessLogic.EmployeeController();
+            return BL.getemployeebyId(EmpID);
+        }
+
         public List<Employee> getemployeebyrole(string role)
         {
             BusinessLogic.EmployeeController BL = new BusinessLogic.EmployeeController();
