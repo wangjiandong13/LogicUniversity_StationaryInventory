@@ -24,7 +24,7 @@ namespace RestService
             return BL.getPo(startdate,enddate,EmpID,PoID);
         }
 
-        public List<PurchaseOrderDetail> getPoDetail(int PoID)
+        public List<PurchaseOrderDetail> getPoDetail(string PoID)
         {
             BusinessLogic.PurchaseOrderController BL = new BusinessLogic.PurchaseOrderController();
             return BL.getPoDetail(PoID);
