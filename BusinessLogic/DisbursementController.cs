@@ -17,9 +17,9 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="DisID">Disbursement ID</param>
         /// <returns></returns>
-        public DisbursementDetail getDisbursementDetail(int DisID)
+        public DisbursementDetail getDisbursementDetail(string DisID)
         {
-            DisbursementDetail result = ctx.DisbursementDetail.Where(x => x.DisID == DisID).FirstOrDefault();
+            DisbursementDetail result = ctx.DisbursementDetail.Where(x => x.DisID == Convert.ToInt32(DisID)).FirstOrDefault();
             return result;
         }
 
@@ -70,7 +70,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="EmpID">Employee ID(Clerk)</param>
         /// <returns></returns>
-        public bool createDisbursement(int EmpID)
+        public bool createDisbursement(string EmpID)
         {
             bool result = false;
 
@@ -86,7 +86,7 @@ namespace BusinessLogic
 
                     Disbursement disb = new Disbursement();
                     disb.Date = DateTime.Now;
-                    disb.EmpID = EmpID;
+                    disb.EmpID = Convert.ToInt32(EmpID);
                     disb.DeptID = deptId[i];
                     disb.CPID = dept.CPID;
                     disb.Status = "PENDING";
