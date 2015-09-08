@@ -32,18 +32,21 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool approve(string ReqId, string HandledBy, string Remark)
         {
-            bool result = false;
+            bool result = true;
 
             Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(ReqId)).FirstOrDefault();
             req.StatusID = 2;
             req.HandledBy = Convert.ToInt32(HandledBy);
             req.Remark = Remark;
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
             return result;
         }
 
@@ -56,18 +59,22 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool reject(string ReqId, string HandledBy, string Remark)
         {
-            bool result = false;
+            bool result = true;
 
             Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(ReqId)).FirstOrDefault();
             req.StatusID = 5;
             req.HandledBy = Convert.ToInt32(HandledBy);
             req.Remark = Remark;
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            
             return result;
         }
 
@@ -151,7 +158,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool setReqPriority(string ReqID, string PriorityID, string Remark)
         {
-            bool result = false;
+            bool result = true;
 
             Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(ReqID)).FirstOrDefault();
             if (req != null)
@@ -160,11 +167,15 @@ namespace BusinessLogic
                 req.Remark = Remark;
             }
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            
             return result;
         }
 
@@ -175,17 +186,21 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool deleteRequisition(string ReqID)
         {
-            bool result = false;
+            bool result = true;
 
             Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(ReqID)).FirstOrDefault();
             //set status to "Cancelled"
             req.StatusID = 6;
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
             
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
             return result;
         }
 

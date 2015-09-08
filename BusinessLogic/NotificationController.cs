@@ -18,7 +18,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool createNotification(Notification notification)
         {
-            bool result = false;
+            bool result = true;
 
             Notification notificationAdd = new Notification();
             notificationAdd.NotifName = notification.NotifName;
@@ -28,10 +28,14 @@ namespace BusinessLogic
             notificationAdd.Status = notification.Status;
 
             ctx.Notification.Add(notificationAdd);
-            int count = ctx.SaveChanges();
-
-            if(count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -48,11 +52,14 @@ namespace BusinessLogic
             Notification notif = ctx.Notification.Where(x => x.NotifID == Convert.ToInt32(NotifID)).FirstOrDefault();
             notif.Status = "READ";
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
             return result;
         }
 

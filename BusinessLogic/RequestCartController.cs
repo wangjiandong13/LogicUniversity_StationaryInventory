@@ -18,7 +18,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool addItem(CartItems item)
         {
-            bool result = false;
+            bool result = true;
 
             CartItems cartItem = new CartItems();
             cartItem.EmpID = item.EmpID;
@@ -26,11 +26,14 @@ namespace BusinessLogic
             cartItem.Qty = item.Qty;
 
             ctx.CartItems.Add(cartItem);
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
             return result;
         }
 
@@ -41,15 +44,20 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool updateItem(CartItems item)
         {
-            bool result = false;
+            bool result = true;
 
             CartItems cartItem = ctx.CartItems.Where(x => x.EmpID == item.EmpID && x.ItemID == item.ItemID).FirstOrDefault();
 
             cartItem.Qty = item.Qty;
-            int count = ctx.SaveChanges();
 
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -61,7 +69,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool deleteItem(CartItems item)
         {
-            bool result = false;
+            bool result = true;
 
             CartItems cartItem = ctx.CartItems.Where(x => x.EmpID == item.EmpID && x.ItemID == item.ItemID).FirstOrDefault();
 
@@ -69,10 +77,14 @@ namespace BusinessLogic
                 return result;
 
             ctx.CartItems.Remove(cartItem);
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }

@@ -115,7 +115,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool submit(List<RetrievalDetail> retDetailList)
         {
-            bool result = false;
+            bool result = true;
             
             foreach (RetrievalDetail retDetail in retDetailList)
             {
@@ -128,10 +128,14 @@ namespace BusinessLogic
             Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retDetailList.First().RetID).FirstOrDefault();
             ret.Status = "RETRIEVED";
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -143,7 +147,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool save(List<RetrievalDetail> retDetailList)
         {
-            bool result = false;
+            bool result = true;
 
             //update actual quantity of retrieval detail
             foreach (RetrievalDetail retDetail in retDetailList)
@@ -151,11 +155,15 @@ namespace BusinessLogic
                 RetrievalDetail retDetailSearch = ctx.RetrievalDetail.Where(x => x.RetID == retDetail.RetID && x.ItemID == retDetail.ItemID).FirstOrDefault();
                 retDetailSearch.ActualQty = retDetail.ActualQty;
             }
-            
-            int count = ctx.SaveChanges();
 
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -231,7 +239,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool confirmAllocation(List<RequisitionDetail> reqDetailList)
         {
-            bool result = false;
+            bool result = true;
             
             foreach(RequisitionDetail reqDetail in reqDetailList)
             {
@@ -262,10 +270,14 @@ namespace BusinessLogic
                 ctx.StockCard.Add(stockCard);
             }
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }

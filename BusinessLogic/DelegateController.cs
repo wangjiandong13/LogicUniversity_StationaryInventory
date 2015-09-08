@@ -54,6 +54,8 @@ namespace BusinessLogic
         /// <param name="EmpName"></param>
         public bool deleteDelegate(string EmpName)
         {
+            bool result = true;
+
             Model.Employee emp = new Model.Employee();
             Model.Delegate dele = new Model.Delegate();
 
@@ -65,8 +67,16 @@ namespace BusinessLogic
                     where c.EmpID == emp.EmpID
                     select c).First();
             ctx.Delegate.Remove(dele);
-            ctx.SaveChanges();
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            
+            return result;
         }
 
         /// <summary>

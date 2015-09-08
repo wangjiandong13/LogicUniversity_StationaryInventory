@@ -105,6 +105,7 @@ namespace BusinessLogic
         /// <returns>True or False</returns>
         public bool createVoucher(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail)
         {
+            bool result = true;
             //double totAmt = 0.0;
 
             string newID = getAdjVoucherId();
@@ -117,7 +118,16 @@ namespace BusinessLogic
                 ctx.AdjustmentDetail.Add(adjVoucher);                
             }
 
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -129,6 +139,8 @@ namespace BusinessLogic
         /// <returns>true or false</returns>
         public bool updateAdjustmentDetail(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail, string status)
         {
+            bool result = true;
+
             AdjustmentVoucher adjvoucher = new AdjustmentVoucher();
             Item item = new Item();
             StockCard sc = new StockCard();
@@ -152,7 +164,6 @@ namespace BusinessLogic
                     sc.Qty = list[i].Qty;
                     sc.Balance = item.Stock;
                     ctx.StockCard.Add(sc);
-                    ctx.SaveChanges();
                 }
 
             }
@@ -162,10 +173,18 @@ namespace BusinessLogic
                               where x.AdjID == adj.AdjID
                               select x).First();
                 adjvoucher.Status = "Reject";
-                ctx.SaveChanges();
             }
 
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
 
         }
     }

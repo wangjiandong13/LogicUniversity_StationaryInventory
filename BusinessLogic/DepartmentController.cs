@@ -41,7 +41,9 @@ namespace BusinessLogic
         /// <param name="d"></param>
         public bool updateDept(Department d)
         {
-         var dept = (from c in ctx.Department
+            bool result = true;
+
+            var dept = (from c in ctx.Department
                    where d.DeptID == c.DeptID
                    select c).First();
 
@@ -50,8 +52,16 @@ namespace BusinessLogic
             dept.Fax = d.Fax;
             dept.DeptHead = d.DeptHead;
             dept.DeptRep = d.DeptRep;
-            ctx.SaveChanges();
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            
+            return result;
         }
 
     }

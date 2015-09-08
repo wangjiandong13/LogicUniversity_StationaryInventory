@@ -45,12 +45,21 @@ namespace BusinessLogic
         /// <returns>true if the </returns>
         public bool updateCollectionPoint(string DeptID, string CPID)
         {
+            bool result = true;
+
             Model.Department dept = (from c in ctx.Department
                     where c.DeptID == DeptID
                     select c).First();
             dept.CPID = Convert.ToInt32(CPID);
-            ctx.SaveChanges();
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }
