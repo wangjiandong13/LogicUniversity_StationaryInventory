@@ -40,7 +40,7 @@ namespace RestService
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-            RequestFormat = WebMessageFormat.Json,
+                                    RequestFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/generatePo")]
         bool generatePo(List<ProposePo> proposePoList);

@@ -39,7 +39,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat = WebMessageFormat.Json,
-                                    BodyStyle = WebMessageBodyStyle.Wrapped,
+                                    BodyStyle = WebMessageBodyStyle.Bare,
                                     UriTemplate = "/createItem")]
         bool createItem(Model.Item item);
 

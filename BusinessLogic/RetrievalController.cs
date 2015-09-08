@@ -175,8 +175,9 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<ProcessRetSuccess> getRetrievalDetail(string RetID)
         {
-            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == Convert.ToInt32(RetID)).FirstOrDefault();
-            List<RetrievalDetail> retDetailList = ctx.RetrievalDetail.Where(x => x.RetID == Convert.ToInt32(RetID)).ToList();
+            int retid = Convert.ToInt32(RetID);
+            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retid).FirstOrDefault();
+            List<RetrievalDetail> retDetailList = ctx.RetrievalDetail.Where(x => x.RetID == retid).ToList();
 
             List<ProcessRetSuccess> retSuccessList = new List<ProcessRetSuccess>();
 
