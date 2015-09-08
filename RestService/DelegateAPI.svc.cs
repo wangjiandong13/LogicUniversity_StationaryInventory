@@ -31,10 +31,10 @@ namespace RestService
             }
         }
 
-        public bool createDelegate(Model.Delegate dele)
+        public bool createDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status)
         {
             BusinessLogic.DelegateController BL = new BusinessLogic.DelegateController();
-            if (BL.createDelegate(dele))
+            if (BL.createDelegate(EmpID, DeptID, StartDate,EndDate,Status))
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;
@@ -55,10 +55,10 @@ namespace RestService
             return BL.getDelegate(DeptID);
         }
 
-        public bool editDelegate(Model.Delegate dele)
+        public bool editDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status)
         {
             BusinessLogic.DelegateController BL = new BusinessLogic.DelegateController();
-            if (BL.editDelegate(dele))
+            if (BL.editDelegate(EmpID, DeptID,StartDate,EndDate,Status))
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;
