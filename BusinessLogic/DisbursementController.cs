@@ -17,10 +17,10 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="DisID">Disbursement ID</param>
         /// <returns></returns>
-        public DisbursementDetail getDisbursementDetail(string DisID)
+        public List<DisbursementDetail> getDisbursementDetail(string DisID)
         {
             int disID = Convert.ToInt32(DisID);
-            DisbursementDetail result = ctx.DisbursementDetail.Where(x => x.DisID == disID).FirstOrDefault();
+            List<DisbursementDetail> result = ctx.DisbursementDetail.Where(x => x.DisID == disID).ToList();
             return result;
         }
 
