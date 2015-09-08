@@ -22,6 +22,12 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getRequisition/{RetID}")]
+        List<Requisition> getRequisition(string RetID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/approve/{ReqId}/{HandledBy}/{Remark}")]
         bool approve(string ReqId, string HandledBy, string Remark);
 
