@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -12,10 +14,38 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select InventoryAPI.svc or InventoryAPI.svc.cs at the Solution Explorer and start debugging.
     public class InventoryAPI : IInventoryAPI
     {
-        public bool createItemDetails(Item item, List<ItemPrice> ip)
+        public bool createItem(Item item)
         {
             BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            return BL.createItemDetails(item, ip);
+            if (BL.createItem(item))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
+        }
+
+        public bool createItemPrice(List<ItemPrice> ip)
+        {
+            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
+            if (BL.createItemPrice(ip))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
         public List<Item> getItem()
@@ -48,10 +78,39 @@ namespace RestService
             return BL.getStockCard(itemID);
         }
 
-        public bool updateItemDetail(Item item, List<ItemPrice> ip)
+        public bool updateItem(Item item)
         {
             BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            return BL.updateItemDetail(item,ip);
+            if (BL.updateItem(item))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
+        }
+        
+
+        public bool updateItemPrice(List<ItemPrice> itemprice)
+        {
+            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
+            if (BL.updateItemPrice(itemprice))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
     }
 }
