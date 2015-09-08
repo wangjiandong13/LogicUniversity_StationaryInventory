@@ -9,9 +9,9 @@ using System.Text;
 
 namespace RestService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IRetrievalIPA" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IRetrievalAPI" in both code and config file together.
     [ServiceContract]
-    public interface IRetrievalIPA
+    public interface IRetrievalAPI
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
@@ -39,7 +39,7 @@ namespace RestService
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-                           RequestFormat =WebMessageFormat.Json,
+                           RequestFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/createRequisition/{StatusID}/{ReqID}/{EmpID}")]
         int createRequisition(List<CartItems> itemList);
@@ -67,7 +67,5 @@ namespace RestService
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/getRequisition/{RetID}")]
         List<Requisition> getRequisition(string RetID);
-
-
     }
 }

@@ -121,7 +121,7 @@
     <Compile Include="IPOAPI.cs" />
     <Compile Include="IRequestcartAPI.cs" />
     <Compile Include="IRequisitionAPI.cs" />
-    <Compile Include="IRetrievalIPA.cs" />
+    <Compile Include="IRetrievalAPI.cs" />
     <Compile Include="POAPI.svc.cs">
       <DependentUpon>POAPI.svc</DependentUpon>
     </Compile>
