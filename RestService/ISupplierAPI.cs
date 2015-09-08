@@ -15,7 +15,7 @@ namespace RestService
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.WrappedResponse,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getSupplierList/{DisID}")]
         List<Supplier> getSupplierList();
 

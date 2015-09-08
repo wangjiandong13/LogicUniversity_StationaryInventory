@@ -184,7 +184,7 @@ namespace BusinessLogic
             {
                 Item i = ctx.Item.Where(x => x.ItemID == retDetail.ItemID).FirstOrDefault();
                 ProcessRetSuccess retSuccess = new ProcessRetSuccess();
-                retSuccess.Date = (DateTime) ret.Date;
+                retSuccess.Date = ret.Date.ToString();
                 retSuccess.Bin = i.Bin;
                 retSuccess.ItemID = i.ItemID;
                 retSuccess.ItemName = i.ItemName;
