@@ -16,7 +16,39 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/getDisbursementDetail/{DisID}")]
+                                           UriTemplate = "/getSupplierList/{DisID}")]
         List<Supplier> getSupplierList();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/getBySupplierID/{supplierid}")]
+        Supplier getBySupplierID(string supplierid);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                    RequestFormat = WebMessageFormat.Json,
+                                                   BodyStyle = WebMessageBodyStyle.Bare,
+                                                   UriTemplate = "/createSupplier")]
+        bool createSupplier(Supplier s);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                    RequestFormat = WebMessageFormat.Json,
+                                                   BodyStyle = WebMessageBodyStyle.Bare,
+                                                   UriTemplate = "/updateSupplier")]
+        bool updateSupplier(Supplier s);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/updateSupplierRank/{supplierId}/{rank}")]
+        bool updateSupplierRank(string supplierId, string rank);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/deleteSupplier/{supplierId}")]
+        bool deleteSupplier(string supplierId);
     }
 }

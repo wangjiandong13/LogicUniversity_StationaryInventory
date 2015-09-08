@@ -16,7 +16,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/getPo/{startDate}/{endDate}/{employee}/{PoId}")]
+                                           UriTemplate = "/getPo/{startDate}/{endDate}/{EmpID}/{PoId}")]
         List<PurchaseOrder> getPo(string startdate, string enddate, string EmpID, string PoID);
 
         [OperationContract]
