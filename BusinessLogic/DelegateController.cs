@@ -61,8 +61,12 @@ namespace BusinessLogic
         /// <param name="startdate"></param>
         /// <param name="enddate"></param>
         /// <param name="status"></param>
-        public bool editDelegate(int empID, DateTime startdate, DateTime enddate, String status)
+        public bool editDelegate(Model.Delegate deles)
         {
+            int empID = (int)deles.EmpID;
+            DateTime startdate = (DateTime)deles.StartDate;
+            DateTime enddate = (DateTime)deles.EndDate;
+            string status = deles.Status;
             var dele = (from c in ctx.Delegate
                         where c.EmpID == empID
                         select c).First();
