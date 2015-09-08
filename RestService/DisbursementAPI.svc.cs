@@ -37,7 +37,7 @@ namespace RestService
             return BL.getDisbursement(DeptID, CPID, DisID, startdate, enddate);
         }
 
-        public DisbursementDetail getDisbursementDetail(string DisID)
+        public List<DisbursementDetail> getDisbursementDetail(string DisID)
         {
             BusinessLogic.DisbursementController BL = new BusinessLogic.DisbursementController();
             return BL.getDisbursementDetail(DisID);
