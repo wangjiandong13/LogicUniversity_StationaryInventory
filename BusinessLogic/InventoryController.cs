@@ -104,7 +104,7 @@ namespace BusinessLogic
 
             //add item price
             //loop
-            foreach (Model.ItemPrice  itemprice in ip){
+            foreach (Model.ItemPrice itemprice in ip){
                 ctx.ItemPrice.Add(itemprice);
             }
 
