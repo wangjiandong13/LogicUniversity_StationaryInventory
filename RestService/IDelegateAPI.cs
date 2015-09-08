@@ -24,7 +24,7 @@ namespace RestService
                                         RequestFormat =WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Wrapped,
                                            UriTemplate = "/createDelegate")]
-        bool createDelegate(Model.Delegate dele);
+        bool createDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
@@ -37,6 +37,6 @@ namespace RestService
                                         RequestFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.WrappedRequest,
                                            UriTemplate = "/editDelegate")]
-        bool editDelegate(Model.Delegate dele);
+        bool editDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status);
     }
 }

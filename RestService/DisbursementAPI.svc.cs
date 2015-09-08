@@ -17,7 +17,7 @@ namespace RestService
         public bool createDisbursement(string EmpID)
         {
             BusinessLogic.DisbursementController BL = new BusinessLogic.DisbursementController();
-            if (BL.createDisbursement(0))
+            if (BL.createDisbursement(EmpID))
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;
@@ -40,7 +40,7 @@ namespace RestService
         public DisbursementDetail getDisbursementDetail(string DisID)
         {
             BusinessLogic.DisbursementController BL = new BusinessLogic.DisbursementController();
-            return BL.getDisbursementDetail(0);
+            return BL.getDisbursementDetail(DisID);
         }
     }
 }
