@@ -36,5 +36,7 @@ namespace Model
         public TrackingState TrackingState { get; set; }
         public ICollection<string> ModifiedProperties { get; set; }
         private Guid EntityIdentifier { get; set; }
+
+        public List<CartItems> CartItems_List { get; set; }
     }
 }
