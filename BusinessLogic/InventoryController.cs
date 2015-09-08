@@ -99,6 +99,8 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool createItemDetails(Model.Item item,List<Model.ItemPrice> ip)
         {
+            bool result = true;
+
             //Add item obj to db
             ctx.Item.Add(item);
 
@@ -108,8 +110,15 @@ namespace BusinessLogic
                 ctx.ItemPrice.Add(itemprice);
             }
 
-            ctx.SaveChanges();
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = true;
+            }
+            return result;
         }
 
         /// <summary>
@@ -134,6 +143,8 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool updateItemDetail(Model.Item item, List<Model.ItemPrice> itemprice)
         {
+            bool result = true;
+
             Model.Item i = new Model.Item();
             Model.ItemPrice ip = new Model.ItemPrice();
             i = (from c in ctx.Item
@@ -151,9 +162,15 @@ namespace BusinessLogic
             {
                 ip.Price = ip1.Price;
             }
-
-            ctx.SaveChanges();
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
         }
 
     }

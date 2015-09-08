@@ -72,7 +72,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool createDisbursement(string EmpID)
         {
-            bool result = false;
+            bool result = true;
 
             string[] deptId = new string[] { "ENGL", "CPSC", "COMM", "REGR", "ZOOL" };
 
@@ -106,11 +106,14 @@ namespace BusinessLogic
                     }
                 }
             }
-
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }

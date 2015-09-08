@@ -69,7 +69,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool restock(List<PurchaseOrderDetail> PoDetailList)
         {
-            bool result = false;
+            bool result = true;
 
             //search for purchase order to obtain supplier ID
             PurchaseOrder po = ctx.PurchaseOrder.Where(x => x.PoID == PoDetailList.First().PoID).FirstOrDefault();
@@ -101,10 +101,14 @@ namespace BusinessLogic
             //change status of purchase order to "Delivered"
             po.Status = "DELIVERED";
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -144,7 +148,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool generatePo(List<ProposePo> proposePoList)
         {
-            bool result = false;
+            bool result = true;
 
             //filter the proposePoList by supplier
             List<ProposePo> supplier1 = proposePoList.Where(x => x.supplier1Qty != 0).ToList();
@@ -257,11 +261,14 @@ namespace BusinessLogic
                 ctx.PurchaseOrder.Last().TotalAmt = totalamt;
             }
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
             return result;
         }
        
