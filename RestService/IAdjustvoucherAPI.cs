@@ -18,7 +18,7 @@ namespace RestService
                                     RequestFormat =  WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/createVoucher")]
-        bool createVoucher(AdjustmentVoucher adj);
+        bool createVoucher(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
