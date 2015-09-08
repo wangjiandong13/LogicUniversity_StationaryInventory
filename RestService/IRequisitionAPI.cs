@@ -21,7 +21,7 @@ namespace RestService
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                           BodyStyle = WebMessageBodyStyle.Bare,
+                           BodyStyle = WebMessageBodyStyle.Wrapped,
                            UriTemplate = "/getRequisitionbyId/{RetID}")]
         List<Requisition> getRequisitionbyId(string RetID);
 
