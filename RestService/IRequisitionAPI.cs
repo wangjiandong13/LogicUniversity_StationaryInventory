@@ -39,11 +39,28 @@ namespace RestService
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-            RequestFormat = WebMessageFormat.Json,
+                           RequestFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/createRequisition")]
         int createRequisition(List<CartItems> itemList);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/setReqPriority/{ReqID}/{PriorityID}/{Remark}")]
+        bool setReqPriority(string ReqID, string PriorityID, string Remark);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                   BodyStyle = WebMessageBodyStyle.Bare,
+                   UriTemplate = "/deleteRequisition/{ReqID}")]
+        bool deleteRequisition(string ReqID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getRequisitionDetail/{ReqID}")]
+        List<RequisitionDetail> getRequisitionDetail(string ReqID);
 
     }
 }
