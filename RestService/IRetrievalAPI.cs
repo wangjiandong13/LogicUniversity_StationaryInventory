@@ -17,7 +17,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                            RequestFormat = WebMessageFormat.Json,
-                           BodyStyle = WebMessageBodyStyle.Wrapped,
+                           BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/createRetrieval")]
         int createRetrieval(List<ProcessRetrieval> processRetList);
 
@@ -43,13 +43,13 @@ namespace RestService
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                   BodyStyle = WebMessageBodyStyle.Wrapped,
+                   BodyStyle = WebMessageBodyStyle.Bare,
                    UriTemplate = "/getRetrievalDetail/{RetID}")]
         List<ProcessRetSuccess> getRetrievalDetail(string RetID);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                   BodyStyle = WebMessageBodyStyle.Wrapped,
+                   BodyStyle = WebMessageBodyStyle.Bare,
                    UriTemplate = "/getReqAllocation/{RetID}")]
         List<ReqAllocation> getReqAllocation(string RetID);
 
@@ -62,7 +62,7 @@ namespace RestService
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                           BodyStyle = WebMessageBodyStyle.Wrapped,
+                           BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/getRetByDept/{RetID}")]
         List<ReqAllocation> getRetByDept(string RetID);
 
