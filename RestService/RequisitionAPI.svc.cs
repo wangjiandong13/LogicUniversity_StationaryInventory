@@ -106,7 +106,7 @@ namespace RestService
             return BL.getRequisitionDetail(ReqID);
         }
 
-        public List<Requisition> getRequisition(string RetID)
+        public List<Requisition> getRequisitionbyId(string RetID)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.getRequisition(RetID);

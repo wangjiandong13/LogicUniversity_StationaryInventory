@@ -17,7 +17,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                            RequestFormat = WebMessageFormat.Json,
-                           BodyStyle = WebMessageBodyStyle.Bare,
+                           BodyStyle = WebMessageBodyStyle.Wrapped,
                            UriTemplate = "/createRetrieval")]
         int createRetrieval(List<ProcessRetrieval> processRetList);
 
