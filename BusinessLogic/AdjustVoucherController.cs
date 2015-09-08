@@ -98,12 +98,11 @@ namespace BusinessLogic
         }
 
         /// <summary>
-        /// Create Ajustment Voucher
+        /// CreateVoucherAdj
         /// </summary>
         /// <param name="adj">AdjustVoucher Object</param>
-        /// <param name="adjDetail">AdjustVoucherDetail Object</param>
         /// <returns>True or False</returns>
-        public bool createVoucher(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail)
+        public bool createVoucherAdj(AdjustmentVoucher adj)
         {
             bool result = true;
             //double totAmt = 0.0;
@@ -112,10 +111,32 @@ namespace BusinessLogic
             adj.AdjID = newID;
             ctx.AdjustmentVoucher.Add(adj);
 
-            AdjustmentDetail adjVoucherDetail = new AdjustmentDetail();
-            foreach(AdjustmentDetail adjVoucher in adjDetail)
+            try
             {
-                ctx.AdjustmentDetail.Add(adjVoucher);                
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// CreateVoucherAdjDetail
+        /// </summary>
+        /// <param name="adjDetail">AdjustVoucherDetail Object</param>
+        /// <returns>True or False</returns>
+        public bool createVoucherAdjDetail(List<AdjustmentDetail> adjDetail)
+        {
+            bool result = true;
+            //double totAmt = 0.0;
+            
+            AdjustmentDetail adjVoucherDetail = new AdjustmentDetail();
+            foreach (AdjustmentDetail adjVoucher in adjDetail)
+            {
+                ctx.AdjustmentDetail.Add(adjVoucher);
             }
 
             try

@@ -19,7 +19,8 @@ namespace BusinessLogic
         /// <returns></returns>
         public DisbursementDetail getDisbursementDetail(string DisID)
         {
-            DisbursementDetail result = ctx.DisbursementDetail.Where(x => x.DisID == Convert.ToInt32(DisID)).FirstOrDefault();
+            int disID = Convert.ToInt32(DisID);
+            DisbursementDetail result = ctx.DisbursementDetail.Where(x => x.DisID == disID).FirstOrDefault();
             return result;
         }
 

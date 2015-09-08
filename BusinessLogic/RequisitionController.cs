@@ -18,7 +18,8 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Requisition> getRequisitionList(string DisID)
         {
-            List<Requisition> result = ctx.Requisition.Where(x => x.DisID == Convert.ToInt32(DisID)).ToList();
+            int disID = Convert.ToInt32(DisID);
+            List<Requisition> result = ctx.Requisition.Where(x => x.DisID == disID).ToList();
 
             return result;
         }
@@ -34,7 +35,8 @@ namespace BusinessLogic
         {
             bool result = true;
 
-            Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(ReqId)).FirstOrDefault();
+            int reqID = Convert.ToInt32(ReqId);
+            Requisition req = ctx.Requisition.Where(x => x.ReqID == reqID).FirstOrDefault();
             req.StatusID = 2;
             req.HandledBy = Convert.ToInt32(HandledBy);
             req.Remark = Remark;
@@ -61,7 +63,8 @@ namespace BusinessLogic
         {
             bool result = true;
 
-            Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(ReqId)).FirstOrDefault();
+            int reqID = Convert.ToInt32(ReqId);
+            Requisition req = ctx.Requisition.Where(x => x.ReqID == reqID).FirstOrDefault();
             req.StatusID = 5;
             req.HandledBy = Convert.ToInt32(HandledBy);
             req.Remark = Remark;
@@ -188,7 +191,8 @@ namespace BusinessLogic
         {
             bool result = true;
 
-            Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(ReqID)).FirstOrDefault();
+            int reqID = Convert.ToInt32(ReqID);
+            Requisition req = ctx.Requisition.Where(x => x.ReqID == reqID).FirstOrDefault();
             //set status to "Cancelled"
             req.StatusID = 6;
 
@@ -211,8 +215,8 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<RequisitionDetail> getRequisitionDetail(string ReqId)
         {
-            List<RequisitionDetail> result = ctx.RequisitionDetail.Where(x => x.ReqID == Convert.ToInt32(ReqId)).ToList();
-
+            int reqID = Convert.ToInt32(ReqId);
+            List<RequisitionDetail> result = ctx.RequisitionDetail.Where(x => x.ReqID == reqID).ToList();
             return result;
         }
 
@@ -223,7 +227,8 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Requisition> getRequisition(string RetID)
         {
-            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == Convert.ToInt32(RetID)).ToList();
+            int retID = Convert.ToInt32(RetID);
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == retID).ToList();
             return reqList;
         }
         

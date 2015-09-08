@@ -55,8 +55,9 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<PurchaseOrderDetail> getPoDetail(string PoID)
         {
+            int poID = Convert.ToInt32(PoID);
             List<PurchaseOrderDetail> result = ctx.PurchaseOrderDetail
-                .Where(x => x.PoID == Convert.ToInt32(PoID))
+                .Where(x => x.PoID == poID)
                 .ToList();
 
             return result;

@@ -204,7 +204,8 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<ReqAllocation> getReqAllocation(string RetID)
         {
-            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == Convert.ToInt32(RetID)).ToList();
+            int retID = Convert.ToInt32(RetID);
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == retID).ToList();
 
             List<ReqAllocation> reqAllocationList = new List<ReqAllocation>();
 
@@ -289,6 +290,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<ReqAllocation> getRetByDept(string RetID)
         {
+            int retID = Convert.ToInt32(RetID);
             List<ReqAllocation> reqAllocationList = new List<ReqAllocation>();
 
             //hashmap-like to store itemID and collated qty 
@@ -299,7 +301,7 @@ namespace BusinessLogic
             Dictionary<string, int> itemQtyZOOL = new Dictionary<string, int>();
 
             //obtain list of requisition with specified RetID
-            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == Convert.ToInt32(RetID)).ToList();
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == retID).ToList();
 
             foreach(Requisition req in reqList)
             {

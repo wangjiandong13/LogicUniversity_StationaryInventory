@@ -49,7 +49,8 @@ namespace BusinessLogic
         {
             bool result = true;
 
-            Notification notif = ctx.Notification.Where(x => x.NotifID == Convert.ToInt32(NotifID)).FirstOrDefault();
+            int notifID = Convert.ToInt32(NotifID);
+            Notification notif = ctx.Notification.Where(x => x.NotifID == notifID).FirstOrDefault();
             notif.Status = "READ";
 
             try
@@ -70,7 +71,8 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Notification> getNotification (string EmpID)
         {
-            List<Notification> notifList = ctx.Notification.Where(x => x.EmpID == Convert.ToInt32(EmpID)).ToList();
+            int empID = Convert.ToInt32(EmpID);
+            List<Notification> notifList = ctx.Notification.Where(x => x.EmpID == empID).ToList();
             return notifList;
         }
 
