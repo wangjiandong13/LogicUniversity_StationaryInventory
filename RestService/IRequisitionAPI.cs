@@ -17,19 +17,19 @@ namespace RestService
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/getRequisitionList/{DisID}")]
-        List<Requisition> getRequisitionList(int DisID);
+        List<Requisition> getRequisitionList(string DisID);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/approve/{ReqId}/{HandledBy}/{Remark}")]
-        bool approve(int ReqId, int HandledBy, string Remark);
+        bool approve(string ReqId, string HandledBy, string Remark);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/reject/{ReqId}/{HandledBy}/{Remark}")]
-        bool reject(int ReqId, int HandledBy, string Remark);
+        bool reject(string ReqId, string HandledBy, string Remark);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
