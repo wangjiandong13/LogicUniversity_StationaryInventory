@@ -5,6 +5,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -12,59 +15,87 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select RetrievalAPI.svc or RetrievalAPI.svc.cs at the Solution Explorer and start debugging.
     public class RetrievalAPI : IRetrievalAPI
     {
-
-        public bool approve(string ReqId, string HandledBy, string Remark)
+        public int createRetrieval(List<ProcessRetrieval> processRetList)
         {
-            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.approve(ReqId, HandledBy, Remark);
+            BusinessLogic.RetrievalController BL = new BusinessLogic.RetrievalController();
+            return BL.createRetrieval(processRetList);
         }
 
-        public int createRequisition(List<CartItems> itemList)
+        public List<Retrieval> getRetrieval(string EmpID, string Status, string RetID)
         {
-            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.createRequisition(itemList);
+            BusinessLogic.RetrievalController BL = new BusinessLogic.RetrievalController();
+            return BL.getRetrieval(EmpID, Status, RetID);
         }
 
-        public bool deleteRequisition(string ReqID)
+        public bool submit(List<RetrievalDetail> retDetailList)
         {
-            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.deleteRequisition(ReqID);
+            BusinessLogic.RetrievalController BL = new BusinessLogic.RetrievalController();
+            if (BL.submit(retDetailList))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
-        public List<Requisition> getRequisition(string RetID)
+        public bool save(List<RetrievalDetail> retDetailList)
         {
-            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.getRequisition(RetID);
+            BusinessLogic.RetrievalController BL = new BusinessLogic.RetrievalController();
+            if (BL.save(retDetailList))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
-        public List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID)
+        public List<ProcessRetSuccess> getRetrievalDetail(string RetID)
         {
-            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.getRequisition(StatusID, ReqID, EmpID);
+            BusinessLogic.RetrievalController BL = new BusinessLogic.RetrievalController();
+            return BL.getRetrievalDetail(RetID);
         }
 
-        public List<RequisitionDetail> getRequisitionDetail(string ReqID)
+        public List<ReqAllocation> getReqAllocation(string RetID)
         {
-            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.getRequisitionDetail(ReqID);
+            BusinessLogic.RetrievalController BL = new BusinessLogic.RetrievalController();
+            return BL.getReqAllocation(RetID);
         }
 
-        public List<Requisition> getRequisitionList(string DisID)
+        public bool confirmAllocation(List<RequisitionDetail> reqDetailList)
         {
-            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.getRequisitionList(DisID);
+            BusinessLogic.RetrievalController BL = new BusinessLogic.RetrievalController();
+            if (BL.confirmAllocation(reqDetailList))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
-        public bool reject(string ReqId, string HandledBy, string Remark)
+
+        public List<ReqAllocation> getRetByDept(string RetID)
         {
-            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.reject(ReqId, HandledBy, Remark);
+            BusinessLogic.RetrievalController BL = new BusinessLogic.RetrievalController();
+            return BL.getRetByDept(RetID);
         }
 
-        public bool setReqPriority(string ReqID, string PriorityID, string Remark)
-        {
-            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.setReqPriority(ReqID, PriorityID, Remark);
-        }
     }
 }

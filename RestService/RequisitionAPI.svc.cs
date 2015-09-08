@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -12,33 +14,97 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select RequisitionAPI.svc or RequisitionAPI.svc.cs at the Solution Explorer and start debugging.
     public class RequisitionAPI : IRequisitionAPI
     {
-        public bool approve(int ReqId, int HandledBy, string Remark)
+        public List<Requisition> getRequisitionList(string DisID)
         {
-            throw new NotImplementedException();
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.getRequisition(DisID);
         }
 
-        public int createRequisition(List<CartItems> itemList)
+        public bool approve(string ReqId, string HandledBy, string Remark)
         {
-            throw new NotImplementedException();
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            if (BL.approve(ReqId, HandledBy, Remark))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
-        public void DoWork()
+        public bool reject(string ReqId, string HandledBy, string Remark)
         {
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            if (BL.reject(ReqId, HandledBy, Remark))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
         public List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID)
         {
-            throw new NotImplementedException();
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.getRequisition(StatusID, ReqID, EmpID);
         }
 
-        public List<Requisition> getRequisitionList(int DisID)
+        public int createRequisition(List<CartItems> itemList)
         {
-            throw new NotImplementedException();
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.createRequisition(itemList);
         }
 
-        public bool reject(int ReqId, int HandledBy, string Remark)
+        public bool setReqPriority(string ReqID, string PriorityID, string Remark)
         {
-            throw new NotImplementedException();
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            if (BL.setReqPriority(ReqID, PriorityID, Remark))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
+
+        public bool deleteRequisition(string ReqID)
+        {
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            if (BL.deleteRequisition(ReqID))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
+        }
+
+        public List<RequisitionDetail> getRequisitionDetail(string ReqID)
+        {
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.getRequisitionDetail(ReqID);
+        }
+
     }
 }

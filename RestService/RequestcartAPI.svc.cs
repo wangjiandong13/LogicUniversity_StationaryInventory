@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -15,19 +17,52 @@ namespace RestService
         public bool addItem(CartItems item)
         {
             BusinessLogic.RequestCartController BL = new BusinessLogic.RequestCartController();
-            return BL.addItem(item);
+            if (BL.addItem(item))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
         public bool deleteItem(CartItems item)
         {
             BusinessLogic.RequestCartController BL = new BusinessLogic.RequestCartController();
-            return BL.deleteItem(item);
+            if (BL.deleteItem(item))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
         public bool updateItem(CartItems item)
         {
             BusinessLogic.RequestCartController BL = new BusinessLogic.RequestCartController();
-            return BL.updateItem(item);
+            if (BL.updateItem(item))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
     }
 }

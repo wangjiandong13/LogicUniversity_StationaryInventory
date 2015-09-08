@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -15,7 +17,19 @@ namespace RestService
         public bool generatePo(List<ProposePo> proposePoList)
         {
             BusinessLogic.PurchaseOrderController BL = new BusinessLogic.PurchaseOrderController();
-            return BL.generatePo(proposePoList);
+
+            if (BL.generatePo(proposePoList))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
         public List<PurchaseOrder> getPo(string startdate, string enddate, string EmpID, string PoID)
@@ -39,7 +53,18 @@ namespace RestService
         public bool restock(List<PurchaseOrderDetail> PoDetailList)
         {
             BusinessLogic.PurchaseOrderController BL = new BusinessLogic.PurchaseOrderController();
-            return BL.restock(PoDetailList);
+            if (BL.restock(PoDetailList))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
     }
 }

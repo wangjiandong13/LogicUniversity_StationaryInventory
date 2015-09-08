@@ -7,7 +7,7 @@ using Model;
 
 namespace BusinessLogic
 {
-    class RetrievalController
+    public class RetrievalController
     {
         StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
 
