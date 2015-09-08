@@ -1,18 +1,19 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using Model;
 
 namespace RestService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RetrievalIPA" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select RetrievalIPA.svc or RetrievalIPA.svc.cs at the Solution Explorer and start debugging.
-    public class RetrievalAPI : IRetrievalIPA
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RetrievalAPI" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select RetrievalAPI.svc or RetrievalAPI.svc.cs at the Solution Explorer and start debugging.
+    public class RetrievalAPI : IRetrievalAPI
     {
-        public bool approve(int ReqId, int HandledBy, string Remark)
+
+        public bool approve(string ReqId, string HandledBy, string Remark)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.approve(ReqId, HandledBy, Remark);
@@ -24,13 +25,13 @@ namespace RestService
             return BL.createRequisition(itemList);
         }
 
-        public bool deleteRequisition(int ReqID)
+        public bool deleteRequisition(string ReqID)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.deleteRequisition(ReqID);
         }
 
-        public List<Requisition> getRequisition(int RetID)
+        public List<Requisition> getRequisition(string RetID)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.getRequisition(RetID);
@@ -42,25 +43,25 @@ namespace RestService
             return BL.getRequisition(StatusID, ReqID, EmpID);
         }
 
-        public List<RequisitionDetail> getRequisitionDetail(int ReqID)
+        public List<RequisitionDetail> getRequisitionDetail(string ReqID)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.getRequisitionDetail(ReqID);
         }
 
-        public List<Requisition> getRequisitionList(int DisID)
+        public List<Requisition> getRequisitionList(string DisID)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.getRequisitionList(DisID);
         }
 
-        public bool reject(int ReqId, int HandledBy, string Remark)
+        public bool reject(string ReqId, string HandledBy, string Remark)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.reject(ReqId, HandledBy, Remark);
         }
 
-        public bool setReqPriority(int ReqID, int PriorityID, string Remark)
+        public bool setReqPriority(string ReqID, string PriorityID, string Remark)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.setReqPriority(ReqID, PriorityID, Remark);

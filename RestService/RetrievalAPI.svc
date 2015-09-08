@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="RestService.RetrievalIPA" CodeBehind="RetrievalAPI.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="RestService.RetrievalAPI" CodeBehind="RetrievalAPI.svc.cs" %>
