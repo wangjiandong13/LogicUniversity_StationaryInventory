@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -14,19 +16,53 @@ namespace RestService
     {
         public bool approveAdj(string AdjID)
         {
-            throw new NotImplementedException();
+            BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();
+            if (BL.approveAdj(AdjID))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
         public bool createVoucherAdj(AdjustmentVoucher adj)
         {
             BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();
-            return BL.createVoucherAdj(adj);
+            if (BL.createVoucherAdj(adj))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
         public bool createVoucherAdjDetail(List<AdjustmentDetail> adjDetail)
         {
             BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();
-            return BL.createVoucherAdjDetail(adjDetail);
+            if (BL.createVoucherAdjDetail(adjDetail))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
 
         public List<AdjustmentVoucher> getAdjVoucher(string AdjID, string startDate, string endDate)
@@ -49,7 +85,19 @@ namespace RestService
 
         public bool rejectAdj(string AdjID)
         {
-            throw new NotImplementedException();
+            BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();
+            if (BL.rejectAdj(AdjID))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
     }
 }
