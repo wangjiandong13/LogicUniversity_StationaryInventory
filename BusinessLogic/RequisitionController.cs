@@ -163,7 +163,8 @@ namespace BusinessLogic
         {
             bool result = true;
 
-            Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(ReqID)).FirstOrDefault();
+            int reqID = Convert.ToInt32(ReqID);
+            Requisition req = ctx.Requisition.Where(x => x.ReqID == reqID).FirstOrDefault();
             if (req != null)
             {
                 req.PriorityID = Convert.ToInt32(PriorityID);
