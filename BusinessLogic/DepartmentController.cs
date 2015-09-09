@@ -50,6 +50,8 @@ namespace BusinessLogic
             dept.Contact = d.Contact;
             dept.Phone = d.Phone;
             dept.Fax = d.Fax;
+            dept.CPID = d.CPID;
+            dept.DeptName = d.DeptName;
             dept.DeptHead = d.DeptHead;
             dept.DeptRep = d.DeptRep;
             try
