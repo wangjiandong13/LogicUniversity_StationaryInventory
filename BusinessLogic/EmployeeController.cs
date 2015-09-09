@@ -48,6 +48,26 @@ namespace BusinessLogic
             return employees.ToList();
         }
 
+        public bool updateEmployeeRole(string EmpID, string RoleID)
+        {
+            bool result = true;
+
+            int empID = Convert.ToInt32(EmpID);
+            Employee employee = ctx.Employee.Where(x => x.EmpID == empID).FirstOrDefault();
+            employee.RoleID = RoleID;
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
+
+        }
+
         public Employee login(Employee e)
         {
             var employees = from c in ctx.Employee
