@@ -66,17 +66,6 @@ EmployeeControllers.controller('requestCartCtrl', ['$scope', '$http',
         });
   }]);
 
-EmployeeControllers.controller('requisitionCtrl', ['$scope', '$http',
-  function ($scope, $http) {
-      $http.get('url')
-        .success(function (data, header, config, status) {
-            //$scope.Requisitions = data;
-        })
-        .error(function (data, header, config, status) {
-            alert(status);
-        });
-  }]);
-
 EmployeeControllers.controller('requisitionDetailCtrl', ['$scope', '$http',
   function ($scope, $http) {
       $http.get('url')

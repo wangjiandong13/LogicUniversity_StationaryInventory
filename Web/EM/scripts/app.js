@@ -1,5 +1,5 @@
 var EmployeeAPP = angular.module('EmployeeAPP', [
-'ngRoute'
+'ngRoute','EmployeeControllers'
 ]);
 
 EmployeeAPP.config(['$routeProvider',
@@ -28,10 +28,6 @@ EmployeeAPP.config(['$routeProvider',
         when('/requestCart', {
             templateUrl: 'requestCart.html',
             controller: 'requestCartCtrl'
-        }).
-        when('/requisition', {
-            templateUrl: 'requisition.html',
-            controller: 'requisitionCtrl'
         }).
         when('/requisitionDetail', {
             templateUrl: 'requisitionDetail.html',
