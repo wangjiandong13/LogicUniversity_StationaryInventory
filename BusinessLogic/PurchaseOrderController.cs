@@ -107,6 +107,10 @@ namespace BusinessLogic
                 stockCard.Qty = poDetail.ActualQty;
                 stockCard.Balance = balance + poDetail.ActualQty;
                 ctx.StockCard.Add(stockCard);
+
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == poDetail.ItemID).FirstOrDefault();
+                item.Stock = balance + poDetail.ActualQty;
             }
 
             //change status of purchase order to "Delivered"

@@ -184,27 +184,32 @@ namespace BusinessLogic
                           where x.AdjID == AdjID
                           select x).First();
             adjvoucher.Status = "APPROVED";
-
-            //update stock card, adjust qty
-            var list = (from l in ctx.AdjustmentDetail
+            
+            List<AdjustmentDetail> adjDetailList = (from l in ctx.AdjustmentDetail
                         where l.AdjID == AdjID
                         select l).ToList();
 
-            for(int i=0;i<list.Count;i++)
+            foreach(AdjustmentDetail adjDetail in adjDetailList)
             {
-                string itemID = list[i].ItemID;
-                Item item = (from a in ctx.Item
-                        where a.ItemID == itemID
-                        select a).First();
-                item.Stock += list[i].Qty;
+                string itemID = adjDetail.ItemID;
 
-                StockCard sc = new StockCard();
-                sc.ItemID = item.ItemID;
-                sc.Date = System.DateTime.Now;
-                sc.Description = "Stock Adjustment " + AdjID;
-                sc.Qty = list[i].Qty;
-                sc.Balance = item.Stock;
-                ctx.StockCard.Add(sc);
+                //update stock card
+                List<StockCard> stockCardList = ctx.StockCard.Where(x => x.ItemID == itemID).ToList();
+                int balance = 0;
+                if (stockCardList.FirstOrDefault() != null)
+                    balance = (int)stockCardList.Last().Balance;
+
+                StockCard stockCard = new StockCard();
+                stockCard.ItemID = itemID;
+                stockCard.Date = DateTime.Now;
+                stockCard.Description = "Stock Adjustment " + AdjID;
+                stockCard.Qty = adjDetail.Qty;
+                stockCard.Balance = balance + adjDetail.Qty;
+                ctx.StockCard.Add(stockCard);
+                
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == itemID).FirstOrDefault();
+                item.Stock = balance + adjDetail.Qty;
             }
 
             try
