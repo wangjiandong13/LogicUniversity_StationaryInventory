@@ -185,8 +185,9 @@ namespace BusinessLogic
 
             for(int i=0;i<list.Count;i++)
             {
+                string itemID = list[i].ItemID;
                 Item item = (from a in ctx.Item
-                        where a.ItemID == list[i].ItemID
+                        where a.ItemID == itemID
                         select a).First();
                 item.Stock += list[i].Qty;
 

@@ -73,7 +73,8 @@ namespace BusinessLogic
             bool result = true;
 
             //search for purchase order to obtain supplier ID
-            PurchaseOrder po = ctx.PurchaseOrder.Where(x => x.PoID == PoDetailList.First().PoID).FirstOrDefault();
+            int poID = (int)PoDetailList.First().PoID; 
+            PurchaseOrder po = ctx.PurchaseOrder.Where(x => x.PoID == poID).FirstOrDefault();
 
             foreach(PurchaseOrderDetail poDetail in PoDetailList)
             {
@@ -176,7 +177,9 @@ namespace BusinessLogic
                 ctx.PurchaseOrder.Add(po);
 
                 //obtain the PoID of the newly added Po
-                int poLastID = ctx.PurchaseOrder.Last().PoID;
+                int empID = supplier1.First().EmpID;
+                var poLast = ctx.PurchaseOrder.Where(x=> x.EmpID == empID).ToList().Last();
+                int poLastID = poLast.PoID;
        
                 double totalamt = 0;
 
@@ -193,7 +196,7 @@ namespace BusinessLogic
                 }
 
                 //Update the po total amount
-                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+                poLast.TotalAmt = totalamt;
             }
 
             //generate po for supplier 2
@@ -209,7 +212,9 @@ namespace BusinessLogic
                 ctx.PurchaseOrder.Add(po);
 
                 //obtain the PoID of the newly added Po
-                int poLastID = ctx.PurchaseOrder.Last().PoID;
+                int empID = supplier2.First().EmpID;
+                var poLast = ctx.PurchaseOrder.Where(x => x.EmpID == empID).ToList().Last();
+                int poLastID = poLast.PoID;
 
                 double totalamt = 0;
 
@@ -226,11 +231,11 @@ namespace BusinessLogic
                 }
 
                 //Update the po total amount
-                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+                poLast.TotalAmt = totalamt;
             }
 
             //generate po for supplier 3
-            if (supplier2.FirstOrDefault() != null)
+            if (supplier3.FirstOrDefault() != null)
             {
                 //create and add new po to db
                 PurchaseOrder po = new PurchaseOrder();
@@ -242,7 +247,9 @@ namespace BusinessLogic
                 ctx.PurchaseOrder.Add(po);
 
                 //obtain the PoID of the newly added Po
-                int poLastID = ctx.PurchaseOrder.Last().PoID;
+                int empID = supplier3.First().EmpID;
+                var poLast = ctx.PurchaseOrder.Where(x => x.EmpID == empID).ToList().Last();
+                int poLastID = poLast.PoID;
 
                 double totalamt = 0;
 
@@ -259,7 +266,7 @@ namespace BusinessLogic
                 }
 
                 //Update the po total amount
-                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+                poLast.TotalAmt = totalamt;
             }
 
             try

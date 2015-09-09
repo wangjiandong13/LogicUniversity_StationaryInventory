@@ -28,7 +28,9 @@ namespace BusinessLogic
             ctx.Retrieval.Add(ret);
 
             //obtain retID of newly added retrieval
-            int RetID = ctx.Retrieval.Last().RetID;
+            int empID = processRetList.First().EmpID;
+            Retrieval retLast = ctx.Retrieval.Where(x=> x.EmpID == empID).ToList().Last();
+            int RetID = retLast.RetID;
 
             //hashmap-like to store itemID and collated qty
             Dictionary<string, int> itemQty = new Dictionary<string, int>();
