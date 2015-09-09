@@ -21,6 +21,13 @@ namespace BusinessLogic
         /// <returns>Adjustment Voucher List search by ID, Date</returns>
         public List<AdjustmentVoucher> getAdjVoucher(string adjId,string startDate,string endDate)
         {
+            if (adjId == "null")
+                adjId = null;
+            if (startDate == "null")
+                startDate = null;
+            if (endDate == "null")
+                endDate = null;
+
             List<AdjustmentVoucher> adjustlist = new List<AdjustmentVoucher>();
             
             if(adjId == null && startDate == null && endDate == null)

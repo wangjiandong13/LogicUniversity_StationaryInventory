@@ -89,6 +89,13 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Retrieval> getRetrieval(string EmpID, string Status, string RetID)
         {
+            if (EmpID == "null")
+                EmpID = null;
+            if (Status == "null")
+                Status = null;
+            if (RetID == "null")
+                RetID = null;
+
             //start with all the records
             var query = from ret in ctx.Retrieval select ret;
 
