@@ -21,6 +21,15 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<PurchaseOrder> getPo(string startdate, string enddate, string EmpID, string PoID)
         {
+            if (startdate == "null")
+                startdate = null;
+            if (enddate == "null")
+                enddate = null;
+            if (EmpID == "null")
+                EmpID = null;
+            if (PoID == "null")
+                PoID = null;
+
             //start with all the records
             var query = from po in ctx.PurchaseOrder select po;
 

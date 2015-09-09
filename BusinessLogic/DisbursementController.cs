@@ -35,6 +35,17 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Disbursement> getDisbursement(string DeptID, string CPID, string DisID, string startdate, string enddate)
         {
+            if (DeptID == "null")
+                DeptID = null;
+            if (CPID == "null")
+                CPID = null;
+            if (DisID == "null")
+                DisID = null;
+            if (startdate == "null")
+                startdate = null;
+            if (enddate == "null")
+                enddate = null;
+
             //start with all the records
             var query = from disb in ctx.Disbursement select disb;
 

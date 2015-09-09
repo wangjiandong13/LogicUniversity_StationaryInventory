@@ -90,6 +90,13 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID)
         {
+            if (StatusID == "null")
+                StatusID = null;
+            if (ReqID == "null")
+                ReqID = null;
+            if (EmpID == "null")
+                EmpID = null;
+
             //start with all the records
             var query = from req in ctx.Requisition select req;
 
