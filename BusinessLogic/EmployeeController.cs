@@ -71,6 +71,7 @@ namespace BusinessLogic
 
         public Employee login(Employee e)
         {
+            hash();
             var employees = from c in ctx.Employee
                             where c.EmpID==e.EmpID
                             select c;
@@ -94,6 +95,34 @@ namespace BusinessLogic
                 }
             }
             return null;
+        }
+
+        public bool hash()
+        {
+            bool result = true;
+
+            List<Employee> employeeList = ctx.Employee.ToList();
+            foreach(Employee employee in employeeList)
+            {
+                using (MD5 md5Hash = MD5.Create())
+                {
+                    string one = GetMd5Hash(md5Hash, "1234");
+                    string two = GetMd5Hash(md5Hash, one + employee.EmpID);
+                    employee.Password = two;
+                }  
+            }
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+
+            return result;
         }
 
         public string GetMd5Hash(MD5 md5Hash, string input)
