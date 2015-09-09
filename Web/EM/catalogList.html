@@ -64,20 +64,20 @@
                     <br>
                     <br>
                 </div>
-                <div class="row">
+                <div class="row" ng-repeat="Item in Items">
                     <div class="col-md-12" style="vertical-align:middle">
                         <div class="col-md-2">
                             <img id="img_item1" style="height:120px; width:120px" src="assets/admin/layout/img/clips.JPG">
                         </div>
                         <div class="col-md-5">
-                            <label id="lbl_C002">
-                                <h4><b>Clips Double 1"</b></h4></label>
+                            <label id={{Item.ItemID}}>
+                                <h4><b>{{Item.ItemName}}</b></h4></label>
                             <br>
                             <label>Unit of Measurement: </label>
-                            <label id="lbl_UOM">Box of 25</label>
+                            <label id="lbl_UOM">{{Item.UOM}}</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="number" class="form-control" id="spinner" min=1>
+                            <input type="number" class="form-control" min=1 value="{{qty}}">
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-primary">
