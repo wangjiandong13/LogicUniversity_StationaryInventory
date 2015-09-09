@@ -46,22 +46,6 @@ C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInve
 C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\obj\Debug\Model.dll
 C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\obj\Debug\Model.pdb
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\Model.dll.config
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\Model.dll
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\Model.pdb
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\EntityFramework.dll
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\TrackableEntities.Common.dll
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\TrackableEntities.EF.6.dll
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\EntityFramework.xml
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\TrackableEntities.Common.xml
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\TrackableEntities.EF.6.xml
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\obj\Debug\Model.dll
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\obj\Debug\Model.pdb
 C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\Model.dll.config
 C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\Model.dll
 C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\Model.pdb
