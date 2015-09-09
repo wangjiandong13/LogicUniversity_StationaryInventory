@@ -1,0 +1,113 @@
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <i class="fa fa-building"></i>
+                    <a href="department.html">Department</a>
+                </li>
+            </ul>
+        </div>
+        <div class="page-toolbar">
+        </div>
+        <!-- END PAGE HEADER-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h1>Department</h1>
+                </div>
+                <div class="col-md-6" style="text-align:right">
+                    <br>
+                    <button class="btn btn-primary" disabled="true" id="btn_departmentinfosave">
+                        <span class="glyphicon glyphicon-ok"></span> Save
+                    </button>
+                    <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-pencil" id="btn_departmentinfoedit"></span> Edit
+                    </button>
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+
+                <!-- THIS PART IS FOR THE LEFT PANEL -->
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <!-- THIS PORTION TO POPULATE THE DEPARTMENT DETAILS -->
+                        <table id="departmentinfotable">
+                            <tr>
+                                <td class="col-md-5">
+                                    <h4>Contact Name:</h4></td>
+                                <td class="col-md-7">
+                                    <input type="text" class="form-control" placeholder="Append Contact Name Here" disabled="true" id="tb_deptcontactname">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-5">
+                                    <h4>Telephone No:</h4></td>
+                                <td class="col-md-7">
+                                    <input type="text" class="form-control" placeholder="Append Telephone No Here" disabled="true" id="tb_depttelephoneno">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-5">
+                                    <h4>Fax No:</h4></td>
+                                <td class="col-md-7">
+                                    <input type="text" class="form-control" placeholder="Append Fax No Here" disabled="true" id="tb_deptfaxno">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-5">
+                                    <h4>Department Head:</h4></td>
+                                <td class="col-md-7">
+                                    <input type="text" class="form-control" placeholder="Append Department Head Here" disabled="true" id="tb_depthead">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-5">
+                                    <h4>Representative:</h4></td>
+                                <td class="col-md-7">
+                                    <select class="form-control" disabled="true">
+                                        <option>Append Representative Here</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                        <option>Option 4</option>
+                                        <option>Option 5</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- THIS PART IS FOR THE RIGHT PANEL -->
+                    <div class="col-md-6">
+                        <h3>Collection Point</h3>
+                        <div class="portlet solid blue">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-map-marker"> Stationary Store</i>
+                                </div>
+                                <div class="tools">
+                                    <select class="form-control" disabled="true">
+                                        <option>Stationary Store</option>
+                                        <option>Management School</option>
+                                        <option>Medical School</option>
+                                        <option>Engineering School</option>
+                                        <option>Service School</option>
+                                        <option>University Hospital</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="portlet-body" style="display:block;">
+                                <!-- INSERT GOOGLE MAP HERE -->
+                                <div id="gmap_basic" class="gmaps">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT -->

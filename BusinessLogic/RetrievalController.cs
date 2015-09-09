@@ -89,6 +89,13 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Retrieval> getRetrieval(string EmpID, string Status, string RetID)
         {
+            if (EmpID == "null")
+                EmpID = null;
+            if (Status == "null")
+                Status = null;
+            if (RetID == "null")
+                RetID = null;
+
             //start with all the records
             var query = from ret in ctx.Retrieval select ret;
 
@@ -127,7 +134,8 @@ namespace BusinessLogic
             }
 
             //update status of retrieval to "Retrieved"
-            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retDetailList.First().RetID).FirstOrDefault();
+            int retid = (int)retDetailList.First().RetID;
+            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retid ).FirstOrDefault();
             ret.Status = "RETRIEVED";
 
             try
@@ -272,6 +280,10 @@ namespace BusinessLogic
                 stockCard.Qty = -reqDetail.IssueQty;
                 stockCard.Balance = balance - reqDetail.IssueQty;
                 ctx.StockCard.Add(stockCard);
+
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == reqDetail.ItemID).FirstOrDefault();
+                item.Stock = balance - reqDetail.IssueQty;
             }
 
             try

@@ -21,6 +21,15 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<PurchaseOrder> getPo(string startdate, string enddate, string EmpID, string PoID)
         {
+            if (startdate == "null")
+                startdate = null;
+            if (enddate == "null")
+                enddate = null;
+            if (EmpID == "null")
+                EmpID = null;
+            if (PoID == "null")
+                PoID = null;
+
             //start with all the records
             var query = from po in ctx.PurchaseOrder select po;
 
@@ -98,6 +107,10 @@ namespace BusinessLogic
                 stockCard.Qty = poDetail.ActualQty;
                 stockCard.Balance = balance + poDetail.ActualQty;
                 ctx.StockCard.Add(stockCard);
+
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == poDetail.ItemID).FirstOrDefault();
+                item.Stock = balance + poDetail.ActualQty;
             }
 
             //change status of purchase order to "Delivered"

@@ -32,6 +32,12 @@ namespace RestService
         List<Employee> getemployeebyDeptID(string DeptID);
 
         [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/updateemployeeRole/{EmpId}/{role}")]
+        bool updateemployeeRole(string EmpId,string role);
+
+        [OperationContract]
         [WebInvoke(Method = "POST", 
                            RequestFormat = WebMessageFormat.Json,
                            ResponseFormat = WebMessageFormat.Json,
