@@ -133,13 +133,15 @@ namespace BusinessLogic
                 //create and add new requisition
                 Requisition req = new Requisition();
                 req.EmpID = itemList.First().EmpID;
-                req.DeptID = ctx.Employee.Where(x => x.EmpID == itemList.First().EmpID).First().DeptID;
+                int empid = itemList.First().EmpID;
+                req.DeptID = ctx.Employee.Where(x => x.EmpID == empid).First().DeptID;
                 req.Date = DateTime.Now;
                 req.StatusID = 1;
                 ctx.Requisition.Add(req);
 
                 //obtain the ReqID of the newly added requisition
-                ReqID = ctx.Requisition.Last().ReqID;
+                Requisition reqLast = ctx.Requisition.Where(x => x.EmpID == empid).ToList().Last();
+                ReqID = reqLast.ReqID;
 
                 //create and add new requisition details
                 foreach(CartItems item in itemList)
