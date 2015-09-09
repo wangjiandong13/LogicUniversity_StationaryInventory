@@ -36,19 +36,32 @@
                     </div>
                     <div class="col-md-3">
 
-                        <select class="form-control">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
+                        <select class="form-control" value="{{filterCategory}}">
+                            <option value="1">Clip</option>
+                            <option value="2">Envelope</option>
+                            <option value="3">Eraser</option>
+                            <option value="4">Exercise</option>
+                            <option value="5">File</option>
+                            <option value="6">Pen</option>
+                            <option value="7">Puncher</option>
+                            <option value="8">Pad</option>
+                            <option value="9">Paper</option>
+                            <option value="10">Ruler</option>
+                            <option value="11">Scissors</option>
+                            <option value="12">Tape</option>
+                            <option value="13">Sharpener</option>
+                            <option value="14">Shorthand</option>
+                            <option value="15">Stapler</option>
+                            <option value="16">Tacks</option>
+                            <option value="17">Tparency</option>
+                            <option value="18">Tray</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <input type="text" class="form-control" placeholder="Enter Item Name">
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn yellow">
+                        <button type="button" class="btn btn yellow" ng-click="test()">
                             <span class="glyphicon glyphicon-search"></span> Search
                         </button>
                     </div>

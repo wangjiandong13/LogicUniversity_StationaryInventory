@@ -13,9 +13,13 @@ EmployeeControllers.controller('requisitionCtrl', ['$scope', '$http',
 
 EmployeeControllers.controller('catalogListCtrl', ['$scope', '$http',
   function ($scope, $http) {
-      $http.get('url')
+      $http.get('http://www.team5.com/api/catalogAPI.svc/getItem')
         .success(function (data, header, config, status) {
-            //$scope.Requisitions = data;
+            $scope.Items = data;
+            $scope.qty = 1;
+            $scope.test = function () {
+                alert($scope.filterCategory);
+            }
         })
         .error(function (data, header, config, status) {
             alert(status);
@@ -24,9 +28,9 @@ EmployeeControllers.controller('catalogListCtrl', ['$scope', '$http',
 
 EmployeeControllers.controller('catalogTileCtrl', ['$scope', '$http',
   function ($scope, $http) {
-      $http.get('url')
+      $http.get('http://www.team5.com/api/catalogAPI.svc/getItem')
         .success(function (data, header, config, status) {
-            //$scope.Requisitions = data;
+            $scope.Items = data;
         })
         .error(function (data, header, config, status) {
             alert(status);

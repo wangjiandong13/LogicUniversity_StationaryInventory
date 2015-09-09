@@ -4194,6 +4194,7 @@
     <Content Include="EM\requisition.html" />
     <Content Include="EM\requisitionDetail.html" />
     <Content Include="EM\scripts\app.js" />
+    <Content Include="EM\scripts\catalogList.js" />
     <Content Include="EM\scripts\controllers\EmployeeControllers.js" />
     <Content Include="ER\disbursement.html" />
     <Content Include="ER\disbursementDetail.html" />
