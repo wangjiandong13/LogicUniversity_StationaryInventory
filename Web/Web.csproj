@@ -4549,6 +4549,7 @@
     <Content Include="EM\.DS_Store" />
     <Content Include="ER\.DS_Store" />
     <Content Include="SC\.DS_Store" />
+    <Content Include="Service.js" />
     <Content Include="SMS\.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

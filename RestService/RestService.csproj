@@ -79,6 +79,7 @@
     <Content Include="DisbursementAPI.svc" />
     <Content Include="EmployeeAPI.svc" />
     <Content Include="InventoryAPI.svc" />
+    <Content Include="NotificationAPI.svc" />
     <Content Include="POAPI.svc" />
     <Content Include="RequestcartAPI.svc" />
     <Content Include="RequisitionAPI.svc" />
@@ -116,6 +117,7 @@
     <Compile Include="IDisbursementAPI.cs" />
     <Compile Include="IEmployeeAPI.cs" />
     <Compile Include="IInventoryAPI.cs" />
+    <Compile Include="INotificationAPI.cs" />
     <Compile Include="InventoryAPI.svc.cs">
       <DependentUpon>InventoryAPI.svc</DependentUpon>
     </Compile>
@@ -124,6 +126,9 @@
     <Compile Include="IRequisitionAPI.cs" />
     <Compile Include="IRetrievalAPI.cs" />
     <Compile Include="ISupplierAPI.cs" />
+    <Compile Include="NotificationAPI.svc.cs">
+      <DependentUpon>NotificationAPI.svc</DependentUpon>
+    </Compile>
     <Compile Include="POAPI.svc.cs">
       <DependentUpon>POAPI.svc</DependentUpon>
     </Compile>
