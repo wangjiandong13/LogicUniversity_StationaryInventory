@@ -113,5 +113,11 @@ namespace RestService
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.getRequisition(RetID);
         }
+
+        public List<Status> getstatus()
+        {
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.getstatus();
+        }
     }
 }

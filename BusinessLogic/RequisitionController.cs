@@ -77,7 +77,7 @@ namespace BusinessLogic
             {
                 result = false;
             }
-            
+
             return result;
         }
 
@@ -144,7 +144,7 @@ namespace BusinessLogic
                 ReqID = reqLast.ReqID;
 
                 //create and add new requisition details
-                foreach(CartItems item in itemList)
+                foreach (CartItems item in itemList)
                 {
                     RequisitionDetail reqDetail = new RequisitionDetail();
                     reqDetail.ReqID = ReqID;
@@ -153,7 +153,7 @@ namespace BusinessLogic
                     ctx.RequisitionDetail.Add(reqDetail);
                 }
             }
-            
+
             int count = ctx.SaveChanges();
 
             if (count > 0)
@@ -188,7 +188,7 @@ namespace BusinessLogic
             {
                 result = false;
             }
-            
+
             return result;
         }
 
@@ -214,7 +214,7 @@ namespace BusinessLogic
             {
                 result = false;
             }
-            
+
             return result;
         }
 
@@ -241,6 +241,15 @@ namespace BusinessLogic
             List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == retID).ToList();
             return reqList;
         }
-        
+
+        /// <summary>
+        /// Getstatus
+        /// </summary>
+        /// <returns></returns>
+        public List<Status> getstatus()
+        {
+            return ctx.Status.ToList();
+        }
+
     }
 }
