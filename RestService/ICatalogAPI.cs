@@ -24,5 +24,17 @@ namespace RestService
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getItemCategory/{category}")]
         List<Model.Item> getItemCategory(string category);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/getItemByName/{itemName}")]
+        List<Model.Item> getItemByName(string itemName);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/getCategory")]
+        List<Model.ItemCategory> getCategory();
     }
 }

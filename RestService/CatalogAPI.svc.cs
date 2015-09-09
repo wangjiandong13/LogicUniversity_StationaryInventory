@@ -23,5 +23,17 @@ namespace RestService
             BusinessLogic.CatalogController bl = new BusinessLogic.CatalogController();
             return bl.getItemByCategory(category);
         }
+
+        public List<Model.Item> getItemByName(string itemName)
+        {
+            BusinessLogic.CatalogController bl = new BusinessLogic.CatalogController();
+            return bl.getItemByName(itemName);
+        }
+
+        public List<Model.ItemCategory> getCategory()
+        {
+            BusinessLogic.CatalogController bl = new BusinessLogic.CatalogController();
+            return bl.getCategory();
+        }
     }
 }
