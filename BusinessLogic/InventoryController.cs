@@ -156,8 +156,7 @@ namespace BusinessLogic
         /// <summary>
         /// UpdateItem Details 
         /// </summary>
-        /// <param name="item"></param>
-        /// <param name="itemprice"></param>
+        /// <param name="item">item object (ItemID, ItemName, ItemCatID, RoLvl, RoQty, UOM, Stock, Bin )</param>
         /// <returns></returns>
         public bool updateItem(Model.Item item)
         {
@@ -165,12 +164,20 @@ namespace BusinessLogic
 
             Model.Item i = ctx.Item.Where(x => x.ItemID == item.ItemID).FirstOrDefault();
 
-            i.ItemName = item.ItemName;
-            i.ItemCatID = item.ItemCatID;
-            i.RoLvl = item.RoLvl;
-            i.RoQty = item.RoQty;
-            i.UOM = item.UOM;
-            i.Bin = item.Bin;
+            if(item.ItemName != null)
+                i.ItemName = item.ItemName;
+            if (item.ItemCatID != null)
+                i.ItemCatID = item.ItemCatID;
+            if (item.RoLvl != null)
+                i.RoLvl = item.RoLvl;
+            if (item.RoQty != null)
+                i.RoQty = item.RoQty;
+            if (item.UOM != null)
+                i.UOM = item.UOM;
+            if (item.Stock != null)
+                i.Stock = item.Stock;
+            if (item.Bin != null)
+                i.Bin = item.Bin;
 
             try
             {
