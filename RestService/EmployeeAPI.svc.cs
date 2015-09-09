@@ -48,5 +48,22 @@ namespace RestService
                 return null;
             }
         }
+
+        public bool updateemployeeRole(string EmpId, string role)
+        {
+            BusinessLogic.EmployeeController BL = new BusinessLogic.EmployeeController();
+            if (BL.updateEmployeeRole(EmpId, role))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return false;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
+        }
     }
 }
