@@ -280,6 +280,10 @@ namespace BusinessLogic
                 stockCard.Qty = -reqDetail.IssueQty;
                 stockCard.Balance = balance - reqDetail.IssueQty;
                 ctx.StockCard.Add(stockCard);
+
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == reqDetail.ItemID).FirstOrDefault();
+                item.Stock = balance - reqDetail.IssueQty;
             }
 
             try
