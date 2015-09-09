@@ -15,14 +15,14 @@ namespace RestService
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Wrapped,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getDelegate/{DeptID}")]
         List<Model.Delegate> getDelegate(string DeptID);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                         RequestFormat =WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Wrapped,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/createDelegate")]
         bool createDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status);
 
@@ -35,7 +35,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                         RequestFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/editDelegate")]
         bool editDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status);
     }

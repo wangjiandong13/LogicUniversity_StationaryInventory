@@ -46,7 +46,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                            RequestFormat = WebMessageFormat.Json,
-                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+                           BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/createRequisition")]
         int createRequisition(List<CartItems> itemList);
 

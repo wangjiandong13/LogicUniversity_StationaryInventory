@@ -127,7 +127,8 @@ namespace BusinessLogic
             }
 
             //update status of retrieval to "Retrieved"
-            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retDetailList.First().RetID).FirstOrDefault();
+            int retid = (int)retDetailList.First().RetID;
+            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retid ).FirstOrDefault();
             ret.Status = "RETRIEVED";
 
             try

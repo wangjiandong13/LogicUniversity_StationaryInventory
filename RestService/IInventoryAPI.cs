@@ -46,7 +46,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat = WebMessageFormat.Json,
-                                    BodyStyle = WebMessageBodyStyle.Wrapped,
+                                    BodyStyle = WebMessageBodyStyle.Bare,
                                     UriTemplate = "/createItemPrice")]
         bool createItemPrice(List<Model.ItemPrice> ip);
 
@@ -59,14 +59,14 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                      RequestFormat = WebMessageFormat.Json,
-                                     BodyStyle = WebMessageBodyStyle.Wrapped,
+                                     BodyStyle = WebMessageBodyStyle.Bare,
                                      UriTemplate = "/updateItem")]
         bool updateItem(Model.Item item);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat = WebMessageFormat.Json,
-                                    BodyStyle = WebMessageBodyStyle.Wrapped,
+                                    BodyStyle = WebMessageBodyStyle.Bare,
                                     UriTemplate = "/updateItemPrice")]
         bool updateItemPrice(List<Model.ItemPrice> itemprice);
     }

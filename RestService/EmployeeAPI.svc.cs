@@ -14,7 +14,6 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select EmployeeAPI.svc or EmployeeAPI.svc.cs at the Solution Explorer and start debugging.
     public class EmployeeAPI : IEmployeeAPI
     {
-
         public List<Employee> getemployeebyDeptID(string DeptID)
         {
             BusinessLogic.EmployeeController BL = new BusinessLogic.EmployeeController();
@@ -56,7 +55,7 @@ namespace RestService
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;
-                return false;
+                return true;
             }
             else
             {
