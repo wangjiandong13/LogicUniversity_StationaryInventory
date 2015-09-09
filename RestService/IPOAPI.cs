@@ -16,7 +16,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/getPo/{startDate}/{endDate}/{employee}/{PoId}")]
+                                           UriTemplate = "/getPo/{startDate}/{endDate}/{EmpID}/{PoId}")]
         List<PurchaseOrder> getPo(string startdate, string enddate, string EmpID, string PoID);
 
         [OperationContract]
@@ -25,12 +25,20 @@ namespace RestService
                                            UriTemplate = "/getPoDetail/{PoID}")]
         List<PurchaseOrderDetail> getPoDetail(string PoID);
 
+
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                                    RequestFormat =WebMessageFormat.Json,
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                    RequestFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/restock")]
         bool restock(List<PurchaseOrderDetail> PoDetailList);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                    RequestFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/generatePo")]
+        bool generatePo(List<ProposePo> proposePoList);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
@@ -38,11 +46,6 @@ namespace RestService
                                            UriTemplate = "/propose")]
         List<ProposePo> propose();
 
-        [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-            RequestFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/generatePo")]
-        bool generatePo(List<ProposePo> proposePoList);
+        
     }
 }

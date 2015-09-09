@@ -83,6 +83,7 @@
     <Content Include="RequestcartAPI.svc" />
     <Content Include="RequisitionAPI.svc" />
     <Content Include="RetrievalAPI.svc" />
+    <Content Include="SupplierAPI.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +123,7 @@
     <Compile Include="IRequestcartAPI.cs" />
     <Compile Include="IRequisitionAPI.cs" />
     <Compile Include="IRetrievalAPI.cs" />
+    <Compile Include="ISupplierAPI.cs" />
     <Compile Include="POAPI.svc.cs">
       <DependentUpon>POAPI.svc</DependentUpon>
     </Compile>
@@ -134,6 +136,9 @@
     </Compile>
     <Compile Include="RetrievalAPI.svc.cs">
       <DependentUpon>RetrievalAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAPI.svc.cs">
+      <DependentUpon>SupplierAPI.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -37,11 +37,18 @@ namespace RestService
         List<Model.Item> getItemByName(string itemName);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/createItemDetails")]
-        bool createItemDetails(Model.Item item, List<Model.ItemPrice> ip);
+                                    BodyStyle = WebMessageBodyStyle.Bare,
+                                    UriTemplate = "/createItem")]
+        bool createItem(Model.Item item);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                    RequestFormat = WebMessageFormat.Json,
+                                    BodyStyle = WebMessageBodyStyle.Wrapped,
+                                    UriTemplate = "/createItemPrice")]
+        bool createItemPrice(List<Model.ItemPrice> ip);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
@@ -50,10 +57,17 @@ namespace RestService
         Model.StockCard getStockCard(string itemID);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                     RequestFormat = WebMessageFormat.Json,
+                                     BodyStyle = WebMessageBodyStyle.Wrapped,
+                                     UriTemplate = "/updateItem")]
+        bool updateItem(Model.Item item);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/updateItemDetail")]
-        bool updateItemDetail(Model.Item item, List<Model.ItemPrice> ip);
+                                    BodyStyle = WebMessageBodyStyle.Wrapped,
+                                    UriTemplate = "/updateItemPrice")]
+        bool updateItemPrice(List<Model.ItemPrice> itemprice);
     }
 }

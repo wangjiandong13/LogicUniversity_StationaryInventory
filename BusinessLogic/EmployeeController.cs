@@ -24,6 +24,18 @@ namespace BusinessLogic
         }
 
         /// <summary>
+        /// GetEmployeebyRole
+        /// </summary>
+        /// <param name="EmpID">Employee ID</param>
+        /// <returns></returns>
+        public Employee getemployeebyId(string EmpID)
+        {
+            int empID = Convert.ToInt32(EmpID);
+            Employee employee = ctx.Employee.Where(x => x.EmpID == empID).FirstOrDefault();
+            return employee;
+        }
+
+        /// <summary>
         /// GetEmployeebyDeptName
         /// </summary>
         /// <param name="DeptName">Department name</param>

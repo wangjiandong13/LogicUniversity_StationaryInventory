@@ -10,14 +10,14 @@ using System.Net;
 
 namespace RestService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "InventoryAPI" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select InventoryAPI.svc or InventoryAPI.svc.cs at the Solution Explorer and start debugging.
-    public class InventoryAPI : IInventoryAPI
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "SupplierAPI" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select SupplierAPI.svc or SupplierAPI.svc.cs at the Solution Explorer and start debugging.
+    public class SupplierAPI : ISupplierAPI
     {
-        public bool createItem(Item item)
+        public bool createSupplier(Supplier s)
         {
-            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            if (BL.createItem(item))
+            BusinessLogic.SupplierController BL = new BusinessLogic.SupplierController();
+            if (BL.createSupplier(s))
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;
@@ -31,10 +31,10 @@ namespace RestService
             }
         }
 
-        public bool createItemPrice(List<ItemPrice> ip)
+        public bool deleteSupplier(string supplierId)
         {
-            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            if (BL.createItemPrice(ip))
+            BusinessLogic.SupplierController BL = new BusinessLogic.SupplierController();
+            if (BL.deleteSupplier(supplierId))
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;
@@ -48,40 +48,22 @@ namespace RestService
             }
         }
 
-        public List<Item> getItem()
+        public Supplier getBySupplierID(string supplierid)
         {
-            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            return BL.getItem();
+            BusinessLogic.SupplierController BL = new BusinessLogic.SupplierController();
+            return BL.getBySupplierID(supplierid);
         }
 
-        public List<Item> getItemByCategory(string category)
+        public List<Supplier> getSupplierList()
         {
-            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            return BL.getItemByCategory(category);
+            BusinessLogic.SupplierController BL = new BusinessLogic.SupplierController();
+            return BL.getSupplierList();
         }
 
-        public List<Item> getItemByName(string itemName)
+        public bool updateSupplier(Supplier s)
         {
-            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            return BL.getItemByName(itemName);
-        }
-
-        public Item getItemDetails(string itemID)
-        {
-            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            return BL.getItemDetails(itemID);
-        }
-
-        public StockCard getStockCard(string itemID)
-        {
-            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            return BL.getStockCard(itemID);
-        }
-
-        public bool updateItem(Item item)
-        {
-            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            if (BL.updateItem(item))
+            BusinessLogic.SupplierController BL = new BusinessLogic.SupplierController();
+            if (BL.updateSupplier(s))
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;
@@ -94,12 +76,11 @@ namespace RestService
                 return false;
             }
         }
-        
 
-        public bool updateItemPrice(List<ItemPrice> itemprice)
+        public bool updateSupplierRank(string supplierId, string rank)
         {
-            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
-            if (BL.updateItemPrice(itemprice))
+            BusinessLogic.SupplierController BL = new BusinessLogic.SupplierController();
+            if (BL.updateSupplierRank(supplierId,rank))
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;

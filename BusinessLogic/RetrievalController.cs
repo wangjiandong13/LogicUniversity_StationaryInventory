@@ -28,7 +28,9 @@ namespace BusinessLogic
             ctx.Retrieval.Add(ret);
 
             //obtain retID of newly added retrieval
-            int RetID = ctx.Retrieval.Last().RetID;
+            int empID = processRetList.First().EmpID;
+            Retrieval retLast = ctx.Retrieval.Where(x=> x.EmpID == empID).ToList().Last();
+            int RetID = retLast.RetID;
 
             //hashmap-like to store itemID and collated qty
             Dictionary<string, int> itemQty = new Dictionary<string, int>();
@@ -175,8 +177,9 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<ProcessRetSuccess> getRetrievalDetail(string RetID)
         {
-            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == Convert.ToInt32(RetID)).FirstOrDefault();
-            List<RetrievalDetail> retDetailList = ctx.RetrievalDetail.Where(x => x.RetID == Convert.ToInt32(RetID)).ToList();
+            int retid = Convert.ToInt32(RetID);
+            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retid).FirstOrDefault();
+            List<RetrievalDetail> retDetailList = ctx.RetrievalDetail.Where(x => x.RetID == retid).ToList();
 
             List<ProcessRetSuccess> retSuccessList = new List<ProcessRetSuccess>();
 
@@ -184,7 +187,7 @@ namespace BusinessLogic
             {
                 Item i = ctx.Item.Where(x => x.ItemID == retDetail.ItemID).FirstOrDefault();
                 ProcessRetSuccess retSuccess = new ProcessRetSuccess();
-                retSuccess.Date = (DateTime) ret.Date;
+                retSuccess.Date = ret.Date.ToString();
                 retSuccess.Bin = i.Bin;
                 retSuccess.ItemID = i.ItemID;
                 retSuccess.ItemName = i.ItemName;

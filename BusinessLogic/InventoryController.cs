@@ -94,18 +94,36 @@ namespace BusinessLogic
         /// <summary>
         /// Creating Item Details UI 4.7.2 Inventory New
         /// </summary>
-        /// <param name="item"></param>
-        /// <param name="ip"></param>
+        /// <param name="item">Item Object</param>
         /// <returns></returns>
-        public bool createItemDetails(Model.Item item,List<Model.ItemPrice> ip)
+        public bool createItem(Model.Item item)
         {
             bool result = true;
 
             //Add item obj to db
             ctx.Item.Add(item);
+            
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Creating Item Details UI 4.7.2 Inventory New
+        /// </summary>
+        /// <param name="ip">ItemPrice object (ItemID, SupplierID, Price)</param>
+        /// <returns></returns>
+        public bool createItemPrice(List<Model.ItemPrice> ip)
+        {
+            bool result = true;
 
             //add item price
-            //loop
             foreach (Model.ItemPrice itemprice in ip){
                 ctx.ItemPrice.Add(itemprice);
             }
@@ -116,7 +134,7 @@ namespace BusinessLogic
             }
             catch
             {
-                result = true;
+                result = false;
             }
             return result;
         }
@@ -141,15 +159,11 @@ namespace BusinessLogic
         /// <param name="item"></param>
         /// <param name="itemprice"></param>
         /// <returns></returns>
-        public bool updateItemDetail(Model.Item item, List<Model.ItemPrice> itemprice)
+        public bool updateItem(Model.Item item)
         {
             bool result = true;
 
-            Model.Item i = new Model.Item();
-            Model.ItemPrice ip = new Model.ItemPrice();
-            i = (from c in ctx.Item
-                 where item.ItemID == i.ItemID
-                 select c).First();
+            Model.Item i = ctx.Item.Where(x => x.ItemID == item.ItemID).FirstOrDefault();
 
             i.ItemName = item.ItemName;
             i.ItemCatID = item.ItemCatID;
@@ -158,10 +172,6 @@ namespace BusinessLogic
             i.UOM = item.UOM;
             i.Bin = item.Bin;
 
-            foreach (Model.ItemPrice ip1 in itemprice)
-            {
-                ip.Price = ip1.Price;
-            }
             try
             {
                 ctx.SaveChanges();
@@ -173,5 +183,30 @@ namespace BusinessLogic
             return result;
         }
 
+        /// <summary>
+        /// UpdateItem Details 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="itemprice"></param>
+        /// <returns></returns>
+        public bool updateItemPrice(List<Model.ItemPrice> itemprice)
+        {
+            bool result = true;
+            
+            foreach (Model.ItemPrice ip in itemprice)
+            {
+                Model.ItemPrice ipSearch = ctx.ItemPrice.Where(x => x.ItemID == ip.ItemID && x.SupplierID == ip.SupplierID).FirstOrDefault();
+                ipSearch.Price = ip.Price;
+            }
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
+        }
     }
 }

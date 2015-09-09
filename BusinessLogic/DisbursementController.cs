@@ -17,10 +17,10 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="DisID">Disbursement ID</param>
         /// <returns></returns>
-        public DisbursementDetail getDisbursementDetail(string DisID)
+        public List<DisbursementDetail> getDisbursementDetail(string DisID)
         {
             int disID = Convert.ToInt32(DisID);
-            DisbursementDetail result = ctx.DisbursementDetail.Where(x => x.DisID == disID).FirstOrDefault();
+            List<DisbursementDetail> result = ctx.DisbursementDetail.Where(x => x.DisID == disID).ToList();
             return result;
         }
 
@@ -79,16 +79,17 @@ namespace BusinessLogic
 
             for (int i = 0; i < deptId.Length; i++)
             {
-                List<Requisition> reqList = ctx.Requisition.Where(x => x.StatusID == 3 && x.DeptID == deptId[i]).ToList();
+                string deptID = deptId[i];
+                List<Requisition> reqList = ctx.Requisition.Where(x => x.StatusID == 3 && x.DeptID == deptID).ToList();
 
                 if (reqList.FirstOrDefault() != null)
                 {
-                    Department dept = ctx.Department.Where(x => x.DeptID == deptId[i]).FirstOrDefault();
+                    Department dept = ctx.Department.Where(x => x.DeptID == deptID).FirstOrDefault();
 
                     Disbursement disb = new Disbursement();
                     disb.Date = DateTime.Now;
                     disb.EmpID = Convert.ToInt32(EmpID);
-                    disb.DeptID = deptId[i];
+                    disb.DeptID = deptID;
                     disb.CPID = dept.CPID;
                     disb.Status = "PENDING";
 
