@@ -4180,19 +4180,25 @@
     <Content Include="bin\TrackableEntities.EF.6.dll" />
     <Content Include="bin\Web.dll" />
     <Content Include="bin\Web.pdb" />
-    <Content Include="Employee\EMcatalogList.html" />
-    <Content Include="Employee\EMcatalogTile.html" />
-    <Content Include="Employee\EMdepartment.html" />
-    <Content Include="Employee\EMnotification.html" />
-    <Content Include="Employee\EMrequestCart.html" />
-    <Content Include="Employee\EMrequisition - 副本.html" />
-    <Content Include="Employee\EMrequisition.html" />
-    <Content Include="Employee\EMrequisitionDetail.html" />
-    <Content Include="Employee\index.html" />
-    <Content Include="Employee\Requisition.html" />
-    <Content Include="Employee\scripts\app.js" />
-    <Content Include="Employee\scripts\controllers\MainControllers.js" />
-    <Content Include="Employee\scripts\controllers\Requisition.js" />
+    <Content Include="DH\delegate.html" />
+    <Content Include="DH\delegatenew.html" />
+    <Content Include="DH\index.html" />
+    <Content Include="ED\index.html" />
+    <Content Include="ED\requisitionApproval.html" />
+    <Content Include="EM\catalogList.html" />
+    <Content Include="EM\catalogTile.html" />
+    <Content Include="EM\department.html" />
+    <Content Include="EM\index.html" />
+    <Content Include="EM\notification.html" />
+    <Content Include="EM\requestCart.html" />
+    <Content Include="EM\requisition.html" />
+    <Content Include="EM\requisitionDetail.html" />
+    <Content Include="EM\scripts\app.js" />
+    <Content Include="EM\scripts\controllers\EmployeeControllers.js" />
+    <Content Include="ER\disbursement.html" />
+    <Content Include="ER\disbursementDetail.html" />
+    <Content Include="ER\disbursementRequisition.html" />
+    <Content Include="ER\index.html" />
     <Content Include="packages.config" />
     <Content Include="assets\.DS_Store" />
     <Content Include="assets\admin\.DS_Store" />
@@ -4537,6 +4543,12 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
+    <Content Include="DH\.DS_Store" />
+    <Content Include="ED\.DS_Store" />
+    <Content Include="EM\.DS_Store" />
+    <Content Include="ER\.DS_Store" />
+    <Content Include="SC\.DS_Store" />
+    <Content Include="SMS\.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4545,6 +4557,32 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SC\adjustment.html" />
+    <Content Include="SC\adjustmentDetail.html" />
+    <Content Include="SC\adjustmentNew.html" />
+    <Content Include="SC\departmentStoreclerk.html" />
+    <Content Include="SC\disbursementDetailStoreClerk.html" />
+    <Content Include="SC\disbursementStoreClerk.html" />
+    <Content Include="SC\index.html" />
+    <Content Include="SC\inventoryList.html" />
+    <Content Include="SC\inventoryNew.html" />
+    <Content Include="SC\inventoryTile.html" />
+    <Content Include="SC\notification.html" />
+    <Content Include="SC\purchaseOrder.html" />
+    <Content Include="SC\purchaseOrderDetail.html" />
+    <Content Include="SC\purchaseOrderPropose.html" />
+    <Content Include="SC\requisitionProcessed.html" />
+    <Content Include="SC\requisitionStoreClerk.html" />
+    <Content Include="SC\retrieval.html" />
+    <Content Include="SC\retrievalAllocation.html" />
+    <Content Include="SC\retrievalDetailDept.html" />
+    <Content Include="SC\retrievalDetailReq.html" />
+    <Content Include="SC\retrievalUpdateActual.html" />
+    <Content Include="SC\stockcard.html" />
+    <Content Include="SC\supplier.html" />
+    <Content Include="SC\supplierdetail.html" />
+    <Content Include="SMS\adjustmentApproval.html" />
+    <Content Include="SMS\index.html" />
     <Content Include="vendor\angular-resource.js" />
     <Content Include="vendor\angular-route.js" />
     <Content Include="vendor\angular.js" />
@@ -4566,10 +4604,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
-    <Folder Include="Employee\css\" />
-    <Folder Include="Employee\scripts\directives\" />
-    <Folder Include="Employee\scripts\filters\" />
-    <Folder Include="Employee\scripts\services\" />
+    <Folder Include="EM\scripts\services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

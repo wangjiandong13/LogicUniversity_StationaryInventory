@@ -1,0 +1,184 @@
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <i class="fa fa-book"></i>
+                    <a href="inventoryList.html">Inventory</a>
+                    <i class="fa fa-angle-right"></i>
+                    <i class="fa fa-plus-square"></i>
+                    <a href="inventoryNew.html">Add</a>
+                </li>
+            </ul>
+        </div>
+        <div class="page-toolbar">
+        </div>
+        <!-- END PAGE HEADER-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <br>
+                        <h1>New Inventory</h1>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="col-md-3">
+                                        <h4>Item Description : </h4></td>
+                                    <td class="col-md-4">
+                                        <input id="tb_itemDesc" type="text" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-3">
+                                        <h4>Code : </h4></td>
+                                    <td class="col-md-4">
+                                        <input id="tb_itemID" type="text" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-3">
+                                        <h4>Category : </h4></td>
+                                    <td class="col-md-4">
+                                        <select id="cbo_category" class="form-control">
+                                            <option>Option 1</option>
+                                            <option>Option 2</option>
+                                            <option>Option 3</option>
+                                            <option>Option 4</option>
+                                            <option>Option 5</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-3">
+                                        <h4>Reorder Level : </h4></td>
+                                    <td class="col-md-4">
+                                        <div id="spinner1">
+                                            <div class="input-group input-small">
+                                                <input id="tb_reorderLvl" type="text" class="spinner-input form-control" maxlength="3" readonly>
+                                                <div class="spinner-buttons input-group-btn btn-group-vertical">
+                                                    <button type="button" class="btn spinner-up btn-xs blue">
+                                                        <i class="fa fa-angle-up"></i>
+                                                    </button>
+                                                    <button type="button" class="btn spinner-down btn-xs blue">
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-3">
+                                        <h4>Reorder Qty : </h4></td>
+                                    <td class="col-md-4">
+                                        <div id="spinner1">
+                                            <div class="input-group input-small">
+                                                <input id="tb_reorderQty" type="text" class="spinner-input form-control" maxlength="3" readonly>
+                                                <div class="spinner-buttons input-group-btn btn-group-vertical">
+                                                    <button type="button" class="btn spinner-up btn-xs blue">
+                                                        <i class="fa fa-angle-up"></i>
+                                                    </button>
+                                                    <button type="button" class="btn spinner-down btn-xs blue">
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-3">
+                                        <h4>Unit of Measurement : </h4></td>
+                                    <td class="col-md-4">
+                                        <div id="spinner1">
+                                            <div class="input-group input-small">
+                                                <input id="tb_uom" type="text" class="spinner-input form-control" maxlength="3" readonly>
+                                                <div class="spinner-buttons input-group-btn btn-group-vertical">
+                                                    <button type="button" class="btn spinner-up btn-xs blue">
+                                                        <i class="fa fa-angle-up"></i>
+                                                    </button>
+                                                    <button type="button" class="btn spinner-down btn-xs blue">
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-5">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="col-md-2">
+                                        <h4>Supplier 1 : </h4></td>
+                                    <td class="col-md-3">
+                                        <input id="tb_supplier1" type="text" class="form-control" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">
+                                        <h4>Price : </h4></td>
+                                    <td class="col-md-3">
+                                        <input id="tb_price1" type="text" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">
+                                        <h4>Supplier 2 : </h4></td>
+                                    <td class="col-md-3">
+                                        <input id="tb_supplier2" type="text" class="form-control" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">
+                                        <h4>Price : </h4></td>
+                                    <td class="col-md-3">
+                                        <input id="tb_price2" type="text" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">
+                                        <h4>Supplier 3 : </h4></td>
+                                    <td class="col-md-3">
+                                        <input id="tb_supplier3" type="text" class="form-control" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">
+                                        <h4>Price : </h4></td>
+                                    <td class="col-md-3">
+                                        <input id="tb_price3" type="text" class="form-control">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <button type="button" class="btn default">Cancel</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- END CONTENT -->
