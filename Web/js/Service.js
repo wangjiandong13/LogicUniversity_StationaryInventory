@@ -7,6 +7,20 @@ BaseServices.service("BaseService", ["$http", "$q", service]);
 
 function service($http, $q) {
 
+    //get employee by EmpID
+    this.getEmployee = function (EmpID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "/employeeAPI.svc/getemployeebyId/" + EmpID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
+
     ////// EMPLOYEE //////
 
     //requisition.html
@@ -170,7 +184,7 @@ function service($http, $q) {
     //department.html
     //load department (one) page
     this.getDepartment = function (DeptID) {
-        var deferred = $q.defer();
+        var deferred = $q.defer(); 
         $http.get(baseurl + "departmentAPI.svc/getDeptByID/" + DeptID)
             .success(function (data) {
                 deferred.resolve(data)
