@@ -215,5 +215,11 @@ namespace BusinessLogic
             }
             return result;
         }
+
+        public Model.ItemPrice getItemPrice(string ItemID)
+        {
+            return ctx.ItemPrice.Where(x => x.ItemID == ItemID).FirstOrDefault();
+        }
+
     }
 }

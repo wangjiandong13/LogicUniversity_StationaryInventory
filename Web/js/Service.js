@@ -10,10 +10,12 @@ function service($http, $q) {
     ////// EMPLOYEE //////
 
     //requisition.html
-    //load requisition List 
-    this.getRequisitionList = function (EmpID) {
+    //load requisition List (EmpID)
+    //Search Requisition by ReqID OR load requisitionDetail.html OR load requisitionApproval.html or load disbursementRequisition.html
+    //Search requisition by status (status) 
+    this.getRequisitionList = function (status, ReqID, EmpID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "/requisitionAPI.svc/getRequisition/null/null/" + EmpID)
+        $http.get(baseurl + "/requisitionAPI.svc/getRequisition/"+ status +"/"+ ReqID +"/" + EmpID)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -26,18 +28,6 @@ function service($http, $q) {
     this.getRequisitionStatus = function () {
         var deferred = $q.defer();
         $http.get(baseurl + "/requisitionAPI.svc/getStatus")
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-    //Search Requisition by ReqID OR load requisitionDetail.html OR load requisitionApproval.html or load disbursementRequisition.html
-    this.getRequisition = function (ReqID) {
-        var deferred = $q.defer();
-        $http.get(baseurl + "requisitionAPI.svc/getRequisition/null/"+ ReqID +"/null")
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -671,7 +661,7 @@ function service($http, $q) {
 
 
     //adjustmentNew.html
-    //create new adjustment voucher
+    //create new adjustment voucher //POST
     this.createAdj = function (msg) {
         var deferred = $q.defer();
         $http.post(baseurl + "adjustvoucherAPI.svc/createVoucherAdj", msg)
@@ -683,10 +673,55 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
-    //create new adjustment voucher detail
+    //create new adjustment voucher detail //POST
     this.createAdjDetail = function (msg) {
         var deferred = $q.defer();
         $http.post(baseurl + "adjustvoucherAPI.svc/createVoucherAdjDetail", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
+
+    //adjustmentDetail.html
+    //load adjustment voucher detail //POST
+    this.getAdjDetail = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "adjustvoucherAPI.svc/getAdjVoucherDetail", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
+
+    //departmentStoreclerk.html
+    //load department list
+    this.getDeptList = function (EmpID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "departmentAPI.svc/getAllDepartment")
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
+
+    //supplier.html
+    //load supplier list
+    this.getSupplierList = function (EmpID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "supplierAPI.svc/getSupplierList")
             .success(function (data) {
                 deferred.resolve(data)
             })
