@@ -182,6 +182,7 @@ function service($http, $rootScope) {
 
 
     //disbursementDetail.html
+    //load disbursement detail
     this.getDisbursementDetail = function () {
         $http.get(baseurl + "disbursementAPI.svc/getDisbursementDetail/" + $rootScope.DisID)
         .success(function (result) {
@@ -192,6 +193,7 @@ function service($http, $rootScope) {
 
 
     //disbursementRequisition.html
+    //load disbursement requisition list
     this.getDisbursementRequisition = function () {
         $http.get(baseurl + "requisitionAPI.svc/getRequisitionList/" + $rootScope.DisID)
         .success(function (result) {

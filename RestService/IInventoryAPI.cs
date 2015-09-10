@@ -69,5 +69,11 @@ namespace RestService
                                     BodyStyle = WebMessageBodyStyle.Bare,
                                     UriTemplate = "/updateItemPrice")]
         bool updateItemPrice(List<Model.ItemPrice> itemprice);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                    BodyStyle = WebMessageBodyStyle.Bare,
+                                    UriTemplate = "/getItemPrice/{itemID}")]
+        Model.ItemPrice getItemPrice(string ItemID);
     }
 }
