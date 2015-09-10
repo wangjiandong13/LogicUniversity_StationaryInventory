@@ -441,34 +441,12 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
-    //load retrieval list by store clerk
-    this.getRetrievalListBySC = function (EmpID) {
+    //load retrieval list by store clerk (EmpID)
+    //search retrieval list by status (status)
+    //search retrieval list by RetID (RetID)
+    this.getRetrievalListBySC = function (EmpID, status) {
         var deferred = $q.defer();
-        $http.get(baseurl + "retrievalAPI.svc/getRetrieval/" + EmpID + "/null/null")
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-    //search retrieval list by status
-    this.getRetrievalListByStatus = function (status) {
-        var deferred = $q.defer();
-        $http.get(baseurl + "retrievalAPI.svc/getRetrieval/null/" + status + "/null")
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-    //search retrieval list by RetID
-    this.getRetrievalListByRetID = function (RetID) {
-        var deferred = $q.defer();
-        $http.get(baseurl + "retrievalAPI.svc/getRetrieval/null/null/" + RetID)
+        $http.get(baseurl + "retrievalAPI.svc/getRetrieval/" + EmpID + "/" + status + "/" + RetID)
             .success(function (data) {
                 deferred.resolve(data)
             })
