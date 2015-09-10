@@ -4184,7 +4184,7 @@
     <Content Include="js\controller\DelegateControllers.js" />
     <Content Include="js\controller\EmployeeControllers.js" />
     <Content Include="js\controller\RequisitionController.js" />
-    <Content Include="js\fitter\Datefitter.js" />
+    <Content Include="js\fitter\Seftfitter.js" />
     <Content Include="js\Service.js" />
     <Content Include="packages.config" />
     <Content Include="assets\.DS_Store" />
@@ -4536,6 +4536,7 @@
     <Content Include="templete\EM\.DS_Store" />
     <Content Include="templete\ER\.DS_Store" />
     <Content Include="templete\SC\.DS_Store" />
+    <Content Include="templete\SMS\.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4585,6 +4586,8 @@
     <Content Include="templete\SC\stockcard.html" />
     <Content Include="templete\SC\supplier.html" />
     <Content Include="templete\SC\supplierdetail.html" />
+    <Content Include="templete\SMS\adjustmentApproval.html" />
+    <Content Include="templete\SMS\index.html" />
     <Content Include="vendor\angular-resource.js" />
     <Content Include="vendor\angular-route.js" />
     <Content Include="vendor\angular.js" />

@@ -1,6 +1,6 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
-<html lang="en" class="no-js" ng-app="EmployeeAPP">
+<html lang="en" class="no-js">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
@@ -13,33 +13,26 @@
     <meta content="" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
-    <link href="../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGIN STYLES -->
     <!-- BEGIN PAGE STYLES -->
-    <link href="../../assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css" />
+    <link href="assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE STYLES -->
     <!-- BEGIN THEME STYLES -->
-    <link href="../../assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color" />
-    <link href="../../assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
-    <script src="../../../vendor/angular.js"></script>
-    <script src="../../../vendor/angular-route.js"></script>
-    <script src="../../../vendor/angular-resource.js"></script>
-    <script src="../../js/app/EmployeeApp.js"></script>
-    <script src="../../js/controller/RequisitionController.js"></script>
-    <script src="../../js/Service.js"></script>
-    <script src="../../js/fitter/Seftfitter.js"></script>
+    <link href="assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -54,7 +47,7 @@
             <!-- BEGIN LOGO -->
             <div class="page-logo">
                 <a href="index.html">
-                    <img src="../../assets/admin/layout/img/logo.png" alt="logo" class="logo-default" />
+                    <img src="assets/admin/layout/img/logo.png" alt="logo" class="logo-default" />
                 </a>
                 <div class="menu-toggler sidebar-toggler hide">
                 </div>
@@ -95,9 +88,9 @@
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <img alt="" class="img-circle" src="../../assets/admin/layout/img/avatar3_small.jpg" />
+                            <img alt="" class="img-circle" src="assets/admin/layout/img/avatar3_small.jpg" />
                             <span class="username username-hide-on-mobile">
-					Nick </span>
+					Insert Emp Name Here </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
@@ -160,14 +153,38 @@
 				-->
                     <li>
                         <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span class="title">Inventory</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
                             <i class="fa fa-file-text-o"></i>
                             <span class="title">Requistion</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span class="title">Catalog</span>
+                            <i class="fa fa-cart-arrow-down"></i>
+                            <span class="title">Retrieval</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="fa fa-hand-lizard-o"></i>
+                            <span class="title">Disbursement</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="fa fa-adjust"></i>
+                            <span class="title">Adjustment</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="fa fa-list-alt"></i>
+                            <span class="title">Purchase Order</span>
                         </a>
                     </li>
                     <li>
@@ -178,8 +195,14 @@
                     </li>
                     <li>
                         <a href="javascript:;">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span class="title">Request Cart</span>
+                            <i class="fa fa-truck"></i>
+                            <span class="title">Supplier</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="fa fa-line-chart"></i>
+                            <span class="title">Analytics</span>
                         </a>
                     </li>
                 </ul>
@@ -188,9 +211,7 @@
         </div>
         <!-- END SIDEBAR -->
         <!-- BEGIN CONTENT -->
-        <div ng-view>
 
-        </div>
         <!-- END CONTENT -->
     </div>
     <!-- END CONTAINER -->
@@ -207,34 +228,47 @@
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- BEGIN CORE PLUGINS -->
     <!--[if lt IE 9]>
-<script src="../../assets/global/plugins/respond.min.js"></script>
-<script src="../../assets/global/plugins/excanvas.min.js"></script> 
+<script src="assets/global/plugins/respond.min.js"></script>
+<script src="assets/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
-    <script src="../../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
     <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-    <script src="../../assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
     <!-- IMPORTANT! fullcalendar depends on jquery-ui.min.js for drag & drop support -->
-    <script src="../../assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
-    <script src="../../assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-    <script src="../../assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
-    <script src="../../assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
-    <script src="../../assets/admin/pages/scripts/index.js" type="text/javascript"></script>
-    <script src="../../assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+    <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+    <script src="assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+    <script src="assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+    <script src="assets/admin/pages/scripts/index.js" type="text/javascript"></script>
+    <script src="assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
         jQuery(document).ready(function () {
