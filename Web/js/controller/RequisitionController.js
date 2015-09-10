@@ -6,10 +6,14 @@ RequisitionControllers.controller('SelectoptionControllers', ['$rootScope', 'Bas
 
 function BaseReControllers($scope, BaseService) {
     $scope.viewCart = function () {
-        BaseService.getRequisition
+        
+        alert("viewCart");
     }
     $scope.search = function () {
-        alert("search");
+        var status = $scope.optiondata.selectedOption.StatusID;
+        if (status == 0) { status = "null"; }
+        var ReqID = $scope.ReuisitionNo;
+        BaseService.getRequisition
     }
 }
 

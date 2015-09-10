@@ -27,7 +27,6 @@ function statuschange() {
         if (input == 6) {
             return "Cancelled";
         }
-
     };
 }
 
