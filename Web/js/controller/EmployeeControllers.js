@@ -1,16 +1,5 @@
 var EmployeeControllers = angular.module('EmployeeControllers', []);
 
-EmployeeControllers.controller('requisitionCtrl', ['$scope', '$http',
-  function ($scope, $http) {
-    $http.get('http://www.team5.com/api/requisitionAPI.svc/getRequisitionById/')
-      .success(function(data,header,config,status) {
-        $scope.Requisitions = data;
-      })
-      .error(function(data,header,config,status){
-        alert(status);
-    });
-  }]);
-
 EmployeeControllers.controller('catalogListCtrl', ['$scope', '$http',
   function ($scope, $http) {
       $http.get('http://www.team5.com/api/catalogAPI.svc/getItem')

@@ -1,5 +1,5 @@
 var EmployeeAPP = angular.module('EmployeeAPP', [
-'ngRoute','EmployeeControllers'
+'ngRoute', 'EmployeeControllers', 'RequisitionControllers'
 ]);
 
 EmployeeAPP.config(['$routeProvider',

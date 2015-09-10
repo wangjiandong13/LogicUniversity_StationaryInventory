@@ -4180,9 +4180,11 @@
     <Content Include="bin\TrackableEntities.EF.6.dll" />
     <Content Include="bin\Web.dll" />
     <Content Include="bin\Web.pdb" />
-    <Content Include="js\app.js" />
+    <Content Include="js\app\EmployeeApp - Copy.js" />
+    <Content Include="js\app\EmployeeApp.js" />
     <Content Include="js\controller\DelegateControllers.js" />
     <Content Include="js\controller\EmployeeControllers.js" />
+    <Content Include="js\controller\RequisitionController.js" />
     <Content Include="js\Service.js" />
     <Content Include="packages.config" />
     <Content Include="assets\.DS_Store" />
