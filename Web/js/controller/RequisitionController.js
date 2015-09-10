@@ -14,7 +14,7 @@ function BaseReControllers($scope, BaseService) {
 }
 
 function RequisitionList($scope, BaseService) {
-    BaseService.getRequisitionList(1)
+    BaseService.getRequisitionList("null", "null", 1)
         .then(function (data) {
             $scope.Requisitions = data;
         }, function (data) {
