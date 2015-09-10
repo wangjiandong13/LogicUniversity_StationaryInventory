@@ -1,12 +1,12 @@
 ﻿var RequisitionControllers = angular.module('RequisitionControllers', ['BaseServices']);
 
 RequisitionControllers.controller('BaseReControllers', ['$scope', '$rootScope', 'BaseService', BaseReControllers]);
-RequisitionControllers.controller('RequisitionList', ['$scope', 'BaseService', RequisitionList]);
+RequisitionControllers.controller('RequisitionList', ['$rootScope', 'BaseService', RequisitionList]);
 RequisitionControllers.controller('SelectoptionControllers', ['$rootScope', 'BaseService', SelectoptionControllers]);
 
 function BaseReControllers($scope, $rootScope, BaseService) {
     $scope.viewCart = function () {
-        alert("viewCart");
+        location.href = 'index.html#/requisitionDetail';
     }
     $scope.search = function () {
         var status = $rootScope.optiondata.selectedOption.StatusID;
@@ -16,8 +16,7 @@ function BaseReControllers($scope, $rootScope, BaseService) {
         BaseService.getRequisitionList(status, ReqID, 11233)
             .then(function (data) {
                 console.log(data);
-                $scope.Requisitions = data;
-                
+                $rootScope.Requisitions = data;
             }, function (data) {
                 alert(data);
             }
@@ -25,10 +24,10 @@ function BaseReControllers($scope, $rootScope, BaseService) {
     }
 }
 
-function RequisitionList($scope, BaseService) {
+function RequisitionList($rootScope, BaseService) {
     BaseService.getRequisitionList("null", "null", 11233)
         .then(function (data) {
-            $scope.Requisitions = data;
+            $rootScope.Requisitions = data;
         }, function (data) {
             alert(data);
         }
@@ -36,7 +35,6 @@ function RequisitionList($scope, BaseService) {
 }
 function SelectoptionControllers($rootScope, BaseService) {
     $rootScope.optiondata = {
-        singleSelect: null, //This sets the default value of the select in the ui
         availableOptions: [],
         selectedOption: { 'StatusID': 0, 'StatusName': 'ALL' }
     };
