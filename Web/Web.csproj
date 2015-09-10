@@ -4183,6 +4183,7 @@
     <Content Include="js\app.js" />
     <Content Include="js\controller\DelegateControllers.js" />
     <Content Include="js\controller\EmployeeControllers.js" />
+    <Content Include="js\Service - Copy.js" />
     <Content Include="js\Service.js" />
     <Content Include="packages.config" />
     <Content Include="assets\.DS_Store" />
@@ -4531,6 +4532,7 @@
     <Content Include="Service.js" />
     <Content Include="templete\DH\.DS_Store" />
     <Content Include="templete\ED\.DS_Store" />
+    <Content Include="templete\ED\DHrequisition.html" />
     <Content Include="templete\EM\.DS_Store" />
     <Content Include="templete\ER\.DS_Store" />
     <Content Include="templete\SC\.DS_Store" />
@@ -4606,6 +4608,7 @@
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="css\" />
     <Folder Include="img\" />
+    <Folder Include="templete\SMS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

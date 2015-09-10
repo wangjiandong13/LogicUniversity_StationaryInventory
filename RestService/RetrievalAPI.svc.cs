@@ -96,5 +96,10 @@ namespace RestService
             return BL.getRetByDept(RetID);
         }
 
+        public List<Employee> getStoreClerk()
+        {
+            BusinessLogic.RetrievalController BL = new BusinessLogic.RetrievalController();
+            return BL.getStoreClerk();
+        }
     }
 }
