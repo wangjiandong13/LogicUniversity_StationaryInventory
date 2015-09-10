@@ -2,7 +2,7 @@ var EmployeeControllers = angular.module('EmployeeControllers', []);
 
 EmployeeControllers.controller('requisitionCtrl', ['$scope', '$http',
   function ($scope, $http) {
-    $http.get('http://www.team5.com/api/requisitionAPI.svc/getRequisitionById/1')
+    $http.get('http://www.team5.com/api/requisitionAPI.svc/getRequisitionById/')
       .success(function(data,header,config,status) {
         $scope.Requisitions = data;
       })
