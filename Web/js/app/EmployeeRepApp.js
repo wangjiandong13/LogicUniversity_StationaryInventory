@@ -1,5 +1,5 @@
 var EmployeeRepAPP = angular.module('EmployeeRepAPP', [
-                                                 'ngRoute', 'RequisitionControllers', 'appfilter'
+                                                 'ngRoute'
 ]);
 
 EmployeeRepAPP.config(['$routeProvider', routeset]);
@@ -49,7 +49,7 @@ function routeset($routeProvider) {
         }).
 
       otherwise({
-          redirectTo: '../EM/requisition'
+          redirectTo: '/disbursement'
       });
 }
 
