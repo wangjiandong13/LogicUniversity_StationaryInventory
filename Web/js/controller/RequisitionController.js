@@ -6,7 +6,7 @@ RequisitionControllers.controller('SelectoptionControllers', ['$rootScope', 'Bas
 
 function BaseReControllers($scope, $rootScope, BaseService) {
     $scope.viewCart = function () {
-        location.href = '#/requisitionDetail';
+        location.href = '#/requestCart';
     }
     $scope.search = function () {
         var status = $rootScope.optiondata.selectedOption.StatusID;

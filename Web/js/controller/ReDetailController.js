@@ -2,6 +2,6 @@
 
 ReDetailControllers.controller('catalogListCtrl', ['$scope', '$rootScope', 'BaseService', catalogListCtrl]);
 
-function catalogListCtrl() {
+function catalogListCtrl($scope) {
 
 }

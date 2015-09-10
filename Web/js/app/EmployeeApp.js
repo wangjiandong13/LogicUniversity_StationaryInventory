@@ -1,6 +1,6 @@
 var EmployeeAPP = angular.module('EmployeeAPP', [
                                                  'ngRoute', 'RequisitionControllers',
-                                                 'ReDetailControllers', 'appfilter'
+                                                 'ReDetailControllers', 'RequestCartControllers', 'appfilter'
 ]);
 
 EmployeeAPP.config(['$routeProvider','$locationProvider', routeset]);
