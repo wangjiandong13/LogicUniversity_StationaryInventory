@@ -4180,6 +4180,7 @@
     <Content Include="bin\TrackableEntities.EF.6.dll" />
     <Content Include="bin\Web.dll" />
     <Content Include="bin\Web.pdb" />
+    <Content Include="img\logo.png" />
     <Content Include="js\app\DeptHeadApp.js" />
     <Content Include="js\app\StoreSupManApp.js" />
     <Content Include="js\app\StoreClerkApp.js" />
@@ -4611,7 +4612,6 @@
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="css\" />
-    <Folder Include="img\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
