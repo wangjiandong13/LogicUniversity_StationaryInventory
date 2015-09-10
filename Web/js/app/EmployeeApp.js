@@ -9,7 +9,8 @@ function routeset($routeProvider, $locationProvider) {
     $routeProvider.
         when('/requisition', {
             templateUrl: 'requisition.html',
-              controller: 'BaseReControllers'
+            controller: 'BaseReControllers',
+            title: "Requisition"
         }).
         when('/catalogList', {
             templateUrl: 'catalogList.html',
