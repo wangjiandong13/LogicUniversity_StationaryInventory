@@ -4180,6 +4180,9 @@
     <Content Include="bin\TrackableEntities.EF.6.dll" />
     <Content Include="bin\Web.dll" />
     <Content Include="bin\Web.pdb" />
+    <Content Include="js\app\DeptHeadApp.js" />
+    <Content Include="js\app\EmployeeDelApp.js" />
+    <Content Include="js\app\EmployeeRepApp.js" />
     <Content Include="js\app\EmployeeApp.js" />
     <Content Include="js\controller\DelegateControllers.js" />
     <Content Include="js\controller\EmployeeControllers.js" />
@@ -4531,10 +4534,6 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
     <Content Include="Service.js" />
-    <Content Include="templete\DH\.DS_Store" />
-    <Content Include="templete\ED\.DS_Store" />
-    <Content Include="templete\EM\.DS_Store" />
-    <Content Include="templete\ER\.DS_Store" />
     <Content Include="templete\SC\.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
