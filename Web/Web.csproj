@@ -4188,7 +4188,7 @@
     <Content Include="js\app\EmployeeRepApp.js" />
     <Content Include="js\app\EmployeeApp.js" />
     <Content Include="js\controller\ReDetailController.js" />
-    <Content Include="js\controller\requestCartController.js" />
+    <Content Include="js\controller\RequestCartController.js" />
     <Content Include="js\controller\RequisitionController.js" />
     <Content Include="js\fitter\Seftfitter.js" />
     <Content Include="js\Service.js" />
