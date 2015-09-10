@@ -33,8 +33,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr >
                                     <td>Clips Double 2"</td>
+                                    <td>Dozen</td>
+                                    <td>
+                                        <div>
+                                            <input type="number" class="form-control" id="spinner" min=1>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="RequestCart in RequestCarts">
+                                    <td>{{Requisition.}}</td>
                                     <td>Dozen</td>
                                     <td>
                                         <div>
