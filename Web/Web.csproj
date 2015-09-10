@@ -4277,6 +4277,8 @@
     <Content Include="js\app\EmployeeApp.js" />
     <Content Include="js\controller\CatalogListController.js" />
     <Content Include="js\controller\CatalogTileController.js" />
+    <Content Include="js\controller\DelegateController.js" />
+    <Content Include="js\controller\DelegatenewController.js" />
     <Content Include="js\controller\DepartmentController.js" />
     <Content Include="js\controller\DisbursementController.js" />
     <Content Include="js\controller\DisbursementDetailController.js" />
@@ -4634,7 +4636,6 @@
     <None Include="bin\Web.dll.config" />
     <Content Include="Service.js" />
     <Content Include="templete\SC\supplierStoreClerk.html" />
-    <Content Include="img\Item_120\desktop.ini" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
