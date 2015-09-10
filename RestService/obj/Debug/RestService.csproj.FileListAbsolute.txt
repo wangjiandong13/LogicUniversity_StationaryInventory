@@ -34,3 +34,21 @@ C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInvento
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.csprojResolveAssemblyReference.cache
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.dll
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.pdb
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\RestService.dll.config
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\RestService.dll
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\RestService.pdb
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\BusinessLogic.dll
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\EntityFramework.dll
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\EntityFramework.SqlServer.dll
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\Model.dll
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\Newtonsoft.Json.dll
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\TrackableEntities.Common.dll
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\BusinessLogic.pdb
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\Model.pdb
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\EntityFramework.xml
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\EntityFramework.SqlServer.xml
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\Newtonsoft.Json.xml
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\TrackableEntities.Common.xml
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.csprojResolveAssemblyReference.cache
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.dll
+C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.pdb

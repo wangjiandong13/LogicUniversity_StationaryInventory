@@ -4180,26 +4180,12 @@
     <Content Include="bin\TrackableEntities.EF.6.dll" />
     <Content Include="bin\Web.dll" />
     <Content Include="bin\Web.pdb" />
-    <Content Include="DH\delegate.html" />
-    <Content Include="DH\delegatenew.html" />
-    <Content Include="DH\index.html" />
-    <Content Include="ED\index.html" />
-    <Content Include="ED\requisitionApproval.html" />
-    <Content Include="EM\catalogList.html" />
-    <Content Include="EM\catalogTile.html" />
-    <Content Include="EM\department.html" />
-    <Content Include="EM\index.html" />
-    <Content Include="EM\notification.html" />
-    <Content Include="EM\requestCart.html" />
-    <Content Include="EM\requisition.html" />
-    <Content Include="EM\requisitionDetail.html" />
-    <Content Include="EM\scripts\app.js" />
-    <Content Include="EM\scripts\catalogList.js" />
-    <Content Include="EM\scripts\controllers\EmployeeControllers.js" />
-    <Content Include="ER\disbursement.html" />
-    <Content Include="ER\disbursementDetail.html" />
-    <Content Include="ER\disbursementRequisition.html" />
-    <Content Include="ER\index.html" />
+    <Content Include="js\app\EmployeeApp.js" />
+    <Content Include="js\controller\DelegateControllers.js" />
+    <Content Include="js\controller\EmployeeControllers.js" />
+    <Content Include="js\controller\RequisitionController.js" />
+    <Content Include="js\fitter\Datefitter.js" />
+    <Content Include="js\Service.js" />
     <Content Include="packages.config" />
     <Content Include="assets\.DS_Store" />
     <Content Include="assets\admin\.DS_Store" />
@@ -4544,12 +4530,12 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
-    <Content Include="DH\.DS_Store" />
-    <Content Include="ED\.DS_Store" />
-    <Content Include="EM\.DS_Store" />
-    <Content Include="ER\.DS_Store" />
-    <Content Include="SC\.DS_Store" />
-    <Content Include="SMS\.DS_Store" />
+    <Content Include="Service.js" />
+    <Content Include="templete\DH\.DS_Store" />
+    <Content Include="templete\ED\.DS_Store" />
+    <Content Include="templete\EM\.DS_Store" />
+    <Content Include="templete\ER\.DS_Store" />
+    <Content Include="templete\SC\.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4558,32 +4544,47 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SC\adjustment.html" />
-    <Content Include="SC\adjustmentDetail.html" />
-    <Content Include="SC\adjustmentNew.html" />
-    <Content Include="SC\departmentStoreclerk.html" />
-    <Content Include="SC\disbursementDetailStoreClerk.html" />
-    <Content Include="SC\disbursementStoreClerk.html" />
-    <Content Include="SC\index.html" />
-    <Content Include="SC\inventoryList.html" />
-    <Content Include="SC\inventoryNew.html" />
-    <Content Include="SC\inventoryTile.html" />
-    <Content Include="SC\notification.html" />
-    <Content Include="SC\purchaseOrder.html" />
-    <Content Include="SC\purchaseOrderDetail.html" />
-    <Content Include="SC\purchaseOrderPropose.html" />
-    <Content Include="SC\requisitionProcessed.html" />
-    <Content Include="SC\requisitionStoreClerk.html" />
-    <Content Include="SC\retrieval.html" />
-    <Content Include="SC\retrievalAllocation.html" />
-    <Content Include="SC\retrievalDetailDept.html" />
-    <Content Include="SC\retrievalDetailReq.html" />
-    <Content Include="SC\retrievalUpdateActual.html" />
-    <Content Include="SC\stockcard.html" />
-    <Content Include="SC\supplier.html" />
-    <Content Include="SC\supplierdetail.html" />
-    <Content Include="SMS\adjustmentApproval.html" />
-    <Content Include="SMS\index.html" />
+    <Content Include="templete\DH\delegate.html" />
+    <Content Include="templete\DH\delegatenew.html" />
+    <Content Include="templete\DH\index.html" />
+    <Content Include="templete\ED\index.html" />
+    <Content Include="templete\ED\requisitionApproval.html" />
+    <Content Include="templete\EM\catalogList.html" />
+    <Content Include="templete\EM\catalogTile.html" />
+    <Content Include="templete\EM\department.html" />
+    <Content Include="templete\EM\index.html" />
+    <Content Include="templete\EM\notification.html" />
+    <Content Include="templete\EM\requestCart.html" />
+    <Content Include="templete\EM\requisition.html" />
+    <Content Include="templete\EM\requisitionDetail.html" />
+    <Content Include="templete\ER\disbursement.html" />
+    <Content Include="templete\ER\disbursementDetail.html" />
+    <Content Include="templete\ER\disbursementRequisition.html" />
+    <Content Include="templete\ER\index.html" />
+    <Content Include="templete\SC\adjustment.html" />
+    <Content Include="templete\SC\adjustmentDetail.html" />
+    <Content Include="templete\SC\adjustmentNew.html" />
+    <Content Include="templete\SC\departmentStoreclerk.html" />
+    <Content Include="templete\SC\disbursementDetailStoreClerk.html" />
+    <Content Include="templete\SC\disbursementStoreClerk.html" />
+    <Content Include="templete\SC\index.html" />
+    <Content Include="templete\SC\inventoryList.html" />
+    <Content Include="templete\SC\inventoryNew.html" />
+    <Content Include="templete\SC\inventoryTile.html" />
+    <Content Include="templete\SC\notification.html" />
+    <Content Include="templete\SC\purchaseOrder.html" />
+    <Content Include="templete\SC\purchaseOrderDetail.html" />
+    <Content Include="templete\SC\purchaseOrderPropose.html" />
+    <Content Include="templete\SC\requisitionProcessed.html" />
+    <Content Include="templete\SC\requisitionStoreClerk.html" />
+    <Content Include="templete\SC\retrieval.html" />
+    <Content Include="templete\SC\retrievalAllocation.html" />
+    <Content Include="templete\SC\retrievalDetailDept.html" />
+    <Content Include="templete\SC\retrievalDetailReq.html" />
+    <Content Include="templete\SC\retrievalUpdateActual.html" />
+    <Content Include="templete\SC\stockcard.html" />
+    <Content Include="templete\SC\supplier.html" />
+    <Content Include="templete\SC\supplierdetail.html" />
     <Content Include="vendor\angular-resource.js" />
     <Content Include="vendor\angular-route.js" />
     <Content Include="vendor\angular.js" />
@@ -4605,7 +4606,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
-    <Folder Include="EM\scripts\services\" />
+    <Folder Include="css\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

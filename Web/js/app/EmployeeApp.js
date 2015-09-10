@@ -1,14 +1,15 @@
 var EmployeeAPP = angular.module('EmployeeAPP', [
-'ngRoute'
+                                                 'ngRoute', 'RequisitionControllers', 'appfilter'
 ]);
 
-EmployeeAPP.config(['$routeProvider',
-  function($routeProvider) {
+EmployeeAPP.config(['$routeProvider', routeset]);
+
+function routeset($routeProvider) {
     $routeProvider.
-      when('/requisition', {
-        templateUrl: 'requisition.html',
-        controller: 'requisitionCtrl'
-      }).
+        when('/requisition', {
+              templateUrl: 'requisition.html',
+              controller: 'BaseReControllers'
+        }).
         when('/catalogList', {
             templateUrl: 'catalogList.html',
             controller: 'catalogListCtrl'
@@ -29,15 +30,12 @@ EmployeeAPP.config(['$routeProvider',
             templateUrl: 'requestCart.html',
             controller: 'requestCartCtrl'
         }).
-        when('/requisition', {
-            templateUrl: 'requisition.html',
-            controller: 'requisitionCtrl'
-        }).
         when('/requisitionDetail', {
             templateUrl: 'requisitionDetail.html',
             controller: 'requisitionDetailCtrl'
         }).
       otherwise({
-        redirectTo: '/requisition'
+          redirectTo: '/requisition'
       });
-  }]);
+}
+

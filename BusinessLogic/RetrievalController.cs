@@ -471,5 +471,14 @@ namespace BusinessLogic
             return reqAllocationList;
         }
 
+        /// <summary>
+        /// getStoreClerk
+        /// </summary>
+        /// <returns></returns>
+        public List<Employee> getStoreClerk()
+        {
+            return ctx.Employee.Where(x => x.RoleID == "SC").ToList();
+        }
+
     }
 }

@@ -7,7 +7,7 @@ using Model;
 
 namespace BusinessLogic
 {
-    class NotificationController
+    public class NotificationController
     {
         StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
 
