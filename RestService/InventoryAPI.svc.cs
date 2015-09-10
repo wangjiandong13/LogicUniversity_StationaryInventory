@@ -78,7 +78,7 @@ namespace RestService
             return BL.getItemPrice(ItemID);
         }
 
-        public StockCard getStockCard(string itemID)
+        public List<Model.StockCard> getStockCard(string itemID)
         {
             BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
             return BL.getStockCard(itemID);
