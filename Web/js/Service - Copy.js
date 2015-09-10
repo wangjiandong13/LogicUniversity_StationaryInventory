@@ -179,14 +179,6 @@ function service($http, $rootScope) {
         })
         .fail()
     }
-    //create disbursement
-    this.createDisbursement = function () {
-        $http.get(baseurl + "disbursementAPI.svc/createDisbursement/" + $rootScope.EmpID)
-        .success(function (result) {
-            $rootScope.$broadcast("DisbursementCreated", result);
-        })
-        .fail()
-    }
 
 
     //disbursementDetail.html
@@ -322,7 +314,7 @@ function service($http, $rootScope) {
         })
         .fail()
     }
-    //load retrieval detail
+    //load retrieval detail OR load retrievalUpdateActual.html OR retrievalAllocation.html OR retrievalDetailReq.html OR retrievalDetailDept.html
     this.getRetrievalDetail = function () {
         $http.get(baseurl + "retrievalAPI.svc/getRetrievalDetail/" + $rootScope.RetID)
         .success(function (result) {
@@ -330,6 +322,7 @@ function service($http, $rootScope) {
         })
         .fail()
     }
+
 
     //retrieval.html
     //load store clerk bind to combo box
@@ -340,8 +333,103 @@ function service($http, $rootScope) {
         })
         .fail()
     }
-    //
+    //load retrieval list by store clerk
+    this.getRetrievalListBySC = function () {
+        $http.get(baseurl + "retrievalAPI.svc/getRetrieval/"+ $rootScope.EmpID +"/null/null")
+        .success(function (result) {
+            $rootScope.$broadcast("RetrievalListBySCLoaded", result);
+        })
+        .fail()
+    }
+    //search retrieval list by status
+    this.getRetrievalListByStatus = function () {
+        $http.get(baseurl + "retrievalAPI.svc/getRetrieval/null/" + $rootScope.status + "/null")
+        .success(function (result) {
+            $rootScope.$broadcast("RetrievalListByStatusLoaded", result);
+        })
+        .fail()
+    }
+    //search retrieval list by RetID
+    this.getRetrievalListByRetID = function () {
+        $http.get(baseurl + "retrievalAPI.svc/getRetrieval/null/null/" + $rootScope.RetID)
+        .success(function (result) {
+            $rootScope.$broadcast("RetrievalListByRetIDLoaded", result);
+        })
+        .fail()
+    }
 
+
+    //retrievalUpdateActual.html
+    //load requisition list by RetID
+    this.getRequisitionListByRetID = function () {
+        $http.get(baseurl + "requisitionAPI.svc/getRequisitionById/" + $rootScope.RetID)
+        .success(function (result) {
+            $rootScope.$broadcast("RequisitionListByRetIDLoaded", result);
+        })
+        .fail()
+    }
+    //save retrieval //POST
+    this.saveRetrieval = function () {
+        $http.post(baseurl + "retrievalAPI.svc/save", $rootScope.data)
+        .success(function (result) {
+            $rootScope.$broadcast("RetrievalSaved", result);
+        })
+        .fail()
+    }
+    //submit retrieval //POST
+    this.submitRetrieval = function () {
+        $http.post(baseurl + "retrievalAPI.svc/submit", $rootScope.data)
+        .success(function (result) {
+            $rootScope.$broadcast("RetrievalSubmitted", result);
+        })
+        .fail()
+    }
+
+
+    //retrievalAllocation.html
+    //load requisition allocation by RetID or load RetrievalDetailReq.html
+    this.getReqAllocation = function () {
+        $http.get(baseurl + "retrievalAPI.svc/getReqAllocation/" + $rootScope.RetID)
+        .success(function (result) {
+            $rootScope.$broadcast("ReqAllocationLoaded", result);
+        })
+        .fail()
+    }
+    //confirm requisition allocation
+    this.confirmReqAllocation = function () {
+        $http.post(baseurl + "retrievalAPI.svc/confirmAllocation", $rootScope.data)
+        .success(function (result) {
+            $rootScope.$broadcast("ReqAllocationConfirmed", result);
+        })
+        .fail()
+    }
+
+
+    //retrievalDetailDept.html
+    //get retrieval breakdown by department
+    this.getRetByDept = function () {
+        $http.get(baseurl + "retrievalAPI.svc/getRetByDept/" + $rootScope.RetID)
+        .success(function (result) {
+            $rootScope.$broadcast("RetByDeptLoaded", result);
+        })
+        .fail()
+    }
+    
+
+    //disbursementStoreClerk.html
+    //load department list bind to combobox
+
+    //generate disbursement
+    this.createDisbursement = function () {
+        $http.get(baseurl + "disbursementAPI.svc/createDisbursement/" + $rootScope.EmpID)
+        .success(function (result) {
+            $rootScope.$broadcast("DisbursementCreated", result);
+        })
+        .fail()
+    }
+
+
+    //disbursementDetailStoreClerk.html
 
 
     //notification.html
