@@ -76,5 +76,26 @@ namespace BusinessLogic
             return notifList;
         }
 
+        //public bool sendNotification(int type, int empid, int reqid)
+        //{
+        //    bool result = true;
+
+        //    switch (type)
+        //    {
+        //        //Requistion
+        //        case 1:
+        //            {
+        //                Notification notif = new Notification();
+        //                notif.NotifName = "New Pending Requisition";
+        //                notif.NotifDesc = "Requisition #{id} is pending for your approval.";
+        //                notif.EmpID = notification.EmpID;
+        //                notif.DateTime = DateTime.Now;
+        //                notif.Status = notification.Status;
+        //                break;
+        //            }
+        //    }
+
+        //    return result;
+        //}
     }
 }
