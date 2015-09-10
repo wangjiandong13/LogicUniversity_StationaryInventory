@@ -5,7 +5,7 @@ RequisitionControllers.controller('RequisitionList', ['$rootScope', 'BaseService
 RequisitionControllers.controller('SelectoptionControllers', ['$rootScope', 'BaseService', SelectoptionControllers]);
 
 function BaseReControllers($scope, $rootScope, BaseService) {
-    $rootScope.pageTitle = $route.current.title;
+    //$rootScope.pageTitle = $route.current.title;
     $scope.viewCart = function () {
         location.href = '#/requestCart';
     }
@@ -42,6 +42,7 @@ function SelectoptionControllers($rootScope, BaseService) {
     BaseService.getRequisitionStatus()
         .then(function (data) {
             $rootScope.optiondata.availableOptions = data;
+            console.log(data);
             $rootScope.optiondata.availableOptions.unshift({ StatusID: 0, StatusName: 'ALL' });
         },function(data){
             alert(data);

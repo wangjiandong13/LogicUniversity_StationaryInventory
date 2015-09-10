@@ -1,6 +1,6 @@
 var EmployeeAPP = angular.module('EmployeeAPP', [
-                                                 'ngRoute', 'RequisitionControllers', 'RequestControllers',
-                                                 'ReDetailControllers', 'RequestCartControllers', 'appfilter'
+                                                 'ngRoute',  'DepartmentControllers',
+                                                 'ReDetailControllers', 'appfilter'
 ]);
 
 EmployeeAPP.config(['$routeProvider','$locationProvider', routeset]);
@@ -8,9 +8,7 @@ EmployeeAPP.config(['$routeProvider','$locationProvider', routeset]);
 function routeset($routeProvider, $locationProvider) {
     $routeProvider.
         when('/requisition', {
-            templateUrl: 'requisition.html',
-            controller: 'BaseReControllers',
-            title: "Requisition"
+            templateUrl: 'requisition.html'
         }).
         when('/catalogList', {
             templateUrl: 'catalogList.html',
@@ -39,6 +37,5 @@ function routeset($routeProvider, $locationProvider) {
       otherwise({
           redirectTo: '/requisition'
       });
-    //$locationProvider.html5Mode(true);
 }
 
