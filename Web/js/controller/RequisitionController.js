@@ -13,12 +13,18 @@ function BaseReControllers($scope, BaseService) {
         var status = $scope.optiondata.selectedOption.StatusID;
         if (status == 0) { status = "null"; }
         var ReqID = $scope.ReuisitionNo;
-        BaseService.getRequisition
+        BaseService.getRequisition(status, ReqID, 11233)
+            .then(function (data) {
+                $scope.Requisitions = data;
+            }, function (data) {
+                alert(data);
+            }
+            )
     }
 }
 
 function RequisitionList($scope, BaseService) {
-    BaseService.getRequisitionList("null", "null", 1)
+    BaseService.getRequisitionList("null", "null", 11233)
         .then(function (data) {
             $scope.Requisitions = data;
         }, function (data) {
