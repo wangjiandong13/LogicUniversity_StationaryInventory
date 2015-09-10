@@ -10,10 +10,12 @@ function service($http, $q) {
     ////// EMPLOYEE //////
 
     //requisition.html
-    //load requisition List 
-    this.getRequisitionList = function (EmpID) {
+    //load requisition List (EmpID)
+    //Search Requisition by ReqID OR load requisitionDetail.html OR load requisitionApproval.html or load disbursementRequisition.html
+    //Search requisition by status (status) 
+    this.getRequisitionList = function (status, ReqID, EmpID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "/requisitionAPI.svc/getRequisition/null/null/" + EmpID)
+        $http.get(baseurl + "/requisitionAPI.svc/getRequisition/"+ status +"/"+ ReqID +"/" + EmpID)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -26,18 +28,6 @@ function service($http, $q) {
     this.getRequisitionStatus = function () {
         var deferred = $q.defer();
         $http.get(baseurl + "/requisitionAPI.svc/getStatus")
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-    //Search Requisition by ReqID OR load requisitionDetail.html OR load requisitionApproval.html or load disbursementRequisition.html
-    this.getRequisition = function (ReqID) {
-        var deferred = $q.defer();
-        $http.get(baseurl + "requisitionAPI.svc/getRequisition/null/"+ ReqID +"/null")
             .success(function (data) {
                 deferred.resolve(data)
             })
