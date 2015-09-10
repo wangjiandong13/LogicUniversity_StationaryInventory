@@ -4187,6 +4187,13 @@
     <Content Include="js\app\EmployeeDelApp.js" />
     <Content Include="js\app\EmployeeRepApp.js" />
     <Content Include="js\app\EmployeeApp.js" />
+    <Content Include="js\controller\CatalogListController.js" />
+    <Content Include="js\controller\CatalogTileController.js" />
+    <Content Include="js\controller\DepartmentController.js" />
+    <Content Include="js\controller\DisbursementController.js" />
+    <Content Include="js\controller\DisbursementDetailController.js" />
+    <Content Include="js\controller\DisbursementRequisitionController.js" />
+    <Content Include="js\controller\NotificationController.js" />
     <Content Include="js\controller\ReDetailController.js" />
     <Content Include="js\controller\requestCartController.js" />
     <Content Include="js\controller\RequisitionController.js" />
