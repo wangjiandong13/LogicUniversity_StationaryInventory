@@ -137,6 +137,7 @@
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="ReqAllocation.cs" />
+    <Compile Include="RequestCart.cs" />
     <Compile Include="Requisition.cs">
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>
