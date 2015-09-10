@@ -1,5 +1,5 @@
 var EmployeeAPP = angular.module('EmployeeAPP', [
-                                                 'ngRoute', 'RequisitionControllers',
+                                                 'ngRoute', 'RequisitionControllers', 'RequestControllers',
                                                  'ReDetailControllers', 'RequestCartControllers', 'appfilter'
 ]);
 
