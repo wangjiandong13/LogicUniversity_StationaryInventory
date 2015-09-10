@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestService", "RestService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{4471BF76-7760-4381-A1A1-FA4EE7AAE236}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Tests", "BusinessLogic.Tests\BusinessLogic.Tests.csproj", "{B629205D-CFDE-4B48-A969-DC74B1B0BF37}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{4471BF76-7760-4381-A1A1-FA4EE7AAE236}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4471BF76-7760-4381-A1A1-FA4EE7AAE236}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4471BF76-7760-4381-A1A1-FA4EE7AAE236}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B629205D-CFDE-4B48-A969-DC74B1B0BF37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B629205D-CFDE-4B48-A969-DC74B1B0BF37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B629205D-CFDE-4B48-A969-DC74B1B0BF37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B629205D-CFDE-4B48-A969-DC74B1B0BF37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
