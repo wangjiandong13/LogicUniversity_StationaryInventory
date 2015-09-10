@@ -216,9 +216,9 @@ namespace BusinessLogic
             return result;
         }
 
-        public Model.ItemPrice getItemPrice(string ItemID)
+        public List<Model.ItemPrice> getItemPrice(string ItemID)
         {
-            return ctx.ItemPrice.Where(x => x.ItemID == ItemID).FirstOrDefault();
+            return ctx.ItemPrice.Where(x => x.ItemID == ItemID).ToList();
         }
 
     }

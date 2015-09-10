@@ -72,7 +72,7 @@ namespace RestService
             return BL.getItemDetails(itemID);
         }
 
-        public ItemPrice getItemPrice(string ItemID)
+        public List<Model.ItemPrice> getItemPrice(string ItemID)
         {
             BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
             return BL.getItemPrice(ItemID);

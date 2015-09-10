@@ -719,7 +719,7 @@ function service($http, $q) {
 
     //supplier.html
     //load supplier list
-    this.getSupplierList = function (EmpID) {
+    this.getSupplierList = function () {
         var deferred = $q.defer();
         $http.get(baseurl + "supplierAPI.svc/getSupplierList")
             .success(function (data) {
@@ -730,6 +730,49 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+
+
+    //inventoryNew.html
+    //create item //POST
+    this.createItem = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "inventoryAPI.svc/createItem", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //create itemPrice
+    this.createItemPrice = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "inventoryAPI.svc/createItemPrice", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
+
+    //stockcard.html
+    //load item detail
+    this.getItemDetail = function (ItemID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "inventoryAPI.svc/getItemDetails/" + ItemID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //load supplier info
 
 
 
