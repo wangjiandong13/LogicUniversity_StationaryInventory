@@ -33,22 +33,6 @@ C:\Users\robin\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\
 C:\Users\robin\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\robin\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.dll
 C:\Users\robin\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.pdb
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\BusinessLogic.dll.config
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\BusinessLogic.dll
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\BusinessLogic.pdb
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\EntityFramework.dll
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\Model.dll
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\Newtonsoft.Json.dll
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\TrackableEntities.Common.dll
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\Model.pdb
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\EntityFramework.xml
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\Newtonsoft.Json.xml
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\TrackableEntities.Common.xml
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.dll
-C:\Users\BenjaminYao\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.pdb
 C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\BusinessLogic.dll.config
 C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\BusinessLogic.dll
 C:\Users\Esther Xie\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\BusinessLogic.pdb
