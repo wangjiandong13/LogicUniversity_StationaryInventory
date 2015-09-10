@@ -10,6 +10,7 @@ function routeset($routeProvider) {
               templateUrl: 'requisition.html',
               controller: 'BaseReControllers'
         }).
+        /*
         when('/catalogList', {
             templateUrl: 'catalogList.html',
             controller: 'catalogListCtrl'
@@ -34,6 +35,7 @@ function routeset($routeProvider) {
             templateUrl: 'requisitionDetail.html',
             controller: 'requisitionDetailCtrl'
         }).
+        */
       otherwise({
           redirectTo: '/requisition'
       });
