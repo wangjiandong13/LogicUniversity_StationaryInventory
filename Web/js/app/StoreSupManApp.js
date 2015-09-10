@@ -7,45 +7,45 @@ StoreClerkApp.config(['$routeProvider', routeset]);
 function routeset($routeProvider) {
     $routeProvider.
         when('/requisitionStoreClerk', {
-            templateUrl: 'requisitionStoreClerk.html',
+            templateUrl: '../SC/requisitionStoreClerk.html',
               controller: 'BaseReControllers'
         }).
         
         when('/adjustment', {
-            templateUrl: 'adjustment.html',
+            templateUrl: '../SC/adjustment.html',
             controller: 'adjustmentCtrl'
         }).
         when('/adjustmentDetail', {
-            templateUrl: 'adjustmentDetail.html',
+            templateUrl: '../SC/adjustmentDetail.html',
             controller: 'adjustmentDetailCtrl'
         }).
         when('/adjustmentNew', {
-            templateUrl: 'adjustmentNew.html',
+            templateUrl: '../SC/adjustmentNew.html',
             controller: 'adjustmentNewCtrl'
         }).
         when('/departmentStoreclerk', {
-            templateUrl: 'departmentStoreclerk.html',
+            templateUrl: '../SC/departmentStoreclerk.html',
             controller: 'departmentStoreclerkCtrl'
         }).
         when('/disbursementDetailStoreClerk', {
-            templateUrl: 'disbursementDetailStoreClerk.html',
+            templateUrl: '../SC/disbursementDetailStoreClerk.html',
             controller: 'disbursementDetailStoreClerkCtrl'
         }).
         when('/disbursementStoreClerk', {
-            templateUrl: 'disbursementStoreClerk.html',
+            templateUrl: '../SC/disbursementStoreClerk.html',
             controller: 'disbursementStoreClerkCtrl'
         }).
         when('/inventoryList', {
-            templateUrl: 'inventoryList.html',
+            templateUrl: '../SC/inventoryList.html',
             controller: 'inventoryListCtrl'
         }).
 
         when('/inventoryNew', {
-            templateUrl: 'inventoryNew.html',
+            templateUrl: '../SC/inventoryNew.html',
             controller: 'inventoryNewCtrl'
         }).
         when('/inventoryTile', {
-            templateUrl: 'inventoryTile.html',
+            templateUrl: '../SC/inventoryTile.html',
             controller: 'inventoryTileCtrl'
         }).
         when('/notification', {
@@ -53,52 +53,64 @@ function routeset($routeProvider) {
             controller: 'notificationCtrl'
         }).
         when('/purchaseOrder', {
-            templateUrl: 'purchaseOrder.html',
+            templateUrl: '../SC/purchaseOrder.html',
             controller: 'purchaseOrderCtrl'
         }).
         when('/purchaseOrderDetail', {
-            templateUrl: 'purchaseOrderDetail.html',
+            templateUrl: '../SC/purchaseOrderDetail.html',
             controller: 'purchaseOrderDetailCtrl'
         }).
         when('/purchaseOrderPropose', {
-            templateUrl: 'purchaseOrderPropose.html',
+            templateUrl: '../SC/purchaseOrderPropose.html',
             controller: 'purchaseOrderProposeCtrl'
         }).
         when('/requisitionProcessed', {
-            templateUrl: 'requisitionProcessed.html',
+            templateUrl: '../SC/requisitionProcessed.html',
             controller: 'requisitionProcessedCtrl'
         }).
         when('/retrieval', {
-            templateUrl: 'retrieval.html',
+            templateUrl: '../SC/retrieval.html',
             controller: 'retrievalCtrl'
         }).
         when('/retrievalAllocation', {
-            templateUrl: 'retrievalAllocation.html',
+            templateUrl: '../SC/retrievalAllocation.html',
             controller: 'retrievalAllocationCtrl'
         }).
         when('/retrievalDetailDept', {
-            templateUrl: 'retrievalDetailDept.html',
+            templateUrl: '../SC/retrievalDetailDept.html',
             controller: 'retrievalDetailDeptCtrl'
         }).
         when('/retrievalDetailReq', {
-            templateUrl: 'retrievalDetailReq.html',
+            templateUrl: '../SC/retrievalDetailReq.html',
             controller: 'retrievalDetailReqCtrl'
         }).
         when('/retrievalUpdateActual', {
-            templateUrl: 'retrievalUpdateActual.html',
+            templateUrl: '../SC/retrievalUpdateActual.html',
             controller: 'retrievalUpdateActualCtrl'
         }).
         when('/stockcard', {
-            templateUrl: 'stockcard.html',
+            templateUrl: '../SC/stockcard.html',
             controller: 'stockcardCtrl'
         }).
-        when('/supplierStoreClerk', {
-            templateUrl: 'supplierStoreClerk.html',
-            controller: 'supplierStoreClerkCtrl'
+         when('/supplier', {
+             templateUrl: 'supplier.html',
+             controller: 'supplierCtrl'
+         }).
+        when('/supplierdetail', {
+            templateUrl: 'supplierdetail.html',
+            controller: 'supplierdetailCtrl'
         }).
-       
+        when('/suppliernew', {
+            templateUrl: 'suppliernew.html',
+            controller: 'suppliernewCtrl'
+        }).
+        when('/adjustmentApproval', {
+            templateUrl: 'adjustmentApproval.html',
+            controller: 'adjustmentApprovalCtrl'
+        }).
+
       otherwise({
-          redirectTo: '/requisitionStoreClerk'
+          redirectTo: '../SC/requisitionStoreClerk'
       });
 }
 

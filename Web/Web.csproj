@@ -4181,6 +4181,7 @@
     <Content Include="bin\Web.dll" />
     <Content Include="bin\Web.pdb" />
     <Content Include="js\app\DeptHeadApp.js" />
+    <Content Include="js\app\StoreSupManApp.js" />
     <Content Include="js\app\StoreClerkApp.js" />
     <Content Include="js\app\EmployeeDelApp.js" />
     <Content Include="js\app\EmployeeRepApp.js" />
@@ -4535,7 +4536,7 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
     <Content Include="Service.js" />
-    <Content Include="templete\SC\supplier.html" />
+    <Content Include="templete\SC\supplierStoreClerk.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
