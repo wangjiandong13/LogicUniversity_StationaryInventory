@@ -1,24 +1,32 @@
 ﻿var RequisitionControllers = angular.module('RequisitionControllers', ['BaseServices']);
 
-RequisitionControllers.controller('BaseReControllers', ['$scope','BaseService', BaseReControllers]);
+RequisitionControllers.controller('BaseReControllers', ['$scope', '$rootScope', 'BaseService', BaseReControllers]);
 RequisitionControllers.controller('RequisitionList', ['$scope', 'BaseService', RequisitionList]);
 RequisitionControllers.controller('SelectoptionControllers', ['$rootScope', 'BaseService', SelectoptionControllers]);
 
-function BaseReControllers($scope, BaseService) {
+function BaseReControllers($scope, $rootScope, BaseService) {
     $scope.viewCart = function () {
-        
         alert("viewCart");
     }
     $scope.search = function () {
-        var status = $scope.optiondata.selectedOption.StatusID;
+        var status = $rootScope.optiondata.selectedOption.StatusID;
         if (status == 0) { status = "null"; }
         var ReqID = $scope.ReuisitionNo;
-        BaseService.getRequisition
+        if (ReqID == null) { ReqID ="null"}
+        BaseService.getRequisitionList(status, ReqID, 11233)
+            .then(function (data) {
+                console.log(data);
+                $scope.Requisitions = data;
+                
+            }, function (data) {
+                alert(data);
+            }
+            )
     }
 }
 
 function RequisitionList($scope, BaseService) {
-    BaseService.getRequisitionList("null", "null", 1)
+    BaseService.getRequisitionList("null", "null", 11233)
         .then(function (data) {
             $scope.Requisitions = data;
         }, function (data) {
