@@ -211,34 +211,12 @@ function service($http, $q) {
     ////// EMPLOYEE REPRESENTATIVE//////
 
     //disbursement.html
-    //load disbursement by Dept for ER
-    this.getDisbursementListByDept = function (DeptID) {
+    //load disbursement by Dept for ER (DeptID)
+    //search disbursement by DisbID OR load disbursementDetail.html (DisID)
+    //search disbursement by date range (startdate, enddate)
+    this.getDisbursementListByDept = function (DeptID, CPID, DisID, startdate, enddate) {
         var deferred = $q.defer();
-        $http.get(baseurl + "disbursementAPI.svc/getDisbursement/" + DeptID + "/null/null/null/null")
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-    //search disbursement by date range
-    this.getDisbursementListByDate = function (startdate, enddate) {
-        var deferred = $q.defer();
-        $http.get(baseurl + "disbursementAPI.svc/getDisbursement/null/null/null/" + startdate + "/" + enddate)
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-    //search disbursement by DisbID OR load disbursementDetail.html 
-    this.getDisbursementByDisID = function (DisID) {
-        var deferred = $q.defer();
-        $http.get(baseurl + "disbursementAPI.svc/getDisbursement/null/null/" + DisID + "/null/null")
+        $http.get(baseurl + "disbursementAPI.svc/getDisbursement/" + DeptID + "/"+ CPID +"/"+ DisID +"/" + startdate + "/" + enddate)
             .success(function (data) {
                 deferred.resolve(data)
             })

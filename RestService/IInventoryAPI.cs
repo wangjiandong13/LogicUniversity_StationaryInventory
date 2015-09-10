@@ -75,6 +75,6 @@ namespace RestService
                                     RequestFormat = WebMessageFormat.Json,
                                     BodyStyle = WebMessageBodyStyle.Bare,
                                     UriTemplate = "/getItemPrice/{itemID}")]
-        List<Model.ItemPrice> getItemPrice(string ItemID)
+        List<Model.ItemPrice> getItemPrice(string ItemID);
     }
 }
