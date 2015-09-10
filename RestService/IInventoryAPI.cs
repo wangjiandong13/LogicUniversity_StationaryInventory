@@ -71,8 +71,7 @@ namespace RestService
         bool updateItemPrice(List<Model.ItemPrice> itemprice);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-                                    RequestFormat = WebMessageFormat.Json,
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                     BodyStyle = WebMessageBodyStyle.Bare,
                                     UriTemplate = "/getItemPrice/{itemID}")]
         List<Model.ItemPrice> getItemPrice(string ItemID);
