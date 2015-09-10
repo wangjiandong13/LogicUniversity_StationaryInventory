@@ -94,12 +94,24 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="EmpID">EmployeeID</param>
         /// <returns></returns>
-        public List<CartItems> getItems(string EmpID)
+        public List<RequestCart> getItems(string EmpID)
         {
             int empID = Convert.ToInt32(EmpID);
-            List<CartItems> result = ctx.CartItems.Where(x => x.EmpID == empID).ToList();
+            List<CartItems> cartItemsList = ctx.CartItems.Where(x => x.EmpID == empID).ToList();
+            List<RequestCart> requestCartList = new List<RequestCart>();
 
-            return result;
+            foreach(CartItems cartItem in cartItemsList)
+            {
+                Item item = ctx.Item.Where(x => x.ItemID == cartItem.ItemID).FirstOrDefault();
+
+                RequestCart reqCart = new RequestCart();
+                reqCart.ItemID = cartItem.ItemID;
+                reqCart.ItemName = item.ItemName;
+                reqCart.UOM = item.UOM;
+                reqCart.Qty = (int) cartItem.Qty;
+            }
+
+            return requestCartList;
         }
 
     }
