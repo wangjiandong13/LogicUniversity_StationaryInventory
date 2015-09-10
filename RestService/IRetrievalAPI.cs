@@ -66,6 +66,10 @@ namespace RestService
                            UriTemplate = "/getRetByDept/{RetID}")]
         List<ReqAllocation> getRetByDept(string RetID);
 
-
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getStoreClerk")]
+        List<Employee> getStoreClerk();
     }
 }
