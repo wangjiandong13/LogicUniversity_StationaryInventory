@@ -109,6 +109,8 @@ namespace BusinessLogic
                 reqCart.ItemName = item.ItemName;
                 reqCart.UOM = item.UOM;
                 reqCart.Qty = (int) cartItem.Qty;
+
+                requestCartList.Add(reqCart);
             }
 
             return requestCartList;
