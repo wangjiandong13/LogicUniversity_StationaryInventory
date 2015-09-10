@@ -4184,6 +4184,7 @@
     <Content Include="js\controller\DelegateControllers.js" />
     <Content Include="js\controller\EmployeeControllers.js" />
     <Content Include="js\controller\RequisitionController.js" />
+    <Content Include="js\fitter\Datefitter.js" />
     <Content Include="js\Service.js" />
     <Content Include="packages.config" />
     <Content Include="assets\.DS_Store" />
