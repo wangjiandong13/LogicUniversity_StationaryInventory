@@ -54,7 +54,7 @@ namespace RestService
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getStockCard/{itemID}")]
-        Model.StockCard getStockCard(string itemID);
+        List<Model.StockCard> getStockCard(string itemID);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
@@ -71,8 +71,7 @@ namespace RestService
         bool updateItemPrice(List<Model.ItemPrice> itemprice);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-                                    RequestFormat = WebMessageFormat.Json,
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                     BodyStyle = WebMessageBodyStyle.Bare,
                                     UriTemplate = "/getItemPrice/{itemID}")]
         List<Model.ItemPrice> getItemPrice(string ItemID);
