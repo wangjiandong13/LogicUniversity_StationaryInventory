@@ -107,7 +107,7 @@ namespace BusinessLogic
         /// <summary>
         /// CreateVoucherAdj
         /// </summary>
-        /// <param name="adj">AdjustVoucher Object</param>
+        /// <param name="adj">AdjustVoucher Object (ReportedBy, Status)</param>
         /// <returns>True or False</returns>
         public bool createVoucherAdj(AdjustmentVoucher adj)
         {
@@ -116,6 +116,7 @@ namespace BusinessLogic
 
             string newID = getAdjVoucherId();
             adj.AdjID = newID;
+            adj.Date = DateTime.Now;
             ctx.AdjustmentVoucher.Add(adj);
 
             try
