@@ -1,8 +1,8 @@
-var StoreClerkApp = angular.module('StoreClerkApp', [
+var StoreSupManApp = angular.module('StoreSupManApp', [
                                                  'ngRoute', 'RequisitionControllers', 'appfilter'
 ]);
 
-StoreClerkApp.config(['$routeProvider', routeset]);
+StoreSupManApp.config(['$routeProvider', routeset]);
 
 function routeset($routeProvider) {
     $routeProvider.
