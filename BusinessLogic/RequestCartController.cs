@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +20,22 @@ namespace BusinessLogic
         {
             bool result = true;
 
-            CartItems cartItem = new CartItems();
-            cartItem.EmpID = item.EmpID;
-            cartItem.ItemID = item.ItemID;
-            cartItem.Qty = item.Qty;
+            CartItems itemSearch = ctx.CartItems.Where(x => x.ItemID == item.ItemID && x.EmpID == item.EmpID).FirstOrDefault();
 
-            ctx.CartItems.Add(cartItem);
+            if (itemSearch != null)
+            {
+                itemSearch.Qty += item.Qty;
+            }
+            else
+            {
+                CartItems cartItem = new CartItems();
+                cartItem.EmpID = item.EmpID;
+                cartItem.ItemID = item.ItemID;
+                cartItem.Qty = item.Qty;
+
+                ctx.CartItems.Add(cartItem);
+            }
+            
             try
             {
                 ctx.SaveChanges();
