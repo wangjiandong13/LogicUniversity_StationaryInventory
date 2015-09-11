@@ -1,4 +1,4 @@
-﻿var baseurl = "http://www.team5.com/api";
+﻿var baseurl = "http://www.team5.com/api/";
 
 var BaseServices = angular.module("BaseServices", []);
 
@@ -10,7 +10,7 @@ function service($http, $q) {
     //get employee by EmpID
     this.getEmployee = function (EmpID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "/employeeAPI.svc/getemployeebyId/" + EmpID)
+        $http.get(baseurl + "employeeAPI.svc/getemployeebyId/" + EmpID)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -29,7 +29,7 @@ function service($http, $q) {
     //Search requisition by status (status) 
     this.getRequisitionList = function (status, ReqID, EmpID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "/requisitionAPI.svc/getRequisition/"+ status +"/"+ ReqID +"/" + EmpID)
+        $http.get(baseurl + "requisitionAPI.svc/getRequisition/"+ status +"/"+ ReqID +"/" + EmpID)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -41,7 +41,7 @@ function service($http, $q) {
     //load requisition status for combobox binding
     this.getRequisitionStatus = function () {
         var deferred = $q.defer();
-        $http.get(baseurl + "/requisitionAPI.svc/getStatus")
+        $http.get(baseurl + "requisitionAPI.svc/getStatus")
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -185,7 +185,7 @@ function service($http, $q) {
     //load department (one) page
     this.getDepartment = function (DeptID) {
         var deferred = $q.defer(); 
-        $http.get(baseurl + "/departmentAPI.svc/getDeptByID/" + DeptID)
+        $http.get(baseurl + "departmentAPI.svc/getDeptByID/" + DeptID)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -278,7 +278,7 @@ function service($http, $q) {
     //load employee bind to combobox
     this.getDeptEmployee = function (DeptID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "/employeeAPI.svc/getemployeebyDeptID/" + DeptID)
+        $http.get(baseurl + "employeeAPI.svc/getemployeebyDeptID/" + DeptID)
             .success(function (data) {
                 deferred.resolve(data)
             })
