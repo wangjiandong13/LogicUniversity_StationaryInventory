@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="departmentCtrl">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -33,48 +33,45 @@
 
                 <!-- THIS PART IS FOR THE LEFT PANEL -->
                 <div class="col-md-12">
-                    <div class="col-md-6">
+                    <div class="col-md-6" >
                         <!-- THIS PORTION TO POPULATE THE DEPARTMENT DETAILS -->
                         <table id="departmentinfotable">
                             <tr>
                                 <td class="col-md-5">
                                     <h4>Contact Name:</h4></td>
                                 <td class="col-md-7">
-                                    <input type="text" class="form-control" placeholder="Append Contact Name Here" disabled="true" id="tb_deptcontactname">
+                                    <input type="text" class="form-control" value="{{Department.DeptName}}" placeholder="Append Contact Name Here" disabled="true" id="tb_deptcontactname">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-5">
                                     <h4>Telephone No:</h4></td>
                                 <td class="col-md-7">
-                                    <input type="text" class="form-control" placeholder="Append Telephone No Here" disabled="true" id="tb_depttelephoneno">
+                                    <input type="text" class="form-control"  value="{{Department.Phone}}" placeholder="Append Telephone No Here" disabled="true" id="tb_depttelephoneno">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-5">
                                     <h4>Fax No:</h4></td>
                                 <td class="col-md-7">
-                                    <input type="text" class="form-control" placeholder="Append Fax No Here" disabled="true" id="tb_deptfaxno">
+                                    <input type="text" class="form-control"  value="{{Department.Fax}}" placeholder="Append Fax No Here" disabled="true" id="tb_deptfaxno">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-5">
                                     <h4>Department Head:</h4></td>
                                 <td class="col-md-7">
-                                    <input type="text" class="form-control" placeholder="Append Department Head Here" disabled="true" id="tb_depthead">
+                                    <input type="text" class="form-control" value="{{DeptHeadName}}" placeholder="Append Department Head Here" disabled="true" id="tb_depthead">
                                 </td>
                             </tr>
-                            <tr>
+                            <tr ng-controller="depSelectoptionControllers">
                                 <td class="col-md-5">
                                     <h4>Representative:</h4></td>
                                 <td class="col-md-7">
-                                    <select class="form-control" disabled="true">
-                                        <option>Append Representative Here</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        <option>Option 4</option>
-                                        <option>Option 5</option>
-                                    </select>
+                                    <select class="form-control" 
+                                            name="statusselect" id="statusselect"
+                                            ng-options="option.EmpName for option in optiondata.availableOptions track by option.EmpID"
+                                            ng-model="optiondata.selectedOption"></select>
                                 </td>
                             </tr>
                         </table>

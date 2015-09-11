@@ -144,13 +144,13 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="itemID"></param>
         /// <returns></returns>
-        public Model.StockCard getStockCard(string itemID)
+        public List<Model.StockCard> getStockCard(string itemID)
         {
-            Model.StockCard stockcard = (from c in ctx.StockCard
+            List<Model.StockCard> stockcardList = (from c in ctx.StockCard
                                          where c.ItemID == itemID
-                                         select c).First();
+                                         select c).ToList();
 
-            return stockcard;
+            return stockcardList;
         }
 
         /// <summary>
@@ -215,5 +215,11 @@ namespace BusinessLogic
             }
             return result;
         }
+
+        public List<Model.ItemPrice> getItemPrice(string ItemID)
+        {
+            return ctx.ItemPrice.Where(x => x.ItemID == ItemID).ToList();
+        }
+
     }
 }

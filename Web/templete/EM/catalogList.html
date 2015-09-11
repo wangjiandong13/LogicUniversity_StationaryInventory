@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="catalogListCtrl">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -72,28 +72,28 @@
                     <hr>
                 </div>
                 <div class="col-md-12 text-right">
-                    <a href="catalogTile.html" style="text-decoration:none; color:#08AE9E;" class="fa fa-th-large fa-3x" id="tiled"></a>
-                    <a href="catalogList.html" style="text-decoration:none; color:#08AE9E;" class="fa fa-list fa-3x" id="list"></a>
+                    <a href="#/catalogTile" style="text-decoration:none; color:#08AE9E;" class="fa fa-th-large fa-3x" id="tiled"></a>
+                    <a href="#/catalogList" style="text-decoration:none; color:#08AE9E;" class="fa fa-list fa-3x" id="list"></a>
                     <br>
                     <br>
                 </div>
-                <div class="row" ng-repeat="Item in Items">
-                    <div class="col-md-12" style="vertical-align:middle">
+                <div class="row" ng-controller="catalogListDataCtrl">
+                    <div class="col-md-12" style="vertical-align:middle" ng-repeat="item in catalogListdata">
                         <div class="col-md-2">
-                            <img id="img_item1" style="height:120px; width:120px" src="assets/admin/layout/img/clips.JPG">
+                            <img style="height:120px; width:120px" src="/img/Item_120/{{item.ItemID}}.jpg">
                         </div>
                         <div class="col-md-5">
-                            <label id={{Item.ItemID}}>
-                                <h4><b>{{Item.ItemName}}</b></h4></label>
+                            <label>
+                                <h4><b>{{item.ItemName}}</b></h4></label>
                             <br>
                             <label>Unit of Measurement: </label>
-                            <label id="lbl_UOM">{{Item.UOM}}</label>
+                            <label id="lbl_UOM">{{item.UOM}}</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="number" class="form-control" min=1 value="{{qty}}">
+                            <input type="number" class="form-control" min=1 ng-model="item.qty">
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-primary">
+                            <button type="button" class="btn btn-primary" ng-click="add(item)">
                                 <i class="fa fa-cart-plus"></i> Add To Cart
                             </button>
                         </div>

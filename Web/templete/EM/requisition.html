@@ -1,5 +1,6 @@
+
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="RequisitionControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -17,11 +18,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
-                    <h1>Requisition{{optiondata.selectedOption.name}}</h1>
+                    <h1>Requisition</h1>
                 </div>
                 <div class="col-md-6 text-right">
                     <br>
-                    <button type="button" class="btn btn-success" ng-click="viewCart()">
+                    <button type="button" class="btn btn-success" onclick="test()" ng-click="viewCart() ">
                         <span class="glyphicon glyphicon-shopping-cart"></span> View Request Cart
                     </button>
                 </div>
@@ -37,11 +38,11 @@
                     <div class="col-md-3" ng-controller="SelectoptionControllers">
                         <select class="form-control"
                                 name="statusselect" id="statusselect"
-                                ng-options="option.name for option in optiondata.availableOptions track by option.id"
+                                ng-options="option.StatusName for option in optiondata.availableOptions track by option.StatusID"
                                 ng-model="optiondata.selectedOption"></select>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Enter Reuisition No.">
+                        <input type="text" class="form-control" placeholder="Enter Reuisition No." ng-model="ReuisitionNo">
                     </div>
                     <div class="col-md-2">
                         <button type="button" class="btn btn yellow" ng-click="search()">
@@ -66,9 +67,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="Requisition in Requisitions">
-                                    <td>{{Requisition.DisID}}</td>
+                                    <td>{{Requisition.ReqID}}</td>
                                     <td>{{Requisition.Date|datechange|date : 'dd MMM yyyy'}}</td>
-                                    <td>{{Requisition.StatusID}}</td>
+                                    <td>{{Requisition.StatusID|statuschange}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -79,3 +80,4 @@
     </div>
 </div>
 <!-- END CONTENT -->
+

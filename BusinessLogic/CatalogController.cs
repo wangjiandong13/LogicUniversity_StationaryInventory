@@ -65,6 +65,36 @@ namespace BusinessLogic
             return ctx.ItemCategory.ToList();
         }
 
+        /// <summary>
+        /// SearchItem
+        /// </summary>
+        /// <returns></returns>
+        public List<Model.Item> searchItem(string ItemCatID, string ItemName)
+        {
+            if (ItemCatID == "null")
+                ItemCatID = null;
+            if (ItemName == "null")
+                ItemName = null;
+
+            //start with all the records
+            var query = from req in ctx.Item select req;
+
+            //filter the result set based on user inputs
+            if (!string.IsNullOrEmpty(ItemCatID))
+            {
+                query = query.Where(x => x.ItemCatID.ToString().Contains(ItemCatID));
+            }
+            if (!string.IsNullOrEmpty(ItemName))
+            {
+                query = query.Where(x => x.ItemName.ToString().Contains(ItemName));
+            }
+
+            //run the query on database and grab the results
+            return query.ToList();
+        }
+        
+
+
     }
 
 }

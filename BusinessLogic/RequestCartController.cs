@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +20,22 @@ namespace BusinessLogic
         {
             bool result = true;
 
-            CartItems cartItem = new CartItems();
-            cartItem.EmpID = item.EmpID;
-            cartItem.ItemID = item.ItemID;
-            cartItem.Qty = item.Qty;
+            CartItems itemSearch = ctx.CartItems.Where(x => x.ItemID == item.ItemID && x.EmpID == item.EmpID).FirstOrDefault();
 
-            ctx.CartItems.Add(cartItem);
+            if (itemSearch != null)
+            {
+                itemSearch.Qty += item.Qty;
+            }
+            else
+            {
+                CartItems cartItem = new CartItems();
+                cartItem.EmpID = item.EmpID;
+                cartItem.ItemID = item.ItemID;
+                cartItem.Qty = item.Qty;
+
+                ctx.CartItems.Add(cartItem);
+            }
+            
             try
             {
                 ctx.SaveChanges();
@@ -94,12 +104,26 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="EmpID">EmployeeID</param>
         /// <returns></returns>
-        public List<CartItems> getItems(string EmpID)
+        public List<RequestCart> getItems(string EmpID)
         {
             int empID = Convert.ToInt32(EmpID);
-            List<CartItems> result = ctx.CartItems.Where(x => x.EmpID == empID).ToList();
+            List<CartItems> cartItemsList = ctx.CartItems.Where(x => x.EmpID == empID).ToList();
+            List<RequestCart> requestCartList = new List<RequestCart>();
 
-            return result;
+            foreach(CartItems cartItem in cartItemsList)
+            {
+                Item item = ctx.Item.Where(x => x.ItemID == cartItem.ItemID).FirstOrDefault();
+
+                RequestCart reqCart = new RequestCart();
+                reqCart.ItemID = cartItem.ItemID;
+                reqCart.ItemName = item.ItemName;
+                reqCart.UOM = item.UOM;
+                reqCart.Qty = (int) cartItem.Qty;
+
+                requestCartList.Add(reqCart);
+            }
+
+            return requestCartList;
         }
 
     }

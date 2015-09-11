@@ -35,5 +35,11 @@ namespace RestService
             BusinessLogic.CatalogController bl = new BusinessLogic.CatalogController();
             return bl.getCategory();
         }
+
+        public List<Item> searchItem(string ItemCatID, string ItemName)
+        {
+            BusinessLogic.CatalogController bl = new BusinessLogic.CatalogController();
+            return bl.searchItem(ItemCatID, ItemName);
+        }
     }
 }
