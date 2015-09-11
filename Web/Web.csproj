@@ -4269,14 +4269,34 @@
     <Content Include="img\Item_120\T025.jpg" />
     <Content Include="img\Item_120\T100.jpg" />
     <Content Include="img\logo.png" />
+    <Content Include="img\user\11233.jpg" />
+    <Content Include="img\user\11235.jpg" />
+    <Content Include="img\user\11236.jpg" />
+    <Content Include="img\user\11241.jpg" />
+    <Content Include="img\user\11242.jpg" />
+    <Content Include="img\user\11243.jpg" />
+    <Content Include="img\user\11251.jpg" />
+    <Content Include="img\user\11252.jpg" />
+    <Content Include="img\user\11261.jpg" />
+    <Content Include="img\user\11262.jpg" />
+    <Content Include="img\user\11271.jpg" />
+    <Content Include="img\user\11272.jpg" />
+    <Content Include="img\user\11281.jpg" />
+    <Content Include="img\user\11282.jpg" />
+    <Content Include="img\user\91263.jpg" />
+    <Content Include="img\user\98765.jpg" />
+    <Content Include="img\user\99877.jpg" />
+    <Content Include="img\user\99878.jpg" />
+    <Content Include="js\app\EmployeeApp.js" />
     <Content Include="js\app\DeptHeadApp.js" />
     <Content Include="js\app\StoreSupManApp.js" />
     <Content Include="js\app\StoreClerkApp.js" />
     <Content Include="js\app\EmployeeDelApp.js" />
     <Content Include="js\app\EmployeeRepApp.js" />
-    <Content Include="js\app\EmployeeApp.js" />
+    <Content Include="js\app\EmployeeRoute.js" />
     <Content Include="js\controller\CatalogListController.js" />
     <Content Include="js\controller\CatalogTileController.js" />
+    <Content Include="js\controller\controllerReferences.js" />
     <Content Include="js\controller\DelegateController.js" />
     <Content Include="js\controller\DelegatenewController.js" />
     <Content Include="js\controller\DepartmentController.js" />
@@ -4288,7 +4308,9 @@
     <Content Include="js\controller\RequestCartController.js" />
     <Content Include="js\controller\RequisitionApprovalController.js" />
     <Content Include="js\controller\RequisitionController.js" />
+    <Content Include="js\dependencyResoverFor.js" />
     <Content Include="js\fitter\Seftfitter.js" />
+    <Content Include="js\app\EmployeeMain.js" />
     <Content Include="js\Service.js" />
     <Content Include="packages.config" />
     <Content Include="assets\.DS_Store" />
@@ -4635,7 +4657,11 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
     <Content Include="Service.js" />
+    <Content Include="templete\EM\index2.html" />
+    <Content Include="templete\EM\test.html" />
     <Content Include="templete\SC\supplierStoreClerk.html" />
+    <Content Include="vendor\angularAMD.min.map" />
+    <Content Include="vendor\ngload.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4692,6 +4718,11 @@
     <Content Include="vendor\angular-route.js" />
     <Content Include="vendor\angular.js" />
     <Content Include="vendor\angular.min.js" />
+    <Content Include="vendor\angularAMD.js" />
+    <Content Include="vendor\angularAMD.min.js" />
+    <Content Include="vendor\ngload.js" />
+    <Content Include="vendor\ngload.min.js" />
+    <Content Include="vendor\require.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -4710,6 +4741,7 @@
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="css\" />
+    <Folder Include="js\main\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

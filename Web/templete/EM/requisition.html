@@ -1,6 +1,6 @@
 
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper" ng-app="RequisitionControllers" ng-controller="BaseReControllers">
+<div class="page-content-wrapper" ng-controller="HomeViewController">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -18,11 +18,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
-                    <h1>Requisition</h1>
+                    <h1>Requisition{{page}}</h1>
                 </div>
                 <div class="col-md-6 text-right">
                     <br>
-                    <button type="button" class="btn btn-success" ng-click="viewCart()">
+                    <button type="button" class="btn btn-success" onclick="test()" ng-click="viewCart() ">
                         <span class="glyphicon glyphicon-shopping-cart"></span> View Request Cart
                     </button>
                 </div>
@@ -79,6 +79,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="../../js/controller/RequisitionController.js"></script>
 <!-- END CONTENT -->
 
