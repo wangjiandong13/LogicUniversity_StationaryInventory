@@ -1,4 +1,4 @@
-﻿var baseurl = "http://localhost:8425/";
+﻿var baseurl = "http://www.team5.com/api";
 
 var BaseServices = angular.module("BaseServices", []);
 
