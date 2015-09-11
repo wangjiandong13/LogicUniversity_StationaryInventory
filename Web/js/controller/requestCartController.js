@@ -22,7 +22,7 @@
                 alert(data);
             })
         $scope.delect = function (RequestCart) {
-            var msg = '{"ItemID":"'+RequestCart.ItemID+'" ,"EmpID":"'+EmpId+'"}';
+            var msg = '{"ItemID":"'+RequestCart.ItemID+'" ,"EmpID":'+EmpId+'}';
             console.log(msg);
             BaseService.removeRequestCart(msg)
                     .then(function (data) {
