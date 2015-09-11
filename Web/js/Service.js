@@ -191,6 +191,18 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+    //search by itemName && OR Category
+    this.searchItem = function (ItemCatID, ItemName) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "catalogAPI.svc/searchItem/" + ItemCatID + "/" +ItemName)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 
 
     //department.html
