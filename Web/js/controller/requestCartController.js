@@ -30,6 +30,7 @@
                         .then(function (data) {
                             console.log(data);
                             $scope.RequestCarts = data;
+                            $scope.$apply();
                         }, function (data) {
                             alert(data);
                         })
