@@ -141,9 +141,8 @@ namespace BusinessLogic
             bool result = true;
             double totAmt = 0.0;
 
-            AdjustmentVoucher adj = ctx.AdjustmentVoucher.Last();
+            AdjustmentVoucher adj = ctx.AdjustmentVoucher.ToList().Last();
 
-            AdjustmentDetail adjVoucherDetail = new AdjustmentDetail();
             foreach (AdjustmentDetail adjVoucher in adjDetail)
             {
                 Supplier s = ctx.Supplier.Where(x => x.Rank == 1).FirstOrDefault();
