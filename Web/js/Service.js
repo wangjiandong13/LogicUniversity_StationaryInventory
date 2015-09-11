@@ -278,7 +278,7 @@ function service($http, $q) {
     //load employee bind to combobox
     this.getDeptEmployee = function (DeptID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "employeeAPI.svc/getemployeebyDeptID/" + DeptID)
+        $http.get(baseurl + "/employeeAPI.svc/getemployeebyDeptID/" + DeptID)
             .success(function (data) {
                 deferred.resolve(data)
             })
