@@ -2,12 +2,13 @@
     paths: {
         'angular': '../../vendor/angular',
         'angular-route': '../../vendor/angular-route',
-        'jquery': '../../vendor/jquery',
-        'bootstrap': 'EmployeeMain',
         'dependencyResoverFor': '../dependencyResoverFor',
+        'app': 'App',
+        'service':'../Service',
+        'fitter': '../fitter/Seftfitter',
+        'jQuery': '../../assets/global/plugins/jquery.min',
+        'bootstrap': 'EmployeeMain',
         'routes': 'EmployeeRoute',
-        'app': 'EmployeeApp',
-        'service':'../Service'
     },
     skim: {
         'app': {
@@ -17,15 +18,14 @@
             deps: ['angular']
         },
         'EmployeeMain': {
-            depos: ['jquery']
+            depos: ['jQuery']
         }
     }
 });
 
 require(
     [
-        'app',
-        'service'
-    ], function (app, service) {
-        angular.bootstrap(document, ['app', 'BaseServices']);
+        'app', 'service', 'fitter', 'jQuery'
+    ], function (app, service, fitter) {
+        angular.bootstrap(document, ['app', 'BaseServices', 'appfilter']);
     });
