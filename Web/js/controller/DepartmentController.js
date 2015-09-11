@@ -4,6 +4,8 @@
     function departmentCtrl($rootScope, $scope, BaseService) {
         //get from session
         $rootScope.dptID = "REGR";
+        $rootScope.roleid = "EM";
+
         var selfBaseService = BaseService;
         console.log("enter  departmentCtrl");
         BaseService.getDepartment($rootScope.dptID)
@@ -22,10 +24,10 @@
                        alert(data);
                    }
                    );
-                if (roleid == "EM"||roleid=="DR") {
+        if ($rootScope.roleid == "EM" || $rootScope.roleid == "DR") {
                     //cannot edit hide button
                 }
-                if (roleid == " ") {
+        if ($rootScope.roleid == " ") {
 
                 }
             }

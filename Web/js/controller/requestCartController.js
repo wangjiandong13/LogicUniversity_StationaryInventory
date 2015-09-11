@@ -2,7 +2,7 @@
     app.controller('RequestCartControllers', [ '$scope',  RequestCartControllers]);
     app.controller('RequestCartListCtrl', ['$scope', 'BaseService', RequestCartList]);
 
-    function RequestCartControllers() {
+    function RequestCartControllers($scope) {
         console.log("enter  RequestCartControllers")
         $scope.back = function () {
             location.href = '#/requestCart';
