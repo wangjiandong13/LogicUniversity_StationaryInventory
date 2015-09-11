@@ -24,7 +24,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-striped table-hover" ng-controller="requestCartListCtrl">
+                        <table class="table table-striped table-hover" ng-controller="RequestCartListCtrl">
                             <thead>
                                 <tr>
                                     <th>Description</th>
@@ -33,22 +33,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr >
-                                    <td>Clips Double 2"</td>
-                                    <td>Dozen</td>
+                                <tr ng-repeat="RequestCart in RequestCarts">
+                                    <td>{{RequestCart.ItemName}}</td>
+                                    <td>{{RequestCart.UOM}}</td>
                                     <td>
                                         <div>
-                                            <input type="number" class="form-control" id="spinner" min=1>
+                                            <input type="number" value="{{RequestCart.Qty}}" class="form-control" id="spinner" min=1>
                                         </div>
                                     </td>
-                                </tr>
-                                <tr ng-repeat="RequestCart in RequestCarts">
-                                    <td></td>
-                                    <td>Dozen</td>
                                     <td>
-                                        <div>
-                                            <input type="number" class="form-control" id="spinner" min=1>
-                                        </div>
+                                        <button type="button" class="btn red">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -56,14 +52,6 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 text-right">
-                    <br>
-                    <button type="button" class="btn red">
-                        <span class="glyphicon glyphicon-trash"></span> Delete Selected
-                    </button>
-
-                    <hr>
-                </div>
 
                 <div class="col-md-12 text-center">
                     <br>
