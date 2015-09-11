@@ -83,17 +83,17 @@
                             <img style="height:120px; width:120px" src="/img/Item_120/{{item.ItemID}}.jpg">
                         </div>
                         <div class="col-md-5">
-                            <label id={{Item.ItemID}}>
-                                <h4><b>{{Item.ItemName}}</b></h4></label>
+                            <label>
+                                <h4><b>{{item.ItemName}}</b></h4></label>
                             <br>
                             <label>Unit of Measurement: </label>
-                            <label id="lbl_UOM">{{Item.UOM}}</label>
+                            <label id="lbl_UOM">{{item.UOM}}</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="number" class="form-control" min=1 value="{{qty}}">
+                            <input type="number" class="form-control" min=1 ng-model="item.qty">
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-primary">
+                            <button type="button" class="btn btn-primary" ng-click="add(item)">
                                 <i class="fa fa-cart-plus"></i> Add To Cart
                             </button>
                         </div>
