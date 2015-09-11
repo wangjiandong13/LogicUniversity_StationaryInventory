@@ -1,16 +1,17 @@
-﻿var RequestCartControllers = angular.module('RequestCartControllers', ['BaseServices']);
+﻿define(['app'], function (app) {
+    app.controller('RequestCartControllers', ['$rootScope', '$scope', 'BaseService', RequestCartControllers]);
+    //app.controller('requestCartListCtrl', ['$scope', '$rootScope', 'BaseService', requestCartListCtrl]);
 
-RequestCartControllers.controller('requestCartCtrl', ['$scope', '$rootScope', 'BaseService', requestCartCtrl]);
-RequestCartControllers.controller('requestCartListCtrl', ['$scope', '$rootScope', 'BaseService', requestCartListCtrl]);
-
-function requestCartCtrl($scope, $rootScope) {
-
-}
-function requestCartListCtrl($rootScope) {
-    BaseService.getRequestCart(11233)
-        .then(function (data) {
-            $rootScope.RequestCarts = data;
-        }, function (data) {
-            alert(data);
-        }
-}
+    function RequestCartControllers(){
+        console.log("enter  RequestCartControllers")
+    }
+    function requestCartListCtrl($rootScope,BaseService) {
+        BaseService.getRequestCart("11233")
+            .then(function (data) {
+                console.log(data);
+                $rootScope.RequestCarts = data;
+            }, function (data) {
+                alert(data);
+            })
+    }
+})

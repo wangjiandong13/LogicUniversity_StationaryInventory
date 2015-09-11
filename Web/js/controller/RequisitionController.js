@@ -1,8 +1,8 @@
 ﻿define(['app'], function (app) {
-    app.controller('RequisitionControllers', ['$rootScope', '$scope', RequisitionControllers]);
+    app.controller('RequisitionControllers', ['$rootScope', '$scope', 'BaseService', RequisitionControllers]);
     app.controller('RequisitionList', ['$rootScope', 'BaseService', RequisitionList]);
     app.controller('SelectoptionControllers', ['$rootScope', 'BaseService', SelectoptionControllers]);
-    function RequisitionControllers($rootScope, $scope) {
+    function RequisitionControllers($rootScope, $scope, BaseService) {
         //$rootScope.pageTitle = $route.current.title;
         $scope.viewCart = function () {
             location.href = '#/requestCart';

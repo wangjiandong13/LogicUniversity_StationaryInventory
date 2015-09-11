@@ -185,7 +185,7 @@ function service($http, $q) {
     //load department (one) page
     this.getDepartment = function (DeptID) {
         var deferred = $q.defer(); 
-        $http.get(baseurl + "departmentAPI.svc/getDeptByID/" + DeptID)
+        $http.get(baseurl + "/departmentAPI.svc/getDeptByID/" + DeptID)
             .success(function (data) {
                 deferred.resolve(data)
             })
