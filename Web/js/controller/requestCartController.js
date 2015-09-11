@@ -1,22 +1,38 @@
 ﻿define(['app'], function (app) {
     app.controller('RequestCartControllers', ['$rootScope', '$scope', 'BaseService', RequestCartControllers]);
-    app.controller('RequestCartListCtrl', ['$Scope', '$rootScope', 'BaseService', RequestCartList]);
+    app.controller('RequestCartListCtrl', ['$scope', 'BaseService', RequestCartList]);
 
-    function RequestCartControllers(){
+    function RequestCartControllers() {
         console.log("enter  RequestCartControllers")
     }
-    function RequestCartList($Scope, $rootScope, BaseService) {
+    function RequestCartList($scope, BaseService) {
+        //get EmpId from session
+        var EmpId = "11233";
+        var selfBaseService = BaseService;
         console.log("enter requestCartListCtrls");
         console.log(BaseService);
-        BaseService.getRequestCart("11233")
+        BaseService.getRequestCart(EmpId)
             .then(function (data) {
                 console.log(data);
-                $rootScope.RequestCarts = data;
+                $scope.RequestCarts = data;
             }, function (data) {
                 alert(data);
             })
-        $Scope.delect = function (ItemID) {
+        $scope.delect = function (RequestCart) {
+            var msg = '{"ItemID":"'+RequestCart.ItemID+'" ,"EmpID":"'+EmpId+'"}';
+            console.log(msg);
+            BaseService.removeRequestCart(msg)
+                    .then(function (data) {
+                        selfBaseService.getRequestCart(EmpId)
+                        .then(function (data) {
+                            console.log(data);
+                            $scope.RequestCarts = data;
+                        }, function (data) {
+                            alert(data);
+                        })
+                    }, function (data) {
 
+                    })
         }
     }
 })
