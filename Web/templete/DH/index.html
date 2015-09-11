@@ -1,13 +1,12 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" class="no-js" ng-app="DeptHeadApp">
+<html lang="en" class="no-js">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
 <head>
-    <base href="/templete/DH/">
     <meta charset="utf-8" />
-    <title>T5-index</title>
+    <title>T5-Welcome Department Head</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
@@ -34,31 +33,11 @@
     <link href="../../assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="../../assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
-    <script src="../vendor/angular.js"></script>
-    <script src="../vendor/angular-route.js"></script>
-    <script src="../vendor/angular-resource.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/EmployeeControllers.js"></script>
-    <!-- END THEME STYLES -->
-    <link rel="shortcut icon" href="favicon.ico" />
     <script src="../../vendor/angular.js"></script>
+    <script src="../../vendor/angular.min.js"></script>
     <script src="../../vendor/angular-route.js"></script>
-    <script src="../../vendor/angular-resource.js"></script>
-    <script src="../../js/app/EmployeeRepApp.js"></script>
-    <script src="../../js/controller/CatalogListController.js"></script>
-    <script src="../../js/controller/CatalogTileController.js"></script>
-    <script src="../../js/controller/DepartmentController.js"></script>
-    <script src="../../js/controller/DisbursementController.js"></script>
-    <script src="../../js/controller/DisbursementDetailController.js"></script>
-    <script src="../../js/controller/DisbursementRequisitionController.js"></script>
-    <script src="../../js/controller/NotificationController.js"></script>
-    <script src="../../js/controller/ReDetailController.js"></script>
-    <script src="../../js/controller/RequestCartController.js"></script>
-    <script src="../../js/controller/RequisitionController.js"></script>
-    <script src="../../js/controller/DelegatenewController.js"></script>
-    <script src="../../js/controller/DelegateController.js"></script>
-    <script src="../../js/Service.js"></script>
-    <script src="../../js/fitter/Seftfitter.js"></script>
+    <script data-main="../../js/app/DeptHeadMain.js" src="../../vendor/require.js"></script>
+    <!-- END THEME STYLES -->
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -239,55 +218,23 @@
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- BEGIN CORE PLUGINS -->
     <!--[if lt IE 9]>
-    <script src="../assets/global/plugins/respond.min.js"></script>
-    <script src="../assets/global/plugins/excanvas.min.js"></script>
+    <script src="../../assets/global/plugins/respond.min.js"></script>
+    <script src="../../assets/global/plugins/excanvas.min.js"></script>
     <![endif]-->
-    <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-    <script src="../assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="../assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
-    <!-- IMPORTANT! fullcalendar depends on jquery-ui.min.js for drag & drop support -->
-    <script src="../assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
-    <script src="../assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
+    <script src="../../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="../assets/global/scripts/metronic.js" type="text/javascript"></script>
-    <script src="../assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-    <script src="../assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
-    <script src="../assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
-    <script src="../assets/admin/pages/scripts/index.js" type="text/javascript"></script>
-    <script src="../assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+    <script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="../../assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+    <script src="../../assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
         jQuery(document).ready(function () {
             Metronic.init(); // init metronic core componets
             Layout.init(); // init layout
             QuickSidebar.init(); // init quick sidebar
-            Demo.init(); // init demo features
-            Index.init();
-            Index.initDashboardDaterange();
-            Index.initJQVMAP(); // init index page's custom scripts
-            Index.initCalendar(); // init index page's custom scripts
-            Index.initCharts(); // init index page's custom scripts
-            Index.initChat();
-            Index.initMiniCharts();
-            Tasks.initDashboardWidget();
         });
     </script>
     <!-- END JAVASCRIPTS -->
