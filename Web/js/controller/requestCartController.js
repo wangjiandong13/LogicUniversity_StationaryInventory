@@ -29,8 +29,10 @@
                         selfBaseService.getRequestCart(EmpId)
                         .then(function (data) {
                             console.log(data);
-                            $scope.RequestCarts = data;
-                            $scope.$apply();
+                            
+                            $scope.$apply(function () {
+                                $scope.RequestCarts = data;
+                            });
                         }, function (data) {
                             alert(data);
                         })
