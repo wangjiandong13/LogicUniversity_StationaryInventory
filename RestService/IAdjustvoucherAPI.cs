@@ -30,7 +30,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat =WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
                                            UriTemplate = "/getAdjVoucher")]
         List<AdjustmentVoucher> getAdjVoucher(string AdjID, string startDate, string endDate);
 
