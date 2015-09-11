@@ -30,9 +30,9 @@
                         .then(function (data) {
                             console.log(data);
                             $scope.RequestCarts = data;
-                            $scope.$apply(function () {
-                                
-                            });
+                            if (!$scope.$$phase) {
+                                $scope.$apply();
+                            }
                         }, function (data) {
                             alert(data);
                         })
