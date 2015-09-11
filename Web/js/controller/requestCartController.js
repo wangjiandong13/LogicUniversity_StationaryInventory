@@ -1,9 +1,12 @@
 ﻿define(['app'], function (app) {
-    app.controller('RequestCartControllers', ['$rootScope', '$scope', 'BaseService', RequestCartControllers]);
+    app.controller('RequestCartControllers', [ '$scope',  RequestCartControllers]);
     app.controller('RequestCartListCtrl', ['$scope', 'BaseService', RequestCartList]);
 
     function RequestCartControllers() {
         console.log("enter  RequestCartControllers")
+        $scope.back = function () {
+            location.href = '#/requestCart';
+        }
     }
     function RequestCartList($scope, BaseService) {
         //get EmpId from session

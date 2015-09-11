@@ -25,6 +25,7 @@
     function RequisitionList($rootScope, BaseService) {
         BaseService.getRequisitionList("null", "null", 11233)
             .then(function (data) {
+                console.log(data);
                 $rootScope.Requisitions = data;
             }, function (data) {
                 alert(data);
@@ -39,7 +40,7 @@
         BaseService.getRequisitionStatus()
             .then(function (data) {
                 $rootScope.optiondata.availableOptions = data;
-                console.log(data);
+                //console.log(data);
                 $rootScope.optiondata.availableOptions.unshift({ StatusID: 0, StatusName: 'ALL' });
             }, function (data) {
                 alert(data);
