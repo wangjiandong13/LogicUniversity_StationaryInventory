@@ -1,6 +1,6 @@
 ﻿define(['app'], function (app) {
     app.controller('RequestCartControllers', ['$rootScope', '$scope',  RequestCartControllers]);
-    app.controller('RequestCartListCtrl', ['$scope', 'BaseService', RequestCartList]);
+    app.controller('RequestCartListCtrl', ['$rootScope', 'BaseService', RequestCartList]);
 
     function RequestCartControllers($rootScope,$scope) {
         //set mean highlight
@@ -17,7 +17,11 @@
 
         console.log("enter  RequestCartControllers")
         $scope.back = function () {
-            location.href = '#/requestCart';
+            location.href = '#/requisition';
+        }
+        $scope.submit = function () {
+            console.log("enter");
+            console.log(angular.toJson($scope.RequestCarts));
         }
     }
     function RequestCartList($scope, BaseService) {
@@ -41,9 +45,9 @@
                         selfBaseService.getRequestCart(EmpId)
                         .then(function (data) {
                             console.log(data);
-                            $scope.RequestCarts = data;
+                            $rootScope.RequestCarts = data;
                             if (!$scope.$$phase) {
-                                $scope.$apply();
+                                $rootScope.$apply();
                             }
                         }, function (data) {
                             alert(data);
