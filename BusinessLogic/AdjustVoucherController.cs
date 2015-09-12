@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Data.Entity;
 
 namespace BusinessLogic
 {
@@ -43,8 +44,10 @@ namespace BusinessLogic
             }
             else if (adjId == null&& startDate != null && endDate != null)
             {
+                System.DateTime startDatetime = Convert.ToDateTime(startDate).Date;
+                System.DateTime endDatetime = Convert.ToDateTime(endDate).Date;
                 adjustlist = (from x in ctx.AdjustmentVoucher
-                              where x.Date > Convert.ToDateTime(startDate).Date && x.Date < Convert.ToDateTime(endDate).Date
+                              where x.Date >= startDatetime && x.Date <= endDatetime
                               select x).ToList();
             }
             else
