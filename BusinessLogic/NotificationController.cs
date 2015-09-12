@@ -105,6 +105,7 @@ namespace BusinessLogic
 
             //create notification
             Notification notif = new Notification();
+            EmailController emailcontrol = new EmailController();
             notif.DateTime = DateTime.Now;
             notif.Status = "UNREAD";
 
@@ -121,6 +122,7 @@ namespace BusinessLogic
                         Employee deptHead = ctx.Employee.Where(x => x.DeptID == employee.DeptID && x.RoleID == "DH").FirstOrDefault();
                         notif.EmpID = deptHead.EmpID;
                         ctx.Notification.Add(notif);
+                        emailcontrol.SendMailToEmpHead(notif.EmpID.ToString());
                         break;
                     }
                 //Requisition Approved
@@ -132,6 +134,7 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(details)).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
+                        emailcontrol.SendMailToEmp(notif.EmpID.ToString(),"APPROVED");
                         break;
                     }
                 //Requisition Rejected
@@ -143,6 +146,7 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(details)).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
+                        emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "REJECTED");
                         break;
                     }
                 //Processing Requisition
@@ -165,6 +169,7 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(details)).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
+                        emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "PROCESSED");
                         break;
                     }
                 //Requisition Disbursed
@@ -176,6 +181,7 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == Convert.ToInt32(details)).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
+                        emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "COLLECTED");
                         break;
                     }
                 //New Pending Adjustment Voucher
