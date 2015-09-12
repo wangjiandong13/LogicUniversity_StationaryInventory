@@ -1,9 +1,24 @@
 ﻿define(['app'], function (app) {
-    app.controller('RequestCartControllers', ['$rootScope', '$scope', 'BaseService', RequestCartControllers]);
+    app.controller('RequestCartControllers', ['$rootScope', '$scope',  RequestCartControllers]);
     app.controller('RequestCartListCtrl', ['$scope', 'BaseService', RequestCartList]);
 
-    function RequestCartControllers() {
+    function RequestCartControllers($rootScope,$scope) {
+        //set mean highlight
+        $rootScope.mean = {
+            Requistion: " ",
+            Catalog: " ",
+            Department: " ",
+            RequestCart: "active",
+            ifRequistion: false,
+            ifCatalog: false,
+            ifDepartment: false,
+            ifRequestCart:true
+        };
+
         console.log("enter  RequestCartControllers")
+        $scope.back = function () {
+            location.href = '#/requestCart';
+        }
     }
     function RequestCartList($scope, BaseService) {
         //get EmpId from session
@@ -19,7 +34,7 @@
                 alert(data);
             })
         $scope.delect = function (RequestCart) {
-            var msg = '{"ItemID":"'+RequestCart.ItemID+'" ,"EmpID":"'+EmpId+'"}';
+            var msg = '{"ItemID":"'+RequestCart.ItemID+'" ,"EmpID":'+EmpId+'}';
             console.log(msg);
             BaseService.removeRequestCart(msg)
                     .then(function (data) {
@@ -27,6 +42,9 @@
                         .then(function (data) {
                             console.log(data);
                             $scope.RequestCarts = data;
+                            if (!$scope.$$phase) {
+                                $scope.$apply();
+                            }
                         }, function (data) {
                             alert(data);
                         })

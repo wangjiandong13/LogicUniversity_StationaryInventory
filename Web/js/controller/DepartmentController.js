@@ -2,9 +2,23 @@
     app.controller('departmentCtrl', ['$rootScope', '$scope', 'BaseService', departmentCtrl]);
     app.controller('depSelectoptionControllers', ['$rootScope', 'BaseService', depSelectoptionControllers]);
     function departmentCtrl($rootScope, $scope, BaseService) {
+        //get from session
+        $rootScope.dptID = "REGR";
+        $rootScope.roleid = "EM";
+        //set mean highlight
+        $rootScope.mean = {
+            Requistion: "",
+            Catalog: "",
+            Department: "active",
+            RequestCart: "",
+            ifRequistion: false,
+            ifCatalog: false,
+            ifDepartment: true,
+            ifRequestCart: false
+        };
         var selfBaseService = BaseService;
         console.log("enter  departmentCtrl");
-            BaseService.getDepartment("COMM")
+        BaseService.getDepartment($rootScope.dptID)
                    .then(function (data) {
                        $scope.Department = data;
                        depth = data.DeptHead;
@@ -20,6 +34,12 @@
                        alert(data);
                    }
                    );
+        if ($rootScope.roleid == "EM" || $rootScope.roleid == "DR") {
+                    //cannot edit hide button
+                }
+        if ($rootScope.roleid == " ") {
+
+                }
             }
 
     function depSelectoptionControllers($rootScope, BaseService) {
@@ -27,13 +47,22 @@
             availableOptions: [],
             selectedOption: { 'EmpID': 0, 'EmpName': 'ALL' }
         };
-        BaseService.getDeptEmployee("COMM")
+        BaseService.getDeptEmployee($rootScope.dptID)
             .then(function (data) {
                 console.log(data);
                 $rootScope.optiondata.availableOptions = data;
                 $rootScope.optiondata.availableOptions.unshift({ EmpID: 0, EmpName: 'ALL' });
+                $.each(data, function (index, value) {
+                    if (value.RoleID == "DR") {
+                            console.log("enter");
+                            $rootScope.optiondata.selectedOption = { 'EmpID': value.EmpID, 'EmpName': value.EmpName }
+                        }
+                })
+                console.log($rootScope.optiondata.selectedOption);
+                
             },function(data){
                 alert(data);
             })
+        
     }
 })

@@ -41,7 +41,7 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 
-<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
+<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid" ng-controller="BodyCotroller">
     <!-- BEGIN HEADER -->
     <div class="page-header navbar navbar-fixed-top">
         <!-- BEGIN HEADER INNER -->
@@ -137,7 +137,7 @@
                 <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
                 <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
                 <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                <ul class="page-sidebar-menu " data-auto-scroll="false">
                     <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
                     <li class="sidebar-toggler-wrapper">
                         <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
@@ -145,36 +145,32 @@
                         </div>
                         <!-- END SIDEBAR TOGGLER BUTTON -->
                     </li>
-                    <!--
-				<li class="start active open">
-					<a href="javascript:;">
-					<i class="icon-home"></i>
-					<span class="title">Home</span>
-					<span class="selected"></span>
-				</li>
-				-->
-                    <li>
+                    <li class="{{mean.Requistion}}">
                         <a href="#/requisition">
                             <i class="fa fa-file-text-o"></i>
                             <span class="title">Requistion</span>
+                            <span ng-if="mean.ifRequistion" class="selected"></span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{mean.Catalog}}">
                         <a href="#/catalogList">
                             <i class="fa fa-book"></i>
                             <span class="title">Catalog</span>
+                            <span ng-if="mean.ifCatalog" class="selected"></span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{mean.Department}}">
                         <a href="#/department">
                             <i class="fa fa-building"></i>
                             <span class="title">Department</span>
+                            <span ng-if="mean.ifDepartment" class="selected"></span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{mean.RequestCart}}">
                         <a href="#/requestCart">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="title">Request Cart</span>
+                            <span ng-if="mean.ifRequestCart" class="selected"></span>
                         </a>
                     </li>
                 </ul>
@@ -217,7 +213,7 @@
         jQuery(document).ready(function () {
             Metronic.init(); // init metronic core componets
             Layout.init(); // init layout
-            QuickSidebar.init(); // init quick sidebar
+            //QuickSidebar.init(); // init quick sidebar
         });
     </script>
     <!-- END JAVASCRIPTS -->

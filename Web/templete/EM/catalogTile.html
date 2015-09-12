@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="catalogtileCtrl">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <br>
-                    <button type="button" class="btn btn-success">
+                    <button type="button" class="btn btn-success" ng-click="viewCart()">
                         <span class="glyphicon glyphicon-shopping-cart"></span> View Request Cart
                     </button>
                 </div>
@@ -35,33 +35,15 @@
                         <label>Category:</label>
                     </div>
                     <div class="col-md-3">
-
-                        <select class="form-control" value="{{filterCategory}}">
-                            <option value="1">Clip</option>
-                            <option value="2">Envelope</option>
-                            <option value="3">Eraser</option>
-                            <option value="4">Exercise</option>
-                            <option value="5">File</option>
-                            <option value="6">Pen</option>
-                            <option value="7">Puncher</option>
-                            <option value="8">Pad</option>
-                            <option value="9">Paper</option>
-                            <option value="10">Ruler</option>
-                            <option value="11">Scissors</option>
-                            <option value="12">Tape</option>
-                            <option value="13">Sharpener</option>
-                            <option value="14">Shorthand</option>
-                            <option value="15">Stapler</option>
-                            <option value="16">Tacks</option>
-                            <option value="17">Tparency</option>
-                            <option value="18">Tray</option>
-                        </select>
+                        <select class="form-control"
+                                ng-options="option.ItemDescription for option in CategorySelectData.availableOptions track by option.ItemCatID"
+                                ng-model="CategorySelectData.selectedOption"></select>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Enter Item Name">
+                        <input type="text" class="form-control" placeholder="Enter Item Name" ng-model="categoryname">
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn yellow">
+                        <button type="button" class="btn btn yellow" ng-click="search()">
                             <span class="glyphicon glyphicon-search"></span> Search
                         </button>
                     </div>
@@ -72,17 +54,17 @@
                     <hr>
                 </div>
                 <div class="col-md-12 text-right">
-                    <a href="catalogTile.html" style="text-decoration:none; color:#08AE9E;" class="fa fa-th-large fa-3x" id="tiled"></a>
-                    <a href="catalogList.html" style="text-decoration:none; color:#08AE9E;" class="fa fa-list fa-3x" id="list"></a>
+                    <a href="#/catalogTile" style="text-decoration:none; color:#08AE9E;" class="fa fa-th-large fa-3x" id="tiled"></a>
+                    <a href="#/catalogList" style="text-decoration:none; color:#08AE9E;" class="fa fa-list fa-3x" id="list"></a>
                     <br>
                     <br>
                 </div>
-                <div class="row">
+                <div class="row" ng-controller="catalogListtileCtrl">
                     <div class="col-md-12">
-                        <div class="col-md-3" style="text-align: center">
-                            <img id="img_item1" style="height:120px; width:120px" src="assets/admin/layout/img/clips.JPG">
+                        <div class="col-md-3" style="text-align: center" ng-repeat="item in catalogtiledata">
+                            <img style="height:120px; width:120px" src="/img/Item_120/{{item.ItemID}}.jpg">
                             <br>
-                            <label id={{Item.ItemID}}>{{Item.ItemName}}</label>
+                            <label>{{item.ItemName}}</label>
                         </div>
                     </div>
                 </div>

@@ -4305,7 +4305,6 @@
     <Content Include="js\controller\AdjustmentNewController.js" />
     <Content Include="js\controller\CatalogListController.js" />
     <Content Include="js\controller\CatalogTileController.js" />
-    <Content Include="js\controller\controllerReferences.js" />
     <Content Include="js\controller\DelegateController.js" />
     <Content Include="js\controller\DelegatenewController.js" />
     <Content Include="js\controller\DepartmentController.js" />
@@ -4682,7 +4681,6 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
-    <Content Include="Service.js" />
     <Content Include="templete\SC\supplierStoreClerk.html" />
     <Content Include="vendor\angularAMD.min.map" />
     <Content Include="vendor\ngload.min.map" />

@@ -97,23 +97,13 @@ function service($http, $q) {
         console.log(msg);
         var deferred = $q.defer();
 
-        $http({
-            url: baseurl + "requestcartAPI.svc/deleteItem",
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: msg
-        });
-
-
-        //$http.post(baseurl + "requestcartAPI.svc/deleteItem", msg)
-        //    .success(function (data) {
-        //        deferred.resolve(data)
-        //    })
-        //    .error(function () {
-        //        deferred.reject('There was an error')
-        //    })
+        $http.post(baseurl + "requestcartAPI.svc/deleteItem", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
         return deferred.promise;
     }
     //update request cart item qty //POST
