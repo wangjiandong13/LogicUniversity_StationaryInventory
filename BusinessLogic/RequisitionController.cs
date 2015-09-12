@@ -49,6 +49,14 @@ namespace BusinessLogic
             {
                 result = false;
             }
+
+            if (result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(2, Convert.ToInt32(HandledBy), ReqId);
+            }
+
             return result;
         }
 
@@ -76,6 +84,13 @@ namespace BusinessLogic
             catch
             {
                 result = false;
+            }
+
+            if(result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(3, Convert.ToInt32(HandledBy), ReqId);
             }
 
             return result;
@@ -158,6 +173,14 @@ namespace BusinessLogic
 
             if (count > 0)
                 result = ReqID;
+
+            if (result == ReqID)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(1, itemList.First().EmpID, Convert.ToString(ReqID));
+            }
+
             return result;
         }
 

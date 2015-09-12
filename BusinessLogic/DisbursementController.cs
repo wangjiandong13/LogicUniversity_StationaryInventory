@@ -128,6 +128,25 @@ namespace BusinessLogic
                 result = false;
             }
 
+            if (result == true)
+            {
+                if(EmpID == null)
+                {
+                    EmpID = "0";
+                }
+                List<Requisition> reqList = ctx.Requisition.Where(x => x.StatusID == 3).ToList();
+                foreach (Requisition req in reqList)
+                {
+                    //send notification to req holders:
+                    NotificationController nt = new NotificationController();
+                    nt.sendNotification(5, Convert.ToInt32(EmpID), Convert.ToString(req.ReqID));
+                }
+                //send notification about collection one day after.
+                NotificationController nt2 = new NotificationController();
+                DateTime d = DateTime.Now;
+                nt2.sendNotification(11, Convert.ToInt32(EmpID), d.AddDays(1).ToString("dd'/'MM'/'yyyy"));
+            }
+
             return result;
         }
 
