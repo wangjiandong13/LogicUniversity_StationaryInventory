@@ -44,7 +44,7 @@ define([], function () {
                     '../controller/RequestCartController'
                 ]
             },
-            '/requisitionDetail:reqId': {
+            '/requisitionDetail/:reqid': {
                 templateUrl: 'requisitionDetail.html',
                 dependencies: [
                     '../controller/ReDetailController'
