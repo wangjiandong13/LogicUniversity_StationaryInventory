@@ -157,6 +157,20 @@ namespace BusinessLogic
                 result = false;
             }
 
+            //send notification if stock < reorder level:
+            if (result == true)
+            {
+                foreach (RetrievalDetail retDetail in retDetailList)
+                {
+                    Item i = ctx.Item.Where(x => x.ItemID == retDetail.ItemID).FirstOrDefault();
+                    if (i.Stock < i.RoLvl)
+                    {
+                        NotificationController nt = new NotificationController();
+                        nt.sendNotification(14, 0, i.ItemID);
+                    }
+                }
+            }
+
             return result;
         }
 
@@ -183,18 +197,6 @@ namespace BusinessLogic
             catch
             {
                 result = false;
-            }
-
-            //send notification if stock < reorder level:
-            if (result == true)
-            {
-                foreach (RetrievalDetail retDetail in retDetailList) {
-                    Item i = ctx.Item.Where(x => x.ItemID == retDetail.ItemID).FirstOrDefault();
-                    if (i.Stock < i.RoLvl) {
-                        NotificationController nt = new NotificationController();
-                        nt.sendNotification(14, 0, i.ItemID);
-                    }
-                }
             }
 
             return result;
