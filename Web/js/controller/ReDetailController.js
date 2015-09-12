@@ -1,7 +1,8 @@
-﻿var ReDetailControllers = angular.module('ReDetailControllers', ['BaseServices']);
+﻿define(['app'], function (app) {
+    app.controller('ReDetailController', ['$scope', '$rootScope', "$routeParams", 'BaseService', ReDetailController]);
 
-ReDetailControllers.controller('ReDetailCtrl', ['$scope', '$rootScope', "$routeParams", 'BaseService', ReDetailCtrl]);
-
-function ReDetailCtrl($scope, $rootScope) {
-    console.log($routeParams);
-}
+    function ReDetailController($scope, $rootScope, $routeParams, BaseService) {
+        var reqid = $routeParams.reqid;
+        BaseService.g
+    }
+})

@@ -44,7 +44,7 @@
             }
         )
         $scope.requisitiondetail = function (Requisition) {
-            location.href = "requisitionDetail/" + Requisition.ReqID;
+            location.href = "#/requisitionDetail/" + Requisition.ReqID;
         };
     }
     function SelectoptionControllers($rootScope, BaseService) {
