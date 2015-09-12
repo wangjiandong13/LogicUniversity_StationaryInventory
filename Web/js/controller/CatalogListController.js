@@ -70,6 +70,9 @@
                 .then(function (data) {
                     //console.log(data);
                     $rootScope.catalogListdata = data;
+                    $.each($rootScope.catalogListdata, function (index, value) {
+                        value.qty = 1;
+                    });
                 }, function (data) {
                     alert(data);
                 }
