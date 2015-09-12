@@ -191,7 +191,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="AdjID">AdjustmentVoucher ID</param>
         /// <returns>true or false</returns>
-        public bool approveAdj(string AdjID)
+        public bool approveAdj(string AdjID, string ApprovedBy)
         {
             bool result = true;
 
@@ -200,6 +200,7 @@ namespace BusinessLogic
                           where x.AdjID == AdjID
                           select x).First();
             adjvoucher.Status = "APPROVED";
+            adjvoucher.ApprovedBy = Convert.ToInt32(ApprovedBy);
             
             List<AdjustmentDetail> adjDetailList = (from l in ctx.AdjustmentDetail
                         where l.AdjID == AdjID
@@ -253,7 +254,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="AdjID">AdjustmentVoucher ID</param>
         /// <returns>true or false</returns>
-        public bool rejectAdj(string AdjID)
+        public bool rejectAdj(string AdjID, string ApprovedBy)
         {
             bool result = true;
 
@@ -262,6 +263,7 @@ namespace BusinessLogic
                             where x.AdjID == AdjID
                             select x).First();
             adjvoucher.Status = "REJECT";
+            adjvoucher.ApprovedBy = Convert.ToInt32(ApprovedBy);
 
             try
             {
