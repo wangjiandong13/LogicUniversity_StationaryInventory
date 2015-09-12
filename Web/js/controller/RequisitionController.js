@@ -1,6 +1,6 @@
 ﻿define(['app'], function (app) {
     app.controller('RequisitionControllers', ['$rootScope', '$scope', 'BaseService', RequisitionControllers]);
-    app.controller('RequisitionList', ['$rootScope', 'BaseService', RequisitionList]);
+    app.controller('RequisitionList', ['$rootScope', '$scope', 'BaseService', RequisitionList]);
     app.controller('SelectoptionControllers', ['$rootScope', 'BaseService', SelectoptionControllers]);
     function RequisitionControllers($rootScope, $scope, BaseService) {
         //set mean highlight
@@ -34,7 +34,7 @@
                 )
         }
     }
-    function RequisitionList($rootScope, BaseService) {
+    function RequisitionList($rootScope,$scope, BaseService) {
         BaseService.getRequisitionList("null", "null", 11233)
             .then(function (data) {
                 console.log(data);
@@ -44,7 +44,7 @@
             }
         )
         $scope.requisitiondetail = function (Requisition) {
-            location.href = "/requisitionDetail/" + Requisition.ReqID;
+            location.href = "requisitionDetail/" + Requisition.ReqID;
         };
     }
     function SelectoptionControllers($rootScope, BaseService) {

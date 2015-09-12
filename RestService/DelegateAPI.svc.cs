@@ -17,7 +17,7 @@ namespace RestService
         public bool deleteDelegate(string DelegateSN)
         {
             BusinessLogic.DelegateController BL = new BusinessLogic.DelegateController();
-            if (BL.deleteDelegate(EmpName))
+            if (BL.deleteDelegate(DelegateSN))
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;

@@ -66,9 +66,9 @@ namespace BusinessLogic
 
             Model.Delegate dele = ctx.Delegate.Where(x => x.DelegateSN == delegateSN).FirstOrDefault();
             ctx.Delegate.Remove(dele);
-
+            int empid = (int)dele.EmpID;
             Model.Employee emp = (from c in ctx.Employee
-                                  where c.EmpID = dele.EmpID
+                                  where c.EmpID == empid
                                   select c).First();
 
             emp.RoleID = "EM";
