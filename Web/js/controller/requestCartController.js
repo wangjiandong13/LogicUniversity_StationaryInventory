@@ -24,7 +24,7 @@
             var msg = [];
             $.each($rootScope.RequestCarts, function (index, value) {
                 var each = {
-                    EmpId: "11233",
+                    EmpId: 11233,
                     ItemID: value.ItemID,
                     Qty: value.Qty
                 };
