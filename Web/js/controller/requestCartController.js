@@ -32,6 +32,8 @@
             BaseService.createRequisition(angular.toJson(msg))
                 .then(function (data) {
                     location.href = '#/requisition';
+                }, function (data) {
+                    alert(data);
                 })
         }
     }
