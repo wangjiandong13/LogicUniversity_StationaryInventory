@@ -121,7 +121,7 @@ function service($http, $q) {
     //create requisition //POST
     this.createRequisition = function (msg) {
         var deferred = $q.defer();
-        $http.post(baseurl + "requestcartAPI.svc/createRequisition", msg)
+        $http.post(baseurl + "requisitionAPI.svc/createRequisition", msg)
             .success(function (data) {
                 deferred.resolve(data)
             })
