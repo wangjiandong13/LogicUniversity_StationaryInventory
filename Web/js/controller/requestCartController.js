@@ -30,6 +30,7 @@
                 };
                 msg.push(each);
             });
+            console.log(angular.toJson(msg));
             selfBaseService.createRequisition(angular.toJson(msg))
                 .then(function (data) {
                     location.href = '#/requisition';
