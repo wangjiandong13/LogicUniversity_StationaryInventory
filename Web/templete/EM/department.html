@@ -26,6 +26,9 @@
                     <button class="btn btn-success" ng-if="setting.btnEdit" ng-click="edit()">
                         <span class="glyphicon glyphicon-pencil" ></span> Edit
                     </button>
+                    <button class="btn btn-success" ng-if="setting.btnMapEdit" ng-click="editmap()">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
                 </div>
                 <div class="col-md-12">
                     <hr>
@@ -68,7 +71,7 @@
                                 <td class="col-md-5">
                                     <h4>Representative:</h4></td>
                                 <td class="col-md-7">
-                                    <select class="form-control"  ng-readonly="setting.textbox"
+                                    <select class="form-control"  ng-disabled="setting.textbox"
                                             ng-options="option.EmpName for option in optiondata.availableOptions track by option.EmpID"
                                             ng-model="optiondata.selectedOption"></select>
                                 </td>
@@ -80,23 +83,21 @@
                         <h3>Collection Point</h3>
                         <div class="portlet solid blue">
                             <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-map-marker"> Stationary Store</i>
-                                </div>
+                                
                                 <div class="tools">
-                                    <select class="form-control" disabled="true">
-                                        <option>Stationary Store</option>
-                                        <option>Management School</option>
-                                        <option>Medical School</option>
-                                        <option>Engineering School</option>
-                                        <option>Service School</option>
-                                        <option>University Hospital</option>
-                                    </select>
+                                    <select class="form-control" ng-change="change()" ng-disabled="setting.map"
+                                            ng-options="option.CPName for option in collectiondata.availableOptions track by option.CPID"
+                                            ng-model="collectiondata.selectedOption" ></select>
                                 </div>
                             </div>
                             <div class="portlet-body" style="display:block;">
                                 <!-- INSERT GOOGLE MAP HERE -->
-                                <div id="gmap_basic" class="gmaps">
+                                <div ng-controller="MapCoordinatesCtrl">
+                                    <map center="{{positionx}},{{positiony}}" zoom="15">
+                                        <info-window id="1" position="{{positionx}},{{positiony}}" visible="true">
+                                                <h5 style="color:black">{{collectiondata.selectedOption.CPName}}</h5>
+                                        </info-window>
+                                    </map>
                                 </div>
                             </div>
                         </div>

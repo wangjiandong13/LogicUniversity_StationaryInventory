@@ -27,5 +27,5 @@ require(
     [
         'app', 'service', 'fitter', 'jQuery'
     ], function (app, service, fitter) {
-        angular.bootstrap(document, ['app', 'BaseServices', 'appfilter']);
+        angular.bootstrap(document, ['app', 'BaseServices', 'appfilter', 'ngMap']);
     });
