@@ -99,6 +99,6 @@ namespace RestService
                            RequestFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/confirmReorder")]
-        bool confirmReorder(List<CartItems> ItemList)
+        bool confirmReorder(List<CartItems> ItemList);
     }
 }
