@@ -54,6 +54,15 @@ namespace BusinessLogic
             dept.DeptName = d.DeptName;
             dept.DeptHead = d.DeptHead;
             dept.DeptRep = d.DeptRep;
+
+            Employee deptRepOld = ctx.Employee.Where(x => x.RoleID == "DR").FirstOrDefault();
+            if(deptRepOld.EmpID != d.DeptRep)
+            {
+                deptRepOld.RoleID = "EM";
+                Employee deptRepNew = ctx.Employee.Where(x => x.EmpID == d.DeptRep).FirstOrDefault();
+                deptRepNew.RoleID = "DR";
+            }
+
             try
             {
                 ctx.SaveChanges();
