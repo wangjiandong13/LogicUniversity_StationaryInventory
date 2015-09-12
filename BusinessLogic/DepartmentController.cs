@@ -62,7 +62,23 @@ namespace BusinessLogic
             {
                 result = false;
             }
-            
+
+            //send notification to alert changes:
+            if (result == true)
+            {
+                Department dpt = ctx.Department.Where(x => x.DeptID == d.DeptID).FirstOrDefault();
+                if(d.DeptRep != dpt.DeptRep)
+                {
+                    NotificationController nt = new NotificationController();
+                    nt.sendNotification(12, Convert.ToInt32(dpt.DeptRep), dpt.DeptID);
+                }
+                if (d.CollectionPoint != dpt.CollectionPoint)
+                {
+                    NotificationController nt = new NotificationController();
+                    nt.sendNotification(13, Convert.ToInt32(dpt.DeptRep), dpt.DeptID);
+                }
+            }
+
             return result;
         }
 

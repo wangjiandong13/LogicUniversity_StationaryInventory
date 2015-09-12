@@ -175,6 +175,13 @@ namespace BusinessLogic
                 result = false;
             }
 
+            if (result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(7, Convert.ToInt32(adj.ReportedBy), adj.AdjID);
+            }
+
             return result;
         }
 
@@ -229,6 +236,13 @@ namespace BusinessLogic
                 result = false;
             }
 
+            if (result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(8, Convert.ToInt32(adjvoucher.ReportedBy), adjvoucher.AdjID);
+            }
+
             return result;
 
         }
@@ -255,6 +269,13 @@ namespace BusinessLogic
             catch
             {
                 result = false;
+            }
+
+            if (result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(9, Convert.ToInt32(adjvoucher.ReportedBy), adjvoucher.AdjID);
             }
 
             return result;
