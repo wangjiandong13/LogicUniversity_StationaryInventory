@@ -40,21 +40,21 @@
                                     <td class="col-md-4">
                                         <h5>Employee Name : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_employeeName">{{data.EmpName}}</label>
+                                        <label id="lbl_employeeName">{{RequisitionData.EmpName}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Approved by : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_approvedBy">{{data.HandledByName}}</label>
+                                        <label id="lbl_approvedBy">{{RequisitionData.HandledByName}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Processed by : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_processedBy">{{data.ProcessedByName}}</label>
+                                        <label id="lbl_processedBy">{{RequisitionData.ProcessedByName}}</label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -94,14 +94,14 @@
                                     <td class="col-md-3">
                                         <h5>Priority : </h5></td>
                                     <td class="col-md-9">
-                                        <label id="lbl_priority">High</label>
+                                        <label id="lbl_priority">{{RequisitionData.Priority}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-3">
                                         <h5>Remarks : </h5></td>
                                     <td class="col-md-9">
-                                        <label id="lbl_remarks">Need it ugently for upcoming event.</label>
+                                        <label id="lbl_remarks">{{RequisitionData.PRemark}}</label>
                                     </td>
                                 </tr>
                                 <tr></tr>
@@ -109,7 +109,7 @@
                                     <td class="col-md-3">
                                         <h5>Department Head Reason: </h5></td>
                                     <td class="col-md-9">
-                                        <label id="lbl_priority">Good.</label>
+                                        <label id="lbl_priority">{{RequisitionData.Remark}}</label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -118,9 +118,9 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="button" class="btn default"><i class="fa fa-arrow-left"></i> Back</button>
-                    <button type="submit" class="btn green"><i class="fa fa-cart-arrow-down"></i> Reorder</button>
-                    <button type="submit" class="btn green"><i class="fa fa-times"></i> Cancel Request</button>
+                    <button type="button" class="btn default" ng-click="back()"><i class="fa fa-arrow-left"></i> Back</button>
+                    <button type="submit" class="btn green" ng-click="Reorder()"><i class="fa fa-cart-arrow-down"></i> Reorder</button>
+                    <button type="submit" class="btn green" ng-click="Cancel()"><i class="fa fa-times"></i> Cancel Request</button>
                     <hr>
                 </div>
             </div>

@@ -5,27 +5,27 @@
         var reqid = $routeParams.reqid;
         $scope.reqid = reqid;
         var myBaseService = BaseService;
+        
         BaseService.getRequisitionList("null", reqid, "null")
             .then(function (data) {
-                console.log("getRequisitionList");
                 console.log(data);
-                $scope.RequisitionData = data;
-                myBaseService.getEmployee(data.EmpID)
+                $scope.RequisitionData = data[0];
+                myBaseService.getEmployee(data[0].EmpID)
                        .then(function (data) {
-                           console.log("getEmployee");
-                           console.log(data);
+                           //console.log("getEmployee");
                            $scope.RequisitionData.EmpName = data.EmpName;
                        })
-                if (data.HandledBy != null) {
-                    myBaseService.getEmployee(data.HandledBy)
+                if (data[0].HandledBy != null) {
+                    myBaseService.getEmployee(data[0].HandledBy)
                            .then(function (data) {
+                               //console.log("getEmployee");
                                $scope.RequisitionData.HandledByName = data.EmpName;
                            })
                 } else {
-                    data.HandledByName = "";
+                    $scope.RequisitionData.HandledByName = "";
                 }
-                if (data.RetID != null) {
-                    myBaseService.getRetrievalListBySC("null","null",data.RetID)
+                if (data[0].RetID != null) {
+                    myBaseService.getRetrievalListBySC("null","null",data[0].RetID)
                            .then(function (data) {
                                myBaseService.getEmployee(data.EmpID)
                                    .then(function (data) {
@@ -35,16 +35,27 @@
                 } else {
                     data.ProcessedByName = "";
                 }
-                
+                //if (data[0].PriorityID != null) {
+                //    myBaseService.getRetrievalListBySC("null", "null", data[0].RetID)
+                //           .then(function (data) {
+                //               myBaseService.getEmployee(data.EmpID)
+                //                   .then(function (data) {
+                //                       $scope.RequisitionData.Priority = data.EmpName;
+                //                   })
+                //           })
+                //} else {
+                //    data.Priority = "";
+                //}
             }, function (data) {
                 alert(data);
             }
             )
         BaseService.getRequisitionDetailList(reqid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RequisitionDetailLists = data;
                 $.each($scope.RequisitionDetailLists, function (index, value) {
+                    //console.log(value.ItemID);
                     myBaseService.getItemDetail(value.ItemID)
                         .then(function (data) {
                             value.Description = data.ItemName;
@@ -59,5 +70,9 @@
                 alert(data);
             }
             )
+        $scope.back = function () {
+            location.href = "#/requisition";
+        }
+
     }
 })
