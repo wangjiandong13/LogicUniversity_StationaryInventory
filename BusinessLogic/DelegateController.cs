@@ -26,11 +26,26 @@ namespace BusinessLogic
         /// create delegate
         /// </summary>
         /// <param name="dele"></param>
-        public bool createDelegate(Model.Delegate dele)
+        public bool createDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status)
         {
+            bool result = true;
+            Model.Delegate dele = new Model.Delegate();
+            dele.EmpID = Convert.ToInt32(EmpID);
+            dele.DeptID = DeptID;
+            dele.StartDate = Convert.ToDateTime(StartDate);
+            dele.EndDate = Convert.ToDateTime(EndDate);
+            dele.Status = Status;
+
             ctx.Delegate.Add(dele);
-            ctx.SaveChanges();
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
         }
 
         /// <summary>
@@ -39,6 +54,8 @@ namespace BusinessLogic
         /// <param name="EmpName"></param>
         public bool deleteDelegate(string EmpName)
         {
+            bool result = true;
+
             Model.Employee emp = new Model.Employee();
             Model.Delegate dele = new Model.Delegate();
 
@@ -50,8 +67,16 @@ namespace BusinessLogic
                     where c.EmpID == emp.EmpID
                     select c).First();
             ctx.Delegate.Remove(dele);
-            ctx.SaveChanges();
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            
+            return result;
         }
 
         /// <summary>
@@ -61,16 +86,25 @@ namespace BusinessLogic
         /// <param name="startdate"></param>
         /// <param name="enddate"></param>
         /// <param name="status"></param>
-        public bool editDelegate(int empID, DateTime startdate, DateTime enddate, String status)
+        public bool editDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status)
         {
-            var dele = (from c in ctx.Delegate
+            bool result = true;
+            int empID = Convert.ToInt32(EmpID);
+            Model.Delegate d = (from c in ctx.Delegate
                         where c.EmpID == empID
                         select c).First();
-            dele.StartDate = startdate;
-            dele.EndDate = enddate;
-            dele.Status = status;
-            ctx.SaveChanges();
-            return true;
+            d.StartDate = Convert.ToDateTime(StartDate);
+            d.EndDate = Convert.ToDateTime(EndDate);
+            d.Status = Status;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
         }
 
     }

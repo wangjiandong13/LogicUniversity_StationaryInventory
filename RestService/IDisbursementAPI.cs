@@ -17,10 +17,11 @@ namespace RestService
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getDisbursementDetail/{DisID}")]
-        DisbursementDetail getDisbursementDetail(int DisID);
+        List<DisbursementDetail> getDisbursementDetail(string DisID);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                            
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getDisbursement/{DeptID}/{CPID}/{DisID}/{startdate}/{enddate}")]
         List<Disbursement> getDisbursement(string DeptID, string CPID, string DisID, string startdate, string enddate);
@@ -29,6 +30,6 @@ namespace RestService
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/createDisbursement/{EmpID}")]
-        bool createDisbursement(int EmpID);
+        bool createDisbursement(string EmpID);
     }
 }

@@ -17,19 +17,25 @@ namespace RestService
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/getRequisitionList/{DisID}")]
-        List<Requisition> getRequisitionList(int DisID);
+        List<Requisition> getRequisitionList(string DisID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getRequisitionbyId/{RetID}")]
+        List<Requisition> getRequisitionbyId(string RetID);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/approve/{ReqId}/{HandledBy}/{Remark}")]
-        bool approve(int ReqId, int HandledBy, string Remark);
+        bool approve(string ReqId, string HandledBy, string Remark);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/reject/{ReqId}/{HandledBy}/{Remark}")]
-        bool reject(int ReqId, int HandledBy, string Remark);
+        bool reject(string ReqId, string HandledBy, string Remark);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
@@ -39,11 +45,34 @@ namespace RestService
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-            RequestFormat = WebMessageFormat.Json,
+                           RequestFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/createRequisition")]
         int createRequisition(List<CartItems> itemList);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/setReqPriority/{ReqID}/{PriorityID}/{Remark}")]
+        bool setReqPriority(string ReqID, string PriorityID, string Remark);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                   BodyStyle = WebMessageBodyStyle.Bare,
+                   UriTemplate = "/deleteRequisition/{ReqID}")]
+        bool deleteRequisition(string ReqID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getRequisitionDetail/{ReqID}")]
+        List<RequisitionDetail> getRequisitionDetail(string ReqID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getstatus")]
+        List<Status> getstatus();
 
     }
 }

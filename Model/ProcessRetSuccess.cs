@@ -16,7 +16,7 @@ namespace Model
         public ProcessRetSuccess() { }
 
         [DataMember]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         [DataMember]
         public string Bin { get; set; }
         [DataMember]

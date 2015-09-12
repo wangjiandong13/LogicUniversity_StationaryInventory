@@ -50,13 +50,21 @@ namespace BusinessLogic
         /// <returns> True or False</returns>
         public bool createSupplier(Supplier s)
         {
-            
+            bool result = true;
+
             s.Rank = 4;
-
             ctx.Supplier.Add(s);
-            ctx.SaveChanges();
 
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -72,6 +80,8 @@ namespace BusinessLogic
         /// <returns>True or False</returns>
         public bool updateSupplier(Supplier os)
         {
+            bool result = true;
+
             Supplier s = new Supplier();
             s = (from x in ctx.Supplier
                 where x.SupplierID == os.SupplierID
@@ -83,12 +93,17 @@ namespace BusinessLogic
             s.Phone = os.Phone;
             s.Address = os.Address;
             s.Fax = os.Fax;
-            
 
-            
-            ctx.SaveChanges();
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
-            return true;
+            return result;
         }
 
         /// <summary>
@@ -99,13 +114,23 @@ namespace BusinessLogic
         /// <returns>True or False</returns>
         public bool updateSupplierRank(string supplierId, string rank)
         {
+            bool result = true;
+
             Supplier s = new Supplier();
             s = (from x in ctx.Supplier
                  where x.SupplierID == supplierId
                  select x).First();
             s.Rank = Convert.ToInt32(rank);
-            ctx.SaveChanges();
-            return true;
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
         }
 
         /// <summary>
@@ -115,13 +140,24 @@ namespace BusinessLogic
         /// <returns>True or False</returns>
         public bool deleteSupplier(string supplierId)
         {
+            bool result = true;
+
             Supplier s = new Supplier();
             s = (from x in ctx.Supplier
                  where x.SupplierID == supplierId
                  select x).First();
             ctx.Supplier.Remove(s);
-            ctx.SaveChanges();
-            return true;
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            
+            return result;
         }
         
     }

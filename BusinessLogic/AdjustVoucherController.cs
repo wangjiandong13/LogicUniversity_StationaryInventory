@@ -21,6 +21,13 @@ namespace BusinessLogic
         /// <returns>Adjustment Voucher List search by ID, Date</returns>
         public List<AdjustmentVoucher> getAdjVoucher(string adjId,string startDate,string endDate)
         {
+            if (adjId == "null")
+                adjId = null;
+            if (startDate == "null")
+                startDate = null;
+            if (endDate == "null")
+                endDate = null;
+
             List<AdjustmentVoucher> adjustlist = new List<AdjustmentVoucher>();
             
             if(adjId == null && startDate == null && endDate == null)
@@ -98,74 +105,151 @@ namespace BusinessLogic
         }
 
         /// <summary>
-        /// Create Ajustment Voucher
+        /// CreateVoucherAdj
         /// </summary>
         /// <param name="adj">AdjustVoucher Object</param>
-        /// <param name="adjDetail">AdjustVoucherDetail Object</param>
         /// <returns>True or False</returns>
-        public bool createVoucher(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail)
+        public bool createVoucherAdj(AdjustmentVoucher adj)
         {
+            bool result = true;
             //double totAmt = 0.0;
 
             string newID = getAdjVoucherId();
             adj.AdjID = newID;
             ctx.AdjustmentVoucher.Add(adj);
 
-            AdjustmentDetail adjVoucherDetail = new AdjustmentDetail();
-            foreach(AdjustmentDetail adjVoucher in adjDetail)
+            try
             {
-                ctx.AdjustmentDetail.Add(adjVoucher);                
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
             }
 
-            return true;
+            return result;
         }
 
         /// <summary>
-        /// Update Item qty according to Adjustment Approval
+        /// CreateVoucherAdjDetail
         /// </summary>
-        /// <param name="adj">AdjustmentVoucher Object</param>
-        /// <param name="adjDetail">AdjustmentDetail Object</param>
-        /// <param name="status">Status</param>
-        /// <returns>true or false</returns>
-        public bool updateAdjustmentDetail(AdjustmentVoucher adj, List<AdjustmentDetail> adjDetail, string status)
+        /// <param name="adjDetail">AdjustVoucherDetail Object (ItemCode, Qty, Reason, Remark)</param>
+        /// <returns>True or False</returns>
+        public bool createVoucherAdjDetail(List<AdjustmentDetail> adjDetail)
         {
-            AdjustmentVoucher adjvoucher = new AdjustmentVoucher();
-            Item item = new Item();
-            StockCard sc = new StockCard();
+            bool result = true;
+            double totAmt = 0.0;
 
-            if(status == "Approve")
+            AdjustmentVoucher adj = ctx.AdjustmentVoucher.Last();
+
+            AdjustmentDetail adjVoucherDetail = new AdjustmentDetail();
+            foreach (AdjustmentDetail adjVoucher in adjDetail)
             {
-                var list = (from l in ctx.AdjustmentDetail
-                           where l.AdjID == adj.AdjID
-                           select l).ToList();
+                Supplier s = ctx.Supplier.Where(x => x.Rank == 1).FirstOrDefault();
+                string supID = s.SupplierID;
+                ItemPrice i = ctx.ItemPrice.Where(x => x.ItemID == adjVoucher.ItemID && x.SupplierID == supID).FirstOrDefault();
+                adjVoucher.Price = i.Price;
+                adjVoucher.AdjID = adj.AdjID;
+                
+                ctx.AdjustmentDetail.Add(adjVoucher);
 
-                for(int i=0;i<list.Count;i++)
-                {
-                    item = (from a in ctx.Item
-                            where a.ItemID == list[i].ItemID
-                            select a).First();
-                    item.Stock += list[i].Qty;                    
-                    ctx.SaveChanges();
-                    sc.ItemID = item.ItemID;
-                    sc.Date = System.DateTime.Now;
-                    sc.Description = "Stock Adjustment " + adj.AdjID;
-                    sc.Qty = list[i].Qty;
-                    sc.Balance = item.Stock;
-                    ctx.StockCard.Add(sc);
-                    ctx.SaveChanges();
-                }
-
+                totAmt += Convert.ToDouble(adjVoucher.Price) * Convert.ToDouble(adjVoucher.Qty);
             }
-            else
+
+            adj.TotalAmt = totAmt;
+
+            try
             {
-                adjvoucher = (from x in ctx.AdjustmentVoucher
-                              where x.AdjID == adj.AdjID
-                              select x).First();
-                adjvoucher.Status = "Reject";
                 ctx.SaveChanges();
             }
+            catch
+            {
+                result = false;
+            }
 
-            return true;
+            return result;
+        }
+
+        /// <summary>
+        /// ApproveAdj
+        /// </summary>
+        /// <param name="AdjID">AdjustmentVoucher ID</param>
+        /// <returns>true or false</returns>
+        public bool approveAdj(string AdjID)
+        {
+            bool result = true;
+
+            //change status of adj voucher to approve
+            AdjustmentVoucher adjvoucher = (from x in ctx.AdjustmentVoucher
+                          where x.AdjID == AdjID
+                          select x).First();
+            adjvoucher.Status = "APPROVED";
+            
+            List<AdjustmentDetail> adjDetailList = (from l in ctx.AdjustmentDetail
+                        where l.AdjID == AdjID
+                        select l).ToList();
+
+            foreach(AdjustmentDetail adjDetail in adjDetailList)
+            {
+                string itemID = adjDetail.ItemID;
+
+                //update stock card
+                List<StockCard> stockCardList = ctx.StockCard.Where(x => x.ItemID == itemID).ToList();
+                int balance = 0;
+                if (stockCardList.FirstOrDefault() != null)
+                    balance = (int)stockCardList.Last().Balance;
+
+                StockCard stockCard = new StockCard();
+                stockCard.ItemID = itemID;
+                stockCard.Date = DateTime.Now;
+                stockCard.Description = "Stock Adjustment " + AdjID;
+                stockCard.Qty = adjDetail.Qty;
+                stockCard.Balance = balance + adjDetail.Qty;
+                ctx.StockCard.Add(stockCard);
+                
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == itemID).FirstOrDefault();
+                item.Stock = balance + adjDetail.Qty;
+            }
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+
+        }
+
+        /// <summary>
+        /// RejectAdj
+        /// </summary>
+        /// <param name="AdjID">AdjustmentVoucher ID</param>
+        /// <returns>true or false</returns>
+        public bool rejectAdj(string AdjID)
+        {
+            bool result = true;
+
+            //change status of adj voucher to reject
+            AdjustmentVoucher adjvoucher = (from x in ctx.AdjustmentVoucher
+                            where x.AdjID == AdjID
+                            select x).First();
+            adjvoucher.Status = "REJECT";
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
 
         }
     }

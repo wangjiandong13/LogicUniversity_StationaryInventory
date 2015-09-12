@@ -33,5 +33,13 @@ namespace RestService
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/deleteItem")]
         bool deleteItem(CartItems item);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/getItems/{EmpID}")]
+        List<CartItems> getItems(string EmpID);
+
+
     }
 }

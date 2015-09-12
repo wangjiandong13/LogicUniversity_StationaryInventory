@@ -4,6 +4,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -17,10 +20,27 @@ namespace RestService
             return bl.getAllDept();
         }
 
-        public Model.Department getDeptByID(String DepID)
+        public Model.Department getDeptByID(string DepID)
         {
             BusinessLogic.DepartmentController bl = new BusinessLogic.DepartmentController();
             return bl.getDeptByID(DepID);
+        }
+
+        public bool updateDept(Department department)
+        {
+            BusinessLogic.DepartmentController bl = new BusinessLogic.DepartmentController();
+            if (bl.updateDept(department))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
     }
 }

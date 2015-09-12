@@ -16,9 +16,10 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="DisID">Disbursement ID</param>
         /// <returns></returns>
-        public List<Requisition> getRequisitionList(int DisID)
+        public List<Requisition> getRequisitionList(string DisID)
         {
-            List<Requisition> result = ctx.Requisition.Where(x => x.DisID == DisID).ToList();
+            int disID = Convert.ToInt32(DisID);
+            List<Requisition> result = ctx.Requisition.Where(x => x.DisID == disID).ToList();
 
             return result;
         }
@@ -30,20 +31,24 @@ namespace BusinessLogic
         /// <param name="HandledBy">Handled By (Dept Head EmpID)</param>
         /// <param name="Remark">Remark</param>
         /// <returns></returns>
-        public bool approve(int ReqId, int HandledBy, string Remark)
+        public bool approve(string ReqId, string HandledBy, string Remark)
         {
-            bool result = false;
+            bool result = true;
 
-            Requisition req = ctx.Requisition.Where(x => x.ReqID == ReqId).FirstOrDefault();
+            int reqID = Convert.ToInt32(ReqId);
+            Requisition req = ctx.Requisition.Where(x => x.ReqID == reqID).FirstOrDefault();
             req.StatusID = 2;
-            req.HandledBy = HandledBy;
+            req.HandledBy = Convert.ToInt32(HandledBy);
             req.Remark = Remark;
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
             return result;
         }
 
@@ -54,19 +59,24 @@ namespace BusinessLogic
         /// <param name="HandledBy">Handled By (Dept Head EmpID)</param>
         /// <param name="Remark">Remark</param>
         /// <returns></returns>
-        public bool reject(int ReqId, int HandledBy, string Remark)
+        public bool reject(string ReqId, string HandledBy, string Remark)
         {
-            bool result = false;
+            bool result = true;
 
-            Requisition req = ctx.Requisition.Where(x => x.ReqID == ReqId).FirstOrDefault();
+            int reqID = Convert.ToInt32(ReqId);
+            Requisition req = ctx.Requisition.Where(x => x.ReqID == reqID).FirstOrDefault();
             req.StatusID = 5;
-            req.HandledBy = HandledBy;
+            req.HandledBy = Convert.ToInt32(HandledBy);
             req.Remark = Remark;
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -80,6 +90,13 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID)
         {
+            if (StatusID == "null")
+                StatusID = null;
+            if (ReqID == "null")
+                ReqID = null;
+            if (EmpID == "null")
+                EmpID = null;
+
             //start with all the records
             var query = from req in ctx.Requisition select req;
 
@@ -116,16 +133,18 @@ namespace BusinessLogic
                 //create and add new requisition
                 Requisition req = new Requisition();
                 req.EmpID = itemList.First().EmpID;
-                req.DeptID = ctx.Employee.Where(x => x.EmpID == itemList.First().EmpID).First().DeptID;
+                int empid = itemList.First().EmpID;
+                req.DeptID = ctx.Employee.Where(x => x.EmpID == empid).First().DeptID;
                 req.Date = DateTime.Now;
                 req.StatusID = 1;
                 ctx.Requisition.Add(req);
 
                 //obtain the ReqID of the newly added requisition
-                ReqID = ctx.Requisition.Last().ReqID;
+                Requisition reqLast = ctx.Requisition.Where(x => x.EmpID == empid).ToList().Last();
+                ReqID = reqLast.ReqID;
 
                 //create and add new requisition details
-                foreach(CartItems item in itemList)
+                foreach (CartItems item in itemList)
                 {
                     RequisitionDetail reqDetail = new RequisitionDetail();
                     reqDetail.ReqID = ReqID;
@@ -134,7 +153,7 @@ namespace BusinessLogic
                     ctx.RequisitionDetail.Add(reqDetail);
                 }
             }
-            
+
             int count = ctx.SaveChanges();
 
             if (count > 0)
@@ -149,21 +168,26 @@ namespace BusinessLogic
         /// <param name="PriorityID">Priority ID</param>
         /// <param name="Remark">Remark</param>
         /// <returns></returns>
-        public bool setReqPriority(int ReqID, int PriorityID, string Remark)
+        public bool setReqPriority(string ReqID, string PriorityID, string Remark)
         {
-            bool result = false;
+            bool result = true;
 
-            Requisition req = ctx.Requisition.Where(x => x.ReqID == ReqID).FirstOrDefault();
+            int reqID = Convert.ToInt32(ReqID);
+            Requisition req = ctx.Requisition.Where(x => x.ReqID == reqID).FirstOrDefault();
             if (req != null)
             {
-                req.PriorityID = PriorityID;
+                req.PriorityID = Convert.ToInt32(PriorityID);
                 req.Remark = Remark;
             }
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -173,18 +197,23 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="ReqID">Requisition ID</param>
         /// <returns></returns>
-        public bool deleteRequisition(int ReqID)
+        public bool deleteRequisition(string ReqID)
         {
-            bool result = false;
+            bool result = true;
 
-            Requisition req = ctx.Requisition.Where(x => x.ReqID == ReqID).FirstOrDefault();
+            int reqID = Convert.ToInt32(ReqID);
+            Requisition req = ctx.Requisition.Where(x => x.ReqID == reqID).FirstOrDefault();
             //set status to "Cancelled"
             req.StatusID = 6;
-            
-            int count = ctx.SaveChanges();
 
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -194,10 +223,10 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="ReqId">Requisition ID</param>
         /// <returns></returns>
-        public List<RequisitionDetail> getRequisitionDetail(int ReqId)
+        public List<RequisitionDetail> getRequisitionDetail(string ReqId)
         {
-            List<RequisitionDetail> result = ctx.RequisitionDetail.Where(x => x.ReqID == ReqId).ToList();
-
+            int reqID = Convert.ToInt32(ReqId);
+            List<RequisitionDetail> result = ctx.RequisitionDetail.Where(x => x.ReqID == reqID).ToList();
             return result;
         }
 
@@ -206,11 +235,21 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="RetID">Retrieval ID</param>
         /// <returns></returns>
-        public List<Requisition> getRequisition(int RetID)
+        public List<Requisition> getRequisition(string RetID)
         {
-            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
+            int retID = Convert.ToInt32(RetID);
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == retID).ToList();
             return reqList;
         }
-        
+
+        /// <summary>
+        /// Getstatus
+        /// </summary>
+        /// <returns></returns>
+        public List<Status> getstatus()
+        {
+            return ctx.Status.ToList();
+        }
+
     }
 }

@@ -7,7 +7,7 @@ using Model;
 
 namespace BusinessLogic
 {
-    class RetrievalController
+    public class RetrievalController
     {
         StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
 
@@ -28,7 +28,9 @@ namespace BusinessLogic
             ctx.Retrieval.Add(ret);
 
             //obtain retID of newly added retrieval
-            int RetID = ctx.Retrieval.Last().RetID;
+            int empID = processRetList.First().EmpID;
+            Retrieval retLast = ctx.Retrieval.Where(x=> x.EmpID == empID).ToList().Last();
+            int RetID = retLast.RetID;
 
             //hashmap-like to store itemID and collated qty
             Dictionary<string, int> itemQty = new Dictionary<string, int>();
@@ -87,6 +89,13 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Retrieval> getRetrieval(string EmpID, string Status, string RetID)
         {
+            if (EmpID == "null")
+                EmpID = null;
+            if (Status == "null")
+                Status = null;
+            if (RetID == "null")
+                RetID = null;
+
             //start with all the records
             var query = from ret in ctx.Retrieval select ret;
 
@@ -115,7 +124,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool submit(List<RetrievalDetail> retDetailList)
         {
-            bool result = false;
+            bool result = true;
             
             foreach (RetrievalDetail retDetail in retDetailList)
             {
@@ -125,13 +134,18 @@ namespace BusinessLogic
             }
 
             //update status of retrieval to "Retrieved"
-            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retDetailList.First().RetID).FirstOrDefault();
+            int retid = (int)retDetailList.First().RetID;
+            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retid ).FirstOrDefault();
             ret.Status = "RETRIEVED";
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -143,7 +157,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool save(List<RetrievalDetail> retDetailList)
         {
-            bool result = false;
+            bool result = true;
 
             //update actual quantity of retrieval detail
             foreach (RetrievalDetail retDetail in retDetailList)
@@ -151,11 +165,15 @@ namespace BusinessLogic
                 RetrievalDetail retDetailSearch = ctx.RetrievalDetail.Where(x => x.RetID == retDetail.RetID && x.ItemID == retDetail.ItemID).FirstOrDefault();
                 retDetailSearch.ActualQty = retDetail.ActualQty;
             }
-            
-            int count = ctx.SaveChanges();
 
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -165,10 +183,11 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="RetID">Retrieval ID</param>
         /// <returns></returns>
-        public List<ProcessRetSuccess> getRetrievalDetail(int RetID)
+        public List<ProcessRetSuccess> getRetrievalDetail(string RetID)
         {
-            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == RetID).FirstOrDefault();
-            List<RetrievalDetail> retDetailList = ctx.RetrievalDetail.Where(x => x.RetID == RetID).ToList();
+            int retid = Convert.ToInt32(RetID);
+            Retrieval ret = ctx.Retrieval.Where(x => x.RetID == retid).FirstOrDefault();
+            List<RetrievalDetail> retDetailList = ctx.RetrievalDetail.Where(x => x.RetID == retid).ToList();
 
             List<ProcessRetSuccess> retSuccessList = new List<ProcessRetSuccess>();
 
@@ -176,7 +195,7 @@ namespace BusinessLogic
             {
                 Item i = ctx.Item.Where(x => x.ItemID == retDetail.ItemID).FirstOrDefault();
                 ProcessRetSuccess retSuccess = new ProcessRetSuccess();
-                retSuccess.Date = (DateTime) ret.Date;
+                retSuccess.Date = ret.Date.ToString();
                 retSuccess.Bin = i.Bin;
                 retSuccess.ItemID = i.ItemID;
                 retSuccess.ItemName = i.ItemName;
@@ -194,9 +213,10 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="RetID">Requisition ID</param>
         /// <returns></returns>
-        public List<ReqAllocation> getReqAllocation(int RetID)
+        public List<ReqAllocation> getReqAllocation(string RetID)
         {
-            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
+            int retID = Convert.ToInt32(RetID);
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == retID).ToList();
 
             List<ReqAllocation> reqAllocationList = new List<ReqAllocation>();
 
@@ -231,7 +251,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool confirmAllocation(List<RequisitionDetail> reqDetailList)
         {
-            bool result = false;
+            bool result = true;
             
             foreach(RequisitionDetail reqDetail in reqDetailList)
             {
@@ -260,12 +280,20 @@ namespace BusinessLogic
                 stockCard.Qty = -reqDetail.IssueQty;
                 stockCard.Balance = balance - reqDetail.IssueQty;
                 ctx.StockCard.Add(stockCard);
+
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == reqDetail.ItemID).FirstOrDefault();
+                item.Stock = balance - reqDetail.IssueQty;
             }
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -275,8 +303,9 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="RetID">Retrieval ID</param>
         /// <returns></returns>
-        public List<ReqAllocation> getRetByDept(int RetID)
+        public List<ReqAllocation> getRetByDept(string RetID)
         {
+            int retID = Convert.ToInt32(RetID);
             List<ReqAllocation> reqAllocationList = new List<ReqAllocation>();
 
             //hashmap-like to store itemID and collated qty 
@@ -287,7 +316,7 @@ namespace BusinessLogic
             Dictionary<string, int> itemQtyZOOL = new Dictionary<string, int>();
 
             //obtain list of requisition with specified RetID
-            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == RetID).ToList();
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.RetID == retID).ToList();
 
             foreach(Requisition req in reqList)
             {
@@ -440,6 +469,15 @@ namespace BusinessLogic
             }
 
             return reqAllocationList;
+        }
+
+        /// <summary>
+        /// getStoreClerk
+        /// </summary>
+        /// <returns></returns>
+        public List<Employee> getStoreClerk()
+        {
+            return ctx.Employee.Where(x => x.RoleID == "SC").ToList();
         }
 
     }

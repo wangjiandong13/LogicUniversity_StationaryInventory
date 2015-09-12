@@ -94,22 +94,49 @@ namespace BusinessLogic
         /// <summary>
         /// Creating Item Details UI 4.7.2 Inventory New
         /// </summary>
-        /// <param name="item"></param>
-        /// <param name="ip"></param>
+        /// <param name="item">Item Object</param>
         /// <returns></returns>
-        public bool createItemDetails(Model.Item item,List<Model.ItemPrice> ip)
+        public bool createItem(Model.Item item)
         {
+            bool result = true;
+
             //Add item obj to db
             ctx.Item.Add(item);
+            
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Creating Item Details UI 4.7.2 Inventory New
+        /// </summary>
+        /// <param name="ip">ItemPrice object (ItemID, SupplierID, Price)</param>
+        /// <returns></returns>
+        public bool createItemPrice(List<Model.ItemPrice> ip)
+        {
+            bool result = true;
 
             //add item price
-            //loop
-            foreach (Model.ItemPrice  itemprice in ip){
+            foreach (Model.ItemPrice itemprice in ip){
                 ctx.ItemPrice.Add(itemprice);
             }
 
-            ctx.SaveChanges();
-            return true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
         }
 
         /// <summary>
@@ -117,13 +144,50 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="itemID"></param>
         /// <returns></returns>
-        public Model.StockCard getStockCard(string itemID)
+        public List<Model.StockCard> getStockCard(string itemID)
         {
-            Model.StockCard stockcard = (from c in ctx.StockCard
+            List<Model.StockCard> stockcardList = (from c in ctx.StockCard
                                          where c.ItemID == itemID
-                                         select c).First();
+                                         select c).ToList();
 
-            return stockcard;
+            return stockcardList;
+        }
+
+        /// <summary>
+        /// UpdateItem Details 
+        /// </summary>
+        /// <param name="item">item object (ItemID, ItemName, ItemCatID, RoLvl, RoQty, UOM, Stock, Bin )</param>
+        /// <returns></returns>
+        public bool updateItem(Model.Item item)
+        {
+            bool result = true;
+
+            Model.Item i = ctx.Item.Where(x => x.ItemID == item.ItemID).FirstOrDefault();
+
+            if(item.ItemName != null)
+                i.ItemName = item.ItemName;
+            if (item.ItemCatID != null)
+                i.ItemCatID = item.ItemCatID;
+            if (item.RoLvl != null)
+                i.RoLvl = item.RoLvl;
+            if (item.RoQty != null)
+                i.RoQty = item.RoQty;
+            if (item.UOM != null)
+                i.UOM = item.UOM;
+            if (item.Stock != null)
+                i.Stock = item.Stock;
+            if (item.Bin != null)
+                i.Bin = item.Bin;
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
         }
 
         /// <summary>
@@ -132,28 +196,29 @@ namespace BusinessLogic
         /// <param name="item"></param>
         /// <param name="itemprice"></param>
         /// <returns></returns>
-        public bool updateItemDetail(Model.Item item, List<Model.ItemPrice> itemprice)
+        public bool updateItemPrice(List<Model.ItemPrice> itemprice)
         {
-            Model.Item i = new Model.Item();
-            Model.ItemPrice ip = new Model.ItemPrice();
-            i = (from c in ctx.Item
-                 where item.ItemID == i.ItemID
-                 select c).First();
-
-            i.ItemName = item.ItemName;
-            i.ItemCatID = item.ItemCatID;
-            i.RoLvl = item.RoLvl;
-            i.RoQty = item.RoQty;
-            i.UOM = item.UOM;
-            i.Bin = item.Bin;
-
-            foreach (Model.ItemPrice ip1 in itemprice)
+            bool result = true;
+            
+            foreach (Model.ItemPrice ip in itemprice)
             {
-                ip.Price = ip1.Price;
+                Model.ItemPrice ipSearch = ctx.ItemPrice.Where(x => x.ItemID == ip.ItemID && x.SupplierID == ip.SupplierID).FirstOrDefault();
+                ipSearch.Price = ip.Price;
             }
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
+        }
 
-            ctx.SaveChanges();
-            return true;
+        public List<Model.ItemPrice> getItemPrice(string ItemID)
+        {
+            return ctx.ItemPrice.Where(x => x.ItemID == ItemID).ToList();
         }
 
     }

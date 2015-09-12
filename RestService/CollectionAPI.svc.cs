@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Model;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RestService
 {
@@ -20,7 +22,25 @@ namespace RestService
 
         public List<CollectionPoint> getCollectionPointbyID(string CPID)
         {
-            throw new NotImplementedException();
+            BusinessLogic.CollectionPointController BL = new BusinessLogic.CollectionPointController();
+            return BL.getCollectionPoint(CPID);
+        }
+
+        public bool updateCollectionPoint(string DeptID, string CPID)
+        {
+            BusinessLogic.CollectionPointController BL = new BusinessLogic.CollectionPointController();
+            if(BL.updateCollectionPoint(DeptID, CPID))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
         }
     }
 }

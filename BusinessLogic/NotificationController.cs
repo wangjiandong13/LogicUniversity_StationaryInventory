@@ -7,7 +7,7 @@ using Model;
 
 namespace BusinessLogic
 {
-    class NotificationController
+    public class NotificationController
     {
         StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
 
@@ -18,7 +18,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool createNotification(Notification notification)
         {
-            bool result = false;
+            bool result = true;
 
             Notification notificationAdd = new Notification();
             notificationAdd.NotifName = notification.NotifName;
@@ -28,10 +28,14 @@ namespace BusinessLogic
             notificationAdd.Status = notification.Status;
 
             ctx.Notification.Add(notificationAdd);
-            int count = ctx.SaveChanges();
-
-            if(count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -41,18 +45,22 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="NotifID">Notification ID</param>
         /// <returns></returns>
-        public bool changeStatusToRead(int NotifID)
+        public bool changeStatusToRead(string NotifID)
         {
             bool result = true;
 
-            Notification notif = ctx.Notification.Where(x => x.NotifID == NotifID).FirstOrDefault();
+            int notifID = Convert.ToInt32(NotifID);
+            Notification notif = ctx.Notification.Where(x => x.NotifID == notifID).FirstOrDefault();
             notif.Status = "READ";
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
             return result;
         }
 
@@ -61,11 +69,33 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="EmpID">Employee ID</param>
         /// <returns></returns>
-        public List<Notification> getNotification (int EmpID)
+        public List<Notification> getNotification (string EmpID)
         {
-            List<Notification> notifList = ctx.Notification.Where(x => x.EmpID == EmpID).ToList();
+            int empID = Convert.ToInt32(EmpID);
+            List<Notification> notifList = ctx.Notification.Where(x => x.EmpID == empID).ToList();
             return notifList;
         }
 
+        //public bool sendNotification(int type, int empid, int reqid)
+        //{
+        //    bool result = true;
+
+        //    switch (type)
+        //    {
+        //        //Requistion
+        //        case 1:
+        //            {
+        //                Notification notif = new Notification();
+        //                notif.NotifName = "New Pending Requisition";
+        //                notif.NotifDesc = "Requisition #{id} is pending for your approval.";
+        //                notif.EmpID = notification.EmpID;
+        //                notif.DateTime = DateTime.Now;
+        //                notif.Status = notification.Status;
+        //                break;
+        //            }
+        //    }
+
+        //    return result;
+        //}
     }
 }

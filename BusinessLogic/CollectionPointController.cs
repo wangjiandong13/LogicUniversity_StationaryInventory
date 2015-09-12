@@ -27,10 +27,11 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="CPID">Collection Point ID</param>
         /// <returns>Collection Point List</returns>
-        public List<Model.CollectionPoint> getCollectionPoint(int CPID)
+        public List<Model.CollectionPoint> getCollectionPoint(string CPID)
         {
+            int cpid = Convert.ToInt32(CPID);
             var cp = from c in ctx.CollectionPoint
-                     where c.CPID == CPID
+                     where c.CPID == cpid
                      select c;
 
             return cp.ToList();
@@ -42,15 +43,23 @@ namespace BusinessLogic
         /// <param name="DeptID">Department ID</param>
         /// <param name="CPID">Collection Point ID</param>
         /// <returns>true if the </returns>
-        public bool updateCollectionPoint(string DeptID, int CPID)
+        public bool updateCollectionPoint(string DeptID, string CPID)
         {
+            bool result = true;
+
             Model.Department dept = (from c in ctx.Department
                     where c.DeptID == DeptID
                     select c).First();
-            dept.CPID = CPID;
-            ctx.SaveChanges();
-            return true;
-
+            dept.CPID = Convert.ToInt32(CPID);
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

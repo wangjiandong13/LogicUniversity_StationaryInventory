@@ -1,0 +1,155 @@
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <i class="fa fa-list-alt"></i>
+                    <a href="purchaseOrder.html">Purchase Order</a>
+                    <i class="fa fa-angle-right"></i>
+                    <a href="purchaseOrderPropose.html">Propose</a>
+                </li>
+            </ul>
+        </div>
+        <div class="page-toolbar">
+        </div>
+        <!-- END PAGE HEADER-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <br>
+                        <h1>Propose Purchase Order</h1>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <br>
+                        <button type="button" class="btn btn-success">
+                            <i class="fa fa-plus"></i> Add Item
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <h4>Please supply the following items by : </h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
+                            <input type="text" class="form-control" readonly="">
+                            <span class="input-group-btn">
+                                                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                                    </span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Item Code</th>
+                                    <th>Description</th>
+                                    <th>
+                                        <label id="supplier1ID">Supplier 1 Qty</label>
+                                    </th>
+                                    <th>
+                                        <label id="supplier2ID">Supplier 2 Qty</label>
+                                    </th>
+                                    <th>
+                                        <label id="supplier3ID">Supplier 3 Qty</label>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>C001</td>
+                                    <td>Clips Double 1"</td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier1Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier2Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier3Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>E001</td>
+                                    <td>Envelope Brown (3"x6")</td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier1Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier2Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier3Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>E020</td>
+                                    <td>Eraser (hard)</td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier1Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier2Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier3Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>F020</td>
+                                    <td>File Separator</td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier1Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier2Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" id="supplier3Qty" min=0>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12 text-right">
+                        <br>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-12 text-center">
+                    <br>
+                    <button type="button" class="btn default">Cancel</button>
+                    <button type="submit" class="btn btn-success">Generate Purchase Orders</button>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- END CONTENT -->

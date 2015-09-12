@@ -32,6 +32,13 @@ namespace RestService
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getDeptByID/{DeptID}")]
-        Department getDeptByID(String DepID);
+        Department getDeptByID(string DeptID);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                    RequestFormat =WebMessageFormat.Json,
+                                    BodyStyle = WebMessageBodyStyle.Bare,
+                                    UriTemplate = "/updateDept")]
+         bool updateDept(Department department);
     }
 }

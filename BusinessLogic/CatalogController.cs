@@ -56,6 +56,15 @@ namespace BusinessLogic
             return items.ToList();
         }
 
+        /// <summary>
+        /// GetCategory
+        /// </summary>
+        /// <returns></returns>
+        public List<Model.ItemCategory> getCategory()
+        {
+            return ctx.ItemCategory.ToList();
+        }
+
     }
 
 }

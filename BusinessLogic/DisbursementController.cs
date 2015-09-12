@@ -17,9 +17,10 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="DisID">Disbursement ID</param>
         /// <returns></returns>
-        public DisbursementDetail getDisbursementDetail(int DisID)
+        public List<DisbursementDetail> getDisbursementDetail(string DisID)
         {
-            DisbursementDetail result = ctx.DisbursementDetail.Where(x => x.DisID == DisID).FirstOrDefault();
+            int disID = Convert.ToInt32(DisID);
+            List<DisbursementDetail> result = ctx.DisbursementDetail.Where(x => x.DisID == disID).ToList();
             return result;
         }
 
@@ -34,6 +35,17 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<Disbursement> getDisbursement(string DeptID, string CPID, string DisID, string startdate, string enddate)
         {
+            if (DeptID == "null")
+                DeptID = null;
+            if (CPID == "null")
+                CPID = null;
+            if (DisID == "null")
+                DisID = null;
+            if (startdate == "null")
+                startdate = null;
+            if (enddate == "null")
+                enddate = null;
+
             //start with all the records
             var query = from disb in ctx.Disbursement select disb;
 
@@ -70,24 +82,25 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="EmpID">Employee ID(Clerk)</param>
         /// <returns></returns>
-        public bool createDisbursement(int EmpID)
+        public bool createDisbursement(string EmpID)
         {
-            bool result = false;
+            bool result = true;
 
             string[] deptId = new string[] { "ENGL", "CPSC", "COMM", "REGR", "ZOOL" };
 
             for (int i = 0; i < deptId.Length; i++)
             {
-                List<Requisition> reqList = ctx.Requisition.Where(x => x.StatusID == 3 && x.DeptID == deptId[i]).ToList();
+                string deptID = deptId[i];
+                List<Requisition> reqList = ctx.Requisition.Where(x => x.StatusID == 3 && x.DeptID == deptID).ToList();
 
                 if (reqList.FirstOrDefault() != null)
                 {
-                    Department dept = ctx.Department.Where(x => x.DeptID == deptId[i]).FirstOrDefault();
+                    Department dept = ctx.Department.Where(x => x.DeptID == deptID).FirstOrDefault();
 
                     Disbursement disb = new Disbursement();
                     disb.Date = DateTime.Now;
-                    disb.EmpID = EmpID;
-                    disb.DeptID = deptId[i];
+                    disb.EmpID = Convert.ToInt32(EmpID);
+                    disb.DeptID = deptID;
                     disb.CPID = dept.CPID;
                     disb.Status = "PENDING";
 
@@ -106,11 +119,14 @@ namespace BusinessLogic
                     }
                 }
             }
-
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }

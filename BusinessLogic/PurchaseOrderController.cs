@@ -21,6 +21,15 @@ namespace BusinessLogic
         /// <returns></returns>
         public List<PurchaseOrder> getPo(string startdate, string enddate, string EmpID, string PoID)
         {
+            if (startdate == "null")
+                startdate = null;
+            if (enddate == "null")
+                enddate = null;
+            if (EmpID == "null")
+                EmpID = null;
+            if (PoID == "null")
+                PoID = null;
+
             //start with all the records
             var query = from po in ctx.PurchaseOrder select po;
 
@@ -53,10 +62,11 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="PoID">Purchase Order ID</param>
         /// <returns></returns>
-        public List<PurchaseOrderDetail> getPoDetail(int PoID)
+        public List<PurchaseOrderDetail> getPoDetail(string PoID)
         {
+            int poID = Convert.ToInt32(PoID);
             List<PurchaseOrderDetail> result = ctx.PurchaseOrderDetail
-                .Where(x => x.PoID == PoID)
+                .Where(x => x.PoID == poID)
                 .ToList();
 
             return result;
@@ -69,10 +79,11 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool restock(List<PurchaseOrderDetail> PoDetailList)
         {
-            bool result = false;
+            bool result = true;
 
             //search for purchase order to obtain supplier ID
-            PurchaseOrder po = ctx.PurchaseOrder.Where(x => x.PoID == PoDetailList.First().PoID).FirstOrDefault();
+            int poID = (int)PoDetailList.First().PoID; 
+            PurchaseOrder po = ctx.PurchaseOrder.Where(x => x.PoID == poID).FirstOrDefault();
 
             foreach(PurchaseOrderDetail poDetail in PoDetailList)
             {
@@ -96,15 +107,23 @@ namespace BusinessLogic
                 stockCard.Qty = poDetail.ActualQty;
                 stockCard.Balance = balance + poDetail.ActualQty;
                 ctx.StockCard.Add(stockCard);
+
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == poDetail.ItemID).FirstOrDefault();
+                item.Stock = balance + poDetail.ActualQty;
             }
 
             //change status of purchase order to "Delivered"
             po.Status = "DELIVERED";
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
 
             return result;
         }
@@ -144,7 +163,7 @@ namespace BusinessLogic
         /// <returns></returns>
         public bool generatePo(List<ProposePo> proposePoList)
         {
-            bool result = false;
+            bool result = true;
 
             //filter the proposePoList by supplier
             List<ProposePo> supplier1 = proposePoList.Where(x => x.supplier1Qty != 0).ToList();
@@ -171,7 +190,9 @@ namespace BusinessLogic
                 ctx.PurchaseOrder.Add(po);
 
                 //obtain the PoID of the newly added Po
-                int poLastID = ctx.PurchaseOrder.Last().PoID;
+                int empID = supplier1.First().EmpID;
+                var poLast = ctx.PurchaseOrder.Where(x=> x.EmpID == empID).ToList().Last();
+                int poLastID = poLast.PoID;
        
                 double totalamt = 0;
 
@@ -188,7 +209,7 @@ namespace BusinessLogic
                 }
 
                 //Update the po total amount
-                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+                poLast.TotalAmt = totalamt;
             }
 
             //generate po for supplier 2
@@ -204,7 +225,9 @@ namespace BusinessLogic
                 ctx.PurchaseOrder.Add(po);
 
                 //obtain the PoID of the newly added Po
-                int poLastID = ctx.PurchaseOrder.Last().PoID;
+                int empID = supplier2.First().EmpID;
+                var poLast = ctx.PurchaseOrder.Where(x => x.EmpID == empID).ToList().Last();
+                int poLastID = poLast.PoID;
 
                 double totalamt = 0;
 
@@ -221,11 +244,11 @@ namespace BusinessLogic
                 }
 
                 //Update the po total amount
-                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+                poLast.TotalAmt = totalamt;
             }
 
             //generate po for supplier 3
-            if (supplier2.FirstOrDefault() != null)
+            if (supplier3.FirstOrDefault() != null)
             {
                 //create and add new po to db
                 PurchaseOrder po = new PurchaseOrder();
@@ -237,7 +260,9 @@ namespace BusinessLogic
                 ctx.PurchaseOrder.Add(po);
 
                 //obtain the PoID of the newly added Po
-                int poLastID = ctx.PurchaseOrder.Last().PoID;
+                int empID = supplier3.First().EmpID;
+                var poLast = ctx.PurchaseOrder.Where(x => x.EmpID == empID).ToList().Last();
+                int poLastID = poLast.PoID;
 
                 double totalamt = 0;
 
@@ -254,14 +279,17 @@ namespace BusinessLogic
                 }
 
                 //Update the po total amount
-                ctx.PurchaseOrder.Last().TotalAmt = totalamt;
+                poLast.TotalAmt = totalamt;
             }
 
-            int count = ctx.SaveChanges();
-
-            if (count > 0)
-                result = true;
-
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
             return result;
         }
        

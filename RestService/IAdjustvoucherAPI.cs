@@ -17,8 +17,15 @@ namespace RestService
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat =  WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/createVoucher")]
-        bool createVoucher(AdjustmentVoucher adj);
+                                           UriTemplate = "/createVoucherAdj")]
+        bool createVoucherAdj(AdjustmentVoucher adj);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                    RequestFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/createVoucherAdjDetail")]
+        bool createVoucherAdjDetail(List<AdjustmentDetail> adjDetail);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
@@ -39,5 +46,19 @@ namespace RestService
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getAdjVoucherId")]
         string getAdjVoucherId();
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                        RequestFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+                                           UriTemplate = "/approveAdj")]
+        bool approveAdj(string adjId);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                        RequestFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+                                           UriTemplate = "/rejectAdj")]
+        bool rejectAdj(string adjId);
     }
 }
