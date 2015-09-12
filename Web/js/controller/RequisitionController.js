@@ -3,6 +3,17 @@
     app.controller('RequisitionList', ['$rootScope', 'BaseService', RequisitionList]);
     app.controller('SelectoptionControllers', ['$rootScope', 'BaseService', SelectoptionControllers]);
     function RequisitionControllers($rootScope, $scope, BaseService) {
+        //set mean highlight
+        $rootScope.mean = {
+            Requistion: "active",
+            Catalog: "",
+            Department: "",
+            RequestCart: "",
+            ifRequistion: true,
+            ifCatalog: false,
+            ifDepartment: false,
+            ifRequestCart: false
+        };
         //$rootScope.pageTitle = $route.current.title;
         $scope.viewCart = function () {
             location.href = '#/requestCart';

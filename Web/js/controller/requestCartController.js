@@ -1,8 +1,20 @@
 ﻿define(['app'], function (app) {
-    app.controller('RequestCartControllers', [ '$scope',  RequestCartControllers]);
+    app.controller('RequestCartControllers', ['$rootScope', '$scope',  RequestCartControllers]);
     app.controller('RequestCartListCtrl', ['$scope', 'BaseService', RequestCartList]);
 
-    function RequestCartControllers($scope) {
+    function RequestCartControllers($rootScope,$scope) {
+        //set mean highlight
+        $rootScope.mean = {
+            Requistion: " ",
+            Catalog: " ",
+            Department: " ",
+            RequestCart: "active",
+            ifRequistion: false,
+            ifCatalog: false,
+            ifDepartment: false,
+            ifRequestCart:true
+        };
+
         console.log("enter  RequestCartControllers")
         $scope.back = function () {
             location.href = '#/requestCart';

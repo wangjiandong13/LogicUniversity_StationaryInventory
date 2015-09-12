@@ -1,7 +1,15 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
     console.log("enter app");
     var app = angular.module('app', ['ngRoute', 'BaseServices']);
-
+    app.controller('BodyCotroller', ['$rootScope', BodyCotroller]);
+    function BodyCotroller($rootScope) {
+        $rootScope.mean = {
+            Requistion: "",
+            Catalog: "",
+            Department: "",
+            RequestCart: ""
+        };
+    }
     app.config(
     [
         '$routeProvider',

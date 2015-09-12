@@ -5,7 +5,17 @@
         //get from session
         $rootScope.dptID = "REGR";
         $rootScope.roleid = "EM";
-
+        //set mean highlight
+        $rootScope.mean = {
+            Requistion: "",
+            Catalog: "",
+            Department: "active",
+            RequestCart: "",
+            ifRequistion: false,
+            ifCatalog: false,
+            ifDepartment: true,
+            ifRequestCart: false
+        };
         var selfBaseService = BaseService;
         console.log("enter  departmentCtrl");
         BaseService.getDepartment($rootScope.dptID)
