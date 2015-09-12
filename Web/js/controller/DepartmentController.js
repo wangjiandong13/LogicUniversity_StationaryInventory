@@ -25,18 +25,18 @@
                 textbox: true,
                 btnSave: false,
                 btnEdit: false,
-                btnMapEdit:false,
-                map:true
+                btnMapEdit: false,
+                map: true
             };
         }
-        if ( $rootScope.roleid == "DR") {
+        if ($rootScope.roleid == "DR") {
             //cannot edit hide button
             $scope.setting = {
                 textbox: true,
                 btnSave: false,
                 btnEdit: false,
                 btnMapEdit: true,
-                map:true
+                map: true
             };
         }
         if ($rootScope.roleid == "DH" || $rootScope.roleid == "DD") {
@@ -45,7 +45,7 @@
                 btnSave: false,
                 btnEdit: true,
                 btnMapEdit: false,
-                map:false
+                map: true
             };
         }
         $scope.edit = function () {
@@ -54,7 +54,7 @@
                 btnSave: true,
                 btnEdit: false,
                 btnMapEdit: false,
-                map:false
+                map: false
             };
         }
         $scope.editmap = function () {
@@ -81,7 +81,7 @@
             selfBaseService.updateDepartment(angular.toJson($scope.updatemodel))
                 .then(function (data) {
                     alert("success");
-                }, function (data) { alert("fail");})
+                }, function (data) { alert("fail"); })
 
             if ($rootScope.roleid == "DR") {
                 $scope.setting = {
@@ -101,32 +101,26 @@
                 };
             }
         }
+        console.log("enter  departmentCtrl");
         $rootScope.collectiondata = {
             availableOptions: [],
             selectedOption: { 'CPID': 0, 'CPName': 'ALL' }
         };
-        BaseService.getAllCollectionPoint()
-            .then(function (data) {
-                console.log(data);
-                $rootScope.collectiondata.availableOptions = data;
-                $rootScope.collectiondata.selectedOption = { 'CPID': data[0].CPID, 'CPName': data[0].CPName };
-            })
-        $scope.change = function () {
-            var cpid = $rootScope.collectiondata.selectedOption.CPID;
-            $.each($rootScope.collectiondata.availableOptions, function (index, value) {
-                if (value.CPID == cpid) {
-                    $rootScope.positionx = value.CPLat;
-                    $rootScope.positiony = value.CPLgt;
-                }
-            })
-        }
-
-        
-        console.log("enter  departmentCtrl");
         BaseService.getDepartment($rootScope.dptID)
                    .then(function (data) {
                        $scope.Department = data;
                        depth = data.DeptHead;
+                       selfBaseService.getAllCollectionPoint()
+                               .then(function (data) {
+                                   console.log(data);
+                                   $rootScope.collectiondata.availableOptions = data;
+                                   $.each(data, function (index, value) {
+                                       console.log(value.CPID + "+" + $scope.Department.CPID);
+                                       if (value.CPID == $scope.Department.CPID) {
+                                           $rootScope.collectiondata.selectedOption = { 'CPID': value.CPID, 'CPName': value.CPName };
+                                       }
+                                   })
+                               })
                        selfBaseService.getEmployee(depth)
                            .then(function (data) {
                                console.log(data.EmpName);
@@ -139,8 +133,18 @@
                        alert(data);
                    }
                    );
-            }
 
+    
+    $scope.change = function () {
+        var cpid = $rootScope.collectiondata.selectedOption.CPID;
+        $.each($rootScope.collectiondata.availableOptions, function (index, value) {
+            if (value.CPID == cpid) {
+                $rootScope.positionx = value.CPLat;
+                $rootScope.positiony = value.CPLgt;
+            }
+        })
+    }
+    }
     function depSelectoptionControllers($rootScope, BaseService) {
         $rootScope.optiondata = {
             availableOptions: [],
@@ -152,16 +156,16 @@
                 $rootScope.optiondata.availableOptions = data;
                 $.each(data, function (index, value) {
                     if (value.RoleID == "DR") {
-                            console.log("enter");
-                            $rootScope.optiondata.selectedOption = { 'EmpID': value.EmpID, 'EmpName': value.EmpName }
-                        }
+                        console.log("enter");
+                        $rootScope.optiondata.selectedOption = { 'EmpID': value.EmpID, 'EmpName': value.EmpName }
+                    }
                 })
                 console.log($rootScope.optiondata.selectedOption);
-                
-            },function(data){
+
+            }, function (data) {
                 alert(data);
             })
-        
+
     }
     app.controller('MapCoordinatesCtrl', function ($scope, $compile) {
         var TILE_SIZE = 256;
