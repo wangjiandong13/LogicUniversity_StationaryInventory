@@ -22,7 +22,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                         RequestFormat =WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
                                            UriTemplate = "/createDelegate")]
         bool createDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status);
 
