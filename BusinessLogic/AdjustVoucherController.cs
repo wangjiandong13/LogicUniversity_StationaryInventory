@@ -47,7 +47,7 @@ namespace BusinessLogic
                 System.DateTime startDatetime = Convert.ToDateTime(startDate).Date;
                 System.DateTime endDatetime = Convert.ToDateTime(endDate).Date;
                 adjustlist = (from x in ctx.AdjustmentVoucher
-                              where x.Date > startDatetime && x.Date < endDatetime
+                              where x.Date >= startDatetime && x.Date <= endDatetime
                               select x).ToList();
             }
             else

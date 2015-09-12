@@ -367,6 +367,14 @@ namespace BusinessLogic
                         break;
                     }
             }
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+               
+            }
         }
     }
 }
