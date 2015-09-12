@@ -261,7 +261,7 @@ function service($http, $q) {
     //Edit department //POST
     this.updateDepartment = function (msg) {
         var deferred = $q.defer();
-        $http.post(baseurl + "departmentAPI.svc/updateDept/", msg)
+        $http.post(baseurl + "departmentAPI.svc/updateDept", msg)
             .success(function (data) {
                 deferred.resolve(data)
             })

@@ -4682,7 +4682,11 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
     <Content Include="templete\SC\supplierStoreClerk.html" />
+    <Content Include="vendor\angular-google-maps.min.js" />
     <Content Include="vendor\angularAMD.min.map" />
+    <Content Include="vendor\angular-simple-logger.js" />
+    <Content Include="vendor\lodash.js" />
+    <Content Include="vendor\ng-map.min.js" />
     <Content Include="vendor\ngload.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
