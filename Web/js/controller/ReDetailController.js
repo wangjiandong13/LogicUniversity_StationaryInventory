@@ -1,7 +1,7 @@
 ﻿var ReDetailControllers = angular.module('ReDetailControllers', ['BaseServices']);
 
-ReDetailControllers.controller('catalogListCtrl', ['$scope', '$rootScope', 'BaseService', catalogListCtrl]);
+ReDetailControllers.controller('ReDetailCtrl', ['$scope', '$rootScope', 'BaseService', ReDetailCtrl]);
 
-function catalogListCtrl($scope) {
+function ReDetailCtrl($scope) {
 
 }
