@@ -4,7 +4,7 @@
     function departmentCtrl($rootScope, $scope, BaseService) {
         //get from session
         $rootScope.dptID = "REGR";
-        $rootScope.roleid = "EM";
+        $rootScope.roleid = "DD";
         //set mean highlight
         $rootScope.mean = {
             Requistion: "",
@@ -16,6 +16,40 @@
             ifDepartment: true,
             ifRequestCart: false
         };
+        if ($rootScope.roleid == "EM" || $rootScope.roleid == "DR") {
+            //cannot edit hide button
+            $scope.setting = {
+                textbox: true,
+                btnSave: false,
+                btnEdit: false
+            };
+        }
+        if ($rootScope.roleid == "DH" || $rootScope.roleid == "DD") {
+            $scope.setting = {
+                textbox: true,
+                btnSave: false,
+                btnEdit: true
+            };
+        }
+        
+        $scope.edit = function () {
+            $scope.setting = {
+                textbox: false,
+                btnSave: true,
+                btnEdit: false
+            };
+        }
+        $scope.save = function () {
+            $scope.updatemodel = {
+
+            }
+
+            $scope.setting = {
+                textbox: true,
+                btnSave: false,
+                btnEdit: true
+            };
+        }
         var selfBaseService = BaseService;
         console.log("enter  departmentCtrl");
         BaseService.getDepartment($rootScope.dptID)
@@ -34,12 +68,6 @@
                        alert(data);
                    }
                    );
-        if ($rootScope.roleid == "EM" || $rootScope.roleid == "DR") {
-                    //cannot edit hide button
-                }
-        if ($rootScope.roleid == " ") {
-
-                }
             }
 
     function depSelectoptionControllers($rootScope, BaseService) {

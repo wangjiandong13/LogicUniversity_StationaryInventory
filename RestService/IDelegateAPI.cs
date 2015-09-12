@@ -29,8 +29,8 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/deleteDelegate/{EmpName}")]
-        bool deleteDelegate(string EmpName);
+                                           UriTemplate = "/deleteDelegate/{DelegateSN}")]
+        bool deleteDelegate(string DelegateSN);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,

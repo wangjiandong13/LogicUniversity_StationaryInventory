@@ -20,11 +20,11 @@
                 </div>
                 <div class="col-md-6" style="text-align:right">
                     <br>
-                    <button class="btn btn-primary" disabled="true" id="btn_departmentinfosave">
+                    <button class="btn btn-primary" ng-if="setting.btnSave" ng-click="save()">
                         <span class="glyphicon glyphicon-ok"></span> Save
                     </button>
-                    <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-pencil" id="btn_departmentinfoedit"></span> Edit
+                    <button class="btn btn-success" ng-if="setting.btnEdit" ng-click="edit()">
+                        <span class="glyphicon glyphicon-pencil" ></span> Edit
                     </button>
                 </div>
                 <div class="col-md-12">
@@ -40,36 +40,35 @@
                                 <td class="col-md-5">
                                     <h4>Contact Name:</h4></td>
                                 <td class="col-md-7">
-                                    <input type="text" class="form-control" value="{{Department.DeptName}}" placeholder="Append Contact Name Here" disabled="true" id="tb_deptcontactname">
+                                    <input type="text" class="form-control" ng-model="Department.DeptName"  placeholder="Append Contact Name Here" ng-readonly="setting.textbox">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-5">
                                     <h4>Telephone No:</h4></td>
                                 <td class="col-md-7">
-                                    <input type="text" class="form-control"  value="{{Department.Phone}}" placeholder="Append Telephone No Here" disabled="true" id="tb_depttelephoneno">
+                                    <input type="text" class="form-control" ng-model="Department.Phone"  placeholder="Append Telephone No Here" ng-readonly="setting.textbox" >
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-5">
                                     <h4>Fax No:</h4></td>
                                 <td class="col-md-7">
-                                    <input type="text" class="form-control"  value="{{Department.Fax}}" placeholder="Append Fax No Here" disabled="true" id="tb_deptfaxno">
+                                    <input type="text" class="form-control" ng-model="Department.Fax"  placeholder="Append Fax No Here" ng-readonly="setting.textbox">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-5">
                                     <h4>Department Head:</h4></td>
                                 <td class="col-md-7">
-                                    <input type="text" class="form-control" value="{{DeptHeadName}}" placeholder="Append Department Head Here" disabled="true" id="tb_depthead">
+                                    <input type="text" class="form-control" ng-model="DeptHeadName"  placeholder="Append Department Head Here" ng-readonly="true">
                                 </td>
                             </tr>
                             <tr ng-controller="depSelectoptionControllers">
                                 <td class="col-md-5">
                                     <h4>Representative:</h4></td>
                                 <td class="col-md-7">
-                                    <select class="form-control" 
-                                            name="statusselect" id="statusselect"
+                                    <select class="form-control"  ng-readonly="setting.textbox"
                                             ng-options="option.EmpName for option in optiondata.availableOptions track by option.EmpID"
                                             ng-model="optiondata.selectedOption"></select>
                                 </td>
