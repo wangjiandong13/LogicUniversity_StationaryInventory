@@ -18,6 +18,7 @@
         $scope.viewCart = function () {
             location.href = '#/requestCart';
         };
+        
         $scope.search = function () {
             var status = $rootScope.optiondata.selectedOption.StatusID;
             if (status == 0) { status = "null"; }
@@ -42,6 +43,10 @@
                 alert(data);
             }
         )
+        $scope.requisitiondetail = function (Requisition) {
+            console.log(Requisition);
+            //location.href = '#/requestCart';
+        };
     }
     function SelectoptionControllers($rootScope, BaseService) {
         $rootScope.optiondata = {
