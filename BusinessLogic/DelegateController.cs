@@ -57,19 +57,19 @@ namespace BusinessLogic
         /// <summary>
         /// delete Delegate
         /// </summary>
-        /// <param name="EmpName"></param>
-        public bool deleteDelegate(string EmpName)
+        /// <param name="DelegateSN"></param>
+        public bool deleteDelegate(string DelegateSN)
         {
             bool result = true;
+           
+            int delegateSN = Convert.ToInt32(DelegateSN);
+
+            Model.Delegate dele = ctx.Delegate.Where(x => x.DelegateSN == delegateSN).FirstOrDefault();
+            ctx.Delegate.Remove(dele);
 
             Model.Employee emp = (from c in ctx.Employee
-                   where c.EmpName == EmpName
-                   select c).First();
-
-            Model.Delegate dele = (from c in ctx.Delegate
-                    where c.EmpID == emp.EmpID
-                    select c).First();
-            ctx.Delegate.Remove(dele);
+                                  where c.EmpID = dele.EmpID
+                                  select c).First();
 
             emp.RoleID = "EM";
 
