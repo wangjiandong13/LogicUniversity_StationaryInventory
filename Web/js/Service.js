@@ -522,7 +522,7 @@ function service($http, $q) {
     //load retrieval list by store clerk (EmpID)
     //search retrieval list by status (status)
     //search retrieval list by RetID (RetID)
-    this.getRetrievalListBySC = function (EmpID, status) {
+    this.getRetrievalListBySC = function (EmpID, status, RetID) {
         var deferred = $q.defer();
         $http.get(baseurl + "retrievalAPI.svc/getRetrieval/" + EmpID + "/" + status + "/" + RetID)
             .success(function (data) {
