@@ -157,20 +157,6 @@ namespace BusinessLogic
                 result = false;
             }
 
-            //send notification if stock < reorder level:
-            if (result == true)
-            {
-                foreach (RetrievalDetail retDetail in retDetailList)
-                {
-                    Item i = ctx.Item.Where(x => x.ItemID == retDetail.ItemID).FirstOrDefault();
-                    if (i.Stock < i.RoLvl)
-                    {
-                        NotificationController nt = new NotificationController();
-                        nt.sendNotification(14, 0, i.ItemID);
-                    }
-                }
-            }
-
             return result;
         }
 
@@ -324,6 +310,30 @@ namespace BusinessLogic
             {
                 foreach (RequisitionDetail reqDetail in reqDetailList)
                 {
+                    //send notification to alert low inventory
+                    bool checkedItemAlr = false;
+                    List<String> itemCodeChecked = new List<String>();
+                    if (itemCodeChecked.Count > 0)
+                    {
+                        for (int i = 0; i < itemCodeChecked.Count; i++)
+                        {
+                            if (reqDetail.ItemID == itemCodeChecked[i])
+                            {
+                                checkedItemAlr = true;
+                            }
+                        }
+                    }
+                    if (checkedItemAlr == false)
+                    {
+                        Item i = ctx.Item.Where(x => x.ItemID == reqDetail.ItemID).FirstOrDefault();
+                        if (i.Stock < i.RoLvl)
+                        {
+                            NotificationController nt = new NotificationController();
+                            nt.sendNotification(14, 0, i.ItemID);
+                        }
+                    }
+
+                    //send notification to req owners to notify change in status
                     bool checkedReqIdAlr = false;
                     List<int> reqIdChecked = new List<int>();
                     if (reqIdChecked.Count > 0) {
