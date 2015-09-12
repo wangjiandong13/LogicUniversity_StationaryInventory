@@ -1,8 +1,8 @@
 ﻿define(['app'], function (app) {
-    app.controller('RequestCartControllers', ['$rootScope', '$scope',  RequestCartControllers]);
+    app.controller('RequestCartControllers', ['$rootScope', '$scope', 'BaseService', RequestCartControllers]);
     app.controller('RequestCartListCtrl', ['$rootScope', '$scope', 'BaseService', RequestCartList]);
 
-    function RequestCartControllers($rootScope, $scope) {
+    function RequestCartControllers($rootScope, $scope,BaseService) {
         var selfBaseService = BaseService;
         //set mean highlight
         $rootScope.mean = {
