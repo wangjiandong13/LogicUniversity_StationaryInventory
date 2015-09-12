@@ -43,8 +43,10 @@ namespace BusinessLogic
             }
             else if (adjId == null&& startDate != null && endDate != null)
             {
+                Datetime startDatetime = Convert.ToDateTime(startDate).Date;
+                Datetime endDatetime = Convert.ToDateTime(endDate).Date;
                 adjustlist = (from x in ctx.AdjustmentVoucher
-                              where x.Date > Convert.ToDateTime(startDate).Date && x.Date < Convert.ToDateTime(endDate).Date
+                              where x.Date > startDatetime && x.Date < endDatetime
                               select x).ToList();
             }
             else
