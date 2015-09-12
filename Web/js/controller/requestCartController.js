@@ -1,8 +1,9 @@
 ﻿define(['app'], function (app) {
-    app.controller('RequestCartControllers', ['$rootScope', '$scope',  RequestCartControllers]);
-    app.controller('RequestCartListCtrl', ['$rootScope', 'BaseService', RequestCartList]);
+    app.controller('RequestCartControllers', ['$rootScope', '$scope', 'BaseService', RequestCartControllers]);
+    app.controller('RequestCartListCtrl', ['$rootScope', '$scope', 'BaseService', RequestCartList]);
 
-    function RequestCartControllers($rootScope,$scope) {
+    function RequestCartControllers($rootScope, $scope,BaseService) {
+        var selfBaseService = BaseService;
         //set mean highlight
         $rootScope.mean = {
             Requistion: " ",
@@ -14,26 +15,39 @@
             ifDepartment: false,
             ifRequestCart:true
         };
-
         console.log("enter  RequestCartControllers")
         $scope.back = function () {
             location.href = '#/requisition';
         }
         $scope.submit = function () {
             console.log("enter");
-            console.log(angular.toJson($scope.RequestCarts));
+            var msg = [];
+            $.each($rootScope.RequestCarts, function (index, value) {
+                var each = {
+                     EmpID: 11233,
+                    ItemID: value.ItemID,
+                    Qty: value.Qty
+                };
+                msg.push(each);
+            });
+            console.log(angular.toJson(msg));
+            selfBaseService.createRequisition(angular.toJson(msg))
+                .then(function (data) {
+                    location.href = '#/requisition';
+                }, function (data) {
+                    alert(data);
+                })
         }
     }
-    function RequestCartList($scope, BaseService) {
+    function RequestCartList($rootScope, $scope, BaseService) {
         //get EmpId from session
         var EmpId = "11233";
         var selfBaseService = BaseService;
         console.log("enter requestCartListCtrls");
-        console.log(BaseService);
         BaseService.getRequestCart(EmpId)
             .then(function (data) {
                 console.log(data);
-                $scope.RequestCarts = data;
+                $rootScope.RequestCarts = data;
             }, function (data) {
                 alert(data);
             })
