@@ -29,14 +29,20 @@ namespace BusinessLogic
         public bool createDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status)
         {
             bool result = true;
+
+            int empID = Convert.ToInt32(EmpID);
+
             Model.Delegate dele = new Model.Delegate();
-            dele.EmpID = Convert.ToInt32(EmpID);
+            dele.EmpID = empID;
             dele.DeptID = DeptID;
             dele.StartDate = Convert.ToDateTime(StartDate);
             dele.EndDate = Convert.ToDateTime(EndDate);
             dele.Status = Status;
-
             ctx.Delegate.Add(dele);
+
+            Model.Employee emp = ctx.Employee.Where(x => x.EmpID == empID).FirstOrDefault();
+            emp.RoleID = "DD";
+
             try
             {
                 ctx.SaveChanges();
@@ -56,17 +62,17 @@ namespace BusinessLogic
         {
             bool result = true;
 
-            Model.Employee emp = new Model.Employee();
-            Model.Delegate dele = new Model.Delegate();
-
-            emp = (from c in ctx.Employee
+            Model.Employee emp = (from c in ctx.Employee
                    where c.EmpName == EmpName
                    select c).First();
 
-            dele = (from c in ctx.Delegate
+            Model.Delegate dele = (from c in ctx.Delegate
                     where c.EmpID == emp.EmpID
                     select c).First();
             ctx.Delegate.Remove(dele);
+
+            emp.RoleID = "EM";
+
             try
             {
                 ctx.SaveChanges();

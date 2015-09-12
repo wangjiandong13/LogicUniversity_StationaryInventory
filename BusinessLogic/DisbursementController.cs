@@ -96,12 +96,15 @@ namespace BusinessLogic
                 if (reqList.FirstOrDefault() != null)
                 {
                     Department dept = ctx.Department.Where(x => x.DeptID == deptID).FirstOrDefault();
+                    Employee deptRep = ctx.Employee.Where(x => x.DeptID == deptID && x.RoleID == "DR").FirstOrDefault();
+
 
                     Disbursement disb = new Disbursement();
                     disb.Date = DateTime.Now;
                     disb.EmpID = Convert.ToInt32(EmpID);
                     disb.DeptID = deptID;
                     disb.CPID = dept.CPID;
+                    disb.ReceivedBy = deptRep.EmpID;
                     disb.Status = "PENDING";
 
                     ctx.Disbursement.Add(disb);
@@ -150,5 +153,45 @@ namespace BusinessLogic
             return result;
         }
 
+
+        public bool completeDisbursement(string DisID)
+        {
+            bool result = true;
+
+            //update disbursement status to "Disbursed"
+            int disID = Convert.ToInt32(DisID);
+            Disbursement disb = ctx.Disbursement.Where(x => x.DisID == disID).FirstOrDefault();
+            disb.Status = "Disbursed";
+
+            //update requisition status to "Collected" (statusID = 4)
+            List<Requisition> reqList = ctx.Requisition.Where(x => x.DisID == disID).ToList();
+            foreach(Requisition req in reqList)
+            {
+                req.StatusID = 4;
+            }
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+            //send notification to req holders:
+            if (result == true)
+            {
+                List<Requisition> requisitions = ctx.Requisition.Where(x => x.StatusID == 4 && x.DisID == Convert.ToInt32(DisID)).ToList();
+                foreach (Requisition req in requisitions)
+                {
+                    NotificationController nt = new NotificationController();
+                    nt.sendNotification(6, 0, Convert.ToString(req.ReqID));
+                }
+            }
+
+            return result;
+
+        }
     }
 }

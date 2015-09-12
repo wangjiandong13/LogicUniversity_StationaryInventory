@@ -167,6 +167,14 @@ namespace BusinessLogic
                     reqDetail.RequestQty = item.Qty;
                     ctx.RequisitionDetail.Add(reqDetail);
                 }
+
+                //delete items from request cart
+                foreach(CartItems item in itemList)
+                {
+                    CartItems cartItem = ctx.CartItems.Where(x => x.EmpID == item.EmpID && x.ItemID == item.ItemID).FirstOrDefault();
+                    ctx.CartItems.Remove(cartItem);
+                }
+                
             }
 
             int count = ctx.SaveChanges();
