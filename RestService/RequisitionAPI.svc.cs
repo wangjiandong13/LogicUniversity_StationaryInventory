@@ -119,5 +119,29 @@ namespace RestService
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.getstatus();
         }
+
+        public Requisition getRequisitionByReqID(string ReqID)
+        {
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.getRequisitionByReqID(ReqID);
+        }
+
+        public string getPriorityName(string PriorityID)
+        {
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.getPriorityName(PriorityID);
+        }
+
+        public List<CartItems> getItemsToReorder(string ReqID, string EmpID)
+        {
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.getItemsToReorder(ReqID, EmpID);
+        }
+
+        public bool confirmReorder(List<CartItems> ItemList)
+        {
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.confirmReorder(ItemList);
+        }
     }
 }

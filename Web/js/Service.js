@@ -50,6 +50,18 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+    //load requisition by ReqID
+    this.getRequisitionByReqID = function () {
+        var deferred = $q.defer();
+        $http.get(baseurl + "requisitionAPI.svc/getRequisitionByReqID/" + ReqID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 
 
     //requisitionDetail.html
@@ -69,6 +81,44 @@ function service($http, $q) {
     this.getRequisitionCancel = function (ReqID) {
         var deferred = $q.defer();
         $http.get(baseurl + "requisitionAPI.svc/deleteRequisition/" + ReqID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //Get priority name by priority ID
+    this.getPriorityName = function (PriorityID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "requisitionAPI.svc/getPriorityName/" + PriorityID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //load items to restock
+    this.getItemsToReorder = function (ReqID, EmpID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "requisitionAPI.svc/getItemsToReorder/" + ReqID + "/" + EmpID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //confirm reorder //POST
+    this.confirmReorder = function (msg) {
+        console.log(msg);
+        var deferred = $q.defer();
+
+        $http.post(baseurl + "requisitionAPI.svc/confirmReorder", msg)
             .success(function (data) {
                 deferred.resolve(data)
             })
