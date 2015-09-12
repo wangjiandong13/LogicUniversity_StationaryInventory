@@ -2,7 +2,8 @@
     app.controller('RequestCartControllers', ['$rootScope', '$scope',  RequestCartControllers]);
     app.controller('RequestCartListCtrl', ['$rootScope', '$scope', 'BaseService', RequestCartList]);
 
-    function RequestCartControllers($rootScope,$scope) {
+    function RequestCartControllers($rootScope, $scope) {
+        var selfBaseService = BaseService;
         //set mean highlight
         $rootScope.mean = {
             Requistion: " ",
@@ -29,7 +30,7 @@
                 };
                 msg.push(each);
             });
-            BaseService.createRequisition(angular.toJson(msg))
+            selfBaseService.createRequisition(angular.toJson(msg))
                 .then(function (data) {
                     location.href = '#/requisition';
                 }, function (data) {
