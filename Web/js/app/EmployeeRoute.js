@@ -23,7 +23,7 @@ define([], function () {
             '/catalogTile': {
                 templateUrl: 'catalogTile.html',
                 dependencies: [
-                    '../controller/CatalogTileController'
+                   '../../assets/global/plugins/jquery-mixitup/jquery.mixitup.min.js', '../controller/CatalogTileController'
                 ]
             },
             '/department': {
