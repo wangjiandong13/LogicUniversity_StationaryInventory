@@ -292,7 +292,7 @@ function service($http, $q) {
     //load disbursement by Dept for ER (DeptID)
     //search disbursement by DisbID OR load disbursementDetail.html (DisID)
     //search disbursement by date range (startdate, enddate)
-    this.getDisbursementListByDept = function (DeptID, CPID, DisID, startdate, enddate) {
+    this.getDisbursementList = function (DeptID, CPID, DisID, startdate, enddate) {
         var deferred = $q.defer();
         $http.get(baseurl + "disbursementAPI.svc/getDisbursement/" + DeptID + "/"+ CPID +"/"+ DisID +"/" + startdate + "/" + enddate)
             .success(function (data) {
@@ -1006,6 +1006,32 @@ function service($http, $q) {
     }
 
 
+    //load itemPrice info
+    this.getItemPrice = function (ItemID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "inventoryAPI.svc/getItemPrice/" + ItemID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
+    //Edit Supplier.html
+    //load supplier info by SupplierID
+    this.getBySupplierID = function (supplierid) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "supplierAPI.svc/getBySupplierID/" + supplierid)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 
 }
 
