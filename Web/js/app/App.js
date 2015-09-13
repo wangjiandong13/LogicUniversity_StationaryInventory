@@ -9,6 +9,26 @@
             Department: "",
             RequestCart: ""
         };
+        $rootScope.UserInfo = {
+            EmpId: aaa,
+            DeptId:aa,
+            RoleId:aa,
+        }
+        $rootScope.side = {
+            Requistion: true,
+            Catalog: true,
+            Department: true,
+            RequestCart: true
+        }
+        if ($rootScope.UserInfo.RoleId == "EM" || $rootScope.UserInfo.RoleId=="DR") {
+            $rootScope.side = {
+                Requistion: true,
+                Catalog: true,
+                Department: true,
+                RequestCart: true
+            }
+        }
+        
     }
     app.config(
     [
