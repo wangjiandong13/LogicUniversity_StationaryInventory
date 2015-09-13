@@ -37,9 +37,9 @@
             ifSupplier: ""
         };
         $rootScope.UserInfo = {
-            EmpId: aaa,
-            DeptId: aa,
-            RoleId: aa,
+            EmpId: "",
+            DeptId: "",
+            RoleId: "",
         }
         $rootScope.side = {
             Requistion: false,

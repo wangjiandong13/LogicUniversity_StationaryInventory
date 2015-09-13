@@ -4289,12 +4289,7 @@
     <Content Include="img\logo.png" />
     <Content Include="index.html" />
     <Content Include="js\app\App.js" />
-    <Content Include="js\app\DeptHeadMain.js" />
     <Content Include="js\app\Route.js" />
-    <Content Include="js\app\StoreSupManMain.js" />
-    <Content Include="js\app\StoreClerkMain.js" />
-    <Content Include="js\app\EmployeeRepMain.js" />
-    <Content Include="js\app\EmployeeDelMain.js" />
     <Content Include="js\controller\AdjustmentApprovalController.js" />
     <Content Include="js\controller\AdjustmentController.js" />
     <Content Include="js\controller\AdjustmentDetailController.js" />
@@ -4331,7 +4326,7 @@
     <Content Include="js\controller\SupplierStoreClerkController.js" />
     <Content Include="js\dependencyResoverFor.js" />
     <Content Include="js\fitter\Seftfitter.js" />
-    <Content Include="js\app\EmployeeMain.js" />
+    <Content Include="js\app\Main.js" />
     <Content Include="js\login.js" />
     <Content Include="js\seft.js" />
     <Content Include="js\Service.js" />
