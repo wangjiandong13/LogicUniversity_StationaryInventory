@@ -51,7 +51,7 @@ function service($http, $q) {
         return deferred.promise;
     }
     //load requisition by ReqID
-    this.getRequisitionByReqID = function () {
+    this.getRequisitionByReqID = function (ReqID) {
         var deferred = $q.defer();
         $http.get(baseurl + "requisitionAPI.svc/getRequisitionByReqID/" + ReqID)
             .success(function (data) {

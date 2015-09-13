@@ -6,17 +6,17 @@
         $scope.reqid = reqid;
         var myBaseService = BaseService;
         
-        BaseService.getRequisitionList("null", reqid, "null")
+        BaseService.getRequisitionByReqID(reqid)
             .then(function (data) {
                 console.log(data);
-                $scope.RequisitionData = data[0];
-                myBaseService.getEmployee(data[0].EmpID)
+                $scope.RequisitionData = data;
+                myBaseService.getEmployee(data.EmpID)
                        .then(function (data) {
                            //console.log("getEmployee");
                            $scope.RequisitionData.EmpName = data.EmpName;
                        })
-                if (data[0].HandledBy != null) {
-                    myBaseService.getEmployee(data[0].HandledBy)
+                if (data.HandledBy != null) {
+                    myBaseService.getEmployee(data.HandledBy)
                            .then(function (data) {
                                //console.log("getEmployee");
                                $scope.RequisitionData.HandledByName = data.EmpName;
@@ -24,8 +24,8 @@
                 } else {
                     $scope.RequisitionData.HandledByName = "";
                 }
-                if (data[0].RetID != null) {
-                    myBaseService.getRetrievalListBySC("null","null",data[0].RetID)
+                if (data.RetID != null) {
+                    myBaseService.getRetrievalListBySC("null","null",data.RetID)
                            .then(function (data) {
                                myBaseService.getEmployee(data.EmpID)
                                    .then(function (data) {
@@ -39,6 +39,11 @@
                 alert(data);
             }
             )
+        //if ($scope.RequisitionData.StatusID == 1) {
+        //    $scope.cancelbtn = true;
+        //} else {
+        //    $scope.cancelbtn = false;
+        //}
         BaseService.getRequisitionDetailList(reqid)
             .then(function (data) {
                 //console.log(data);
@@ -59,9 +64,25 @@
                 alert(data);
             }
             )
+        $scope.reorderbtn = false;
+        $.each(function (index, value) {
+            if (value.RequestQty != value.IssueQty && $scope.RequisitionData.StatusID==4) {
+                $scope.reorderbtn = true;
+            }
+        })
         $scope.back = function () {
             location.href = "#/requisition";
         }
-
+        $scope.Cancel = function () {
+            BaseService.getRequisitionCancel($scope.reqid)
+                .then(function (data) {
+                    alert("success!");
+                }, function (data) {
+                    alert(data);
+                })
+        }
+        $scope.Reorder = function () {
+            
+        }
     }
 })

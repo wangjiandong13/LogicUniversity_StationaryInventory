@@ -156,7 +156,7 @@ namespace BusinessLogic
 
                 //obtain the ReqID of the newly added requisition
                 Requisition reqLast = ctx.Requisition.Where(x => x.EmpID == empid).ToList().Last();
-                ReqID = reqLast.ReqID;
+                ReqID = reqLast.ReqID +1;
 
                 //create and add new requisition details
                 foreach (CartItems item in itemList)
