@@ -1,8 +1,8 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
     console.log("enter app");
     var app = angular.module('app', ['ngRoute', 'BaseServices']);
-    app.controller('BodyCotroller', ['$rootScope', BodyCotroller]);
-    function BodyCotroller($rootScope) {
+    app.controller('BodyCotroller', ['$rootScope', '$window', BodyCotroller]);
+    function BodyCotroller($rootScope, $window) {
         $rootScope.mean = {
             Requistion: "",
             Catalog: "",
@@ -37,10 +37,12 @@
             ifSupplier: ""
         };
         $rootScope.UserInfo = {
-            EmpId: "",
-            DeptId: "",
-            RoleId: "",
+            EmpId: $window.sessionStorage.EmpID,
+            EmpName: $window.sessionStorage.EmpName,
+            DeptId: $window.sessionStorage.DeptID,
+            RoleId: $window.sessionStorage.RoleID
         }
+        console.log($rootScope.UserInfo);
         $rootScope.side = {
             Requistion: false,
             Catalog: false,
@@ -129,7 +131,7 @@
             app.factory = $provide.factory;
             app.service = $provide.service;
 
-            //$locationProvider.html5Mode(true);
+            $locationProvider.html5Mode(true);
 
             if (config.routes !== undefined) {
                 angular.forEach(config.routes, function (route, path) {
