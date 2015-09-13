@@ -25,8 +25,7 @@ function logincontroller($scope, $http, $window, md5) {
                     $window.sessionStorage.setItem('RoleID', data.RoleID);
                     $window.sessionStorage.setItem('DeptID', data.DeptID);
 
-                    //|| data.RoleId == "DR" || data.RoleId == "DD" || data.RoleId == "DH"
-                    if (data.RoleId == "EM")
+                    if (data.RoleID == "EM" || data.RoleID == "DR" || data.RoleID == "DD" || data.RoleID == "DH")
                     {
                         location.href="templete/requisition"
                     }
