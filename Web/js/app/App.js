@@ -1,8 +1,8 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
     console.log("enter app");
     var app = angular.module('app', ['ngRoute', 'BaseServices']);
-    app.controller('BodyCotroller', ['$rootScope', BodyCotroller]);
-    function BodyCotroller($rootScope) {
+    app.controller('BodyCotroller', ['$rootScope', '$window', BodyCotroller]);
+    function BodyCotroller($rootScope, $window) {
         $rootScope.mean = {
             Requistion: "",
             Catalog: "",
@@ -37,10 +37,17 @@
             ifSupplier: ""
         };
         $rootScope.UserInfo = {
-            EmpId: "",
-            DeptId: "",
-            RoleId: "",
+            EmpId: $window.sessionStorage.EmpID,
+            EmpName: $window.sessionStorage.EmpName,
+            DeptId: $window.sessionStorage.DeptID,
+            RoleId: $window.sessionStorage.RoleID
+            //, 
+            //EmpId: "11233",
+            //EmpName: "Jenny Wong Mei Lin",
+            //DeptId: "REGR",
+            //RoleId: "EM"
         }
+        console.log($rootScope.UserInfo);
         $rootScope.side = {
             Requistion: false,
             Catalog: false,
@@ -111,6 +118,13 @@
             $rootScope.side.PurchaseOrder = true;
             $rootScope.side.Analytics = true;
         }
+        $rootScope.logout = function () {
+            $window.sessionStorage.removeItem("EmpID");
+            $window.sessionStorage.removeItem("EmpName");
+            $window.sessionStorage.removeItem("DeptID");
+            $window.sessionStorage.removeItem("RoleID");
+            location.href = "/";
+        }
 
     }
     app.config(
@@ -129,8 +143,6 @@
             app.factory = $provide.factory;
             app.service = $provide.service;
 
-            //$locationProvider.html5Mode(true);
-
             if (config.routes !== undefined) {
                 angular.forEach(config.routes, function (route, path) {
                     $routeProvider.when(path, { templateUrl: route.templateUrl, resolve: dependencyResolverFor(route.dependencies) });
@@ -140,6 +152,7 @@
             if (config.defaultRoutePaths !== undefined) {
                 $routeProvider.otherwise({ redirectTo: config.defaultRoutePaths });
             }
+            //$locationProvider.html5Mode(true);
         }
     ]);
 

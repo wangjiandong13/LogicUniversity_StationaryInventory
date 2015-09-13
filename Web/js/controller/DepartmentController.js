@@ -2,9 +2,6 @@
     app.controller('departmentCtrl', ['$rootScope', '$scope', 'BaseService', departmentCtrl]);
     app.controller('depSelectoptionControllers', ['$rootScope', 'BaseService', depSelectoptionControllers]);
     function departmentCtrl($rootScope, $scope, BaseService) {
-        //get from session
-        $rootScope.dptID = "REGR";
-        $rootScope.roleid = "DD";
         $rootScope.positionx = 1.298160;
         $rootScope.positiony = 103.776284;
         //set mean highlight
@@ -19,7 +16,7 @@
             ifRequestCart: false
         };
         var selfBaseService = BaseService;
-        if ($rootScope.roleid == "EM") {
+        if ($rootScope.UserInfo.RoleId == "EM") {
             //cannot edit hide button
             $scope.setting = {
                 textbox: true,
@@ -29,7 +26,7 @@
                 map: true
             };
         }
-        if ($rootScope.roleid == "DR") {
+        if ($rootScope.UserInfo.RoleId == "DR") {
             //cannot edit hide button
             $scope.setting = {
                 textbox: true,
@@ -39,7 +36,7 @@
                 map: true
             };
         }
-        if ($rootScope.roleid == "DH" || $rootScope.roleid == "DD") {
+        if ($rootScope.UserInfo.RoleId == "DH" || $rootScope.UserInfo.RoleId == "DD") {
             $scope.setting = {
                 textbox: true,
                 btnSave: false,
@@ -106,7 +103,7 @@
             availableOptions: [],
             selectedOption: { 'CPID': 0, 'CPName': 'ALL' }
         };
-        BaseService.getDepartment($rootScope.dptID)
+        BaseService.getDepartment($rootScope.UserInfo.DeptId)
                    .then(function (data) {
                        $scope.Department = data;
                        depth = data.DeptHead;
@@ -150,7 +147,7 @@
             availableOptions: [],
             selectedOption: { 'EmpID': 0, 'EmpName': 'ALL' }
         };
-        BaseService.getDeptEmployee($rootScope.dptID)
+        BaseService.getDeptEmployee($rootScope.UserInfo.DeptId)
             .then(function (data) {
                 console.log(data);
                 $rootScope.optiondata.availableOptions = data;

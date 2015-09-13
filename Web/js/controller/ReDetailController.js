@@ -35,17 +35,6 @@
                 } else {
                     data.ProcessedByName = "";
                 }
-                //if (data[0].PriorityID != null) {
-                //    myBaseService.getRetrievalListBySC("null", "null", data[0].RetID)
-                //           .then(function (data) {
-                //               myBaseService.getEmployee(data.EmpID)
-                //                   .then(function (data) {
-                //                       $scope.RequisitionData.Priority = data.EmpName;
-                //                   })
-                //           })
-                //} else {
-                //    data.Priority = "";
-                //}
             }, function (data) {
                 alert(data);
             }
