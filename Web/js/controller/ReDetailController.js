@@ -41,11 +41,11 @@
                 alert(data);
             }
             )
-        //if ($scope.RequisitionData.StatusID == 1) {
-        //    $scope.cancelbtn = true;
-        //} else {
-        //    $scope.cancelbtn = false;
-        //}
+        if ($scope.RequisitionData.StatusID == 1) {
+            $scope.cancelbtn = true;
+        } else {
+            $scope.cancelbtn = false;
+        }
         BaseService.getRequisitionDetailList(reqid)
             .then(function (data) {
                 console.log(data);
