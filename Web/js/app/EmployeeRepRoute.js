@@ -3,67 +3,67 @@ define([], function () {
         defaultRoutePath: '/',
         routes: {
             '/': {
-                templateUrl: '../EM/requisition.html',
+                templateUrl: 'EM/requisition.html',
                 dependencies: [
                     '../controller/RequisitionController'
                 ]
             },
             '/requisition': {
-                templateUrl: '../EM/requisition.html',
+                templateUrl: 'EM/requisition.html',
                 dependencies: [
                     '../controller/RequisitionController'
                 ]
             },
             '/catalogList': {
-                templateUrl: '../EM/catalogList.html',
+                templateUrl: 'EM/catalogList.html',
                 dependencies: [
                     '../controller/CatalogListController'
                 ]
             },
             '/catalogTile': {
-                templateUrl: '../EM/catalogTile.html',
+                templateUrl: 'EM/catalogTile.html',
                 dependencies: [
                     '../controller/CatalogTileController'
                 ]
             },
             '/department': {
-                templateUrl: '../EM/department.html',
+                templateUrl: 'EM/department.html',
                 dependencies: [
                     '../controller/DepartmentController'
                 ]
             },
             '/notification': {
-                templateUrl: '../EM/notification.html',
+                templateUrl: 'EM/notification.html',
                 dependencies: [
                     '../controller/NotificationController'
                 ]
             },
             '/requestCart': {
-                templateUrl: '../EM/requestCart.html',
+                templateUrl: 'EM/requestCart.html',
                 dependencies: [
                     '../controller/RequestCartController'
                 ]
             },
             '/requisitionDetail': {
-                templateUrl: '../EM/requisitionDetail.html',
+                templateUrl: 'EM/requisitionDetail.html',
                 dependencies: [
                     '../controller/ReDetailController'
                 ]
             },
             '/disbursement': {
-                templateUrl: 'disbursement.html',
+                templateUrl: 'ER/disbursement.html',
                 dependencies: [
                     '../controller/DisbursementController'
                 ]
             },
             '/disbursementDetail': {
-                templateUrl: 'disbursementDetail.html',
+                templateUrl: 'ER/disbursementDetail.html',
                 dependencies: [
                     '../controller/DisbursementDetailController'
                 ]
             },
             '/disbursementRequisition': {
-                templateUrl: 'disbursementRequisition.html',
+                templateUrl: 'ER/disbursementRequisition.html',
                 dependencies: [
                     '../controller/DisbursementRequisitionController'
                 ]

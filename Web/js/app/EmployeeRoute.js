@@ -3,49 +3,49 @@ define([], function () {
         defaultRoutePath: '/',
         routes: {
             '/': {
-                templateUrl: 'requisition.html',
+                templateUrl: 'EM/requisition.html',
                 dependencies: [
                     '../controller/RequisitionController'
                 ]
             },
             '/requisition': {
-                templateUrl: 'requisition.html',
+                templateUrl: 'EM/requisition.html',
                 dependencies: [
                     '../controller/RequisitionController'
                 ]
             },
             '/catalogList': {
-                templateUrl: 'catalogList.html',
+                templateUrl: 'EM/catalogList.html',
                 dependencies: [
                     '../controller/CatalogListController'
                 ]
             },
             '/catalogTile': {
-                templateUrl: 'catalogTile.html',
+                templateUrl: 'EM/catalogTile.html',
                 dependencies: [
                    '../../assets/global/plugins/jquery-mixitup/jquery.mixitup.min.js', '../controller/CatalogTileController'
                 ]
             },
             '/department': {
-                templateUrl: 'department.html',
+                templateUrl: 'EM/department.html',
                 dependencies: [
                     '../controller/DepartmentController'
                 ]
             },
             '/notification': {
-                templateUrl: 'notification.html',
+                templateUrl: 'EM/notification.html',
                 dependencies: [
                     '../controller/NotificationController'
                 ]
             },
             '/requestCart': {
-                templateUrl: 'requestCart.html',
+                templateUrl: 'EM/requestCart.html',
                 dependencies: [
                     '../controller/RequestCartController'
                 ]
             },
             '/requisitionDetail/:reqid': {
-                templateUrl: 'requisitionDetail.html',
+                templateUrl: 'EM/requisitionDetail.html',
                 dependencies: [
                     '../controller/ReDetailController'
                 ]
