@@ -78,7 +78,6 @@ namespace BusinessLogic
 
         public void sendNotification(int type, int empid, String details)
         {
-            int detail = Convert.ToInt32(details);
 
             //get all Store Clerks
             var employees1 = from c in ctx.Employee
@@ -118,13 +117,14 @@ namespace BusinessLogic
                 case 1:
                     {
                         notif.NotifName = "New Pending Requisition";
+                        int detail = Convert.ToInt32(details);
                         notif.NotifDesc = "Requisition #" + details + " is pending for your approval.";
                         //send to Dept head of empID
                         Employee employee = ctx.Employee.Where(x => x.EmpID == empid).FirstOrDefault();
                         Employee deptHead = ctx.Employee.Where(x => x.DeptID == employee.DeptID && x.RoleID == "DH").FirstOrDefault();
                         notif.EmpID = deptHead.EmpID;
                         ctx.Notification.Add(notif);
-                        emailcontrol.SendMailToEmpHead(notif.EmpID.ToString());
+                        //emailcontrol.SendMailToEmpHead(notif.EmpID.ToString());
                         break;
                     }
                 //Requisition Approved
@@ -133,6 +133,7 @@ namespace BusinessLogic
                         notif.NotifName = "Requisition Approved";
                         notif.NotifDesc = "Requisition #" + details + " has been approved.";
                         // send to employee who created this requisition
+                        int detail = Convert.ToInt32(details);
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
@@ -145,6 +146,7 @@ namespace BusinessLogic
                         notif.NotifName = "Requisition Rejected";
                         notif.NotifDesc = "Requisition #" + details + " has been rejected.";
                         // send to employee who created this requisition
+                        int detail = Convert.ToInt32(details);
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
@@ -157,6 +159,7 @@ namespace BusinessLogic
                         notif.NotifName = "Processing Requisition";
                         notif.NotifDesc = "Requisition #" + details + " is now processing.";
                         // send to employee who created this requisition
+                        int detail = Convert.ToInt32(details);
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
@@ -168,6 +171,7 @@ namespace BusinessLogic
                         notif.NotifName = "Requisition Processed";
                         notif.NotifDesc = "Requisition #" + details + " has been processed, ready for collection.";
                         // send to employee who created this requisition
+                        int detail = Convert.ToInt32(details);
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
@@ -180,6 +184,7 @@ namespace BusinessLogic
                         notif.NotifName = "Requisition Disbursed";
                         notif.NotifDesc = "Items in requisition #" + details + " has been disbursed.";
                         // send to employee who created this requisition
+                        int detail = Convert.ToInt32(details);
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
@@ -254,6 +259,7 @@ namespace BusinessLogic
                         notif.NotifName = "Requisition Items Not Fulfilled";
                         notif.NotifDesc = "Requisition #" + details + " has items that are not fulfilled. Please reorder the items again.";
                         // send to employee who created this requisition
+                        int detail = Convert.ToInt32(details);
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
