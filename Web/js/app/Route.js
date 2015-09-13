@@ -23,7 +23,7 @@
             '/catalogTile': {
                 templateUrl: 'EM/catalogTile.html',
                 dependencies: [
-                   '../../assets/global/plugins/jquery-mixitup/jquery.mixitup.min.js', '../controller/CatalogTileController'
+                   '../../assets/global/plugins/jquery-mixitup/jquery.mixitup.min', '../controller/CatalogTileController'
                 ]
             },
             '/department': {

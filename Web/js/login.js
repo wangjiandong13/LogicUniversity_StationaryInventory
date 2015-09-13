@@ -23,7 +23,16 @@ function logincontroller($scope, $http, $window, md5) {
                     $window.sessionStorage.setItem('EmpID', data.EmpID);
                     $window.sessionStorage.setItem('EmpName',data.EmpName);
                     $window.sessionStorage.setItem('RoleID', data.RoleID);
-                    $window.sessionStorage.setItem('DeptID',  data.DeptID);
+                    $window.sessionStorage.setItem('DeptID', data.DeptID);
+
+                    if (data.RoleID == "EM" || data.RoleID == "DR" || data.RoleID == "DD" || data.RoleID == "DH")
+                    {
+                        location.href="templete/requisition"
+                    }
+                    else
+                    {
+                        location.href = "templete/requisitionStoreClerk"
+                    }
                 })
                 .error(function () {
                     $scope.loginerrormessage = true;

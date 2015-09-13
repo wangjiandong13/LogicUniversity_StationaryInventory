@@ -7,8 +7,8 @@
         'service':'../Service',
         'fitter': '../fitter/Seftfitter',
         'jQuery': '../../assets/global/plugins/jquery.min',
-        'bootstrap': 'StoreSupManMain',
-        'routes': 'StoreSupManRoute',
+        'bootstrap': 'Main',
+        'routes': 'Route'
     },
     skim: {
         'app': {
@@ -18,7 +18,7 @@
             deps: ['angular']
         },
         'EmployeeMain': {
-            depos: ['jQuery']
+            deps: ['jQuery']
         }
     }
 });
@@ -27,5 +27,5 @@ require(
     [
         'app', 'service', 'fitter', 'jQuery'
     ], function (app, service, fitter) {
-        angular.bootstrap(document, ['app', 'BaseServices', 'appfilter']);
+        angular.bootstrap(document, ['app', 'BaseServices', 'appfilter', 'ngMap']);
     });
