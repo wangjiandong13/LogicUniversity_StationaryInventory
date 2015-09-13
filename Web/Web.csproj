@@ -4685,6 +4685,7 @@
     <Content Include="vendor\angular-md5.js" />
     <Content Include="vendor\angularAMD.min.map" />
     <Content Include="vendor\angular-simple-logger.js" />
+    <Content Include="vendor\jquerysession.js" />
     <Content Include="vendor\lodash.js" />
     <Content Include="vendor\ng-map.min.js" />
     <Content Include="vendor\ngload.min.map" />
