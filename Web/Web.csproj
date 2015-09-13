@@ -4336,6 +4336,7 @@
     <Content Include="js\dependencyResoverFor.js" />
     <Content Include="js\fitter\Seftfitter.js" />
     <Content Include="js\app\EmployeeMain.js" />
+    <Content Include="js\seft.js" />
     <Content Include="js\Service.js" />
     <Content Include="packages.config" />
     <Content Include="assets\.DS_Store" />
@@ -4681,6 +4682,7 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
+    <Content Include="templete\EM\catalogTile.html" />
     <Content Include="templete\SC\supplierStoreClerk.html" />
     <Content Include="vendor\angular-google-maps.min.js" />
     <Content Include="vendor\angularAMD.min.map" />
@@ -4702,7 +4704,7 @@
     <Content Include="templete\ED\index.html" />
     <Content Include="templete\ED\requisitionApproval.html" />
     <Content Include="templete\EM\catalogList.html" />
-    <Content Include="templete\EM\catalogTile.html" />
+    <Content Include="templete\EM\catalogTile1.html" />
     <Content Include="templete\EM\department.html" />
     <Content Include="templete\EM\index.html" />
     <Content Include="templete\EM\notification.html" />

@@ -3,139 +3,139 @@ define([], function () {
         defaultRoutePath: '/',
         routes: {
             '/': {
-                templateUrl: 'requisitionStoreClerk.html',
+                templateUrl: 'SC/requisitionStoreClerk.html',
                 dependencies: [
                     '../controller/RequisitionStoreClerkController'
                 ]
             },
             '/requisitionStoreClerk': {
-                templateUrl: 'requisitionStoreClerk.html',
+                templateUrl: 'SC/requisitionStoreClerk.html',
                 dependencies: [
                     '../controller/RequisitionStoreClerkController'
                 ]
             },
             '/adjustment': {
-                templateUrl: 'adjustment.html',
+                templateUrl: 'SC/adjustment.html',
                 dependencies: [
                     '../controller/AdjustmentController'
                 ]
             },
             '/adjustmentDetail': {
-                templateUrl: 'adjustmentDetail.html',
+                templateUrl: 'SC/adjustmentDetail.html',
                 dependencies: [
                     '../controller/AdjustmentDetailController'
                 ]
             },
             '/adjustmentNew': {
-                templateUrl: 'adjustmentNew.html',
+                templateUrl: 'SC/adjustmentNew.html',
                 dependencies: [
                     '../controller/AdjustmentNewController'
                 ]
             },
             '/departmentStoreclerk': {
-                templateUrl: 'departmentStoreclerk.html',
+                templateUrl: 'SC/departmentStoreclerk.html',
                 dependencies: [
                     '../controller/DepartmentStoreclerkController'
                 ]
             },
             '/disbursementDetailStoreClerk': {
-                templateUrl: 'disbursementDetailStoreClerk.html',
+                templateUrl: 'SC/disbursementDetailStoreClerk.html',
                 dependencies: [
                     '../controller/DisbursementDetailStoreClerkController'
                 ]
             },
             '/disbursementStoreClerk': {
-                templateUrl: 'disbursementStoreClerk.html',
+                templateUrl: 'SC/disbursementStoreClerk.html',
                 dependencies: [
                     '../controller/DisbursementStoreClerkController'
                 ]
             },
             '/inventoryList': {
-                templateUrl: 'inventoryList.html',
+                templateUrl: 'SC/inventoryList.html',
                 dependencies: [
                     '../controller/InventoryListController'
                 ]
             },
             '/inventoryNew': {
-                templateUrl: 'inventoryNew.html',
+                templateUrl: 'SC/inventoryNew.html',
                 dependencies: [
                     '../controller/InventoryNewController'
                 ]
             },
             '/inventoryTile': {
-                templateUrl: 'inventoryTile.html',
+                templateUrl: 'SC/inventoryTile.html',
                 dependencies: [
                     '../controller/InventoryTileController'
                 ]
             },
             '/notification': {
-                templateUrl: '../EM/notification.html',
+                templateUrl: 'EM/notification.html',
                 dependencies: [
                     '../controller/NotificationController'
                 ]
             },
             '/purchaseOrder': {
-                templateUrl: 'purchaseOrder.html',
+                templateUrl: 'SC/purchaseOrder.html',
                 dependencies: [
                     '../controller/PurchaseOrderController'
                 ]
             },
             '/purchaseOrderDetail': {
-                templateUrl: 'purchaseOrderDetail.html',
+                templateUrl: 'SC/purchaseOrderDetail.html',
                 dependencies: [
                     '../controller/PurchaseOrderDetailController'
                 ]
             },
             '/purchaseOrderPropose': {
-                templateUrl: 'purchaseOrderPropose.html',
+                templateUrl: 'SC/purchaseOrderPropose.html',
                 dependencies: [
                     '../controller/PurchaseOrderProposeController'
                 ]
             },
             '/requisitionProcessed': {
-                templateUrl: 'requisitionProcessed.html',
+                templateUrl: 'SC/requisitionProcessed.html',
                 dependencies: [
                     '../controller/RequisitionProcessedController'
                 ]
             },
             '/retrieval': {
-                templateUrl: 'retrieval.html',
+                templateUrl: 'SC/retrieval.html',
                 dependencies: [
                     '../controller/RetrievalController'
                 ]
             },
             '/retrievalAllocation': {
-                templateUrl: 'retrievalAllocation.html',
+                templateUrl: 'SC/retrievalAllocation.html',
                 dependencies: [
                     '../controller/RetrievalAllocationController'
                 ]
             },
             '/retrievalDetailDept': {
-                templateUrl: 'retrievalDetailDept.html',
+                templateUrl: 'SC/retrievalDetailDept.html',
                 dependencies: [
                     '../controller/RetrievalDetailDeptController'
                 ]
             },
             '/retrievalDetailReq': {
-                templateUrl: 'retrievalDetailReq.html',
+                templateUrl: 'SC/retrievalDetailReq.html',
                 dependencies: [
                     '../controller/RetrievalDetailReqController'
                 ]
             },
             '/retrievalUpdateActual': {
-                templateUrl: 'retrievalUpdateActual.html',
+                templateUrl: 'SC/retrievalUpdateActual.html',
                 dependencies: [
                     '../controller/RetrievalUpdateActualController'
                 ]
             },
             '/stockcard': {
-                templateUrl: 'stockcard.html',
+                templateUrl: 'SC/stockcard.html',
                 dependencies: [
                     '../controller/StockcardController'
                 ]
             },
             '/supplierStoreClerk': {
-                templateUrl: 'supplierStoreClerk.html',
+                templateUrl: 'SC/supplierStoreClerk.html',
                 dependencies: [
                     '../controller/SupplierStoreClerkController'
                 ]

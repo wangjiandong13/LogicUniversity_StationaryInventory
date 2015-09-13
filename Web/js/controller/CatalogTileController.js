@@ -1,7 +1,12 @@
-﻿define(['app'], function (app) {
+﻿
+define(['app'], function (app) {
     app.controller('catalogtileCtrl', ['$rootScope', '$scope', 'BaseService', catalogtileCtrl]);
-    app.controller('catalogListtileCtrl', ['$rootScope', 'BaseService', catalogListtileCtrl]);
+    app.controller('catalogListtileCtrl'
+        , ['$rootScope', 'BaseService', catalogListtileCtrl]);
     function catalogtileCtrl($rootScope, $scope, BaseService) {
+        //from session get empID
+        var EmpID = 11233;
+
         //set mean highlight
         $rootScope.mean = {
             Requistion: "",
@@ -14,6 +19,7 @@
             ifRequestCart: false
         };
         $scope.categoryname = "";
+       
         //click the viewcart button
         $scope.viewCart = function () {
             location.href = '#/requestCart';
@@ -56,16 +62,25 @@
                 }
             )
         }
-
+        $scope.add = function (item) {
+            var msg = '{"EmpID":' + EmpID + ',"ItemID":"' + item.ItemID + '","Qty":' + item.qty + '}';
+            //console.log(msg);
+            BaseService.addItemToCart(msg)
+                .then(function (data) {
+                    alert("sucess!");
+                })
+        }
     }
     //load catalogList
     function catalogListtileCtrl($rootScope,BaseService) {
         BaseService.getCatalogList()
             .then(function (data) {
                 $rootScope.catalogtiledata = data;
+                $('.mix-grid').mixitup();
             }, function (data) {
                 alert(data);
             }
        )
+        
     }
 })

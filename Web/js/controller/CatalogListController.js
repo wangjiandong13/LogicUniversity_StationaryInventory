@@ -52,7 +52,6 @@
                 })
         }
         //search function
-        //search function
         $scope.search = function () {
             var S_category = $scope.CategorySelectData.selectedOption.ItemCatID;
             if (S_category == 0) {
