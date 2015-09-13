@@ -4207,6 +4207,7 @@
     <Content Include="img\Item_120\F021.jpg" />
     <Content Include="img\Item_120\F022.jpg" />
     <Content Include="img\Item_120\F023.jpg" />
+    <Content Include="img\Item_120\F024.jpg" />
     <Content Include="img\Item_120\F031.jpg" />
     <Content Include="img\Item_120\F032.JPG" />
     <Content Include="img\Item_120\F033.jpg" />
@@ -4295,6 +4296,7 @@
     <Content Include="img\Item_300\F021.jpg" />
     <Content Include="img\Item_300\F022.jpg" />
     <Content Include="img\Item_300\F023.jpg" />
+    <Content Include="img\Item_300\F024.jpg" />
     <Content Include="img\Item_300\F031.jpg" />
     <Content Include="img\Item_300\F032.JPG" />
     <Content Include="img\Item_300\F033.jpg" />
