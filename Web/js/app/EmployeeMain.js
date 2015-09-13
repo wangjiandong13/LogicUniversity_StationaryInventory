@@ -8,7 +8,7 @@
         'fitter': '../fitter/Seftfitter',
         'jQuery': '../../assets/global/plugins/jquery.min',
         'bootstrap': 'EmployeeMain',
-        'routes': 'EmployeeRoute',
+        'routes': 'EmployeeRoute'
     },
     skim: {
         'app': {
