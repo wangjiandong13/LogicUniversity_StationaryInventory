@@ -795,9 +795,9 @@ function service($http, $q) {
 
     //stockcard.html
     //load item detail
-    this.getItemDetail = function (ItemIDid) {
+    this.getItemDetail = function (ItemID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "inventoryAPI.svc/getItemDetails/" + ItemIDid)
+        $http.get(baseurl + "inventoryAPI.svc/getItemDetails/" + ItemID)
             .success(function (data) {
                 deferred.resolve(data)
             })

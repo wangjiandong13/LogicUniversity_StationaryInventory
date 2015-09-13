@@ -27,10 +27,12 @@
                 if (data.RetID != null) {
                     myBaseService.getRetrievalListBySC("null","null",data.RetID)
                            .then(function (data) {
-                               myBaseService.getEmployee(data.EmpID)
-                                   .then(function (data) {
-                                       $scope.RequisitionData.ProcessedByName = data.EmpName;
-                                   })
+                               if (data.EmpID != null) {
+                                   myBaseService.getEmployee(data.EmpID)
+                                       .then(function (data) {
+                                           $scope.RequisitionData.ProcessedByName = data.EmpName;
+                                       })
+                               }
                            })
                 } else {
                     data.ProcessedByName = "";
@@ -59,7 +61,6 @@
                         }
                         )
                 });
-                myBaseService.getItemDetail()
             }, function (data) {
                 alert(data);
             }
