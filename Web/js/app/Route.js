@@ -1,11 +1,89 @@
-define([], function () {
+﻿define([], function () {
     return {
         defaultRoutePath: '/',
         routes: {
             '/': {
-                templateUrl: 'SC/requisitionStoreClerk.html',
+                templateUrl: 'EM/requisition.html',
                 dependencies: [
-                    '../controller/RequisitionStoreClerkController'
+                    '../controller/RequisitionController'
+                ]
+            },
+            '/requisition': {
+                templateUrl: 'EM/requisition.html',
+                dependencies: [
+                    '../controller/RequisitionController'
+                ]
+            },
+            '/catalogList': {
+                templateUrl: 'EM/catalogList.html',
+                dependencies: [
+                    '../controller/CatalogListController'
+                ]
+            },
+            '/catalogTile': {
+                templateUrl: 'EM/catalogTile.html',
+                dependencies: [
+                   '../../assets/global/plugins/jquery-mixitup/jquery.mixitup.min.js', '../controller/CatalogTileController'
+                ]
+            },
+            '/department': {
+                templateUrl: 'EM/department.html',
+                dependencies: [
+                    '../controller/DepartmentController'
+                ]
+            },
+            '/notification': {
+                templateUrl: 'EM/notification.html',
+                dependencies: [
+                    '../controller/NotificationController'
+                ]
+            },
+            '/requestCart': {
+                templateUrl: 'EM/requestCart.html',
+                dependencies: [
+                    '../controller/RequestCartController'
+                ]
+            },
+            '/requisitionDetail/:reqid': {
+                templateUrl: 'EM/requisitionDetail.html',
+                dependencies: [
+                    '../controller/ReDetailController'
+                ]
+            },
+            '/disbursement': {
+                templateUrl: 'ER/disbursement.html',
+                dependencies: [
+                    '../controller/DisbursementController'
+                ]
+            },
+            '/disbursementDetail': {
+                templateUrl: 'ER/disbursementDetail.html',
+                dependencies: [
+                    '../controller/DisbursementDetailController'
+                ]
+            },
+            '/disbursementRequisition': {
+                templateUrl: 'ER/disbursementRequisition.html',
+                dependencies: [
+                    '../controller/DisbursementRequisitionController'
+                ]
+            },
+            '/requisitionApproval': {
+                templateUrl: 'ED/requisitionApproval.html',
+                dependencies: [
+                    '../controller/RequisitionApprovalController'
+                ]
+            },
+            '/delegate': {
+                templateUrl: 'DH/delegate.html',
+                dependencies: [
+                    '../controller/DelegateController'
+                ]
+            },
+            '/delegatenew': {
+                templateUrl: 'DH/delegatenew.html',
+                dependencies: [
+                    '../controller/DelegatenewController'
                 ]
             },
             '/requisitionStoreClerk': {
@@ -132,6 +210,12 @@ define([], function () {
                 templateUrl: 'SC/stockcard.html',
                 dependencies: [
                     '../controller/StockcardController'
+                ]
+            },
+            '/supplierStoreClerk': {
+                templateUrl: 'SC/supplierStoreClerk.html',
+                dependencies: [
+                    '../controller/SupplierStoreClerkController'
                 ]
             },
             '/supplier': {

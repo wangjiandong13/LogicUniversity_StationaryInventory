@@ -4290,16 +4290,11 @@
     <Content Include="index.html" />
     <Content Include="js\app\App.js" />
     <Content Include="js\app\DeptHeadMain.js" />
+    <Content Include="js\app\Route.js" />
     <Content Include="js\app\StoreSupManMain.js" />
     <Content Include="js\app\StoreClerkMain.js" />
-    <Content Include="js\app\StoreSupManRoute.js" />
-    <Content Include="js\app\StoreClerkRoute.js" />
     <Content Include="js\app\EmployeeRepMain.js" />
     <Content Include="js\app\EmployeeDelMain.js" />
-    <Content Include="js\app\DeptHeadRoute.js" />
-    <Content Include="js\app\EmployeeRepRoute.js" />
-    <Content Include="js\app\EmployeeDelRoute.js" />
-    <Content Include="js\app\EmployeeRoute.js" />
     <Content Include="js\controller\AdjustmentApprovalController.js" />
     <Content Include="js\controller\AdjustmentController.js" />
     <Content Include="js\controller\AdjustmentDetailController.js" />
@@ -4784,7 +4779,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2849</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
