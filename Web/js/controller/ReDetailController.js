@@ -4,6 +4,7 @@
     function ReDetailController($scope, $rootScope, $routeParams, BaseService) {
         var reqid = $routeParams.reqid;
         $scope.reqid = reqid;
+        $scope.RequisitionData.StatusID = 0;
         var myBaseService = BaseService;
         console.log($scope.reqid);
         BaseService.getRequisitionByReqID($scope.reqid)
