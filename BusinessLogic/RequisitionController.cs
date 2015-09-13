@@ -154,6 +154,8 @@ namespace BusinessLogic
                 req.StatusID = 1;
                 ctx.Requisition.Add(req);
 
+                ctx.SaveChanges();
+
                 //obtain the ReqID of the newly added requisition
                 Requisition reqLast = ctx.Requisition.Where(x => x.EmpID == empid).ToList().Last();
                 ReqID = reqLast.ReqID;
