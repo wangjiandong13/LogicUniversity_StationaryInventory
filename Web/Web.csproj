@@ -4687,6 +4687,7 @@
     <Content Include="templete\EM\catalogTile.html" />
     <Content Include="templete\SC\supplierStoreClerk.html" />
     <Content Include="vendor\angular-google-maps.min.js" />
+    <Content Include="vendor\angular-md5.js" />
     <Content Include="vendor\angularAMD.min.map" />
     <Content Include="vendor\angular-simple-logger.js" />
     <Content Include="vendor\lodash.js" />
