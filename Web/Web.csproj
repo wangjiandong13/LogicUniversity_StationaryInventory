@@ -4287,6 +4287,7 @@
     <Content Include="img\item_cat\8.jpg" />
     <Content Include="img\item_cat\9.jpg" />
     <Content Include="img\logo.png" />
+    <Content Include="index.html" />
     <Content Include="js\app\App.js" />
     <Content Include="js\app\DeptHeadMain.js" />
     <Content Include="js\app\StoreSupManMain.js" />
@@ -4336,6 +4337,7 @@
     <Content Include="js\dependencyResoverFor.js" />
     <Content Include="js\fitter\Seftfitter.js" />
     <Content Include="js\app\EmployeeMain.js" />
+    <Content Include="js\login.js" />
     <Content Include="js\seft.js" />
     <Content Include="js\Service.js" />
     <Content Include="packages.config" />
@@ -4706,7 +4708,7 @@
     <Content Include="templete\EM\catalogList.html" />
     <Content Include="templete\EM\catalogTile1.html" />
     <Content Include="templete\EM\department.html" />
-    <Content Include="templete\EM\index.html" />
+    <Content Include="templete\index.html" />
     <Content Include="templete\EM\notification.html" />
     <Content Include="templete\EM\requestCart.html" />
     <Content Include="templete\EM\requisition.html" />
