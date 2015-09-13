@@ -5,8 +5,8 @@
         var reqid = $routeParams.reqid;
         $scope.reqid = reqid;
         var myBaseService = BaseService;
-        
-        BaseService.getRequisitionByReqID(reqid)
+        console.log($scope.reqid);
+        BaseService.getRequisitionByReqID($scope.reqid)
             .then(function (data) {
                 console.log(data);
                 $scope.RequisitionData = data;
