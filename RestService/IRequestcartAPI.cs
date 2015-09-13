@@ -38,7 +38,7 @@ namespace RestService
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/getItems/{EmpID}")]
-        List<CartItems> getItems(string EmpID);
+        List<RequestCart> getItems(string EmpID);
 
 
     }

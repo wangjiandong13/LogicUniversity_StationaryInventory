@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="ReDetailController">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="col-md-6">
                         <br>
-                        <h1 style="display: inline">Form # <h1 id="ReqID" style="display: inline">0021</h1></h1>
+                        <h1 style="display: inline">Form # <h1 id="ReqID" style="display: inline">{{reqid}}</h1></h1>
                     </div>
                     <div class="col-md-6 text-right" style="color:#08AE9E">
                         <br>
@@ -40,21 +40,21 @@
                                     <td class="col-md-4">
                                         <h5>Employee Name : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_employeeName">Jenny Wong Mei Lin</label>
+                                        <label id="lbl_employeeName">{{RequisitionData.EmpName}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Approved by : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_approvedBy">Mrs Low Kway Boo</label>
+                                        <label id="lbl_approvedBy">{{RequisitionData.HandledByName}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Processed by : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_processedBy">Wong Sook Huey</label>
+                                        <label id="lbl_processedBy">{{RequisitionData.ProcessedByName}}</label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -74,18 +74,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Clips Double 2"</td>
-                                    <td>Dozen</td>
-                                    <td>10</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>Short Hand Book</td>
-                                    <td>Each</td>
-                                    <td>45</td>
-                                    <td>45</td>
-                                </tr>
+
+                                <tr ng-repeat="RequisitionDetailList in RequisitionDetailLists">
+                                    <td>{{RequisitionDetailList.Description}}</td>
+                                    <td>{{RequisitionDetailList.Measurement}}</td>
+                                    <td>{{RequisitionDetailList.RequestQty}}</td>
+                                    <td>{{RequisitionDetailList.IssueQty}}</td>
+                                </tr> 
                             </tbody>
                         </table>
                     </div>
@@ -99,14 +94,14 @@
                                     <td class="col-md-3">
                                         <h5>Priority : </h5></td>
                                     <td class="col-md-9">
-                                        <label id="lbl_priority">High</label>
+                                        <label id="lbl_priority">{{RequisitionData.Priority}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-3">
                                         <h5>Remarks : </h5></td>
                                     <td class="col-md-9">
-                                        <label id="lbl_remarks">Need it ugently for upcoming event.</label>
+                                        <label id="lbl_remarks">{{RequisitionData.PRemark}}</label>
                                     </td>
                                 </tr>
                                 <tr></tr>
@@ -114,7 +109,7 @@
                                     <td class="col-md-3">
                                         <h5>Department Head Reason: </h5></td>
                                     <td class="col-md-9">
-                                        <label id="lbl_priority">Good.</label>
+                                        <label id="lbl_priority">{{RequisitionData.Remark}}</label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -123,9 +118,9 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="button" class="btn default"><i class="fa fa-arrow-left"></i> Back</button>
-                    <button type="submit" class="btn green"><i class="fa fa-cart-arrow-down"></i> Reorder</button>
-                    <button type="submit" class="btn green"><i class="fa fa-times"></i> Cancel Request</button>
+                    <button type="button" class="btn default" ng-click="back()"><i class="fa fa-arrow-left"></i> Back</button>
+                    <button type="button" class="btn green" ng-click="Reorder()" ng-if="reorderbtn"><i class="fa fa-cart-arrow-down"></i> Reorder</button>
+                    <button type="button" class="btn green" ng-click="Cancel()" ng-if="cancelbtn"><i class="fa fa-times"></i> Cancel Request</button>
                     <hr>
                 </div>
             </div>

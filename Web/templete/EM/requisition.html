@@ -1,5 +1,6 @@
+
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="RequisitionControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -21,7 +22,7 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <br>
-                    <button type="button" class="btn btn-success" ng-click="viewCart()">
+                    <button type="button" class="btn btn-success" onclick="test()" ng-click="viewCart() ">
                         <span class="glyphicon glyphicon-shopping-cart"></span> View Request Cart
                     </button>
                 </div>
@@ -65,8 +66,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="Requisition in Requisitions">
-                                    <td>{{Requisition.DisID}}</td>
+                                <tr ng-repeat="Requisition in Requisitions"  ng-click="requisitiondetail(Requisition)">
+                                    <td>{{Requisition.ReqID}}</td>
                                     <td>{{Requisition.Date|datechange|date : 'dd MMM yyyy'}}</td>
                                     <td>{{Requisition.StatusID|statuschange}}</td>
                                 </tr>
@@ -79,3 +80,4 @@
     </div>
 </div>
 <!-- END CONTENT -->
+

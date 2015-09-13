@@ -74,5 +74,31 @@ namespace RestService
                            UriTemplate = "/getstatus")]
         List<Status> getstatus();
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getRequisitionByReqID/{ReqID}")]
+        Requisition getRequisitionByReqID(string ReqID);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getPriorityName/{PriorityID}")]
+        string getPriorityName(string PriorityID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getItemsToReorder/{ReqID}/{EmpID}")]
+
+        List<CartItems> getItemsToReorder(string ReqID, string EmpID);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                           RequestFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/confirmReorder")]
+        bool confirmReorder(List<CartItems> ItemList);
     }
 }

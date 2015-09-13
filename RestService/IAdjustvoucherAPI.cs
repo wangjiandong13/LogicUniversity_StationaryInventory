@@ -30,7 +30,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat =WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Wrapped,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
                                            UriTemplate = "/getAdjVoucher")]
         List<AdjustmentVoucher> getAdjVoucher(string AdjID, string startDate, string endDate);
 
@@ -52,13 +52,13 @@ namespace RestService
                                         RequestFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.WrappedRequest,
                                            UriTemplate = "/approveAdj")]
-        bool approveAdj(string adjId);
+        bool approveAdj(string adjId, string ApprovedBy);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                         RequestFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.WrappedRequest,
                                            UriTemplate = "/rejectAdj")]
-        bool rejectAdj(string adjId);
+        bool rejectAdj(string adjId, string ApprovedBy);
     }
 }

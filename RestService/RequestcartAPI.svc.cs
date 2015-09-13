@@ -48,7 +48,7 @@ namespace RestService
             }
         }
 
-        public List<CartItems> getItems(string EmpID)
+        public List<RequestCart> getItems(string EmpID)
         {
             BusinessLogic.RequestCartController BL = new BusinessLogic.RequestCartController();
             return BL.getItems(EmpID);

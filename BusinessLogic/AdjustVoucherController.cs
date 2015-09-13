@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Data.Entity;
 
 namespace BusinessLogic
 {
@@ -38,7 +39,15 @@ namespace BusinessLogic
             else if(startDate == null && endDate == null)
             {
                 adjustlist = (from x in ctx.AdjustmentVoucher
-                              where x.Date == Convert.ToDateTime(startDate).Date && x.Date == Convert.ToDateTime(endDate).Date
+                              where x.AdjID == adjId
+                              select x).ToList();
+            }
+            else if (adjId == null&& startDate != null && endDate != null)
+            {
+                System.DateTime startDatetime = Convert.ToDateTime(startDate).Date;
+                System.DateTime endDatetime = Convert.ToDateTime(endDate).Date;
+                adjustlist = (from x in ctx.AdjustmentVoucher
+                              where x.Date >= startDatetime && x.Date <= endDatetime
                               select x).ToList();
             }
             else
@@ -107,7 +116,7 @@ namespace BusinessLogic
         /// <summary>
         /// CreateVoucherAdj
         /// </summary>
-        /// <param name="adj">AdjustVoucher Object</param>
+        /// <param name="adj">AdjustVoucher Object (ReportedBy, Status)</param>
         /// <returns>True or False</returns>
         public bool createVoucherAdj(AdjustmentVoucher adj)
         {
@@ -116,6 +125,7 @@ namespace BusinessLogic
 
             string newID = getAdjVoucherId();
             adj.AdjID = newID;
+            adj.Date = DateTime.Now;
             ctx.AdjustmentVoucher.Add(adj);
 
             try
@@ -140,9 +150,8 @@ namespace BusinessLogic
             bool result = true;
             double totAmt = 0.0;
 
-            AdjustmentVoucher adj = ctx.AdjustmentVoucher.Last();
+            AdjustmentVoucher adj = ctx.AdjustmentVoucher.ToList().Last();
 
-            AdjustmentDetail adjVoucherDetail = new AdjustmentDetail();
             foreach (AdjustmentDetail adjVoucher in adjDetail)
             {
                 Supplier s = ctx.Supplier.Where(x => x.Rank == 1).FirstOrDefault();
@@ -167,6 +176,13 @@ namespace BusinessLogic
                 result = false;
             }
 
+            if (result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(7, Convert.ToInt32(adj.ReportedBy), adj.AdjID);
+            }
+
             return result;
         }
 
@@ -175,7 +191,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="AdjID">AdjustmentVoucher ID</param>
         /// <returns>true or false</returns>
-        public bool approveAdj(string AdjID)
+        public bool approveAdj(string AdjID, string ApprovedBy)
         {
             bool result = true;
 
@@ -184,6 +200,7 @@ namespace BusinessLogic
                           where x.AdjID == AdjID
                           select x).First();
             adjvoucher.Status = "APPROVED";
+            adjvoucher.ApprovedBy = Convert.ToInt32(ApprovedBy);
             
             List<AdjustmentDetail> adjDetailList = (from l in ctx.AdjustmentDetail
                         where l.AdjID == AdjID
@@ -221,6 +238,13 @@ namespace BusinessLogic
                 result = false;
             }
 
+            if (result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(8, Convert.ToInt32(adjvoucher.ReportedBy), adjvoucher.AdjID);
+            }
+
             return result;
 
         }
@@ -230,7 +254,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="AdjID">AdjustmentVoucher ID</param>
         /// <returns>true or false</returns>
-        public bool rejectAdj(string AdjID)
+        public bool rejectAdj(string AdjID, string ApprovedBy)
         {
             bool result = true;
 
@@ -239,6 +263,7 @@ namespace BusinessLogic
                             where x.AdjID == AdjID
                             select x).First();
             adjvoucher.Status = "REJECT";
+            adjvoucher.ApprovedBy = Convert.ToInt32(ApprovedBy);
 
             try
             {
@@ -247,6 +272,13 @@ namespace BusinessLogic
             catch
             {
                 result = false;
+            }
+
+            if (result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(9, Convert.ToInt32(adjvoucher.ReportedBy), adjvoucher.AdjID);
             }
 
             return result;

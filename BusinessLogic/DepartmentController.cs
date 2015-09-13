@@ -54,6 +54,15 @@ namespace BusinessLogic
             dept.DeptName = d.DeptName;
             dept.DeptHead = d.DeptHead;
             dept.DeptRep = d.DeptRep;
+
+            Employee deptRepOld = ctx.Employee.Where(x => x.RoleID == "DR").FirstOrDefault();
+            if(deptRepOld.EmpID != d.DeptRep)
+            {
+                deptRepOld.RoleID = "EM";
+                Employee deptRepNew = ctx.Employee.Where(x => x.EmpID == d.DeptRep).FirstOrDefault();
+                deptRepNew.RoleID = "DR";
+            }
+
             try
             {
                 ctx.SaveChanges();
@@ -62,7 +71,23 @@ namespace BusinessLogic
             {
                 result = false;
             }
-            
+
+            //send notification to alert changes:
+            if (result == true)
+            {
+                Department dpt = ctx.Department.Where(x => x.DeptID == d.DeptID).FirstOrDefault();
+                if(d.DeptRep != dpt.DeptRep)
+                {
+                    NotificationController nt = new NotificationController();
+                    nt.sendNotification(12, Convert.ToInt32(dpt.DeptRep), dpt.DeptID);
+                }
+                if (d.CollectionPoint != dpt.CollectionPoint)
+                {
+                    NotificationController nt = new NotificationController();
+                    nt.sendNotification(13, Convert.ToInt32(dpt.DeptRep), dpt.DeptID);
+                }
+            }
+
             return result;
         }
 

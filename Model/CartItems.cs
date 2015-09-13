@@ -28,9 +28,7 @@ namespace Model
         [DataMember]
         public int CartItemID { get; set; }
     
-        
         public Employee Employee { get; set; }
-        
         public Item Item { get; set; }
     
         public TrackingState TrackingState { get; set; }

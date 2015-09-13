@@ -77,6 +77,16 @@ namespace BusinessLogic
             if (count > 0)
                 result = RetID;
 
+            if(result == RetID)
+            {
+                foreach (ProcessRetrieval processRet in processRetList)
+                {
+                    //send notification:
+                    NotificationController nt = new NotificationController();
+                    nt.sendNotification(4, empID, Convert.ToString(processRet.ReqID));
+                }
+            }
+
             return result;
         }
 
@@ -293,6 +303,68 @@ namespace BusinessLogic
             catch
             {
                 result = false;
+            }
+
+            //send notifications to relevant requisitions:
+            if (result == true)
+            {
+                foreach (RequisitionDetail reqDetail in reqDetailList)
+                {
+                    //send notification to alert low inventory
+                    bool checkedItemAlr = false;
+                    List<String> itemCodeChecked = new List<String>();
+                    if (itemCodeChecked.Count > 0)
+                    {
+                        for (int i = 0; i < itemCodeChecked.Count; i++)
+                        {
+                            if (reqDetail.ItemID == itemCodeChecked[i])
+                            {
+                                checkedItemAlr = true;
+                            }
+                        }
+                    }
+                    if (checkedItemAlr == false)
+                    {
+                        Item i = ctx.Item.Where(x => x.ItemID == reqDetail.ItemID).FirstOrDefault();
+                        if (i.Stock < i.RoLvl)
+                        {
+                            NotificationController nt = new NotificationController();
+                            nt.sendNotification(14, 0, i.ItemID);
+                        }
+                    }
+
+                    //send notification to req owners to notify change in status
+                    bool checkedReqIdAlr = false;
+                    List<int> reqIdChecked = new List<int>();
+                    if (reqIdChecked.Count > 0) {
+                        for (int i = 0; i < reqIdChecked.Count; i++)
+                        {
+                            if(Convert.ToInt32(reqDetail.ReqID) == reqIdChecked[i])
+                            {
+                                checkedReqIdAlr = true;
+                            }
+                        }
+                    }
+                    if(checkedReqIdAlr == false)
+                    {
+                        reqIdChecked.Add(Convert.ToInt32(reqDetail.ReqID));
+                        List<RequisitionDetail> reqItems = ctx.RequisitionDetail.Where(x => x.ReqID == reqDetail.ReqID).ToList();
+                        bool unfulfilledItemsFound = false;
+                        foreach (RequisitionDetail item in reqItems)
+                        {
+                            if (item.RequestQty < item.IssueQty)
+                            {
+                                unfulfilledItemsFound = true;
+                            }
+                        }
+                        if (unfulfilledItemsFound == true)
+                        {
+                            //send notification:
+                            NotificationController nt = new NotificationController();
+                            nt.sendNotification(10, 0, Convert.ToString(reqDetail.ReqID));
+                        }
+                    }
+                }
             }
 
             return result;

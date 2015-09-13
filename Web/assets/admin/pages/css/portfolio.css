@@ -25,7 +25,7 @@ Portfolio
 .mix-filter li:hover,
 .mix-filter li.active {
   color: #fff;
-  background: #0da3e2;
+  background: #3b9c96;
 }
 
 .mix-grid .mix {
@@ -53,7 +53,7 @@ Portfolio
   bottom: -100%;
   text-align: center;
   position: absolute;
-  background: #0da3e2;
+  background: #3b9c96;
   transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;

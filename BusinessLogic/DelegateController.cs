@@ -29,14 +29,20 @@ namespace BusinessLogic
         public bool createDelegate(string EmpID, string DeptID, string StartDate, string EndDate, string Status)
         {
             bool result = true;
+
+            int empID = Convert.ToInt32(EmpID);
+
             Model.Delegate dele = new Model.Delegate();
-            dele.EmpID = Convert.ToInt32(EmpID);
+            dele.EmpID = empID;
             dele.DeptID = DeptID;
             dele.StartDate = Convert.ToDateTime(StartDate);
             dele.EndDate = Convert.ToDateTime(EndDate);
             dele.Status = Status;
-
             ctx.Delegate.Add(dele);
+
+            Model.Employee emp = ctx.Employee.Where(x => x.EmpID == empID).FirstOrDefault();
+            emp.RoleID = "DD";
+
             try
             {
                 ctx.SaveChanges();
@@ -51,22 +57,23 @@ namespace BusinessLogic
         /// <summary>
         /// delete Delegate
         /// </summary>
-        /// <param name="EmpName"></param>
-        public bool deleteDelegate(string EmpName)
+        /// <param name="DelegateSN"></param>
+        public bool deleteDelegate(string DelegateSN)
         {
             bool result = true;
+           
+            int delegateSN = Convert.ToInt32(DelegateSN);
 
-            Model.Employee emp = new Model.Employee();
-            Model.Delegate dele = new Model.Delegate();
-
-            emp = (from c in ctx.Employee
-                   where c.EmpName == EmpName
-                   select c).First();
-
-            dele = (from c in ctx.Delegate
-                    where c.EmpID == emp.EmpID
-                    select c).First();
+            Model.Delegate dele = ctx.Delegate.Where(x => x.DelegateSN == delegateSN).FirstOrDefault();
+            int empid = (int)dele.EmpID;
             ctx.Delegate.Remove(dele);
+            
+            Model.Employee emp = (from c in ctx.Employee
+                                  where c.EmpID == empid
+                                  select c).First();
+
+            emp.RoleID = "EM";
+
             try
             {
                 ctx.SaveChanges();

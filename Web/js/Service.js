@@ -1,4 +1,4 @@
-﻿var baseurl = "http://www.team5.com/api";
+﻿var baseurl = "http://www.team5.com/api/";
 
 var BaseServices = angular.module("BaseServices", []);
 
@@ -6,6 +6,20 @@ BaseServices.service("BaseService", ["$http", "$q", service]);
 
 
 function service($http, $q) {
+
+    //get employee by EmpID
+    this.getEmployee = function (EmpID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "employeeAPI.svc/getemployeebyId/" + EmpID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
 
     ////// EMPLOYEE //////
 
@@ -15,7 +29,7 @@ function service($http, $q) {
     //Search requisition by status (status) 
     this.getRequisitionList = function (status, ReqID, EmpID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "/requisitionAPI.svc/getRequisition/"+ status +"/"+ ReqID +"/" + EmpID)
+        $http.get(baseurl + "requisitionAPI.svc/getRequisition/"+ status +"/"+ ReqID +"/" + EmpID)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -27,7 +41,19 @@ function service($http, $q) {
     //load requisition status for combobox binding
     this.getRequisitionStatus = function () {
         var deferred = $q.defer();
-        $http.get(baseurl + "/requisitionAPI.svc/getStatus")
+        $http.get(baseurl + "requisitionAPI.svc/getStatus")
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //load requisition by ReqID
+    this.getRequisitionByReqID = function (ReqIDid) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "requisitionAPI.svc/getRequisitionByReqID/" + ReqIDid)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -63,6 +89,44 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+    //Get priority name by priority ID
+    this.getPriorityName = function (PriorityID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "requisitionAPI.svc/getPriorityName/" + PriorityID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //load items to restock
+    this.getItemsToReorder = function (ReqID, EmpID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "requisitionAPI.svc/getItemsToReorder/" + ReqID + "/" + EmpID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //confirm reorder //POST
+    this.confirmReorder = function (msg) {
+        console.log(msg);
+        var deferred = $q.defer();
+
+        $http.post(baseurl + "requisitionAPI.svc/confirmReorder", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 
 
     //requestCart.html
@@ -80,7 +144,9 @@ function service($http, $q) {
     }
     //remove item from request cart //POST
     this.removeRequestCart = function (msg) {
+        console.log(msg);
         var deferred = $q.defer();
+
         $http.post(baseurl + "requestcartAPI.svc/deleteItem", msg)
             .success(function (data) {
                 deferred.resolve(data)
@@ -105,7 +171,7 @@ function service($http, $q) {
     //create requisition //POST
     this.createRequisition = function (msg) {
         var deferred = $q.defer();
-        $http.post(baseurl + "requestcartAPI.svc/createRequisition", msg)
+        $http.post(baseurl + "requisitionAPI.svc/createRequisition", msg)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -165,12 +231,24 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+    //search by itemName && OR Category
+    this.searchItem = function (ItemCatID, ItemName) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "catalogAPI.svc/searchItem/" + ItemCatID + "/" +ItemName)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 
 
     //department.html
     //load department (one) page
     this.getDepartment = function (DeptID) {
-        var deferred = $q.defer();
+        var deferred = $q.defer(); 
         $http.get(baseurl + "departmentAPI.svc/getDeptByID/" + DeptID)
             .success(function (data) {
                 deferred.resolve(data)
@@ -183,7 +261,7 @@ function service($http, $q) {
     //Edit department //POST
     this.updateDepartment = function (msg) {
         var deferred = $q.defer();
-        $http.post(baseurl + "departmentAPI.svc/updateDept/", msg)
+        $http.post(baseurl + "departmentAPI.svc/updateDept", msg)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -214,7 +292,7 @@ function service($http, $q) {
     //load disbursement by Dept for ER (DeptID)
     //search disbursement by DisbID OR load disbursementDetail.html (DisID)
     //search disbursement by date range (startdate, enddate)
-    this.getDisbursementListByDept = function (DeptID, CPID, DisID, startdate, enddate) {
+    this.getDisbursementList = function (DeptID, CPID, DisID, startdate, enddate) {
         var deferred = $q.defer();
         $http.get(baseurl + "disbursementAPI.svc/getDisbursement/" + DeptID + "/"+ CPID +"/"+ DisID +"/" + startdate + "/" + enddate)
             .success(function (data) {
@@ -444,7 +522,7 @@ function service($http, $q) {
     //load retrieval list by store clerk (EmpID)
     //search retrieval list by status (status)
     //search retrieval list by RetID (RetID)
-    this.getRetrievalListBySC = function (EmpID, status) {
+    this.getRetrievalListBySC = function (EmpID, status, RetID) {
         var deferred = $q.defer();
         $http.get(baseurl + "retrievalAPI.svc/getRetrieval/" + EmpID + "/" + status + "/" + RetID)
             .success(function (data) {
@@ -928,6 +1006,32 @@ function service($http, $q) {
     }
 
 
+    //load itemPrice info
+    this.getItemPrice = function (ItemID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "inventoryAPI.svc/getItemPrice/" + ItemID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
+    //Edit Supplier.html
+    //load supplier info by SupplierID
+    this.getBySupplierID = function (supplierid) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "supplierAPI.svc/getBySupplierID/" + supplierid)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 
 }
 
