@@ -11,7 +11,7 @@ function logincontroller($scope, $http, md5) {
             EmpID: $scope.empID,
             Password:""
         }
-        msg.password = md5.createHash($scope.password);
+        msg.Password = md5.createHash($scope.password);
         
         jsonmsg = angular.toJson(msg);
         console.log(jsonmsg);
