@@ -39,6 +39,11 @@
                 alert(data);
             }
             )
+        if ($scope.RequisitionData.StatusID == 1) {
+            $scope.cancelbtn = true;
+        } else {
+            $scope.cancelbtn = false;
+        }
         BaseService.getRequisitionDetailList(reqid)
             .then(function (data) {
                 //console.log(data);
@@ -59,9 +64,17 @@
                 alert(data);
             }
             )
+        $scope.reorderbtn = false;
+        $.each(function (index, value) {
+            if (value.RequestQty != value.IssueQty && $scope.RequisitionData.StatusID==4) {
+                $scope.reorderbtn = true;
+            }
+        })
         $scope.back = function () {
             location.href = "#/requisition";
         }
+        $scope.Cancel = function () {
 
+        }
     }
 })
