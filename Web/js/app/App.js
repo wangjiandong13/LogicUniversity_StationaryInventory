@@ -10,21 +10,36 @@
             RequestCart: "",
             Disbursement: "",
             Approval: "",
-            RequistionSC: "",
+            RequisitionSC: "",
             Adjustment: "",
             DepartmentSC: "",
             DisbursementSC: "",
             Inventory: "",
             PurchaseOrder: "",
             Retrieval: "",
-            StockCard: "",
             SupplierSC: "",
-            Suppler: ""
+            Supplier: "",
+
+            ifRequistion: "",
+            ifCatalog: "",
+            ifDepartment: "",
+            ifRequestCart: "",
+            ifDisbursement: "",
+            ifApproval: "",
+            ifRequisitionSC: "",
+            ifAdjustment: "",
+            ifDepartmentSC: "",
+            ifDisbursementSC: "",
+            ifInventory: "",
+            ifPurchaseOrder: "",
+            ifRetrieval: "",
+            ifSupplierSC: "",
+            ifSupplier: ""
         };
         $rootScope.UserInfo = {
             EmpId: aaa,
-            DeptId:aa,
-            RoleId:aa,
+            DeptId: aa,
+            RoleId: aa,
         }
         $rootScope.side = {
             Requistion: false,
@@ -34,16 +49,15 @@
             Disbursement: false,
             Approval: false,
             Delegate: false,
-            RequistionSC: false,
+            RequisitionSC: false,
             Adjustment: false,
             DepartmentSC: false,
             DisbursementSC: false,
             Inventory: false,
             PurchaseOrder: false,
             Retrieval: false,
-            StockCard: false,
             SupplierSC: false,
-            Suppler: false,
+            Supplier: false,
             Analytics: false
 
         }
@@ -77,7 +91,7 @@
             $rootScope.side.Delegate = true;
         }
         if ($rootScope.UserInfo.RoleId == "SC") {
-            $rootScope.side.RequistionSC = true;
+            $rootScope.side.RequisitionSC = true;
             $rootScope.side.Retrieval = true;
             $rootScope.side.DisbursementSC = true;
             $rootScope.side.Adjustment = true;
@@ -87,17 +101,17 @@
             $rootScope.side.PurchaseOrder = true;
         }
         if ($rootScope.UserInfo.RoleId == "SMS") {
-            $rootScope.side.RequistionSC = true;
+            $rootScope.side.RequisitionSC = true;
             $rootScope.side.Retrieval = true;
             $rootScope.side.DisbursementSC = true;
             $rootScope.side.Adjustment = true;
             $rootScope.side.DepartmentSC = true;
-            $rootScope.side.Suppler = true;
+            $rootScope.side.Supplier = true;
             $rootScope.side.Inventory = true;
             $rootScope.side.PurchaseOrder = true;
             $rootScope.side.Analytics = true;
         }
-        
+
     }
     app.config(
     [

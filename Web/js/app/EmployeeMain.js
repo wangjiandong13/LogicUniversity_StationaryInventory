@@ -18,7 +18,7 @@
             deps: ['angular']
         },
         'EmployeeMain': {
-            depos: ['jQuery']
+            deps: ['jQuery']
         }
     }
 });
