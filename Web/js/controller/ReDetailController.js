@@ -46,10 +46,10 @@
         //}
         BaseService.getRequisitionDetailList(reqid)
             .then(function (data) {
-                //console.log(data);
+                console.log(data);
                 $scope.RequisitionDetailLists = data;
                 $.each($scope.RequisitionDetailLists, function (index, value) {
-                    //console.log(value.ItemID);
+                    console.log(value.ItemID);
                     myBaseService.getItemDetail(value.ItemID)
                         .then(function (data) {
                             value.Description = data.ItemName;
