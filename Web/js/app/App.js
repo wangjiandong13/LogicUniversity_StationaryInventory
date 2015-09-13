@@ -37,15 +37,15 @@
             ifSupplier: ""
         };
         $rootScope.UserInfo = {
-            //EmpId: $window.sessionStorage.EmpID,
-            //EmpName: $window.sessionStorage.EmpName,
-            //DeptId: $window.sessionStorage.DeptID,
-            //RoleId: $window.sessionStorage.RoleID
+            EmpId: $window.sessionStorage.EmpID,
+            EmpName: $window.sessionStorage.EmpName,
+            DeptId: $window.sessionStorage.DeptID,
+            RoleId: $window.sessionStorage.RoleID
             //, 
-            EmpId: "11233",
-            EmpName: "Jenny Wong Mei Lin",
-            DeptId: "REGR",
-            RoleId: "EM"
+            //EmpId: "11233",
+            //EmpName: "Jenny Wong Mei Lin",
+            //DeptId: "REGR",
+            //RoleId: "EM"
         }
         console.log($rootScope.UserInfo);
         $rootScope.side = {
