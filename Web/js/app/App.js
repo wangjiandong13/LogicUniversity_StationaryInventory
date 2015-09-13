@@ -37,10 +37,15 @@
             ifSupplier: ""
         };
         $rootScope.UserInfo = {
-            EmpId: $window.sessionStorage.EmpID,
-            EmpName: $window.sessionStorage.EmpName,
-            DeptId: $window.sessionStorage.DeptID,
-            RoleId: $window.sessionStorage.RoleID
+            //EmpId: $window.sessionStorage.EmpID,
+            //EmpName: $window.sessionStorage.EmpName,
+            //DeptId: $window.sessionStorage.DeptID,
+            //RoleId: $window.sessionStorage.RoleID
+            //, 
+            EmpId: "11233",
+            EmpName: "Jenny Wong Mei Lin",
+            DeptId: "REGR",
+            RoleId: "EM"
         }
         console.log($rootScope.UserInfo);
         $rootScope.side = {
@@ -112,6 +117,13 @@
             $rootScope.side.Inventory = true;
             $rootScope.side.PurchaseOrder = true;
             $rootScope.side.Analytics = true;
+        }
+        $rootScope.logout = function () {
+            $window.sessionStorage.removeItem("EmpID");
+            $window.sessionStorage.removeItem("EmpName");
+            $window.sessionStorage.removeItem("DeptID");
+            $window.sessionStorage.removeItem("RoleID");
+            location.href = "/";
         }
 
     }

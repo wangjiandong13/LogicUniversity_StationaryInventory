@@ -24,7 +24,7 @@
             var msg = [];
             $.each($rootScope.RequestCarts, function (index, value) {
                 var each = {
-                     EmpID: 11233,
+                    EmpID: $rootScope.UserInfo.EmpId,
                     ItemID: value.ItemID,
                     Qty: value.Qty
                 };
@@ -41,7 +41,7 @@
     }
     function RequestCartList($rootScope, $scope, BaseService) {
         //get EmpId from session
-        var EmpId = "11233";
+        var EmpId = $rootScope.UserInfo.EmpId;
         var selfBaseService = BaseService;
         console.log("enter requestCartListCtrls");
         BaseService.getRequestCart(EmpId)
