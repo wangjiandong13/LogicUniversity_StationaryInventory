@@ -46,7 +46,7 @@
                 alert(data);
             }
             )
-        
+        $scope.reorderbtn = false;
         BaseService.getRequisitionDetailList(reqid)
             .then(function (data) {
                 console.log(data);
@@ -69,10 +69,6 @@
                 alert(data);
             }
             )
-        $scope.reorderbtn = false;
-        $.each(function (index, value) {
-            
-        })
         $scope.back = function () {
             location.href = "#/requisition";
         }
@@ -80,6 +76,7 @@
             BaseService.getRequisitionCancel($scope.reqid)
                 .then(function (data) {
                     alert("success!");
+                    location.href = "#/requisition";
                 }, function (data) {
                     alert(data);
                 })
