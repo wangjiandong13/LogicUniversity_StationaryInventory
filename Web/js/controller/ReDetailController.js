@@ -4,13 +4,17 @@
     function ReDetailController($scope, $rootScope, $routeParams, BaseService) {
         var reqid = $routeParams.reqid;
         $scope.reqid = reqid;
-        $scope.RequisitionData.StatusID = 0;
         var myBaseService = BaseService;
         console.log($scope.reqid);
         BaseService.getRequisitionByReqID($scope.reqid)
             .then(function (data) {
                 console.log(data);
                 $scope.RequisitionData = data;
+                if ($scope.RequisitionData.StatusID == 1) {
+                    $scope.cancelbtn = true;
+                } else {
+                    $scope.cancelbtn = false;
+                }
                 myBaseService.getEmployee(data.EmpID)
                        .then(function (data) {
                            //console.log("getEmployee");
@@ -42,17 +46,16 @@
                 alert(data);
             }
             )
-        if ($scope.RequisitionData.StatusID == 1) {
-            $scope.cancelbtn = true;
-        } else {
-            $scope.cancelbtn = false;
-        }
+        
         BaseService.getRequisitionDetailList(reqid)
             .then(function (data) {
                 console.log(data);
                 $scope.RequisitionDetailLists = data;
                 $.each($scope.RequisitionDetailLists, function (index, value) {
                     console.log(value.ItemID);
+                    if (value.RequestQty != value.IssueQty && $scope.RequisitionData.StatusID == 4) {
+                        $scope.reorderbtn = true;
+                    }
                     myBaseService.getItemDetail(value.ItemID)
                         .then(function (data) {
                             value.Description = data.ItemName;
@@ -68,9 +71,7 @@
             )
         $scope.reorderbtn = false;
         $.each(function (index, value) {
-            if (value.RequestQty != value.IssueQty && $scope.RequisitionData.StatusID==4) {
-                $scope.reorderbtn = true;
-            }
+            
         })
         $scope.back = function () {
             location.href = "#/requisition";
