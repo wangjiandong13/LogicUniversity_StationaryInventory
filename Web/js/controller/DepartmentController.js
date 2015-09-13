@@ -16,7 +16,7 @@
             ifRequestCart: false
         };
         var selfBaseService = BaseService;
-        if ($rootScope.roleid == "EM") {
+        if ($rootScope.UserInfo.RoleId == "EM") {
             //cannot edit hide button
             $scope.setting = {
                 textbox: true,
@@ -26,7 +26,7 @@
                 map: true
             };
         }
-        if ($rootScope.roleid == "DR") {
+        if ($rootScope.UserInfo.RoleId == "DR") {
             //cannot edit hide button
             $scope.setting = {
                 textbox: true,
@@ -36,7 +36,7 @@
                 map: true
             };
         }
-        if ($rootScope.roleid == "DH" || $rootScope.UserInfo.RoleId == "DD") {
+        if ($rootScope.UserInfo.RoleId == "DH" || $rootScope.UserInfo.RoleId == "DD") {
             $scope.setting = {
                 textbox: true,
                 btnSave: false,
