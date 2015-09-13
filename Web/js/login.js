@@ -6,6 +6,7 @@ function logincontroller($scope, $http, md5) {
     $scope.password = "";
     $scope.message = false;
     $scope.loginclick = function () {
+        $scope.message = false;
         if ($scope.empID!=""&&$scope.password!=""){
         var msg = {
             EmpID: $scope.empID,
@@ -17,10 +18,11 @@ function logincontroller($scope, $http, md5) {
         console.log(jsonmsg);
         $http.post("http://www.team5.com/API/employeeAPI.svc/login", jsonmsg)
             .success(function (data) {
+                alert("sucess!")
                 console.log(data);
             })
             .error(function () {
-                console.log('There was an error');
+                $scope.loginerrormessage = false;
             })
         }
         else {
