@@ -137,7 +137,7 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
-                        emailcontrol.SendMailToEmp(notif.EmpID.ToString(),"APPROVED");
+                        //emailcontrol.SendMailToEmp(notif.EmpID.ToString(),"APPROVED");
                         break;
                     }
                 //Requisition Rejected
@@ -150,7 +150,7 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
-                        emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "REJECTED");
+                        //emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "REJECTED");
                         break;
                     }
                 //Processing Requisition
@@ -175,7 +175,7 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
-                        emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "PROCESSED");
+                        //emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "PROCESSED");
                         break;
                     }
                 //Requisition Disbursed
@@ -188,7 +188,7 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
-                        emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "COLLECTED");
+                        //emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "COLLECTED");
                         break;
                     }
                 //New Pending Adjustment Voucher
