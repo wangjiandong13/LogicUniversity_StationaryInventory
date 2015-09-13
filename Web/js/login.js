@@ -22,7 +22,7 @@ function logincontroller($scope, $http, md5) {
                 console.log(data);
             })
             .error(function () {
-                $scope.loginerrormessage = false;
+                $scope.loginerrormessage = true;
             })
         }
         else {
