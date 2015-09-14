@@ -23,7 +23,7 @@
                     <div class="col-md-1">
                         <label>Department:</label>
                     </div>
-                    <div class="col-md-3" ng-controller="SelectoptionControllersDept">
+                    <div class="col-md-3">
                         <select class="form-control"
                                 name="deptselect" id="deptselect"
                                 ng-options="option.DeptName for option in optiondataDept.availableOptions track by option.DeptID"
@@ -32,7 +32,7 @@
                     <div class="col-md-1">
                         <label>Collection:</label>
                     </div>
-                    <div class="col-md-3" ng-controller="SelectoptionControllersCPID">
+                    <div class="col-md-3">
                         <select class="form-control"
                                 name="CPselect" id="CPselect"
                                 ng-options="option.CPName for option in optiondataCPID.availableOptions track by option.CPID"
