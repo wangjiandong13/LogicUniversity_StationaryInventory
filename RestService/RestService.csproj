@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdjustvoucherAPI.svc" />
+    <Content Include="AnalyticsAPI.svc" />
     <Content Include="CatalogAPI.svc" />
     <Content Include="CollectionAPI.svc" />
     <Content Include="DelegateAPI.svc" />
@@ -90,6 +91,9 @@
   <ItemGroup>
     <Compile Include="AdjustvoucherAPI.svc.cs">
       <DependentUpon>AdjustvoucherAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AnalyticsAPI.svc.cs">
+      <DependentUpon>AnalyticsAPI.svc</DependentUpon>
     </Compile>
     <Compile Include="CatalogAPI.svc.cs">
       <DependentUpon>CatalogAPI.svc</DependentUpon>
@@ -110,6 +114,7 @@
       <DependentUpon>EmployeeAPI.svc</DependentUpon>
     </Compile>
     <Compile Include="IAdjustvoucherAPI.cs" />
+    <Compile Include="IAnalyticsAPI.cs" />
     <Compile Include="ICatalogAPI.cs" />
     <Compile Include="ICollectionAPI.cs" />
     <Compile Include="IDelegateAPI.cs" />

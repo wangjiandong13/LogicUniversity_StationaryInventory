@@ -5,19 +5,9 @@
     function RequestCartControllers($rootScope, $scope,BaseService) {
         var selfBaseService = BaseService;
         //set mean highlight
-        $rootScope.mean = {
-            Requistion: " ",
-            Catalog: " ",
-            Department: " ",
-            RequestCart: "active",
-            ifRequistion: false,
-            ifCatalog: false,
-            ifDepartment: false,
-            ifRequestCart:true
-        };
-        $('#create-switch').wrap('<div class="switch" />').parent().bootstrapSwitch();
-        $("[name='my-checkbox']").bootstrapSwitch();
-        console.log("enter  RequestCartControllers")
+        $rootScope.changehighlight(1);
+        $('#create-switch').bootstrapSwitch();
+        console.log("enter RequestCartControllers")
         $scope.back = function () {
             location.href = '#/requisition';
         }
@@ -33,12 +23,21 @@
                 };
                 msg.push(each);
             });
+            var req_id="";
             console.log(angular.toJson(msg));
             selfBaseService.createRequisition(angular.toJson(msg))
                 .then(function (data) {
-                    location.href = '#/requisition';
+                    req_id=data;
                 }, function (data) {
                     alert(data);
+                })
+            var priority = 2;
+            if ($scope.PRIORITY) { priority = 1 }
+            
+            selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
+                .then(function (data) {
+                    alert("success!");
+                    location.href = '#/requisition';
                 })
         }
     }
