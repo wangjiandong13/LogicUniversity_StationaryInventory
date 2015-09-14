@@ -73,6 +73,7 @@
                 })
         }
         $scope.approve = function () {
+            console.log("enter approve");
             BaseService.approveRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $rootScope.RequisitionData.Remark)
                 .then(function (data) {
                     alert("success!");
