@@ -9,15 +9,17 @@
             .then(function (data) {
                 console.log(data);
                 $scope.Delegates = data;
-                if (data.EmpID != null) {
-                    MyBaseService.getEmployee(data.EmpID)
-                        .then(function (data) {
-                            $scope.Delegates.EmpName = data.EmpName;
-                        }
-                        )
-                }
+                $.each(data, function (index, value) {
+                    if (value.EmpID != null) {
+                        MyBaseService.getEmployee(value.EmpID)
+                            .then(function (data) {
+                                value.EmpName = data.EmpName;
+                            }
+                            )
+                    }
+                })
             })
-        $scope.Delegate = function (delegagte) {
+        $scope.delectDelegate = function (delegagte) {
             BaseService.removeDelegate(delegagte.DelegateSN)
                 .then(function (data) {
                     alert("Success Delect!");
