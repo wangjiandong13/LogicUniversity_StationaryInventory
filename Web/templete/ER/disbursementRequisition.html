@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="DisbReqControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -21,34 +21,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
-                    <h1>Requisition</h1>
+                    <h1>Requisition List</h1>
                 </div>
                 <div class="col-md-12">
                     <hr>
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-2" style="top:50%">
-                        <label>Employee:</label>
-                    </div>
-                    <div class="col-md-4">
-
-                        <select class="form-control">
-                            <option>Employee 1</option>
-                            <option>Employee 2</option>
-                            <option>Employee 3</option>
-                            <option>Employee 4</option>
-                            <option>Employee 5</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn yellow">
-                            <span class="glyphicon glyphicon-search"></span> Search
-                        </button>
-                    </div>
-                    <div class="col-md-2">
-                    </div>
                 </div>
                 <div class="col-md-12">
                     <hr>
@@ -65,19 +41,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>0023</td>
-                                    <td>23 August 2015</td>
-                                    <td>Mary Loh Xin Hui</td>
-                                </tr>
-                                <tr>
-                                    <td>0022</td>
-                                    <td>22 August 2015</td>
-                                    <td>Jermyn Tee Han Xian</td>
-                                </tr>
-                                <tr>
-                                    <td>0021</td>
-                                    <td>21 August 2015</td>
-                                    <td>Jenny Wong Mei Lin</td>
+                                    <td>{{DisbReq.ReqID}}</td>
+                                    <td>{{DisbReq.Date|datechange|date : 'dd MMM yyyy'}}</td>
+                                    <td>{{DisbReq.EmpName}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -86,7 +52,7 @@
                 <br>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="button" class="btn default"><i class="fa fa-arrow-left"></i> Back</button>
+                    <button type="button" class="btn default"><i class="fa fa-arrow-left" ng-click="back()"></i> Back</button>
                     <hr>
                 </div>
             </div>
