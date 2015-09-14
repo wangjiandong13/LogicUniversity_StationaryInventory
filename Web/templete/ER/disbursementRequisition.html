@@ -40,10 +40,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>{{DisbReq.ReqID}}</td>
-                                    <td>{{DisbReq.Date|datechange|date : 'dd MMM yyyy'}}</td>
-                                    <td>{{DisbReq.EmpName}}</td>
+                                <tr ng-repeat="dr in DisbReq"  ng-click="reqdetail(dr)">
+                                    <td>{{dr.ReqID}}</td>
+                                    <td>{{dr.Date|datechange|date : 'dd MMM yyyy'}}</td>
+                                    <td>{{dr.EmpName}}</td>
                                 </tr>
                             </tbody>
                         </table>

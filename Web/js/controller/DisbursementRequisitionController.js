@@ -26,6 +26,11 @@
                 alert(data);
             }
         )
+
+        $scope.reqdetail = function (dr) {
+            location.href = "#/requisitionDetail/" + dr.ReqID;
+        };
+
         $scope.back = function (Disbursement) {
             location.href = "#/disbursementDetail/" + Disbursement.DisID;
         };

@@ -5,6 +5,9 @@ appfilter.filter('CPIDchange', CPIDchange);
 
 function datefilter() {
     return function (input) {
+        if (input == "") {
+            return "";
+        }
         return input.substr(6, 13);
     };
 }
