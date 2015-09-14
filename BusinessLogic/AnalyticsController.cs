@@ -98,7 +98,7 @@ namespace BusinessLogic
                 nc.sendNotification(15, 0, Convert.ToString(reportGenerated.ReportID));
 
                 //return report results
-                results = generateExistingReport(reportGenerated.ReportID);
+                results = generateExistingReport(reportGenerated.ReportID.ToString());
             }
 
             return results;
@@ -109,8 +109,9 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="reportID">Int reportID </param>
         /// <returns>ReportModel object</returns>
-        public ReportModel generateExistingReport(int reportID)
+        public ReportModel generateExistingReport(string id)
         {
+            int reportID = Int32.Parse(id);
             //get report settings from db
             Report rp = ctx.Report.Where(x => x.ReportID == reportID).FirstOrDefault();
 
