@@ -43,7 +43,7 @@ function CPIDchange() {
             return "LogicU Medical School (9:30am)";
         }
         if (input == 4) {
-            return "Datepicker for Bootstrap ";
+            return "LogicU Engineering School (11:00am)";
         }
         if (input == 5) {
             return "LogicU Science School (9:30am)";
