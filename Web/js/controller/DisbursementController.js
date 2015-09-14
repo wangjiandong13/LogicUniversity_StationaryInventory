@@ -32,7 +32,7 @@
         }
     }
     function DisbursementList($rootScope, $scope, BaseService) {
-        BaseService.getDisbursementList("null", "null", $rootScope.UserInfo.EmpId)
+        BaseService.getDisbursementList($rootScope.UserInfo.DeptId, "null", "null", "null", "null")
             .then(function (data) {
                 console.log(data);
                 $rootScope.Disbursements = data;
@@ -40,8 +40,8 @@
                 alert(data);
             }
         )
-        $scope.requisitiondetail = function (Requisition) {
-            location.href = "#/requisitionDetail/" + Requisition.ReqID;
+        $scope.disbursementdetail = function (Disbursement) {
+            location.href = "#/disbursementDetail/" + Disbursement.DisID;
         };
     }
 });
