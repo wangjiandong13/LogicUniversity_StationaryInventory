@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="inventoryListCtrl">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <br>
-                    <button type="button" class="btn btn-success">
+                    <button type="button" class="btn btn-success" ng-click="new()">
                         <span class="glyphicon glyphicon-plus"></span> New
                     </button>
                 </div>
@@ -35,20 +35,15 @@
                         <label>Category:</label>
                     </div>
                     <div class="col-md-3">
-
-                        <select class="form-control">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                        </select>
+                        <select class="form-control"
+                                ng-options="option.ItemDescription for option in CategorySelectData.availableOptions track by option.ItemCatID"
+                                ng-model="CategorySelectData.selectedOption"></select>
                     </div>
                     <div class="col-md-4">
                         <input type="text" class="form-control" placeholder="Enter Item Name">
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn yellow">
+                        <button type="button" class="btn btn yellow" ng-click="search()">
                             <span class="glyphicon glyphicon-search"></span> Search
                         </button>
                     </div>
@@ -65,46 +60,16 @@
                     <br>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-3" style="text-align: center">
+                    <div class="col-md-12" ng-controller="inventoryListDataCtrl">
+                        <div class="col-md-3" style="text-align: center" ng-repeat="item in inventoryListdata">
                             <img id="img_item1" style="height:100px; width:100px" src="assets/admin/layout/img/clips.JPG">
                             <br>
-                            <label id="lbl_C002">Clips Double 1"</label>
+                            <label id="lbl_C002">{{item.ItemName}}</label>
                             <label>(
-                                <label id="lbl_C002code">C002</label>)</label>
+                                <label id="lbl_C002code">{{item.ItemID}}</label>)</label>
                             <br>
-                            <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i></button>
-                            <button type="button" class="btn btn-primary"><i class="fa fa-folder-o"></i></button>
-                        </div>
-                        <div class="col-md-3" style="text-align: center">
-                            <img id="img_item1" style="height:100px; width:100px" src="assets/admin/layout/img/clips.JPG">
-                            <br>
-                            <label id="lbl_C002">Clips Double 1"</label>
-                            <label>(
-                                <label id="lbl_C002code">C002</label>)</label>
-                            <br>
-                            <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i></button>
-                            <button type="button" class="btn btn-primary"><i class="fa fa-folder-o"></i></button>
-                        </div>
-                        <div class="col-md-3" style="text-align: center">
-                            <img id="img_item1" style="height:100px; width:100px" src="assets/admin/layout/img/clips.JPG">
-                            <br>
-                            <label id="lbl_C002">Clips Double 1"</label>
-                            <label>(
-                                <label id="lbl_C002code">C002</label>)</label>
-                            <br>
-                            <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i></button>
-                            <button type="button" class="btn btn-primary"><i class="fa fa-folder-o"></i></button>
-                        </div>
-                        <div class="col-md-3" style="text-align: center">
-                            <img id="img_item1" style="height:100px; width:100px" src="assets/admin/layout/img/clips.JPG">
-                            <br>
-                            <label id="lbl_C002">Clips Double 1"</label>
-                            <label>(
-                                <label id="lbl_C002code">C002</label>)</label>
-                            <br>
-                            <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i></button>
-                            <button type="button" class="btn btn-primary"><i class="fa fa-folder-o"></i></button>
+                            <button type="button" class="btn btn-success" ng-click="edit()"><i class="fa fa-pencil"></i></button>
+                            <button type="button" class="btn btn-primary" ng-click="stockCard()"><i class="fa fa-folder-o"></i></button>
                         </div>
                     </div>
                 </div>
