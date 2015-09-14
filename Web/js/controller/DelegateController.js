@@ -7,6 +7,7 @@
         var MyBaseService = BaseService;
         BaseService.getDeptDelegate($rootScope.UserInfo.DeptID)
             .then(function (data) {
+                console.log(data);
                 $scope.Delegates = data;
                 if (data.EmpID != null) {
                     MyBaseService.getEmployee(data.EmpID)

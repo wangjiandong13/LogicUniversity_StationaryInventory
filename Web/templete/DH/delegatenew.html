@@ -29,7 +29,7 @@
                             <h4>Employee Name:</h4>
                         </td>
                         <td class="col-md-5">
-                            <select class="form-control" ng-disabled="setting.textbox"
+                            <select class="form-control" 
                                     ng-options="option.EmpName for option in employeelist.availableOptions track by option.EmpID"
                                     ng-model="optiondata.selectedOption"></select>
                         </td>
@@ -39,7 +39,7 @@
                             <h4>Duration:</h4>
                         </td>
                         <td class="col-md-5">
-                            <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="mm/dd/yyyy">
+                            <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
                                 <input type="text" class="form-control" id="datestartdata" >
                                 <span class="input-group-addon">
                                     to
@@ -53,11 +53,12 @@
                             <h4>Reason:</h4>
                         </td>
                         <td class="col-md-5">
-                            <select name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" multiple>
-                                <option value="option-1">Option 1</option>
-                                <option value="option-2">Option 2</option>
-                                <option value="option-3">Option 3</option>
-                            </select><br>
+                            <select ng-model="Reason" class="form-control">
+                                <option value="">---Please select your reason---</option>
+                                <option value="LEAVE/OFF">LEAVE/OFF</option> 
+                                <option value="MEDICAL LEAVE">MEDICAL LEAVE</option>
+                                <option value="OUT STATION">OUT STATION</option>
+                            </select>
                         </td>
                     </tr>
                 </table>
