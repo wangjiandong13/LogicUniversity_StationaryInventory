@@ -75,7 +75,11 @@
                         $.each(itemdata, function (index, ipvalue) {
                             console.log(ipvalue.SupplierID);
                             if (ipvalue.SupplierID == $scope.supplierID)
+                            {
+                                console.log($scope.inventoryListdata.Price);
                                 $scope.inventoryListdata.Price = ipvalue.Price;
+                            }
+                                
                         })
                         
                     })
