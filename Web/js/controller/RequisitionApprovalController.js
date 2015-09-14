@@ -67,7 +67,7 @@
             BaseService.rejectRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
                     alert("success!");
-                    location.href = "#/requisition";
+                    location.href = "#/Approval";
                 }, function (data) {
                     alert(data);
                 })
@@ -77,7 +77,7 @@
             BaseService.approveRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
                     alert("success!");
-                    location.href = "#/requisition";
+                    location.href = "#/Approval";
                 }, function (data) {
                     alert(data);
                 })
