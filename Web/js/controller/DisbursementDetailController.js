@@ -15,7 +15,8 @@
                        .then(function (Empdata) {
                            console.log("getEmployee");
                            console.log(Empdata);
-                           $scope.RequisitionData.DisbursedBy = Empdata.EmpName;
+                           console.log(Empdata.EmpName);
+                           $scope.RequisitionData.DisbursedByName = Empdata.EmpName;
                        })
                 console.log("++++++" + $scope.DisbursementData.ReceivedBy);
 
