@@ -4782,6 +4782,7 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
+    <Content Include="templete\ED\DHrequisition.html" />
     <Content Include="templete\EM\catalogTile.html" />
     <Content Include="templete\SC\supplierStoreClerk.html" />
     <Content Include="vendor\angular-google-maps.min.js" />
@@ -4802,11 +4803,8 @@
   <ItemGroup>
     <Content Include="templete\DH\delegate.html" />
     <Content Include="templete\DH\delegatenew.html" />
-    <Content Include="templete\DH\index.html" />
-    <Content Include="templete\ED\index.html" />
     <Content Include="templete\ED\requisitionApproval.html" />
     <Content Include="templete\EM\catalogList.html" />
-    <Content Include="templete\EM\catalogTile1.html" />
     <Content Include="templete\EM\department.html" />
     <Content Include="templete\index.html" />
     <Content Include="templete\EM\notification.html" />
@@ -4816,14 +4814,12 @@
     <Content Include="templete\ER\disbursement.html" />
     <Content Include="templete\ER\disbursementDetail.html" />
     <Content Include="templete\ER\disbursementRequisition.html" />
-    <Content Include="templete\ER\index.html" />
     <Content Include="templete\SC\adjustment.html" />
     <Content Include="templete\SC\adjustmentDetail.html" />
     <Content Include="templete\SC\adjustmentNew.html" />
     <Content Include="templete\SC\departmentStoreclerk.html" />
     <Content Include="templete\SC\disbursementDetailStoreClerk.html" />
     <Content Include="templete\SC\disbursementStoreClerk.html" />
-    <Content Include="templete\SC\index.html" />
     <Content Include="templete\SC\inventoryList.html" />
     <Content Include="templete\SC\inventoryNew.html" />
     <Content Include="templete\SC\inventoryTile.html" />
@@ -4843,7 +4839,6 @@
     <Content Include="templete\SMS\suppliernew.html" />
     <Content Include="templete\SMS\supplierdetail.html" />
     <Content Include="templete\SMS\adjustmentApproval.html" />
-    <Content Include="templete\SMS\index.html" />
     <Content Include="vendor\angular-resource.js" />
     <Content Include="vendor\angular-route.js" />
     <Content Include="vendor\angular.js" />
