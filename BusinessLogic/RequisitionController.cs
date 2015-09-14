@@ -49,6 +49,14 @@ namespace BusinessLogic
             {
                 result = false;
             }
+
+            if (result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(2, Convert.ToInt32(HandledBy), ReqId);
+            }
+
             return result;
         }
 
@@ -76,6 +84,13 @@ namespace BusinessLogic
             catch
             {
                 result = false;
+            }
+
+            if (result == true)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(3, Convert.ToInt32(HandledBy), ReqId);
             }
 
             return result;
@@ -141,7 +156,7 @@ namespace BusinessLogic
 
                 //obtain the ReqID of the newly added requisition
                 Requisition reqLast = ctx.Requisition.Where(x => x.EmpID == empid).ToList().Last();
-                ReqID = reqLast.ReqID;
+                ReqID = reqLast.ReqID +1;
 
                 //create and add new requisition details
                 foreach (CartItems item in itemList)
@@ -152,12 +167,28 @@ namespace BusinessLogic
                     reqDetail.RequestQty = item.Qty;
                     ctx.RequisitionDetail.Add(reqDetail);
                 }
+
+                //delete items from request cart
+                foreach (CartItems item in itemList)
+                {
+                    CartItems cartItem = ctx.CartItems.Where(x => x.EmpID == item.EmpID && x.ItemID == item.ItemID).FirstOrDefault();
+                    ctx.CartItems.Remove(cartItem);
+                }
+
             }
 
             int count = ctx.SaveChanges();
 
             if (count > 0)
                 result = ReqID;
+
+            if (result == ReqID)
+            {
+                //send notification:
+                NotificationController nt = new NotificationController();
+                nt.sendNotification(1, itemList.First().EmpID, Convert.ToString(ReqID));
+            }
+
             return result;
         }
 
@@ -251,5 +282,80 @@ namespace BusinessLogic
             return ctx.Status.ToList();
         }
 
+        /// <summary>
+        /// GetRequisitionByReqID
+        /// </summary>
+        /// <param name="ReqID">Requisition ID</param>
+        /// <returns></returns>
+        public Requisition getRequisitionByReqID(string ReqID)
+        {
+            int reqID = Convert.ToInt32(ReqID);
+            return ctx.Requisition.Where(x => x.ReqID == reqID).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// GetPriorityName
+        /// </summary>
+        /// <param name="PriorityID">Priority ID</param>
+        /// <returns></returns>
+        public string getPriorityName(string PriorityID)
+        {
+            int priorityID = Convert.ToInt32(PriorityID);
+            Priority priority = ctx.Priority.Where(x => x.PriorityID == priorityID).FirstOrDefault();
+            return priority.PriorityName;
+        }
+
+        /// <summary>
+        /// getItemsToRestock
+        /// </summary>
+        /// <param name="ReqID">Requisition ID</param>
+        /// <param name="EmpID">Employee ID</param>
+        /// <returns></returns>
+        public List<CartItems> getItemsToReorder(string ReqID, string EmpID)
+        {
+            int reqID = Convert.ToInt32(ReqID);
+            List<RequisitionDetail> reqDetailList = ctx.RequisitionDetail.Where(x => x.ReqID == reqID).ToList();
+
+            List<CartItems> cartItemList = new List<CartItems>();
+            foreach(RequisitionDetail reqDetail in reqDetailList)
+            {
+                if(reqDetail.IssueQty != reqDetail.RequestQty)
+                {
+                    CartItems item = new CartItems();
+                    item.EmpID = Convert.ToInt32(EmpID);
+                    item.ItemID = reqDetail.ItemID;
+                    item.Qty = reqDetail.RequestQty - reqDetail.IssueQty;
+                    cartItemList.Add(item);
+                }
+            }
+
+            return cartItemList;
+        }
+
+        /// <summary>
+        /// ConfirmReorder
+        /// </summary>
+        /// <param name="ItemList">CartItem List</param>
+        /// <returns></returns>
+        public bool confirmReorder(List<CartItems> ItemList)
+        {
+            bool result = true;
+
+            foreach(CartItems item in ItemList)
+            {
+                ctx.CartItems.Add(item);
+            }
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
     }
 }

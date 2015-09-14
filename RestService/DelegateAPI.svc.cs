@@ -14,10 +14,10 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select DelegateAPI.svc or DelegateAPI.svc.cs at the Solution Explorer and start debugging.
     public class DelegateAPI : IDelegateAPI
     {
-        public bool deleteDelegate(string EmpName)
+        public bool deleteDelegate(string DelegateSN)
         {
             BusinessLogic.DelegateController BL = new BusinessLogic.DelegateController();
-            if (BL.deleteDelegate(EmpName))
+            if (BL.deleteDelegate(DelegateSN))
             {
                 OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
                 response.StatusCode = HttpStatusCode.OK;

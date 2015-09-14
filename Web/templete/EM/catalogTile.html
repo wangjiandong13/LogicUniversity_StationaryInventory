@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <br>
-                    <button type="button" class="btn btn-success">
+                    <button type="button" class="btn btn-success" ng-click="viewCart()">
                         <span class="glyphicon glyphicon-shopping-cart"></span> View Request Cart
                     </button>
                 </div>
@@ -40,7 +40,7 @@
                                 ng-model="CategorySelectData.selectedOption"></select>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Enter Item Name">
+                        <input type="text" class="form-control" placeholder="Enter Item Name" ng-model="categoryname">
                     </div>
                     <div class="col-md-2">
                         <button type="button" class="btn btn yellow" ng-click="search()">
@@ -59,16 +59,44 @@
                     <br>
                     <br>
                 </div>
-                <div class="row" ng-controller="catalogListtileCtrl">
-                    <div class="col-md-12">
-                        <div class="col-md-3" style="text-align: center" ng-repeat="item in catalogtiledata">
-                            <img style="height:120px; width:120px" src="/img/Item_120/{{item.ItemID}}.jpg">
-                            <br>
-                            <label>{{item.ItemName}}</label>
+                    <!--<div class="row" ng-controller="catalogListtileCtrl">
+                        <div class="col-md-12">
+                            <div class="col-md-3" style="text-align: center" ng-repeat="item in catalogtiledata">
+                                <img style="height:120px; width:120px" src="/img/Item_120/{{item.ItemID}}.jpg">
+                                <br>
+                                <label>{{item.ItemName}}</label>
+                            </div>
                         </div>
+                    </div>-->
+                <div class="row">
+                <div class="tabbable-line boxless">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <!-- BEGIN FILTER -->
+                            <div class="margin-top-10">
+                                <div class="row mix-grid" ng-controller="catalogListtileCtrl">
+                                    <div class="col-md-3 col-sm-4 mix category_1  mix_all" style=" display: block;  opacity: 1;"  ng-repeat="item in catalogtiledata">
+                                        <div class="mix-inner">
+                                            <img  class="img-responsive" src="/img/Item_300/{{item.ItemID}}.jpg" alt="">
+                                            <div class="mix-details">
+                                                <h4>{{item.ItemName}}</h4>
+                                                <center><input style="width:30%" type="number" class="form-control" min=1 ng-model="item.qty"></center>
+                                                <br />
+                                                <button type="button" class="btn btn-primary" ng-click="add(item)">
+                                                    <i class="fa fa-cart-plus"></i> Add To Cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END FILTER -->
+                        </div>
+
                     </div>
                 </div>
-            </div>
+                    </div>
+                </div>
         </div>
 
 
