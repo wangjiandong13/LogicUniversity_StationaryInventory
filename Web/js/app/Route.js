@@ -75,7 +75,7 @@
                 ]
             },
             '/requisitionApproval/:reqid': {
-                templateUrl: 'EM/requisitionApproval.html',
+                templateUrl: 'ED/requisitionApproval.html',
                 dependencies: [
                     '../controller/RequisitionApprovalController'
                 ]
