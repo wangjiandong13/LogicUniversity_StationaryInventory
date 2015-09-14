@@ -29,6 +29,7 @@
 
         $scope.reqdetail = function (dr) {
             location.href = "#/requisitionDetail/" + dr.ReqID;
+            $rootScope.backTo == 1;
         };
 
         $scope.back = function (Disbursement) {
