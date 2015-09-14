@@ -20,22 +20,117 @@
             SupplierSC: "",
             Supplier: "",
 
-            ifRequistion: "",
-            ifCatalog: "",
-            ifDepartment: "",
-            ifRequestCart: "",
-            ifDisbursement: "",
-            ifApproval: "",
-            ifRequisitionSC: "",
-            ifAdjustment: "",
-            ifDepartmentSC: "",
-            ifDisbursementSC: "",
-            ifInventory: "",
-            ifPurchaseOrder: "",
-            ifRetrieval: "",
-            ifSupplierSC: "",
-            ifSupplier: ""
+            ifRequistion: false,
+            ifCatalog: false,
+            ifDepartment: false,
+            ifRequestCart: false,
+            ifDisbursement: false,
+            ifApproval: false,
+            ifRequisitionSC:false,
+            ifAdjustment: false,
+            ifDepartmentSC: false,
+            ifDisbursementSC: false,
+            ifInventory: false,
+            ifPurchaseOrder: false,
+            ifRetrieval: false,
+            ifSupplierSC: false,
+            ifSupplier: false
         };
+        $rootScope.changehighlight=function(Nowpage){
+            $rootScope.mean = {
+                Requistion: "",
+                Catalog: "",
+                Department: "",
+                RequestCart: "",
+                Disbursement: "",
+                Approval: "",
+                RequisitionSC: "",
+                Adjustment: "",
+                DepartmentSC: "",
+                DisbursementSC: "",
+                Inventory: "",
+                PurchaseOrder: "",
+                Retrieval: "",
+                SupplierSC: "",
+                Supplier: "",
+
+                ifRequistion: false,
+                ifCatalog: false,
+                ifDepartment: false,
+                ifRequestCart: false,
+                ifDisbursement: false,
+                ifApproval: false,
+                ifRequisitionSC: false,
+                ifAdjustment: false,
+                ifDepartmentSC: false,
+                ifDisbursementSC: false,
+                ifInventory: false,
+                ifPurchaseOrder: false,
+                ifRetrieval: false,
+                ifSupplierSC: false,
+                ifSupplier: false
+            };
+            if (Nowpage == 1) {
+                $rootScope.mean.Requistion = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 2) {
+                $rootScope.mean.Catalog = "active";
+                $rootScope.mean.ifCatalog = true;
+            }
+            if (Nowpage == 3) {
+                $rootScope.mean.Department = "active";
+                $rootScope.mean.ifDepartment = true;
+            }
+            if (Nowpage == 4) {
+                $rootScope.mean.RequestCart = "active";
+                $rootScope.mean.ifRequestCart = true;
+            }
+            if (Nowpage == 5) {
+                $rootScope.mean.Disbursement = "active";
+                $rootScope.mean.ifDisbursement = true;
+            }
+            if (Nowpage == 6) {
+                $rootScope.mean.Approval = "active";
+                $rootScope.mean.ifApproval = true;
+            }
+            if (Nowpage == 7) {
+                $rootScope.mean.RequisitionSC = "active";
+                $rootScope.mean.ifRequisitionSC = true;
+            }
+            if (Nowpage == 8) {
+                $rootScope.mean.Adjustment = "active";
+                $rootScope.mean.ifAdjustment = true;
+            }
+            if (Nowpage == 9) {
+                $rootScope.mean.DepartmentSC = "active";
+                $rootScope.mean.ifDepartmentSC = true;
+            }
+            if (Nowpage == 10) {
+                $rootScope.mean.DisbursementSC = "active";
+                $rootScope.mean.ifDisbursementSC = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.Inventory = "active";
+                $rootScope.mean.ifInventory = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.PurchaseOrder = "active";
+                $rootScope.mean.ifPurchaseOrder = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.Retrieval = "active";
+                $rootScope.mean.ifRetrieval = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.SupplierSC = "active";
+                $rootScope.mean.ifSupplierSC = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.Supplier = "active";
+                $rootScope.mean.ifSupplier = true;
+            }
+        }
         $rootScope.UserInfo = {
             EmpId: $window.sessionStorage.EmpID,
             EmpName: $window.sessionStorage.EmpName,
@@ -66,7 +161,6 @@
             SupplierSC: false,
             Supplier: false,
             Analytics: false
-
         }
         if ($rootScope.UserInfo.RoleId == "EM") {
             $rootScope.side.Requistion = true;
@@ -74,14 +168,14 @@
             $rootScope.side.Department = true;
             $rootScope.side.RequestCart = true;
         }
-        if ($rootScope.UserInfo.RoleId == "ER") {
+        if ($rootScope.UserInfo.RoleId == "DR") {
             $rootScope.side.Requistion = true;
             $rootScope.side.Catalog = true;
             $rootScope.side.Department = true;
             $rootScope.side.RequestCart = true;
             $rootScope.side.Disbursement = true;
         }
-        if ($rootScope.UserInfo.RoleId == "ED") {
+        if ($rootScope.UserInfo.RoleId == "DD") {
             $rootScope.side.Requistion = true;
             $rootScope.side.Catalog = true;
             $rootScope.side.Department = true;
