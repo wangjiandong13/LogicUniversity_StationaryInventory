@@ -54,13 +54,27 @@
     //load catalogList
     function inventoryListDataCtrl($scope, BaseService) {
         //console.log("enter");
+        var myBaseService = BaseService;
+        BaseService.getSupplierList()
+        .then(function(supplierdata){
+            $.each(supplierdata, function(index, value){
+                if(value.Rank == 1)
+                    $scope.supplierID = value.SupplierID;
+            })
+        })
+
         BaseService.getCatalogList()
             .then(function (data) {
                 console.log(data);
                 $scope.catalogListdata = data;
-                //$.each($scope.catalogListdata, function (index, value) {
-                    
-                //});
+                $.each($scope.catalogListdata, function (index, value) {
+                    myBaseService.getItemPrice(value.ItemID)
+                    .then(function (itemdata) {
+                        console.log(itemdata);
+                        if (itemdata.SupplierID == $scope.SupplierID)
+                            value.Price = itemdata.Price;
+                    })
+                });
             }, function (data) {
                 alert(data);
             }
@@ -72,7 +86,7 @@
             location.href = '#/stockcard';
         };
         //click the Edit button
-        $scope.stockCard = function () {
+        $scope.edit = function () {
             console.log($scope.catalogListdata.itemID);
             location.href = '#/inventoryNew/' + $scope.catalogListdata.itemID;
         };
