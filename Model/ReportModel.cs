@@ -18,23 +18,23 @@ namespace Model
         [DataMember]
         public int ReportID { get; set; }
         [DataMember]
-        public Nullable<int> EmpID { get; set; }
+        public int EmpID { get; set; }
         [DataMember]
         public string Title { get; set; }
         [DataMember]
-        public Nullable<System.DateTime> Date { get; set; }
+        public DateTime Date { get; set; }
         [DataMember]
-        public Nullable<System.DateTime> StartD { get; set; }
+        public DateTime StartD { get; set; }
         [DataMember]
-        public Nullable<System.DateTime> EndD { get; set; }
+        public DateTime EndD { get; set; }
         [DataMember]
         public string Remark { get; set; }
         [DataMember]
-        public Nullable<int> Type { get; set; }
+        public int Type { get; set; }
         [DataMember]
-        public Nullable<int> Criteria { get; set; }
+        public int Criteria { get; set; }
         [DataMember]
-        public Nullable<int> Precriteria { get; set; }
+        public int Precriteria { get; set; }
 
         [DataMember]
         public List<ReportResult> Results { get; set; }
