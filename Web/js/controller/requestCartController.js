@@ -31,6 +31,8 @@
                     .then(function (data) {
                         console.log(data);
                         req_id = data;
+                        var priority = 2;
+                        if ($scope.PRIORITY) { priority = 1 }
                         selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
                             .then(function (data) {
                                 alert("success!");
@@ -39,8 +41,7 @@
                     }, function (data) {
                         alert(data);
                     })
-                var priority = 2;
-                if ($scope.PRIORITY) { priority = 1 }
+                
 
 
             }
