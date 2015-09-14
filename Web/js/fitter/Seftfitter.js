@@ -5,7 +5,7 @@ appfilter.filter('CPIDchange', CPIDchange);
 
 function datefilter() {
     return function (input) {
-        cosole.log(">>>filter"+input);
+        console.log(">>>filter"+input);
         if (input == "") {
             return ""; 
         }
