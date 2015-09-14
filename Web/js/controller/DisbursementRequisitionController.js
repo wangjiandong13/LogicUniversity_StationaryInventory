@@ -5,7 +5,8 @@
 
         var disid = $routeParams.disid;
         $scope.disid = disid;
-
+        
+        var myBaseService = BaseService;
         BaseService.getDisbursementRequisition(disid)
             .then(function (data) {
                 console.log(data);
