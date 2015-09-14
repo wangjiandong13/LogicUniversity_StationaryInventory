@@ -20,7 +20,6 @@ function service($http, $q) {
         return deferred.promise;
     }
 
-
     ////// EMPLOYEE //////
 
     //requisition.html
