@@ -65,13 +65,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="Disbursement in Disbursements"  ng-click="requisitiondetail(Disbursement)">
+                                <tr ng-repeat="Disbursement in Disbursements"  ng-click="disbursementdetail(Disbursement)">
                                     <td>{{Disbursement.DisID}}</td>
                                     <td>{{Disbursement.Date}}</td>
-                                    <td>{{Disbursement.DisID}}</td>
-                                    <td>SCIENCE</td>
-                                    <td>Wong Sook Huey</td>
-                                    <td>Pending</td>
+                                    <td>{{Disbursement.DeptID}}</td>
+                                    <td>{{Disbursement.Collection}}</td>
+                                    <td>{{Disbursement.ClerkName}}</td>
+                                    <td>{{Disbursement.Status}}</td>
                                 </tr>
                             </tbody>
                         </table>
