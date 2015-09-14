@@ -15,10 +15,10 @@
                            //console.log("getEmployee");
                            $scope.RequisitionData.DisbursedBy = data.EmpName;
                        })
-                console.log("++++++"+data.ReceivedBy);
+                console.log("++++++" + $scope.DisbursementData.ReceivedBy);
 
                 if (data.ReceivedBy != null) {
-                    myBaseService.getEmployee(data.ReceivedBy)
+                    myBaseService.getEmployee($scope.DisbursementData.ReceivedBy)
                        .then(function (data) {
                            //console.log("getEmployee");
                            $scope.RequisitionData.ReceivedBy = data.EmpName;
