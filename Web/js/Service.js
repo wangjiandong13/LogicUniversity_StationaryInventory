@@ -412,9 +412,9 @@ function service($http, $q) {
 
     //delegate.html
     // load Dept delegate
-    this.getDeptDelegate = function (DeptID) {
+    this.getDeptDelegate = function (DeptIDid) {
         var deferred = $q.defer();
-        $http.get(baseurl + "delegateAPI.svc/getDelegate/" + DeptID)
+        $http.get(baseurl + "delegateAPI.svc/getDelegate/" + DeptIDid)
             .success(function (data) {
                 deferred.resolve(data)
             })
