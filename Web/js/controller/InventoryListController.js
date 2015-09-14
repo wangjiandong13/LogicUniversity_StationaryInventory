@@ -33,74 +33,95 @@
 
             var S_categoryname = $scope.categoryname;
 
-            if (S_categoryname == "") {
+            if (S_categoryname == "" || S_categoryname == null) {
                 S_categoryname = "null";
             }
             //console.log(S_category);
             //console.log(S_categoryname);
+            var myBaseService = BaseService;
             BaseService.searchItem(S_category, S_categoryname)
                 .then(function (data) {
                     //console.log(data);
-                    $rootScope.catalogListdata = data;
-                    $.each($rootScope.catalogListdata, function (index, value) {
-                        value.qty = 1;
-                    });
-                }, function (data) {
-                    alert(data);
-                }
-            )
-        }
-    }
-    //load catalogList
-    function inventoryListDataCtrl($scope, BaseService) {
-        //console.log("enter");
-        var myBaseService = BaseService;
-        BaseService.getSupplierList()
-        .then(function (supplierdata) {
-            $.each(supplierdata, function (index, value) {
-                console.log(value.Rank);
-                if (value.Rank == 1)
-                    $scope.supplierID = value.SupplierID;
-            })
-
-            myBaseService.getCatalogList()
-            .then(function (data) {
-                //console.log(data);
-                $scope.inventoryListdata = data;
-                $.each($scope.inventoryListdata, function (index, value) {
-                    myBaseService.getItemPrice(value.ItemID)
+                    $scope.inventoryListdata = data;
+                    myBaseService.getSupplierList()
+                    .then(function (supplierdata) {
+                        $.each(supplierdata, function (index, value) {
+                            console.log(value.Rank);
+                            if (value.Rank == 1)
+                                $scope.supplierID = value.SupplierID;
+                        })
+                    $.each($scope.inventoryListdata, function (index, value) {
+                        myBaseService.getItemPrice(value.ItemID)
                     .then(function (itemdata) {
                         //console.log(itemdata);
                         //console.log($scope.supplierID);
                         $.each(itemdata, function (index, ipvalue) {
                             //console.log(ipvalue.SupplierID);
-                            if (ipvalue.SupplierID == $scope.supplierID)
-                            {
+                            if (ipvalue.SupplierID == $scope.supplierID) {
                                 //console.log($scope.inventoryListdata.Price);
                                 value.Price = ipvalue.Price;
                             }
-                                
+
                         })
-                        
-                    })
-                });
-            }, function (data) {
-                alert(data);
+
+            })
+            });
+        }, function (data) {
+            alert(data);
+        }
+            )
+                }
             }
-       )
-        })
+        //load catalogList
+        function inventoryListDataCtrl($scope, BaseService) {
+            //console.log("enter");
+            var myBaseService = BaseService;
+            BaseService.getSupplierList()
+            .then(function (supplierdata) {
+                $.each(supplierdata, function (index, value) {
+                    console.log(value.Rank);
+                    if (value.Rank == 1)
+                        $scope.supplierID = value.SupplierID;
+                })
+
+                myBaseService.getCatalogList()
+                .then(function (data) {
+                    //console.log(data);
+                    $scope.inventoryListdata = data;
+                    $.each($scope.inventoryListdata, function (index, value) {
+                        myBaseService.getItemPrice(value.ItemID)
+                        .then(function (itemdata) {
+                            //console.log(itemdata);
+                            //console.log($scope.supplierID);
+                            $.each(itemdata, function (index, ipvalue) {
+                                //console.log(ipvalue.SupplierID);
+                                if (ipvalue.SupplierID == $scope.supplierID)
+                                {
+                                    //console.log($scope.inventoryListdata.Price);
+                                    value.Price = ipvalue.Price;
+                                }
+                                
+                            })
+                        
+                        })
+                    });
+                }, function (data) {
+                    alert(data);
+                }
+           )
+            })
 
 
 
 
-        //click the Stock Card button
-        $scope.stockCard = function () {
-            location.href = '#/stockcard';
-        };
-        //click the Edit button
-        $scope.edit = function () {
-            console.log($scope.catalogListdata.itemID);
-            location.href = '#/inventoryNew/' + $scope.catalogListdata.itemID;
-        };
-    }
-})
+            //click the Stock Card button
+            $scope.stockCard = function () {
+                location.href = '#/stockcard';
+            };
+            //click the Edit button
+            $scope.edit = function () {
+                console.log($scope.catalogListdata.itemID);
+                location.href = '#/inventoryNew/' + $scope.catalogListdata.itemID;
+            };
+        }
+    })
