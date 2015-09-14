@@ -71,7 +71,7 @@
             '/Approval': {
                 templateUrl: 'ED/requisitionApprovalList.html',
                 dependencies: [
-                    '../controller/RequisitionApprovalController'
+                    '../controller/RequisitionApprovalListController'
                 ]
             },
             '/delegate': {
