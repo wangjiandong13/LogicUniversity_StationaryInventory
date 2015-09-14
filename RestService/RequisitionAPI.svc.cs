@@ -143,5 +143,11 @@ namespace RestService
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
             return BL.confirmReorder(ItemList);
         }
+
+        public List<Requisition> getRequisitionApprovalList(string DeptID)
+        {
+            BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
+            return BL.getRequisitionApprovalList(DeptID);
+        }
     }
 }
