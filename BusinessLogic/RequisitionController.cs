@@ -103,7 +103,7 @@ namespace BusinessLogic
         /// <param name="ReqID">Requisition ID</param>
         /// <param name="EmpID">Employee ID</param>
         /// <returns></returns>
-        public List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID)
+        public List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID, string DeptID)
         {
             if (StatusID == "null")
                 StatusID = null;
@@ -111,6 +111,8 @@ namespace BusinessLogic
                 ReqID = null;
             if (EmpID == "null")
                 EmpID = null;
+            if (DeptID == "null")
+                DeptID = null;
 
             //start with all the records
             var query = from req in ctx.Requisition select req;
@@ -127,6 +129,10 @@ namespace BusinessLogic
             if (!string.IsNullOrEmpty(EmpID))
             {
                 query = query.Where(x => x.EmpID.ToString().Contains(EmpID));
+            }
+            if (!string.IsNullOrEmpty(DeptID))
+            {
+                query = query.Where(x => x.DeptID.ToString().Contains(DeptID));
             }
 
             //run the query on database and grab the results

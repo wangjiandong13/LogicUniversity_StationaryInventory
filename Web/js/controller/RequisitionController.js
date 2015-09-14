@@ -15,7 +15,7 @@
             if (status == 0) { status = "null"; }
             var ReqID = $scope.ReuisitionNo;
             if (ReqID == null) { ReqID = "null" }
-            BaseService.getRequisitionList(status, ReqID, $rootScope.UserInfo.EmpId)
+            BaseService.getRequisitionList(status, ReqID, $rootScope.UserInfo.EmpId, $rootScope.UserInfo.DeptId)
                 .then(function (data) {
                     console.log(data);
                     $rootScope.Requisitions = data;
@@ -26,7 +26,7 @@
         }
     }
     function RequisitionList($rootScope,$scope, BaseService) {
-        BaseService.getRequisitionList("null", "null", $rootScope.UserInfo.EmpId)
+        BaseService.getRequisitionList("null", "null", $rootScope.UserInfo.EmpId, $rootScope.UserInfo.DeptId)
             .then(function (data) {
                 console.log(data);
                 $rootScope.Requisitions = data;

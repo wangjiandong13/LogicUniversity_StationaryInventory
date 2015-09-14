@@ -40,8 +40,8 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                            BodyStyle = WebMessageBodyStyle.Bare,
-                           UriTemplate = "/getRequisition/{StatusID}/{ReqID}/{EmpID}")]
-        List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID);
+                           UriTemplate = "/getRequisition/{StatusID}/{ReqID}/{EmpID}/{DeptID}")]
+        List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID, string DeptID);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,

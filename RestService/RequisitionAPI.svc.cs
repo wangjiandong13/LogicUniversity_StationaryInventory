@@ -56,10 +56,10 @@ namespace RestService
             }
         }
 
-        public List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID)
+        public List<Requisition> getRequisition(string StatusID, string ReqID, string EmpID, string DeptID)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.getRequisition(StatusID, ReqID, EmpID);
+            return BL.getRequisition(StatusID, ReqID, EmpID, DeptID);
         }
 
         public int createRequisition(List<CartItems> itemList)

@@ -25,14 +25,13 @@
             if (status == 0) { status = "null"; }
             var EmpID = $rootScope.optiondataEmp.selectedOption.EmpID;
             if (EmpID == null) { EmpID = "null" }
-            BaseService.getRequisitionList(status, "null", EmpId)
+            BaseService.getRequisitionList(status, "null", EmpId, $rootScope.UserInfo.DeptId)
                 .then(function (data) {
                     console.log(data);
                     $rootScope.RequisitionsApproval = data;
                     $.each(data, function (index, value) {
-                        console.log("I am in each");
-                        console.log(">>>>" + value);
-                        console.log(">>>>"+value.EmpID);
+                        //console.log(">>>>" + value);
+                        //console.log(">>>>"+value.EmpID);
                         myBaseService.getEmployee(value.EmpID)
                             .then(function (data) {
                                 value.EmpName = data.EmpName;
@@ -55,9 +54,8 @@
                 console.log(data);
                 $rootScope.RequisitionsApproval = data;
                 $.each(data, function (index, value) {
-                        console.log("I am in each");
-                        console.log(">>>>" +value);
-                        console.log(">>>>"+value.EmpID);
+                        //console.log(">>>>" +value);
+                        //console.log(">>>>"+value.EmpID);
                         myBaseService.getEmployee(value.EmpID)
                             .then(function (data) {
                                 value.EmpName = data.EmpName;
