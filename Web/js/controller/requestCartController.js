@@ -4,9 +4,10 @@
 
     function RequestCartControllers($rootScope, $scope,BaseService) {
         var selfBaseService = BaseService;
+        $('#create-switch').bootstrapSwitch();
         //set mean highlight
         $rootScope.changehighlight(1);
-        $('#create-switch').bootstrapSwitch();
+        
         console.log("enter RequestCartControllers")
         $scope.back = function () {
             location.href = '#/requisition';
@@ -14,31 +15,36 @@
         $scope.submit = function () {
             console.log("enter");
             var msg = [];
-            $.each($rootScope.RequestCarts, function (index, value) {
-                var each = {
-                    EmpID: $rootScope.UserInfo.EmpId,
-                    ItemID: value.ItemID,
-                    Qty: value.Qty,
+            if ($rootScope.RequestCarts!=null) {
+                $.each($rootScope.RequestCarts, function (index, value) {
+                    var each = {
+                        EmpID: $rootScope.UserInfo.EmpId,
+                        ItemID: value.ItemID,
+                        Qty: value.Qty,
 
-                };
-                msg.push(each);
-            });
-            var req_id="";
-            console.log(angular.toJson(msg));
-            selfBaseService.createRequisition(angular.toJson(msg))
-                .then(function (data) {
-                    req_id=data;
-                }, function (data) {
-                    alert(data);
-                })
-            var priority = 2;
-            if ($scope.PRIORITY) { priority = 1 }
-            
-            selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
-                .then(function (data) {
-                    alert("success!");
-                    location.href = '#/requisition';
-                })
+                    };
+                    msg.push(each);
+                });
+                var req_id = "";
+                console.log(angular.toJson(msg));
+                selfBaseService.createRequisition(angular.toJson(msg))
+                    .then(function (data) {
+                        req_id = data;
+                    }, function (data) {
+                        alert(data);
+                    })
+                var priority = 2;
+                if ($scope.PRIORITY) { priority = 1 }
+
+                selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
+                    .then(function (data) {
+                        alert("success!");
+                        location.href = '#/requisition';
+                    })
+            }
+            else {
+                alert("empty cart");
+            }
         }
     }
     function RequestCartList($rootScope, $scope, BaseService) {
