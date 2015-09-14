@@ -7,7 +7,7 @@ function datefilter() {
     return function (input) {
         cosole.log(">>>filter"+input);
         if (input == "") {
-            return "";
+            return ""; 
         }
         return input.substr(6, 13);
     };
