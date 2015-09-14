@@ -1,6 +1,6 @@
 ﻿define(['app'], function (app) {
     app.controller('DisbSCControllers', ['$rootScope', '$scope', 'BaseService', DisbSCControllers]);
-    function RequisitionApprovalListControllers($rootScope, $scope, BaseService) {
+    function DisbSCControllers($rootScope, $scope, BaseService) {
         $rootScope.changehighlight(11);
         $scope.optiondataDept = {
             availableOptions: [],
