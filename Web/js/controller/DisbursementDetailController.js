@@ -13,7 +13,8 @@
                 console.log($scope.DisbursementData);
                 myBaseService.getEmployee($scope.DisbursementData.EmpID)
                        .then(function (Empdata) {
-                           //console.log("getEmployee");
+                           console.log("getEmployee");
+                           console.log(Empdata);
                            $scope.RequisitionData.DisbursedBy = Empdata.EmpName;
                        })
                 console.log("++++++" + $scope.DisbursementData.ReceivedBy);
