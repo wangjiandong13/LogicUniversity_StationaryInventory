@@ -15,6 +15,14 @@
             ifDepartment: false,
             ifRequestCart: false
         };
+        $rootScope.optiondataStatus = {
+        availableOptions: [],
+                selectedOption: { 'StatusID': 1, 'StatusName' : 'Pending Approval'}
+        };
+        $rootScope.optiondataEmp = {
+            availableOptions: [],
+            selectedOption: { 'EmpID': 0, 'EmpName': 'ALL' }
+        };
         //$rootScope.pageTitle = $route.current.title;
         $scope.viewCart = function () {
             location.href = '#/requestCart';
@@ -78,10 +86,7 @@
         };
     }
     function SelectoptionControllersStatus($rootScope, BaseService) {
-        $rootScope.optiondataStatus = {
-            availableOptions: [],
-            selectedOption: { 'StatusID': 1, 'StatusName': 'Pending Approval' }
-        };
+        
         BaseService.getRequisitionStatus()
             .then(function (data) {
                 $rootScope.optiondataStatus.availableOptions = data;
@@ -92,10 +97,7 @@
             })
     }
     function SelectoptionControllersEmp($rootScope, BaseService) {
-        $rootScope.optiondataEmp = {
-            availableOptions: [],
-            selectedOption: { 'EmpID': 0, 'EmpName': 'ALL' }
-        };
+        
         BaseService.getDeptEmployee($rootScope.UserInfo.DeptId)
             .then(function (data) {
                 $rootScope.optiondataEmp.availableOptions = data;
