@@ -5,7 +5,7 @@
         //sidebar highlight
         $rootScope.changehighlight(7);
         var MyBaseService = BaseService;
-        BaseService.getDeptDelegate($rootScope.UserInfo.DeptID)
+        BaseService.getDeptDelegate($rootScope.UserInfo.DeptId)
             .then(function (data) {
                 console.log(data);
                 $scope.Delegates = data;
