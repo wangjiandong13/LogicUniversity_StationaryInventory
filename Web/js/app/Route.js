@@ -141,7 +141,7 @@
                     '../controller/InventoryListController'
                 ]
             },
-            '/inventoryNew': {
+            '/inventoryNew/:itemid': {
                 templateUrl: 'SC/inventoryNew.html',
                 dependencies: [
                     '../controller/InventoryNewController'
