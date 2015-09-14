@@ -9,15 +9,15 @@
         BaseService.getDisbursementList("null", "null", disid, "null", "null")
             .then(function (data) {
                 console.log(data);
-                $scope.DisbursementData = data;
-                myBaseService.getEmployee(data.EmpID)
+                $scope.DisbursementData = data[0];
+                myBaseService.getEmployee($scope.DisbursementData.EmpID)
                        .then(function (data) {
                            //console.log("getEmployee");
                            $scope.RequisitionData.DisbursedBy = data.EmpName;
                        })
                 console.log("++++++" + $scope.DisbursementData.ReceivedBy);
 
-                if (data.ReceivedBy != null) {
+                if ($scope.DisbursementData.ReceivedBy != null) {
                     myBaseService.getEmployee($scope.DisbursementData.ReceivedBy)
                        .then(function (data) {
                            //console.log("getEmployee");
