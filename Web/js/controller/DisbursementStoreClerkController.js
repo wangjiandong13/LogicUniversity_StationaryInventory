@@ -16,9 +16,9 @@
             var dept = $scope.optiondataDept.selectedOption.DeptID;
             if (dept == 0) { status = "null"; }
             var cpid = $scope.optiondataCPID.selectedOption.CPID;
-            if (cpid == 0) { cpid = "null" }
+            if (cpid == 0) { cpid = "null"; }
             var disid = $scope.DisID;
-            if (disid == null) { disid = "null" }
+            if (disid == null) { disid = "null"; }
             console.log(disid);
             BaseService.getDisbursementList(dept, cpid, disid, "null", "null")
                 .then(function (data) {
