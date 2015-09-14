@@ -22,7 +22,8 @@
                 <div class="col-md-6" style="text-align:right">
                     <br />
                     <label>PRIORITY : </label>
-                    <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-normal bootstrap-switch-animate bootstrap-switch-on" style="width: 100px;"><div class="bootstrap-switch-container" style="width: 147px; margin-left: 0px;"><span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 49px;">ON</span><span class="bootstrap-switch-label" style="width: 49px;">&nbsp;</span><span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 49px;">OFF</span><input type="checkbox" checked="" class="make-switch" data-size="normal"></div></div>
+                    <input id="create-switch" type="checkbox" value="true" class="make-switch" 
+                           data-on-text="&nbsp;External&nbsp;" data-off-text="&nbsp;Internal&nbsp;">
                 </div>
                 <div class="col-md-12">
                     <hr>
@@ -57,7 +58,7 @@
                         <div class="col-md-12">
                             <hr />
                             <label>Remarks : </label>
-                            <textarea class="form-control" rows="5"></textarea>
+                            <textarea class="form-control" rows="5" ng-model="remoarks"></textarea>
                         </div>
                     </div>
                 </div>
