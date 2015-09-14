@@ -1037,6 +1037,19 @@ function service($http, $q) {
         return deferred.promise;
     }
 
+    //set Requisition priority
+    this.setReqPriority = function (ReqID, PriorityID, Remark) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "requisitionAPI.svc/setReqPriority/"+ ReqID +"/"+ PriorityID +"/"+ Remark)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
 }
 
 
