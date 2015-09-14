@@ -191,6 +191,13 @@
                             <span ng-if="mean.ifApproval" class="selected"></span>
                         </a>
                     </li>
+                    <li class="{{mean.Delegate}}" ng-if="side.Delegate">
+                        <a href="#/delegate">
+                            <i class="fa fa-user"></i>
+                            <span class="title">Delefate</span>
+                            <span ng-if="mean.ifDelegate" class="selected"></span>
+                        </a>
+                    </li>
                     <li class="{{mean.RequisitionSC}}" ng-if="side.RequistionSC">
                         <a href="#/requisitionStoreClerk">
                             <i class="fa fa-file-text-o"></i>
@@ -252,6 +259,13 @@
                             <i class="fa fa-truck"></i>
                             <span class="title">Supplier</span>
                             <span ng-if="mean.ifSupplier" class="selected"></span>
+                        </a>
+                    </li>
+                    <li class="{{mean.Analytics}}" ng-if="side.Analytics">
+                        <a href="#/analytics">
+                            <i class="fa fa-line-chart"></i>
+                            <span class="title">Analytics</span>
+                            <span ng-if="mean.ifAnalytics" class="selected"></span>
                         </a>
                     </li>
                 </ul>
