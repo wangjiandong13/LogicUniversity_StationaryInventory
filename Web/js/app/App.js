@@ -114,19 +114,19 @@
                 $rootScope.mean.Inventory = "active";
                 $rootScope.mean.ifInventory = true;
             }
-            if (Nowpage == 11) {
+            if (Nowpage == 12) {
                 $rootScope.mean.PurchaseOrder = "active";
                 $rootScope.mean.ifPurchaseOrder = true;
             }
-            if (Nowpage == 11) {
+            if (Nowpage == 13) {
                 $rootScope.mean.Retrieval = "active";
                 $rootScope.mean.ifRetrieval = true;
             }
-            if (Nowpage == 11) {
+            if (Nowpage == 14) {
                 $rootScope.mean.SupplierSC = "active";
                 $rootScope.mean.ifSupplierSC = true;
             }
-            if (Nowpage == 11) {
+            if (Nowpage == 15) {
                 $rootScope.mean.Supplier = "active";
                 $rootScope.mean.ifSupplier = true;
             }
