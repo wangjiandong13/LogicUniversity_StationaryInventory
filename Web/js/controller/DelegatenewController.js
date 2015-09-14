@@ -40,7 +40,7 @@
                 BaseService.addDelegate(msgjson)
                     .then(function (data) {
                         alert("success");
-                        location.href="#/Delegate"
+                        location.href = "#/delegate"
                     }
                     )
             }
