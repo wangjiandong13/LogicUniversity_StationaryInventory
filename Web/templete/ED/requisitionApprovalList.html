@@ -5,7 +5,7 @@
                     <ul class="page-breadcrumb">
                         <li>
                             <i class="fa fa-file-text-o"></i>
-                            <a href="requisition.html">Requisition</a>
+                            <a href="requisitionApprovalList.html">Approval</a>
                         </li>
                     </ul>
                 </div>
@@ -16,13 +16,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-6">
-                            <h1>Requisition</h1>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <br>
-                            <button type="button" class="btn btn-success">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> View Request Cart
-                            </button>
+                            <h1>Approval</h1>
                         </div>
                         <div class="col-md-12">
                             <hr>
@@ -33,26 +27,20 @@
                             <div class="col-md-1" style="top:50%">
                                 <label>Status:</label>
                             </div>
-                            <div class="col-md-3">
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                    <option>Option 5</option>
-                                </select>
+                            <div class="col-md-3" ng-controller="SelectoptionControllers">
+                                <select class="form-control"
+                                        name="statusselect" id="statusselect"
+                                        ng-options="option.StatusName for option in optiondata.availableOptions track by option.StatusID"
+                                        ng-model="optiondata.selectedOption"></select>
                             </div>
                             <div class="col-md-1" style="top:50%">
                                 <label>Employee:</label>
                             </div>
-                            <div class="col-md-3">
-                                <select class="form-control">
-                                    <option>Employee 1</option>
-                                    <option>Employee 2</option>
-                                    <option>Employee 3</option>
-                                    <option>Employee 4</option>
-                                    <option>Employee 5</option>
-                                </select>
+                            <div class="col-md-3" ng-controller="SelectoptionControllersEmp">
+                                <select class="form-control"
+                                        name="empselect" id="empselect"
+                                        ng-options="option.EmpName for option in optiondataEmp.availableOptions track by option.EmpID"
+                                        ng-model="optiondataEmp.selectedOption"></select>
                             </div>
                             <div class="col-md-2">
                                 <button type="button" class="btn btn yellow">
@@ -77,17 +65,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>0021</td>
-                                            <td>21 August 2015</td>
-                                            <td>Samuel Ho Qing Wei</td>
-                                            <td>Pending Approval</td>
-                                        </tr>
-                                        <tr>
-                                            <td>0020</td>
-                                            <td>15 August 2015</td>
-                                            <td>Sheena Koh En Hui</td>
-                                            <td>Approved</td>
+                                        <tr ng-repeat="Requisition in RequisitionsApproval"  ng-click="requisitiondetail(Requisition)">
+                                            <td>{{RequisitionsApproval.ReqID}}</td>
+                                            <td>{{RequisitionsApproval.Date|datechange|date : 'dd MMM yyyy'}}</td>
+                                            <td>{{RequisitionsApproval.EmpName}}</td>
+                                            <td>{{RequisitionsApproval.StatusID|statuschange}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
