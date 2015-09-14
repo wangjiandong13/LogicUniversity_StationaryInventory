@@ -14,7 +14,7 @@
         var myBaseService = BaseService;
         $scope.search = function () {
             var dept = $scope.optiondataDept.selectedOption.DeptID;
-            if (dept == 0) { status = "null"; }
+            if (dept == 0) { dept = "null"; }
             var cpid = $scope.optiondataCPID.selectedOption.CPID;
             if (cpid == 0) { cpid = "null"; }
             var disid = $scope.DisID;
