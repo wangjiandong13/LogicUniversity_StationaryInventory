@@ -65,18 +65,18 @@
 
             myBaseService.getCatalogList()
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.inventoryListdata = data;
                 $.each($scope.inventoryListdata, function (index, value) {
                     myBaseService.getItemPrice(value.ItemID)
                     .then(function (itemdata) {
-                        console.log(itemdata);
-                        console.log($scope.supplierID);
+                        //console.log(itemdata);
+                        //console.log($scope.supplierID);
                         $.each(itemdata, function (index, ipvalue) {
-                            console.log(ipvalue.SupplierID);
+                            //console.log(ipvalue.SupplierID);
                             if (ipvalue.SupplierID == $scope.supplierID)
                             {
-                                console.log($scope.inventoryListdata.Price);
+                                //console.log($scope.inventoryListdata.Price);
                                 value.Price = ipvalue.Price;
                             }
                                 
