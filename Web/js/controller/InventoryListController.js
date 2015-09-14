@@ -71,8 +71,8 @@
                     myBaseService.getItemPrice(value.ItemID)
                     .then(function (itemdata) {
                         console.log(itemdata);
-                        console.log($scope.SupplierID);
-                        if (itemdata.SupplierID == $scope.SupplierID)
+                        console.log($scope.supplierID);
+                        if (itemdata.SupplierID == $scope.supplierID)
                             value.Price = itemdata.Price;
                     })
                 });
