@@ -49,6 +49,7 @@
     }
     function RequisitionApprovalList($rootScope, $scope, BaseService) {
         console.log(">>>enter RequisitionApprovalList")
+        var myBaseService = BaseService;
         BaseService.getRequisitionApprovalList($rootScope.UserInfo.DeptId)
             .then(function (data) {
                 console.log(data);
