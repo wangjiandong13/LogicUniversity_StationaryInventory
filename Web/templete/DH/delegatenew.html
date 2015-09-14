@@ -39,12 +39,12 @@
                             <h4>Duration:</h4>
                         </td>
                         <td class="col-md-5">
-                            <div class="input-group input-large date-picker input-daterange" ng-model="startdate" data-date="" data-date-format="mm/dd/yyyy">
-                                <input type="text" class="form-control" value="12-02-2012" ng-model="startdate">
+                            <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="mm/dd/yyyy">
+                                <input type="text" class="form-control" id="datestartdata" >
                                 <span class="input-group-addon">
                                     to
                                 </span>
-                                <input type="text" class="form-control" ng-model="enddate" >
+                                <input type="text" class="form-control" id="dateenddata"  >
                             </div>
                         </td>
                     </tr>
@@ -53,19 +53,19 @@
                             <h4>Reason:</h4>
                         </td>
                         <td class="col-md-5">
-                            <select class="form-control" id="cb_employee">
-                                <option>Hard Coded Reason</option>
-                                <option>Hard Coded Reason</option>
-                                <option>Hard Coded Reason</option>
-                            </select>
+                            <select name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" multiple>
+                                <option value="option-1">Option 1</option>
+                                <option value="option-2">Option 2</option>
+                                <option value="option-3">Option 3</option>
+                            </select><br>
                         </td>
                     </tr>
                 </table>
                 <hr>
             </div>
             <div class="col-md-12" style="text-align:center">
-                <button type="button" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                <button type="button" class="btn btn-success" ng-click="submit()">Submit</button>
             </div>
         </div>
 

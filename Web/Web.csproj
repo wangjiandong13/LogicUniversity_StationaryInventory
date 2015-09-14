@@ -4787,6 +4787,8 @@
     <Content Include="vendor\angular-simple-logger.js" />
     <Content Include="vendor\jquerysession.js" />
     <Content Include="vendor\lodash.js" />
+    <Content Include="vendor\ng-bs3-datepicker.css" />
+    <Content Include="vendor\ng-bs3-datepicker.js" />
     <Content Include="vendor\ng-map.min.js" />
     <Content Include="vendor\ngload.min.map" />
     <None Include="Web.Debug.config">
