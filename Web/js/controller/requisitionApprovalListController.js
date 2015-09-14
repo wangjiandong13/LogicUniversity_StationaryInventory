@@ -21,7 +21,7 @@
         };
         var myBaseService = BaseService;
         $scope.search = function () {
-            var status = $rootScope.optiondata.selectedOption.StatusID;
+            var status = $rootScope.optiondataStatus.selectedOption.StatusID;
             if (status == 0) { status = "null"; }
             var EmpID = $rootScope.optiondataEmp.selectedOption.EmpID;
             if (EmpID == null) { EmpID = "null" }
