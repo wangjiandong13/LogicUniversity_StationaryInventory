@@ -32,7 +32,8 @@
                         console.log(data);
                         req_id = data;
                         var priority = 1;
-                        if ($scope.PRIORITY) { priority = 2 }
+                        console.log($('#create-switch').value());
+                        if ($('#create-switch').value()) { priority = 2 }
                         selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
                             .then(function (data) {
                                 alert("success!");
@@ -41,9 +42,6 @@
                     }, function (data) {
                         alert(data);
                     })
-                
-
-
             }
             else {
                 alert("empty cart");
