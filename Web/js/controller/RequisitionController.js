@@ -14,7 +14,8 @@
             var status = $rootScope.optiondata.selectedOption.StatusID;
             if (status == 0) { status = "null"; }
             var ReqID = $scope.ReuisitionNo;
-            if (ReqID == null) { ReqID = "null" }
+            if (ReqID == null || ReqID == "") { ReqID = "null"; }
+            //console.log(ReqID);
             BaseService.getRequisitionList(status, ReqID, $rootScope.UserInfo.EmpId, $rootScope.UserInfo.DeptId)
                 .then(function (data) {
                     console.log(data);
