@@ -29,7 +29,6 @@
                 .then(function (data) {
                     console.log(data);
                     $rootScope.RequisitionsApproval = data;
-                    console.log("I am here");
                     $.each(data, function (index, value) {
                         console.log("I am in each");
                         console.log(">>>>" + value);
@@ -54,6 +53,18 @@
             .then(function (data) {
                 console.log(data);
                 $rootScope.RequisitionsApproval = data;
+                $.each(data, function (index, value) {
+                        console.log("I am in each");
+                        console.log(">>>>" +value);
+                        console.log(">>>>"+value.EmpID);
+                        myBaseService.getEmployee(value.EmpID)
+                            .then(function (data) {
+                                value.EmpName = data.EmpName;
+                            }, function (data) {
+                                alert(data);
+                            }
+                            )
+                            });
             }, function (data) {
                 alert(data);
             }
