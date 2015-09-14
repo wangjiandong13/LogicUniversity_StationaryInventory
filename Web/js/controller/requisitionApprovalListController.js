@@ -19,7 +19,7 @@
         $scope.viewCart = function () {
             location.href = '#/requestCart';
         };
-
+        var myBaseService = BaseService;
         $scope.search = function () {
             var status = $rootScope.optiondata.selectedOption.StatusID;
             if (status == 0) { status = "null"; }
