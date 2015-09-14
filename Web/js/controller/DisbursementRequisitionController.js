@@ -1,11 +1,12 @@
 ﻿define(['app'], function (app) {
-    app.controller('DisbReqControllers', ['$rootScope', '$scope', 'BaseService', DisbReqControllers]);
-    function DisbReqControllers($rootScope, $scope, BaseService) {
+    app.controller('DisbReqControllers', ['$rootScope', '$scope', 'BaseService', '$routeParams', DisbReqControllers]);
+    function DisbReqControllers($rootScope, $scope, BaseService, $routeParams) {
         $rootScope.changehighlight(5);
 
         var disid = $routeParams.disid;
         $scope.disid = disid;
-
+        
+        var myBaseService = BaseService;
         BaseService.getDisbursementRequisition(disid)
             .then(function (data) {
                 console.log(data);
