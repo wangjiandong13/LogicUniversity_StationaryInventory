@@ -551,9 +551,9 @@ var Layout = function () {
             handleHorizontalMenu(); // handles horizontal menu    
         },
 
-        setSidebarMenuActiveLink: function(mode, el) {
-            handleSidebarMenuActiveLink(mode, el);
-        },
+        //setSidebarMenuActiveLink: function(mode, el) {
+        //    handleSidebarMenuActiveLink(mode, el);
+        //},
 
         initSidebar: function() {
             //layout handlers

@@ -20,22 +20,101 @@
             SupplierSC: "",
             Supplier: "",
 
-            ifRequistion: "",
-            ifCatalog: "",
-            ifDepartment: "",
-            ifRequestCart: "",
-            ifDisbursement: "",
-            ifApproval: "",
-            ifRequisitionSC: "",
-            ifAdjustment: "",
-            ifDepartmentSC: "",
-            ifDisbursementSC: "",
-            ifInventory: "",
-            ifPurchaseOrder: "",
-            ifRetrieval: "",
-            ifSupplierSC: "",
-            ifSupplier: ""
+            ifRequistion: false,
+            ifCatalog: false,
+            ifDepartment: false,
+            ifRequestCart: false,
+            ifDisbursement: false,
+            ifApproval: false,
+            ifRequisitionSC:false,
+            ifAdjustment: false,
+            ifDepartmentSC: false,
+            ifDisbursementSC: false,
+            ifInventory: false,
+            ifPurchaseOrder: false,
+            ifRetrieval: false,
+            ifSupplierSC: false,
+            ifSupplier: false
         };
+        $rootScope.changehighlight=function(Nowpage){
+            $rootScope.mean = {
+                Requistion: "",
+                Catalog: "",
+                Department: "",
+                RequestCart: "",
+                Disbursement: "",
+                Approval: "",
+                RequisitionSC: "",
+                Adjustment: "",
+                DepartmentSC: "",
+                DisbursementSC: "",
+                Inventory: "",
+                PurchaseOrder: "",
+                Retrieval: "",
+                SupplierSC: "",
+                Supplier: "",
+
+                ifRequistion: false,
+                ifCatalog: false,
+                ifDepartment: false,
+                ifRequestCart: false,
+                ifDisbursement: false,
+                ifApproval: false,
+                ifRequisitionSC: false,
+                ifAdjustment: false,
+                ifDepartmentSC: false,
+                ifDisbursementSC: false,
+                ifInventory: false,
+                ifPurchaseOrder: false,
+                ifRetrieval: false,
+                ifSupplierSC: false,
+                ifSupplier: false
+            };
+            if (Nowpage == 1) {
+                $rootScope.mean.Requistion = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 2) {
+                $rootScope.mean.Catalog = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 3) {
+                $rootScope.mean.Department = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 4) {
+                $rootScope.mean.RequestCart = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 5) {
+                $rootScope.mean.Disbursement = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 6) {
+                $rootScope.mean.Approval = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 7) {
+                $rootScope.mean.RequisitionSC = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 8) {
+                $rootScope.mean.Adjustment = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 9) {
+                $rootScope.mean.Approval = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 10) {
+                $rootScope.mean.RequisitionSC = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.Adjustment = "active";
+                $rootScope.mean.ifRequistion = true;
+            }
+        }
         $rootScope.UserInfo = {
             EmpId: $window.sessionStorage.EmpID,
             EmpName: $window.sessionStorage.EmpName,
