@@ -66,8 +66,8 @@
         BaseService.getCatalogList()
             .then(function (data) {
                 console.log(data);
-                $scope.catalogListdata = data;
-                $.each($scope.catalogListdata, function (index, value) {
+                $scope.inventoryListdata = data;
+                $.each($scope.inventoryListdata, function (index, value) {
                     myBaseService.getItemPrice(value.ItemID)
                     .then(function (itemdata) {
                         console.log(itemdata);
