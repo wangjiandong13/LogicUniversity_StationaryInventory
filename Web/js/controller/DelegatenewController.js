@@ -1,6 +1,11 @@
 ﻿define(['app'], function (app) {
     app.controller('DelegateNewControllers', ['$rootScope', '$scope', 'BaseService', DelegateNewControllers]);
     function DelegateNewControllers($rootScope, $scope, BaseService) {
+        console.log(">>>enter DelegateNewControllers");
+        $('.date-picker').datepicker({
+            orientation: "left",
+            autoclose: true
+        });
         $scope.employeelist = {
             availableOptions: [],
             selectedOption: { 'EmpID': 0, 'EmpName': 'ALL' }
