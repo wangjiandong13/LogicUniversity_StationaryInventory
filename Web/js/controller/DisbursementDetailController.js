@@ -11,17 +11,17 @@
                 console.log(data);
                 $scope.DisbursementData = data[0];
                 myBaseService.getEmployee($scope.DisbursementData.EmpID)
-                       .then(function (data) {
+                       .then(function (Empdata) {
                            //console.log("getEmployee");
-                           $scope.RequisitionData.DisbursedBy = data.EmpName;
+                           $scope.RequisitionData.DisbursedBy = Empdata.EmpName;
                        })
                 console.log("++++++" + $scope.DisbursementData.ReceivedBy);
 
                 if ($scope.DisbursementData.ReceivedBy != null) {
                     myBaseService.getEmployee($scope.DisbursementData.ReceivedBy)
-                       .then(function (data) {
+                       .then(function (Empldata) {
                            //console.log("getEmployee");
-                           $scope.RequisitionData.ReceivedBy = data.EmpName;
+                           $scope.RequisitionData.ReceivedBy = Empldata.EmpName;
                        })
                 } else {
                     $scope.RequisitionData.ReceivedBy = "";
