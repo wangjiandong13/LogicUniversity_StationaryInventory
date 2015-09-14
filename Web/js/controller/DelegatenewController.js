@@ -27,9 +27,26 @@
         }
         $scope.submit = function () {
             console.log(">>>>enter submit button");
-            alert($("#datestartdata").val());
-            alert($("#datestartdata").val());
-
+            if ($("#datestartdata").val() != null && $("#datestartdata").val() != null && Reason != null) {
+                var msg = {
+                    EmpID: $rootScope.UserInfo.EmpID,
+                    DeptID: $rootScope.UserInfo.DeptId,
+                    StartDate: $("#datestartdata").val(),
+                    EndDate: $("#datestartdata").val(),
+                    Status: Reason
+                };
+                var msgjson = angular.toJson(msg);
+                console.log(">>>submit json:"+msgjson);
+                BaseService.addDelegate(msgjson)
+                    .then(function (data) {
+                        alert("success");
+                        location.href="#/Delegate"
+                    }
+                    )
+            }
+            else {
+                alert("enter the right information");
+            }
         }
     }
 })
