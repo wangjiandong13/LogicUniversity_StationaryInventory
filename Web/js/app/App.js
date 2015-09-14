@@ -10,6 +10,7 @@
             RequestCart: "",
             Disbursement: "",
             Approval: "",
+            Delegate: "",
             RequisitionSC: "",
             Adjustment: "",
             DepartmentSC: "",
@@ -19,6 +20,7 @@
             Retrieval: "",
             SupplierSC: "",
             Supplier: "",
+            Analytics: "",
 
             ifRequistion: false,
             ifCatalog: false,
@@ -26,6 +28,7 @@
             ifRequestCart: false,
             ifDisbursement: false,
             ifApproval: false,
+            ifDelegate: false,
             ifRequisitionSC:false,
             ifAdjustment: false,
             ifDepartmentSC: false,
@@ -34,7 +37,8 @@
             ifPurchaseOrder: false,
             ifRetrieval: false,
             ifSupplierSC: false,
-            ifSupplier: false
+            ifSupplier: false,
+            ifAnalytics: false,
         };
         $rootScope.changehighlight=function(Nowpage){
             $rootScope.mean = {
@@ -44,6 +48,7 @@
                 RequestCart: "",
                 Disbursement: "",
                 Approval: "",
+                Delegate: "",
                 RequisitionSC: "",
                 Adjustment: "",
                 DepartmentSC: "",
@@ -53,6 +58,7 @@
                 Retrieval: "",
                 SupplierSC: "",
                 Supplier: "",
+                Analytics: "",
 
                 ifRequistion: false,
                 ifCatalog: false,
@@ -60,6 +66,7 @@
                 ifRequestCart: false,
                 ifDisbursement: false,
                 ifApproval: false,
+                ifDelegate: false,
                 ifRequisitionSC: false,
                 ifAdjustment: false,
                 ifDepartmentSC: false,
@@ -68,7 +75,8 @@
                 ifPurchaseOrder: false,
                 ifRetrieval: false,
                 ifSupplierSC: false,
-                ifSupplier: false
+                ifSupplier: false,
+                ifAnalytics: false
             };
             if (Nowpage == 1) {
                 $rootScope.mean.Requistion = "active";
@@ -95,40 +103,48 @@
                 $rootScope.mean.ifApproval = true;
             }
             if (Nowpage == 7) {
+                $rootScope.mean.Delegate = "active";
+                $rootScope.mean.ifDelegate = true;
+            }
+            if (Nowpage == 8) {
                 $rootScope.mean.RequisitionSC = "active";
                 $rootScope.mean.ifRequisitionSC = true;
             }
-            if (Nowpage == 8) {
+            if (Nowpage == 9) {
                 $rootScope.mean.Adjustment = "active";
                 $rootScope.mean.ifAdjustment = true;
             }
-            if (Nowpage == 9) {
+            if (Nowpage == 10) {
                 $rootScope.mean.DepartmentSC = "active";
                 $rootScope.mean.ifDepartmentSC = true;
             }
-            if (Nowpage == 10) {
+            if (Nowpage == 11) {
                 $rootScope.mean.DisbursementSC = "active";
                 $rootScope.mean.ifDisbursementSC = true;
             }
-            if (Nowpage == 11) {
+            if (Nowpage == 12) {
                 $rootScope.mean.Inventory = "active";
                 $rootScope.mean.ifInventory = true;
             }
-            if (Nowpage == 12) {
+            if (Nowpage == 13) {
                 $rootScope.mean.PurchaseOrder = "active";
                 $rootScope.mean.ifPurchaseOrder = true;
             }
-            if (Nowpage == 13) {
+            if (Nowpage == 14) {
                 $rootScope.mean.Retrieval = "active";
                 $rootScope.mean.ifRetrieval = true;
             }
-            if (Nowpage == 14) {
+            if (Nowpage == 15) {
                 $rootScope.mean.SupplierSC = "active";
                 $rootScope.mean.ifSupplierSC = true;
             }
-            if (Nowpage == 15) {
+            if (Nowpage == 16) {
                 $rootScope.mean.Supplier = "active";
                 $rootScope.mean.ifSupplier = true;
+            }
+            if (Nowpage == 17) {
+                $rootScope.mean.Analytics = "active";
+                $rootScope.mean.ifAnalytics = true;
             }
         }
         $rootScope.UserInfo = {
