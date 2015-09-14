@@ -10,6 +10,7 @@
             .then(function (data) {
                 console.log(data);
                 $scope.DisbursementData = data[0];
+                console.log($scope.DisbursementData);
                 myBaseService.getEmployee($scope.DisbursementData.EmpID)
                        .then(function (Empdata) {
                            //console.log("getEmployee");
