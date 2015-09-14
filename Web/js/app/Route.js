@@ -68,8 +68,8 @@
                     '../controller/DisbursementRequisitionController'
                 ]
             },
-            '/requisitionApproval': {
-                templateUrl: 'ED/requisitionApproval.html',
+            '/Approval': {
+                templateUrl: 'ED/requisitionApprovalList.html',
                 dependencies: [
                     '../controller/RequisitionApprovalController'
                 ]

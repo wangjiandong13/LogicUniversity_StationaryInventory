@@ -25,13 +25,13 @@
                         <label style="display: inline">Date Range:</label>
                     </div>
                     <div class="col-md-5 input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
-                        <input type="text" class="form-control" name="from">
+                        <input type="text" class="form-control" name="from" ng-model="StartDate">
                         <span class="input-group-addon">
                                     to </span>
-                        <input type="text" class="form-control" name="to">
+                        <input type="text" class="form-control" name="to" ng-model="EndDate">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" placeholder="Enter Reuisition No.">
+                        <input type="text" class="form-control" placeholder="Enter Disbursement No." ng-model="DisbursementNo">
                     </div>
                     <div class="col-md-2">
                         <button type="button" class="btn btn yellow">

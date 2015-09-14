@@ -4421,6 +4421,7 @@
     <Content Include="js\controller\RequestCartController.js" />
     <Content Include="js\controller\RequisitionApprovalController.js" />
     <Content Include="js\controller\RequisitionController.js" />
+    <Content Include="js\controller\RequisitionApprovalListController.js" />
     <Content Include="js\controller\RequisitionProcessedController.js" />
     <Content Include="js\controller\RequisitionStoreClerkController.js" />
     <Content Include="js\controller\RetrievalAllocationController.js" />
@@ -4777,7 +4778,6 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
-    <Content Include="templete\ED\DHrequisition.html" />
     <Content Include="templete\EM\catalogTile.html" />
     <Content Include="templete\SC\supplierStoreClerk.html" />
     <Content Include="vendor\angular-google-maps.min.js" />
