@@ -71,7 +71,7 @@
         }
             )
                 }
-            }
+            )}
         //load catalogList
         function inventoryListDataCtrl($scope, BaseService) {
             //console.log("enter");
