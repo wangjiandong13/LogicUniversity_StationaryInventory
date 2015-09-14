@@ -56,7 +56,7 @@
             }
             else
             {
-                location.href = "#/disbursementDetailStoreClerk";
+                location.href = "#/disbursementStoreClerk";
             }
         }
         $scope.viewRequisition = function () {
