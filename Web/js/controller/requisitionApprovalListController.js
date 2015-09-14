@@ -1,7 +1,7 @@
 ﻿define(['app'], function (app) {
     app.controller('RequisitionApprovalListControllers', ['$rootScope', '$scope', 'BaseService', RequisitionApprovalListControllers]);
     app.controller('RequisitionApprovalList', ['$rootScope', '$scope', 'BaseService', RequisitionApprovalList]);
-    app.controller('SelectoptionControllers', ['$rootScope', 'BaseService', SelectoptionControllers]);
+    app.controller('SelectoptionControllersStatus', ['$rootScope', 'BaseService', SelectoptionControllersStatus]);
     app.controller('SelectoptionControllersEmp', ['$rootScope', 'BaseService', SelectoptionControllersEmp]);
     function RequisitionApprovalListControllers($rootScope, $scope, BaseService) {
         //set mean highlight
@@ -63,16 +63,16 @@
             }
         };
     }
-    function SelectoptionControllers($rootScope, BaseService) {
-        $rootScope.optiondata = {
+    function SelectoptionControllersStatus($rootScope, BaseService) {
+        $rootScope.optiondataStatus = {
             availableOptions: [],
             selectedOption: { 'StatusID': 1, 'StatusName': 'Pending Approval' }
         };
         BaseService.getRequisitionStatus()
             .then(function (data) {
-                $rootScope.optiondata.availableOptions = data;
+                $rootScope.optiondataStatus.availableOptions = data;
                 //console.log(data);
-                $rootScope.optiondata.availableOptions.unshift({ StatusID: 0, StatusName: 'ALL' });
+                $rootScope.optiondataStatus.availableOptions.unshift({ StatusID: 0, StatusName: 'ALL' });
             }, function (data) {
                 alert(data);
             })

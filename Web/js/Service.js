@@ -354,8 +354,11 @@ function service($http, $q) {
     //load requisition list pending approval
     this.getRequisitionApprovalList = function (DeptID) {
         var deferred = $q.defer();
+
+        console.log(">>>service" + DeptID);
         $http.get(baseurl + "requisitionAPI.svc/getRequisitionApprovalList/" + DeptID)
             .success(function (data) {
+                console.log(">>>service" + data);
                 deferred.resolve(data)
             })
             .error(function () {

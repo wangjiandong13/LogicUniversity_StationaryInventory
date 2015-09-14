@@ -27,11 +27,11 @@
                             <div class="col-md-1" style="top:50%">
                                 <label>Status:</label>
                             </div>
-                            <div class="col-md-3" ng-controller="SelectoptionControllers">
+                            <div class="col-md-3" ng-controller="SelectoptionControllersStatus">
                                 <select class="form-control"
                                         name="statusselect" id="statusselect"
-                                        ng-options="option.StatusName for option in optiondata.availableOptions track by option.StatusID"
-                                        ng-model="optiondata.selectedOption"></select>
+                                        ng-options="option.StatusName for option in optiondataStatus.availableOptions track by option.StatusID"
+                                        ng-model="optiondataStatus.selectedOption"></select>
                             </div>
                             <div class="col-md-1" style="top:50%">
                                 <label>Employee:</label>
