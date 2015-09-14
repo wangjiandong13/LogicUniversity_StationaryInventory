@@ -25,7 +25,7 @@
             if (status == 0) { status = "null"; }
             var EmpID = $rootScope.optiondataEmp.selectedOption.EmpID;
             if (EmpID == null) { EmpID = "null" }
-            BaseService.getRequisitionList(status, "null", EmpId, $rootScope.UserInfo.DeptId)
+            BaseService.getRequisitionList(status, "null", "null", $rootScope.UserInfo.DeptId)
                 .then(function (data) {
                     console.log(data);
                     $rootScope.RequisitionsApproval = data;
