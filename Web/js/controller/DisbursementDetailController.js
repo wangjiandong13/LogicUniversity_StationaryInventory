@@ -50,15 +50,22 @@
                 alert(data);
             }
             )
+        if ($rootScope.disbBackTo == 0)
+        {
+            $scope.viewReqBtn = true;
+        }
+        else
+        {
+            $scope.viewReqBtn = false;
+        }
+
         $scope.back = function () {
             if ($rootScope.disbBackTo == 0) {
                 location.href = "#/disbursement";
-                $scope.viewReqBtn = true;
             }
             else
             {
                 location.href = "#/disbursementStoreClerk";
-                $scope.viewReqBtn = false;
             }
         }
         $scope.viewRequisition = function () {
