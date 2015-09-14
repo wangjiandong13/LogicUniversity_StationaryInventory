@@ -56,14 +56,13 @@
         //console.log("enter");
         var myBaseService = BaseService;
         BaseService.getSupplierList()
-        .then(function(supplierdata){
-            $.each(supplierdata, function(index, value){
-                if(value.Rank == 1)
+        .then(function (supplierdata) {
+            $.each(supplierdata, function (index, value) {
+                if (value.Rank == 1)
                     $scope.supplierID = value.SupplierID;
             })
-        })
 
-        BaseService.getCatalogList()
+            myBaseService.getCatalogList()
             .then(function (data) {
                 console.log(data);
                 $scope.inventoryListdata = data;
@@ -80,8 +79,11 @@
                 alert(data);
             }
        )
+        })
 
-        
+
+
+
         //click the Stock Card button
         $scope.stockCard = function () {
             location.href = '#/stockcard';
