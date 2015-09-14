@@ -33,7 +33,7 @@
                     DeptID: $rootScope.UserInfo.DeptId,
                     StartDate: $("#datestartdata").val(),
                     EndDate: $("#datestartdata").val(),
-                    Status: Reason
+                    Status: $scope.Reason
                 };
                 var msgjson = angular.toJson(msg);
                 console.log(">>>submit json:"+msgjson);
