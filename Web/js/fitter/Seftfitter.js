@@ -30,6 +30,29 @@ function statuschange() {
     };
 }
 
+function CPIDchange() {
+    return function (input) {
+        if (input == 1) {
+            return "LogicU Stationery Store - Administration Building (9:30am)";
+        }
+        if (input == 2) {
+            return "LogicU Management School (11:00am)";
+        }
+        if (input == 3) {
+            return "LogicU Medical School (9:30am)";
+        }
+        if (input == 4) {
+            return "Datepicker for Bootstrap ";
+        }
+        if (input == 5) {
+            return "LogicU Science School (9:30am)";
+        }
+        if (input == 6) {
+            return "LogicU University Hospital (11:00am)";
+        }
+    };
+}
+
 
 //function datefilter22() {
 //    return function (input, param1) {

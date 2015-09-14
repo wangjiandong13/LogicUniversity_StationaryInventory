@@ -21,7 +21,7 @@
             if (endDate == "") { endDate = "null"; }
             var disID = $scope.DisbursementNo;
             if (disID == null) { disID = "null" }
-            BaseService.getDisbursementList("null", "null", disID, startDate, endDate)
+            BaseService.getDisbursementList($rootScope.UserInfo.DeptId, "null", disID, startDate, endDate)
                 .then(function (data) {
                     console.log(data);
                     $rootScope.Disbursements = data;
