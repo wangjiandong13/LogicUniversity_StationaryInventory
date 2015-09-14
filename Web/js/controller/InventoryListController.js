@@ -77,7 +77,7 @@
                             if (ipvalue.SupplierID == $scope.supplierID)
                             {
                                 console.log($scope.inventoryListdata.Price);
-                                $scope.inventoryListdata.Price = ipvalue.Price;
+                                value.Price = ipvalue.Price;
                             }
                                 
                         })
