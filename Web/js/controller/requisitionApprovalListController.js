@@ -1,9 +1,9 @@
 ﻿define(['app'], function (app) {
-    app.controller('RequisitionApprovalControllers', ['$rootScope', '$scope', 'BaseService', RequisitionApprovalControllers]);
+    app.controller('RequisitionApprovalListControllers', ['$rootScope', '$scope', 'BaseService', RequisitionApprovalListControllers]);
     app.controller('RequisitionApprovalList', ['$rootScope', '$scope', 'BaseService', RequisitionApprovalList]);
     app.controller('SelectoptionControllers', ['$rootScope', 'BaseService', SelectoptionControllers]);
     app.controller('SelectoptionControllersEmp', ['$rootScope', 'BaseService', SelectoptionControllersEmp]);
-    function RequisitionApprovalControllers($rootScope, $scope, BaseService) {
+    function RequisitionApprovalListControllers($rootScope, $scope, BaseService) {
         //set mean highlight
         $rootScope.mean = {
             Requistion: "active",
