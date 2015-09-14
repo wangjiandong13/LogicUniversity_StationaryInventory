@@ -58,6 +58,7 @@
         BaseService.getSupplierList()
         .then(function (supplierdata) {
             $.each(supplierdata, function (index, value) {
+                console.log(value.Rank);
                 if (value.Rank == 1)
                     $scope.supplierID = value.SupplierID;
             })
