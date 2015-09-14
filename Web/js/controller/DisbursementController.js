@@ -2,17 +2,7 @@
     app.controller('DisbursementnControllers', ['$rootScope', '$scope', 'BaseService', DisbursementnControllers]);
     app.controller('DisbursementList', ['$rootScope', '$scope', 'BaseService', DisbursementList]);
     function DisbursementnControllers($rootScope, $scope, BaseService) {
-        //set mean highlight
-        $rootScope.mean = {
-            Requistion: "active",
-            Catalog: "",
-            Department: "",
-            RequestCart: "",
-            ifRequistion: true,
-            ifCatalog: false,
-            ifDepartment: false,
-            ifRequestCart: false
-        };
+        $rootScope.changehighlight(5);
 
         $scope.search = function () {
             var startDate = $rootScope.StartDate;

@@ -4,17 +4,7 @@
     app.controller('SelectoptionControllersStatus', ['$rootScope', 'BaseService', SelectoptionControllersStatus]);
     app.controller('SelectoptionControllersEmp', ['$rootScope', 'BaseService', SelectoptionControllersEmp]);
     function RequisitionApprovalListControllers($rootScope, $scope, BaseService) {
-        //set mean highlight
-        $rootScope.mean = {
-            Requistion: "active",
-            Catalog: "",
-            Department: "",
-            RequestCart: "",
-            ifRequistion: true,
-            ifCatalog: false,
-            ifDepartment: false,
-            ifRequestCart: false
-        };
+        $rootScope.changehighlight(6);
         $rootScope.optiondataStatus = {
         availableOptions: [],
                 selectedOption: { 'StatusID': 1, 'StatusName' : 'Pending Approval'}

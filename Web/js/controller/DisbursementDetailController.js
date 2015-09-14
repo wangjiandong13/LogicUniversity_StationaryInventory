@@ -10,10 +10,11 @@
             .then(function (data) {
                 console.log(data);
                 $scope.DisbursementData = data[0];
+                console.log($scope.DisbursementData);
                 myBaseService.getEmployee($scope.DisbursementData.EmpID)
                        .then(function (Empdata) {
                            //console.log("getEmployee");
-                           $scope.RequisitionData.DisbursedBy = Empdata.EmpName;
+                           $scope.DisbursedByName = Empdata.EmpName;
                        })
                 console.log("++++++" + $scope.DisbursementData.ReceivedBy);
 
@@ -21,7 +22,7 @@
                     myBaseService.getEmployee($scope.DisbursementData.ReceivedBy)
                        .then(function (Empldata) {
                            //console.log("getEmployee");
-                           $scope.RequisitionData.ReceivedBy = Empldata.EmpName;
+                           $scope.ReceivedByName = Empldata.EmpName;
                        })
                 } else {
                     $scope.RequisitionData.ReceivedBy = "";
