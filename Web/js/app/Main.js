@@ -17,7 +17,7 @@
         'angular-route': {
             deps: ['angular']
         },
-        'EmployeeMain': {
+        'Main': {
             deps: ['jQuery']
         }
     }

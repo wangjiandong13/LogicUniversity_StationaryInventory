@@ -19,6 +19,17 @@
 
             }, function (data) {
                 alert(data);
+                
             })
+        $scope.cancel = function () {
+            console.log(">>>>enter cancel button");
+            location.href = "#/delegate";
+        }
+        $scope.submit = function () {
+            console.log(">>>>enter submit button");
+            alert($("#datestartdata").val());
+            alert($("#datestartdata").val());
+
+        }
     }
 })

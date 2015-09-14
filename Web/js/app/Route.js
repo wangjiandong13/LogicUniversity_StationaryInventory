@@ -89,7 +89,7 @@
             '/delegatenew': {
                 templateUrl: 'DH/delegatenew.html',
                 dependencies: [
-                    '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js','../controller/DelegatenewController'
+                    '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min', '../controller/DelegatenewController'
                 ]
             },
             '/requisitionStoreClerk': {
