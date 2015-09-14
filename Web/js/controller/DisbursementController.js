@@ -31,6 +31,7 @@
             }
         )
         $scope.disbursementdetail = function (Disbursement) {
+            $rootScope.disbBackTo = 0;
             location.href = "#/disbursementDetail/" + Disbursement.DisID;
         };
     }

@@ -51,7 +51,13 @@
             }
             )
         $scope.back = function () {
-            location.href = "#/disbursement";
+            if ($rootScope.disbBackTo == 0) {
+                location.href = "#/disbursement";
+            }
+            else
+            {
+                location.href = "#/disbursementDetailStoreClerk";
+            }
         }
         $scope.viewRequisition = function () {
             location.href = "#/disbursementRequisition/" + disid;
