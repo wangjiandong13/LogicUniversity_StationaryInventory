@@ -64,7 +64,7 @@
             location.href = "#/requisition";
         }
         $scope.reject = function () {
-            BaseService.rejectRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $rootScope.RequisitionData.Remark)
+            BaseService.rejectRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
                     alert("success!");
                     location.href = "#/requisition";
@@ -74,7 +74,7 @@
         }
         $scope.approve = function () {
             console.log("enter approve");
-            BaseService.approveRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $rootScope.RequisitionData.Remark)
+            BaseService.approveRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
                     alert("success!");
                     location.href = "#/requisition";

@@ -108,7 +108,7 @@
                                     <td class="col-md-3">
                                         <h5>Reason (optional): </h5></td>
                                     <td>
-                                        <textarea id="tb_reason" ng-model=RequisitionData.Remark class="form-control" maxlength="225" rows="2">
+                                        <textarea id="tb_reason" ng-model="Remark" class="form-control" maxlength="225" rows="2">
                                         </textarea>
                                     </td>
                                 </tr>
@@ -119,8 +119,8 @@
                 <div class="col-md-12 text-center">
                     <br>
                     <button type="button" class="btn default"><i class="fa fa-arrow-left"></i> Back</button>
-                    <button type="button" class="btn btn-primary"><i class="fa fa-times" ng-click="reject()"></i> Reject</button>
-                    <button type="button" class="btn btn-success"><i class="fa fa-check" ng-click="approve()"></i> Approve</button>
+                    <button type="button" class="btn btn-primary" ng-click="reject()"><i class="fa fa-times"></i> Reject</button>
+                    <button type="button" class="btn btn-success" ng-click="approve()"><i class="fa fa-check"></i> Approve</button>
                     <hr>
                 </div>
             </div>
