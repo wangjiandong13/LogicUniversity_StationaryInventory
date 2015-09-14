@@ -1,6 +1,6 @@
 ﻿define(['app'], function (app) {
-    app.controller('DisbReqControllers', ['$rootScope', '$scope', 'BaseService', DisbReqControllers]);
-    function DisbReqControllers($rootScope, $scope, BaseService) {
+    app.controller('DisbReqControllers', ['$rootScope', '$scope', 'BaseService', '$routeParams', DisbReqControllers]);
+    function DisbReqControllers($rootScope, $scope, BaseService, $routeParams) {
         $rootScope.changehighlight(5);
 
         var disid = $routeParams.disid;
