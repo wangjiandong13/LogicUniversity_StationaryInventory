@@ -10,7 +10,7 @@
             availableOptions: [],
             selectedOption: { 'CPID': 0, 'CPName': 'ALL' }
         };
-        //$scope.DisID = "";
+
         var myBaseService = BaseService;
         $scope.search = function () {
             var dept = $scope.optiondataDept.selectedOption.DeptID;
@@ -18,7 +18,7 @@
             var cpid = $scope.optiondataCPID.selectedOption.CPID;
             if (cpid == 0) { cpid = "null"; }
             var disid = $scope.DisID;
-            if (disid == null) { disid = "null"; }
+            if (disid == null || disid =="") { disid = "null"; }
             console.log(disid);
             BaseService.getDisbursementList(dept, cpid, disid, "null", "null")
                 .then(function (data) {
