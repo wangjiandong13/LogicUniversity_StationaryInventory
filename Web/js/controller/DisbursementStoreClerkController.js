@@ -35,8 +35,8 @@
                             )
                         myBaseService.getAllCollectionPoint()
                             .then(function (data) {
-                                if(data.CPID == value.CPID)
-                                value.Collection = data.CPName;
+                                if (data.CPID == value.CPID)
+                                    value.Collection = data.CPName;
                             }, function (data) {
                                 alert(data);
                             }
@@ -67,7 +67,7 @@
                             $.each(data, function (index, xvalue) {
                                 if (xvalue.CPID == value.CPID)
                                     value.Collection = xvalue.CPName;
-                            }
+                            })
                         }, function (data) {
                             alert(data);
                         }
