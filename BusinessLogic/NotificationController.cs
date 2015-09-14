@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Net;
+using System.IO;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace BusinessLogic
 {
@@ -124,6 +128,10 @@ namespace BusinessLogic
                         Employee deptHead = ctx.Employee.Where(x => x.DeptID == employee.DeptID && x.RoleID == "DH").FirstOrDefault();
                         notif.EmpID = deptHead.EmpID;
                         ctx.Notification.Add(notif);
+
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
                         //emailcontrol.SendMailToEmpHead(notif.EmpID.ToString());
                         break;
                     }
@@ -137,6 +145,10 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
+
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
                         //emailcontrol.SendMailToEmp(notif.EmpID.ToString(),"APPROVED");
                         break;
                     }
@@ -150,6 +162,10 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
+
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
                         //emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "REJECTED");
                         break;
                     }
@@ -163,6 +179,10 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
+
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
                         break;
                     }
                 //Requisition Processed
@@ -188,6 +208,10 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
+
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
                         //emailcontrol.SendMailToEmp(notif.EmpID.ToString(), "COLLECTED");
                         break;
                     }
@@ -204,6 +228,10 @@ namespace BusinessLogic
                             notif.EmpID = sendToSS[0].EmpID;
                             ctx.Notification.Add(notif);
 
+                            int emp = Convert.ToInt32(notif.EmpID);
+                            string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                            PushNotification(notif.NotifName, emp, roleID);
+
                             for (int i = 1; i < sendToSS.Count; i++)
                             {
                                 Notification notif2 = new Notification();
@@ -213,12 +241,20 @@ namespace BusinessLogic
                                 notif2.NotifName = "New Pending Adjustment Voucher";
                                 notif2.NotifDesc = "Adjustment Voucher #" + details + " is pending for your approval.";
                                 ctx.Notification.Add(notif2);
+
+                                emp = Convert.ToInt32(notif.EmpID);
+                                roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                                PushNotification(notif.NotifName, emp, roleID);
                             }
                         }
                         else
                         {
                             notif.EmpID = sendToSM[0].EmpID;
                             ctx.Notification.Add(notif);
+
+                            int emp = Convert.ToInt32(notif.EmpID);
+                            string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                            PushNotification(notif.NotifName, emp, roleID);
 
                             for (int i = 1; i < sendToSM.Count; i++)
                             {
@@ -229,6 +265,10 @@ namespace BusinessLogic
                                 notif2.NotifName = "New Pending Adjustment Voucher";
                                 notif2.NotifDesc = "Adjustment Voucher #" + details + " is pending for your approval.";
                                 ctx.Notification.Add(notif2);
+
+                                emp = Convert.ToInt32(notif.EmpID);
+                                roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                                PushNotification(notif.NotifName, emp, roleID);
                             }
                         }
                         break;
@@ -241,6 +281,10 @@ namespace BusinessLogic
                         // send to employee who created this adj voucher
                         notif.EmpID = empid;
                         ctx.Notification.Add(notif);
+
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
                         break;
                     }
                 //Adjustment Voucher Rejected
@@ -251,6 +295,10 @@ namespace BusinessLogic
                         // send to employee who created this adj voucher
                         notif.EmpID = empid;
                         ctx.Notification.Add(notif);
+
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
                         break;
                     }
                 //Requisition Items Not Fulfilled
@@ -263,6 +311,10 @@ namespace BusinessLogic
                         Requisition req = ctx.Requisition.Where(x => x.ReqID == detail).FirstOrDefault();
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
+
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
                         break;
                     }
                 //New Collection Schedule
@@ -274,6 +326,10 @@ namespace BusinessLogic
                         notif.EmpID = sendToSC[0].EmpID;
                         ctx.Notification.Add(notif);
 
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
+
                         for (int i = 1; i < sendToSC.Count; i++)
                         {
                             Notification notif2 = new Notification();
@@ -283,6 +339,10 @@ namespace BusinessLogic
                             notif2.NotifName = "New Collection Schedule";
                             notif2.NotifDesc = "Items are ready for collection on " + details;
                             ctx.Notification.Add(notif2);
+
+                            emp = Convert.ToInt32(notif.EmpID);
+                            roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                            PushNotification(notif.NotifName, emp, roleID);
                         }
                         for (int i = 0; i < sendToDR.Count; i++)
                         {
@@ -293,6 +353,10 @@ namespace BusinessLogic
                             notif3.NotifName = "New Collection Schedule";
                             notif3.NotifDesc = "Items are ready for collection on " + details;
                             ctx.Notification.Add(notif3);
+
+                            emp = Convert.ToInt32(notif.EmpID);
+                            roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                            PushNotification(notif.NotifName, emp, roleID);
                         }
                         break;
                     }
@@ -305,6 +369,10 @@ namespace BusinessLogic
                         notif.EmpID = sendToSC[0].EmpID;
                         ctx.Notification.Add(notif);
 
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
+
                         for (int i = 1; i < sendToSC.Count; i++)
                         {
                             Notification notif2 = new Notification();
@@ -314,6 +382,10 @@ namespace BusinessLogic
                             notif2.NotifName = "Change in Department's Representative";
                             notif2.NotifDesc = "Department #" + details + "'s representative has been changed.";
                             ctx.Notification.Add(notif2);
+
+                            emp = Convert.ToInt32(notif.EmpID);
+                            roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                            PushNotification(notif.NotifName, emp, roleID);
                         }
                         break;
                     }
@@ -326,6 +398,10 @@ namespace BusinessLogic
                         notif.EmpID = sendToSC[0].EmpID;
                         ctx.Notification.Add(notif);
 
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
+
                         for (int i = 1; i < sendToSC.Count; i++)
                         {
                             Notification notif2 = new Notification();
@@ -335,6 +411,10 @@ namespace BusinessLogic
                             notif2.NotifName = "Change in Department's Collection Point";
                             notif2.NotifDesc = "Department #" + details + "'s collection point has been changed.";
                             ctx.Notification.Add(notif2);
+
+                            emp = Convert.ToInt32(notif.EmpID);
+                            roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                            PushNotification(notif.NotifName, emp, roleID);
                         }
                         break;
                     }
@@ -347,6 +427,10 @@ namespace BusinessLogic
                         notif.EmpID = sendToSC[0].EmpID;
                         ctx.Notification.Add(notif);
 
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
+
                         for (int i = 1; i < sendToSC.Count; i++)
                         {
                             Notification notif2 = new Notification();
@@ -356,6 +440,10 @@ namespace BusinessLogic
                             notif2.NotifName = "Low Stock Inventory";
                             notif2.NotifDesc = "Item " + details + " is low in stock.";
                             ctx.Notification.Add(notif2);
+
+                            emp = Convert.ToInt32(notif.EmpID);
+                            roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                            PushNotification(notif.NotifName, emp, roleID);
                         }
                         break;
                     }
@@ -368,6 +456,10 @@ namespace BusinessLogic
                         notif.EmpID = sendToSS[0].EmpID;
                         ctx.Notification.Add(notif);
 
+                        int emp = Convert.ToInt32(notif.EmpID);
+                        string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                        PushNotification(notif.NotifName, emp, roleID);
+
                         for (int i = 1; i < sendToSS.Count; i++)
                         {
                             Notification notif2 = new Notification();
@@ -377,6 +469,10 @@ namespace BusinessLogic
                             notif2.NotifName = "New Report Generated";
                             notif2.NotifDesc = "Report #" + details + " has been generated.";
                             ctx.Notification.Add(notif2);
+
+                            emp = Convert.ToInt32(notif.EmpID);
+                            roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
+                            PushNotification(notif.NotifName, emp, roleID);
                         }
                         break;
                     }
@@ -389,6 +485,56 @@ namespace BusinessLogic
             {
                
             }
+        }
+
+        public bool PushNotification(string pushMessage, int empID, string roleID)
+        {
+            bool isPushMessageSend = false;
+
+            string postString = "";
+            string urlpath = "https://api.parse.com/1/push";
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(urlpath);
+            string emp = roleID + Convert.ToString(empID);
+            postString = "{ \"channels\": [ \"" + emp + "\"  ], " +
+                             "\"data\" : {\"alert\":\"" + pushMessage + "\"}" +
+                             "}";
+            try
+            {
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.ContentLength = postString.Length;
+                httpWebRequest.Headers.Add("X-Parse-Application-Id", "EQnJ9kuR5DKhU0UfVPr6VwN0QA0wVys00jnrv4KU");
+                httpWebRequest.Headers.Add("X-Parse-REST-API-KEY", "QcAiOpjs2ibI1f6WDtkc6cesJbOIWzf3t3igJoDN");
+                httpWebRequest.Method = "POST";
+                StreamWriter requestWriter = new StreamWriter(httpWebRequest.GetRequestStream());
+                requestWriter.Write(postString);
+                requestWriter.Close();
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var responseText = streamReader.ReadToEnd();
+                    JObject jObjRes = JObject.Parse(responseText);
+                    if (Convert.ToString(jObjRes).IndexOf("true") != -1)
+                    {
+                        isPushMessageSend = true;
+                    }
+                }
+            }
+            catch (WebException e)
+            {
+                using (WebResponse response = e.Response)
+                {
+                    HttpWebResponse httpResponse = (HttpWebResponse)response;
+                    Console.WriteLine("Error code: {0}", httpResponse.StatusCode);
+                    using (Stream data = response.GetResponseStream())
+                    using (var reader = new StreamReader(data))
+                    {
+                        string text = reader.ReadToEnd();
+                        Console.WriteLine(text);
+                    }
+                }
+            }
+
+            return isPushMessageSend;
         }
     }
 }
