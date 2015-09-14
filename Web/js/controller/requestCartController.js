@@ -6,8 +6,8 @@
         var selfBaseService = BaseService;
         $('#create-switch').bootstrapSwitch();
         //set mean highlight
-        $rootScope.changehighlight(1);
-        
+        $rootScope.changehighlight(4);
+        $scope.PRIORITY = true;
         console.log("enter RequestCartControllers")
         $scope.back = function () {
             location.href = '#/requisition';
