@@ -2,7 +2,7 @@
     app.controller('RequestCartControllers', ['$rootScope', '$scope', 'BaseService', RequestCartControllers]);
     app.controller('RequestCartListCtrl', ['$rootScope', '$scope', 'BaseService', RequestCartList]);
 
-    function RequestCartControllers($rootScope, $scope,BaseService) {
+    function RequestCartControllers($rootScope, $scope, BaseService) {
         var selfBaseService = BaseService;
         $('#create-switch').bootstrapSwitch();
         //set mean highlight
@@ -15,7 +15,7 @@
         $scope.submit = function () {
             console.log("enter");
             var msg = [];
-            if ($rootScope.RequestCarts!=null) {
+            if ($rootScope.RequestCarts != null) {
                 $.each($rootScope.RequestCarts, function (index, value) {
                     var each = {
                         EmpID: $rootScope.UserInfo.EmpId,
@@ -31,17 +31,18 @@
                     .then(function (data) {
                         console.log(data);
                         req_id = data;
+                        selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
+                            .then(function (data) {
+                                alert("success!");
+                                location.href = '#/requisition';
+                            })
                     }, function (data) {
                         alert(data);
                     })
                 var priority = 2;
                 if ($scope.PRIORITY) { priority = 1 }
 
-                selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
-                    .then(function (data) {
-                        alert("success!");
-                        location.href = '#/requisition';
-                    })
+
             }
             else {
                 alert("empty cart");
@@ -61,7 +62,7 @@
                 alert(data);
             })
         $scope.delect = function (RequestCart) {
-            var msg = '{"ItemID":"'+RequestCart.ItemID+'" ,"EmpID":'+EmpId+'}';
+            var msg = '{"ItemID":"' + RequestCart.ItemID + '" ,"EmpID":' + EmpId + '}';
             console.log(msg);
             BaseService.removeRequestCart(msg)
                     .then(function (data) {
