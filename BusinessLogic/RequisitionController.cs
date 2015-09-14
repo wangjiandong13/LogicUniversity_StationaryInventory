@@ -134,6 +134,16 @@ namespace BusinessLogic
         }
 
         /// <summary>
+        /// GetRequisitionApprovalList
+        /// </summary>
+        /// <param name="DeptID">Department ID</param>
+        /// <returns></returns>
+        public List<Requisition> getRequisitionApprovalList(string DeptID)
+        {
+            return ctx.Requisition.Where(x => x.StatusID == 1 && x.DeptID == DeptID).ToList();
+        }
+
+        /// <summary>
         /// CreateRequisition
         /// </summary>
         /// <param name="itemList">CartItems List (EmpID, ItemID, Qty)</param>

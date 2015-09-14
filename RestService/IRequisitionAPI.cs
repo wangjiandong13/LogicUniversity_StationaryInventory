@@ -100,5 +100,11 @@ namespace RestService
                            BodyStyle = WebMessageBodyStyle.Bare,
                            UriTemplate = "/confirmReorder")]
         bool confirmReorder(List<CartItems> ItemList);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                           BodyStyle = WebMessageBodyStyle.Bare,
+                           UriTemplate = "/getRequisitionApprovalList/{DeptID}")]
+        List<Requisition> getRequisitionApprovalList(string DeptID)
     }
 }
