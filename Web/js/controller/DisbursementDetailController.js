@@ -26,7 +26,7 @@
                            //console.log("getEmployee");
                            $scope.DisbursedByName = Empdata.EmpName;
                        })
-                console.log("++++++" + $scope.DisbursementData.ReceivedBy);
+                //console.log("++++++" + $scope.DisbursementData.ReceivedBy);
 
                 if ($scope.DisbursementData.ReceivedBy != null) {
                     myBaseService.getEmployee($scope.DisbursementData.ReceivedBy)
