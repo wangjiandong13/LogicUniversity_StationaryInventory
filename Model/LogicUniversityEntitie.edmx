@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="StationeryInventory_Team_05Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="StationeryInventory_Team_05Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdjustmentDetail">
           <Key>
             <PropertyRef Name="AdjSN" />
@@ -42,7 +42,7 @@
             <PropertyRef Name="CPID" />
           </Key>
           <Property Name="CPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CPName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CPName" Type="nvarchar" MaxLength="100" />
           <Property Name="CPAddress" Type="nvarchar" MaxLength="100" />
           <Property Name="CPLat" Type="float" />
           <Property Name="CPLgt" Type="float" />
@@ -102,7 +102,7 @@
           <Property Name="RoleID" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="int" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -187,9 +187,16 @@
           <Key>
             <PropertyRef Name="ReportID" />
           </Key>
-          <Property Name="ReportID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ReportContent" Type="nvarchar" MaxLength="255" />
+          <Property Name="ReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmpID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Date" Type="date" />
+          <Property Name="StartD" Type="date" />
+          <Property Name="EndD" Type="date" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="350" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Criteria" Type="int" />
+          <Property Name="Precriteria" Type="int" />
         </EntityType>
         <EntityType Name="Requisition">
           <Key>
@@ -284,6 +291,36 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StationeryInventory_Team_05.dbo.ReorderAnalytics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ReorderAnalytics">
+          <Key>
+            <PropertyRef Name="PoID" />
+          </Key>
+          <Property Name="Date" Type="date" />
+          <Property Name="ItemCatID" Type="int" />
+          <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="ActualQty" Type="int" />
+          <Property Name="PoID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" />
+          <Property Name="SupplierID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StationeryInventory_Team_05.dbo.RequisitionAnalytics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RequisitionAnalytics">
+          <Key>
+            <PropertyRef Name="ReqID" />
+          </Key>
+          <Property Name="Date" Type="date" />
+          <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemCatID" Type="int" />
+          <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestQty" Type="int" />
+          <Property Name="IssueQty" Type="int" />
+          <Property Name="ReqID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" />
         </EntityType>
         <Association Name="FK_AdjustmentDetail_AdjustmentVoucher">
           <End Role="AdjustmentVoucher" Type="Self.AdjustmentVoucher" Multiplicity="0..1" />
@@ -841,6 +878,30 @@
           <EntitySet Name="StockCard" EntityType="Self.StockCard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReorderAnalytics" EntityType="Self.ReorderAnalytics" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ReorderAnalytics].[Date] AS [Date], 
+    [ReorderAnalytics].[ItemCatID] AS [ItemCatID], 
+    [ReorderAnalytics].[ItemID] AS [ItemID], 
+    [ReorderAnalytics].[Qty] AS [Qty], 
+    [ReorderAnalytics].[ActualQty] AS [ActualQty], 
+    [ReorderAnalytics].[PoID] AS [PoID], 
+    [ReorderAnalytics].[Price] AS [Price], 
+    [ReorderAnalytics].[SupplierID] AS [SupplierID]
+    FROM [dbo].[ReorderAnalytics] AS [ReorderAnalytics]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RequisitionAnalytics" EntityType="Self.RequisitionAnalytics" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RequisitionAnalytics].[Date] AS [Date], 
+    [RequisitionAnalytics].[DeptID] AS [DeptID], 
+    [RequisitionAnalytics].[ItemCatID] AS [ItemCatID], 
+    [RequisitionAnalytics].[ItemID] AS [ItemID], 
+    [RequisitionAnalytics].[RequestQty] AS [RequestQty], 
+    [RequisitionAnalytics].[IssueQty] AS [IssueQty], 
+    [RequisitionAnalytics].[ReqID] AS [ReqID], 
+    [RequisitionAnalytics].[Price] AS [Price]
+    FROM [dbo].[RequisitionAnalytics] AS [RequisitionAnalytics]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_AdjustmentDetail_AdjustmentVoucher" Association="Self.FK_AdjustmentDetail_AdjustmentVoucher">
             <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
             <End Role="AdjustmentDetail" EntitySet="AdjustmentDetail" />
@@ -1018,11 +1079,217 @@
             <End Role="StockCard" EntitySet="StockCard" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StationeryInventory_Team_05Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StationeryInventory_Team_05Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdjustmentDetail" EntityType="StationeryInventory_Team_05Model.AdjustmentDetail" />
+          <EntitySet Name="AdjustmentVoucher" EntityType="StationeryInventory_Team_05Model.AdjustmentVoucher" />
+          <EntitySet Name="CartItems" EntityType="StationeryInventory_Team_05Model.CartItems" />
+          <EntitySet Name="CollectionPoint" EntityType="StationeryInventory_Team_05Model.CollectionPoint" />
+          <EntitySet Name="Delegate" EntityType="StationeryInventory_Team_05Model.Delegate" />
+          <EntitySet Name="Department" EntityType="StationeryInventory_Team_05Model.Department" />
+          <EntitySet Name="Disbursement" EntityType="StationeryInventory_Team_05Model.Disbursement" />
+          <EntitySet Name="DisbursementDetail" EntityType="StationeryInventory_Team_05Model.DisbursementDetail" />
+          <EntitySet Name="Employee" EntityType="StationeryInventory_Team_05Model.Employee" />
+          <EntitySet Name="Item" EntityType="StationeryInventory_Team_05Model.Item" />
+          <EntitySet Name="ItemCategory" EntityType="StationeryInventory_Team_05Model.ItemCategory" />
+          <EntitySet Name="ItemPrice" EntityType="StationeryInventory_Team_05Model.ItemPrice" />
+          <EntitySet Name="MobileNotification" EntityType="StationeryInventory_Team_05Model.MobileNotification" />
+          <EntitySet Name="Notification" EntityType="StationeryInventory_Team_05Model.Notification" />
+          <EntitySet Name="Priority" EntityType="StationeryInventory_Team_05Model.Priority" />
+          <EntitySet Name="PurchaseOrder" EntityType="StationeryInventory_Team_05Model.PurchaseOrder" />
+          <EntitySet Name="PurchaseOrderDetail" EntityType="StationeryInventory_Team_05Model.PurchaseOrderDetail" />
+          <EntitySet Name="Report" EntityType="StationeryInventory_Team_05Model.Report" />
+          <EntitySet Name="Requisition" EntityType="StationeryInventory_Team_05Model.Requisition" />
+          <EntitySet Name="RequisitionDetail" EntityType="StationeryInventory_Team_05Model.RequisitionDetail" />
+          <EntitySet Name="Retrieval" EntityType="StationeryInventory_Team_05Model.Retrieval" />
+          <EntitySet Name="RetrievalDetail" EntityType="StationeryInventory_Team_05Model.RetrievalDetail" />
+          <EntitySet Name="Role" EntityType="StationeryInventory_Team_05Model.Role" />
+          <EntitySet Name="Status" EntityType="StationeryInventory_Team_05Model.Status" />
+          <EntitySet Name="StockCard" EntityType="StationeryInventory_Team_05Model.StockCard" />
+          <EntitySet Name="Supplier" EntityType="StationeryInventory_Team_05Model.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="StationeryInventory_Team_05Model.sysdiagrams" />
+          <EntitySet Name="ReorderAnalytics" EntityType="StationeryInventory_Team_05Model.ReorderAnalytics" />
+          <EntitySet Name="RequisitionAnalytics" EntityType="StationeryInventory_Team_05Model.RequisitionAnalytics" />
+          <AssociationSet Name="FK_AdjustmentDetail_AdjustmentVoucher" Association="StationeryInventory_Team_05Model.FK_AdjustmentDetail_AdjustmentVoucher">
+            <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
+            <End Role="AdjustmentDetail" EntitySet="AdjustmentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdjustmentDetail_Item" Association="StationeryInventory_Team_05Model.FK_AdjustmentDetail_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="AdjustmentDetail" EntitySet="AdjustmentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdjustmentVoucher_Employee" Association="StationeryInventory_Team_05Model.FK_AdjustmentVoucher_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdjustmentVoucher_Employee1" Association="StationeryInventory_Team_05Model.FK_AdjustmentVoucher_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItems_Employee" Association="StationeryInventory_Team_05Model.FK_CartItems_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="CartItems" EntitySet="CartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItems_Item" Association="StationeryInventory_Team_05Model.FK_CartItems_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="CartItems" EntitySet="CartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_CollectionPoint" Association="StationeryInventory_Team_05Model.FK_Department_CollectionPoint">
+            <End Role="CollectionPoint" EntitySet="CollectionPoint" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_CollectionPoint" Association="StationeryInventory_Team_05Model.FK_Disbursement_CollectionPoint">
+            <End Role="CollectionPoint" EntitySet="CollectionPoint" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delegate_Department" Association="StationeryInventory_Team_05Model.FK_Delegate_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Delegate" EntitySet="Delegate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delegate_Employee" Association="StationeryInventory_Team_05Model.FK_Delegate_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Delegate" EntitySet="Delegate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Employee" Association="StationeryInventory_Team_05Model.FK_Department_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Employee1" Association="StationeryInventory_Team_05Model.FK_Department_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Employee2" Association="StationeryInventory_Team_05Model.FK_Department_Employee2">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_Department" Association="StationeryInventory_Team_05Model.FK_Disbursement_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Department" Association="StationeryInventory_Team_05Model.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Department" Association="StationeryInventory_Team_05Model.FK_Requisition_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_Employee" Association="StationeryInventory_Team_05Model.FK_Disbursement_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disbursement_Employee1" Association="StationeryInventory_Team_05Model.FK_Disbursement_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Disbursement" EntitySet="Disbursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisbursementDetail_Disbursement" Association="StationeryInventory_Team_05Model.FK_DisbursementDetail_Disbursement">
+            <End Role="Disbursement" EntitySet="Disbursement" />
+            <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Disbursement" Association="StationeryInventory_Team_05Model.FK_Requisition_Disbursement">
+            <End Role="Disbursement" EntitySet="Disbursement" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisbursementDetail_Item" Association="StationeryInventory_Team_05Model.FK_DisbursementDetail_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="StationeryInventory_Team_05Model.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MobileNotification_Employee" Association="StationeryInventory_Team_05Model.FK_MobileNotification_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="MobileNotification" EntitySet="MobileNotification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_Employee" Association="StationeryInventory_Team_05Model.FK_Notification_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Employee" Association="StationeryInventory_Team_05Model.FK_PurchaseOrder_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_Employee" Association="StationeryInventory_Team_05Model.FK_Report_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Employee" Association="StationeryInventory_Team_05Model.FK_Requisition_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Employee1" Association="StationeryInventory_Team_05Model.FK_Requisition_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Employee2" Association="StationeryInventory_Team_05Model.FK_Requisition_Employee2">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Retrieval_Employee" Association="StationeryInventory_Team_05Model.FK_Retrieval_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Retrieval" EntitySet="Retrieval" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemCategory" Association="StationeryInventory_Team_05Model.FK_Item_ItemCategory">
+            <End Role="ItemCategory" EntitySet="ItemCategory" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPrice_Item" Association="StationeryInventory_Team_05Model.FK_ItemPrice_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="ItemPrice" EntitySet="ItemPrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_Item" Association="StationeryInventory_Team_05Model.FK_PurchaseOrderDetail_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequisitionDetail_Item" Association="StationeryInventory_Team_05Model.FK_RequisitionDetail_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="RequisitionDetail" EntitySet="RequisitionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetrievalDetail_Item" Association="StationeryInventory_Team_05Model.FK_RetrievalDetail_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="RetrievalDetail" EntitySet="RetrievalDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockCard_Item" Association="StationeryInventory_Team_05Model.FK_StockCard_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="StockCard" EntitySet="StockCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPrice_Supplier" Association="StationeryInventory_Team_05Model.FK_ItemPrice_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="ItemPrice" EntitySet="ItemPrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Priority" Association="StationeryInventory_Team_05Model.FK_Requisition_Priority">
+            <End Role="Priority" EntitySet="Priority" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="StationeryInventory_Team_05Model.FK_PurchaseOrder_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_PurchaseOrder" Association="StationeryInventory_Team_05Model.FK_PurchaseOrderDetail_PurchaseOrder">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Retrieval" Association="StationeryInventory_Team_05Model.FK_Requisition_Retrieval">
+            <End Role="Retrieval" EntitySet="Retrieval" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisition_Status" Association="StationeryInventory_Team_05Model.FK_Requisition_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequisitionDetail_Requisition" Association="StationeryInventory_Team_05Model.FK_RequisitionDetail_Requisition">
+            <End Role="Requisition" EntitySet="Requisition" />
+            <End Role="RequisitionDetail" EntitySet="RequisitionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetrievalDetail_Retrieval" Association="StationeryInventory_Team_05Model.FK_RetrievalDetail_Retrieval">
+            <End Role="Retrieval" EntitySet="Retrieval" />
+            <End Role="RetrievalDetail" EntitySet="RetrievalDetail" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="AdjustmentDetail">
           <Key>
             <PropertyRef Name="AdjSN" />
@@ -1034,22 +1301,22 @@
           <Property Name="Price" Type="Double" />
           <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AdjustmentVoucher" Relationship="Self.FK_AdjustmentDetail_AdjustmentVoucher" FromRole="AdjustmentDetail" ToRole="AdjustmentVoucher" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_AdjustmentDetail_Item" FromRole="AdjustmentDetail" ToRole="Item" />
+          <NavigationProperty Name="AdjustmentVoucher" Relationship="StationeryInventory_Team_05Model.FK_AdjustmentDetail_AdjustmentVoucher" FromRole="AdjustmentDetail" ToRole="AdjustmentVoucher" />
+          <NavigationProperty Name="Item" Relationship="StationeryInventory_Team_05Model.FK_AdjustmentDetail_Item" FromRole="AdjustmentDetail" ToRole="Item" />
         </EntityType>
         <EntityType Name="AdjustmentVoucher">
           <Key>
             <PropertyRef Name="AdjID" />
           </Key>
-          <Property Name="AdjID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdjID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="ReportedBy" Type="Int32" />
           <Property Name="ApprovedBy" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TotalAmt" Type="Double" />
-          <NavigationProperty Name="AdjustmentDetail" Relationship="Self.FK_AdjustmentDetail_AdjustmentVoucher" FromRole="AdjustmentVoucher" ToRole="AdjustmentDetail" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_AdjustmentVoucher_Employee" FromRole="AdjustmentVoucher" ToRole="Employee" />
-          <NavigationProperty Name="Employee1" Relationship="Self.FK_AdjustmentVoucher_Employee1" FromRole="AdjustmentVoucher" ToRole="Employee" />
+          <NavigationProperty Name="AdjustmentDetail" Relationship="StationeryInventory_Team_05Model.FK_AdjustmentDetail_AdjustmentVoucher" FromRole="AdjustmentVoucher" ToRole="AdjustmentDetail" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_AdjustmentVoucher_Employee" FromRole="AdjustmentVoucher" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="StationeryInventory_Team_05Model.FK_AdjustmentVoucher_Employee1" FromRole="AdjustmentVoucher" ToRole="Employee" />
         </EntityType>
         <EntityType Name="CartItems">
           <Key>
@@ -1059,20 +1326,20 @@
           <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Int32" />
           <Property Name="CartItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_CartItems_Employee" FromRole="CartItems" ToRole="Employee" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_CartItems_Item" FromRole="CartItems" ToRole="Item" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_CartItems_Employee" FromRole="CartItems" ToRole="Employee" />
+          <NavigationProperty Name="Item" Relationship="StationeryInventory_Team_05Model.FK_CartItems_Item" FromRole="CartItems" ToRole="Item" />
         </EntityType>
         <EntityType Name="CollectionPoint">
           <Key>
             <PropertyRef Name="CPID" />
           </Key>
           <Property Name="CPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CPName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CPName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CPAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CPLat" Type="Double" />
           <Property Name="CPLgt" Type="Double" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Department_CollectionPoint" FromRole="CollectionPoint" ToRole="Department" />
-          <NavigationProperty Name="Disbursement" Relationship="Self.FK_Disbursement_CollectionPoint" FromRole="CollectionPoint" ToRole="Disbursement" />
+          <NavigationProperty Name="Department" Relationship="StationeryInventory_Team_05Model.FK_Department_CollectionPoint" FromRole="CollectionPoint" ToRole="Department" />
+          <NavigationProperty Name="Disbursement" Relationship="StationeryInventory_Team_05Model.FK_Disbursement_CollectionPoint" FromRole="CollectionPoint" ToRole="Disbursement" />
         </EntityType>
         <EntityType Name="Delegate">
           <Key>
@@ -1084,14 +1351,14 @@
           <Property Name="StartDate" Type="DateTime" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Delegate_Department" FromRole="Delegate" ToRole="Department" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Delegate_Employee" FromRole="Delegate" ToRole="Employee" />
+          <NavigationProperty Name="Department" Relationship="StationeryInventory_Team_05Model.FK_Delegate_Department" FromRole="Delegate" ToRole="Department" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_Delegate_Employee" FromRole="Delegate" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="DeptID" />
           </Key>
-          <Property Name="DeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeptID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CPID" Type="Int32" />
           <Property Name="Contact" Type="Int32" />
@@ -1099,14 +1366,14 @@
           <Property Name="DeptRep" Type="Int32" />
           <Property Name="Phone" Type="Int32" />
           <Property Name="Fax" Type="Int32" />
-          <NavigationProperty Name="CollectionPoint" Relationship="Self.FK_Department_CollectionPoint" FromRole="Department" ToRole="CollectionPoint" />
-          <NavigationProperty Name="Delegate" Relationship="Self.FK_Delegate_Department" FromRole="Department" ToRole="Delegate" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Department_Employee" FromRole="Department" ToRole="Employee" />
-          <NavigationProperty Name="Employee1" Relationship="Self.FK_Department_Employee1" FromRole="Department" ToRole="Employee" />
-          <NavigationProperty Name="Employee2" Relationship="Self.FK_Department_Employee2" FromRole="Department" ToRole="Employee" />
-          <NavigationProperty Name="Disbursement" Relationship="Self.FK_Disbursement_Department" FromRole="Department" ToRole="Disbursement" />
-          <NavigationProperty Name="Employee3" Relationship="Self.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
-          <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Department" FromRole="Department" ToRole="Requisition" />
+          <NavigationProperty Name="CollectionPoint" Relationship="StationeryInventory_Team_05Model.FK_Department_CollectionPoint" FromRole="Department" ToRole="CollectionPoint" />
+          <NavigationProperty Name="Delegate" Relationship="StationeryInventory_Team_05Model.FK_Delegate_Department" FromRole="Department" ToRole="Delegate" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_Department_Employee" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="StationeryInventory_Team_05Model.FK_Department_Employee1" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Employee2" Relationship="StationeryInventory_Team_05Model.FK_Department_Employee2" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Disbursement" Relationship="StationeryInventory_Team_05Model.FK_Disbursement_Department" FromRole="Department" ToRole="Disbursement" />
+          <NavigationProperty Name="Employee3" Relationship="StationeryInventory_Team_05Model.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Requisition" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Department" FromRole="Department" ToRole="Requisition" />
         </EntityType>
         <EntityType Name="Disbursement">
           <Key>
@@ -1119,12 +1386,12 @@
           <Property Name="CPID" Type="Int32" />
           <Property Name="ReceivedBy" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CollectionPoint" Relationship="Self.FK_Disbursement_CollectionPoint" FromRole="Disbursement" ToRole="CollectionPoint" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Disbursement_Department" FromRole="Disbursement" ToRole="Department" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Disbursement_Employee" FromRole="Disbursement" ToRole="Employee" />
-          <NavigationProperty Name="Employee1" Relationship="Self.FK_Disbursement_Employee1" FromRole="Disbursement" ToRole="Employee" />
-          <NavigationProperty Name="DisbursementDetail" Relationship="Self.FK_DisbursementDetail_Disbursement" FromRole="Disbursement" ToRole="DisbursementDetail" />
-          <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Disbursement" FromRole="Disbursement" ToRole="Requisition" />
+          <NavigationProperty Name="CollectionPoint" Relationship="StationeryInventory_Team_05Model.FK_Disbursement_CollectionPoint" FromRole="Disbursement" ToRole="CollectionPoint" />
+          <NavigationProperty Name="Department" Relationship="StationeryInventory_Team_05Model.FK_Disbursement_Department" FromRole="Disbursement" ToRole="Department" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_Disbursement_Employee" FromRole="Disbursement" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="StationeryInventory_Team_05Model.FK_Disbursement_Employee1" FromRole="Disbursement" ToRole="Employee" />
+          <NavigationProperty Name="DisbursementDetail" Relationship="StationeryInventory_Team_05Model.FK_DisbursementDetail_Disbursement" FromRole="Disbursement" ToRole="DisbursementDetail" />
+          <NavigationProperty Name="Requisition" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Disbursement" FromRole="Disbursement" ToRole="Requisition" />
         </EntityType>
         <EntityType Name="DisbursementDetail">
           <Key>
@@ -1134,8 +1401,8 @@
           <Property Name="DisID" Type="Int32" />
           <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Int32" />
-          <NavigationProperty Name="Disbursement" Relationship="Self.FK_DisbursementDetail_Disbursement" FromRole="DisbursementDetail" ToRole="Disbursement" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_DisbursementDetail_Item" FromRole="DisbursementDetail" ToRole="Item" />
+          <NavigationProperty Name="Disbursement" Relationship="StationeryInventory_Team_05Model.FK_DisbursementDetail_Disbursement" FromRole="DisbursementDetail" ToRole="Disbursement" />
+          <NavigationProperty Name="Item" Relationship="StationeryInventory_Team_05Model.FK_DisbursementDetail_Item" FromRole="DisbursementDetail" ToRole="Item" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -1147,32 +1414,32 @@
           <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AdjustmentVoucher" Relationship="Self.FK_AdjustmentVoucher_Employee" FromRole="Employee" ToRole="AdjustmentVoucher" />
-          <NavigationProperty Name="AdjustmentVoucher1" Relationship="Self.FK_AdjustmentVoucher_Employee1" FromRole="Employee" ToRole="AdjustmentVoucher" />
-          <NavigationProperty Name="CartItems" Relationship="Self.FK_CartItems_Employee" FromRole="Employee" ToRole="CartItems" />
-          <NavigationProperty Name="Delegate" Relationship="Self.FK_Delegate_Employee" FromRole="Employee" ToRole="Delegate" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Department_Employee" FromRole="Employee" ToRole="Department" />
-          <NavigationProperty Name="Department1" Relationship="Self.FK_Department_Employee1" FromRole="Employee" ToRole="Department" />
-          <NavigationProperty Name="Department2" Relationship="Self.FK_Department_Employee2" FromRole="Employee" ToRole="Department" />
-          <NavigationProperty Name="Department3" Relationship="Self.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
-          <NavigationProperty Name="Disbursement" Relationship="Self.FK_Disbursement_Employee" FromRole="Employee" ToRole="Disbursement" />
-          <NavigationProperty Name="Disbursement1" Relationship="Self.FK_Disbursement_Employee1" FromRole="Employee" ToRole="Disbursement" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
-          <NavigationProperty Name="MobileNotification" Relationship="Self.FK_MobileNotification_Employee" FromRole="Employee" ToRole="MobileNotification" />
-          <NavigationProperty Name="Notification" Relationship="Self.FK_Notification_Employee" FromRole="Employee" ToRole="Notification" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK_PurchaseOrder_Employee" FromRole="Employee" ToRole="PurchaseOrder" />
-          <NavigationProperty Name="Report" Relationship="Self.FK_Report_Employee" FromRole="Employee" ToRole="Report" />
-          <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Employee" FromRole="Employee" ToRole="Requisition" />
-          <NavigationProperty Name="Requisition1" Relationship="Self.FK_Requisition_Employee1" FromRole="Employee" ToRole="Requisition" />
-          <NavigationProperty Name="Requisition2" Relationship="Self.FK_Requisition_Employee2" FromRole="Employee" ToRole="Requisition" />
-          <NavigationProperty Name="Retrieval" Relationship="Self.FK_Retrieval_Employee" FromRole="Employee" ToRole="Retrieval" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdjustmentVoucher" Relationship="StationeryInventory_Team_05Model.FK_AdjustmentVoucher_Employee" FromRole="Employee" ToRole="AdjustmentVoucher" />
+          <NavigationProperty Name="AdjustmentVoucher1" Relationship="StationeryInventory_Team_05Model.FK_AdjustmentVoucher_Employee1" FromRole="Employee" ToRole="AdjustmentVoucher" />
+          <NavigationProperty Name="CartItems" Relationship="StationeryInventory_Team_05Model.FK_CartItems_Employee" FromRole="Employee" ToRole="CartItems" />
+          <NavigationProperty Name="Delegate" Relationship="StationeryInventory_Team_05Model.FK_Delegate_Employee" FromRole="Employee" ToRole="Delegate" />
+          <NavigationProperty Name="Department" Relationship="StationeryInventory_Team_05Model.FK_Department_Employee" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Department1" Relationship="StationeryInventory_Team_05Model.FK_Department_Employee1" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Department2" Relationship="StationeryInventory_Team_05Model.FK_Department_Employee2" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Department3" Relationship="StationeryInventory_Team_05Model.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Disbursement" Relationship="StationeryInventory_Team_05Model.FK_Disbursement_Employee" FromRole="Employee" ToRole="Disbursement" />
+          <NavigationProperty Name="Disbursement1" Relationship="StationeryInventory_Team_05Model.FK_Disbursement_Employee1" FromRole="Employee" ToRole="Disbursement" />
+          <NavigationProperty Name="Role" Relationship="StationeryInventory_Team_05Model.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="MobileNotification" Relationship="StationeryInventory_Team_05Model.FK_MobileNotification_Employee" FromRole="Employee" ToRole="MobileNotification" />
+          <NavigationProperty Name="Notification" Relationship="StationeryInventory_Team_05Model.FK_Notification_Employee" FromRole="Employee" ToRole="Notification" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="StationeryInventory_Team_05Model.FK_PurchaseOrder_Employee" FromRole="Employee" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="Report" Relationship="StationeryInventory_Team_05Model.FK_Report_Employee" FromRole="Employee" ToRole="Report" />
+          <NavigationProperty Name="Requisition" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Employee" FromRole="Employee" ToRole="Requisition" />
+          <NavigationProperty Name="Requisition1" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Employee1" FromRole="Employee" ToRole="Requisition" />
+          <NavigationProperty Name="Requisition2" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Employee2" FromRole="Employee" ToRole="Requisition" />
+          <NavigationProperty Name="Retrieval" Relationship="StationeryInventory_Team_05Model.FK_Retrieval_Employee" FromRole="Employee" ToRole="Retrieval" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
             <PropertyRef Name="ItemID" />
           </Key>
-          <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ItemName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="ItemCatID" Type="Int32" />
           <Property Name="RoLvl" Type="Int32" />
@@ -1180,15 +1447,15 @@
           <Property Name="UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Stock" Type="Int32" />
           <Property Name="Bin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AdjustmentDetail" Relationship="Self.FK_AdjustmentDetail_Item" FromRole="Item" ToRole="AdjustmentDetail" />
-          <NavigationProperty Name="CartItems" Relationship="Self.FK_CartItems_Item" FromRole="Item" ToRole="CartItems" />
-          <NavigationProperty Name="DisbursementDetail" Relationship="Self.FK_DisbursementDetail_Item" FromRole="Item" ToRole="DisbursementDetail" />
-          <NavigationProperty Name="ItemCategory" Relationship="Self.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
-          <NavigationProperty Name="ItemPrice" Relationship="Self.FK_ItemPrice_Item" FromRole="Item" ToRole="ItemPrice" />
-          <NavigationProperty Name="PurchaseOrderDetail" Relationship="Self.FK_PurchaseOrderDetail_Item" FromRole="Item" ToRole="PurchaseOrderDetail" />
-          <NavigationProperty Name="RequisitionDetail" Relationship="Self.FK_RequisitionDetail_Item" FromRole="Item" ToRole="RequisitionDetail" />
-          <NavigationProperty Name="RetrievalDetail" Relationship="Self.FK_RetrievalDetail_Item" FromRole="Item" ToRole="RetrievalDetail" />
-          <NavigationProperty Name="StockCard" Relationship="Self.FK_StockCard_Item" FromRole="Item" ToRole="StockCard" />
+          <NavigationProperty Name="AdjustmentDetail" Relationship="StationeryInventory_Team_05Model.FK_AdjustmentDetail_Item" FromRole="Item" ToRole="AdjustmentDetail" />
+          <NavigationProperty Name="CartItems" Relationship="StationeryInventory_Team_05Model.FK_CartItems_Item" FromRole="Item" ToRole="CartItems" />
+          <NavigationProperty Name="DisbursementDetail" Relationship="StationeryInventory_Team_05Model.FK_DisbursementDetail_Item" FromRole="Item" ToRole="DisbursementDetail" />
+          <NavigationProperty Name="ItemCategory" Relationship="StationeryInventory_Team_05Model.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
+          <NavigationProperty Name="ItemPrice" Relationship="StationeryInventory_Team_05Model.FK_ItemPrice_Item" FromRole="Item" ToRole="ItemPrice" />
+          <NavigationProperty Name="PurchaseOrderDetail" Relationship="StationeryInventory_Team_05Model.FK_PurchaseOrderDetail_Item" FromRole="Item" ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="RequisitionDetail" Relationship="StationeryInventory_Team_05Model.FK_RequisitionDetail_Item" FromRole="Item" ToRole="RequisitionDetail" />
+          <NavigationProperty Name="RetrievalDetail" Relationship="StationeryInventory_Team_05Model.FK_RetrievalDetail_Item" FromRole="Item" ToRole="RetrievalDetail" />
+          <NavigationProperty Name="StockCard" Relationship="StationeryInventory_Team_05Model.FK_StockCard_Item" FromRole="Item" ToRole="StockCard" />
         </EntityType>
         <EntityType Name="ItemCategory">
           <Key>
@@ -1196,7 +1463,7 @@
           </Key>
           <Property Name="ItemCatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_Item_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
+          <NavigationProperty Name="Item" Relationship="StationeryInventory_Team_05Model.FK_Item_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
         </EntityType>
         <EntityType Name="ItemPrice">
           <Key>
@@ -1206,8 +1473,8 @@
           <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SupplierID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Double" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_ItemPrice_Item" FromRole="ItemPrice" ToRole="Item" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK_ItemPrice_Supplier" FromRole="ItemPrice" ToRole="Supplier" />
+          <NavigationProperty Name="Item" Relationship="StationeryInventory_Team_05Model.FK_ItemPrice_Item" FromRole="ItemPrice" ToRole="Item" />
+          <NavigationProperty Name="Supplier" Relationship="StationeryInventory_Team_05Model.FK_ItemPrice_Supplier" FromRole="ItemPrice" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="MobileNotification">
           <Key>
@@ -1216,7 +1483,7 @@
           <Property Name="MobileNoti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmpID" Type="Int32" />
           <Property Name="RegID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_MobileNotification_Employee" FromRole="MobileNotification" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_MobileNotification_Employee" FromRole="MobileNotification" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Notification">
           <Key>
@@ -1228,7 +1495,7 @@
           <Property Name="EmpID" Type="Int32" />
           <Property Name="DateTime" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Notification_Employee" FromRole="Notification" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_Notification_Employee" FromRole="Notification" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Priority">
           <Key>
@@ -1236,7 +1503,7 @@
           </Key>
           <Property Name="PriorityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PriorityName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Priority" FromRole="Priority" ToRole="Requisition" />
+          <NavigationProperty Name="Requisition" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Priority" FromRole="Priority" ToRole="Requisition" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -1249,9 +1516,9 @@
           <Property Name="EstDate" Type="DateTime" Precision="0" />
           <Property Name="TotalAmt" Type="Double" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_PurchaseOrder_Employee" FromRole="PurchaseOrder" ToRole="Employee" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="PurchaseOrder" ToRole="Supplier" />
-          <NavigationProperty Name="PurchaseOrderDetail" Relationship="Self.FK_PurchaseOrderDetail_PurchaseOrder" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_PurchaseOrder_Employee" FromRole="PurchaseOrder" ToRole="Employee" />
+          <NavigationProperty Name="Supplier" Relationship="StationeryInventory_Team_05Model.FK_PurchaseOrder_Supplier" FromRole="PurchaseOrder" ToRole="Supplier" />
+          <NavigationProperty Name="PurchaseOrderDetail" Relationship="StationeryInventory_Team_05Model.FK_PurchaseOrderDetail_PurchaseOrder" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -1264,17 +1531,24 @@
           <Property Name="ActualQty" Type="Int32" />
           <Property Name="Price" Type="Double" />
           <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_PurchaseOrderDetail_Item" FromRole="PurchaseOrderDetail" ToRole="Item" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK_PurchaseOrderDetail_PurchaseOrder" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="Item" Relationship="StationeryInventory_Team_05Model.FK_PurchaseOrderDetail_Item" FromRole="PurchaseOrderDetail" ToRole="Item" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="StationeryInventory_Team_05Model.FK_PurchaseOrderDetail_PurchaseOrder" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
         </EntityType>
         <EntityType Name="Report">
           <Key>
             <PropertyRef Name="ReportID" />
           </Key>
-          <Property Name="ReportID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ReportContent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmpID" Type="Int32" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Report_Employee" FromRole="Report" ToRole="Employee" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="StartD" Type="DateTime" Precision="0" />
+          <Property Name="EndD" Type="DateTime" Precision="0" />
+          <Property Name="Remark" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Criteria" Type="Int32" />
+          <Property Name="Precriteria" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_Report_Employee" FromRole="Report" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Requisition">
           <Key>
@@ -1292,15 +1566,15 @@
           <Property Name="HandledBy" Type="Int32" />
           <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ReceivedBy" Type="Int32" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Requisition_Department" FromRole="Requisition" ToRole="Department" />
-          <NavigationProperty Name="Disbursement" Relationship="Self.FK_Requisition_Disbursement" FromRole="Requisition" ToRole="Disbursement" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Requisition_Employee" FromRole="Requisition" ToRole="Employee" />
-          <NavigationProperty Name="Employee1" Relationship="Self.FK_Requisition_Employee1" FromRole="Requisition" ToRole="Employee" />
-          <NavigationProperty Name="Employee2" Relationship="Self.FK_Requisition_Employee2" FromRole="Requisition" ToRole="Employee" />
-          <NavigationProperty Name="Priority" Relationship="Self.FK_Requisition_Priority" FromRole="Requisition" ToRole="Priority" />
-          <NavigationProperty Name="Retrieval" Relationship="Self.FK_Requisition_Retrieval" FromRole="Requisition" ToRole="Retrieval" />
-          <NavigationProperty Name="Status" Relationship="Self.FK_Requisition_Status" FromRole="Requisition" ToRole="Status" />
-          <NavigationProperty Name="RequisitionDetail" Relationship="Self.FK_RequisitionDetail_Requisition" FromRole="Requisition" ToRole="RequisitionDetail" />
+          <NavigationProperty Name="Department" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Department" FromRole="Requisition" ToRole="Department" />
+          <NavigationProperty Name="Disbursement" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Disbursement" FromRole="Requisition" ToRole="Disbursement" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Employee" FromRole="Requisition" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Employee1" FromRole="Requisition" ToRole="Employee" />
+          <NavigationProperty Name="Employee2" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Employee2" FromRole="Requisition" ToRole="Employee" />
+          <NavigationProperty Name="Priority" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Priority" FromRole="Requisition" ToRole="Priority" />
+          <NavigationProperty Name="Retrieval" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Retrieval" FromRole="Requisition" ToRole="Retrieval" />
+          <NavigationProperty Name="Status" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Status" FromRole="Requisition" ToRole="Status" />
+          <NavigationProperty Name="RequisitionDetail" Relationship="StationeryInventory_Team_05Model.FK_RequisitionDetail_Requisition" FromRole="Requisition" ToRole="RequisitionDetail" />
         </EntityType>
         <EntityType Name="RequisitionDetail">
           <Key>
@@ -1311,8 +1585,8 @@
           <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RequestQty" Type="Int32" />
           <Property Name="IssueQty" Type="Int32" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_RequisitionDetail_Item" FromRole="RequisitionDetail" ToRole="Item" />
-          <NavigationProperty Name="Requisition" Relationship="Self.FK_RequisitionDetail_Requisition" FromRole="RequisitionDetail" ToRole="Requisition" />
+          <NavigationProperty Name="Item" Relationship="StationeryInventory_Team_05Model.FK_RequisitionDetail_Item" FromRole="RequisitionDetail" ToRole="Item" />
+          <NavigationProperty Name="Requisition" Relationship="StationeryInventory_Team_05Model.FK_RequisitionDetail_Requisition" FromRole="RequisitionDetail" ToRole="Requisition" />
         </EntityType>
         <EntityType Name="Retrieval">
           <Key>
@@ -1322,9 +1596,9 @@
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="EmpID" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Retrieval_Employee" FromRole="Retrieval" ToRole="Employee" />
-          <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Retrieval" FromRole="Retrieval" ToRole="Requisition" />
-          <NavigationProperty Name="RetrievalDetail" Relationship="Self.FK_RetrievalDetail_Retrieval" FromRole="Retrieval" ToRole="RetrievalDetail" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_Retrieval_Employee" FromRole="Retrieval" ToRole="Employee" />
+          <NavigationProperty Name="Requisition" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Retrieval" FromRole="Retrieval" ToRole="Requisition" />
+          <NavigationProperty Name="RetrievalDetail" Relationship="StationeryInventory_Team_05Model.FK_RetrievalDetail_Retrieval" FromRole="Retrieval" ToRole="RetrievalDetail" />
         </EntityType>
         <EntityType Name="RetrievalDetail">
           <Key>
@@ -1335,16 +1609,16 @@
           <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RequestQty" Type="Int32" />
           <Property Name="ActualQty" Type="Int32" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_RetrievalDetail_Item" FromRole="RetrievalDetail" ToRole="Item" />
-          <NavigationProperty Name="Retrieval" Relationship="Self.FK_RetrievalDetail_Retrieval" FromRole="RetrievalDetail" ToRole="Retrieval" />
+          <NavigationProperty Name="Item" Relationship="StationeryInventory_Team_05Model.FK_RetrievalDetail_Item" FromRole="RetrievalDetail" ToRole="Item" />
+          <NavigationProperty Name="Retrieval" Relationship="StationeryInventory_Team_05Model.FK_RetrievalDetail_Retrieval" FromRole="RetrievalDetail" ToRole="Retrieval" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="RoleID" />
           </Key>
-          <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -1352,7 +1626,7 @@
           </Key>
           <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Requisition" Relationship="Self.FK_Requisition_Status" FromRole="Status" ToRole="Requisition" />
+          <NavigationProperty Name="Requisition" Relationship="StationeryInventory_Team_05Model.FK_Requisition_Status" FromRole="Status" ToRole="Requisition" />
         </EntityType>
         <EntityType Name="StockCard">
           <Key>
@@ -1364,13 +1638,13 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Int32" />
           <Property Name="Balance" Type="Int32" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_StockCard_Item" FromRole="StockCard" ToRole="Item" />
+          <NavigationProperty Name="Item" Relationship="StationeryInventory_Team_05Model.FK_StockCard_Item" FromRole="StockCard" ToRole="Item" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
             <PropertyRef Name="SupplierID" />
           </Key>
-          <Property Name="SupplierID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SupplierID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1378,22 +1652,48 @@
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="Int32" />
           <Property Name="Rank" Type="Int32" />
-          <NavigationProperty Name="ItemPrice" Relationship="Self.FK_ItemPrice_Supplier" FromRole="Supplier" ToRole="ItemPrice" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="Supplier" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="ItemPrice" Relationship="StationeryInventory_Team_05Model.FK_ItemPrice_Supplier" FromRole="Supplier" ToRole="ItemPrice" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="StationeryInventory_Team_05Model.FK_PurchaseOrder_Supplier" FromRole="Supplier" ToRole="PurchaseOrder" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="ReorderAnalytics">
+          <Key>
+            <PropertyRef Name="PoID" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ItemCatID" Type="Int32" />
+          <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="ActualQty" Type="Int32" />
+          <Property Name="PoID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="SupplierID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RequisitionAnalytics">
+          <Key>
+            <PropertyRef Name="ReqID" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="DeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCatID" Type="Int32" />
+          <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestQty" Type="Int32" />
+          <Property Name="IssueQty" Type="Int32" />
+          <Property Name="ReqID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" />
+        </EntityType>
         <Association Name="FK_AdjustmentDetail_AdjustmentVoucher">
-          <End Role="AdjustmentVoucher" Type="Self.AdjustmentVoucher" Multiplicity="0..1" />
-          <End Role="AdjustmentDetail" Type="Self.AdjustmentDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.AdjustmentVoucher" Role="AdjustmentVoucher" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.AdjustmentDetail" Role="AdjustmentDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AdjustmentVoucher">
               <PropertyRef Name="AdjID" />
@@ -1404,8 +1704,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AdjustmentDetail_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="AdjustmentDetail" Type="Self.AdjustmentDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.AdjustmentDetail" Role="AdjustmentDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemID" />
@@ -1416,8 +1716,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AdjustmentVoucher_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="AdjustmentVoucher" Type="Self.AdjustmentVoucher" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.AdjustmentVoucher" Role="AdjustmentVoucher" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1428,8 +1728,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AdjustmentVoucher_Employee1">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="AdjustmentVoucher" Type="Self.AdjustmentVoucher" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.AdjustmentVoucher" Role="AdjustmentVoucher" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1440,8 +1740,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CartItems_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="CartItems" Type="Self.CartItems" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="StationeryInventory_Team_05Model.CartItems" Role="CartItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1452,8 +1752,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CartItems_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="CartItems" Type="Self.CartItems" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.CartItems" Role="CartItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemID" />
@@ -1464,8 +1764,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Department_CollectionPoint">
-          <End Role="CollectionPoint" Type="Self.CollectionPoint" Multiplicity="0..1" />
-          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.CollectionPoint" Role="CollectionPoint" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Department" Role="Department" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CollectionPoint">
               <PropertyRef Name="CPID" />
@@ -1476,8 +1776,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Disbursement_CollectionPoint">
-          <End Role="CollectionPoint" Type="Self.CollectionPoint" Multiplicity="0..1" />
-          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.CollectionPoint" Role="CollectionPoint" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Disbursement" Role="Disbursement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CollectionPoint">
               <PropertyRef Name="CPID" />
@@ -1488,8 +1788,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Delegate_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
-          <End Role="Delegate" Type="Self.Delegate" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Delegate" Role="Delegate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="DeptID" />
@@ -1500,8 +1800,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Delegate_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Delegate" Type="Self.Delegate" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Delegate" Role="Delegate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1512,8 +1812,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Department_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Department" Role="Department" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1524,8 +1824,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Department_Employee1">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Department" Role="Department" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1536,8 +1836,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Department_Employee2">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Department" Role="Department" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1548,8 +1848,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Disbursement_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
-          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Disbursement" Role="Disbursement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="DeptID" />
@@ -1560,8 +1860,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employee_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="DeptID" />
@@ -1572,8 +1872,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Requisition_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
-          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Requisition" Role="Requisition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="DeptID" />
@@ -1584,8 +1884,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Disbursement_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Disbursement" Role="Disbursement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1596,8 +1896,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Disbursement_Employee1">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Disbursement" Role="Disbursement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1608,8 +1908,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DisbursementDetail_Disbursement">
-          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="0..1" />
-          <End Role="DisbursementDetail" Type="Self.DisbursementDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Disbursement" Role="Disbursement" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.DisbursementDetail" Role="DisbursementDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Disbursement">
               <PropertyRef Name="DisID" />
@@ -1620,8 +1920,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Requisition_Disbursement">
-          <End Role="Disbursement" Type="Self.Disbursement" Multiplicity="0..1" />
-          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Disbursement" Role="Disbursement" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Requisition" Role="Requisition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Disbursement">
               <PropertyRef Name="DisID" />
@@ -1632,8 +1932,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DisbursementDetail_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="DisbursementDetail" Type="Self.DisbursementDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.DisbursementDetail" Role="DisbursementDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemID" />
@@ -1644,8 +1944,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employee_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="RoleID" />
@@ -1656,8 +1956,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MobileNotification_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="MobileNotification" Type="Self.MobileNotification" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.MobileNotification" Role="MobileNotification" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1668,8 +1968,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Notification_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Notification" Role="Notification" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1680,8 +1980,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PurchaseOrder_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1692,8 +1992,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Report_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Report" Role="Report" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1704,8 +2004,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Requisition_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Requisition" Role="Requisition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1716,8 +2016,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Requisition_Employee1">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Requisition" Role="Requisition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1728,8 +2028,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Requisition_Employee2">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Requisition" Role="Requisition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1740,8 +2040,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Retrieval_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Retrieval" Type="Self.Retrieval" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Retrieval" Role="Retrieval" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmpID" />
@@ -1752,8 +2052,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Item_ItemCategory">
-          <End Role="ItemCategory" Type="Self.ItemCategory" Multiplicity="0..1" />
-          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.ItemCategory" Role="ItemCategory" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Item" Role="Item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ItemCategory">
               <PropertyRef Name="ItemCatID" />
@@ -1764,8 +2064,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ItemPrice_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="ItemPrice" Type="Self.ItemPrice" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.ItemPrice" Role="ItemPrice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemID" />
@@ -1776,8 +2076,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PurchaseOrderDetail_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemID" />
@@ -1788,8 +2088,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RequisitionDetail_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="RequisitionDetail" Type="Self.RequisitionDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.RequisitionDetail" Role="RequisitionDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemID" />
@@ -1800,8 +2100,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RetrievalDetail_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="RetrievalDetail" Type="Self.RetrievalDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.RetrievalDetail" Role="RetrievalDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemID" />
@@ -1812,8 +2112,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StockCard_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="StockCard" Type="Self.StockCard" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.StockCard" Role="StockCard" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemID" />
@@ -1824,8 +2124,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ItemPrice_Supplier">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
-          <End Role="ItemPrice" Type="Self.ItemPrice" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Supplier" Role="Supplier" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.ItemPrice" Role="ItemPrice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
               <PropertyRef Name="SupplierID" />
@@ -1836,8 +2136,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Requisition_Priority">
-          <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
-          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Priority" Role="Priority" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Requisition" Role="Requisition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Priority">
               <PropertyRef Name="PriorityID" />
@@ -1848,8 +2148,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PurchaseOrder_Supplier">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
-          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Supplier" Role="Supplier" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
               <PropertyRef Name="SupplierID" />
@@ -1860,8 +2160,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PurchaseOrderDetail_PurchaseOrder">
-          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
-          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.PurchaseOrder" Role="PurchaseOrder" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PurchaseOrder">
               <PropertyRef Name="PoID" />
@@ -1872,8 +2172,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Requisition_Retrieval">
-          <End Role="Retrieval" Type="Self.Retrieval" Multiplicity="0..1" />
-          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Retrieval" Role="Retrieval" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Requisition" Role="Requisition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Retrieval">
               <PropertyRef Name="RetID" />
@@ -1884,8 +2184,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Requisition_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
-          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.Requisition" Role="Requisition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
               <PropertyRef Name="StatusID" />
@@ -1896,8 +2196,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RequisitionDetail_Requisition">
-          <End Role="Requisition" Type="Self.Requisition" Multiplicity="0..1" />
-          <End Role="RequisitionDetail" Type="Self.RequisitionDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Requisition" Role="Requisition" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.RequisitionDetail" Role="RequisitionDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Requisition">
               <PropertyRef Name="ReqID" />
@@ -1908,8 +2208,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RetrievalDetail_Retrieval">
-          <End Role="Retrieval" Type="Self.Retrieval" Multiplicity="0..1" />
-          <End Role="RetrievalDetail" Type="Self.RetrievalDetail" Multiplicity="*" />
+          <End Type="StationeryInventory_Team_05Model.Retrieval" Role="Retrieval" Multiplicity="0..1" />
+          <End Type="StationeryInventory_Team_05Model.RetrievalDetail" Role="RetrievalDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Retrieval">
               <PropertyRef Name="RetID" />
@@ -1919,211 +2219,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="StationeryInventory_Team_05Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AdjustmentDetail" EntityType="Self.AdjustmentDetail" />
-          <EntitySet Name="AdjustmentVoucher" EntityType="Self.AdjustmentVoucher" />
-          <EntitySet Name="CartItems" EntityType="Self.CartItems" />
-          <EntitySet Name="CollectionPoint" EntityType="Self.CollectionPoint" />
-          <EntitySet Name="Delegate" EntityType="Self.Delegate" />
-          <EntitySet Name="Department" EntityType="Self.Department" />
-          <EntitySet Name="Disbursement" EntityType="Self.Disbursement" />
-          <EntitySet Name="DisbursementDetail" EntityType="Self.DisbursementDetail" />
-          <EntitySet Name="Employee" EntityType="Self.Employee" />
-          <EntitySet Name="Item" EntityType="Self.Item" />
-          <EntitySet Name="ItemCategory" EntityType="Self.ItemCategory" />
-          <EntitySet Name="ItemPrice" EntityType="Self.ItemPrice" />
-          <EntitySet Name="MobileNotification" EntityType="Self.MobileNotification" />
-          <EntitySet Name="Notification" EntityType="Self.Notification" />
-          <EntitySet Name="Priority" EntityType="Self.Priority" />
-          <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" />
-          <EntitySet Name="PurchaseOrderDetail" EntityType="Self.PurchaseOrderDetail" />
-          <EntitySet Name="Report" EntityType="Self.Report" />
-          <EntitySet Name="Requisition" EntityType="Self.Requisition" />
-          <EntitySet Name="RequisitionDetail" EntityType="Self.RequisitionDetail" />
-          <EntitySet Name="Retrieval" EntityType="Self.Retrieval" />
-          <EntitySet Name="RetrievalDetail" EntityType="Self.RetrievalDetail" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="Status" EntityType="Self.Status" />
-          <EntitySet Name="StockCard" EntityType="Self.StockCard" />
-          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_AdjustmentDetail_AdjustmentVoucher" Association="Self.FK_AdjustmentDetail_AdjustmentVoucher">
-            <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
-            <End Role="AdjustmentDetail" EntitySet="AdjustmentDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AdjustmentDetail_Item" Association="Self.FK_AdjustmentDetail_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="AdjustmentDetail" EntitySet="AdjustmentDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AdjustmentVoucher_Employee" Association="Self.FK_AdjustmentVoucher_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AdjustmentVoucher_Employee1" Association="Self.FK_AdjustmentVoucher_Employee1">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="AdjustmentVoucher" EntitySet="AdjustmentVoucher" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CartItems_Employee" Association="Self.FK_CartItems_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="CartItems" EntitySet="CartItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CartItems_Item" Association="Self.FK_CartItems_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="CartItems" EntitySet="CartItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Department_CollectionPoint" Association="Self.FK_Department_CollectionPoint">
-            <End Role="CollectionPoint" EntitySet="CollectionPoint" />
-            <End Role="Department" EntitySet="Department" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Disbursement_CollectionPoint" Association="Self.FK_Disbursement_CollectionPoint">
-            <End Role="CollectionPoint" EntitySet="CollectionPoint" />
-            <End Role="Disbursement" EntitySet="Disbursement" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Delegate_Department" Association="Self.FK_Delegate_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Delegate" EntitySet="Delegate" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Delegate_Employee" Association="Self.FK_Delegate_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Delegate" EntitySet="Delegate" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Department_Employee" Association="Self.FK_Department_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Department" EntitySet="Department" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Department_Employee1" Association="Self.FK_Department_Employee1">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Department" EntitySet="Department" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Department_Employee2" Association="Self.FK_Department_Employee2">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Department" EntitySet="Department" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Disbursement_Department" Association="Self.FK_Disbursement_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Disbursement" EntitySet="Disbursement" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Requisition_Department" Association="Self.FK_Requisition_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Requisition" EntitySet="Requisition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Disbursement_Employee" Association="Self.FK_Disbursement_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Disbursement" EntitySet="Disbursement" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Disbursement_Employee1" Association="Self.FK_Disbursement_Employee1">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Disbursement" EntitySet="Disbursement" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DisbursementDetail_Disbursement" Association="Self.FK_DisbursementDetail_Disbursement">
-            <End Role="Disbursement" EntitySet="Disbursement" />
-            <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Requisition_Disbursement" Association="Self.FK_Requisition_Disbursement">
-            <End Role="Disbursement" EntitySet="Disbursement" />
-            <End Role="Requisition" EntitySet="Requisition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DisbursementDetail_Item" Association="Self.FK_DisbursementDetail_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="DisbursementDetail" EntitySet="DisbursementDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MobileNotification_Employee" Association="Self.FK_MobileNotification_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="MobileNotification" EntitySet="MobileNotification" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Notification_Employee" Association="Self.FK_Notification_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Notification" EntitySet="Notification" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PurchaseOrder_Employee" Association="Self.FK_PurchaseOrder_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Report_Employee" Association="Self.FK_Report_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Report" EntitySet="Report" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Requisition_Employee" Association="Self.FK_Requisition_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Requisition" EntitySet="Requisition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Requisition_Employee1" Association="Self.FK_Requisition_Employee1">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Requisition" EntitySet="Requisition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Requisition_Employee2" Association="Self.FK_Requisition_Employee2">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Requisition" EntitySet="Requisition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Retrieval_Employee" Association="Self.FK_Retrieval_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Retrieval" EntitySet="Retrieval" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_ItemCategory" Association="Self.FK_Item_ItemCategory">
-            <End Role="ItemCategory" EntitySet="ItemCategory" />
-            <End Role="Item" EntitySet="Item" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemPrice_Item" Association="Self.FK_ItemPrice_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="ItemPrice" EntitySet="ItemPrice" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PurchaseOrderDetail_Item" Association="Self.FK_PurchaseOrderDetail_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RequisitionDetail_Item" Association="Self.FK_RequisitionDetail_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="RequisitionDetail" EntitySet="RequisitionDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RetrievalDetail_Item" Association="Self.FK_RetrievalDetail_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="RetrievalDetail" EntitySet="RetrievalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StockCard_Item" Association="Self.FK_StockCard_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="StockCard" EntitySet="StockCard" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemPrice_Supplier" Association="Self.FK_ItemPrice_Supplier">
-            <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="ItemPrice" EntitySet="ItemPrice" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Requisition_Priority" Association="Self.FK_Requisition_Priority">
-            <End Role="Priority" EntitySet="Priority" />
-            <End Role="Requisition" EntitySet="Requisition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="Self.FK_PurchaseOrder_Supplier">
-            <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PurchaseOrderDetail_PurchaseOrder" Association="Self.FK_PurchaseOrderDetail_PurchaseOrder">
-            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
-            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Requisition_Retrieval" Association="Self.FK_Requisition_Retrieval">
-            <End Role="Retrieval" EntitySet="Retrieval" />
-            <End Role="Requisition" EntitySet="Requisition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Requisition_Status" Association="Self.FK_Requisition_Status">
-            <End Role="Status" EntitySet="Status" />
-            <End Role="Requisition" EntitySet="Requisition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RequisitionDetail_Requisition" Association="Self.FK_RequisitionDetail_Requisition">
-            <End Role="Requisition" EntitySet="Requisition" />
-            <End Role="RequisitionDetail" EntitySet="RequisitionDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RetrievalDetail_Retrieval" Association="Self.FK_RetrievalDetail_Retrieval">
-            <End Role="Retrieval" EntitySet="Retrieval" />
-            <End Role="RetrievalDetail" EntitySet="RetrievalDetail" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2133,307 +2228,342 @@
           <EntitySetMapping Name="AdjustmentDetail">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.AdjustmentDetail">
               <MappingFragment StoreEntitySet="AdjustmentDetail">
-                <ScalarProperty Name="AdjSN" ColumnName="AdjSN" />
-                <ScalarProperty Name="AdjID" ColumnName="AdjID" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="AdjID" ColumnName="AdjID" />
+                <ScalarProperty Name="AdjSN" ColumnName="AdjSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AdjustmentVoucher">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.AdjustmentVoucher">
               <MappingFragment StoreEntitySet="AdjustmentVoucher">
-                <ScalarProperty Name="AdjID" ColumnName="AdjID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
-                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AdjID" ColumnName="AdjID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CartItems">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.CartItems">
               <MappingFragment StoreEntitySet="CartItems">
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="CartItemID" ColumnName="CartItemID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CollectionPoint">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.CollectionPoint">
               <MappingFragment StoreEntitySet="CollectionPoint">
-                <ScalarProperty Name="CPID" ColumnName="CPID" />
-                <ScalarProperty Name="CPName" ColumnName="CPName" />
-                <ScalarProperty Name="CPAddress" ColumnName="CPAddress" />
-                <ScalarProperty Name="CPLat" ColumnName="CPLat" />
                 <ScalarProperty Name="CPLgt" ColumnName="CPLgt" />
+                <ScalarProperty Name="CPLat" ColumnName="CPLat" />
+                <ScalarProperty Name="CPAddress" ColumnName="CPAddress" />
+                <ScalarProperty Name="CPName" ColumnName="CPName" />
+                <ScalarProperty Name="CPID" ColumnName="CPID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Delegate">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Delegate">
               <MappingFragment StoreEntitySet="Delegate">
-                <ScalarProperty Name="DelegateSN" ColumnName="DelegateSN" />
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="DelegateSN" ColumnName="DelegateSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Department">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Department">
               <MappingFragment StoreEntitySet="Department">
-                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
-                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
-                <ScalarProperty Name="CPID" ColumnName="CPID" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="DeptHead" ColumnName="DeptHead" />
-                <ScalarProperty Name="DeptRep" ColumnName="DeptRep" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DeptRep" ColumnName="DeptRep" />
+                <ScalarProperty Name="DeptHead" ColumnName="DeptHead" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="CPID" ColumnName="CPID" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Disbursement">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Disbursement">
               <MappingFragment StoreEntitySet="Disbursement">
-                <ScalarProperty Name="DisID" ColumnName="DisID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
-                <ScalarProperty Name="CPID" ColumnName="CPID" />
-                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="CPID" ColumnName="CPID" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DisID" ColumnName="DisID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DisbursementDetail">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.DisbursementDetail">
               <MappingFragment StoreEntitySet="DisbursementDetail">
-                <ScalarProperty Name="DisSN" ColumnName="DisSN" />
-                <ScalarProperty Name="DisID" ColumnName="DisID" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="DisID" ColumnName="DisID" />
+                <ScalarProperty Name="DisSN" ColumnName="DisSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
-                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Item">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Item">
               <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemCatID" ColumnName="ItemCatID" />
-                <ScalarProperty Name="RoLvl" ColumnName="RoLvl" />
-                <ScalarProperty Name="RoQty" ColumnName="RoQty" />
-                <ScalarProperty Name="UOM" ColumnName="UOM" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
                 <ScalarProperty Name="Bin" ColumnName="Bin" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="RoQty" ColumnName="RoQty" />
+                <ScalarProperty Name="RoLvl" ColumnName="RoLvl" />
+                <ScalarProperty Name="ItemCatID" ColumnName="ItemCatID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ItemCategory">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.ItemCategory">
               <MappingFragment StoreEntitySet="ItemCategory">
-                <ScalarProperty Name="ItemCatID" ColumnName="ItemCatID" />
                 <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemCatID" ColumnName="ItemCatID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ItemPrice">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.ItemPrice">
               <MappingFragment StoreEntitySet="ItemPrice">
-                <ScalarProperty Name="IPID" ColumnName="IPID" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="IPID" ColumnName="IPID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MobileNotification">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.MobileNotification">
               <MappingFragment StoreEntitySet="MobileNotification">
-                <ScalarProperty Name="MobileNoti" ColumnName="MobileNoti" />
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
                 <ScalarProperty Name="RegID" ColumnName="RegID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="MobileNoti" ColumnName="MobileNoti" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Notification">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Notification">
               <MappingFragment StoreEntitySet="Notification">
-                <ScalarProperty Name="NotifID" ColumnName="NotifID" />
-                <ScalarProperty Name="NotifName" ColumnName="NotifName" />
-                <ScalarProperty Name="NotifDesc" ColumnName="NotifDesc" />
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="NotifDesc" ColumnName="NotifDesc" />
+                <ScalarProperty Name="NotifName" ColumnName="NotifName" />
+                <ScalarProperty Name="NotifID" ColumnName="NotifID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Priority">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Priority">
               <MappingFragment StoreEntitySet="Priority">
-                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
                 <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PurchaseOrder">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.PurchaseOrder">
               <MappingFragment StoreEntitySet="PurchaseOrder">
-                <ScalarProperty Name="PoID" ColumnName="PoID" />
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="EstDate" ColumnName="EstDate" />
-                <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
+                <ScalarProperty Name="EstDate" ColumnName="EstDate" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="PoID" ColumnName="PoID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PurchaseOrderDetail">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.PurchaseOrderDetail">
               <MappingFragment StoreEntitySet="PurchaseOrderDetail">
-                <ScalarProperty Name="PoSN" ColumnName="PoSN" />
-                <ScalarProperty Name="PoID" ColumnName="PoID" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="ActualQty" ColumnName="ActualQty" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ActualQty" ColumnName="ActualQty" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="PoID" ColumnName="PoID" />
+                <ScalarProperty Name="PoSN" ColumnName="PoSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Report">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Report">
               <MappingFragment StoreEntitySet="Report">
-                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
-                <ScalarProperty Name="ReportContent" ColumnName="ReportContent" />
+                <ScalarProperty Name="Precriteria" ColumnName="Precriteria" />
+                <ScalarProperty Name="Criteria" ColumnName="Criteria" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="EndD" ColumnName="EndD" />
+                <ScalarProperty Name="StartD" ColumnName="StartD" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Requisition">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Requisition">
               <MappingFragment StoreEntitySet="Requisition">
-                <ScalarProperty Name="ReqID" ColumnName="ReqID" />
-                <ScalarProperty Name="DisID" ColumnName="DisID" />
-                <ScalarProperty Name="RetID" ColumnName="RetID" />
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
-                <ScalarProperty Name="PRemark" ColumnName="PRemark" />
-                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-                <ScalarProperty Name="HandledBy" ColumnName="HandledBy" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="HandledBy" ColumnName="HandledBy" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="PRemark" ColumnName="PRemark" />
+                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="RetID" ColumnName="RetID" />
+                <ScalarProperty Name="DisID" ColumnName="DisID" />
+                <ScalarProperty Name="ReqID" ColumnName="ReqID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RequisitionDetail">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.RequisitionDetail">
               <MappingFragment StoreEntitySet="RequisitionDetail">
-                <ScalarProperty Name="ReqSN" ColumnName="ReqSN" />
-                <ScalarProperty Name="ReqID" ColumnName="ReqID" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="RequestQty" ColumnName="RequestQty" />
                 <ScalarProperty Name="IssueQty" ColumnName="IssueQty" />
+                <ScalarProperty Name="RequestQty" ColumnName="RequestQty" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+                <ScalarProperty Name="ReqSN" ColumnName="ReqSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Retrieval">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Retrieval">
               <MappingFragment StoreEntitySet="Retrieval">
-                <ScalarProperty Name="RetID" ColumnName="RetID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="RetID" ColumnName="RetID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RetrievalDetail">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.RetrievalDetail">
               <MappingFragment StoreEntitySet="RetrievalDetail">
-                <ScalarProperty Name="RetSN" ColumnName="RetSN" />
-                <ScalarProperty Name="RetID" ColumnName="RetID" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="RequestQty" ColumnName="RequestQty" />
                 <ScalarProperty Name="ActualQty" ColumnName="ActualQty" />
+                <ScalarProperty Name="RequestQty" ColumnName="RequestQty" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="RetID" ColumnName="RetID" />
+                <ScalarProperty Name="RetSN" ColumnName="RetSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Status">
               <MappingFragment StoreEntitySet="Status">
-                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StockCard">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.StockCard">
               <MappingFragment StoreEntitySet="StockCard">
-                <ScalarProperty Name="StockCardSN" ColumnName="StockCardSN" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="StockCardSN" ColumnName="StockCardSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Supplier">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReorderAnalytics">
+            <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.ReorderAnalytics">
+              <MappingFragment StoreEntitySet="ReorderAnalytics">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PoID" ColumnName="PoID" />
+                <ScalarProperty Name="ActualQty" ColumnName="ActualQty" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ItemCatID" ColumnName="ItemCatID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequisitionAnalytics">
+            <EntityTypeMapping TypeName="StationeryInventory_Team_05Model.RequisitionAnalytics">
+              <MappingFragment StoreEntitySet="RequisitionAnalytics">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+                <ScalarProperty Name="IssueQty" ColumnName="IssueQty" />
+                <ScalarProperty Name="RequestQty" ColumnName="RequestQty" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ItemCatID" ColumnName="ItemCatID" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

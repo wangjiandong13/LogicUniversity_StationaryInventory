@@ -4432,6 +4432,7 @@
     <Content Include="js\controller\StockcardController.js" />
     <Content Include="js\controller\SupplierController.js" />
     <Content Include="js\controller\SupplierdetailController.js" />
+    <Content Include="js\controller\SuppliernewController.js" />
     <Content Include="js\controller\SupplierStoreClerkController.js" />
     <Content Include="js\dependencyResoverFor.js" />
     <Content Include="js\fitter\Seftfitter.js" />

@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="supplierControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -19,46 +19,43 @@
                 <div class="col-md-6">
                     <h1>Supplier List</h1>
                 </div>
-                <div class="col-md-6" style="text-align:right">
+                <div class="col-md-6" style="text-align:right" ng-if="setting.ifedit">
                     <br>
-                    <button type="button" class="btn btn-success">
+                    <button type="button" class="btn btn-success" ng-click="NewSupplier()">
                         <span class="glyphicon glyphicon-plus"></span> New Supplier
                     </button>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12" ng-if="ifedit">
                 <hr>
                 <div class="col-md-6">
                     <h4>Supplier Priority</h4>
                 </div>
                 <div class="col-md-6" style="text-align:right;">
-                    <button type="button" class="btn btn-default" id="btn_editsupplierpriority">Edit Priority</button>
+                    <button type="button" class="btn btn-default" ng-if="setting.editPrioritybtn"  ng-click="editPriority()">Edit Priority</button>
+                    <button class="btn btn-primary" ng-if="setting.savePrioritybtn" ng-click="savePriority()">
+                        <span class="glyphicon glyphicon-ok"></span> Save
+                    </button>
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-4">
                         Supplier 1:
-                        <select class="form-control" id="ddl_supplier1">
-                            <option>ALPHA</option>
-                            <option>BANES</option>
-                            <option>OMEGA</option>
-                        </select>
+                        <select class="form-control"  ng-disabled="setting.disablebox"
+                                ng-options="option.SupplierName for option in supplierselect.availableOptions track by option.SupplierID"
+                                ng-model="supplier1"></select>
                     </div>
                     <div class="col-md-4">
                         Supplier 2:
-                        <select class="form-control" id="ddl_supplier2">
-                            <option>ALPHA</option>
-                            <option>BANES</option>
-                            <option>OMEGA</option>
-                        </select>
+                        <select class="form-control"  ng-disabled="setting.disablebox"
+                                ng-options="option.SupplierName for option in supplierselect.availableOptions track by option.SupplierID"
+                                ng-model="supplier2"></select>
 
                     </div>
                     <div class="col-md-4">
                         Supplier 3:
-                        <select class="form-control" id="ddl_supplier3">
-                            <option>ALPHA</option>
-                            <option>BANES</option>
-                            <option>OMEGA</option>
-                        </select>
+                        <select class="form-control" ng-disabled="setting.disablebox"
+                                ng-options="option.SupplierName for option in supplierselect.availableOptions track by option.SupplierID"
+                                ng-model="supplier3"></select>
                     </div>
                 </div>
             </div>
@@ -103,8 +100,11 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-md-4" style="text-align:right">
+                <div class="col-md-4" style="text-align:right" ng-if="ifedit">
                     <button type="button" class="btn btn-default" id="btn_editsupplierdetail">Edit Details</button>
+                    <button class="btn btn-primary" ng-if="setting.saveDetailbtn" ng-click="saveDetail()">
+                        <span class="glyphicon glyphicon-ok"></span> Save
+                    </button>
                 </div>
             </div>
         </div>

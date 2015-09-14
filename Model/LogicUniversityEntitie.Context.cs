@@ -58,5 +58,7 @@ namespace Model
         public virtual DbSet<StockCard> StockCard { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<ReorderAnalytics> ReorderAnalytics { get; set; }
+        public virtual DbSet<RequisitionAnalytics> RequisitionAnalytics { get; set; }
     }
 }

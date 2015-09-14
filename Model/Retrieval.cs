@@ -14,8 +14,7 @@ namespace Model
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using TrackableEntities;
-    using System.ComponentModel.DataAnnotations;
-
+    
     [JsonObject(IsReference = true)]
     [DataContract]
     public partial class Retrieval : ITrackable
@@ -29,7 +28,7 @@ namespace Model
         [DataMember]
         public int RetID { get; set; }
         [DataMember]
-        public Nullable<System.DateTime> Date {get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         [DataMember]
         public Nullable<int> EmpID { get; set; }
         [DataMember]
