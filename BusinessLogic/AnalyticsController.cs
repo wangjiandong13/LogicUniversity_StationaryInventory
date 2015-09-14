@@ -64,8 +64,8 @@ namespace BusinessLogic
             ReportModel results = new ReportModel();
 
             // save report settings in db
-            DateTime sdate = Convert.ToDateTime(rp.StartD).Date;
-            DateTime edate = Convert.ToDateTime(rp.EndD).Date;
+            DateTime sdate = Convert.ToDateTime(rp.StartD);
+            DateTime edate = Convert.ToDateTime(rp.EndD);
 
             Report rpt = new Report();
             rpt.Date = DateTime.Today;
