@@ -2,6 +2,7 @@
     app.controller('DisbursementDetailController', ['$scope', '$rootScope', "$routeParams", 'BaseService', DisbursementDetailController]);
 
     function DisbursementDetailController($scope, $rootScope, $routeParams, BaseService) {
+        $rootScope.changehighlight(5);
         var disid = $routeParams.disid;
         $scope.disid = disid;
         var myBaseService = BaseService;
