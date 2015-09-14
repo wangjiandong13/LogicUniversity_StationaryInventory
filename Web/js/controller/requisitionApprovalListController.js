@@ -31,7 +31,7 @@
                     $rootScope.RequisitionsApproval = data;
                     $.each($rootScope.RequisitionsApproval, function (index, value) {
                         console.log(value.EmpID);
-                        myBaseService.getEmployee($rootScope.UserInfo.EmpId)
+                        myBaseService.getEmployee(value.EmpID)
                             .then(function (data) {
                                 value.EmpName = data.EmpName;
                             }, function (data) {
