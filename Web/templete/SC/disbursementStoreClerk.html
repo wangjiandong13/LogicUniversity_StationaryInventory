@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="DisbSCControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -23,32 +23,26 @@
                     <div class="col-md-1">
                         <label>Department:</label>
                     </div>
-                    <div class="col-md-2">
-                        <select class="form-control">
-                            <option>Dept 1</option>
-                            <option>Dept 2</option>
-                            <option>Dept 3</option>
-                            <option>Dept 4</option>
-                            <option>Dept 5</option>
-                        </select>
+                    <div class="col-md-3" ng-controller="SelectoptionControllersDept">
+                        <select class="form-control"
+                                name="deptselect" id="deptselect"
+                                ng-options="option.DeptName for option in optiondataDept.availableOptions track by option.DeptID"
+                                ng-model="optiondataDept.selectedOption"></select>
                     </div>
                     <div class="col-md-1">
                         <label>Collection:</label>
                     </div>
-                    <div class="col-md-2">
-                        <select class="form-control">
-                            <option>CP 1</option>
-                            <option>CP 2</option>
-                            <option>CP 3</option>
-                            <option>CP 4</option>
-                            <option>CP 5</option>
-                        </select>
+                    <div class="col-md-3" ng-controller="SelectoptionControllersCPID">
+                        <select class="form-control"
+                                name="CPselect" id="CPselect"
+                                ng-options="option.CPName for option in optiondataCPID.availableOptions track by option.CPID"
+                                ng-model="optiondataCPID.selectedOption"></select>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Enter Disbursement No.">
+                        <input type="text" class="form-control" placeholder="Enter Disbursement No." ng-model="DisID">
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn yellow">
+                        <button type="button" class="btn btn yellow" ng-click="search()">
                             <span class="glyphicon glyphicon-search"></span> Search
                         </button>
                     </div>
@@ -71,29 +65,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>003</td>
-                                    <td>28 August 2015</td>
-                                    <td>REGR</td>
+                                <tr ng-repeat="Disbursement in Disbursements"  ng-click="requisitiondetail(Disbursement)">
+                                    <td>{{Disbursement.DisID}}</td>
+                                    <td>{{Disbursement.Date}}</td>
+                                    <td>{{Disbursement.DisID}}</td>
                                     <td>SCIENCE</td>
                                     <td>Wong Sook Huey</td>
                                     <td>Pending</td>
-                                </tr>
-                                <tr>
-                                    <td>002</td>
-                                    <td>26 August 2015</td>
-                                    <td>REGR</td>
-                                    <td>SCIENCE</td>
-                                    <td>Wong Sook Huey</td>
-                                    <td>Disbursed</td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>24 August 2015</td>
-                                    <td>REGR</td>
-                                    <td>SCIENCE</td>
-                                    <td>Wong Sook Huey</td>
-                                    <td>Disbursed</td>
                                 </tr>
                             </tbody>
                         </table>
