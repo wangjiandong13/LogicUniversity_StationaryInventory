@@ -72,8 +72,11 @@
                     .then(function (itemdata) {
                         console.log(itemdata);
                         console.log($scope.supplierID);
-                        if (itemdata.SupplierID == $scope.supplierID)
-                            value.Price = itemdata.Price;
+                        $.each(itemdata, function (index, ipvalue) {
+                            if (ipvalue.SupplierID == $scope.supplierID)
+                                value.Price = ipvalue.Price;
+                        })
+                        
                     })
                 });
             }, function (data) {
