@@ -5,7 +5,7 @@ define(['app'], function (app) {
         , ['$rootScope', 'BaseService', catalogListtileCtrl]);
     function catalogtileCtrl($rootScope, $scope, BaseService) {
         //from session get empID
-        var EmpID = 11233;
+        var EmpID = $rootScope.UserInfo.EmpId;
 
         //set mean highlight
         $rootScope.mean = {
