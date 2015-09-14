@@ -28,13 +28,17 @@
             selfBaseService.createRequisition(angular.toJson(msg))
                 .then(function (data) {
                     req_id=data;
-                    location.href = '#/requisition';
                 }, function (data) {
                     alert(data);
                 })
-            if ($scope.PRIORITY) { var priority = 1 } else { var priority = 2 }
-            $scope.remoarks
-            selfBaseService.
+            var priority = 2;
+            if ($scope.PRIORITY) { priority = 1 }
+            
+            selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
+                .then(function (data) {
+                    alert("success!");
+                    location.href = '#/requisition';
+                })
         }
     }
     function RequestCartList($rootScope, $scope, BaseService) {
