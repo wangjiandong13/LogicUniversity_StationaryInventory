@@ -32,7 +32,7 @@
         };
 
         $scope.back = function (Disbursement) {
-            location.href = "#/disbursementDetail/" + $scope.disid;
+            location.href = "#/disbursementDetail/" + disid;
         };
    
     }
