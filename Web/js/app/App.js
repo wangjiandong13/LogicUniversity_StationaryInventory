@@ -37,15 +37,15 @@
             ifSupplier: ""
         };
         $rootScope.UserInfo = {
-            EmpId: $window.sessionStorage.EmpID,
-            EmpName: $window.sessionStorage.EmpName,
-            DeptId: $window.sessionStorage.DeptID,
-            RoleId: $window.sessionStorage.RoleID
+            //EmpId: $window.sessionStorage.EmpID,
+            //EmpName: $window.sessionStorage.EmpName,
+            //DeptId: $window.sessionStorage.DeptID,
+            //RoleId: $window.sessionStorage.RoleID
             //, 
-            //EmpId: "11233",
-            //EmpName: "Jenny Wong Mei Lin",
-            //DeptId: "REGR",
-            //RoleId: "EM"
+            EmpId: "11233",
+            EmpName: "Jenny Wong Mei Lin",
+            DeptId: "REGR",
+            RoleId: "EM"
         }
         console.log($rootScope.UserInfo);
         $rootScope.side = {
@@ -66,7 +66,6 @@
             SupplierSC: false,
             Supplier: false,
             Analytics: false
-
         }
         if ($rootScope.UserInfo.RoleId == "EM") {
             $rootScope.side.Requistion = true;
@@ -74,14 +73,14 @@
             $rootScope.side.Department = true;
             $rootScope.side.RequestCart = true;
         }
-        if ($rootScope.UserInfo.RoleId == "ER") {
+        if ($rootScope.UserInfo.RoleId == "DR") {
             $rootScope.side.Requistion = true;
             $rootScope.side.Catalog = true;
             $rootScope.side.Department = true;
             $rootScope.side.RequestCart = true;
             $rootScope.side.Disbursement = true;
         }
-        if ($rootScope.UserInfo.RoleId == "ED") {
+        if ($rootScope.UserInfo.RoleId == "DD") {
             $rootScope.side.Requistion = true;
             $rootScope.side.Catalog = true;
             $rootScope.side.Department = true;
