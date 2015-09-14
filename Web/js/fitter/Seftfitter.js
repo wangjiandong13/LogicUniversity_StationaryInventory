@@ -1,6 +1,7 @@
 ﻿var appfilter = angular.module('appfilter', []);
 appfilter.filter('datechange', datefilter);
 appfilter.filter('statuschange', statuschange);
+appfilter.filter('CPIDchange', CPIDchange);
 
 function datefilter() {
     return function (input) {
