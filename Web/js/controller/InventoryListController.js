@@ -73,8 +73,9 @@
                         console.log(itemdata);
                         console.log($scope.supplierID);
                         $.each(itemdata, function (index, ipvalue) {
+                            console.log(ipvalue.SupplierID);
                             if (ipvalue.SupplierID == $scope.supplierID)
-                                value.Price = ipvalue.Price;
+                                $scope.inventoryListdata.Price = ipvalue.Price;
                         })
                         
                     })
