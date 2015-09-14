@@ -10,7 +10,7 @@
             availableOptions: [],
             selectedOption: { 'CPID': 0, 'CPName': 'ALL' }
         };
-
+        $scope.DisID = "";
         var myBaseService = BaseService;
         $scope.search = function () {
             var dept = $scope.optiondataDept.selectedOption.DeptID;
