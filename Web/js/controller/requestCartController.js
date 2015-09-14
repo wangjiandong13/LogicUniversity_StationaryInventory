@@ -26,14 +26,14 @@
                     msg.push(each);
                 });
                 var req_id = "";
+                console.log($('#create-switch').value);
                 console.log(angular.toJson(msg));
                 selfBaseService.createRequisition(angular.toJson(msg))
                     .then(function (data) {
                         console.log(data);
                         req_id = data;
-                        var priority = 1;
-                        console.log($('#create-switch').value());
-                        if ($('#create-switch').value()) { priority = 2 }
+                        var priority = 2;
+                        if ($('#create-switch').is(":checked")) { priority = 1 }
                         selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
                             .then(function (data) {
                                 alert("success!");
