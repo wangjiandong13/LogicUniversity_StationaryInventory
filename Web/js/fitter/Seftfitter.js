@@ -1,6 +1,7 @@
 ﻿var appfilter = angular.module('appfilter', []);
 appfilter.filter('datechange', datefilter);
 appfilter.filter('statuschange', statuschange);
+appfilter.filter('CPIDchange', CPIDchange);
 
 function datefilter() {
     return function (input) {
@@ -26,6 +27,29 @@ function statuschange() {
         }
         if (input == 6) {
             return "Cancelled";
+        }
+    };
+}
+
+function CPIDchange() {
+    return function (input) {
+        if (input == 1) {
+            return "LogicU Stationery Store - Administration Building (9:30am)";
+        }
+        if (input == 2) {
+            return "LogicU Management School (11:00am)";
+        }
+        if (input == 3) {
+            return "LogicU Medical School (9:30am)";
+        }
+        if (input == 4) {
+            return "LogicU Engineering School (11:00am)";
+        }
+        if (input == 5) {
+            return "LogicU Science School (9:30am)";
+        }
+        if (input == 6) {
+            return "LogicU University Hospital (11:00am)";
         }
     };
 }

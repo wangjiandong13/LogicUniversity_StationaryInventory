@@ -27,9 +27,9 @@ function service($http, $q) {
     //load requisition List (EmpID)
     //Search Requisition by ReqID OR load requisitionDetail.html OR load requisitionApproval.html or load disbursementRequisition.html
     //Search requisition by status (status) 
-    this.getRequisitionList = function (status, ReqID, EmpID) {
+    this.getRequisitionList = function (status, ReqID, EmpID, DeptID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "requisitionAPI.svc/getRequisition/"+ status +"/"+ ReqID +"/" + EmpID)
+        $http.get(baseurl + "requisitionAPI.svc/getRequisition/" + status + "/" + ReqID + "/" + EmpID + "/" + DeptID)
             .success(function (data) {
                 deferred.resolve(data)
             })

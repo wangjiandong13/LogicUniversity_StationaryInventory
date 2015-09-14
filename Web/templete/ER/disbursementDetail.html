@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="DisbursementDetailController">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="col-md-12">
                         <br>
-                        <h1 style="display: inline">Disbursement # <h1 id="DisbID" style="display: inline">001</h1></h1>
+                        <h1 style="display: inline">Disbursement # <h1 id="DisbID" style="display: inline">{{disid}}</h1></h1>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -35,7 +35,7 @@
                                     <td class="col-md-4">
                                         <h5>Date : </h5></td>
                                     <td class="col-md-6">
-                                        <label id="lbl_date">23 August 2015</label>
+                                        <label id="lbl_date">{{DisbursementData.Date|datechange|date : 'dd MMM yyyy'}}</label>
                                     </td>
                                     <td class="col-md-2"><a class="btn btn-sm default DTTT_button_print" id="ToolTables_sample_2_3" title="View print view"><i class="fa fa-print"></i><span> Print</span></a></td>
                                 </tr>
@@ -43,21 +43,21 @@
                                     <td class="col-md-4">
                                         <h5>Collection Point : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_collectionPoint">SCIENCE</label>
+                                        <label id="lbl_collectionPoint">{{DisbursementData.CPID|CPIDchange}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Received By : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_receivedBy">Jenny Wong Mei Lin</label>
+                                        <label id="lbl_receivedBy">{{DisbursementData.ReceivedBy}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Disbursed By : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_disbursedBy">Wong Sook Huey</label>
+                                        <label id="lbl_disbursedBy">{{DisbursementData.DisbursedBy}}</label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -76,30 +76,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>P045</td>
-                                    <td>Pencil B</td>
-                                    <td>30</td>
-                                </tr>
-                                <tr>
-                                    <td>S021</td>
-                                    <td>Stapler No. 28</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>T001</td>
-                                    <td>Thumb Tacks Large</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <td>P031</td>
-                                    <td>Pen Ballpoint Blue</td>
-                                    <td>30</td>
-                                </tr>
-                                <tr>
-                                    <td>T100</td>
-                                    <td>Trays In/Out</td>
-                                    <td>15</td>
+                                <tr ng-repeat="DisbursementDetailList in DisbursementDetailLists">
+                                    <td>{{DisbursementDetailList.ItemID}}</td>
+                                    <td>{{DisbursementDetailList.Description}}</td>
+                                    <td>{{DisbursementDetailList.Qty}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -108,8 +88,8 @@
                 <br>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="button" class="btn default"><i class="fa fa-arrow-left"></i> Back</button>
-                    <button type="submit" class="btn green">View Requisition</button>
+                    <button type="button" class="btn default" ng-click="back()"><i class="fa fa-arrow-left"></i> Back</button>
+                    <button type="button" class="btn green" ng-click="viewRequisition()">View Requisition</button>
                     <hr>
                 </div>
             </div>

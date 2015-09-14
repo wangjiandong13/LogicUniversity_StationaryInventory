@@ -56,13 +56,13 @@
                     '../controller/DisbursementController'
                 ]
             },
-            '/disbursementDetail': {
+            '/disbursementDetail/:disid': {
                 templateUrl: 'ER/disbursementDetail.html',
                 dependencies: [
                     '../controller/DisbursementDetailController'
                 ]
             },
-            '/disbursementRequisition': {
+            '/disbursementRequisition/:disid': {
                 templateUrl: 'ER/disbursementRequisition.html',
                 dependencies: [
                     '../controller/DisbursementRequisitionController'
