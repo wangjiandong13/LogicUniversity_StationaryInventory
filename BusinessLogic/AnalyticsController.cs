@@ -125,14 +125,14 @@ namespace BusinessLogic
 
             genReport.ReportID = rp.ReportID;
             genReport.Date = DateTime.Today;
-            genReport.EmpID = rp.EmpID;
+            genReport.EmpID = (int)rp.EmpID;
             genReport.Title = rp.Title;
             genReport.StartD = sdate;
             genReport.EndD = edate;
             genReport.Remark = rp.Remark;
-            genReport.Type = rp.Type;
-            genReport.Criteria = rp.Criteria;
-            genReport.Precriteria = rp.Precriteria;
+            genReport.Type = (int)rp.Type;
+            genReport.Criteria = (int)rp.Criteria;
+            genReport.Precriteria = (int)rp.Precriteria;
             genReport.Results = new List<ReportResult>();
 
             //fetch results
