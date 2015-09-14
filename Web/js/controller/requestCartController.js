@@ -29,6 +29,7 @@
                 console.log(angular.toJson(msg));
                 selfBaseService.createRequisition(angular.toJson(msg))
                     .then(function (data) {
+                        console.log(data);
                         req_id = data;
                     }, function (data) {
                         alert(data);
