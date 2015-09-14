@@ -57,7 +57,7 @@
                                 <tr ng-repeat="Disbursement in Disbursements"  ng-click="disbursementdetail(Disbursement)">
                                     <td>{{Disbursement.DisID}}</td>
                                     <td>{{Disbursement.Date|datechange|date : 'dd MMM yyyy'}}</td>
-                                    <td>{{Disbursement.StatusID|statuschange}}</td>
+                                    <td>{{Disbursement.Status}}</td>
                                 </tr>
                             </tbody>
                         </table>
