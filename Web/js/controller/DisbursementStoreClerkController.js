@@ -64,8 +64,10 @@
                         )
                     myBaseService.getAllCollectionPoint()
                         .then(function (data) {
-                            if (data.CPID == value.CPID)
-                                value.Collection = data.CPName;
+                            $.each(data, function (index, xvalue) {
+                                if (xvalue.CPID == value.CPID)
+                                    value.Collection = xvalue.CPName;
+                            }
                         }, function (data) {
                             alert(data);
                         }
