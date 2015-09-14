@@ -2,7 +2,16 @@
     app.controller('DisbursementDetailController', ['$scope', '$rootScope', "$routeParams", 'BaseService', DisbursementDetailController]);
 
     function DisbursementDetailController($scope, $rootScope, $routeParams, BaseService) {
+
         $rootScope.changehighlight(5);
+
+        if ($rootScope.disbBackTo == 0) {
+            $scope.viewReqBtn = true;
+        }
+        else {
+            $scope.viewReqBtn = false;
+        }
+
         var disid = $routeParams.disid;
         $rootScope.disid = disid;
         var myBaseService = BaseService;
@@ -50,6 +59,7 @@
                 alert(data);
             }
             )
+
         $scope.back = function () {
             if ($rootScope.disbBackTo == 0) {
                 location.href = "#/disbursement";

@@ -123,6 +123,7 @@
     <Compile Include="Priority.cs">
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportModel.cs" />
     <Compile Include="ProcessRetrieval.cs" />
     <Compile Include="ProcessRetSuccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +140,8 @@
     <Compile Include="Report.cs">
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportResult.cs" />
+    <Compile Include="ReportResultItems.cs" />
     <Compile Include="ReqAllocation.cs" />
     <Compile Include="RequestCart.cs" />
     <Compile Include="Requisition.cs">
