@@ -4,7 +4,7 @@
     function inventoryListCtrl($rootScope, $scope, BaseService) {
         //sidebar highlight
         $rootScope.changehighlight(12);
-
+        var myBaseService = myBaseService;
         //click the New button
         $scope.new = function () {
             location.href = '#/inventoryNew';
