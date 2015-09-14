@@ -33,7 +33,7 @@
 
             var S_categoryname = $scope.categoryname;
 
-            if (S_categoryname == "") {
+            if (S_categoryname == "" || S_categoryname == null) {
                 S_categoryname = "null";
             }
             //console.log(S_category);
@@ -41,9 +41,22 @@
             BaseService.searchItem(S_category, S_categoryname)
                 .then(function (data) {
                     //console.log(data);
-                    $rootScope.catalogListdata = data;
-                    $.each($rootScope.catalogListdata, function (index, value) {
-                        value.qty = 1;
+                    $scope.inventoryListdata = data;
+                    $.each($scope.inventoryListdata, function (index, value) {
+                        myBaseService.getItemPrice(value.ItemID)
+                            .then(function (itemdata) {
+                                //console.log(itemdata);
+                                //console.log($scope.supplierID);
+                                $.each(itemdata, function (index, ipvalue) {
+                                    //console.log(ipvalue.SupplierID);
+                                    if (ipvalue.SupplierID == $scope.supplierID) {
+                                        //console.log($scope.inventoryListdata.Price);
+                                        value.Price = ipvalue.Price;
+                                    }
+
+                                })
+
+                            })
                     });
                 }, function (data) {
                     alert(data);
@@ -56,31 +69,43 @@
         //console.log("enter");
         var myBaseService = BaseService;
         BaseService.getSupplierList()
-        .then(function(supplierdata){
-            $.each(supplierdata, function(index, value){
-                if(value.Rank == 1)
+        .then(function (supplierdata) {
+            $.each(supplierdata, function (index, value) {
+                console.log(value.Rank);
+                if (value.Rank == 1)
                     $scope.supplierID = value.SupplierID;
             })
-        })
 
-        BaseService.getCatalogList()
+            myBaseService.getCatalogList()
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.inventoryListdata = data;
                 $.each($scope.inventoryListdata, function (index, value) {
                     myBaseService.getItemPrice(value.ItemID)
                     .then(function (itemdata) {
-                        console.log(itemdata);
-                        if (itemdata.SupplierID == $scope.SupplierID)
-                            value.Price = itemdata.Price;
+                        //console.log(itemdata);
+                        //console.log($scope.supplierID);
+                        $.each(itemdata, function (index, ipvalue) {
+                            //console.log(ipvalue.SupplierID);
+                            if (ipvalue.SupplierID == $scope.supplierID)
+                            {
+                                //console.log($scope.inventoryListdata.Price);
+                                value.Price = ipvalue.Price;
+                            }
+                                
+                        })
+                        
                     })
                 });
             }, function (data) {
                 alert(data);
             }
        )
+        })
 
-        
+
+
+
         //click the Stock Card button
         $scope.stockCard = function () {
             location.href = '#/stockcard';
