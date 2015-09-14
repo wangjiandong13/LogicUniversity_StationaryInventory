@@ -4413,6 +4413,7 @@
     <Content Include="js\controller\DisbursementRequisitionController.js" />
     <Content Include="js\controller\DisbursementStoreClerkController.js" />
     <Content Include="js\controller\InventoryListController.js" />
+    <Content Include="js\controller\InventoryNewController.js" />
     <Content Include="js\controller\NotificationController.js" />
     <Content Include="js\controller\PurchaseOrderController.js" />
     <Content Include="js\controller\PurchaseOrderDetailController.js" />

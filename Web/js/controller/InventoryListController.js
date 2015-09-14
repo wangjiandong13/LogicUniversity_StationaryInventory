@@ -7,6 +7,7 @@
 
         //click the New button
         $scope.new = function () {
+            $scope.toNewInvt = 0;
             location.href = '#/inventoryNew';
         };
 
@@ -103,9 +104,6 @@
        )
         })
 
-
-
-
         //click the Stock Card button
         $scope.stockCard = function () {
             location.href = '#/stockcard';
@@ -113,6 +111,7 @@
         //click the Edit button
         $scope.edit = function () {
             console.log($scope.catalogListdata.itemID);
+            $scope.toNewInvt = 1;
             location.href = '#/inventoryNew/' + $scope.catalogListdata.itemID;
         };
     }
