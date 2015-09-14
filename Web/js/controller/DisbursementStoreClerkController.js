@@ -1,10 +1,10 @@
 ﻿define(['app'], function (app) {
     app.controller('DisbSCControllers', ['$rootScope', '$scope', 'BaseService', DisbSCControllers]);
-    function RequisitionApprovalListControllers($rootScope, $scope, BaseService) {
+    function DisbSCControllers($rootScope, $scope, BaseService) {
         $rootScope.changehighlight(11);
         $scope.optiondataDept = {
             availableOptions: [],
-            selectedOption: { 'DeptID': 1, 'DeptName': 'All' }
+            selectedOption: { 'DeptID': 0, 'DeptName': 'All' }
         };
         $scope.optiondataCPID = {
             availableOptions: [],
@@ -14,11 +14,12 @@
         var myBaseService = BaseService;
         $scope.search = function () {
             var dept = $scope.optiondataDept.selectedOption.DeptID;
-            if (dept == 0) { status = "null"; }
-            var cpid = $rootScope.optiondataCPID.selectedOption.CPID;
-            if (cpid == 0) { cpid = "null" }
+            if (dept == 0) { dept = "null"; }
+            var cpid = $scope.optiondataCPID.selectedOption.CPID;
+            if (cpid == 0) { cpid = "null"; }
             var disid = $scope.DisID;
-            if (disid == "") { disid = "null" }
+            if (disid == null || disid =="") { disid = "null"; }
+            //console.log(disid);
             BaseService.getDisbursementList(dept, cpid, disid, "null", "null")
                 .then(function (data) {
                     console.log(data);
@@ -34,13 +35,15 @@
                             }
                             )
                         myBaseService.getAllCollectionPoint()
-                            .then(function (data) {
-                                if(data.CPID == value.CPID)
-                                value.Collection = data.CPName;
-                            }, function (data) {
-                                alert(data);
-                            }
-                            )
+                        .then(function (data) {
+                            $.each(data, function (index, xvalue) {
+                                if (xvalue.CPID == value.CPID)
+                                    value.Collection = xvalue.CPName;
+                            })
+                        }, function (data) {
+                            alert(data);
+                        }
+                        )
                     });
                 }, function (data) {
                     alert(data);
@@ -64,8 +67,10 @@
                         )
                     myBaseService.getAllCollectionPoint()
                         .then(function (data) {
-                            if (data.CPID == value.CPID)
-                                value.Collection = data.CPName;
+                            $.each(data, function (index, xvalue) {
+                                if (xvalue.CPID == value.CPID)
+                                    value.Collection = xvalue.CPName;
+                            })
                         }, function (data) {
                             alert(data);
                         }
@@ -77,6 +82,7 @@
         )
 
         $scope.disbursementdetail = function (Disbursement) {
+            $rootScope.disbBackTo = 1;
             location.href = "#/disbursementDetail/" + Disbursement.DisID;
         };
 

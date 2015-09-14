@@ -15,6 +15,8 @@
             ifDepartment: false,
             ifRequestCart:true
         };
+        $('#create-switch').wrap('<div class="switch" />').parent().bootstrapSwitch();
+        $("[name='my-checkbox']").bootstrapSwitch();
         console.log("enter  RequestCartControllers")
         $scope.back = function () {
             location.href = '#/requisition';
@@ -26,7 +28,8 @@
                 var each = {
                     EmpID: $rootScope.UserInfo.EmpId,
                     ItemID: value.ItemID,
-                    Qty: value.Qty
+                    Qty: value.Qty,
+
                 };
                 msg.push(each);
             });

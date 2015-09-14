@@ -41,6 +41,7 @@
             '/requestCart': {
                 templateUrl: 'EM/requestCart.html',
                 dependencies: [
+                    '../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min',
                     '../controller/RequestCartController'
                 ]
             },
