@@ -4,7 +4,7 @@
         $rootScope.changehighlight(11);
         $scope.optiondataDept = {
             availableOptions: [],
-            selectedOption: { 'DeptID': 1, 'DeptName': 'All' }
+            selectedOption: { 'DeptID': 0, 'DeptName': 'All' }
         };
         $scope.optiondataCPID = {
             availableOptions: [],
