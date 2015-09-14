@@ -36,7 +36,7 @@
         )
         $scope.requisitiondetail = function (Requisition) {
             location.href = "#/requisitionDetail/" + Requisition.ReqID;
-            $rootScope.backTo == 0;
+            $rootScope.backTo = 0;
         };
     }
     function SelectoptionControllers($rootScope, BaseService) {
