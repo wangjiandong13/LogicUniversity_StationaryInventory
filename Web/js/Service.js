@@ -307,9 +307,9 @@ function service($http, $q) {
 
     //disbursementDetail.html
     //load disbursement detail
-    this.getDisbursementDetail = function (DisID) {
+    this.getDisbursementDetail = function (DisIDid) {
         var deferred = $q.defer();
-        $http.get(baseurl + "disbursementAPI.svc/getDisbursementDetail/" + DisID)
+        $http.get(baseurl + "disbursementAPI.svc/getDisbursementDetail/" + DisIDid)
             .success(function (data) {
                 deferred.resolve(data)
             })
