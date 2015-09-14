@@ -70,7 +70,13 @@
             }
             )
         $scope.back = function () {
-            location.href = "#/requisition";
+            if ($rootScope.backTo == 0) {
+                location.href = "#/requisition";
+            }
+            else {
+                location.href = "#/disbursementRequisition/" + $rootScope.disid;
+            }
+            
         }
         $scope.Cancel = function () {
             BaseService.getRequisitionCancel($scope.reqid)

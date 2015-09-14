@@ -4,7 +4,7 @@
     function DisbursementDetailController($scope, $rootScope, $routeParams, BaseService) {
         $rootScope.changehighlight(5);
         var disid = $routeParams.disid;
-        $scope.disid = disid;
+        $rootScope.disid = disid;
         var myBaseService = BaseService;
         console.log($scope.disid);
         BaseService.getDisbursementList("null", "null", disid, "null", "null")
