@@ -76,43 +76,59 @@
             }
             if (Nowpage == 2) {
                 $rootScope.mean.Catalog = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.ifCatalog = true;
             }
             if (Nowpage == 3) {
                 $rootScope.mean.Department = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.ifDepartment = true;
             }
             if (Nowpage == 4) {
                 $rootScope.mean.RequestCart = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.ifRequestCart = true;
             }
             if (Nowpage == 5) {
                 $rootScope.mean.Disbursement = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.ifDisbursement = true;
             }
             if (Nowpage == 6) {
                 $rootScope.mean.Approval = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.ifApproval = true;
             }
             if (Nowpage == 7) {
                 $rootScope.mean.RequisitionSC = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.ifRequisitionSC = true;
             }
             if (Nowpage == 8) {
                 $rootScope.mean.Adjustment = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.ifAdjustment = true;
             }
             if (Nowpage == 9) {
-                $rootScope.mean.Approval = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.DepartmentSC = "active";
+                $rootScope.mean.ifDepartmentSC = true;
             }
             if (Nowpage == 10) {
-                $rootScope.mean.RequisitionSC = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.DisbursementSC = "active";
+                $rootScope.mean.ifDisbursementSC = true;
             }
             if (Nowpage == 11) {
-                $rootScope.mean.Adjustment = "active";
-                $rootScope.mean.ifRequistion = true;
+                $rootScope.mean.Inventory = "active";
+                $rootScope.mean.ifInventory = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.PurchaseOrder = "active";
+                $rootScope.mean.ifPurchaseOrder = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.Retrieval = "active";
+                $rootScope.mean.ifRetrieval = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.SupplierSC = "active";
+                $rootScope.mean.ifSupplierSC = true;
+            }
+            if (Nowpage == 11) {
+                $rootScope.mean.Supplier = "active";
+                $rootScope.mean.ifSupplier = true;
             }
         }
         $rootScope.UserInfo = {
