@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h1>New Delegate</h1>
+                <h1>New Delegate {{startdate}}{{enddate}}</h1>
                 <hr>
             </div>
             <div class="col-md-12">
@@ -28,27 +28,23 @@
                         <td class="col-md-4">
                             <h4>Employee Name:</h4>
                         </td>
-                        <td class="col-md-4">
-                        <td class="col-md-7">
+                        <td class="col-md-5">
                             <select class="form-control" ng-disabled="setting.textbox"
                                     ng-options="option.EmpName for option in employeelist.availableOptions track by option.EmpID"
                                     ng-model="optiondata.selectedOption"></select>
-                        </td>
-                        </td>
-                        <td class="col-md-4">
-
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
                             <h4>Duration:</h4>
                         </td>
-                        <td class="col-md-4">
-                            <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
-                                <input class="form-control" name="from" type="text">
+                        <td class="col-md-5">
+                            <div class="input-group input-large date-picker input-daterange" ng-model="startdate" data-date="" data-date-format="mm/dd/yyyy">
+                                <input type="text" class="form-control" value="12-02-2012" ng-model="startdate">
                                 <span class="input-group-addon">
-												to </span>
-                                <input class="form-control" name="to" type="text">
+                                    to
+                                </span>
+                                <input type="text" class="form-control" ng-model="enddate" >
                             </div>
                         </td>
                     </tr>
@@ -56,7 +52,7 @@
                         <td class="col-md-4">
                             <h4>Reason:</h4>
                         </td>
-                        <td class="col-md-4">
+                        <td class="col-md-5">
                             <select class="form-control" id="cb_employee">
                                 <option>Hard Coded Reason</option>
                                 <option>Hard Coded Reason</option>
