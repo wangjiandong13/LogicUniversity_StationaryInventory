@@ -29,7 +29,9 @@
                 .then(function (data) {
                     console.log(data);
                     $rootScope.RequisitionsApproval = data;
+                    console.log("I am here");
                     $.each(data, function (index, value) {
+                        console.log("I am in each");
                         console.log(">>>>" + value);
                         console.log(">>>>"+value.EmpID);
                         myBaseService.getEmployee(value.EmpID)
