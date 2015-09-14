@@ -74,6 +74,12 @@
                     '../controller/RequisitionApprovalListController'
                 ]
             },
+            '/reqApproval/:reqid': {
+                templateUrl: 'EM/requisitionApproval.html',
+                dependencies: [
+                    '../controller/RequisitionApprovalController'
+                ]
+            },
             '/delegate': {
                 templateUrl: 'DH/delegate.html',
                 dependencies: [
