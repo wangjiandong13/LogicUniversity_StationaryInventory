@@ -5,7 +5,7 @@ appfilter.filter('CPIDchange', CPIDchange);
 
 function datefilter() {
     return function (input) {
-        console.log(">>>filter"+input);
+        //console.log(">>>filter"+input);
         if (input == ""||input==undefined) {
             return ""; 
         }
@@ -62,14 +62,14 @@ function CPIDchange() {
 //function datefilter22() {
 //    return function (input, param1) {
 //        var args = Array.prototype.slice.call(arguments);
-//        console.log("arguments=", args.length);
+//        //console.log("arguments=", args.length);
 //        if (3 <= args.length) {
-//            console.log("param2(string)=", args[2]);
+//            //console.log("param2(string)=", args[2]);
 //        }
 //        if (4 <= args.length) {
-//            console.log("param3(bool)=", args[3]);
+//            //console.log("param3(bool)=", args[3]);
 //        }
-//        console.log("------------------------------------------------- end dump of custom parameters");
+//        //console.log("------------------------------------------------- end dump of custom parameters");
 //        // filter  
 //        if (5 <= args.length) {
 //            return window[args[4]](input);
