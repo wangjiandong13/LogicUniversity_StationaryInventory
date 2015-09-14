@@ -3,11 +3,14 @@
     app.controller('DisbursementList', ['$rootScope', '$scope', 'BaseService', DisbursementList]);
     function DisbursementnControllers($rootScope, $scope, BaseService) {
         $rootScope.changehighlight(5);
-
+        $('.date-picker').datepicker({
+            orientation: "left",
+            autoclose: true
+        });
         $scope.search = function () {
-            var startDate = $rootScope.StartDate;
+            var startDate = $("#datestartdata").val();
             if (startDate == "") { startDate = "null"; }
-            var endDate = $rootScope.EndDate;
+            var endDate = $("#datestartdata").val();
             if (endDate == "") { endDate = "null"; }
             var disID = $scope.DisbursementNo;
             if (disID == null) { disID = "null" }

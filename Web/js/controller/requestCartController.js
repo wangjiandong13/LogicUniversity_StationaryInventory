@@ -26,8 +26,6 @@
                     msg.push(each);
                 });
                 var req_id = "";
-                console.log($('#create-switch').value);
-                console.log(angular.toJson(msg));
                 selfBaseService.createRequisition(angular.toJson(msg))
                     .then(function (data) {
                         console.log(data);

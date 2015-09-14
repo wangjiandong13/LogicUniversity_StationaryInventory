@@ -24,13 +24,16 @@
                     <div class="col-md-2">
                         <label style="display: inline">Date Range:</label>
                     </div>
-                    <div class="col-md-5 input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
-                        <input type="text" class="form-control" name="from" ng-model="StartDate">
-                        <span class="input-group-addon">
-                                    to </span>
-                        <input type="text" class="form-control" name="to" ng-model="EndDate">
+                    <div class="col-md-4">
+                        <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" id="datestartdata">
+                            <span class="input-group-addon">
+                                to
+                            </span>
+                            <input type="text" class="form-control" id="dateenddata">
+                        </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <input type="text" class="form-control" placeholder="Enter Disbursement No." ng-model="DisbursementNo">
                     </div>
                     <div class="col-md-2">

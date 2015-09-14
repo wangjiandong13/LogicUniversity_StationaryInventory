@@ -54,13 +54,13 @@
             '/disbursement': {
                 templateUrl: 'ER/disbursement.html',
                 dependencies: [
-                    '../controller/DisbursementController'
+                    '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min', '../controller/DisbursementController'
                 ]
             },
             '/disbursementDetail/:disid': {
                 templateUrl: 'ER/disbursementDetail.html',
                 dependencies: [
-                    '../controller/DisbursementDetailController'
+                     '../controller/DisbursementDetailController'
                 ]
             },
             '/disbursementRequisition/:disid': {
