@@ -29,8 +29,9 @@
                 .then(function (data) {
                     console.log(data);
                     $rootScope.RequisitionsApproval = data;
-                    $.each($rootScope.RequisitionsApproval, function (index, value) {
-                        console.log(value.EmpID);
+                    $.each(data, function (index, value) {
+                        console.log(">>>>" + value);
+                        console.log(">>>>"+value.EmpID);
                         myBaseService.getEmployee(value.EmpID)
                             .then(function (data) {
                                 value.EmpName = data.EmpName;
