@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6" style="text-align:right">
                     <br>
-                    <button type="button" class="btn btn-success">
+                    <button type="button" class="btn btn-success" ng-click="newDelegate()">
                         <i class="fa fa-user-plus"></i> New Delegate
                     </button>
                 </div>
@@ -45,23 +45,12 @@
                             <th>
                                 Reason
                             </th>
+                            <th>
+
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                Jenny Wong Mei Lin
-                            </td>
-                            <td>
-                                01/08/2015
-                            </td>
-                            <td>
-                                07/08/2015
-                            </td>
-                            <td>
-                                LEAVE
-                            </td>
-                        </tr>
                         <tr ng-repeat="Delegate in Delegates">
                             <td>{{Delegate.EmpName}}</td>
                             <td>{{Delegate.StartDate|datechange|date : 'dd MMM yyyy'}}</td>
@@ -69,6 +58,11 @@
                                 {{Delegate.EndDate|datechange|date : 'dd MMM yyyy'}}
                             </td>
                             <td>{{Delegate.Status}}</td>
+                            <td>
+                                <button type="button" class="btn red" ng-click="delectDelegate(Delegate)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

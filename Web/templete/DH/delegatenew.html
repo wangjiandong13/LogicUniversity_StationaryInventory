@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="DelegateNewControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -23,19 +23,17 @@
                 <hr>
             </div>
             <div class="col-md-12">
-                <h2>Add Employee</h2>
-                <br>
                 <table>
                     <tr>
                         <td class="col-md-4">
                             <h4>Employee Name:</h4>
                         </td>
                         <td class="col-md-4">
-                            <select class="form-control" id="cb_employee">
-                                <option>Employee Object . Name</option>
-                                <option>Employee Object . Name</option>
-                                <option>Employee Object . Name</option>
-                            </select>
+                        <td class="col-md-7">
+                            <select class="form-control" ng-disabled="setting.textbox"
+                                    ng-options="option.EmpName for option in employeelist.availableOptions track by option.EmpID"
+                                    ng-model="optiondata.selectedOption"></select>
+                        </td>
                         </td>
                         <td class="col-md-4">
 

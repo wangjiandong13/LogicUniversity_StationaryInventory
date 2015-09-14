@@ -8,11 +8,22 @@
         BaseService.getDeptDelegate($rootScope.UserInfo.DeptID)
             .then(function (data) {
                 $scope.Delegates = data;
-                MyBaseService.getEmployee(data.EmpID)
-                    .then(function (data) {
-                        $scope.Delegates.EmpName = data.EmpName;
-                    }
-                    )
+                if (data.EmpID != null) {
+                    MyBaseService.getEmployee(data.EmpID)
+                        .then(function (data) {
+                            $scope.Delegates.EmpName = data.EmpName;
+                        }
+                        )
+                }
             })
+        $scope.Delegate = function (delegagte) {
+            BaseService.removeDelegate(delegagte.DelegateSN)
+                .then(function (data) {
+                    alert("Success Delect!");
+                })
+        }
+        $scope.newDelegate = function () {
+            location.href = "#/delegatenew";
+        }
     }
 })
