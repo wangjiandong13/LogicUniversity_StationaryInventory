@@ -35,7 +35,7 @@
                                     <td class="col-md-4">
                                         <h5>Date : </h5></td>
                                     <td class="col-md-6">
-                                        <label id="lbl_date">{{DisbursementData.Date}}</label>
+                                        <label id="lbl_date">{{DisbursementData.Date||datechange|date : 'dd MMM yyyy'}}</label>
                                     </td>
                                     <td class="col-md-2"><a class="btn btn-sm default DTTT_button_print" id="ToolTables_sample_2_3" title="View print view"><i class="fa fa-print"></i><span> Print</span></a></td>
                                 </tr>
