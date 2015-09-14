@@ -16,8 +16,16 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <h1>Request Cart</h1>
+                </div>
+                <div class="col-md-6" style="text-align:right">
+                    <label for="checkbox1">
+                        <span class="inc"></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Priority
+                    </label>
                 </div>
                 <div class="col-md-12">
                     <hr>
@@ -38,7 +46,7 @@
                                     <td>{{RequestCart.UOM}}</td>
                                     <td>
                                         <div>
-                                            <input type="number"  ng-model=RequestCart.Qty class="form-control" id="spinner" min=1>
+                                            <input type="number" ng-model=RequestCart.Qty class="form-control" id="spinner" min=1>
                                         </div>
                                     </td>
                                     <td>
@@ -49,12 +57,17 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="col-md-12">
+                            <hr />
+                            <label>Remarks : </label>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-12 text-center">
                     <br>
                     <button type="button" class="btn default" ng-click="back()">Back</button>
-                    <button type="button" class="btn green" ng-click="submit()"><i class="fa fa-check" ></i> Submit</button>
+                    <button type="button" class="btn green" ng-click="submit()"><i class="fa fa-check"></i> Submit</button>
                     <hr>
                 </div>
 
