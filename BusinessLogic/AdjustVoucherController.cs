@@ -162,7 +162,7 @@ namespace BusinessLogic
                 
                 ctx.AdjustmentDetail.Add(adjVoucher);
 
-                totAmt += Convert.ToDouble(adjVoucher.Price) * Convert.ToDouble(adjVoucher.Qty);
+                totAmt += Convert.ToDouble(adjVoucher.Price) * Math.Abs(Convert.ToInt32(adjVoucher.Qty));
             }
 
             adj.TotalAmt = totAmt;

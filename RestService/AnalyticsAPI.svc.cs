@@ -28,7 +28,7 @@ namespace RestService
             BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
             return BL.generateNewReport(rp);
         }
-        public ReportModel generateExistingReport(int reportID)
+        public ReportModel generateExistingReport(string reportID)
         {
             BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
             return BL.generateExistingReport(reportID);

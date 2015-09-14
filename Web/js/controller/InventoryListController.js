@@ -4,7 +4,7 @@
     function inventoryListCtrl($rootScope, $scope, BaseService) {
         //sidebar highlight
         $rootScope.changehighlight(12);
-
+        var myBaseService = BaseService;
         //click the New button
         $scope.new = function () {
             $scope.toNewInvt = 0;
