@@ -27,7 +27,7 @@
         }
         $scope.submit = function () {
             console.log(">>>>enter submit button");
-            if ($("#datestartdata").val() != null && $("#datestartdata").val() != null && $scope.Reason != "") {
+            if ($("#datestartdata").val() != "" && $("#datestartdata").val() != "" && $scope.Reason != "") {
                 var msg = {
                     EmpID: $scope.employeelist.selectedOption.EmpID,
                     DeptID: $rootScope.UserInfo.DeptId,
