@@ -4,7 +4,6 @@
     app.controller('SelectoptionControllersStatus', ['$rootScope', 'BaseService', SelectoptionControllersStatus]);
     app.controller('SelectoptionControllersEmp', ['$rootScope', 'BaseService', SelectoptionControllersEmp]);
     function RequisitionApprovalListControllers($rootScope, $scope, BaseService) {
-        //set mean highlight
         $rootScope.changehighlight(6);
         $rootScope.optiondataStatus = {
         availableOptions: [],
