@@ -37,7 +37,7 @@
                                 <input type="text" class="form-control" placeholder="Enter Item Code">
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn default">Search</button>
+                                <button type="button" class="btn btn default" ng-click="search()">Search</button>
                             </div>
                         </div>
                         <br>
@@ -46,11 +46,7 @@
                                 <label>Reason:</label>
                             </div>
                             <div class="col-md-2">
-                                <select class="form-control">
-                                    <option>Reason 1</option>
-                                    <option>Reason 2</option>
-                                    <option>Reason 3</option>
-                                </select>
+                                <select class="form-control" ng-model="reasonSelect.selectedOption" ng-options="option.name for option in reasonSelect.availableOptions track by option.id"></select>
                             </div>
                             <div class="col-md-1">
                             </div>
@@ -77,7 +73,7 @@
                 </div>
                 <br>
                 <div class="row text-center">
-                    <button type="button" class="btn btn yellow">
+                    <button type="button" class="btn btn yellow" ng-click="add()">
                         <span class="glyphicon glyphicon-plus"></span> Add
                     </button>
                 </div>
@@ -114,8 +110,8 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="button" class="btn default">Cancel</button>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn default" ng-click="cancel()">Cancel</button>
+                    <button type="submit" class="btn btn-success" ng-click="submit()">Submit</button>
                     <hr>
                 </div>
             </div>
