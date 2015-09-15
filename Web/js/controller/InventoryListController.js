@@ -112,7 +112,7 @@
 
         //click the Edit button
         $scope.edit = function (item) {
-            console.log(item.itemID);
+            console.log(item);
             $rootScope.toNewInvt = 1;
             location.href = '#/inventoryNew/' + item.itemID;
         };
