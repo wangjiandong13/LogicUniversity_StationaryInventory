@@ -62,9 +62,10 @@ namespace RestService
         bool rejectAdj(string adjId, string ApprovedBy);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/getAdjVoucherByID/{AdjID}")]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                                        RequestFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+                                           UriTemplate = "/getAdjVoucherByID")]
         AdjustmentVoucher getAdjVoucherByID(string AdjID);
     }
 }
