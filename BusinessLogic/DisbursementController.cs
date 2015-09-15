@@ -161,7 +161,7 @@ namespace BusinessLogic
             //update disbursement status to "Disbursed"
             int disID = Convert.ToInt32(DisID);
             Disbursement disb = ctx.Disbursement.Where(x => x.DisID == disID).FirstOrDefault();
-            disb.Status = "Disbursed";
+            disb.Status = "DISBURSED";
 
             //update requisition status to "Collected" (statusID = 4)
             List<Requisition> reqList = ctx.Requisition.Where(x => x.DisID == disID).ToList();

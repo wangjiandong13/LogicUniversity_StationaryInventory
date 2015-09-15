@@ -114,7 +114,7 @@
         $scope.edit = function (item) {
             console.log(item);
             $rootScope.toNewInvt = 1;
-            location.href = '#/inventoryNew/' + item.itemID;
+            location.href = '#/inventoryNew/' + item.ItemID;
         };
     }
 })
