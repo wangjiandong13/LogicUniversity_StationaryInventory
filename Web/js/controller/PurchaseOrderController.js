@@ -1,6 +1,7 @@
 ﻿define(['app'], function (app) {
     app.controller('PurchaseOrderControllers', ['$rootScope', '$scope', 'BaseService', PurchaseOrderControllers]);
     function PurchaseOrderControllers($rootScope, $scope, BaseService) {
+        $rootScope.changehighlight(13);
         //load the date picker
         $('.date-picker').datepicker({
             orientation: "left",
