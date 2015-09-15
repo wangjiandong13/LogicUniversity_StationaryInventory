@@ -22,7 +22,7 @@
                 console.log(data);
                 $scope.RequisitionData = data;
                 $scope.reqForms = "";
-                $.each(RequisitionData, function (index, value) {
+                $.each($scope.RequisitionData, function (index, value) {
                     reqForms += value.ReqID + ", ";
                 })
             }, function (data) {
