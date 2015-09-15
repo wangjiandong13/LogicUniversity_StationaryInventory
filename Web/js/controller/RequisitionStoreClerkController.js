@@ -26,8 +26,8 @@
                     console.log(data);
                     $scope.Requisitions = data;
                     $.each($scope.Requisitions, function (index, value) {
-                        console.log(value.EmpId);
-                        myBaseService.getEmployee(value.EmpId)
+                        console.log(value.EmpID);
+                        myBaseService.getEmployee(value.EmpID)
                             .then(function (empdata) {
                                 value.EmpName = empdata.EmpName;
                             }, function (data) {
