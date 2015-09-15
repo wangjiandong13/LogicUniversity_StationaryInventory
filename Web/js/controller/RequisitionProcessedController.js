@@ -21,9 +21,9 @@
             .then(function (data) {
                 console.log(data);
                 $scope.RequisitionData = data;
-                var msg = [];
+                var msg = "";
                 $.each($scope.RequisitionData, function (index, value) {
-                    var each = value.ReqID + ", ";
+                    var each = value.ReqID + " ";
                     msg.push(each);
                 })
                 $scope.reqForms = msg;
