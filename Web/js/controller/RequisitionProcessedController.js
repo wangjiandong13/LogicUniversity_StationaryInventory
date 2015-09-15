@@ -8,24 +8,25 @@
         var myBaseService = BaseService;
         console.log($scope.retid);
 
-        //BaseService.getRetrievalListBySC("null", "null", $scope.retid)
-        //    .then(function (data) {
-        //        console.log(data);
-        //        $scope.RetrievalData = data[0];
+        BaseService.getRetrievalListBySC("null", "null", $scope.retid)
+            .then(function (data) {
+                console.log(data);
+                $scope.RetrievalData = data[0];
                 
-        //    }, function (data) {
-        //        alert(data);
-        //    })
+            }, function (data) {
+                alert(data);
+            })
 
         BaseService.getRequisitionListByRetID($scope.retid)
             .then(function (data) {
                 console.log(data);
                 $scope.RequisitionData = data;
-                $scope.reqForms = [];
+                var msg = [];
                 $.each($scope.RequisitionData, function (index, value) {
                     var each = value.ReqID + ", ";
                     msg.push(each);
                 })
+                $scope.reqForms = msg;
             }, function (data) {
                 alert(data);
             })
