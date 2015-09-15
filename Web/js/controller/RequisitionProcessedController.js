@@ -17,17 +17,17 @@
                 alert(data);
             })
 
-        BaseService.getRequisitionListByRetID($scope.retid)
-            .then(function (data) {
-                console.log(data);
-                $scope.RequisitionData = data;
-                $scope.reqForms = "";
-                $.each($scope.RequisitionData, function (index, value) {
-                    reqForms += value.ReqID + ", ";
-                })
-            }, function (data) {
-                alert(data);
-            })
+        //BaseService.getRequisitionListByRetID($scope.retid)
+        //    .then(function (data) {
+        //        console.log(data);
+        //        $scope.RequisitionData = data;
+        //        $scope.reqForms = "";
+        //        $.each($scope.RequisitionData, function (index, value) {
+        //            reqForms += value.ReqID + ", ";
+        //        })
+        //    }, function (data) {
+        //        alert(data);
+        //    })
 
         BaseService.getRetrievalDetail(retid)
             .then(function (data) {
