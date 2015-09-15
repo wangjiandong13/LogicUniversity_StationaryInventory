@@ -182,7 +182,7 @@ namespace BusinessLogic
             //send notification to req holders:
             if (result == true)
             {
-                List<Requisition> requisitions = ctx.Requisition.Where(x => x.StatusID == 4 && x.DisID == Convert.ToInt32(DisID)).ToList();
+                List<Requisition> requisitions = ctx.Requisition.Where(x => x.StatusID == 4 && x.DisID == disID).ToList();
                 foreach (Requisition req in requisitions)
                 {
                     NotificationController nt = new NotificationController();
