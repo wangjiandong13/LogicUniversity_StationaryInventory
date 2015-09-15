@@ -25,7 +25,7 @@
                 .then(function (data) {
                     console.log(data);
                     $rootScope.Requisitions = data;
-                    $.each(data, function (index, value) {
+                    $.each($rootScope.Requisitions, function (index, value) {
                         console.log(value.EmpId);
                         myBaseService.getEmployee(value.EmpId)
                             .then(function (empdata) {
