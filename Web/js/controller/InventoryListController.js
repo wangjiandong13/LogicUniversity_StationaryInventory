@@ -41,7 +41,8 @@
             console.log("S_categoryname"+S_categoryname);
             BaseService.searchItem(S_category, S_categoryname)
                 .then(function (data) {
-                    //console.log(data);
+                    console.log(">>>>>itemdata");
+                    console.log(data);
                     $scope.inventoryListdata = data;
                     $.each($scope.inventoryListdata, function (index, value) {
                         myBaseService.getItemPrice(value.ItemID)
