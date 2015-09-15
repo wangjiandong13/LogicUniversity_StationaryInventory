@@ -100,16 +100,18 @@
                                 if (value.Rank == 3)
                                     $scope.supplier3 = value.SupplierID;
                             })
+                            console.log($scope.supplier1);
+                            console.log($scope.supplier2);
+                            console.log($scope.supplier3);
+
+                            if ($scope.supplier1 == itempricedata.SupplierID)
+                                $scope.supplier1Price = itempricedata.Price;
+                            if ($scope.supplier2 == itempricedata.SupplierID)
+                                $scope.supplier2Price = itempricedata.Price;
+                            if ($scope.supplier3 == itempricedata.SupplierID)
+                                $scope.supplier3Price = itempricedata.Price;
                         })
-                    console.log($scope.supplier1);
-                    console.log($scope.supplier2);
-                    console.log($scope.supplier3);
-                    if ($scope.supplier1 == itempricedata.SupplierID)
-                        $scope.supplier1Price = itempricedata.Price;
-                    if ($scope.supplier2 == itempricedata.SupplierID)
-                        $scope.supplier2Price = itempricedata.Price;
-                    if ($scope.supplier3 == itempricedata.SupplierID)
-                        $scope.supplier3Price = itempricedata.Price;
+                    
                 })
                 //$scope.supplier1 = data[0].SupplierID;
                 //$scope.supplier1Price = data[0].Price;
