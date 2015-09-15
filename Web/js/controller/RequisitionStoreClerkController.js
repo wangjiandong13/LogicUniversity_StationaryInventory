@@ -11,50 +11,40 @@
             var ReqID = $scope.RequisitionNo;
             if (ReqID == null || ReqID == "") { ReqID = "null"; }
             //console.log(ReqID);
-            BaseService.getRequisitionApprovedList()
-                .then(function (data) {
-                    console.log(data);
-                    $rootScope.Requisitions = data;
-                    $.each(data, function (index, value) {
-                        myBaseService.getEmployee(value.EmpId)
-                            .then(function (empdata){
-                                $scope.Requisitions.EmpName = empdata.EmpName;
-                            })
-                        myBaseService.getEmployee(value.EmpId)
-                    })
-                    
-                }, function (data) {
-                    alert(data);
-                }
-                )
-        }
-    }
-    function RequisitionList($rootScope, $scope, BaseService) {
-        BaseService.getRequisitionList("null", "null", $rootScope.UserInfo.EmpId, $rootScope.UserInfo.DeptId)
+            BaseService.getRequisitionList(status, ReqID, "null", "null")
             .then(function (data) {
                 console.log(data);
                 $rootScope.Requisitions = data;
             }, function (data) {
                 alert(data);
-            }
-        )
-        $scope.requisitiondetail = function (Requisition) {
-            location.href = "#/requisitionDetail/" + Requisition.ReqID;
-            $rootScope.backTo = 0;
-        };
-    }
-    function SelectoptionControllers($rootScope, BaseService) {
-        $rootScope.optiondata = {
-            availableOptions: [],
-            selectedOption: { 'StatusID': 0, 'StatusName': 'ALL' }
-        };
-        BaseService.getRequisitionStatus()
-            .then(function (data) {
-                $rootScope.optiondata.availableOptions = data;
-                //console.log(data);
-                $rootScope.optiondata.availableOptions.unshift({ StatusID: 0, StatusName: 'ALL' });
-            }, function (data) {
-                alert(data);
             })
+        }
+
+        //requisition list
+        BaseService.getRequisitionApprovedList()
+                .then(function (data) {
+                    console.log(data);
+                    $rootScope.Requisitions = data;
+                    $.each(data, function (index, value) {
+                        myBaseService.getEmployee(value.EmpId)
+                            .then(function (empdata) {
+                                $scope.Requisitions.EmpName = empdata.EmpName;
+                            })
+                        myBaseService.getEmployee(value.EmpId)
+                    })
+
+                }, function (data) {
+                    alert(data);
+                }
+                )
+
+        //status combobox
+        $rootScope.statusSelect = {
+            availableOptions: [{ 'StatusID': 2, 'StatusName': 'Approved' },
+                                { 'StatusID': 3, 'StatusName': 'Processed' },
+                                { 'StatusID': 4, 'StatusName': 'Collected' }],
+            selectedOption: { 'StatusID': 2, 'StatusName': 'Approved' }
+        };
+
     }
 });
