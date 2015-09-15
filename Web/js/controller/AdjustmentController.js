@@ -60,7 +60,15 @@
 
         $scope.adjdetail = function (Adjustment) {
             $rootScope.AdjID = Adjustment.AdjID;
-            location.href = "#/adjustmentDetail";
+            if ($rootScope.UserInfo.RoleId == "SS" && Adjustment.TotalAmt < 250) {
+                location.href = "#/adjustmentApproval";
+            }
+            else if ($rootScope.UserInfo.RoleId == "SM" && Adjustment.TotalAmt >= 250) {
+                location.href = "#/adjustmentApproval";
+            }
+            else {
+                location.href = "#/adjustmentDetail";
+            }
         };
 
     }
