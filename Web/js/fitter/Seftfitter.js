@@ -1,6 +1,7 @@
 ﻿var appfilter = angular.module('appfilter', []);
 appfilter.filter('datechange', datefilter);
 appfilter.filter('statuschange', statuschange);
+appfilter.filter('prioritychange', prioritychange);
 appfilter.filter('CPIDchange', CPIDchange);
 
 function datefilter() {
@@ -31,6 +32,17 @@ function statuschange() {
         }
         if (input == 6) {
             return "Cancelled";
+        }
+    };
+}
+
+function prioritychange() {
+    return function (input) {
+        if (input == 1) {
+            return "High";
+        }
+        if (input == 2) {
+            return "Low";
         }
     };
 }
