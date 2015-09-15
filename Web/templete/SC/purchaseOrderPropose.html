@@ -54,89 +54,21 @@
                                 <tr>
                                     <th>Item Code</th>
                                     <th>Description</th>
-                                    <th>
-                                        <label id="supplier1ID">Supplier 1 Qty</label>
-                                    </th>
-                                    <th>
-                                        <label id="supplier2ID">Supplier 2 Qty</label>
-                                    </th>
-                                    <th>
-                                        <label id="supplier3ID">Supplier 3 Qty</label>
-                                    </th>
+                                    <th>Qty</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>C001</td>
-                                    <td>Clips Double 1"</td>
+                                <tr ng-repeat="item in listitems">
+                                    <td>{{item.ItemID}}</td>
+                                    <td>{{item.ItemName}}</td>
                                     <td>
-                                        <input type="number" class="form-control" id="supplier1Qty" min=0>
+                                        <input type="number" class="form-control" ng-disabled="true"ng-model="item.supplier1Qty+item.supplier2Qty+item.supplier3Qty">
                                     </td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier2Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier3Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>E001</td>
-                                    <td>Envelope Brown (3"x6")</td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier1Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier2Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier3Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>E020</td>
-                                    <td>Eraser (hard)</td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier1Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier2Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier3Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>F020</td>
-                                    <td>File Separator</td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier1Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier2Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" id="supplier3Qty" min=0>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
+                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="col-md-12 text-right">
-                        <br>
-                        <button type="button" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
                 <br>
@@ -161,8 +93,8 @@
                 <h6>Inventory List</h6>
             </div>
             <div>
-                <input class="form-control" type="text" data-tabindex="1" ng-model="additem.descrition">
-                <button type="button"  class="btn btn-default">Search</button>
+                <input class="form-control" type="text" style="float:left;width:70%" ng-model="additem.ItemName">
+                <button type="button" style="float:left" class="btn btn-default" ng-click="search()">Search</button>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -177,7 +109,7 @@
                 </div>
                 <div class="col-md-12" style="height:200px;overflow:auto">
                     <table class="table table-striped">
-                        <tr ng-repeat="item in items" ng-click="suppli(item)">
+                        <tr ng-repeat="item in items" ng-click="supplier(item)">
                             <td style="width:150px">{{item.ItemID}}</td>
                             <td>{{item.ItemName}}</td>
                         </tr>
@@ -192,26 +124,43 @@
     <div id="ChooseSupplier" class="modal fade" tabindex="-1" data-focus-on="input:first">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Stack Two</h4>
+            <h4 class="modal-title">{{additem.ItemName}}</h4>
         </div>
         <div class="modal-body">
-            <p>
-                One fine body…
-            </p>
-            <p>
-                One fine body…
-            </p>
-            <div class="form-group">
-                <input class="form-control" type="text" data-tabindex="1">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Supplier</th>
+                                <th>Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>{{additem.supplier1}}</td>
+                                <td><input type="number" ng-model=additem.supplier1Qty class="form-control" min=1></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>{{additem.supplier2}}</td>
+                                <td><input type="number" ng-model=additem.supplier2Qty class="form-control" min=1></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>{{additem.supplier3}}</td>
+                                <td><input type="number" ng-model=additem.supplier3Qty class="form-control" min=1></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="form-group">
-                <input class="form-control" type="text" data-tabindex="2">
-            </div>
-            <button class="btn blue" data-toggle="modal" href="#stack3">Launch modal</button>
         </div>
         <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button type="button" class="btn red">Ok</button>
+            <button type="button" class="btn red" ng-click="addtolist">Add to list</button>
         </div>
     </div>
 </div>
