@@ -47,8 +47,8 @@
             $scope.submit = function () {
                 console.log("enter");
                 var msgItem = {
-                    ItemID: $scope.ItemID, ItemName: $scope.ItemName, ItemCatID: $scope.ItemCatID, RoLvl: $scope.RoLvl,
-                    RoQty: $scope.RoQty, UOM: $scope.UOM, Stock: $scope.Stock, Bin: $scope.Bin
+                    ItemID: $scope.ItemID, ItemName: $scope.ItemDesc, ItemCatID: $scope.CategorySelectData.selectedOption.ItemCatID,
+                    RoLvl: $scope.RoLvl, RoQty: $scope.RoQty, UOM: $scope.UOM, Stock: $scope.Stock, Bin: $scope.Bin
                 };
                 var msgItemPrice = [{ ItemID: $scope.ItemID, SupplierID: $scope.supplier1, Price: $scope.supplier1Price },
                             { ItemID: $scope.ItemID, SupplierID: $scope.supplier2, Price: $scope.supplier2Price },
@@ -81,6 +81,8 @@
                 $scope.RoLvl = data.RoLvl;
                 $scope.RoQty = data.RoQty;
                 $scope.UOM = data.UOM;
+                $scope.Stock = data.Stock;
+                $scope.Bin = data.Bin;
             }, function (data) {
                 alert(data);
             })
@@ -95,22 +97,24 @@
                             $.each(supplierdata, function (index, value) {
                                 if (value.Rank == 1)
                                     $scope.supplier1 = value.SupplierID;
-                                    $scope.supplier1Price = itempricedata.Price;
                                 if (value.Rank == 2)
                                     $scope.supplier2 = value.SupplierID;
-                                    $scope.supplier2Price = itempricedata.Price;
                                 if (value.Rank == 3)
                                     $scope.supplier3 = value.SupplierID;
-                                    $scope.supplier3Price = itempricedata.Price;
                             })
+                            console.log($scope.supplier1);
+                            console.log($scope.supplier2);
+                            console.log($scope.supplier3);
+
+                            if ($scope.supplier1 == itempricedata.SupplierID)
+                                $scope.supplier1Price = itempricedata.Price;
+                            if ($scope.supplier2 == itempricedata.SupplierID)
+                                $scope.supplier2Price = itempricedata.Price;
+                            if ($scope.supplier3 == itempricedata.SupplierID)
+                                $scope.supplier3Price = itempricedata.Price;
                         })
+                    
                 })
-                //$scope.supplier1 = data[0].SupplierID;
-                //$scope.supplier1Price = data[0].Price;
-                //$scope.supplier2 = data[1].SupplierID;
-                //$scope.supplier2Price = data[1].Price;
-                //$scope.supplier3 = data[2].SupplierID;
-                //$scope.supplier3Price = data[2].Price;
             }, function (data) {
                 alert(data);
             })
@@ -120,7 +124,7 @@
                 console.log("enter");
                 var msgItem = {
                     ItemID: $scope.ItemID, ItemName: $scope.ItemDesc, ItemCatID: $scope.CategorySelectData.selectedOption.ItemCatID,
-                    RoLvl: $scope.RoLvl, RoQty: $scope.RoQty, UOM: $scope.UOM
+                    RoLvl: $scope.RoLvl, RoQty: $scope.RoQty, UOM: $scope.UOM, Stock: $scope.Stock, Bin: $scope.Bin
                 };
                 var msgItemPrice = [{ ItemID: $scope.ItemID, SupplierID: $scope.supplier1, Price: $scope.supplier1Price },
                             { ItemID: $scope.ItemID, SupplierID: $scope.supplier2, Price: $scope.supplier2Price },

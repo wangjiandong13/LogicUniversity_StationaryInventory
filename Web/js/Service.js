@@ -1075,6 +1075,18 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+    //delete item 
+    this.deleteItem = function (ItemID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "inventoryAPI.svc/deleteItem/" + ItemID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 }
 
 

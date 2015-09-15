@@ -221,5 +221,34 @@ namespace BusinessLogic
             return ctx.ItemPrice.Where(x => x.ItemID == ItemID).ToList();
         }
 
+        /// <summary>
+        /// deleteItem
+        /// </summary>
+        /// <param name="ItemID">Item ID</param>
+        /// <returns></returns>
+        public bool deleteItem(string ItemID)
+        {
+            bool result = true;
+
+            Model.Item item = ctx.Item.Where(x => x.ItemID == ItemID).FirstOrDefault();
+            ctx.Item.Remove(item);
+
+            List<Model.ItemPrice> itemPriceList = ctx.ItemPrice.Where(x => x.ItemID == ItemID).ToList();
+            foreach(Model.ItemPrice itemPrice in itemPriceList)
+            {
+                ctx.ItemPrice.Remove(itemPrice);
+            }
+
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
     }
 }
