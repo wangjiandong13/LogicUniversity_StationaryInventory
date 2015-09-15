@@ -9,7 +9,7 @@
         var myBaseService = BaseService;
         
         var msg = { "AdjID": adjid, "startDate": "null", "endDate": "null" };
-        BaseService.getAdjListgetAdjList(msg)
+        BaseService.getAdjList(msg)
                 .then(function (data) {
                     console.log(data);
                     $scope.Adjustment = data;
