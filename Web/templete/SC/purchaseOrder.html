@@ -83,7 +83,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="po in polist">
+                            <tr ng-repeat="po in polist" ng-click="detail(po)">
                                 <td>{{po.PoID}}</td>
                                 <td>{{po.Date|datechange|date : 'dd MMM yyyy'}}</td>
                                 <td>{{po.SupplierID}}</td>

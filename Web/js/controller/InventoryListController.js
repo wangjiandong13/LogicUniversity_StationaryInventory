@@ -72,6 +72,18 @@
             location.href = '#/inventoryNew/' + item.ItemID;
         };
 
+        //click the Delete button
+        $scope.delete = function (item) {
+            console.log(item);
+            BaseService.deleteItem(item.ItemID)
+            .then(function(data){
+                location.href = '#/inventoryList/';
+            }), function (data) {
+                alert(data);
+            }
+            
+        };
+
 
         //search function
         $scope.search = function () {

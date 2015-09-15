@@ -80,6 +80,6 @@ namespace RestService
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                     BodyStyle = WebMessageBodyStyle.Bare,
                                     UriTemplate = "/deleteItem/{ItemID}")]
-        bool deleteItem(string ItemID)
+        bool deleteItem(string ItemID);
     }
 }
