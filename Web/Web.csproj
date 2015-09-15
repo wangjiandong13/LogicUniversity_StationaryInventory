@@ -4800,6 +4800,7 @@
     <Content Include="vendor\angularAMD.min.map" />
     <Content Include="vendor\angular-simple-logger.js" />
     <Content Include="vendor\jquerysession.js" />
+    <Content Include="vendor\js.js" />
     <Content Include="vendor\lodash.js" />
     <Content Include="vendor\ng-bs3-datepicker.css" />
     <Content Include="vendor\ng-bs3-datepicker.js" />
