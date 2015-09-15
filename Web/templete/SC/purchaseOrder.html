@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="PurchaseOrderControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -29,11 +29,12 @@
                     <div class="col-md-1">
                         <label style="display: inline">Date Range:</label>
                     </div>
-                    <div class="col-md-5 input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
-                        <input type="text" class="form-control" name="from">
+                    <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control" id="datestartdata">
                         <span class="input-group-addon">
-                                    to </span>
-                        <input type="text" class="form-control" name="to">
+                            to
+                        </span>
+                        <input type="text" class="form-control" id="dateenddata">
                     </div>
                     <div class="col-md-1" style="top:50%">
                         <label>Employee:</label>
