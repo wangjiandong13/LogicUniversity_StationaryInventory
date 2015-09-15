@@ -24,9 +24,9 @@
                         <h1>Propose Purchase Order</h1>
                     </div>
                     <div class="col-md-6 text-right">
-                        <br><a class="btn default" data-target="#stack1" data-toggle="modal">
-    View Demo
-</a>
+                        <br><a class="btn default" data-target="#Additem" data-toggle="modal">
+                            Add item
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -151,26 +151,37 @@
 
     </div>
     <!-- stackable -->
-    <div id="stack1" class="modal fade" tabindex="-1" data-focus-on="input:first">
+    <div id="Additem" class="modal fade" tabindex="-1" data-focus-on="input:first">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Stack One</h4>
+            <h4 class="modal-title">Add Item</h4>
         </div>
         <div class="modal-body">
-            <p>
-                One fine body…
-            </p>
-            <p>
-                One fine body…
-            </p>
-            <p>
-                One fine body…
-            </p>
-            <div class="form-group">
-                <input class="form-control" type="text" data-tabindex="1">
+            <div>
+                <h6>Inventory List</h6>
             </div>
-            <div class="form-group">
-                <input class="form-control" type="text" data-tabindex="2">
+            <div>
+                <input class="form-control" type="text" data-tabindex="1" ng-model="additem.descrition">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Item No</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="col-md-12" style="height:200px;overflow:auto">
+                    <table class="table table-striped">
+                        <tr ng-repeat="item in items" ng-click="suppli(item)">
+                            <td>{{item.ItemID}}</td>
+                            <td>{{item.ItemName}}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <button class="btn blue" data-toggle="modal" href="#stack2">Launch modal</button>
         </div>
@@ -179,7 +190,7 @@
             <button type="button" class="btn btn-primary">Ok</button>
         </div>
     </div>
-    <div id="stack2" class="modal fade" tabindex="-1" data-focus-on="input:first">
+    <div id="ChooseSupplier" class="modal fade" tabindex="-1" data-focus-on="input:first">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
             <h4 class="modal-title">Stack Two</h4>
@@ -221,5 +232,5 @@
             <button type="button" class="btn green">Ok</button>
         </div>
     </div>
-    </div>
-    <!-- END CONTENT -->
+</div>
+<!-- END CONTENT -->

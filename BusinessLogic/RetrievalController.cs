@@ -211,6 +211,7 @@ namespace BusinessLogic
                 retSuccess.ItemID = i.ItemID;
                 retSuccess.ItemName = i.ItemName;
                 retSuccess.TotalQty = (int) retDetail.RequestQty;
+                if(retDetail.ActualQty!=null)
                 retSuccess.ActualQty = (int) retDetail.ActualQty;
 
                 retSuccessList.Add(retSuccess);
