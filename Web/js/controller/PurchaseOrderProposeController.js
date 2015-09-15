@@ -21,6 +21,10 @@
                 $scope.additem.supplier2 = data[1].SupplierID;
                 $scope.additem.supplier3 = data[2].SupplierID;
             })
+        BaseService.getCatalogList()
+    .then(function (data) {
+        $scope.items = data;
+    })
         $scope.supplier = function (item) {
             $scope.addtolistbtn = true;
             $scope.Savebtn = false;
@@ -30,7 +34,8 @@
             $scope.additem.ItemID = item.ItemID;
         }
         $scope.edit = function (item) {
-            console.log("$scope.edit");
+            $scope.addtolistbtn = false;
+            $scope.Savebtn = true;
             $('#ChooseSupplier').modal('show');
             $scope.additem.ItemName = item.ItemName;
             $scope.additem.supplier1Qty = item.supplier1Qty;
@@ -38,10 +43,7 @@
             $scope.additem.supplier3Qty = item.supplier3Qty;
             $scope.additem.ItemID = item.ItemID;
         }
-        BaseService.getCatalogList()
-            .then(function (data) {
-                $scope.items = data;
-            })
+
         $scope.search = function () {
             if ($scope.additem.ItemName == null || $scope.additem.ItemName == "") {
                 BaseService.getCatalogList()
@@ -64,7 +66,7 @@
                     }
                 })
             }
-            else{
+            else {
                 $scope.listitems.push($scope.additem);
             }
             $('#ChooseSupplier').modal('hide');
@@ -90,7 +92,11 @@
             $scope.listitems = car;
         }
         $scope.save = function () {
-
+            $.each($scope.listitems, function (index, value) {
+                if (value.ItemID == additem.ItemID) {
+                    car.push(value);
+                }
+            })
         }
         function checkifinlist() {
             var str_return = false;
@@ -98,7 +104,7 @@
                 console.log(value);
                 console.log($scope.additem.ItemID);
                 if (value.ItemID == $scope.additem.ItemID) {
-                    str_return= true;
+                    str_return = true;
                 }
             })
             return str_return;
