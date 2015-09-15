@@ -47,8 +47,8 @@
         }
 
         $scope.reject = function (Adjustment) {
-            msg = { adjId : Adjustment.AdjID };
-            BaseService.rejectAdj(angular.toJson(msg))
+            var msgReject = { AdjID: Adjustment.AdjID, ApprovedBy: $rootScope.UserInfo.EmpId };
+            BaseService.rejectAdj(angular.toJson(msgReject))
             .then(function (data) {
                 alert('Success!');
                 location.href = "#/adjustment";
@@ -58,7 +58,7 @@
         }
 
         $scope.approve = function (Adjustment) {
-            msg = { adjId: Adjustment.AdjID };
+            var msgApprove = { AdjID: Adjustment.AdjID, ApprovedBy: $rootScope.UserInfo.EmpId };
             BaseService.approveAdj(angular.toJson(msg))
             .then(function (data) {
                 alert('Success!');
