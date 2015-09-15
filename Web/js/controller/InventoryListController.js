@@ -80,13 +80,13 @@
                 S_category = "null";
             }
 
-            var S_categoryname = $scope.categoryname;
+            var S_categoryname = $scope.itemName;
 
             if (S_categoryname == "" || S_categoryname == null) {
                 S_categoryname = "null";
             }
             //console.log("S_category"+S_category);
-            //console.log("S_categoryname"+S_categoryname);
+            console.log("S_categoryname"+S_categoryname);
             BaseService.searchItem(S_category, S_categoryname)
                 .then(function (data) {
                     //console.log(">>>>>itemdata");
