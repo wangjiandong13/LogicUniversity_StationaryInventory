@@ -165,7 +165,7 @@
                     '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min', '../controller/PurchaseOrderController'
                 ]
             },
-            '/purchaseOrderDetail': {
+            '/purchaseOrderDetail:PoID': {
                 templateUrl: 'SC/purchaseOrderDetail.html',
                 dependencies: [
                     '../controller/PurchaseOrderDetailController'
