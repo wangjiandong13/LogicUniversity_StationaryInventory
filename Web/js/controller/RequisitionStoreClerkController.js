@@ -57,5 +57,19 @@
             selectedOption: { id: '2', name: 'Approved' }
         };
 
+        //process btn
+        $scope.process = function () {
+            msg = [];
+            BaseService.createRetrieval(msg)
+                .then(function (data) {
+                    alert('Success!');
+                    var retid = data;
+                    location.href = "#/requisitionProcessed/" + retid;
+                },function (data) {
+                    alert(data);
+                }
+                )
+            
+        };
     }
 });

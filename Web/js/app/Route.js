@@ -180,7 +180,7 @@
                     '../controller/PurchaseOrderProposeController'
                 ]
             },
-            '/requisitionProcessed': {
+            '/requisitionProcessed/:retid': {
                 templateUrl: 'SC/requisitionProcessed.html',
                 dependencies: [
                     '../controller/RequisitionProcessedController'
