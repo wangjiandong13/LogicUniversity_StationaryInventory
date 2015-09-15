@@ -59,7 +59,7 @@
 
         $scope.approve = function (Adjustment) {
             var msgApprove = { adjId: Adjustment.AdjID, ApprovedBy: $rootScope.UserInfo.EmpId };
-            BaseService.approveAdj(angular.toJson(msg))
+            BaseService.approveAdj(angular.toJson(msgApprove))
             .then(function (data) {
                 alert('Success!');
                 location.href = "#/adjustment";
