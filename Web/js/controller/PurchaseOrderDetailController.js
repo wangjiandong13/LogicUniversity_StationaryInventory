@@ -6,7 +6,7 @@
         var MyBaseService = BaseService;
         BaseService.getPoList("null", "null", "null", PoID)
             .then(function (data) {
-                $scope.PoData = data;
+                $scope.PoData = data[0];
             })
         BaseService.getPoDetail(PoID)
             .then(function (data) {
@@ -18,7 +18,16 @@
                         })
                 })
             })
-
+        if ($scope.PoData.Status == "DELIVERED") {
+            $scope.Restockbtn = false;
+            $scope.ActualQty = true;
+        } else {
+            $scope.Restockbtn = true;
+            $scope.ActualQty = false;
+            $.each($scope.PoDetails, function (index, value) {
+                value.ActualQty = 1;
+            })
+        }
         $scope.Restock = function () {
             
         }
