@@ -18,12 +18,14 @@
         BaseService.getSupplierInfo()
             .then(function (supplierdata) {
                 console.log(supplierdata);
-                if (supplierdata.Rank == 1)
-                    Supplier1 = supplierdata.SuuplierID;
-                if (supplierdata.Rank == 2)
-                    Supplier2 = supplierdata.SuuplierID;
-                if (supplierdata.Rank == 3)
-                    Supplier3 = supplierdata.SuuplierID;
+                $.each(supplierdata, function (index, value) {
+                    if (value.Rank == 1)
+                        Supplier1 = value.SuuplierID;
+                    if (value.Rank == 2)
+                        Supplier2 = value.SuuplierID;
+                    if (value.Rank == 3)
+                        Supplier3 = value.SuuplierID;
+                })
             })
 
         BaseService.getStockCard($scope.itemid)
