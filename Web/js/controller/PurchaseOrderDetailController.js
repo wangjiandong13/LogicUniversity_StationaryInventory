@@ -1,6 +1,6 @@
 ﻿define(['app'], function (app) {
-    app.controller('PurchaseOrderDetailControllers', ['$rootScope', '$scope', 'BaseService', PurchaseOrderDetailControllers]);
-    function PurchaseOrderDetailControllers($rootScope, $scope, BaseService) {
+    app.controller('PurchaseOrderDetailControllers', ['$rootScope', '$scope',' $rootScope', 'BaseService', PurchaseOrderDetailControllers]);
+    function PurchaseOrderDetailControllers($rootScope, $scope, $rootScope, BaseService) {
         $rootScope.changehighlight(13);
         console.log(">>>>enter PurchaseOrderDetailControllers")
         var PoID = $routeParams.PoID;
