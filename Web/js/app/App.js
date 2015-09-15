@@ -1,5 +1,5 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
-    console.log("enter app");
+    //console.log("enter app");
     var app = angular.module('app', ['ngRoute', 'BaseServices']);
     app.controller('BodyCotroller', ['$rootScope', '$window', BodyCotroller]);
     function BodyCotroller($rootScope, $window) {
@@ -158,7 +158,7 @@
             //DeptId: "REGR",
             //RoleId: "EM"
         }
-        console.log($rootScope.UserInfo);
+        //console.log($rootScope.UserInfo);
         $rootScope.side = {
             Requistion: false,
             Catalog: false,

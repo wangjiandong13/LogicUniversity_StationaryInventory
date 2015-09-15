@@ -19,6 +19,7 @@
                 <div class="col-md-6">
                     <h1>Puchase Order</h1>
                 </div>
+                
                 <div class="col-md-6 text-right">
                     <br>
                     <button type="button" class="btn btn-success">
@@ -26,78 +27,74 @@
                     </button>
                 </div>
                 <div class="col-md-12">
-                    <div class="col-md-1">
+                    <br />
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3">
                         <label style="display: inline">Date Range:</label>
                     </div>
-                    <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control" id="datestartdata">
-                        <span class="input-group-addon">
-                            to
-                        </span>
-                        <input type="text" class="form-control" id="dateenddata">
+                    <div class="col-md-5">
+                        <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" id="datestartdata">
+                            <span class="input-group-addon">
+                                to
+                            </span>
+                            <input type="text" class="form-control" id="dateenddata">
+                        </div>
                     </div>
-                    <div class="col-md-1" style="top:50%">
+                </div>
+                <div class="col-md-12">
+                    <br />
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3" style="top:50%">
                         <label>Employee:</label>
                     </div>
                     <div class="col-md-2">
-                        <select class="form-control">
-                            <option>Employee 1</option>
-                            <option>Employee 2</option>
-                            <option>Employee 3</option>
-                            <option>Employee 4</option>
-                            <option>Employee 5</option>
-                        </select>
+                        <td class="col-md-7">
+                            <select class="form-control" ng-disabled="setting.textbox"
+                                    ng-options="option.EmpName for option in employeeselectdata.availableOptions track by option.EmpID"
+                                    ng-model="employeeselectdata.selectedOption"></select>
+                        </td>
                     </div>
                     <div class="col-md-2">
-                        <input type="text" class="form-control" placeholder="Enter PO No.">
+                        <input type="text" class="form-control" placeholder="Enter PO No." ng-model="PONo">
                     </div>
                     <div class="col-md-1">
-                        <button type="button" class="btn btn yellow">
+                        <button type="button" class="btn btn yellow" ng-click="search()">
                             <span class="glyphicon glyphicon-search"></span> Search
                         </button>
                     </div>
                 </div>
+            </div>
 
+            <div class="col-md-12">
+                <hr>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
-                    <hr>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Date</th>
-                                    <th>Supplier</th>
-                                    <th>Clerk Name</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>003</td>
-                                    <td>28 August 2015</td>
-                                    <td>ALPHA</td>
-                                    <td>Wong Sook Huey</td>
-                                </tr>
-                                <tr>
-                                    <td>002</td>
-                                    <td>21 August 2015</td>
-                                    <td>CHEP</td>
-                                    <td>Wong Sook Huey</td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>15 August 2015</td>
-                                    <td>BANE</td>
-                                    <td>Wong Sook Huey</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Date</th>
+                                <th>Supplier</th>
+                                <th>Clerk Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="po in polist">
+                                <td>{{po.PoID}}</td>
+                                <td>{{po.Date|datechange|date : 'dd MMM yyyy'}}</td>
+                                <td>{{po.SupplierID}}</td>
+                                <td>{{po.EmpName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
     </div>
+</div>
 </div>
 <!-- END CONTENT -->
