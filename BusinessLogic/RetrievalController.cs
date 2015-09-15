@@ -26,6 +26,7 @@ namespace BusinessLogic
             ret.EmpID = processRetList.First().EmpID;
             ret.Status = "PENDING";
             ctx.Retrieval.Add(ret);
+            ctx.SaveChanges();
 
             //obtain retID of newly added retrieval
             int empID = processRetList.First().EmpID;

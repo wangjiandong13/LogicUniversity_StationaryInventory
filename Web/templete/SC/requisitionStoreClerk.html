@@ -69,7 +69,7 @@
                                     <td>{{Requisition.StatusID|statuschange}}</td>
                                     <td>{{Requisition.PriorityID|prioritychange}}</td>
                                     <td>
-                                        <input type="checkbox">
+                                        <input type="checkbox" ng-model="Requisition.checkbox">
                                     </td>
                                 </tr>
                             </tbody>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="submit" class="btn green"><i class="fa fa-check"></i> Process</button>
+                    <button type="submit" class="btn green" ng-click="process()"><i class="fa fa-check"></i> Process</button>
                     <hr>
                 </div>
             </div>
