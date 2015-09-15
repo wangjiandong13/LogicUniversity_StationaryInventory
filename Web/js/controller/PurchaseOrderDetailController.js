@@ -20,8 +20,13 @@
             })
         if ($scope.PoData.Status == "DELIVERED") {
             $scope.Restockbtn = false;
+            $scope.ActualQty = true;
         } else {
             $scope.Restockbtn = true;
+            $scope.ActualQty = false;
+            $.each($scope.PoDetails, function (index, value) {
+                value.ActualQty = 1;
+            })
         }
         $scope.Restock = function () {
             
