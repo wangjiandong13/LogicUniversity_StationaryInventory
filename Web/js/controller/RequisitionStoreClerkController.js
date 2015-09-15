@@ -7,14 +7,14 @@
 
         var myBaseService = BaseService;
         $scope.search = function () {
-            var status = $rootScope.optiondata.selectedOption.StatusID;
+            var status = $scope.optiondata.selectedOption.StatusID;
             var ReqID = $scope.RequisitionNo;
             if (ReqID == null || ReqID == "") { ReqID = "null"; }
             //console.log(ReqID);
             BaseService.getRequisitionList(status, ReqID, "null", "null")
             .then(function (data) {
                 console.log(data);
-                $rootScope.Requisitions = data;
+                $scope.Requisitions = data;
             }, function (data) {
                 alert(data);
             })
@@ -24,8 +24,8 @@
         BaseService.getRequisitionApprovedList()
                 .then(function (data) {
                     console.log(data);
-                    $rootScope.Requisitions = data;
-                    $.each($rootScope.Requisitions, function (index, value) {
+                    $scope.Requisitions = data;
+                    $.each($scope.Requisitions, function (index, value) {
                         console.log(value.EmpId);
                         myBaseService.getEmployee(value.EmpId)
                             .then(function (empdata) {
@@ -41,7 +41,7 @@
                 )
 
         //status combobox
-        $rootScope.statusSelect = {
+        $scope.statusSelect = {
             availableOptions: [{ 'StatusID': 2, 'StatusName': 'Approved' },
                                 { 'StatusID': 3, 'StatusName': 'Processed' },
                                 { 'StatusID': 4, 'StatusName': 'Collected' }],
