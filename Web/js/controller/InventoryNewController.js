@@ -1,6 +1,5 @@
 ﻿define(['app'], function (app) {
-    app.controller('InventoryNewControllers', ['$rootScope', '$scope', 'BaseService', InventoryNewControllers]);
-    app.controller('InventoryNewListCtrl', ['$rootScope', '$scope', 'BaseService', InventoryNewList]);
+    app.controller('InventoryNewControllers', ['$rootScope', '$scope', 'BaseService', '$routeParams', InventoryNewControllers]);
 
     function InventoryNewControllers($rootScope, $scope, BaseService) {
         //set mean highlight
@@ -118,36 +117,5 @@
         }
         
     }
-    function InventoryNewList($rootScope, $scope, BaseService) {
-        //get EmpId from session
-        var EmpId = $rootScope.UserInfo.EmpId;
-        var selfBaseService = BaseService;
-        console.log("enter requestCartListCtrls");
-        BaseService.getRequestCart(EmpId)
-            .then(function (data) {
-                console.log(data);
-                $rootScope.RequestCarts = data;
-            }, function (data) {
-                alert(data);
-            })
-        $scope.delect = function (RequestCart) {
-            var msg = '{"ItemID":"' + RequestCart.ItemID + '" ,"EmpID":' + EmpId + '}';
-            console.log(msg);
-            BaseService.removeRequestCart(msg)
-                    .then(function (data) {
-                        selfBaseService.getRequestCart(EmpId)
-                        .then(function (data) {
-                            console.log(data);
-                            $rootScope.RequestCarts = data;
-                            if (!$scope.$$phase) {
-                                $rootScope.$apply();
-                            }
-                        }, function (data) {
-                            alert(data);
-                        })
-                    }, function (data) {
-
-                    })
-        }
-    }
+    
 })
