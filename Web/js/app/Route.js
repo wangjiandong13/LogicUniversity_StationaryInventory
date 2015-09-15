@@ -174,6 +174,9 @@
             '/purchaseOrderPropose': {
                 templateUrl: 'SC/purchaseOrderPropose.html',
                 dependencies: [
+                    '../../assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager',
+                    '../../assets/global/plugins/bootstrap-modal/js/bootstrap-modal',
+                    '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min',
                     '../controller/PurchaseOrderProposeController'
                 ]
             },
