@@ -8,7 +8,7 @@
         //click the New button
         $scope.new = function () {
             $scope.toNewInvt = 0;
-            location.href = '#/inventoryNew';
+            location.href = '#/inventoryNew/0';
         };
 
         //get categoryselectData
