@@ -45,7 +45,6 @@ define(['app'], function (app) {
             if (S_category == 0) {
                 S_category = "null";
             }
-            
             var S_categoryname = $scope.categoryname;
             
             if (S_categoryname == "") {
