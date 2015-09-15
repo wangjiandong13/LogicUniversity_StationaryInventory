@@ -102,7 +102,7 @@
             '/adjustment': {
                 templateUrl: 'SC/adjustment.html',
                 dependencies: [
-                    '../controller/AdjustmentController'
+                    '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min', '../controller/AdjustmentController'
                 ]
             },
             '/adjustmentDetail': {
