@@ -13,7 +13,8 @@
             supplier3: "",
             supplier1Qty: 0,
             supplier2Qty: 0,
-            supplier3Qty: 0
+            supplier3Qty: 0,
+            total:0
         }
         BaseService.getSupplierList()
             .then(function (data) {
@@ -22,9 +23,9 @@
                 $scope.additem.supplier3 = data[2].SupplierID;
             })
         BaseService.getCatalogList()
-    .then(function (data) {
-        $scope.items = data;
-    })
+            .then(function (data) {
+                $scope.items = data;
+            })
         $scope.supplier = function (item) {
             $scope.addtolistbtn = true;
             $scope.Savebtn = false;
@@ -37,13 +38,24 @@
             $scope.addtolistbtn = false;
             $scope.Savebtn = true;
             $('#ChooseSupplier').modal('show');
+            console.log(item);
             $scope.additem.ItemName = item.ItemName;
             $scope.additem.supplier1Qty = item.supplier1Qty;
             $scope.additem.supplier2Qty = item.supplier2Qty;
             $scope.additem.supplier3Qty = item.supplier3Qty;
             $scope.additem.ItemID = item.ItemID;
+            $scope.additem = {
+                ItemName: "",
+                ItemID: "",
+                supplier1: "",
+                supplier2: "",
+                supplier3: "",
+                supplier1Qty: 0,
+                supplier2Qty: 0,
+                supplier3Qty: 0,
+                total: 0
+            }
         }
-
         $scope.search = function () {
             if ($scope.additem.ItemName == null || $scope.additem.ItemName == "") {
                 BaseService.getCatalogList()
@@ -93,10 +105,23 @@
         }
         $scope.save = function () {
             $.each($scope.listitems, function (index, value) {
-                if (value.ItemID == additem.ItemID) {
-                    car.push(value);
+                if (value.ItemID == $scope.additem.ItemID) {
+                    value.supplier1Qty = $scope.additem.supplier1Qty;
+                    value.supplier2Qty = $scope.additem.supplier2Qty;
+                    value.supplier3Qty = $scope.additem.supplier3Qty;
                 }
             })
+            $('#ChooseSupplier').modal('hide');
+            $scope.additem = {
+                ItemName: "",
+                ItemID: "",
+                supplier1: "",
+                supplier2: "",
+                supplier3: "",
+                supplier1Qty: 0,
+                supplier2Qty: 0,
+                supplier3Qty: 0
+            }
         }
         function checkifinlist() {
             var str_return = false;
