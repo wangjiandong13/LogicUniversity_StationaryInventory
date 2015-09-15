@@ -35,14 +35,6 @@
                 alert(data);
             })
 
-        //search function
-        $scope.search = function () {
-            var S_category = $scope.CategorySelectData.selectedOption.ItemCatID;
-            if (S_category == null) {
-                S_category = "null";
-            }
-            //BaseService.
-        }
         $scope.add = function (item) {
             var msg = '{"EmpID":' + EmpID + ',"ItemID":"' + item.ItemID + '","Qty":' + item.qty + '}';
             //console.log(msg);
