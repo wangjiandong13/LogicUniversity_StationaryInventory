@@ -45,3 +45,4 @@ C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInvento
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\bin\Debug\TrackableEntities.EF.6.xml
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\obj\Debug\Model.dll
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\obj\Debug\Model.pdb
+C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

@@ -47,7 +47,7 @@
             }
         }
         $scope.addtolist = function () {
-
+            $scope.listitems.push($scope.additem);
         }
     }
 })
