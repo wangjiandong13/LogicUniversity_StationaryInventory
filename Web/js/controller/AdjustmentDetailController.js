@@ -43,7 +43,7 @@
             )
 
         $scope.back = function () {
-            location.href = "#/requisition";
+            location.href = "#/adjustment";
         }
 
     }
