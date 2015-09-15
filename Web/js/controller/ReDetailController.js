@@ -2,6 +2,8 @@
     app.controller('ReDetailController', ['$scope', '$rootScope', "$routeParams", 'BaseService', ReDetailController]);
 
     function ReDetailController($scope, $rootScope, $routeParams, BaseService) {
+        $rootScope.changehighlight(9);
+
         var reqid = $routeParams.reqid;
         $scope.reqid = reqid;
         var myBaseService = BaseService;
