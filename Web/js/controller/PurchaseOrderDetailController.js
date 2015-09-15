@@ -6,7 +6,7 @@
         var MyBaseService = BaseService;
         BaseService.getPoList("null", "null", "null", PoID)
             .then(function (data) {
-                $scope.PoData = data;
+                $scope.PoData = data[0];
             })
         BaseService.getPoDetail(PoID)
             .then(function (data) {
