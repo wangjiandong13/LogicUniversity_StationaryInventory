@@ -16,7 +16,13 @@
                     $.each(data, function (index, value) {
                         myBaseService.getEmployee(value.ReportedBy)
                                 .then(function (empdata) {
-                                    value.EmpName = empdata.EmpName;
+                                    value.ReportedBy = empdata.EmpName;
+                                }, function (data) {
+                                    alert(data);
+                                })
+                        myBaseService.getEmployee(value.ApprovedBy)
+                                .then(function (empdata) {
+                                    value.ApprovedBy = empdata.EmpName;
                                 }, function (data) {
                                     alert(data);
                                 })
