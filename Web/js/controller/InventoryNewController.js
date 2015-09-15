@@ -1,7 +1,7 @@
 ﻿define(['app'], function (app) {
     app.controller('InventoryNewControllers', ['$rootScope', '$scope', 'BaseService', '$routeParams', InventoryNewControllers]);
 
-    function InventoryNewControllers($rootScope, $scope, BaseService) {
+    function InventoryNewControllers($rootScope, $scope, BaseService, $routeParams) {
         //set mean highlight
         $rootScope.changehighlight(12);
 
