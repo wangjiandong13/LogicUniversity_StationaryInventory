@@ -47,8 +47,8 @@
             $scope.submit = function () {
                 console.log("enter");
                 var msgItem = {
-                    ItemID: $scope.ItemID, ItemName: $scope.ItemName, ItemCatID: $scope.ItemCatID, RoLvl: $scope.RoLvl,
-                    RoQty: $scope.RoQty, UOM: $scope.UOM, Stock: $scope.Stock, Bin: $scope.Bin
+                    ItemID: $scope.ItemID, ItemName: $scope.ItemDesc, ItemCatID: $scope.CategorySelectData.selectedOption.ItemCatID,
+                    RoLvl: $scope.RoLvl, RoQty: $scope.RoQty, UOM: $scope.UOM, Stock: $scope.Stock, Bin: $scope.Bin
                 };
                 var msgItemPrice = [{ ItemID: $scope.ItemID, SupplierID: $scope.supplier1, Price: $scope.supplier1Price },
                             { ItemID: $scope.ItemID, SupplierID: $scope.supplier2, Price: $scope.supplier2Price },
@@ -81,6 +81,8 @@
                 $scope.RoLvl = data.RoLvl;
                 $scope.RoQty = data.RoQty;
                 $scope.UOM = data.UOM;
+                $scope.Stock = data.Stock;
+                $scope.Bin = data.Bin;
             }, function (data) {
                 alert(data);
             })
@@ -113,12 +115,6 @@
                         })
                     
                 })
-                //$scope.supplier1 = data[0].SupplierID;
-                //$scope.supplier1Price = data[0].Price;
-                //$scope.supplier2 = data[1].SupplierID;
-                //$scope.supplier2Price = data[1].Price;
-                //$scope.supplier3 = data[2].SupplierID;
-                //$scope.supplier3Price = data[2].Price;
             }, function (data) {
                 alert(data);
             })
@@ -128,7 +124,7 @@
                 console.log("enter");
                 var msgItem = {
                     ItemID: $scope.ItemID, ItemName: $scope.ItemDesc, ItemCatID: $scope.CategorySelectData.selectedOption.ItemCatID,
-                    RoLvl: $scope.RoLvl, RoQty: $scope.RoQty, UOM: $scope.UOM
+                    RoLvl: $scope.RoLvl, RoQty: $scope.RoQty, UOM: $scope.UOM, Stock: $scope.Stock, Bin: $scope.Bin
                 };
                 var msgItemPrice = [{ ItemID: $scope.ItemID, SupplierID: $scope.supplier1, Price: $scope.supplier1Price },
                             { ItemID: $scope.ItemID, SupplierID: $scope.supplier2, Price: $scope.supplier2Price },
