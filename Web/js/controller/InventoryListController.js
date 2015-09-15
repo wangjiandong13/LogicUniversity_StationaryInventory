@@ -7,7 +7,7 @@
         var myBaseService = BaseService;
         //click the New button
         $scope.new = function () {
-            $scope.toNewInvt = 0;
+            $rootScope.toNewInvt = 0;
             location.href = '#/inventoryNew/0';
         };
 
@@ -111,7 +111,7 @@
         //click the Edit button
         $scope.edit = function () {
             console.log($scope.catalogListdata.itemID);
-            $scope.toNewInvt = 1;
+            $rootScope.toNewInvt = 1;
             location.href = '#/inventoryNew/' + $scope.catalogListdata.itemID;
         };
     }
