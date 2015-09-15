@@ -56,7 +56,7 @@ namespace BusinessLogic
                     //else if itemQty contains item, add the qty to existing qty
                     else
                     {
-                        itemQty["reqDetail.ItemID"] += (int) reqDetail.RequestQty;
+                        itemQty[reqDetail.ItemID] += (int) reqDetail.RequestQty;
                     }
                 }
             }
@@ -80,15 +80,15 @@ namespace BusinessLogic
             if (count > 0)
                 result = RetID;
 
-            //if(result == RetID)
-            //{
-            //    foreach (ProcessRetrieval processRet in processRetList)
-            //    {
-            //        //send notification:
-            //        NotificationController nt = new NotificationController();
-            //        nt.sendNotification(4, empID, Convert.ToString(processRet.ReqID));
-            //    }
-            //}
+            if (result == RetID)
+            {
+                foreach (ProcessRetrieval processRet in processRetList)
+                {
+                    //send notification:
+                    NotificationController nt = new NotificationController();
+                    nt.sendNotification(4, empID, Convert.ToString(processRet.ReqID));
+                }
+            }
 
             return result;
         }
