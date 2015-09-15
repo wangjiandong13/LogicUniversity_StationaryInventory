@@ -106,7 +106,7 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="Stockcard in StockcardList">
-                            <td>{{Stockcard.Date}}</td>
+                            <td>{{Stockcard.Date|datechange|date : 'dd MMM yyyy'}}</td>
                             <td>{{Stockcard.Description}}</td>
                             <td>{{Stockcard.Qty}}</td>
                             <td>{{Stockcard.Balance}}</td>
