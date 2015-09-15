@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="ReqProcController">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -8,7 +8,7 @@
                     <i class="fa fa-file-text-o"></i>
                     <a href="#/requisitionStoreClerk">Requistion</a>
                     <i class="fa fa-angle-right"></i>
-                    <a href="#/requisitionProcessed">Processed</a>
+                    <a href="#/requisitionProcessed/{{retid}}">Processed</a>
                 </li>
             </ul>
         </div>
@@ -34,21 +34,21 @@
                                         <td class="col-md-4">
                                             <h5>Retrieval No. : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_RetID">0001</label>
+                                            <label id="lbl_RetID">{{retid}}</label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <h5>Date : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_date">23 August 2015</label>
+                                            <label id="lbl_date">{{RetrievalData.Date|datechange|date : 'dd MMM yyyy'}}</label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <h5>Requisition Forms : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_reqForms">0019, 0020, 0021, 0022</label>
+                                            <label id="lbl_reqForms">{{reqForms}}</label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -67,15 +67,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Staplet</td>
-                                        <td>9</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>Pencil</td>
-                                        <td>20</td>
+                                    <tr ng-repeat="RetrievalDetail in RetrievalDetails">
+                                        <td>{{RetrievalDetail.Bin}}</td>
+                                        <td>{{RetrievalDetail.ItemName}}</td>
+                                        <td>{{RetrievalDetail.RequestQty}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -83,7 +78,7 @@
                     </div>
                     <div class="col-md-12 text-center">
                         <br>
-                        <button type="button" class="btn default"><i class="fa fa-arrow-left"></i> Back</button>
+                        <button type="button" class="btn default" ng-click="back()"><i class="fa fa-arrow-left"></i> Back</button>
                         <hr>
                     </div>
                 </div>
