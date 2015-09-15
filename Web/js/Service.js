@@ -1049,6 +1049,32 @@ function service($http, $q) {
         return deferred.promise;
     }
 
+
+    //inventory edit
+    //update item //POST
+    this.updateItemInv = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "inventoryAPI.svc/updateItem", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //update itemPrice //POST
+    this.updateItemPriceInv = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "inventoryAPI.svc/updateItemPrice", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 }
 
 
