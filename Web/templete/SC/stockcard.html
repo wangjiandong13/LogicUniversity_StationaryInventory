@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="StockcardController">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -9,7 +9,7 @@
                     <a href="#/inventoryList">Inventory</a>
                     <i class="fa fa-angle-right"></i>
                     <i class="fa fa-folder-o"></i>
-                    <a href="#/stockcard">Stock Card</a>
+                    <a href="#/stockcard/{{itemid}}">Stock Card</a>
                 </li>
             </ul>
         </div>
@@ -21,7 +21,7 @@
             <div class="col-md-12">
                 <br>
                 <h1 style="display:inline">Stock Card : </h1>
-                <h1 style="display:inline" id="lbl_itemcode">Input Item Code Here</h1>
+                <h1 style="display:inline" id="lbl_itemcode">{{ItemData.ItemID}}</h1>
                 <hr>
             </div>
             <div class="col-md-12">
@@ -33,7 +33,7 @@
                                 <h4>Code:</h4>
                             </td>
                             <td class="col-md-6" id="table_data_itemcode">
-                                Item Object . code
+                                {{ItemData.ItemID}}
                             </td>
                         </tr>
                         <tr>
@@ -41,7 +41,7 @@
                                 <h4>Description:</h4>
                             </td>
                             <td class="col-md-6" id="table_data_itemdesc">
-                                Item Object . description
+                                {{ItemData.ItemName}}
                             </td>
                         </tr>
                         <tr>
@@ -49,7 +49,7 @@
                                 <h4>Bin:</h4>
                             </td>
                             <td class="col-md-6" id="table_data_itembin">
-                                Item Object . bin
+                                {{ItemData.Bin}}
                             </td>
                         </tr>
                         <tr>
@@ -57,7 +57,7 @@
                                 <h4>Unit Of Measure:</h4>
                             </td>
                             <td class="col-md-6" id="table_data_itemuom">
-                                Item Object . uom
+                                {{ItemData.UOM}}
                             </td>
                         </tr>
                     </table>
@@ -70,7 +70,7 @@
                                 <h4>Supplier 1:</h4>
                             </td>
                             <td class="col-md-6" id="table_data_sup1">
-                                Input Primary 1st Here
+                                {{ItemData.Supplier1}}
                             </td>
                         </tr>
                         <tr>
@@ -78,7 +78,7 @@
                                 <h4>Supplier 2:</h4>
                             </td>
                             <td class="col-md-6" id="table_data_sup2">
-                                Input 2nd Supplier Here
+                                {{ItemData.Supplier2}}
                             </td>
                         </tr>
                         <tr>
@@ -86,7 +86,7 @@
                                 <h4>Supplier 3:</h4>
                             </td>
                             <td class="col-md-6" id="table_data_sup3">
-                                Input 3rd Supplier Here
+                                {{ItemData.Supplier3}}
                             </td>
                         </tr>
                     </table>
@@ -105,24 +105,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>02/01/2000</td>
-                            <td>Supplier - BANE</td>
-                            <td>500</td>
-                            <td>550</td>
-                        </tr>
-                        <tr>
-                            <td>03/01/2000</td>
-                            <td>English Department</td>
-                            <td>-20</td>
-                            <td>530</td>
+                        <tr ng-repeat="Stockcard in StockcardList">
+                            <td>{{Stockcard.Date}}</td>
+                            <td>{{Stockcard.Description}}</td>
+                            <td>{{Stockcard.Qty}}</td>
+                            <td>{{Stockcard.Balance}}</td>
                         </tr>
                     </tbody>
                 </table>
                 <hr>
             </div>
             <div class="col-md-12" style="text-align:center">
-                <button type="button" class="btn btn-default">Back</button>
+                <button type="button" class="btn btn-default" ng-click="back()">Back</button>
             </div>
 
         </div>
