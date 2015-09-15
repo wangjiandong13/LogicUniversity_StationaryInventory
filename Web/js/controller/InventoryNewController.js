@@ -94,20 +94,19 @@
                             console.log(supplierdata);
                             $.each(supplierdata, function (index, value) {
                                 if (value.Rank == 1)
-                                {
                                     $scope.supplier1 = value.SupplierID;
-                                    $scope.supplier1Price = itempricedata.Price;
-                                }
-                                if (value.Rank == 2) {
+                                if (value.Rank == 2)
                                     $scope.supplier2 = value.SupplierID;
-                                    $scope.supplier2Price = itempricedata.Price;
-                                }
-                                if (value.Rank == 3) {
+                                if (value.Rank == 3)
                                     $scope.supplier3 = value.SupplierID;
-                                    $scope.supplier3Price = itempricedata.Price;
-                                }
                             })
                         })
+                    if ($scope.supplier1 == itempricedata.SupplierID)
+                        $scope.supplier1Price = itempricedata.Price;
+                    if ($scope.supplier2 == itempricedata.SupplierID)
+                        $scope.supplier2Price = itempricedata.Price;
+                    if ($scope.supplier3 == itempricedata.SupplierID)
+                        $scope.supplier3Price = itempricedata.Price;
                 })
                 //$scope.supplier1 = data[0].SupplierID;
                 //$scope.supplier1Price = data[0].Price;
