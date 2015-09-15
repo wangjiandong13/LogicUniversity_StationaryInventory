@@ -95,12 +95,12 @@
                     $.each($scope.inventoryListdata, function (index, value) {
                         myBaseService.getItemPrice(value.ItemID)
                             .then(function (itemdata) {
-                                console.log("itemdata"+itemdata);
-                                console.log("$scope.supplierID"+$scope.supplierID);
+                                //console.log("itemdata"+itemdata);
+                                //console.log("$scope.supplierID"+$scope.supplierID);
                                 $.each(itemdata, function (index, ipvalue) {
-                                    console.log(ipvalue.SupplierID);
+                                    //console.log(ipvalue.SupplierID);
                                     if (ipvalue.SupplierID == $scope.supplierID) {
-                                        console.log($scope.inventoryListdata.Price);
+                                        //console.log($scope.inventoryListdata.Price);
                                         value.Price = ipvalue.Price;
                                     }
 
