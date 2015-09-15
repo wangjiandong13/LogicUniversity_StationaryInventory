@@ -148,7 +148,7 @@
         $scope.submit = function () {
             var date=$("#datedata").val();
             var msg = [];
-            if (date != null && date != "" && msg.length != 0) {
+            if (date != null && date != "" && $scope.listitems.length != 0) {
                 $.each($scope.listitems, function (index, value) {
                     var each = {
                         EmpID: $rootScope.UserInfo.EmpId,
