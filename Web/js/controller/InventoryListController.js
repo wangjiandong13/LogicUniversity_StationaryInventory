@@ -1,6 +1,6 @@
 ﻿define(['app'], function (app) {
     app.controller('inventoryListCtrl', ['$rootScope', '$scope', 'BaseService', inventoryListCtrl]);
-    app.controller('inventoryListDataCtrl', ['$scope', 'BaseService', inventoryListDataCtrl]);
+    app.controller('inventoryListDataCtrl', ['$rootScope', '$scope', 'BaseService', inventoryListDataCtrl]);
     function inventoryListCtrl($rootScope, $scope, BaseService) {
         //sidebar highlight
         $rootScope.changehighlight(12);
@@ -66,7 +66,7 @@
         }
     }
     //load catalogList
-    function inventoryListDataCtrl($scope, BaseService) {
+    function inventoryListDataCtrl($rootScope, $scope, BaseService) {
         //console.log("enter");
         var myBaseService = BaseService;
         BaseService.getSupplierList()
