@@ -111,10 +111,10 @@
         };
 
         //click the Edit button
-        $scope.edit = function (inventoryListdata) {
-            console.log(inventoryListdata.itemID);
+        $scope.edit = function (item) {
+            console.log(item.itemID);
             $rootScope.toNewInvt = 1;
-            location.href = '#/inventoryNew/' + inventoryListdata.itemID;
+            location.href = '#/inventoryNew/' + item.itemID;
         };
     }
 })
