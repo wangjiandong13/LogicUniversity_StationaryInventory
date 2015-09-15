@@ -12,7 +12,7 @@
         BaseService.getAdjList(msg)
                 .then(function (data) {
                     console.log(data);
-                    $scope.Adjustment = data;
+                    $scope.Adjustment = data[0];
                     $.each(data, function (index, value) {
                         myBaseService.getEmployee(value.ReportedBy)
                                 .then(function (empdata) {
