@@ -69,6 +69,7 @@
     function inventoryListDataCtrl($rootScope, $scope, BaseService) {
         //console.log("enter");
         var myBaseService = BaseService;
+        var invtListData = "";
         BaseService.getSupplierList()
         .then(function (supplierdata) {
             $.each(supplierdata, function (index, value) {
@@ -81,6 +82,7 @@
             .then(function (data) {
                 //console.log(data);
                 $scope.inventoryListdata = data;
+                invtListData = data;
                 $.each($scope.inventoryListdata, function (index, value) {
                     myBaseService.getItemPrice(value.ItemID)
                     .then(function (itemdata) {
@@ -111,8 +113,9 @@
         //click the Edit button
         $scope.edit = function () {
             console.log($scope.inventoryListdata.itemID);
+            console.log(invtListData);
             $rootScope.toNewInvt = 1;
-            location.href = '#/inventoryNew/' + $scope.inventoryListdata.itemID;
+            location.href = '#/inventoryNew/' + invtListData.itemID;
         };
     }
 })
