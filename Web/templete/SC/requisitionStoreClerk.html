@@ -29,8 +29,7 @@
                         <label>Status:</label>
                     </div>
                     <div class="col-md-3">
-                        <select name="statusSelect" ng-model="statusSelect">
-                            <option ng-repeat="option in data.availableOptions" value="{{option.StatusID}}">{{option.StatusName}}</option>
+                        <select class="form-control" ng-model="statusSelect.selectedOption" ng-options="option.name for option in statusSelect.availableOptions track by option.id">
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -64,11 +63,11 @@
                             <tbody>
                                 <tr ng-repeat="Requisition in Requisitions">
                                     <td>{{Requisition.ReqID}}</td>
-                                    <td>{{Requisition.Date}}</td>
+                                    <td>{{Requisition.Date|datechange|date : 'dd MMM yyyy'}}</td>
                                     <td>{{Requisition.EmpName}}</td>
                                     <td>{{Requisition.DeptID}}</td>
-                                    <td>{{Requisition.Status|statuschange}}</td>
-                                    <td>{{Requisition.Priority|prioritychange}}</td>
+                                    <td>{{Requisition.StatusID|statuschange}}</td>
+                                    <td>{{Requisition.PriorityID|prioritychange}}</td>
                                     <td>
                                         <input type="checkbox">
                                     </td>

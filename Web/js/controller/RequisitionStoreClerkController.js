@@ -7,14 +7,23 @@
 
         var myBaseService = BaseService;
         $scope.search = function () {
-            var status = $rootScope.optiondata.selectedOption.StatusID;
+            var status = $scope.statusSelect.selectedOption.id;
             var ReqID = $scope.RequisitionNo;
             if (ReqID == null || ReqID == "") { ReqID = "null"; }
             //console.log(ReqID);
             BaseService.getRequisitionList(status, ReqID, "null", "null")
             .then(function (data) {
                 console.log(data);
-                $rootScope.Requisitions = data;
+                $scope.Requisitions = data;
+                $.each($scope.Requisitions, function (index, value) {
+                    console.log(value.EmpID);
+                    myBaseService.getEmployee(value.EmpID)
+                        .then(function (empdata) {
+                            value.EmpName = empdata.EmpName;
+                        }, function (data) {
+                            alert(data);
+                        })
+                })
             }, function (data) {
                 alert(data);
             })
@@ -24,13 +33,15 @@
         BaseService.getRequisitionApprovedList()
                 .then(function (data) {
                     console.log(data);
-                    $rootScope.Requisitions = data;
-                    $.each(data, function (index, value) {
-                        myBaseService.getEmployee(value.EmpId)
+                    $scope.Requisitions = data;
+                    $.each($scope.Requisitions, function (index, value) {
+                        console.log(value.EmpID);
+                        myBaseService.getEmployee(value.EmpID)
                             .then(function (empdata) {
-                                $scope.Requisitions.EmpName = empdata.EmpName;
+                                value.EmpName = empdata.EmpName;
+                            }, function (data) {
+                                alert(data);
                             })
-                        myBaseService.getEmployee(value.EmpId)
                     })
 
                 }, function (data) {
@@ -39,11 +50,11 @@
                 )
 
         //status combobox
-        $rootScope.statusSelect = {
-            availableOptions: [{ 'StatusID': 2, 'StatusName': 'Approved' },
-                                { 'StatusID': 3, 'StatusName': 'Processed' },
-                                { 'StatusID': 4, 'StatusName': 'Collected' }],
-            selectedOption: { 'StatusID': 2, 'StatusName': 'Approved' }
+        $scope.statusSelect = {
+            availableOptions: [{ id: '2', name: 'Approved' },
+                                { id: '3', name: 'Processed' },
+                                { id: '4', name: 'Collected' }],
+            selectedOption: { id: '2', name: 'Approved' }
         };
 
     }
