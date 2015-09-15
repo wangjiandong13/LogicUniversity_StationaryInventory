@@ -42,10 +42,10 @@
 
         //status combobox
         $scope.statusSelect = {
-            availableOptions: [{ id: 2, name: 'Approved' },
-                                { id: 3, name: 'Processed' },
-                                { id: 4, name: 'Collected' }],
-            selectedOption: { id: 2, name: 'Approved' }
+            availableOptions: [{ id: '2', name: 'Approved' },
+                                { id: '3', name: 'Processed' },
+                                { id: '4', name: 'Collected' }],
+            selectedOption: { id: '2', name: 'Approved' }
         };
 
     }
