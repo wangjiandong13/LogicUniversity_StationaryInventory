@@ -7,6 +7,7 @@
 
         var itemid = $routeParams.itemid;
         $scope.itemid = itemid;
+        console.log($scope.itemid);
         var myBaseService = BaseService;
        
         //get categoryselectData
