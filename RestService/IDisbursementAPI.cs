@@ -31,5 +31,11 @@ namespace RestService
                                            BodyStyle = WebMessageBodyStyle.Bare,
                                            UriTemplate = "/createDisbursement/{EmpID}")]
         bool createDisbursement(string EmpID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/completeDisbursement/{DisID}")]
+        bool completeDisbursement(string DisID);
     }
 }

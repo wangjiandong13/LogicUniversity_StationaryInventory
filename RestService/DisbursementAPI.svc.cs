@@ -14,6 +14,23 @@ namespace RestService
     // NOTE: In order to launch WCF Test Client for testing this service, please select DisbursementAPI.svc or DisbursementAPI.svc.cs at the Solution Explorer and start debugging.
     public class DisbursementAPI : IDisbursementAPI
     {
+        public bool completeDisbursement(string DisID)
+        {
+            BusinessLogic.DisbursementController BL = new BusinessLogic.DisbursementController();
+            if (BL.completeDisbursement(DisID))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotAcceptable;
+                return false;
+            }
+        }
+
         public bool createDisbursement(string EmpID)
         {
             BusinessLogic.DisbursementController BL = new BusinessLogic.DisbursementController();
