@@ -4377,6 +4377,11 @@
     <Content Include="img\item_cat\8.jpg" />
     <Content Include="img\item_cat\9.jpg" />
     <Content Include="img\logo.png" />
+    <Content Include="img\logo\logo_100.png" />
+    <Content Include="img\logo\logo_200.png" />
+    <Content Include="img\logo\logo_30.png" />
+    <Content Include="img\logo\logo_50.png" />
+    <Content Include="img\logo\logo_500.png" />
     <Content Include="img\status\1.png" />
     <Content Include="img\status\2.png" />
     <Content Include="img\status\3.png" />
