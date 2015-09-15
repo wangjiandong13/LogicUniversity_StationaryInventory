@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="col-md-12">
                         <br>
-                        <h1 style="display: inline">Purchase Order # <h1 id="PoID" style="display: inline">001</h1></h1>
+                        <h1 style="display: inline">Purchase Order # <h1 id="PoID" style="display: inline">{{PoData.PoID}}</h1></h1>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -35,21 +35,21 @@
                                     <td class="col-md-4">
                                         <h5>Supplier : </h5></td>
                                     <td class="col-md-6">
-                                        <label id="lbl_supplier">ALPHA</label>
+                                        <label id="lbl_supplier">{{PoData.PoID}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Attn : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_attn">Wong Sook Huey</label>
+                                        <label id="lbl_attn">{{PoData.SupplierID}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Please supply the items by : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_receivedBy">2 Sep 2015</label>
+                                        <label id="lbl_receivedBy">{{PoData.Date|datechange|date : 'dd MMM yyyy'}}</label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -71,46 +71,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>C001</td>
-                                    <td>Clips Double 1"</td>
-                                    <td>30</td>
+                                <tr ng-repeat="PoDetail in PoDetails ">
+                                    <td>{{PoDetail.ItemID}}</td>
+                                    <td>{{PoDetail.ItemName}}</td>
+                                    <td>{{PoDetail.Qty}}</td>
                                     <td>
                                         <input type="text" class="form-control">
                                     </td>
-                                    <td>$2</td>
-                                    <td>$60</td>
+                                    <td>{{PoDetail.Price}}</td>
+                                    <td>{{PoDetail.Qty*PoDetail.Price}}</td>
                                 </tr>
-                                <tr>
-                                    <td>E001</td>
-                                    <td>Envelope Brown (3"x6")</td>
-                                    <td>400</td>
-                                    <td>
-                                        <input type="text" class="form-control">
-                                    </td>
-                                    <td>$1.20</td>
-                                    <td>$480</td>
-                                </tr>
-                                <tr>
-                                    <td>E020</td>
-                                    <td>Eraser (hard)</td>
-                                    <td>20</td>
-                                    <td>
-                                        <input type="text" class="form-control">
-                                    </td>
-                                    <td>$1.15</td>
-                                    <td>$23</td>
-                                </tr>
-                                <tr>
-                                    <td>F020</td>
-                                    <td>File Separator</td>
-                                    <td>50</td>
-                                    <td>
-                                        <input type="text" class="form-control">
-                                    </td>
-                                    <td>$0.75</td>
-                                    <td>$37.50</td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -118,8 +89,8 @@
                 <br>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="button" class="btn default"><i class="fa fa-arrow-left"></i> Back</button>
-                    <button type="submit" class="btn btn-success">Restock</button>
+                    <button type="button" ng-click="back()" class="btn default"><i class="fa fa-arrow-left"></i> Back</button>
+                    <button type="button" ng-click="Restock()" class="btn btn-success">Restock</button>
                     <hr>
                 </div>
             </div>
