@@ -26,6 +26,7 @@
                     msg.concat(value.ReqID + " ");
                 })
                 $scope.reqForms = msg;
+                console.log(msg);
             }, function (data) {
                 alert(data);
             })
