@@ -198,7 +198,7 @@ namespace BusinessLogic
                 double totalamt = 0;
 
                 //create and add poDetail to db
-                foreach (ProposePo proposepo in proposePoList)
+                foreach (ProposePo proposepo in supplier1)
                 {
                     PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
                     poDetail.PoID = poLastID;
@@ -234,7 +234,7 @@ namespace BusinessLogic
                 double totalamt = 0;
 
                 //create and add poDetail to db
-                foreach (ProposePo proposepo in proposePoList)
+                foreach (ProposePo proposepo in supplier2)
                 {
                     PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
                     poDetail.PoID = poLastID;
@@ -270,7 +270,7 @@ namespace BusinessLogic
                 double totalamt = 0;
 
                 //create and add poDetail to db
-                foreach (ProposePo proposepo in proposePoList)
+                foreach (ProposePo proposepo in supplier3)
                 {
                     PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
                     poDetail.PoID = poLastID;
