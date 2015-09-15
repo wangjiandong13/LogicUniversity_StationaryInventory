@@ -35,14 +35,14 @@
                                     <td class="col-md-4">
                                         <h5>Supplier : </h5></td>
                                     <td class="col-md-6">
-                                        <label id="lbl_supplier">{{PoData.PoID}}</label>
+                                        <label id="lbl_supplier">{{PoData.SupplierID}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Attn : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_attn">{{PoData.SupplierID}}</label>
+                                        <label id="lbl_attn">{{UserInfo.EmpID}}</label>
                                     </td>
                                 </tr>
                                 <tr>
@@ -76,12 +76,11 @@
                                     <td>{{PoDetail.ItemName}}</td>
                                     <td>{{PoDetail.Qty}}</td>
                                     <td>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" ng-model="PoDetail.ActualQty" ng-disabled="ActualQty">
                                     </td>
                                     <td>{{PoDetail.Price}}</td>
                                     <td>{{PoDetail.Qty*PoDetail.Price}}</td>
                                 </tr>
-                                
                             </tbody>
                         </table>
                     </div>
@@ -90,7 +89,7 @@
                 <div class="col-md-12 text-center">
                     <br>
                     <button type="button" ng-click="back()" class="btn default"><i class="fa fa-arrow-left"></i> Back</button>
-                    <button type="button" ng-click="Restock()" class="btn btn-success">Restock</button>
+                    <button type="button" ng-if="Restockbtn" ng-click="Restock()" class="btn btn-success">Restock</button>
                     <hr>
                 </div>
             </div>
