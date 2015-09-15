@@ -10,6 +10,12 @@
         $scope.itemid = itemid;
         var myBaseService = BaseService;
         
+        if ($scope.toNewInvt == 0) {
+            $scope.Title = "New";
+        } else {
+            $scope.Title = "Edit";
+        }
+
         //get categoryselectData
         $scope.CategorySelectData = {
             availableOptions: [],
@@ -25,7 +31,7 @@
             })
 
         if ($scope.toNewInvt == 0) {
-            $scope.Title = "New";
+            //$scope.Title = "New";
 
             //New: click submit
             $scope.submit = function () {
@@ -52,7 +58,7 @@
             }
         }
         else {
-            $scope.Title = "Edit";
+            //$scope.Title = "Edit";
 
             //load item data
             BaseService.getItemDetail(itemid)
