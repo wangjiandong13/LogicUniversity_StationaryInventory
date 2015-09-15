@@ -23,8 +23,8 @@
                 $scope.RequisitionData = data;
                 var msg = "";
                 $.each($scope.RequisitionData, function (index, value) {
-                    console.log(">>>>>" + msg);
                     msg.concat(value.ReqID);
+                    console.log(">>>>>" + msg);
                 })
                 $scope.reqForms = msg;
                 console.log(msg);
