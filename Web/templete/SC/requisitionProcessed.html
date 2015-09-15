@@ -41,14 +41,14 @@
                                         <td class="col-md-4">
                                             <h5>Date : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_date">{{RetrievalDetail.Date|datechange|date : 'dd MMM yyyy'}}</label>
+                                            <label id="lbl_date">{{RetrievalData.Date|datechange|date : 'dd MMM yyyy'}}</label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <h5>Requisition Forms : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_reqForms">{{reqForms}}</label>
+                                            <label id="lbl_reqForms"><span ng-repeat="req in RequisitionData">{{req.ReqID}}</span></label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -63,7 +63,7 @@
                                     <tr>
                                         <th>Bin</th>
                                         <th>Item Name</th>
-                                        <th>Total Quantity</th>
+                                        <th>Requested Qty</th>
                                     </tr>
                                 </thead>
                                 <tbody>

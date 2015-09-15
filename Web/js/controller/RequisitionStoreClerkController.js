@@ -69,6 +69,7 @@
                     msg.push(each);
                 }
             })
+            console.log(msg);
             BaseService.createRetrieval(msg)
                 .then(function (data) {
                     alert('Success!');

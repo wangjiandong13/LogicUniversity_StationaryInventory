@@ -39,7 +39,9 @@ namespace BusinessLogic
             foreach (ProcessRetrieval processRet in processRetList)
             {
                 //update RetID of requisition
-                ctx.Requisition.Where(x => x.ReqID == processRet.ReqID).First().RetID = RetID;
+                Requisition requisition = ctx.Requisition.Where(x => x.ReqID == processRet.ReqID).First();
+                requisition.RetID = RetID;
+                requisition.StatusID = 3;
 
                 //obtain requisition detail list 
                 List<RequisitionDetail> reqDetailList = ctx.RequisitionDetail.Where(x => x.ReqID == processRet.ReqID).ToList();
