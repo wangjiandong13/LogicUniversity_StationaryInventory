@@ -284,5 +284,16 @@ namespace BusinessLogic
             return result;
 
         }
+
+        /// <summary>
+        /// GetAdjVoucher
+        /// </summary>
+        /// <param name="AdjID">Adjustment ID</param>
+        /// <returns></returns>
+        public AdjustmentVoucher getAdjVoucherByID(string AdjID)
+        {
+            return ctx.AdjustmentVoucher.Where(x => x.AdjID == AdjID).FirstOrDefault();
+        }
+
     }
 }

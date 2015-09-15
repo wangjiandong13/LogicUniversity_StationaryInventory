@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="col-md-12">
                         <br>
-                        <h1 style="display: inline">Adjustment Voucher # <h1 id="adjID" style="display: inline">001/08/2015</h1></h1>
+                        <h1 style="display: inline">Adjustment Voucher # <h1 id="adjID" style="display: inline">{{Adjustment.AdjID}}</h1></h1>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -35,7 +35,7 @@
                                     <td class="col-md-4">
                                         <h5>Voucher No. : </h5></td>
                                     <td class="col-md-6">
-                                        <label id="lbl_adjID">001/08/2015</label>
+                                        <label id="lbl_adjID">{{Adjustment.AdjID}}</label>
                                     </td>
                                     <td class="col-md-2"><a class="btn btn-sm default DTTT_button_print" id="ToolTables_sample_2_3" title="View print view"><i class="fa fa-print"></i><span> Print</span></a></td>
                                 </tr>
@@ -43,21 +43,21 @@
                                     <td class="col-md-4">
                                         <h5>Date : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_date">28 August 2015</label>
+                                        <label id="lbl_date">{{Adjustment.Date}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Reported By : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_reportedBy">Wong Sook Huey</label>
+                                        <label id="lbl_reportedBy">{{Adjustment.ReportedBy}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Approved By : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_approvedBy">Steven Chiang</label>
+                                        <label id="lbl_approvedBy">{{Adjustment.ApprovedBy}}</label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -78,19 +78,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>P006</td>
-                                    <td>-6</td>
-                                    <td>Faulty</td>
-                                    <td>-</td>
-                                    <td>$12.50</td>
-                                </tr>
-                                <tr>
-                                    <td>F024</td>
-                                    <td>+3</td>
-                                    <td>Gift</td>
-                                    <td>SG50 gift</td>
-                                    <td>$9.90</td>
+                                <tr ng-repeat="AdjustmentDetail in AdjustmentDetails">
+                                    <td>{{AdjustmentDetail.ItemID}}</td>
+                                    <td>{{AdjustmentDetail.Qty}}</td>
+                                    <td>{{AdjustmentDetail.Reason}}</td>
+                                    <td>{{AdjustmentDetail.Remark}}</td>
+                                    <td>{{AdjustmentDetail.Subtotal = AdjustmentDetail.Qty*AdjustmentDetail.Price}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -99,7 +92,7 @@
                 <div class="col-md-11 text-right">
                     <br>
                     <label><b>Total : </b></label>
-                    <label id="lbl_total">$22.40</label>
+                    <label id="lbl_total">{{}}</label>
                     <hr>
                 </div>
             </div>

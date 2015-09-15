@@ -71,6 +71,12 @@ namespace RestService
             return BL.getAdjVoucher(AdjID,startDate,endDate);
         }
 
+        public AdjustmentVoucher getAdjVoucherByID(string AdjID)
+        {
+            BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();
+            return BL.getAdjVoucherByID(AdjID);
+        }
+
         public List<AdjustmentDetail> getAdjVoucherDetail(string adjId)
         {
             BusinessLogic.AdjustVoucherController BL = new BusinessLogic.AdjustVoucherController();

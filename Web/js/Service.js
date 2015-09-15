@@ -1087,4 +1087,24 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+
+    //adjustmentDetail.html
+    //get adjustment by adjID
+    this.getAdjVoucherByID = function (AdjID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "adjustmentAPI.svc/getAdjVoucherByID/" + AdjID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 }
+
+
+
+
+
+
