@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="col-md-6">
                         <br>
-                        <h1>Propose Purchase Order</h1>
+                        <h1>Propose Purchase Order {{additem.supplier1Qty}}</h1>
                     </div>
                     <div class="col-md-6 text-right">
                         <br><a class="btn default" data-target="#Additem" data-toggle="modal">
@@ -59,13 +59,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in listitems" ng-click="supplier(item)">
+                                <tr ng-repeat="item in listitems" ng-click="edit(item)">
                                     <td>{{item.ItemID}}</td>
                                     <td>{{item.ItemName}}</td>
                                     <td>
-                                        <input type="number" class="form-control" ng-disabled="true"ng-model="item.supplier1Qty+item.supplier2Qty+item.supplier3Qty">
+                                        <input type="text" class="form-control" ng-disabled="true"ng-model="item.supplier1Qty">
                                     </td>
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                    <td><button type="button" class="btn btn-danger" ng-click="delect(item)">Delete</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -158,10 +158,10 @@
                 </div>
             </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button type="button" class="btn red" ng-click="addtolist">Add to list</button>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                <button type="button" class="btn red" ng-click="addtolist()">Add to list</button>
+            </div>
         </div>
-    </div>
 </div>
 <!-- END CONTENT -->
