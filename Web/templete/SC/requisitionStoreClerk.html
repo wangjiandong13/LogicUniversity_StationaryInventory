@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="RequisitionSCControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -28,21 +28,17 @@
                     <div class="col-md-1" style="top:50%">
                         <label>Status:</label>
                     </div>
-                    <div class="col-md-3">
-
-                        <select class="form-control">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                        </select>
+                    <div class="col-md-3" ng-controller="SelectoptionControllers">
+                        <select class="form-control"
+                                name="statusselect" id="statusselect"
+                                ng-options="option.StatusName for option in optiondata.availableOptions track by option.StatusID"
+                                ng-model="optiondata.selectedOption"></select>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Enter Reuisition No.">
+                        <input type="text" class="form-control" placeholder="Enter Requisition No." ng-model="RequisitionNo">
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn yellow">
+                        <button type="button" class="btn btn yellow" ng-click="search()">
                             <span class="glyphicon glyphicon-search"></span> Search
                         </button>
                     </div>
@@ -67,35 +63,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>0021</td>
-                                    <td>21 August 2015</td>
-                                    <td>Jenny Wong Mei Lin</td>
-                                    <td>REGR</td>
-                                    <td>Approved</td>
-                                    <td>High</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0020</td>
-                                    <td>21 August 2015</td>
-                                    <td>Samuel Tan Wei Xiong</td>
-                                    <td>ENGL</td>
-                                    <td>Approved</td>
-                                    <td>Low</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0022</td>
-                                    <td>21 August 2015</td>
-                                    <td>Sheena Wee En Hui</td>
-                                    <td>ENGL</td>
-                                    <td>Approved</td>
-                                    <td>Low</td>
+                                <tr ng-repeat="Requisition in Requisitions">
+                                    <td>{{Requisition.ReqID}}</td>
+                                    <td>{{Requisition.Date}}</td>
+                                    <td>{{Requisition.EmpName}}</td>
+                                    <td>{{Requisition.DeptID}}</td>
+                                    <td>{{Requisition.Status|statuschange}}</td>
+                                    <td>{{Requisition.Priority|prioritychange}}</td>
                                     <td>
                                         <input type="checkbox">
                                     </td>
