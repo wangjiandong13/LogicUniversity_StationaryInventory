@@ -83,7 +83,7 @@
                                     <td>{{AdjustmentDetail.Qty}}</td>
                                     <td>{{AdjustmentDetail.Reason}}</td>
                                     <td>{{AdjustmentDetail.Remark}}</td>
-                                    <td>{{AdjustmentDetail.Qty*AdjustmentDetail.Price}}</td>
+                                    <td>{{AdjustmentDetail.Qty*AdjustmentDetail.Price|currency}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -92,7 +92,7 @@
                 <div class="col-md-11 text-right">
                     <br>
                     <label><b>Total : </b></label>
-                    <label id="lbl_total">{{Adjustment.TotalAmt}}</label>
+                    <label id="lbl_total">{{Adjustment.TotalAmt|currency}}</label>
                     <hr>
                 </div>
             </div>
