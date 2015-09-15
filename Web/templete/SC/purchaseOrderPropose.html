@@ -63,7 +63,7 @@
                                     <td>{{item.ItemID}}</td>
                                     <td>{{item.ItemName}}</td>
                                     <td>
-                                        <input type="text" class="form-control" ng-disabled="true"ng-model="item.supplier1Qty">
+                                       {{item.supplier1Qty+item.supplier2Qty+item.supplier3Qty}}
                                     </td>
                                     <td><button type="button" class="btn btn-danger" ng-click="delect(item)">Delete</button></td>
                                 </tr>
