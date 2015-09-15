@@ -217,7 +217,7 @@ namespace BusinessLogic
             {
                 //create and add new po to db
                 PurchaseOrder po = new PurchaseOrder();
-                po.SupplierID = supplier1ID;
+                po.SupplierID = supplier2ID;
                 po.EmpID = supplier2.First().EmpID;
                 po.Date = DateTime.Now;
                 po.EstDate = Convert.ToDateTime(supplier2.First().EstDate);
@@ -252,7 +252,7 @@ namespace BusinessLogic
             {
                 //create and add new po to db
                 PurchaseOrder po = new PurchaseOrder();
-                po.SupplierID = supplier1ID;
+                po.SupplierID = supplier3ID;
                 po.EmpID = supplier3.First().EmpID;
                 po.Date = DateTime.Now;
                 po.EstDate = Convert.ToDateTime(supplier3.First().EstDate);
