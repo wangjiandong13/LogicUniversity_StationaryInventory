@@ -33,15 +33,12 @@
                     <hr>
                 </div>
                 <div class="col-md-12">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <h4>Please supply the following items by : </h4>
                     </div>
-                    <div class="col-md-8">
-                        <div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
-                            <input type="text" class="form-control" readonly="">
-                            <span class="input-group-btn">
-                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                            </span>
+                    <div class="col-md-7">
+                        <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" id="datedata">
                         </div>
                     </div>
                 </div>
@@ -74,8 +71,8 @@
                 <br>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="button" class="btn default">Cancel</button>
-                    <button type="submit" class="btn btn-success">Generate Purchase Orders</button>
+                    <button type="button" class="btn default" ng-click="cancelbtn()">Cancel</button>
+                    <button type="button" class="btn btn-success" ng-click="submit()">Generate Purchase Orders</button>
                     <hr>
                 </div>
             </div>
@@ -109,7 +106,7 @@
                 </div>
                 <div class="col-md-12" style="height:200px;overflow:auto">
                     <table class="table table-striped">
-                        <tr ng-repeat="item in items" ng-click="supplier(item)">
+                        <tr ng-repeat="item in items" ng-click="supplier(item)" >
                             <td style="width:150px">{{item.ItemID}}</td>
                             <td>{{item.ItemName}}</td>
                         </tr>
@@ -140,17 +137,17 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>{{additem.supplier1}}</td>
+                                <td>{{supplierName.supplier1}}</td>
                                 <td><input type="number" ng-model=additem.supplier1Qty class="form-control" min=1></td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>{{additem.supplier2}}</td>
+                                <td>{{supplierName.supplier2}}</td>
                                 <td><input type="number" ng-model=additem.supplier2Qty class="form-control" min=1></td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>{{additem.supplier3}}</td>
+                                <td>{{supplierName.supplier3}}</td>
                                 <td><input type="number" ng-model=additem.supplier3Qty class="form-control" min=1></td>
                             </tr>
                         </tbody>
