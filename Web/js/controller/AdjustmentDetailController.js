@@ -7,7 +7,8 @@
         console.log(adjid);
 
         var myBaseService = BaseService;
-        var msg = { "AdjID": adjid };
+        
+        var msg = { "AdjID": adjid, "startDate": "null", "endDate": "null" };
         BaseService.getAdjVoucherByID(msg)
                 .then(function (data) {
                     console.log(data);
@@ -25,8 +26,8 @@
                 }
                 )
 
-        
-        BaseService.getAdjDetail(msg)
+        var msgAdjId = { "AdjID": adjid };
+        BaseService.getAdjDetail(msgAdjId)
             .then(function (data) {
                 console.log(data);
                 $scope.AdjustmentDetails = data;

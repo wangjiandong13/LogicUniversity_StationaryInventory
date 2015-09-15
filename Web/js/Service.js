@@ -1092,7 +1092,7 @@ function service($http, $q) {
     //get adjustment by adjID //POST
     this.getAdjVoucherByID = function (msg) {
         var deferred = $q.defer();
-        $http.post(baseurl + "adjustmentAPI.svc/getAdjVoucherByID", msg)
+        $http.post(baseurl + "adjustvoucherAPI.svc/getAdjVoucherByID", msg)
             .success(function (data) {
                 deferred.resolve(data)
             })
