@@ -17,20 +17,19 @@
                 alert(data);
             })
 
-        BaseService.getRequisitionListByRetID($scope.retid)
-            .then(function (data) {
-                console.log(data);
-                $scope.RequisitionData = data;
-                var msg = "";
-                $.each($scope.RequisitionData, function (index, value) {
-                    msg.concat(value.ReqID);
-                    console.log(">>>>>" + msg);
-                })
-                $scope.reqForms = msg;
-                console.log(msg);
-            }, function (data) {
-                alert(data);
-            })
+        //BaseService.getRequisitionListByRetID($scope.retid)
+        //    .then(function (data) {
+        //        console.log(data);
+        //        $scope.RequisitionData = data;
+        //        var msg = "";
+        //        $.each($scope.RequisitionData, function (index, value) {
+        //            msg.concat(value.ReqID);
+        //            console.log(">>>>>" + msg);
+        //        })
+        //        $scope.reqForms = msg;
+        //    }, function (data) {
+        //        alert(data);
+        //    })
 
         BaseService.getRetrievalDetail(retid)
             .then(function (data) {
