@@ -55,5 +55,8 @@
         $scope.detail = function (po) {
             location.href = "#/purchaseOrderDetail/" + po.PoID;
         }
+        $scope.Propose=function(){
+            location.href = "#/purchaseOrderPropose";
+        }
     }
 });
