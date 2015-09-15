@@ -41,7 +41,7 @@
                 )
 
         //status combobox
-        $scope.statusSelect = {
+        $scope.data = {
             availableOptions: [{ 'StatusID': 2, 'StatusName': 'Approved' },
                                 { 'StatusID': 3, 'StatusName': 'Processed' },
                                 { 'StatusID': 4, 'StatusName': 'Collected' }],
