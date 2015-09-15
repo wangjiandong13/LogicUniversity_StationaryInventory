@@ -13,7 +13,7 @@
             var endDate = $("#dateenddata").val();
             if (endDate == "") { endDate = "null"; }
             var disID = $scope.DisbursementNo;
-            if (disID == null) { disID = "null" }
+            if (disID == null || disID == "") { disID = "null" }
             console.log(startDate);
             console.log(endDate);
             BaseService.getDisbursementList($rootScope.UserInfo.DeptId, "null", disID, startDate, endDate)
