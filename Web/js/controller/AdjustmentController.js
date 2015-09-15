@@ -60,10 +60,10 @@
 
         $scope.adjdetail = function (Adjustment) {
             $rootScope.AdjID = Adjustment.AdjID;
-            if ($rootScope.UserInfo.RoleId == "SS" && Adjustment.TotalAmt < 250) {
+            if ($rootScope.UserInfo.RoleId == "SS" && Adjustment.TotalAmt < 250 && Adjustment.Status == "PENDING") {
                 location.href = "#/adjustmentApproval";
             }
-            else if ($rootScope.UserInfo.RoleId == "SM" && Adjustment.TotalAmt >= 250) {
+            else if ($rootScope.UserInfo.RoleId == "SM" && Adjustment.TotalAmt >= 250 && Adjustment.Status == "PENDING") {
                 location.href = "#/adjustmentApproval";
             }
             else {
