@@ -27,7 +27,7 @@
                 )
 
         var msgAdjId = { "adjId": adjid };
-        BaseService.getAdjDetail(msgAdjId)
+        BaseService.getAdjDetail(angular.toJson(msgAdjId))
             .then(function (data) {
                 console.log(data);
                 $scope.AdjustmentDetails = data;
