@@ -2,9 +2,28 @@
     app.controller('PurchaseOrderDetailControllers', ['$scope', '$rootScope', "$routeParams", 'BaseService', PurchaseOrderDetailControllers]);
     function PurchaseOrderDetailControllers($scope, $rootScope, $routeParams, BaseService) {
         $rootScope.changehighlight(13);
-        console.log(">>>>enter PurchaseOrderDetailControllers")
         var PoID = $routeParams.PoID;
-        console.log(PoID);
-        alert(PoID);
+        var MyBaseService = BaseService;
+        BaseService.getPoList("null", "null", "null", PoID)
+            .then(function (data) {
+                $scope.PoData = data;
+            })
+        BaseService.getPoDetail(PoID)
+            .then(function (data) {
+                $scope.PoDetails = data;
+                $.each($scope.PoDetails, function (index, value) {
+                    MyBaseService.getItemDetail(value.ItemID)
+                        .then(function (data) {
+                            value.ItemName = data.ItemName;
+                        })
+                })
+            })
+
+        $scope.Restock = function () {
+            
+        }
+        $scope.back = function () {
+            location.href = "#/purchaseOrder";
+        }
     }
 })
