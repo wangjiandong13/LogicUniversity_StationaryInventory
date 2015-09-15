@@ -29,8 +29,8 @@
                         <label>Status:</label>
                     </div>
                     <div class="col-md-3">
-                        <select name="statusSelect" ng-model="data.statusSelect">
-                            <option ng-repeat="option in data.availableOptions" value="{{option.StatusID}}">{{option.StatusName}}</option>
+                        <select name="statusSelect" ng-model="statusSelect">
+                            <option ng-repeat="option in statusSelect.availableOptions" value="{{option.id}}">{{option.name}}</option>
                         </select>
                     </div>
                     <div class="col-md-4">

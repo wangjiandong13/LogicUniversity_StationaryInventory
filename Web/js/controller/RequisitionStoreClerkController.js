@@ -7,7 +7,7 @@
 
         var myBaseService = BaseService;
         $scope.search = function () {
-            var status = $scope.optiondata.selectedOption.StatusID;
+            var status = $scope.statusSelect.selectedOption.id;
             var ReqID = $scope.RequisitionNo;
             if (ReqID == null || ReqID == "") { ReqID = "null"; }
             //console.log(ReqID);
@@ -41,11 +41,11 @@
                 )
 
         //status combobox
-        $scope.data = {
-            availableOptions: [{ 'StatusID': 2, 'StatusName': 'Approved' },
-                                { 'StatusID': 3, 'StatusName': 'Processed' },
-                                { 'StatusID': 4, 'StatusName': 'Collected' }],
-            selectedOption: { 'StatusID': 2, 'StatusName': 'Approved' }
+        $scope.statusSelect = {
+            availableOptions: [{ id: 2, name: 'Approved' },
+                                { id: 3, name: 'Processed' },
+                                { id: 4, name: 'Collected' }],
+            selectedOption: { id: 2, name: 'Approved' }
         };
 
     }
