@@ -53,7 +53,7 @@
                 })
         }
         $scope.detail = function (po) {
-            location.href = "#/purchaseOrderDetail/po.PoID";
+            location.href = "#/purchaseOrderDetail/" + po.PoID;
         }
     }
 });
