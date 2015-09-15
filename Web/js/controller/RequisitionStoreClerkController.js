@@ -26,6 +26,7 @@
                     console.log(data);
                     $rootScope.Requisitions = data;
                     $.each(data, function (index, value) {
+                        console.log(value.EmpId);
                         myBaseService.getEmployee(value.EmpId)
                             .then(function (empdata) {
                                 value.EmpName = empdata.EmpName;
