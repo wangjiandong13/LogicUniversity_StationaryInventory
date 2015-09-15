@@ -1,13 +1,14 @@
 ﻿define(['app'], function (app) {
     app.controller('inventoryListCtrl', ['$rootScope', '$scope', 'BaseService', inventoryListCtrl]);
-    app.controller('inventoryListDataCtrl', ['$scope', 'BaseService', inventoryListDataCtrl]);
+    app.controller('inventoryListDataCtrl', ['$rootScope', '$scope', 'BaseService', inventoryListDataCtrl]);
     function inventoryListCtrl($rootScope, $scope, BaseService) {
         //sidebar highlight
         $rootScope.changehighlight(12);
         var myBaseService = BaseService;
         //click the New button
         $scope.new = function () {
-            location.href = '#/inventoryNew';
+            $rootScope.toNewInvt = 0;
+            location.href = '#/inventoryNew/0';
         };
 
         //get categoryselectData
@@ -65,9 +66,10 @@
         }
     }
     //load catalogList
-    function inventoryListDataCtrl($scope, BaseService) {
+    function inventoryListDataCtrl($rootScope, $scope, BaseService) {
         //console.log("enter");
         var myBaseService = BaseService;
+        var invtListData = "";
         BaseService.getSupplierList()
         .then(function (supplierdata) {
             $.each(supplierdata, function (index, value) {
@@ -99,21 +101,20 @@
                 });
             }, function (data) {
                 alert(data);
-            }
-       )
+            })
+
         })
-
-
-
 
         //click the Stock Card button
         $scope.stockCard = function () {
             location.href = '#/stockcard';
         };
+
         //click the Edit button
-        $scope.edit = function () {
-            console.log($scope.catalogListdata.itemID);
-            location.href = '#/inventoryNew/' + $scope.catalogListdata.itemID;
+        $scope.edit = function (item) {
+            console.log(item);
+            $rootScope.toNewInvt = 1;
+            location.href = '#/inventoryNew/' + item.ItemID;
         };
     }
 })
