@@ -27,6 +27,22 @@
         if ($rootScope.toNewInvt == 0) {
             $scope.Title = "New";
 
+            //load supplier info
+            BaseService.getSupplierList($scope.itemid)
+            .then(function (data) {
+                console.log(data);
+                $.each(data, function (index, value) {
+                    if (value.Rank == 1)
+                        $scope.supplier1 = value.SupplierID;
+                    if (value.Rank == 2)
+                        $scope.supplier2 = value.SupplierID;
+                    if (value.Rank == 3)
+                        $scope.supplier3 = value.SupplierID;
+                })
+            }, function (data) {
+                alert(data);
+            })
+
             //New: click submit
             $scope.submit = function () {
                 console.log("enter");
