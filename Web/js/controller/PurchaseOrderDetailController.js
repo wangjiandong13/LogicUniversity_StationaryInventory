@@ -18,7 +18,11 @@
                         })
                 })
             })
-
+        if ($scope.PoData.Status == "DELIVERED") {
+            $scope.Restockbtn = false;
+        } else {
+            $scope.Restockbtn = true;
+        }
         $scope.Restock = function () {
             
         }
