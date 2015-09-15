@@ -162,13 +162,14 @@
             </div>
             <div>
                 <input class="form-control" type="text" data-tabindex="1" ng-model="additem.descrition">
+                <button type="button"  class="btn btn-default">Search</button>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Item No</th>
+                                <th style="width:150px">Item No</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
@@ -177,17 +178,15 @@
                 <div class="col-md-12" style="height:200px;overflow:auto">
                     <table class="table table-striped">
                         <tr ng-repeat="item in items" ng-click="suppli(item)">
-                            <td>{{item.ItemID}}</td>
+                            <td style="width:150px">{{item.ItemID}}</td>
                             <td>{{item.ItemName}}</td>
                         </tr>
                     </table>
                 </div>
             </div>
-            <button class="btn blue" data-toggle="modal" href="#stack2">Launch modal</button>
         </div>
         <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button type="button" class="btn btn-primary">Ok</button>
         </div>
     </div>
     <div id="ChooseSupplier" class="modal fade" tabindex="-1" data-focus-on="input:first">
@@ -213,23 +212,6 @@
         <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
             <button type="button" class="btn red">Ok</button>
-        </div>
-    </div>
-    <div id="stack3" class="modal fade" tabindex="-1" data-focus-on="input:first">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Stack Three</h4>
-        </div>
-        <div class="modal-body">
-            <p>
-                One fine body…
-            </p>
-            <input class="form-control" type="text" data-tabindex="1">
-            <input class="form-control" type="text" data-tabindex="2">
-        </div>
-        <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button type="button" class="btn green">Ok</button>
         </div>
     </div>
 </div>
