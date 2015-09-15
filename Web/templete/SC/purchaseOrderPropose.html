@@ -24,9 +24,11 @@
                         <h1>Propose Purchase Order</h1>
                     </div>
                     <div class="col-md-6 text-right">
-                        <br><a class="btn default" data-target="#stack1" data-toggle="modal">
-    View Demo
-</a>
+                        <br />
+                        <br />
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            Add Item
+                        </button>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -148,77 +150,23 @@
                 </div>
             </div>
         </div>
-
     </div>
-    <!-- stackable -->
-    <div id="stack1" class="modal fade" tabindex="-1" data-focus-on="input:first">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Stack One</h4>
-        </div>
-        <div class="modal-body">
-            <p>
-                One fine body…
-            </p>
-            <p>
-                One fine body…
-            </p>
-            <p>
-                One fine body…
-            </p>
-            <div class="form-group">
-                <input class="form-control" type="text" data-tabindex="1">
+    <!--//add item-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
-            <div class="form-group">
-                <input class="form-control" type="text" data-tabindex="2">
-            </div>
-            <button class="btn blue" data-toggle="modal" href="#stack2">Launch modal</button>
-        </div>
-        <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button type="button" class="btn btn-primary">Ok</button>
-        </div>
-    </div>
-    <div id="stack2" class="modal fade" tabindex="-1" data-focus-on="input:first">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Stack Two</h4>
-        </div>
-        <div class="modal-body">
-            <p>
-                One fine body…
-            </p>
-            <p>
-                One fine body…
-            </p>
-            <div class="form-group">
-                <input class="form-control" type="text" data-tabindex="1">
-            </div>
-            <div class="form-group">
-                <input class="form-control" type="text" data-tabindex="2">
-            </div>
-            <button class="btn blue" data-toggle="modal" href="#stack3">Launch modal</button>
-        </div>
-        <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button type="button" class="btn red">Ok</button>
-        </div>
-    </div>
-    <div id="stack3" class="modal fade" tabindex="-1" data-focus-on="input:first">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Stack Three</h4>
-        </div>
-        <div class="modal-body">
-            <p>
-                One fine body…
-            </p>
-            <input class="form-control" type="text" data-tabindex="1">
-            <input class="form-control" type="text" data-tabindex="2">
-        </div>
-        <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button type="button" class="btn green">Ok</button>
         </div>
     </div>
     </div>
