@@ -162,7 +162,7 @@
             '/purchaseOrder': {
                 templateUrl: 'SC/purchaseOrder.html',
                 dependencies: [
-                    '../controller/PurchaseOrderController'
+                    '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min', '../controller/PurchaseOrderController'
                 ]
             },
             '/purchaseOrderDetail': {
