@@ -28,9 +28,10 @@
                     $.each(data, function (index, value) {
                         myBaseService.getEmployee(value.EmpId)
                             .then(function (empdata) {
-                                $scope.Requisitions.EmpName = empdata.EmpName;
+                                value.EmpName = empdata.EmpName;
+                            }, function (data) {
+                                alert(data);
                             })
-                        myBaseService.getEmployee(value.EmpId)
                     })
 
                 }, function (data) {
