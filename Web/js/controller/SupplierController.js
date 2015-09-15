@@ -1,6 +1,6 @@
 ﻿define(['app'], function (app) {
-    app.controller('supplierControllers', ['$rootScope', '$scope', 'BaseService', supplierControllers]);
-    function supplierControllers($rootScope, $scope, BaseService) {
+    app.controller('supplierController', ['$rootScope', '$scope', 'BaseService', supplierController]);
+    function supplierController($rootScope, $scope, BaseService) {
         $rootScope.changehighlight(16);
         $scope.ifedit = true;
         $scope.supplierselect={
