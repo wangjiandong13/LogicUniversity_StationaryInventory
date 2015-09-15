@@ -238,7 +238,7 @@
                     '../controller/SupplierdetailController'
                 ]
             },
-            '/suppliernew': {
+            '/suppliernew/:supplierid': {
                 templateUrl: 'SMS/suppliernew.html',
                 dependencies: [
                     '../controller/SuppliernewController'
