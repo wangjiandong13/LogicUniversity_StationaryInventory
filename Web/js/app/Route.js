@@ -213,7 +213,7 @@
                     '../controller/RetrievalUpdateActualController'
                 ]
             },
-            '/stockcard': {
+            '/stockcard/:itemid': {
                 templateUrl: 'SC/stockcard.html',
                 dependencies: [
                     '../controller/StockcardController'
