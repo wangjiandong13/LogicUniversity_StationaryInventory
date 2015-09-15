@@ -1,7 +1,7 @@
 ﻿define(['app'], function (app) {
     app.controller('RequisitionSCControllers', ['$rootScope', '$scope', 'BaseService', RequisitionSCControllers]);
 
-    function RequisitionControllers($rootScope, $scope, BaseService) {
+    function RequisitionSCControllers($rootScope, $scope, BaseService) {
         //sidebar highlight
         $rootScope.changehighlight(8);
 
