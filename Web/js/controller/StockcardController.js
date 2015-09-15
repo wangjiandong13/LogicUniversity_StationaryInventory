@@ -10,20 +10,23 @@
             .then(function (data) {
                 console.log(data);
                 $scope.ItemData = data;
-                myBaseService.getSupplierInfo()
-                       .then(function (supplierdata) {
-                           console.log(supplierdata);
-                           if(supplierdata.Rank == 1)
-                               $scope.ItemData.Supplier1 = supplierdata.SuuplierID;
-                           if (supplierdata.Rank == 2)
-                               $scope.ItemData.Supplier2 = supplierdata.SuuplierID;
-                           if (supplierdata.Rank == 3)
-                               $scope.ItemData.Supplier3 = supplierdata.SuuplierID;
-                       })
             }, function (data) {
                 alert(data);
             }
             )
+
+        BaseService.getSupplierInfo()
+            .then(function (supplierdata) {
+                console.log(supplierdata);
+                $.each(supplierdata, function (index, value) {
+                    if (value.Rank == 1)
+                        $scope.Supplier1 = value.SupplierID;
+                    if (value.Rank == 2)
+                        $scope.Supplier2 = value.SupplierID;
+                    if (value.Rank == 3)
+                        $scope.Supplier3 = value.SupplierID;
+                })
+            })
 
         BaseService.getStockCard($scope.itemid)
             .then(function (data) {

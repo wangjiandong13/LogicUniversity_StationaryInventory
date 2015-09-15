@@ -459,7 +459,7 @@ function service($http, $q) {
     //load requisition list status 'Approved'
     this.getRequisitionApprovedList = function () {
         var deferred = $q.defer();
-        $http.get(baseurl + "requisitionAPI.svc/getRequisition/2/null/null")
+        $http.get(baseurl + "requisitionAPI.svc/getRequisition/2/null/null/null")
             .success(function (data) {
                 deferred.resolve(data)
             })

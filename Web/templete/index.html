@@ -200,11 +200,25 @@
                             <span ng-if="mean.ifDelegate" class="selected"></span>
                         </a>
                     </li>
-                    <li class="{{mean.RequisitionSC}}" ng-if="side.RequistionSC">
+                    <li class="{{mean.RequisitionSC}}" ng-if="side.RequisitionSC">
                         <a href="#/requisitionStoreClerk">
                             <i class="fa fa-file-text-o"></i>
                             <span class="title">Requistion</span>
                             <span ng-if="mean.ifRequisitionSC" class="selected"></span>
+                        </a>
+                    </li>
+                    <li class="{{mean.Retrieval}}" ng-if="side.Retrieval">
+                        <a href="#/retrieval">
+                            <i class="fa fa-cart-arrow-down"></i>
+                            <span class="title">Retrieval</span>
+                            <span ng-if="mean.ifRetrieval" class="selected"></span>
+                        </a>
+                    </li>
+                    <li class="{{mean.DisbursementSC}}" ng-if="side.DisbursementSC">
+                        <a href="#/disbursementStoreClerk">
+                            <i class="fa fa-building"></i>
+                            <span class="title">Disbursement</span>
+                            <span ng-if="mean.ifDisbursementSC" class="selected"></span>
                         </a>
                     </li>
                     <li class="{{mean.Adjustment}}" ng-if="side.Adjustment">
@@ -221,11 +235,18 @@
                             <span ng-if="mean.ifDepartmentSC" class="selected"></span>
                         </a>
                     </li>
-                    <li class="{{mean.DisbursementSC}}" ng-if="side.DisbursementSC">
-                        <a href="#/disbursementStoreClerk">
-                            <i class="fa fa-building"></i>
-                            <span class="title">Disbursement</span>
-                            <span ng-if="mean.ifDisbursementSC" class="selected"></span>
+                    <li class="{{mean.SupplierSC}}" ng-if="side.SupplierSC">
+                        <a href="#/supplierStoreClerk">
+                            <i class="fa fa-truck"></i>
+                            <span class="title">Supplier</span>
+                            <span ng-if="mean.ifSupplierSC" class="selected"></span>
+                        </a>
+                    </li>
+                    <li class="{{mean.Supplier}}" ng-if="side.Suppler">
+                        <a href="#/supplier">
+                            <i class="fa fa-truck"></i>
+                            <span class="title">Supplier</span>
+                            <span ng-if="mean.ifSupplier" class="selected"></span>
                         </a>
                     </li>
                     <li class="{{mean.Inventory}}" ng-if="side.Inventory">
@@ -240,27 +261,6 @@
                             <i class="fa fa-list-alt"></i>
                             <span class="title">Purchase Order</span>
                             <span ng-if="mean.ifPurchaseOrder" class="selected"></span>
-                        </a>
-                    </li>
-                    <li class="{{mean.Retrieval}}" ng-if="side.Retrieval">
-                        <a href="#/retrieval">
-                            <i class="fa fa-cart-arrow-down"></i>
-                            <span class="title">Retrieval</span>
-                            <span ng-if="mean.ifRetrieval" class="selected"></span>
-                        </a>
-                    </li>
-                    <li class="{{mean.SupplierSC}}" ng-if="side.SupplierSC">
-                        <a href="#/supplierStoreClerk">
-                            <i class="fa fa-truck"></i>
-                            <span class="title">Supplier</span>
-                            <span ng-if="mean.ifSupplierSC" class="selected"></span>
-                        </a>
-                    </li>
-                    <li class="{{mean.Supplier}}" ng-if="side.Suppler">
-                        <a href="#/supplier">
-                            <i class="fa fa-truck"></i>
-                            <span class="title">Supplier</span>
-                            <span ng-if="mean.ifSupplier" class="selected"></span>
                         </a>
                     </li>
                     <li class="{{mean.Analytics}}" ng-if="side.Analytics">
