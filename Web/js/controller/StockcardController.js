@@ -20,11 +20,11 @@
                 console.log(supplierdata);
                 $.each(supplierdata, function (index, value) {
                     if (value.Rank == 1)
-                        Supplier1 = value.SupplierID;
+                        $scope.Supplier1 = value.SupplierID;
                     if (value.Rank == 2)
-                        Supplier2 = value.SupplierID;
+                        $scope.Supplier2 = value.SupplierID;
                     if (value.Rank == 3)
-                        Supplier3 = value.SupplierID;
+                        $scope.Supplier3 = value.SupplierID;
                 })
             })
 
