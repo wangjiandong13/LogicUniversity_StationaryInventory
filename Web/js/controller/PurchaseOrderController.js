@@ -52,5 +52,8 @@
                     })
                 })
         }
+        $scope.detail = function (po) {
+            location.href = "#/purchaseOrderDetail/" + po.PoID;
+        }
     }
 });
