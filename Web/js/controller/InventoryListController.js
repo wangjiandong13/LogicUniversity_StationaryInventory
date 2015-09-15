@@ -76,7 +76,8 @@
         $scope.delete = function (item) {
             console.log(item);
             BaseService.deleteItem(item.ItemID)
-            .then(function(data){
+            .then(function (data) {
+                alert('Success!');
                 location.href = '#/inventoryList/';
             }), function (data) {
                 alert(data);
