@@ -188,6 +188,7 @@ namespace BusinessLogic
                 po.EstDate = Convert.ToDateTime(supplier1.First().EstDate).Date;
                 po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
+                ctx.SaveChanges();
 
                 //obtain the PoID of the newly added Po
                 int empID = supplier1.First().EmpID;
@@ -223,6 +224,7 @@ namespace BusinessLogic
                 po.EstDate = Convert.ToDateTime(supplier2.First().EstDate);
                 po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
+                ctx.SaveChanges();
 
                 //obtain the PoID of the newly added Po
                 int empID = supplier2.First().EmpID;
@@ -258,6 +260,7 @@ namespace BusinessLogic
                 po.EstDate = Convert.ToDateTime(supplier3.First().EstDate);
                 po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
+                ctx.SaveChanges();
 
                 //obtain the PoID of the newly added Po
                 int empID = supplier3.First().EmpID;
