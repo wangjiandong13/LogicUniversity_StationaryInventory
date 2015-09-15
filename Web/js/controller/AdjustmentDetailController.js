@@ -3,9 +3,8 @@
     function AdjustmentDetailController($rootScope, $scope, BaseService) {
         $rootScope.changehighlight(9);
 
-        var adjid = $routeParams.adjid;
-        $scope.adjid = adjid;
-        console.log($scope.adjid);
+        var adjid = $rootScope.AdjID;
+        console.log(adjid);
 
         var myBaseService = BaseService;
         BaseService.getAdjVoucherByID(adjid)

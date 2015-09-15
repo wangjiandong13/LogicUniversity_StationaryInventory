@@ -105,7 +105,7 @@
                     '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min', '../controller/AdjustmentController'
                 ]
             },
-            '/adjustmentDetail/:adjid': {
+            '/adjustmentDetail': {
                 templateUrl: 'SC/adjustmentDetail.html',
                 dependencies: [
                     '../controller/AdjustmentDetailController'

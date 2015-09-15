@@ -59,7 +59,8 @@
         };
 
         $scope.adjdetail = function (Adjustment) {
-            location.href = "#/adjustmentDetail/" + Adjustment.AdjID;
+            $rootScope.AdjID = Adjustment.AdjID;
+            location.href = "#/adjustmentDetail";
         };
 
     }
