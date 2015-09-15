@@ -13,9 +13,6 @@
             supplier2Qty: 0,
             supplier3Qty: 0
         }
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').focus()
-        })
         BaseService.getSupplierList()
             .then(function (data) {
                 $scope.additem.supplier1 = data[0].SupplierID;
