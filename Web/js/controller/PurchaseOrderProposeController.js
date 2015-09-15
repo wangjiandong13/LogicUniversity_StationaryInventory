@@ -148,26 +148,31 @@
         $scope.submit = function () {
             var date=$("#datedata").val();
             var msg = [];
-            $.each($scope.listitems, function (index, value) {
-                var each = {
-                    EmpID: $rootScope.UserInfo.EmpId,
-                    EstDate: date,
-                    ItemID: value.ItemID,
-                    ItemName: value.ItemName,
-                    totalQty: value.supplier1Qty + value.supplier2Qty + value.supplier3Qty,
-                    supplier1Qty: value.supplier1Qty,
-                    supplier2Qty: value.supplier2Qty,
-                    supplier3Qty: value.supplier3Qty,
-                };
-                msg.push(each);
-            })
-            console.log(angular.toJson(msg));
-            BaseService.generatePo(angular.toJson(msg))
-                .then(function (data) {
-                    alert(data);
-                }, function (data) {
-                    alert(data);
+            if (date != null && date != "" && msg.length != 0) {
+                $.each($scope.listitems, function (index, value) {
+                    var each = {
+                        EmpID: $rootScope.UserInfo.EmpId,
+                        EstDate: date,
+                        ItemID: value.ItemID,
+                        ItemName: value.ItemName,
+                        totalQty: value.supplier1Qty + value.supplier2Qty + value.supplier3Qty,
+                        supplier1Qty: value.supplier1Qty,
+                        supplier2Qty: value.supplier2Qty,
+                        supplier3Qty: value.supplier3Qty,
+                    };
+                    msg.push(each);
                 })
+                console.log(angular.toJson(msg));
+                BaseService.generatePo(angular.toJson(msg))
+                    .then(function (data) {
+                        alert("Success");
+                    }, function (data) {
+                        alert("Fail");
+                    })
+            }
+            else {
+                alert("data error");
+            }
         }
     }
 })
