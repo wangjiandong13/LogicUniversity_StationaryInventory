@@ -5,6 +5,10 @@
         $scope.listitems = [];
         $scope.addtolistbtn = true;
         $scope.Savebtn = true;
+        $('.date-picker').datepicker({
+            orientation: "left",
+            autoclose: true
+        });
         $scope.supplierName = {
             supplier1: "",
             supplier2: "",
@@ -30,6 +34,7 @@
             })
         $scope.supplier = function (item) {
             openchoosesupplier();
+            ////console.log($('#ChooseSupplier').modal());
             $scope.addtolistbtn = true;
             $scope.Savebtn = false;
             $scope.additem.ItemName = item.ItemName;
@@ -40,16 +45,16 @@
             $scope.addtolistbtn = false;
             $scope.Savebtn = true;
             openchoosesupplier();
-            console.log(item);
+            ////console.log(item);
             $scope.additem.ItemName = item.ItemName;
             $scope.additem.supplier1Qty = item.supplier1Qty;
             $scope.additem.supplier2Qty = item.supplier2Qty;
             $scope.additem.supplier3Qty = item.supplier3Qty;
             $scope.additem.ItemID = item.ItemID;
-            console.log($scope.additem);
+            ////console.log($scope.additem);
         }
         function openchoosesupplier() {
-            $('#ChooseSupplier').modal('show');
+                $('#ChooseSupplier').modal('toggle');
         }
         function closechoosesupplier() {
             $('#ChooseSupplier').modal('hide');
@@ -76,6 +81,8 @@
                 $.each($scope.listitems, function (index, value) {
                     if (value.ItemID == $scope.additem.ItemID) {
                         value.supplier1Qty = value.supplier1Qty + $scope.additem.supplier1Qty;
+                        value.supplier2Qty = value.supplier2Qty + $scope.additem.supplier2Qty;
+                        value.supplier3Qty = value.supplier3Qty + $scope.additem.supplier3Qty;
                     }
                 })
             }
@@ -127,13 +134,46 @@
         function checkifinlist() {
             var str_return = false;
             $.each($scope.listitems, function (index, value) {
-                console.log(value);
-                console.log($scope.additem.ItemID);
+                ////console.log(value);
+                ////console.log($scope.additem.ItemID);
                 if (value.ItemID == $scope.additem.ItemID) {
                     str_return = true;
                 }
             })
             return str_return;
+        }
+        $scope.cancelbtn = function () {
+            location.href = "#/purchaseOrder";
+        }
+        $scope.submit = function () {
+            var date=$("#datedata").val();
+            var msg = [];
+            if (date != null && date != "" && $scope.listitems.length != 0) {
+                $.each($scope.listitems, function (index, value) {
+                    var each = {
+                        EmpID: $rootScope.UserInfo.EmpId,
+                        EstDate: date,
+                        ItemID: value.ItemID,
+                        ItemName: value.ItemName,
+                        totalQty: value.supplier1Qty + value.supplier2Qty + value.supplier3Qty,
+                        supplier1Qty: value.supplier1Qty,
+                        supplier2Qty: value.supplier2Qty,
+                        supplier3Qty: value.supplier3Qty,
+                    };
+                    msg.push(each);
+                })
+                //console.log(angular.toJson(msg));
+                BaseService.generatePo(angular.toJson(msg))
+                    .then(function (data) {
+                        alert("Success");
+                        location.href = "#/purchaseOrder";
+                    }, function (data) {
+                        alert("Fail");
+                    })
+            }
+            else {
+                alert("data error");
+            }
         }
     }
 })

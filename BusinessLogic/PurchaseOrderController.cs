@@ -188,6 +188,7 @@ namespace BusinessLogic
                 po.EstDate = Convert.ToDateTime(supplier1.First().EstDate).Date;
                 po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
+                ctx.SaveChanges();
 
                 //obtain the PoID of the newly added Po
                 int empID = supplier1.First().EmpID;
@@ -197,7 +198,7 @@ namespace BusinessLogic
                 double totalamt = 0;
 
                 //create and add poDetail to db
-                foreach (ProposePo proposepo in proposePoList)
+                foreach (ProposePo proposepo in supplier1)
                 {
                     PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
                     poDetail.PoID = poLastID;
@@ -217,12 +218,13 @@ namespace BusinessLogic
             {
                 //create and add new po to db
                 PurchaseOrder po = new PurchaseOrder();
-                po.SupplierID = supplier1ID;
+                po.SupplierID = supplier2ID;
                 po.EmpID = supplier2.First().EmpID;
                 po.Date = DateTime.Now;
                 po.EstDate = Convert.ToDateTime(supplier2.First().EstDate);
                 po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
+                ctx.SaveChanges();
 
                 //obtain the PoID of the newly added Po
                 int empID = supplier2.First().EmpID;
@@ -232,7 +234,7 @@ namespace BusinessLogic
                 double totalamt = 0;
 
                 //create and add poDetail to db
-                foreach (ProposePo proposepo in proposePoList)
+                foreach (ProposePo proposepo in supplier2)
                 {
                     PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
                     poDetail.PoID = poLastID;
@@ -252,12 +254,13 @@ namespace BusinessLogic
             {
                 //create and add new po to db
                 PurchaseOrder po = new PurchaseOrder();
-                po.SupplierID = supplier1ID;
+                po.SupplierID = supplier3ID;
                 po.EmpID = supplier3.First().EmpID;
                 po.Date = DateTime.Now;
                 po.EstDate = Convert.ToDateTime(supplier3.First().EstDate);
                 po.Status = "PENDING";
                 ctx.PurchaseOrder.Add(po);
+                ctx.SaveChanges();
 
                 //obtain the PoID of the newly added Po
                 int empID = supplier3.First().EmpID;
@@ -267,7 +270,7 @@ namespace BusinessLogic
                 double totalamt = 0;
 
                 //create and add poDetail to db
-                foreach (ProposePo proposepo in proposePoList)
+                foreach (ProposePo proposepo in supplier3)
                 {
                     PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
                     poDetail.PoID = poLastID;
