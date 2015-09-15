@@ -166,6 +166,7 @@
                 BaseService.generatePo(angular.toJson(msg))
                     .then(function (data) {
                         alert("Success");
+                        location.href = "#/purchaseOrder";
                     }, function (data) {
                         alert("Fail");
                     })
