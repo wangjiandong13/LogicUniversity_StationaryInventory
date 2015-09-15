@@ -75,5 +75,11 @@ namespace RestService
                                     BodyStyle = WebMessageBodyStyle.Bare,
                                     UriTemplate = "/getItemPrice/{itemID}")]
         List<Model.ItemPrice> getItemPrice(string ItemID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                    BodyStyle = WebMessageBodyStyle.Bare,
+                                    UriTemplate = "/deleteItem/{ItemID}")]
+        bool deleteItem(string ItemID)
     }
 }

@@ -48,6 +48,23 @@ namespace RestService
             }
         }
 
+        public bool deleteItem(string ItemID)
+        {
+            BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
+            if (BL.deleteItem(ItemID))
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.OK;
+                return true;
+            }
+            else
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return false;
+            }
+        }
+
         public List<Item> getItem()
         {
             BusinessLogic.InventoryController BL = new BusinessLogic.InventoryController();
