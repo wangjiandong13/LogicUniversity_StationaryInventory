@@ -62,7 +62,7 @@
 
         //click the Stock Card button
         $scope.stockCard = function (item) {
-            location.href = '#/stockcard' + item.ItemID;
+            location.href = '#/stockcard/' + item.ItemID;
         };
 
         //click the Edit button
