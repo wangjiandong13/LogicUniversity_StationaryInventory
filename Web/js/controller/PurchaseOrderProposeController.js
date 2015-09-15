@@ -3,6 +3,8 @@
     function PurchaseOrderProposeControllers($scope, $rootScope, BaseService) {
         $rootScope.changehighlight(13);
         $scope.listitems = [];
+        $scope.addtolistbtn = true;
+        $scope.Savebtn = true;
         $scope.additem = {
             ItemName: "",
             ItemID: "",
@@ -20,7 +22,8 @@
                 $scope.additem.supplier3 = data[2].SupplierID;
             })
         $scope.supplier = function (item) {
-            console.log("$scope.supplier");
+            $scope.addtolistbtn = true;
+            $scope.Savebtn = false;
             $('#ChooseSupplier').modal('show');
             $scope.additem.ItemName = item.ItemName;
             $scope.additem.supplier1Qty = item.RoQty;
@@ -56,7 +59,9 @@
         $scope.addtolist = function () {
             if (checkifinlist()) {
                 $.each($scope.listitems, function (index, value) {
-                    value.supplier1Qty += $scope.listitems.supplier1Qty;
+                    if (value.ItemID == $scope.additem.ItemID) {
+                        value.supplier1Qty = value.supplier1Qty + $scope.additem.supplier1Qty;
+                    }
                 })
             }
             else{
@@ -84,13 +89,19 @@
             })
             $scope.listitems = car;
         }
+        $scope.save = function () {
+
+        }
         function checkifinlist() {
+            var str_return = false;
             $.each($scope.listitems, function (index, value) {
-                if (value.ItemID == $scope.additem) {
-                    return true;
+                console.log(value);
+                console.log($scope.additem.ItemID);
+                if (value.ItemID == $scope.additem.ItemID) {
+                    str_return= true;
                 }
             })
-            return false;
+            return str_return;
         }
     }
 })
