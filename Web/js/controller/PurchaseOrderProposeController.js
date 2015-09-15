@@ -143,7 +143,7 @@
             return str_return;
         }
         $scope.cancelbtn = function () {
-            $('#ChooseSupplier').modal('show');
+            location.href = "#/purchaseOrder";
         }
         $scope.submit = function () {
             var date=$("#datedata").val();
