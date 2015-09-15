@@ -54,7 +54,7 @@
             $scope.Title = "Edit";
 
             //load item data
-            BaseService.getItemDetail(itemid)
+            BaseService.getItemDetail($scope.itemid)
             .then(function (data) {
                 console.log(data);
                 $scope.ItemDesc = data.ItemName;
@@ -68,7 +68,7 @@
                 alert(data);
             })
             //load itemPrice data
-            BaseService.getItemPrice(itemid)
+            BaseService.getItemPrice($scope.itemid)
             .then(function (data) {
                 console.log(data);
                 $scope.supplier1 = data[0].SupplierID;
