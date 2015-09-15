@@ -3,10 +3,10 @@
     function AdjustmentController($rootScope, $scope, BaseService) {
         $rootScope.changehighlight(9);
 
-        $('.date-picker').datepicker({
-            orientation: "left",
-            autoclose: true
-        });
+        //$('.date-picker').datepicker({
+        //    orientation: "left",
+        //    autoclose: true
+        //});
         $scope.search = function () {
             var startDate = $("#datestartdata").val();
             if (startDate == "") { startDate = "null"; }
