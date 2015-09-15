@@ -15,6 +15,15 @@
             .then(function (data) {
                 console.log(data);
                 $scope.Requisitions = data;
+                $.each($scope.Requisitions, function (index, value) {
+                    console.log(value.EmpID);
+                    myBaseService.getEmployee(value.EmpID)
+                        .then(function (empdata) {
+                            value.EmpName = empdata.EmpName;
+                        }, function (data) {
+                            alert(data);
+                        })
+                })
             }, function (data) {
                 alert(data);
             })
