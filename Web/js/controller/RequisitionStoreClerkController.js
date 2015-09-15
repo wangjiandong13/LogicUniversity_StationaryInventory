@@ -59,7 +59,16 @@
 
         //process btn
         $scope.process = function () {
-            msg = [];
+            var msg = [];
+            $.each($scope.Requisitions, function (index, value) {
+                if (value.checkbox == true) {
+                    var each = {
+                        EmpID: $rootScope.UserInfo.EmpId,
+                        ReqID: value.ReqID,
+                    };
+                    msg.push(each);
+                }
+            })
             BaseService.createRetrieval(msg)
                 .then(function (data) {
                     alert('Success!');
