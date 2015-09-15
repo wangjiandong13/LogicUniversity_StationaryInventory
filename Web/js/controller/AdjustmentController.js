@@ -34,6 +34,8 @@
                 }
                 )
         }
+
+        msg = { "AdjID": "null", "startDate": "null", "endDate": "null" };
         var myBaseService = BaseService;
         BaseService.getAdjList(msg)
             .then(function (data) {
