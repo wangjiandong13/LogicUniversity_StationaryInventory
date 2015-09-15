@@ -45,7 +45,7 @@
             availableOptions: [{ id: '2', name: 'Approved' },
                                 { id: '3', name: 'Processed' },
                                 { id: '4', name: 'Collected' }],
-            selectedOption: { id: '2', name: 'Approved' }
+            selectedOption: { value: '2', text: 'Approved' }
         };
 
     }
