@@ -103,19 +103,18 @@
                 alert(data);
             })
 
-            //click the Edit button
-            $scope.edit = function () {
-                console.log($scope.inventoryListdata.itemID);
-                $rootScope.toNewInvt = 1;
-                location.href = '#/inventoryNew/' + $scope.inventoryListdata.itemID;
-            };
-
         })
 
         //click the Stock Card button
         $scope.stockCard = function () {
             location.href = '#/stockcard';
         };
-        
+
+        //click the Edit button
+        $scope.edit = function () {
+            console.log(inventoryListdata.itemID);
+            $rootScope.toNewInvt = 1;
+            location.href = '#/inventoryNew/' + inventoryListdata.itemID;
+        };
     }
 })
