@@ -26,7 +26,7 @@
                 }
                 )
 
-        var msgAdjId = { "AdjID": adjid };
+        var msgAdjId = { "adjId": adjid };
         BaseService.getAdjDetail(msgAdjId)
             .then(function (data) {
                 console.log(data);
