@@ -105,6 +105,15 @@
                alert(data);
            })
 
+        $scope.generate = function () {
+            BaseService.createDisbursement($rootScope.UserInfo.EmpId)
+            .then(function (data) {
+                alert('Success!');
+                location.href = "#/disbursementDetailStoreClerk";
+            }, function (data) {
+                alert(data);
+            })
+        };
     }
 
 });
