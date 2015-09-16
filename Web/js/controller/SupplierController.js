@@ -23,8 +23,8 @@
 
         if ($rootScope.UserInfo.RoleId == "SS" || $rootScope.UserInfo.RoleId == "SM") {
             $scope.setting = {
-                ifedit: false,
-                editPrioritybtn: false,
+                ifedit: true,
+                editPrioritybtn: true,
                 savePrioritybtn: false,
                 disablebox: true,
                 saveDetailbtn: false,
