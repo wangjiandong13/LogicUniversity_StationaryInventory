@@ -23,7 +23,7 @@
                     <div class="col-md-1">
                         <label>Department:</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <select class="form-control"
                                 name="deptselect" id="deptselect"
                                 ng-options="option.DeptName for option in optiondataDept.availableOptions track by option.DeptID"
@@ -32,13 +32,13 @@
                     <div class="col-md-1">
                         <label>Collection:</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <select class="form-control"
                                 name="CPselect" id="CPselect"
                                 ng-options="option.CPName for option in optiondataCPID.availableOptions track by option.CPID"
                                 ng-model="optiondataCPID.selectedOption"></select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <input type="text" class="form-control" placeholder="Enter Disbursement No." ng-model="DisID">
                     </div>
                     <div class="col-md-2">

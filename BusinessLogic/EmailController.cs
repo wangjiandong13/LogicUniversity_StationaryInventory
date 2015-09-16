@@ -26,31 +26,29 @@ namespace BusinessLogic
             var name = (from n in ctx.Employee
                         where n.EmpID == Convert.ToInt32(empid)
                         select n.EmpName).First();
-            string email = "logicuniversity.depthead@gmail.com";
-            MailMessage mail = new MailMessage();
-            mail.To.Add(email); //logicuniversity.depthead@gmail.com
-            //mail.To.Add(email);
-            //mail.CC.Add(CC);
-            //mail.Bcc.Add(BCC);
+            string email = "logicuniversity.depthead@hotmail.com";
+            try
+            {
+                SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
+                var mail = new MailMessage();
+                mail.From = new MailAddress("logicuniversity.team5@hotmail.com");
+                mail.To.Add(email);
+                mail.Subject = string.Format("Hi Department Head, new request has been made by {0}.", name);
+                mail.IsBodyHtml = true;
+                string htmlBody;
+                htmlBody = string.Format("Please process the pending requisition forms");
+                mail.Body = htmlBody;
+                SmtpServer.Port = 25;
+                SmtpServer.UseDefaultCredentials = false;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("logicuniversity.team5@hotmail.com", "logicuniversity123");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
 
-            mail.From = new MailAddress("logicuniversity.team5@gmail.com");
-
-            string subject = string.Format("Hi Department Head, new request has been made by {0}.", name);
-            mail.Subject = subject;
-
-            string Body = string.Format("Please process the pending requisition forms");
-            mail.Body = Body;
-
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
-            smtp.Port = 587;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential
-            ("logicuniversity.team5@gmail.com", "logicuniversity123");
-
-            //Or your Smtp Email ID and Password
-            smtp.EnableSsl = true;
-            smtp.Send(mail);
+            }
+            catch (SmtpException ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
         }
 
@@ -68,30 +66,28 @@ namespace BusinessLogic
                    select n).First();
 
             string email = emp.Email;
-            MailMessage mail = new MailMessage();
-            mail.To.Add(email); //logicuniversity.depthead@gmail.com
-            //mail.To.Add(email);
-            //mail.CC.Add(CC);
-            //mail.Bcc.Add(BCC);
+            try
+            {
+                SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
+                var mail = new MailMessage();
+                mail.From = new MailAddress("logicuniversity.depthead@hotmail.com");
+                mail.To.Add(email);
+                mail.Subject = string.Format("Your requesition - {0} .", status);
+                mail.IsBodyHtml = true;
+                string htmlBody;
+                htmlBody = string.Format("Hi {0}, your requesition form has been {1} .", emp.EmpName, status);
+                mail.Body = htmlBody;
+                SmtpServer.Port = 25;
+                SmtpServer.UseDefaultCredentials = false;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("logicuniversity.depthead@hotmail.com", "logicuniversity123");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
 
-            mail.From = new MailAddress("logicuniversity.depthead@gmail.com");
-
-            string subject = string.Format("Your requesition - {0} .", status);
-            mail.Subject = subject;
-
-            string Body = string.Format("Hi {0}, your requesition form has been {1} .", emp.EmpName, status);
-            mail.Body = Body;
-
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
-            smtp.Port = 587;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential
-            ("logicuniversity.depthead@gmail.com", "logicuniversity123");
-
-            //Or your Smtp Email ID and Password
-            smtp.EnableSsl = true;
-            smtp.Send(mail);
+            }
+            catch (SmtpException ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
         }
     }
