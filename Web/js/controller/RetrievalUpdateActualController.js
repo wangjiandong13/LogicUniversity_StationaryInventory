@@ -84,7 +84,7 @@
             BaseService.submitRetrieval(angular.toJson(msg))
             .then(function (data) {
                 alert('Saved Successfully!');
-                location.href = "#/retrievalDetailReq/" + retid;
+                location.href = "#/retrievalAllocation/" + retid;
             }, function (data) {
                 alert(data);
             })
