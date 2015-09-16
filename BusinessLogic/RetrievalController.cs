@@ -249,8 +249,13 @@ namespace BusinessLogic
                     else
                         reqAllocation.Priority = "LOW";
                     reqAllocation.RequestQty = (int) reqDetail.RequestQty;
-                    reqAllocation.IssueQty = (int)reqDetail.IssueQty;
-
+                    if (reqDetail.IssueQty == null)
+                    {
+                        reqAllocation.IssueQty = 0;
+                    }
+                    else {
+                        reqAllocation.IssueQty = (int)reqDetail.IssueQty;
+                    }
                     reqAllocationList.Add(reqAllocation);
                 }
             }

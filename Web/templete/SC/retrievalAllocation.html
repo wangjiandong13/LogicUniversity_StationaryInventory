@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="RetrievalAllocationControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -57,7 +57,7 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" ng-repeat="Rd in RetrievalDetail">
                             <div class="col-md-5">
                                 <table class="table table-striped table-hover">
                                     <thead>
@@ -71,7 +71,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>7</td>
+                                            <td>{{Rd.}}</td>
                                             <td>0013</td>
                                             <td>Staplet</td>
                                             <td>9</td>
