@@ -9,13 +9,29 @@
         $scope.supplier1 = {};
         $scope.supplier2 = {};
         $scope.supplier3 = {};
-        $scope.setting = {
-            ifedit: true,
-            editPrioritybtn: true,
-            savePrioritybtn: false,
-            disablebox: true,
-            saveDetailbtn: false,
+
+        if ($rootScope.UserInfo.RoleId == "SC") {
+            $scope.setting = {
+                ifedit: false,
+                editPrioritybtn: false,
+                savePrioritybtn: false,
+                //disablebox: true,
+                saveDetailbtn: false,
+                editSupplierRank: false,
+            }
         }
+
+        if ($rootScope.UserInfo.RoleId == "SS" || $rootScope.UserInfo.RoleId == "SM") {
+            $scope.setting = {
+                ifedit: false,
+                editPrioritybtn: false,
+                savePrioritybtn: false,
+                disablebox: true,
+                saveDetailbtn: false,
+                editSupplierRank: true,
+            }
+        }
+
         BaseService.getSupplierList()
             .then(function (data) {
                 $scope.supplierselect.availableOptions = data;
