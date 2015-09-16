@@ -64,7 +64,7 @@
                             <tbody>
                                 <tr ng-repeat="Retrieval in Retrievals" ng-click="retrievaldetail(Retrieval)">
                                     <td>{{Retrieval.RetID}}</td>
-                                    <td>{{Retrieval.Date}}</td>
+                                    <td>{{Retrieval.Date|datechange|date : 'dd MMM yyyy'}}</td>
                                     <td>{{Retrieval.EmpName}}</td>
                                     <td>{{Retrieval.Status}}</td>
                                 </tr>
