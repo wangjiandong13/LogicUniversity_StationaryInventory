@@ -79,7 +79,12 @@
 
         $scope.retrievaldetail = function (Retrieval) {
             console.log(Retrieval.RetID);
-            location.href = "#/retrievalUpdateActual/" + Retrieval.RetID;
+            if (Retrieval.Status == "PENDING") {
+                location.href = "#/retrievalUpdateActual/" + Retrieval.RetID;
+            }
+            else {
+                location.href = "#/retrievalDetailReq/" + Retrieval.RetID;
+            }
         };
 
     }
