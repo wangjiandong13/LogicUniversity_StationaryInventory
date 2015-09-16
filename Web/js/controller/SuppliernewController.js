@@ -1,6 +1,6 @@
 ﻿define(['app'], function (app) {
-    app.controller('SuppliernewController', ['$rootScope', '$scope', 'BaseService', SuppliernewController]);
-    function SuppliernewController($rootScope, $scope, BaseService) {
+    app.controller('SuppliernewController', ['$rootScope', '$scope', 'BaseService', '$routeParams', SuppliernewController]);
+    function SuppliernewController($rootScope, $scope, BaseService, $routeParams) {
         $rootScope.changehighlight(16);
 
         var supplierid = $routeParams.supplierid;
