@@ -179,6 +179,18 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+    //set Requisition priority
+    this.setReqPriority = function (ReqID, PriorityID, Remark) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "requisitionAPI.svc/setReqPriority/" + ReqID + "/" + PriorityID + "/" + Remark)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 
 
     //catalogList.hmtl OR catalogTile.html
@@ -749,7 +761,18 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
-
+    //get adjustment by adjID //POST
+    this.getAdjVoucherByID = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "adjustvoucherAPI.svc/getAdjVoucherByID", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 
     //departmentStoreclerk.html
     //load department list
@@ -798,6 +821,44 @@ function service($http, $q) {
     this.createItemPrice = function (msg) {
         var deferred = $q.defer();
         $http.post(baseurl + "inventoryAPI.svc/createItemPrice", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
+    //inventory edit
+    //update item //POST
+    this.updateItemInv = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "inventoryAPI.svc/updateItem", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //update itemPrice //POST
+    this.updateItemPriceInv = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "inventoryAPI.svc/updateItemPrice", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //delete item 
+    this.deleteItem = function (ItemID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "inventoryAPI.svc/deleteItem/" + ItemID)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -959,6 +1020,19 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+    //Edit Supplier.html
+    //load supplier info by SupplierID
+    this.getBySupplierID = function (supplierid) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "supplierAPI.svc/getBySupplierID/" + supplierid)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 
 
     //supplierNew.html
@@ -1034,11 +1108,48 @@ function service($http, $q) {
         return deferred.promise;
     }
 
-    //Edit Supplier.html
-    //load supplier info by SupplierID
-    this.getBySupplierID = function (supplierid) {
+
+    //Analytics API
+    //Get Reports 
+    this.getReports = function () {
         var deferred = $q.defer();
-        $http.get(baseurl + "supplierAPI.svc/getBySupplierID/" + supplierid)
+        $http.get(baseurl + "analyticsAPI.svc/getReports")
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //Update Report //POST
+    this.updateReport = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "analyticsAPI.svc/updateReport", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //Update Report //POST
+    this.generateNewReport = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "analyticsAPI.svc/generateNewReport", msg)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+    //Generate Existing Report 
+    this.generateExistingReport = function (reportID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "analyticsAPI.svc/generateExistingReport/" + reportID)
             .success(function (data) {
                 deferred.resolve(data)
             })
@@ -1048,71 +1159,6 @@ function service($http, $q) {
         return deferred.promise;
     }
 
-    //set Requisition priority
-    this.setReqPriority = function (ReqID, PriorityID, Remark) {
-        var deferred = $q.defer();
-        $http.get(baseurl + "requisitionAPI.svc/setReqPriority/"+ ReqID +"/"+ PriorityID +"/"+ Remark)
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-
-
-    //inventory edit
-    //update item //POST
-    this.updateItemInv = function (msg) {
-        var deferred = $q.defer();
-        $http.post(baseurl + "inventoryAPI.svc/updateItem", msg)
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-    //update itemPrice //POST
-    this.updateItemPriceInv = function (msg) {
-        var deferred = $q.defer();
-        $http.post(baseurl + "inventoryAPI.svc/updateItemPrice", msg)
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-    //delete item 
-    this.deleteItem = function (ItemID) {
-        var deferred = $q.defer();
-        $http.get(baseurl + "inventoryAPI.svc/deleteItem/" + ItemID)
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
-
-    //adjustmentDetail.html
-    //get adjustment by adjID //POST
-    this.getAdjVoucherByID = function (msg) {
-        var deferred = $q.defer();
-        $http.post(baseurl + "adjustvoucherAPI.svc/getAdjVoucherByID", msg)
-            .success(function (data) {
-                deferred.resolve(data)
-            })
-            .error(function () {
-                deferred.reject('There was an error')
-            })
-        return deferred.promise;
-    }
 }
 
 
