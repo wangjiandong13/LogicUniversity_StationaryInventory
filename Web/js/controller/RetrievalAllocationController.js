@@ -1,7 +1,7 @@
 ﻿define(['app'], function (app) {
-    app.controller('RetrievalAllocationControllers', ['$rootScope', '$scope', 'BaseService', RetrievalAllocationControllers]);
+    app.controller('RetrievalAllocationControllers', ['$rootScope', '$scope', 'BaseService', '$routeParams', RetrievalAllocationControllers]);
 
-    function RetrievalAllocationControllers($rootScope, $scope, BaseService) {
+    function RetrievalAllocationControllers($rootScope, $scope, BaseService, $routeParams) {
         var RetID = 1017;
         $rootScope.changehighlight(14);
 
