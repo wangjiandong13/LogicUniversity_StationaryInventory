@@ -21,10 +21,10 @@
 
         //status combobox
         $scope.statusSelect = {
-            availableOptions: [{ id: '0', name: 'ALL' },
-                                { id: '1', name: 'PENDING' },
-                                { id: '2', name: 'RETRIEVED' }],
-            selectedOption: { id: '0', name: 'All' }
+            availableOptions: [{ id: 0, name: 'ALL' },
+                                { id: 1, name: 'PENDING' },
+                                { id: 2, name: 'RETRIEVED' }],
+            selectedOption: { id:0, name: 'All' }
         };
 
         //search btn
@@ -34,7 +34,7 @@
             if (empid == 0) { empid = "null"; }
             console.log("EmpID >>> " + empid);
             var status = $scope.statusSelect.selectedOption.name;
-            if (status == "ALL") { status = "null"; }
+            if ($scope.statusSelect.selectedOption.id == 0) { status = "null"; }
             console.log("status >>> " + status);
             var RetID = $scope.RetrievalNo;
             if (RetID == null || RetID == "") { RetID = "null"; }
@@ -79,7 +79,12 @@
 
         $scope.retrievaldetail = function (Retrieval) {
             console.log(Retrieval.RetID);
-            location.href = "#/retrievalUpdateActual/" + Retrieval.RetID;
+            if (Retrieval.Status == "PENDING") {
+                location.href = "#/retrievalUpdateActual/" + Retrieval.RetID;
+            }
+            else {
+                location.href = "#/retrievalDetailReq/" + Retrieval.RetID;
+            }
         };
 
     }
