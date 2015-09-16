@@ -21,12 +21,10 @@ namespace BusinessLogic
         /// Send Email to Dept Head when emp submit new request form
         /// </summary>
         /// <param name="empid">Employee ID</param>
-        public void SendMailToEmpHead(string empid)
+        public void SendMailToEmpHead(int empid)
         {
-            int id = Convert.ToInt32(empid);
-            string name = (from n in ctx.Employee
-                        where n.EmpID == id
-                        select n.EmpName).First();
+            Employee emp = ctx.Employee.Where(x=> x.EmpID == empid).FirstOrDefault();
+
             string email = "logicuniversity.depthead@hotmail.com";
             try
             {
@@ -34,7 +32,7 @@ namespace BusinessLogic
                 var mail = new MailMessage();
                 mail.From = new MailAddress("logicuniversity.team5@hotmail.com");
                 mail.To.Add(email);
-                mail.Subject = string.Format("Hi Department Head, new request has been made by {0}.", name);
+                mail.Subject = string.Format("Hi Department Head, new request has been made by {0}.", emp.EmpName);
                 mail.IsBodyHtml = true;
                 string htmlBody;
                 htmlBody = string.Format("Please process the pending requisition forms");
