@@ -1,4 +1,3 @@
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.csprojResolveAssemblyReference.cache
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\RestService.dll.config
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\RestService.dll
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\RestService.pdb
@@ -14,5 +13,6 @@ C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInvento
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\EntityFramework.SqlServer.xml
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\Newtonsoft.Json.xml
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\bin\TrackableEntities.Common.xml
+C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.csprojResolveAssemblyReference.cache
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.dll
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\RestService\obj\Debug\RestService.pdb

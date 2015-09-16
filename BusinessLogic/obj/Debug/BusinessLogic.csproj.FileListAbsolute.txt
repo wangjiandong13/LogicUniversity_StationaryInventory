@@ -33,7 +33,6 @@ C:\Users\robin\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\
 C:\Users\robin\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\robin\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.dll
 C:\Users\robin\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.pdb
-C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\BusinessLogic.dll.config
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\BusinessLogic.dll
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\BusinessLogic.pdb
@@ -47,5 +46,6 @@ C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInvento
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\bin\Debug\TrackableEntities.Common.xml
+C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.dll
 C:\Users\Jiandong\Documents\GitHubVisualStudio\LogicUniversity_StationaryInventory\BusinessLogic\obj\Debug\BusinessLogic.pdb
