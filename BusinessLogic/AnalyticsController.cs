@@ -662,7 +662,7 @@ namespace BusinessLogic
 
             List<ReportResult> input = generateExistingReport(reportID);
 
-            // codes to swap subject and monthyear in results (for web display purpose)
+            // codes to swap subject and monthyear in results (for mobile display purpose)
             List<ReportResult> newReportResult = new List<ReportResult>();
             List<String> subjects = new List<String>();
             List<String> monthYears = new List<String>();
@@ -689,6 +689,65 @@ namespace BusinessLogic
                     ri.Qty = reportItems[j].Qty;
 
                     newReportResult[j].ReportItems.Add(ri);
+                }
+            }
+
+            return newReportResult;
+        }
+
+        public List<ReportResultWeb> generateExistingReportStyle3(string reportID, string type)
+        {
+
+            List<ReportResult> generateResult = generateExistingReport(reportID);
+            List<ReportResultWeb> input = new List<ReportResultWeb>();
+            foreach (ReportResult r in generateResult)
+            {
+                ReportResultWeb rw = new ReportResultWeb();
+                rw.key = r.MonthYear;
+                rw.values = new List<ReportResultItemsWeb>();
+                foreach(ReportResultItems ri in r.ReportItems)
+                {
+                    ReportResultItemsWeb rwi = new ReportResultItemsWeb();
+                    rwi.x = ri.Subject;
+                    if (type.ToLower() == "qty")
+                    {
+                        rwi.y = ri.Qty;
+                    }
+                    else
+                    {
+                        rwi.y = ri.Price;
+                    }
+                    rw.values.Add(rwi);
+                }
+                input.Add(rw);
+            }
+
+            // codes to swap subject and monthyear in results (for web display purpose)
+            List<ReportResultWeb> newReportResult = new List<ReportResultWeb>();
+            List<String> subjects = new List<String>();
+            List<String> monthYears = new List<String>();
+
+            for (int j = 0; j < input[0].values.Count; j++)
+            {
+                subjects.Add(input[0].values.ToList()[j].x);
+                ReportResultWeb r = new ReportResultWeb();
+                r.key = input[0].values.ToList()[j].x;
+                r.values = new List<ReportResultItemsWeb>();
+                newReportResult.Add(r);
+            }
+
+            for (int i = 0; i < input.Count; i++)
+            {
+                List<ReportResultItemsWeb> reportItems = input[i].values.ToList();
+
+                for (int j = 0; j < reportItems.Count; j++)
+                {
+                    //mth year price qty items
+                    ReportResultItemsWeb ri = new ReportResultItemsWeb();
+                    ri.x = input[i].key;
+                    ri.y = reportItems[j].y;
+
+                    newReportResult[j].values.Add(ri);
                 }
             }
 
