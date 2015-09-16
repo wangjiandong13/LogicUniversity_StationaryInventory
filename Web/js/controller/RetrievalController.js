@@ -30,12 +30,14 @@
         //search btn
         var myBaseService = BaseService;
         $scope.search = function () {
-            var status = $scope.statusSelect.selectedOption.id;
-            if (status == 0) { status = "null"; }
+            var empid = $scope.optiondata.selectedOption.EmpID;
+            if (empid == 0) { status = "null"; }
+            var status = $scope.statusSelect.selectedOption.name;
+            if (status == "ALL") { status = "null"; }
             var RetID = $scope.RetrievalNo;
             if (RetID == null || RetID == "") { RetID = "null"; }
             console.log(RetID);
-            BaseService.getRetrievalListBySC("null", status, RetID)
+            BaseService.getRetrievalListBySC(empid, status, RetID)
             .then(function (data) {
                 console.log(data);
                 $scope.Retrievals = data;
