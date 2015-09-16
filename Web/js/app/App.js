@@ -1,8 +1,8 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
     //console.log("enter app");
     var app = angular.module('app', ['ngRoute', 'BaseServices']);
-    app.controller('BodyCotroller', ['$rootScope', '$window', BodyCotroller]);
-    function BodyCotroller($rootScope, $window) {
+    app.controller('BodyCotroller', ['$rootScope','$scope', '$window', BaseService, BodyCotroller]);
+    function BodyCotroller($rootScope,$scope, $window, BaseService) {
         $rootScope.mean = {
             Requistion: "",
             Catalog: "",
@@ -235,6 +235,19 @@
             $window.sessionStorage.removeItem("RoleID");
             location.href = "/";
         }
+        BaseService.getNotificationList($rootScope.UserInfo.EmpId)
+            .then(function (data) {
+                $scope.NotificationList = data;
+                $.each($scope.NotificationList, function (index, value) {
+                    if (value.Status == "READ") {
+                        value.isRead = true;
+                    }
+                    else {
+                        value.isRead = false;
+                    }
+                })
+            }
+            )
 
     }
     app.config(
