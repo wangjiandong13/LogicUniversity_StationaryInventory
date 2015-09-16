@@ -4383,6 +4383,7 @@
     <Content Include="img\logo\logo_50.png" />
     <Content Include="img\logo\logo_500.png" />
     <Content Include="img\logo\logo_500_word.png" />
+    <Content Include="img\logo_500_word.png" />
     <Content Include="img\status\1.png" />
     <Content Include="img\status\2.png" />
     <Content Include="img\status\3.png" />
@@ -4881,6 +4882,7 @@
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="css\" />
+    <Folder Include="img\singnatures\" />
     <Folder Include="js\main\" />
   </ItemGroup>
   <PropertyGroup>
