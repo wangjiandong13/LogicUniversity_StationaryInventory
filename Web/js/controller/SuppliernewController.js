@@ -16,7 +16,7 @@
                 .then(function (data) {
                     alert('Success!');
                 }, function(data){
-
+                    alert(data);
                 })
             }
         }
@@ -33,7 +33,13 @@
             })
 
             $scope.save = function () {
-
+                msg = { SupplierID: $scope.Supplier.SupplierID, SupplierName: $scope.Supplier.SupplierName, Contact: $scope.Supplier.Contact, RegNo: $scope.Supplier.RegNo, Phone: $scope.Supplier.Phone, Address: $scope.Supplier.Address, Fax: $scope.Supplier.Fax }
+                BaseService.updateSupplier(angular.toJson(msg))
+                .then(function (data) {
+                    alert('Success!');
+                }, function (data) {
+                    alert(data);
+                })
             }
         }
         var myBaseService = BaseService;
