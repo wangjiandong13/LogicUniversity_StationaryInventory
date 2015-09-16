@@ -5,7 +5,7 @@
         $scope.Qtyoptions = {
             chart: {
                 type: 'multiBarChart',
-                height: 450,
+                height: 550,
                 margin: {
                     top: 20,
                     right: 20,
