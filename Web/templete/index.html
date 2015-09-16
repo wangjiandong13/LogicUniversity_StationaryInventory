@@ -79,7 +79,7 @@
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                                    <li ng-repeat="Notfication in NotificationList">
+                                    <li ng-repeat="Notfication in NotificationList" ng-if="$index < 10">
                                         <a ng-class="{true: 'read', false: 'unread'}[Notfication.isRead]">
                                             {{Notfication.NotifDesc}}
                                         </a>
