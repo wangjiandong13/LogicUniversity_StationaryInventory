@@ -57,15 +57,11 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="empid">Employee ID</param>
         /// <param name="status">Approve/Reject</param>
-        public void SendMailToEmp(string empid, string status)
+        public void SendMailToEmp(int empid, string status)
         {
-            Employee emp = new Employee();
+            Employee emp = ctx.Employee.Where(x => x.EmpID == -empid).FirstOrDefault();
+            string email = "logicuniversity.employee@hotmail.com";
 
-            emp = (from n in ctx.Employee
-                   where n.EmpID == Convert.ToInt32(empid)
-                   select n).First();
-
-            string email = emp.Email;
             try
             {
                 SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
@@ -82,13 +78,11 @@ namespace BusinessLogic
                 SmtpServer.Credentials = new System.Net.NetworkCredential("logicuniversity.depthead@hotmail.com", "logicuniversity123");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
-
             }
             catch (SmtpException ex)
             {
                 throw new Exception(ex.Message);
             }
-
         }
     }
 }
