@@ -2,7 +2,6 @@
     app.controller('RetrievalDetailDeptControllers', ['$rootScope', '$scope', 'BaseService', '$routeParams', RetrievalDetailDeptControllers]);
 
     function RetrievalDetailDeptControllers($rootScope, $scope, BaseService, $routeParams) {
-        var RetID = 1017;
         $rootScope.changehighlight(14);
 
         var retid = $routeParams.retid;
@@ -28,14 +27,14 @@
                 alert(data);
             })
 
-        BaseService.getRetrievalDetail(RetID)
+        BaseService.getRetrievalDetail($scope.retid)
             .then(function (data) {
                 console.log(data);
                 $scope.RetrievalDetail = data;
             }, function (data) {
                 alert(data);
             })
-        BaseService.getRetByDept(RetID)
+        BaseService.getRetByDept($scope.retid)
             .then(function (data) {
                 console.log(data);
                 $scope.ReqDeptAllocation = data;

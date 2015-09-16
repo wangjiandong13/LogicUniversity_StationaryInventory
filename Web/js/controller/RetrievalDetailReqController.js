@@ -2,7 +2,6 @@
     app.controller('RetrievalDetailReqControllers', ['$rootScope', '$scope', 'BaseService', '$routeParams', RetrievalDetailReqControllers]);
 
     function RetrievalDetailReqControllers($rootScope, $scope, BaseService, $routeParams) {
-        var RetID = 1017;
         $rootScope.changehighlight(14);
 
         var retid = $routeParams.retid;
@@ -28,14 +27,14 @@
                 alert(data);
             })
 
-        BaseService.getRetrievalDetail(RetID)
+        BaseService.getRetrievalDetail($scope.retid)
             .then(function (data) {
                 console.log(data);
                 $scope.RetrievalDetail = data;
             }, function (data) {
                 alert(data);
             })
-        BaseService.getReqAllocation(RetID)
+        BaseService.getReqAllocation($scope.retid)
             .then(function (data) {
                 console.log(data);
                 $scope.ReqAllocation = data;
