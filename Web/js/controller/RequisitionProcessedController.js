@@ -35,17 +35,17 @@
             .then(function (data) {
                 console.log(data);
                 $scope.RetrievalDetails = data;
-                $.each($scope.RetrievalDetails, function (index, value) {
-                    console.log(value.ItemID);
-                    myBaseService.getItemDetail(value.ItemID)
-                        .then(function (data) {
-                            value.Bin = data.Bin;
-                            value.ItemName = data.ItemName;
-                        }, function (data) {
-                            alert(data);
-                        }
-                        )
-                });
+                //$.each($scope.RetrievalDetails, function (index, value) {
+                //    console.log(value.ItemID);
+                //    myBaseService.getItemDetail(value.ItemID)
+                //        .then(function (data) {
+                //            value.Bin = data.Bin;
+                //            value.ItemName = data.ItemName;
+                //        }, function (data) {
+                //            alert(data);
+                //        }
+                //        )
+                //});
             }, function (data) {
                 alert(data);
             }
