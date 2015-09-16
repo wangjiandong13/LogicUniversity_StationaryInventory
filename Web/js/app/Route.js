@@ -190,19 +190,19 @@
                     '../controller/RetrievalController'
                 ]
             },
-            '/retrievalAllocation': {
+            '/retrievalAllocation/:retid': {
                 templateUrl: 'SC/retrievalAllocation.html',
                 dependencies: [
                     '../controller/RetrievalAllocationController'
                 ]
             },
-            '/retrievalDetailDept': {
+            '/retrievalDetailDept/:retid': {
                 templateUrl: 'SC/retrievalDetailDept.html',
                 dependencies: [
                     '../controller/RetrievalDetailDeptController'
                 ]
             },
-            '/retrievalDetailReq': {
+            '/retrievalDetailReq/:retid': {
                 templateUrl: 'SC/retrievalDetailReq.html',
                 dependencies: [
                     '../controller/RetrievalDetailReqController'
