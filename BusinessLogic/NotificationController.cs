@@ -150,7 +150,7 @@ namespace BusinessLogic
                         int emp = Convert.ToInt32(notif.EmpID);
                         string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
                         PushNotification(notif.NotifName, emp, roleID);
-                        emailcontrol.SendMailToEmp(emp,"APPROVED");
+                        emailcontrol.SendMailToEmp(emp,"APPROVED", detail);
                         break;
                     }
                 //Requisition Rejected
@@ -167,7 +167,7 @@ namespace BusinessLogic
                         int emp = Convert.ToInt32(notif.EmpID);
                         string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
                         PushNotification(notif.NotifName, emp, roleID);
-                        emailcontrol.SendMailToEmp(emp, "REJECTED");
+                        emailcontrol.SendMailToEmp(emp, "REJECTED", detail);
                         break;
                     }
                 //Processing Requisition
@@ -197,7 +197,7 @@ namespace BusinessLogic
                         notif.EmpID = req.EmpID;
                         ctx.Notification.Add(notif);
                         int emp = Convert.ToInt32(notif.EmpID);
-                        emailcontrol.SendMailToEmp(emp, "PROCESSED");
+                        emailcontrol.SendMailToEmp(emp, "PROCESSED", detail);
                         break;
                     }
                 //Requisition Disbursed
@@ -214,7 +214,7 @@ namespace BusinessLogic
                         int emp = Convert.ToInt32(notif.EmpID);
                         string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
                         PushNotification(notif.NotifName, emp, roleID);    
-                        emailcontrol.SendMailToEmp(emp, "COLLECTED");
+                        emailcontrol.SendMailToEmp(emp, "COLLECTED", detail);
                         break;
                     }
                 //New Pending Adjustment Voucher
