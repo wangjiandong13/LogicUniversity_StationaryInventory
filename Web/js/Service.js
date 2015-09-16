@@ -1149,7 +1149,7 @@ function service($http, $q) {
     //Generate Existing Report 
     this.generateExistingReport = function (reportID) {
         var deferred = $q.defer();
-        $http.get(baseurl + "analyticsAPI.svc/generateExistingReport/" + reportID)
+        $http.get(baseurl + "analyticsAPI.svc/generateExistingReportStyle2/" + reportID)
             .success(function (data) {
                 deferred.resolve(data)
             })

@@ -16,7 +16,7 @@
                         <h4>Title :</h4>
                     </td>
                     <td class="col-md-8">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" ng-model="title">
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
                         <h4>Filter :</h4>
                     </td>
                     <td class="col-md-8">
-                        <select class="form-control" ng-model="FilterData.selectedOption"
+                        <select class="form-control" ng-model="FilterData.selectedOption" ng-change="Filterchange()"
                                 ng-options="option.Name for option in FilterData.availableOptions track by option.ID"></select>
                     </td>
                 </tr>
@@ -66,7 +66,7 @@
                     </td>
                     <td class="col-md-8">
                         <select class="form-control" ng-model="ItemData.selectedOption"
-                                ng-options="option.ItemName for option in ItemData.availableOptions track by option.ItemID"></select>
+                                ng-options="option.ItemDescription for option in ItemData.availableOptions track by option.ItemID"></select>
                     </td>
                 </tr>
                 <tr ng-if="setting.SupplierSelect">
@@ -83,15 +83,15 @@
                         <h4>Remarks:</h4>
                     </td>
                     <td class="col-md-8">
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                        <textarea class="form-control" rows="5" id="comment" ng-model="Remarks"></textarea>
                     </td>
                 </tr>
             </table>
         </div>
         <div class="col-md-12" style="text-align:center">
             <hr>
-            <button type="button" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-success">Generate</button>
+            <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+            <button type="submit" class="btn btn-success" ng-click="generate()">Generate</button>
         </div>
     </div>
 </div>
