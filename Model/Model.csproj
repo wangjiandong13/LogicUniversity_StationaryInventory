@@ -139,7 +139,9 @@
     <Compile Include="Report.cs">
       <DependentUpon>LogicUniversityEntitie.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportResultWeb.cs" />
     <Compile Include="ReportResult.cs" />
+    <Compile Include="ReportResultItemsWeb.cs" />
     <Compile Include="ReportResultItems.cs" />
     <Compile Include="ReqAllocation.cs" />
     <Compile Include="RequestCart.cs" />

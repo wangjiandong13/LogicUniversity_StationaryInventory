@@ -51,7 +51,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="Delegate in Delegates">
+                        <tr ng-repeat="Delegate in Delegates | orderBy:'-StartDate'">
                             <td>{{Delegate.EmpName}}</td>
                             <td>{{Delegate.StartDate|datechange|date : 'dd MMM yyyy'}}</td>
                             <td>

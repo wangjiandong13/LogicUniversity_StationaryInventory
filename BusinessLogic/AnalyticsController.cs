@@ -115,7 +115,7 @@ namespace BusinessLogic
             DateTime edate = (DateTime)rp.EndD;
             int monthsNo = (((edate.Year - sdate.Year) * 12) + edate.Month - sdate.Month) + 1;
             int type = Convert.ToInt32(rp.Type);
-            int criteria = Convert.ToInt32(rp.Criteria);
+            string criteria = rp.Criteria;
             int precriteria = Convert.ToInt32(rp.Precriteria);
 
             //fetch results
@@ -214,13 +214,14 @@ namespace BusinessLogic
                         if (precriteria == 0)
                         {
                             var requisitions = new List<RequisitionAnalytics>();
-                            if (criteria > 0)
-                            {
-                                requisitions = ctx.RequisitionAnalytics.Where(x => x.Date >= sdate && x.Date <= edate && x.ItemCatID == criteria).ToList();
-                            }
-                            else if (criteria == 0)
+                            if (criteria == "0")
                             {
                                 requisitions = ctx.RequisitionAnalytics.Where(x => x.Date >= sdate && x.Date <= edate).ToList();
+                            }
+                            else
+                            {
+                                int category = Convert.ToInt32(criteria);
+                                requisitions = ctx.RequisitionAnalytics.Where(x => x.Date >= sdate && x.Date <= edate && x.ItemCatID == category).ToList(); 
                             }
 
                             List<Department> dept = ctx.Department.ToList();
@@ -280,7 +281,7 @@ namespace BusinessLogic
                             List<ItemCategory> itemCat = ctx.ItemCategory.ToList();
 
                             //view all
-                            if (criteria == 0)
+                            if (criteria == "0")
                             {
                                 for (int m = 0; m < monthsNo; m++)
                                 {
@@ -331,9 +332,9 @@ namespace BusinessLogic
                             }
 
                             //view items of 1 department selected
-                            else if (criteria > 0)
+                            else
                             {
-                                List<Department> dept = ctx.Department.ToList();
+                                Department dept = ctx.Department.Where(x=> x.DeptID == criteria).FirstOrDefault();
 
                                 for (int m = 0; m < monthsNo; m++)
                                 {
@@ -356,13 +357,11 @@ namespace BusinessLogic
                                         r.ReportItems.Add(ri);
                                     }
 
-                                    int deptPos = criteria - 1;
-
                                     //get all req items in each month
                                     for (int i = 0; i < requisitions.Count; i++)
                                     {
                                         int reqMonth = Convert.ToDateTime(requisitions[i].Date).Month;
-                                        if (reqMonth == month && requisitions[i].DeptID == dept[deptPos].DeptID)
+                                        if (reqMonth == month)
                                         {
                                             int category = Convert.ToInt32(requisitions[i].ItemCatID);
                                             //get by item cat
@@ -482,13 +481,14 @@ namespace BusinessLogic
                         if (precriteria == 2)
                         {
                             var reorders = new List<ReorderAnalytics>();
-                            if (criteria > 0)
-                            {
-                                reorders = ctx.ReorderAnalytics.Where(x => x.Date >= sdate && x.Date <= edate && x.ItemCatID == criteria).ToList();
-                            }
-                            else if (criteria == 0)
+                            if (criteria == "0")
                             {
                                 reorders = ctx.ReorderAnalytics.Where(x => x.Date >= sdate && x.Date <= edate).ToList();
+                            }
+                            else
+                            {
+                                int category = Convert.ToInt32(criteria);
+                                reorders = ctx.ReorderAnalytics.Where(x => x.Date >= sdate && x.Date <= edate && x.ItemCatID == category).ToList();
                             }
 
                             List<Supplier> sup = ctx.Supplier.ToList();
@@ -547,7 +547,7 @@ namespace BusinessLogic
                             List<ItemCategory> itemCat = ctx.ItemCategory.ToList();
 
                             //all item categories
-                            if (criteria == 0)
+                            if (criteria == "0")
                             {
                                 for (int m = 0; m < monthsNo; m++)
                                 {
@@ -598,9 +598,9 @@ namespace BusinessLogic
                             }
 
                             //by supplier rank selected
-                            else if (criteria > 0)
+                            else
                             {
-                                Supplier sup = ctx.Supplier.Where(x => x.Rank == criteria).FirstOrDefault();
+                                Supplier sup = ctx.Supplier.Where(x => x.SupplierID == criteria).FirstOrDefault();
 
                                 for (int m = 0; m < monthsNo; m++)
                                 {
@@ -662,7 +662,7 @@ namespace BusinessLogic
 
             List<ReportResult> input = generateExistingReport(reportID);
 
-            // codes to swap subject and monthyear in results (for web display purpose)
+            // codes to swap subject and monthyear in results (for mobile display purpose)
             List<ReportResult> newReportResult = new List<ReportResult>();
             List<String> subjects = new List<String>();
             List<String> monthYears = new List<String>();
@@ -689,6 +689,65 @@ namespace BusinessLogic
                     ri.Qty = reportItems[j].Qty;
 
                     newReportResult[j].ReportItems.Add(ri);
+                }
+            }
+
+            return newReportResult;
+        }
+
+        public List<ReportResultWeb> generateExistingReportStyle3(string reportID, string type)
+        {
+
+            List<ReportResult> generateResult = generateExistingReport(reportID);
+            List<ReportResultWeb> input = new List<ReportResultWeb>();
+            foreach (ReportResult r in generateResult)
+            {
+                ReportResultWeb rw = new ReportResultWeb();
+                rw.key = r.MonthYear;
+                rw.values = new List<ReportResultItemsWeb>();
+                foreach(ReportResultItems ri in r.ReportItems)
+                {
+                    ReportResultItemsWeb rwi = new ReportResultItemsWeb();
+                    rwi.x = ri.Subject;
+                    if (type.ToLower() == "qty")
+                    {
+                        rwi.y = ri.Qty;
+                    }
+                    else
+                    {
+                        rwi.y = ri.Price;
+                    }
+                    rw.values.Add(rwi);
+                }
+                input.Add(rw);
+            }
+
+            // codes to swap subject and monthyear in results (for web display purpose)
+            List<ReportResultWeb> newReportResult = new List<ReportResultWeb>();
+            List<String> subjects = new List<String>();
+            List<String> monthYears = new List<String>();
+
+            for (int j = 0; j < input[0].values.Count; j++)
+            {
+                subjects.Add(input[0].values.ToList()[j].x);
+                ReportResultWeb r = new ReportResultWeb();
+                r.key = input[0].values.ToList()[j].x;
+                r.values = new List<ReportResultItemsWeb>();
+                newReportResult.Add(r);
+            }
+
+            for (int i = 0; i < input.Count; i++)
+            {
+                List<ReportResultItemsWeb> reportItems = input[i].values.ToList();
+
+                for (int j = 0; j < reportItems.Count; j++)
+                {
+                    //mth year price qty items
+                    ReportResultItemsWeb ri = new ReportResultItemsWeb();
+                    ri.x = input[i].key;
+                    ri.y = reportItems[j].y;
+
+                    newReportResult[j].values.Add(ri);
                 }
             }
 
