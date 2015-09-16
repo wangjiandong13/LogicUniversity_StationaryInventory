@@ -29,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="Notfication in NotificationList | orderBy:'DateTime' | orderBy:'-isRead'"  ng-class="{true: 'read', false: 'unread'}[Notfication.isRead]">
+                        <tr ng-repeat="Notfication in NotificationList | orderBy:['DateTime','-isRead']"  ng-class="{true: 'read', false: 'unread'}[Notfication.isRead]">
                             <td>{{Notfication.DateTime|datechange|date : 'dd MMM yyyy'}}</td>
                             <td>{{Notfication.NotifName}}</td>
                             <td>{{Notfication.NotifDesc}}</td>
