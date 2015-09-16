@@ -23,8 +23,9 @@ namespace BusinessLogic
         /// <param name="empid">Employee ID</param>
         public void SendMailToEmpHead(string empid)
         {
-            var name = (from n in ctx.Employee
-                        where n.EmpID == Convert.ToInt32(empid)
+            int id = Convert.ToInt32(empid);
+            string name = (from n in ctx.Employee
+                        where n.EmpID == id
                         select n.EmpName).First();
             string email = "logicuniversity.depthead@hotmail.com";
             try
