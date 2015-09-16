@@ -27,30 +27,22 @@
                         <label>Store Clerk:</label>
                     </div>
                     <div class="col-md-3">
-
-                        <select class="form-control">
-                            <option>Store Clerk 1</option>
-                            <option>Store Clerk 2</option>
-                            <option>Store Clerk 3</option>
-                            <option>Store Clerk 4</option>
-                            <option>Store Clerk 5</option>
-                        </select>
+                        <select class="form-control"
+                                name="storeclerkselect" id="storeclerkselect"
+                                ng-options="option.StoreclerkName for option in optiondata.availableOptions track by option.StoreclerkID"
+                                ng-model="optiondata.selectedOption"></select>
                     </div>
                     <div class="col-md-1" style="top:50%">
                         <label>Status:</label>
                     </div>
                     <div class="col-md-2">
-
-                        <select class="form-control">
-                            <option>Pending</option>
-                            <option>Retrieved</option>
-                        </select>
+                        <select class="form-control" ng-model="statusSelect.selectedOption" ng-options="option.name for option in statusSelect.availableOptions track by option.id"></select>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" placeholder="Enter Retrieval No.">
+                        <input type="text" class="form-control" placeholder="Enter Retrieval No." ng-model="RetrievalNo">
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn yellow">
+                        <button type="button" class="btn btn yellow" ng-click="search()">
                             <span class="glyphicon glyphicon-search"></span> Search
                         </button>
                     </div>
@@ -70,17 +62,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>0002</td>
-                                    <td>14 August 2015</td>
-                                    <td>Wong Sook Huey</td>
-                                    <td>Pending</td>
-                                </tr>
-                                <tr>
-                                    <td>0001</td>
-                                    <td>12 August 2015</td>
-                                    <td>Wong Sook Huey</td>
-                                    <td>Retrieved</td>
+                                <tr ng-repeat="Retrieval in Retrievals" ng-click="retrievaldetail(Retrieval)">
+                                    <td>{{Retrieval.RetID}}</td>
+                                    <td>{{Retrieval.Date}}</td>
+                                    <td>{{Retrieval.EmpName}}</td>
+                                    <td>{{Retrieval.Status}}</td>
                                 </tr>
                             </tbody>
                         </table>

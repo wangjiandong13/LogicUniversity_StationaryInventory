@@ -208,7 +208,7 @@
                     '../controller/RetrievalDetailReqController'
                 ]
             },
-            '/retrievalUpdateActual': {
+            '/retrievalUpdateActual/:retid': {
                 templateUrl: 'SC/retrievalUpdateActual.html',
                 dependencies: [
                     '../controller/RetrievalUpdateActualController'

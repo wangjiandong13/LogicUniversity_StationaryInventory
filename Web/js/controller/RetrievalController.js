@@ -31,6 +31,7 @@
         var myBaseService = BaseService;
         $scope.search = function () {
             var status = $scope.statusSelect.selectedOption.id;
+            if (status == 0) { status = "null"; }
             var RetID = $scope.RetrievalNo;
             if (RetID == null || RetID == "") { RetID = "null"; }
             console.log(RetID);
@@ -73,6 +74,7 @@
             })
 
         $scope.retrievaldetail = function (Retrieval) {
+            console.log(Retrieval.RetID);
             location.href = "#/retrievalUpdateActual/" + Retrieval.RetID;
         };
 
