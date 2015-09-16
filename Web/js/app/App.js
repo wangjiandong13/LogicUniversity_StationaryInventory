@@ -1,7 +1,7 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
     //console.log("enter app");
     var app = angular.module('app', ['ngRoute', 'BaseServices']);
-    app.controller('BodyCotroller', ['$rootScope','$scope', '$window', BaseService, BodyCotroller]);
+    app.controller('BodyCotroller', ['$rootScope','$scope', '$window', 'BaseService', BodyCotroller]);
     function BodyCotroller($rootScope,$scope, $window, BaseService) {
         $rootScope.mean = {
             Requistion: "",
