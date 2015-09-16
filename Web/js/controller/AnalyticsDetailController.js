@@ -1,15 +1,16 @@
 ﻿define(['app'], function (app) {
     app.controller('AnalyticsDetailController', ['$scope', '$rootScope', '$routeParams', 'BaseService', AnalyticsDetailController]);
     function AnalyticsDetailController($scope, $rootScope,$routeParams, BaseService) {
-        var rid = $routeParams.reportid;
+        //var rid = $routeParams.reportid;
+        var rid = 1;
         $scope.Qtyoptions = {
             chart: {
                 type: 'multiBarChart',
                 height: 550,
                 margin: {
-                    top: 20,
+                    top: 30,
                     right: 20,
-                    bottom: 60,
+                    bottom: 100,
                     left: 45
                 },
                 clipEdge: true,
@@ -42,11 +43,11 @@
         $scope.Priceoptions = {
             chart: {
                 type: 'multiBarChart',
-                height: 450,
+                height: 550,
                 margin: {
-                    top: 20,
+                    top: 30,
                     right: 20,
-                    bottom: 60,
+                    bottom: 100,
                     left: 45
                 },
                 clipEdge: true,
