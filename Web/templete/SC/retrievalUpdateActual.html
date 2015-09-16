@@ -75,7 +75,7 @@
                                         <td>{{RetrievalDetail.ItemName}}</td>
                                         <td>{{RetrievalDetail.TotalQty}}</td>
                                         <td>
-                                            <input type="text" class="form-control" ng-model="RetrievalDetail.ActualQty">
+                                            <input type="number" class="form-control" ng-model="RetrievalDetail.ActualQty" min="0">
                                         </td>
                                     </tr>
                                 </tbody>
