@@ -23,10 +23,10 @@ namespace RestService
             BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
             return BL.updateReport(rp);
         }
-        public string generateNewReport(Report rp)
+        public string generateNewReport(string EmpID, string Title, string StartD, string EndD, string Remark, string Type, string Criteria, string Precriteria)
         {
             BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
-            return BL.generateNewReport(rp);
+            return BL.generateNewReport(EmpID, Title, StartD, EndD, Remark, Type, Criteria, Precriteria);
         }
         public List<ReportResult> generateExistingReport(string reportID)
         {

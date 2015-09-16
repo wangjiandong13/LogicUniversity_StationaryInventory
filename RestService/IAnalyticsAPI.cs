@@ -28,9 +28,9 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
                                            UriTemplate = "/generateNewReport")]
-        string generateNewReport(Model.Report rp);
+        string generateNewReport(string EmpID, string Title, string StartD, string EndD, string Remark, string Type, string Criteria, string Precriteria);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,

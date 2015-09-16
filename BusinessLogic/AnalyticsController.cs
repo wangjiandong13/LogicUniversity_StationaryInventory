@@ -55,24 +55,27 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="rp">Report Object</param>
         /// <returns>String reportID</returns>
-        public string generateNewReport(Report rp)
+        public string generateNewReport(string EmpID, string Title, string StartD, string EndD, string Remark, string Type, string Criteria, string Precriteria)
         {
             string resultID = "";
 
             // save report settings in db
-            DateTime sdate = Convert.ToDateTime(rp.StartD);
-            DateTime edate = Convert.ToDateTime(rp.EndD);
+            DateTime sdate = Convert.ToDateTime(StartD);
+            DateTime edate = Convert.ToDateTime(EndD);
+            int empID = Convert.ToInt32(EmpID);
+            int type = Convert.ToInt32(Type);
+            int precriteria = Convert.ToInt32(Precriteria);
 
             Report rpt = new Report();
             rpt.Date = DateTime.Today;
-            rpt.EmpID = rp.EmpID;
-            rpt.Title = rp.Title;
+            rpt.EmpID = empID;
+            rpt.Title = Title;
             rpt.StartD = sdate;
             rpt.EndD = edate;
-            rpt.Remark = rp.Remark;
-            rpt.Type = rp.Type;
-            rpt.Criteria = rp.Criteria;
-            rpt.Precriteria = rp.Precriteria;
+            rpt.Remark = Remark;
+            rpt.Type = type;
+            rpt.Criteria = Criteria;
+            rpt.Precriteria = precriteria;
             ctx.Report.Add(rpt);
 
             bool saveInDb = true;
