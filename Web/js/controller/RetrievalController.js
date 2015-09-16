@@ -31,7 +31,7 @@
         var myBaseService = BaseService;
         $scope.search = function () {
             var empid = $scope.optiondata.selectedOption.EmpID;
-            if (empid == 0) { status = "null"; }
+            if (empid == 0) { empid = "null"; }
             console.log("EmpID >>> " + empid);
             var status = $scope.statusSelect.selectedOption.name;
             if (status == "ALL") { status = "null"; }
