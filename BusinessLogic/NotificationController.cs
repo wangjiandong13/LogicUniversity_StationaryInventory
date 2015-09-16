@@ -73,7 +73,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="EmpID">Employee ID</param>
         /// <returns></returns>
-        public List<Notification> getNotification (string EmpID)
+        public List<Notification> getNotification(string EmpID)
         {
             int empID = Convert.ToInt32(EmpID);
             List<Notification> notifList = ctx.Notification.Where(x => x.EmpID == empID).ToList();
@@ -84,29 +84,16 @@ namespace BusinessLogic
         {
 
             //get all Store Clerks
-            var employees1 = from c in ctx.Employee
-                            where c.RoleID == "SC"
-                            select c;
-            List<Employee> sendToSC = employees1.ToList();
+            List<Employee> sendToSC = ctx.Employee.Where(x => x.RoleID == "SC").ToList();
 
             //get all Store Supervisors
-            var employees2 = from c in ctx.Employee
-                            where c.RoleID == "SS"
-                            select c;
-            List<Employee> sendToSS = employees2.ToList();
+            List<Employee> sendToSS = ctx.Employee.Where(x => x.RoleID == "SS").ToList();
 
             //get all Store managers
-            var employees3 = from c in ctx.Employee
-                            where c.RoleID == "SM"
-                            select c;
-            List<Employee> sendToSM = employees3.ToList();
+            List<Employee> sendToSM = ctx.Employee.Where(x => x.RoleID == "SM").ToList();
 
             //get all Dept Rep
-            var employees4 = from c in ctx.Employee
-                             where c.RoleID == "DR"
-                             select c;
-            List<Employee> sendToDR = employees4.ToList();
-
+            List<Employee> sendToDR = ctx.Employee.Where(x => x.RoleID == "DR").ToList();
 
             //create notification
             Notification notif = new Notification();
@@ -132,7 +119,7 @@ namespace BusinessLogic
                         int emp = Convert.ToInt32(notif.EmpID);
                         string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
                         PushNotification(notif.NotifName, emp, roleID);
-                        
+
                         emailcontrol.SendMailToEmpHead(empid);
                         break;
                     }
@@ -150,7 +137,7 @@ namespace BusinessLogic
                         int emp = Convert.ToInt32(notif.EmpID);
                         string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
                         PushNotification(notif.NotifName, emp, roleID);
-                        emailcontrol.SendMailToEmp(emp,"APPROVED", detail);
+                        emailcontrol.SendMailToEmp(emp, "APPROVED", detail);
                         break;
                     }
                 //Requisition Rejected
@@ -213,7 +200,7 @@ namespace BusinessLogic
 
                         int emp = Convert.ToInt32(notif.EmpID);
                         string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
-                        PushNotification(notif.NotifName, emp, roleID);    
+                        PushNotification(notif.NotifName, emp, roleID);
                         emailcontrol.SendMailToEmp(emp, "COLLECTED", detail);
                         break;
                     }
@@ -225,7 +212,7 @@ namespace BusinessLogic
                         // if total amt <$250, send to supervisor, else send to store manager
 
                         AdjustmentVoucher adj = ctx.AdjustmentVoucher.Where(x => x.AdjID == details).FirstOrDefault();
-                        if(adj.TotalAmt < 250)
+                        if (adj.TotalAmt < 250)
                         {
                             notif.EmpID = sendToSS[0].EmpID;
                             ctx.Notification.Add(notif);
@@ -485,7 +472,7 @@ namespace BusinessLogic
             }
             catch
             {
-               
+
             }
         }
 
