@@ -2,7 +2,6 @@
     app.controller('RetrievalDetailReqControllers', ['$rootScope', '$scope', 'BaseService', '$routeParams', RetrievalDetailReqControllers]);
 
     function RetrievalDetailReqControllers($rootScope, $scope, BaseService, $routeParams) {
-        var RetID = 1017;
         $rootScope.changehighlight(14);
 
         var retid = $routeParams.retid;
