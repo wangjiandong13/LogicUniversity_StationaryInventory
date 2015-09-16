@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace BusinessLogic
 {
-    
+
     public class AnalyticsController
     {
         StationeryInventory_Team_05Entities ctx = new StationeryInventory_Team_05Entities();
@@ -26,18 +26,14 @@ namespace BusinessLogic
         /// <summary>
         /// Update Report
         /// </summary>
-        /// <param name="rp">ReportModel Object</param>
+        /// <param name="rp">Report Object</param>
         /// <returns>bool result</returns>
-        public bool updateReport(ReportModel rp)
+        public bool updateReport(Report rp)
         {
             bool result = true;
-            ReportModel results = new ReportModel();
+            Report results = new Report();
 
-            // save report settings in db
-            DateTime date = Convert.ToDateTime(rp.Date).Date;
-            DateTime sdate = Convert.ToDateTime(rp.StartD).Date;
-            DateTime edate = Convert.ToDateTime(rp.EndD).Date;
-
+            // save report remarks and title in db
             Report rpt = ctx.Report.Where(x => x.ReportID == rp.ReportID).FirstOrDefault();
             rpt.Title = rp.Title;
             rpt.Remark = rp.Remark;
@@ -57,11 +53,11 @@ namespace BusinessLogic
         /// <summary>
         /// Generate New Report
         /// </summary>
-        /// <param name="rp">ReportModel Object</param>
-        /// <returns>ReportModel object</returns>
-        public ReportModel generateNewReport(ReportModel rp)
+        /// <param name="rp">Report Object</param>
+        /// <returns>String reportID</returns>
+        public string generateNewReport(Report rp)
         {
-            ReportModel results = new ReportModel();
+            string resultID = "";
 
             // save report settings in db
             DateTime sdate = Convert.ToDateTime(rp.StartD);
@@ -92,30 +88,28 @@ namespace BusinessLogic
             if (saveInDb == true)
             {
                 Report reportGenerated = ctx.Report.ToList().Last();
+                string reportID = reportGenerated.ReportID.ToString();
+                resultID = reportID;
 
                 //send notification
                 NotificationController nc = new NotificationController();
-                nc.sendNotification(15, 0, Convert.ToString(reportGenerated.ReportID));
-
-                //return report results
-                results = generateExistingReport(reportGenerated.ReportID.ToString());
+                nc.sendNotification(15, 0, reportID);
             }
 
-            return results;
+            return resultID;
         }
 
         /// <summary>
         /// Generate Existing Report
         /// </summary>
-        /// <param name="reportID">Int reportID </param>
-        /// <returns>ReportModel object</returns>
-        public ReportModel generateExistingReport(string id)
+        /// <param name="reportID">string reportID </param>
+        /// <returns> List<ReportResult> object</returns>
+        public List<ReportResult> generateExistingReport(string id)
         {
             int reportID = Int32.Parse(id);
             //get report settings from db
             Report rp = ctx.Report.Where(x => x.ReportID == reportID).FirstOrDefault();
 
-            ReportModel genReport = new ReportModel();
             List<ReportResult> results = new List<ReportResult>();
             DateTime sdate = (DateTime)rp.StartD;
             DateTime edate = (DateTime)rp.EndD;
@@ -123,18 +117,6 @@ namespace BusinessLogic
             int type = Convert.ToInt32(rp.Type);
             int criteria = Convert.ToInt32(rp.Criteria);
             int precriteria = Convert.ToInt32(rp.Precriteria);
-
-            genReport.ReportID = rp.ReportID;
-            genReport.Date = DateTime.Today;
-            genReport.EmpID = (int)rp.EmpID;
-            genReport.Title = rp.Title;
-            genReport.StartD = sdate;
-            genReport.EndD = edate;
-            genReport.Remark = rp.Remark;
-            genReport.Type = (int)rp.Type;
-            genReport.Criteria = (int)rp.Criteria;
-            genReport.Precriteria = (int)rp.Precriteria;
-            genReport.Results = new List<ReportResult>();
 
             //fetch results
             switch (type)
@@ -188,7 +170,7 @@ namespace BusinessLogic
                                                     {
                                                         int qty = Convert.ToInt32(requisitions[i].IssueQty);
                                                         double price = Convert.ToDouble(requisitions[i].Price);
-                                                        r.ReportItems[d].Price += (qty * price);
+                                                        r.ReportItems.ToList()[d].Price += (qty * price);
                                                         break;
                                                     }
                                                 }
@@ -209,8 +191,8 @@ namespace BusinessLogic
                                                 {
                                                     int qty = Convert.ToInt32(requisitions[i].IssueQty);
                                                     double price = Convert.ToDouble(requisitions[i].Price);
-                                                    r.ReportItems[d].Price += (qty * price);
-                                                    r.ReportItems[d].Qty++;
+                                                    r.ReportItems.ToList()[d].Price += (qty * price);
+                                                    r.ReportItems.ToList()[d].Qty++;
                                                     break;
                                                 }
                                             }
@@ -279,8 +261,8 @@ namespace BusinessLogic
                                                 int qty = Convert.ToInt32(requisitions[i].RequestQty);
                                                 int Issqty = Convert.ToInt32(requisitions[i].IssueQty);
                                                 double price = Convert.ToDouble(requisitions[i].Price);
-                                                r.ReportItems[c].Qty += qty;
-                                                r.ReportItems[c].Price += (Issqty * price);
+                                                r.ReportItems.ToList()[c].Qty += qty;
+                                                r.ReportItems.ToList()[c].Price += (Issqty * price);
                                                 break;
                                             }
                                         }
@@ -337,8 +319,8 @@ namespace BusinessLogic
                                                     int qty = Convert.ToInt32(requisitions[i].RequestQty);
                                                     int Issqty = Convert.ToInt32(requisitions[i].IssueQty);
                                                     double price = Convert.ToDouble(requisitions[i].Price);
-                                                    r.ReportItems[c].Qty += qty;
-                                                    r.ReportItems[c].Price += (Issqty * price);
+                                                    r.ReportItems.ToList()[c].Qty += qty;
+                                                    r.ReportItems.ToList()[c].Price += (Issqty * price);
                                                     break;
                                                 }
                                             }
@@ -392,8 +374,8 @@ namespace BusinessLogic
                                                     int qty = Convert.ToInt32(requisitions[i].RequestQty);
                                                     int Issqty = Convert.ToInt32(requisitions[i].IssueQty);
                                                     double price = Convert.ToDouble(requisitions[i].Price);
-                                                    r.ReportItems[c].Qty += qty;
-                                                    r.ReportItems[c].Price += (Issqty * price);
+                                                    r.ReportItems.ToList()[c].Qty += qty;
+                                                    r.ReportItems.ToList()[c].Price += (Issqty * price);
                                                     break;
                                                 }
                                             }
@@ -456,7 +438,7 @@ namespace BusinessLogic
                                                     {
                                                         int qty = Convert.ToInt32(reorders[i].ActualQty);
                                                         double price = Convert.ToDouble(reorders[i].Price);
-                                                        r.ReportItems[d].Price += (qty * price);
+                                                        r.ReportItems.ToList()[d].Price += (qty * price);
                                                         break;
                                                     }
                                                 }
@@ -477,8 +459,8 @@ namespace BusinessLogic
                                                 {
                                                     int qty = Convert.ToInt32(reorders[i].ActualQty);
                                                     double price = Convert.ToDouble(reorders[i].Price);
-                                                    r.ReportItems[d].Price += (qty * price);
-                                                    r.ReportItems[d].Qty++;
+                                                    r.ReportItems.ToList()[d].Price += (qty * price);
+                                                    r.ReportItems.ToList()[d].Qty++;
                                                     break;
                                                 }
                                             }
@@ -547,8 +529,8 @@ namespace BusinessLogic
                                                 int qty = Convert.ToInt32(reorders[i].Qty);
                                                 int Aqty = Convert.ToInt32(reorders[i].ActualQty);
                                                 double price = Convert.ToDouble(reorders[i].Price);
-                                                r.ReportItems[c].Qty += qty;
-                                                r.ReportItems[c].Price += (Aqty * price);
+                                                r.ReportItems.ToList()[c].Qty += qty;
+                                                r.ReportItems.ToList()[c].Price += (Aqty * price);
                                                 break;
                                             }
                                         }
@@ -604,8 +586,8 @@ namespace BusinessLogic
                                                     int qty = Convert.ToInt32(reorders[i].Qty);
                                                     int Aqty = Convert.ToInt32(reorders[i].ActualQty);
                                                     double price = Convert.ToDouble(reorders[i].Price);
-                                                    r.ReportItems[c].Qty += qty;
-                                                    r.ReportItems[c].Price += (Aqty * price);
+                                                    r.ReportItems.ToList()[c].Qty += qty;
+                                                    r.ReportItems.ToList()[c].Price += (Aqty * price);
                                                     break;
                                                 }
                                             }
@@ -657,8 +639,8 @@ namespace BusinessLogic
                                                     int qty = Convert.ToInt32(reorders[i].Qty);
                                                     int Aqty = Convert.ToInt32(reorders[i].ActualQty);
                                                     double price = Convert.ToDouble(reorders[i].Price);
-                                                    r.ReportItems[c].Qty += qty;
-                                                    r.ReportItems[c].Price += (Aqty * price);
+                                                    r.ReportItems.ToList()[c].Qty += qty;
+                                                    r.ReportItems.ToList()[c].Price += (Aqty * price);
                                                     break;
                                                 }
                                             }
@@ -672,10 +654,7 @@ namespace BusinessLogic
                     }
             }
 
-            //generate reportresult model to send back
-            genReport.Results = results;
-
-            return genReport;
+            return results;
         }
     }
 }
