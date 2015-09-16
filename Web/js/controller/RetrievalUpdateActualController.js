@@ -45,6 +45,9 @@
         $scope.save = function () {
             var msg = [];
             $.each($scope.RetrievalDetails, function (index, value) {
+                if (value.ActualQty == "") {
+                    value.ActualQty = 0;
+                }
                 var each = {
                     RetID: value.RetID,
                     ItemID: value.ItemID,
@@ -52,7 +55,7 @@
                 };
                 msg.push(each);
             });
-
+            console.log(angular.toJson(msg));
             BaseService.saveRetrieval(angular.toJson(msg))
             .then(function (data) {
                 alert('Saved Successfully!');
@@ -67,12 +70,14 @@
         $scope.submit = function () {
             var msg = [];
             $.each($scope.RetrievalDetails, function (index, value) {
+                if (value.ActualQty == "") {
+                    value.ActualQty = 0;
+                }
                 var each = {
                     RetID: value.RetID,
-                    ItemID: "",
+                    ItemID: value.ItemID,
                     ActualQty: value.ActualQty,
                 };
-                each.ItemID = value.ItemID;
                 msg.push(each);
             });
             console.log(angular.toJson(msg));
