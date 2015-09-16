@@ -44,7 +44,7 @@
         //save btn
         $scope.save = function () {
             var msg = [];
-            $.each($rootScope.RetrievalDetails, function (index, value) {
+            $.each($scope.RetrievalDetails, function (index, value) {
                 var each = {
                     RetID: RetrievalDetail.RetID,
                     ItemID: RetrievalDetail.ItemID,
@@ -66,7 +66,7 @@
         //submit btn
         $scope.submit = function () {
             var msg = [];
-            $.each($rootScope.RetrievalDetails, function (index, value) {
+            $.each($scope.RetrievalDetails, function (index, value) {
                 var each = {
                     RetID: RetrievalDetail.RetID,
                     ItemID: RetrievalDetail.ItemID,
