@@ -259,6 +259,7 @@
             '/analyticsnew': {
                 templateUrl: 'Analytics/analyticsNew.html',
                 dependencies: [
+                    '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min',
                     '../controller/AnalyticsNewController'
                 ]
             },

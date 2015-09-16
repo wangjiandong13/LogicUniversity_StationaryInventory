@@ -1,4 +1,4 @@
-﻿<div class="page-content-wrapper" ng-controller="AdjustmentController">
+﻿<div class="page-content-wrapper" ng-controller="analyticsNew">
     <div class="page-content">
         <div class="col-md-12">
             <h1>Generate New</h1>
@@ -24,12 +24,8 @@
                         <h4>Type :</h4>
                     </td>
                     <td class="col-md-8">
-                        <select class="form-control">
-                            <option>Report Type 1</option>
-                            <option>Report Type 2</option>
-                            <option>Report Type 3</option>
-                            <option>Report Type 4</option>
-                        </select>
+                        <select class="form-control" ng-model="Reporttype.selectedOption" ng-change="typechange()"
+                                ng-options="option.Type for option in Reporttype.availableOptions track by option.id"></select>
                     </td>
                 </tr>
                 <tr>
@@ -37,12 +33,12 @@
                         <h4>Date Range :</h4>
                     </td>
                     <td class="col-md-8">
-                        <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
-                            <input class="form-control" name="from" type="text">
+                        <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" id="datestartdata">
                             <span class="input-group-addon">
                                 to
                             </span>
-                            <input class="form-control" name="to" type="text">
+                            <input type="text" class="form-control" id="dateenddata">
                         </div>
                     </td>
                 </tr>
@@ -51,29 +47,42 @@
                         <h4>Filter :</h4>
                     </td>
                     <td class="col-md-8">
-                        <label class="radio-inline">
+                        <label class="radio-inline" ng-if="setting.Departmentradio">
                             <input type="radio" name="optradio">Department
                         </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="optradio">Category
+                        <label class="radio-inline" ng-if="setting.Categoryradio">
+                            <input type="radio" name="optradio">Item Category
                         </label>
-                        <label class="radio-inline">
+                        <label class="radio-inline" ng-if="setting.Supplierradio">
                             <input type="radio" name="optradio">Supplier
                         </label>
                     </td>
                 </tr>
-                <tr>
+                <tr ng-if="setting.DepartmentSelect">
                     <td class="col-md-4">
                         <h4>Sub Filter :</h4>
                     </td>
                     <td class="col-md-8">
-                        <select class="form-control">
-                            <option>Overall</option>
-                            <option>Item Cat / Department / Supplier 1</option>
-                            <option>Item Cat / Department / Supplier 2</option>
-                            <option>Item Cat / Department / Supplier 3</option>
-                            <option>Item Cat / Department / Supplier 4</option>
-                        </select>
+                        <select class="form-control" ng-model="DepartmentData.selectedOption" 
+                                ng-options="option.DeptName for option in DepartmentData.availableOptions track by option.DeptID"></select>
+                    </td>
+                </tr>
+                <tr ng-if="setting.ItemSelect">
+                    <td class="col-md-4">
+                        <h4>Sub Filter :</h4>
+                    </td>
+                    <td class="col-md-8">
+                        <select class="form-control" ng-model="ItemData.selectedOption"
+                                ng-options="option.ItemName for option in ItemData.availableOptions track by option.ItemID"></select>
+                    </td>
+                </tr>
+                <tr ng-if="setting.SupplierSelect">
+                    <td class="col-md-4">
+                        <h4>Sub Filter :</h4>
+                    </td>
+                    <td class="col-md-8">
+                        <select class="form-control" ng-model="SupplierData.selectedOption"
+                                ng-options="option.SupplierName for option in SupplierData.availableOptions track by option.SupplierID"></select>
                     </td>
                 </tr>
                 <tr>
