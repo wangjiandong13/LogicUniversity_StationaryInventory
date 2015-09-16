@@ -1147,9 +1147,9 @@ function service($http, $q) {
         return deferred.promise;
     }
     //Generate Existing Report 
-    this.generateExistingReport = function (reportID) {
+    this.generateExistingReport = function (reportID,style) {
         var deferred = $q.defer();
-        $http.get(baseurl + "analyticsAPI.svc/generateExistingReportStyle2/" + reportID)
+        $http.get(baseurl + "analyticsAPI.svc/generateExistingReportStyle3/" + reportID + "/" + style)
             .success(function (data) {
                 deferred.resolve(data)
             })
