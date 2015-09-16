@@ -7,7 +7,8 @@
         'service':'../Service',
         'fitter': '../fitter/Seftfitter',
         'bootstrap': 'Main',
-        'routes': 'Route'
+        'routes': 'Route',
+        'nvd3': '../../vendor/angular-nvd3.min'
     },
     skim: {
         'app': {
@@ -21,7 +22,7 @@
 
 require(
     [
-        'app', 'service', 'fitter'
+        'app', 'service', 'fitter', 'nvd3'
     ], function (app, service, fitter) {
-        angular.bootstrap(document, ['app', 'BaseServices', 'appfilter', 'ngMap']);
+        angular.bootstrap(document, ['app', 'BaseServices', 'appfilter', 'ngMap', 'nvd3']);
     });

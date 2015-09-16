@@ -244,6 +244,24 @@
                     '../controller/SuppliernewController'
                 ]
             },
+            '/analytics': {
+                templateUrl: 'Analytics/analytics.html',
+                dependencies: [
+                    '../controller/AnalyticsController'
+                ]
+            },
+            '/analyticsdetail': {
+                templateUrl: 'Analytics/analyticsDetail.html',
+                dependencies: [
+                    '../controller/AnalyticsDetailController'
+                ]
+            },
+            '/analyticsnew': {
+                templateUrl: 'Analytics/analyticsNew.html',
+                dependencies: [
+                    '../controller/AnalyticsNewController'
+                ]
+            },
             '/adjustmentApproval': {
                 templateUrl: 'SMS/adjustmentApproval.html',
                 dependencies: [

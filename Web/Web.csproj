@@ -4425,6 +4425,9 @@
     <Content Include="js\controller\AdjustmentController.js" />
     <Content Include="js\controller\AdjustmentDetailController.js" />
     <Content Include="js\controller\AdjustmentNewController.js" />
+    <Content Include="js\controller\AnalyticsController.js" />
+    <Content Include="js\controller\AnalyticsDetailController.js" />
+    <Content Include="js\controller\AnalyticsNewController.js" />
     <Content Include="js\controller\CatalogListController.js" />
     <Content Include="js\controller\CatalogTileController.js" />
     <Content Include="js\controller\DelegateController.js" />
@@ -4801,14 +4804,21 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="bin\Web.dll.config" />
+    <Content Include="templete\Analytics\analytics.html" />
+    <Content Include="templete\Analytics\analyticsDetail.html" />
+    <Content Include="templete\Analytics\analyticsNew.html" />
     <Content Include="templete\ED\requisitionApprovalList.html" />
     <Content Include="templete\EM\catalogTile.html" />
     <Content Include="vendor\angular-google-maps.min.js" />
     <Content Include="vendor\angular-md5.js" />
+    <Content Include="vendor\angular-nvd3.js" />
+    <Content Include="vendor\angular-nvd3.min.js" />
     <Content Include="vendor\angularAMD.min.map" />
     <Content Include="vendor\angular-simple-logger.js" />
     <Content Include="vendor\bootstrap.js" />
     <Content Include="vendor\bootstrap.min.js" />
+    <Content Include="vendor\d3.js" />
+    <Content Include="vendor\d3.min.js" />
     <Content Include="vendor\jquery.min.js" />
     <Content Include="vendor\jquerysession.js" />
     <Content Include="vendor\GoogleMapjs.js" />
@@ -4868,6 +4878,10 @@
     <Content Include="vendor\angularAMD.min.js" />
     <Content Include="vendor\ngload.js" />
     <Content Include="vendor\ngload.min.js" />
+    <Content Include="vendor\nv.d3.css" />
+    <Content Include="vendor\nv.d3.js" />
+    <Content Include="vendor\nv.d3.min.css" />
+    <Content Include="vendor\nv.d3.min.js" />
     <Content Include="vendor\require.js" />
     <Content Include="Web.config" />
   </ItemGroup>
