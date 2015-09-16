@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="RetrievalDetailReqControllers">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -8,7 +8,7 @@
                     <i class="fa fa-cart-arrow-down"></i>
                     <a href="#/retrieval.html">Retrieval</a>
                     <i class="fa fa-angle-right"></i>
-                    <a href="#/retrievalDetailReq">Retrieval Detail</a>
+                    <a href="#/retrievalDetailReq/{{retid}}">Retrieval Detail</a>
                 </li>
             </ul>
         </div>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <br>
-                        <button type="button" class="btn btn-success">View By Department</button>
+                        <button type="button" class="btn btn-success" ng-click="viewByDept()">View By Department</button>
                     </div>
                     <div class="col-md-12">
                         <hr>
@@ -38,7 +38,7 @@
                                         <td class="col-md-4">
                                             <h5>Retrieval No. : </h5></td>
                                         <td class="col-md-6">
-                                            <label id="lbl_RetID">0001</label>
+                                            <label id="lbl_RetID">{{RetrievalData.RetID}}</label>
                                         </td>
                                         <td class="col-md-2"><a class="btn btn-sm default DTTT_button_print" id="ToolTables_sample_2_3" title="View print view"><i class="fa fa-print"></i><span> Print</span></a></td>
                                     </tr>
@@ -46,14 +46,14 @@
                                         <td class="col-md-4">
                                             <h5>Date : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_date">23 August 2015</label>
+                                            <label id="lbl_date">{{RetrievalData.Date|datechange|date : 'dd MMM yyyy'}}</label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <h5>Requisition Forms : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_reqForms">0019, 0020, 0021, 0022</label>
+                                            <label><span ng-repeat="req in RequisitionData">{{req.ReqID}}  </span></label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
+                    <div class="row portlet light" ng-repeat="Rd in RetrievalDetail" >
                         <div class="col-md-12">
                             <div class="col-md-5">
                                 <table class="table table-striped table-hover">
@@ -76,11 +76,11 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>7</td>
-                                            <td>0013</td>
-                                            <td>Staplet</td>
-                                            <td>9</td>
-                                            <td>9</td>
+                                            <td>{{Rd.Bin}}</td>
+                                            <td>{{Rd.ItemID}}</td>
+                                            <td>{{Rd.ItemName}}</td>
+                                            <td>{{Rd.TotalQty}}</td>
+                                            <td>{{Rd.ActualQty}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -97,70 +97,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>0025</td>
-                                            <td>REGR</td>
-                                            <td>Low</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>0024</td>
-                                            <td>REGR</td>
-                                            <td>Low</td>
-                                            <td>4</td>
-                                            <td>4</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-5">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Bin</th>
-                                            <th>Item Code</th>
-                                            <th>Item Name</th>
-                                            <th>Needed</th>
-                                            <th>Actual</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>5234</td>
-                                            <td>Pencil</td>
-                                            <td>20</td>
-                                            <td>20</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-7">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Req No.</th>
-                                            <th>Department</th>
-                                            <th>Priority</th>
-                                            <th>Requested</th>
-                                            <th>Issued</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>0021</td>
-                                            <td>ENGL</td>
-                                            <td>High</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>0023</td>
-                                            <td>CSCP</td>
-                                            <td>Low</td>
-                                            <td>10</td>
-                                            <td>10</td>
+                                        <tr ng-repeat="Ra in ReqAllocation" ng-if="Ra.ItemID==Rd.ItemID">
+                                            <td>{{Ra.ReqID}}</td>
+                                            <td>{{Ra.Dept}}</td>
+                                            <td>{{Ra.Priority}}</td>
+                                            <td>{{Ra.RequestQty}}</td>
+                                            <td>{{Ra.IssueQty}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -169,7 +111,7 @@
                     </div>
                     <div class="col-md-12 text-center">
                         <br>
-                        <button type="button" class="btn default">Back To List</button>
+                        <button type="button" class="btn default" ng-click="backToList()">Back To List</button>
                         <hr>
                     </div>
                 </div>
