@@ -644,6 +644,18 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+    //get collection point 
+    this.getCollectionPointByID = function (CPID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "collectionAPI.svc/getCollectionPointbyID/"+CPID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
     //search by CPID
     this.getDisbursementByCPID = function (CPID) {
         var deferred = $q.defer();
