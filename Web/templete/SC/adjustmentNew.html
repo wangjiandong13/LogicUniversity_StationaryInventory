@@ -34,7 +34,7 @@
                                 <label>Item Code:</label>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" disabled="disabled" class="form-control" ng-model="readyforadd.ItemCode" placeholder="Search Item Code">
+                                <input type="text" disabled="disabled" class="form-control" ng-model="readyforadd.ItemID" placeholder="Search Item Code">
                             </div>
                             <div class="col-md-2">
                                 <button type="button" class="btn btn default" ng-click="search()">Search</button>
@@ -93,7 +93,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="item in subimitlist">
-                                    <td>{{item.ItemCode}}</td>
+                                    <td>{{item.ItemID}}</td>
                                     <td>{{item.Qty}}</td>
                                     <td>{{item.Reason}}</td>
                                     <td>{{item.Remark}}</td>

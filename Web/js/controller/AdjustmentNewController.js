@@ -11,7 +11,7 @@
             selectedOption: { id: '0', name: '---Please select your reason---' }
         };
         $scope.readyforadd = {
-            ItemCode: "",
+            ItemID: "",
             Qty: 0,
             Reason: "",
             Remark:""
@@ -43,18 +43,18 @@
         }
         $scope.addtoready = function (item) {
             console.log(">>>>enter addtoready ");
-            $scope.readyforadd.ItemCode = item.ItemID;
+            $scope.readyforadd.ItemID = item.ItemID;
             $('#SearchItem').modal('hide');
         }
         $scope.addtosumbitlist = function () {
             console.log(">>>>enter addtosumbitlist");
             if ($scope.reasonSelect.selectedOption.id!="0") {
                 if ($scope.readyforadd.Qty!=0) {
-                    if ($scope.readyforadd.ItemCode!="") {
+                    if ($scope.readyforadd.ItemID != "") {
                         $scope.readyforadd.Reason = $scope.reasonSelect.selectedOption.name;
                         $scope.subimitlist.push($scope.readyforadd);
                         $scope.readyforadd = {
-                            ItemCode: "",
+                            ItemID: "",
                             Qty: 0,
                             Reason: "",
                             Remark: ""
@@ -62,7 +62,7 @@
                         $scope.reasonSelect.selectedOption = { id: '0', name: '---Please select your reason---' };
                     }
                     else {
-                        alert("Please input your ItemCode");
+                        alert("Please input your ItemID");
                     }
                 }
                 else {
