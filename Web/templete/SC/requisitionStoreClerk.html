@@ -61,7 +61,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="Requisition in Requisitions">
+                                <tr ng-repeat="Requisition in Requisitions | orderBy:'-ReqID'">
                                     <td>{{Requisition.ReqID}}</td>
                                     <td>{{Requisition.Date|datechange|date : 'dd MMM yyyy'}}</td>
                                     <td>{{Requisition.EmpName}}</td>

@@ -65,7 +65,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="Requisition in RequisitionsApproval"  ng-click="requisitiondetail(Requisition)">
+                                        <tr ng-repeat="Requisition in RequisitionsApproval | orderBy:'-ReqID'"  ng-click="requisitiondetail(Requisition)">
                                             <td>{{Requisition.ReqID}}</td>
                                             <td>{{Requisition.Date|datechange|date : 'dd MMM yyyy'}}</td>
                                             <td>{{Requisition.EmpName}}</td>
