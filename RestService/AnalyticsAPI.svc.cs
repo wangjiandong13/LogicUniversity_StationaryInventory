@@ -33,5 +33,11 @@ namespace RestService
             BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
             return BL.generateExistingReport(reportID);
         }
+
+        public List<ReportResult> generateExistingReportStyle2(string reportID)
+        {
+            BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
+            return BL.generateExistingReportStyle2(reportID);
+        }
     }
 }

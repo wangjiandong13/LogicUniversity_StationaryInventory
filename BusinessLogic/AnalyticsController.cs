@@ -656,5 +656,43 @@ namespace BusinessLogic
 
             return results;
         }
+
+        public List<ReportResult> generateExistingReportStyle2(string reportID)
+        {
+
+            List<ReportResult> input = generateExistingReport(reportID);
+
+            // codes to swap subject and monthyear in results (for web display purpose)
+            List<ReportResult> newReportResult = new List<ReportResult>();
+            List<String> subjects = new List<String>();
+            List<String> monthYears = new List<String>();
+
+            for (int j = 0; j < input[0].ReportItems.Count; j++)
+            {
+                subjects.Add(input[0].ReportItems.ToList()[j].Subject);
+                ReportResult r = new ReportResult();
+                r.MonthYear = input[0].ReportItems.ToList()[j].Subject;
+                r.ReportItems = new List<ReportResultItems>();
+                newReportResult.Add(r);
+            }
+
+            for (int i = 0; i < input.Count; i++)
+            {
+                List<ReportResultItems> reportItems = input[i].ReportItems.ToList();
+
+                for (int j = 0; j < reportItems.Count; j++)
+                {
+                    //mth year price qty items
+                    ReportResultItems ri = new ReportResultItems();
+                    ri.Subject = input[i].MonthYear;
+                    ri.Price = reportItems[j].Price;
+                    ri.Qty = reportItems[j].Qty;
+
+                    newReportResult[j].ReportItems.Add(ri);
+                }
+            }
+
+            return newReportResult;
+        }
     }
 }
