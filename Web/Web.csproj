@@ -4386,6 +4386,7 @@
     <Content Include="img\logo\logo_50.png" />
     <Content Include="img\logo\logo_500.png" />
     <Content Include="img\logo\logo_500_word.png" />
+    <Content Include="img\logo_500_word.png" />
     <Content Include="img\status\1.png" />
     <Content Include="img\status\2.png" />
     <Content Include="img\status\3.png" />
@@ -4806,7 +4807,7 @@
     <Content Include="vendor\bootstrap.min.js" />
     <Content Include="vendor\jquery.min.js" />
     <Content Include="vendor\jquerysession.js" />
-    <Content Include="vendor\js.js" />
+    <Content Include="vendor\GoogleMapjs.js" />
     <Content Include="vendor\lodash.js" />
     <Content Include="vendor\ng-bs3-datepicker.css" />
     <Content Include="vendor\ng-bs3-datepicker.js" />
@@ -4884,6 +4885,7 @@
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="css\" />
+    <Folder Include="img\singnatures\" />
     <Folder Include="js\main\" />
   </ItemGroup>
   <PropertyGroup>
