@@ -23,7 +23,7 @@ namespace BusinessLogic
         /// <param name="empid">Employee ID</param>
         public void SendMailToEmpHead(int empid)
         {
-            Employee emp = ctx.Employee.Where(x=> x.EmpID == empid).FirstOrDefault();
+            Employee emp = ctx.Employee.Where(x => x.EmpID == empid).FirstOrDefault();
 
             string email = "logicuniversity.depthead@hotmail.com";
 
@@ -57,7 +57,8 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="empid">Employee ID</param>
         /// <param name="status">Approve/Reject</param>
-        public void SendMailToEmp(int empid, string status)
+        /// <param name="reqid">Requistion ID</param>
+        public void SendMailToEmp(int empid, string status, int reqid)
         {
             Employee emp = ctx.Employee.Where(x => x.EmpID == empid).FirstOrDefault();
             string recipentEmail = emp.Email;
@@ -68,7 +69,7 @@ namespace BusinessLogic
                 var mail = new MailMessage();
                 mail.From = new MailAddress("logicuniversity.depthead@hotmail.com");
                 mail.To.Add("logicuniversity.employee@hotmail.com");
-                mail.Subject = string.Format("Your requesition - {0} .", status);
+                mail.Subject = string.Format("Your requesition {0} is {1} .", reqid, status);
                 mail.IsBodyHtml = true;
                 string htmlBody;
                 htmlBody = string.Format("Hi {0}, your requesition form has been {1} .", emp.EmpName, status);

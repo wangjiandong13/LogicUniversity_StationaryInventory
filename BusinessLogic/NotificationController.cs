@@ -150,7 +150,7 @@ namespace BusinessLogic
                         int emp = Convert.ToInt32(notif.EmpID);
                         string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
                         PushNotification(notif.NotifName, emp, roleID);
-                        emailcontrol.SendMailToEmp(emp,"APPROVED");
+                        emailcontrol.SendMailToEmp(emp,"APPROVED", detail);
                         break;
                     }
                 //Requisition Rejected
@@ -167,7 +167,7 @@ namespace BusinessLogic
                         int emp = Convert.ToInt32(notif.EmpID);
                         string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
                         PushNotification(notif.NotifName, emp, roleID);
-                        emailcontrol.SendMailToEmp(emp, "REJECTED");
+                        emailcontrol.SendMailToEmp(emp, "REJECTED", detail);
                         break;
                     }
                 //Processing Requisition
