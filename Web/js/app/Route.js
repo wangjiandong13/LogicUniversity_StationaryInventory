@@ -250,7 +250,7 @@
                     '../controller/AnalyticsController'
                 ]
             },
-            '/analyticsdetail': {
+            '/analyticsdetail/:reportid': {
                 templateUrl: 'Analytics/analyticsDetail.html',
                 dependencies: [
                     '../controller/AnalyticsDetailController'
