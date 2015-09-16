@@ -28,9 +28,7 @@
             </div>
             <div class="col-md-12" ng-if="ifedit">
                 <hr>
-                <div class="col-md-6">
-                    <h4>Supplier Priority</h4>
-                </div>
+                
                 <!--<div class="col-md-6" style="text-align:right;">
                     <button type="button" class="btn btn-success" ng-if="setting.editPrioritybtn" ng-click="editPriority()"><i class="fa fa-pencil"></i> Edit Priority</button>
                     <button class="btn btn-primary" ng-if="setting.savePrioritybtn" ng-click="savePriority()">
@@ -38,6 +36,9 @@
                     </button>
                 </div>-->
                 <div class="col-md-12" ng-if="setting.editSupplierRank">
+                    <div class="col-md-12">
+                        <h4>Supplier Priority</h4>
+                    </div>
                     <div class="col-md-3">
                         Supplier 1:
                         <select class="form-control" ng-disabled="setting.disablebox"
