@@ -79,9 +79,9 @@
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                                    <li ng-repeat="Notfication in NotificationList" ng-class="{true: 'read', false: 'unready'}[Notfication.isRead]">
-                                        <a>
-                                            {{Notfication.NotifName}}
+                                    <li ng-repeat="Notfication in NotificationList">
+                                        <a  ng-class="{true: 'read', false: 'unready'}[Notfication.isRead]">
+                                            {{Notfication.NotifDesc}}
                                         </a>
                                     </li>
                                 </ul>
