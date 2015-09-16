@@ -45,9 +45,9 @@
         $scope.confirm = function () {
             var msg = [];
             $.each($scope.ReqAllocation, function (index, value) {
-                if (value.ActualQty == "") {
-                    value.ActualQty = 0;
-                }
+                //if (value.ActualQty == "") {
+                //    value.ActualQty = 0;
+                //}
                 var each = {
                     ReqID: value.ReqID,
                     ItemID: value.ItemID,
