@@ -60,14 +60,14 @@ namespace BusinessLogic
         public void SendMailToEmp(int empid, string status)
         {
             Employee emp = ctx.Employee.Where(x => x.EmpID == empid).FirstOrDefault();
-            string email = "logicuniversity.employee@hotmail.com";
+            string recipentEmail = emp.Email;
 
             try
             {
                 SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
                 var mail = new MailMessage();
                 mail.From = new MailAddress("logicuniversity.depthead@hotmail.com");
-                mail.To.Add(email);
+                mail.To.Add("logicuniversity.employee@hotmail.com");
                 mail.Subject = string.Format("Your requesition - {0} .", status);
                 mail.IsBodyHtml = true;
                 string htmlBody;
