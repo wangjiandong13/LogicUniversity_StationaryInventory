@@ -133,7 +133,7 @@ namespace BusinessLogic
                         string roleID = ctx.Employee.Where(x => x.EmpID == emp).FirstOrDefault().RoleID;
                         PushNotification(notif.NotifName, emp, roleID);
                         
-                        emailcontrol.SendMailToEmpHead(id);
+                        emailcontrol.SendMailToEmpHead(empid);
                         break;
                     }
                 //Requisition Approved
