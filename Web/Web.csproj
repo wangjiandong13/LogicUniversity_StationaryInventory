@@ -4448,9 +4448,7 @@
     <Content Include="js\controller\RetrievalUpdateActualController.js" />
     <Content Include="js\controller\StockcardController.js" />
     <Content Include="js\controller\SupplierController.js" />
-    <Content Include="js\controller\SupplierdetailController.js" />
     <Content Include="js\controller\SuppliernewController.js" />
-    <Content Include="js\controller\SupplierStoreClerkController.js" />
     <Content Include="js\dependencyResoverFor.js" />
     <Content Include="js\fitter\Seftfitter.js" />
     <Content Include="js\app\Main.js" />
@@ -4798,7 +4796,6 @@
     <None Include="bin\Web.dll.config" />
     <Content Include="templete\ED\requisitionApprovalList.html" />
     <Content Include="templete\EM\catalogTile.html" />
-    <Content Include="templete\SC\supplierStoreClerk.html" />
     <Content Include="vendor\angular-google-maps.min.js" />
     <Content Include="vendor\angular-md5.js" />
     <Content Include="vendor\angularAMD.min.map" />
@@ -4856,7 +4853,6 @@
     <Content Include="templete\SC\stockcard.html" />
     <Content Include="templete\SMS\supplier.html" />
     <Content Include="templete\SMS\suppliernew.html" />
-    <Content Include="templete\SMS\supplierdetail.html" />
     <Content Include="templete\SMS\adjustmentApproval.html" />
     <Content Include="vendor\angular-resource.js" />
     <Content Include="vendor\angular-route.js" />
