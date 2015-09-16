@@ -35,6 +35,7 @@
                 }
             }
         };
+
         $scope.data = generateData();
 
         /* Random Data Generator (took from nvd3.org) */
