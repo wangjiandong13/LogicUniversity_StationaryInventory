@@ -27,14 +27,14 @@
                 alert(data);
             })
 
-        BaseService.getRetrievalDetail(RetID)
+        BaseService.getRetrievalDetail($scope.retid)
             .then(function (data) {
                 console.log(data);
                 $scope.RetrievalDetail = data;
             }, function (data) {
                 alert(data);
             })
-        BaseService.getRetByDept(RetID)
+        BaseService.getRetByDept($scope.retid)
             .then(function (data) {
                 console.log(data);
                 $scope.ReqDeptAllocation = data;
