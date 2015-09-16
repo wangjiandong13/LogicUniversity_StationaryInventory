@@ -1,6 +1,6 @@
 ﻿define(['app'], function (app) {
     app.controller('AnalyticsDetailController', ['$scope', '$rootScope', '$routeParams', 'BaseService', AnalyticsDetailController]);
-    function AnalyticsDetailController($scope, $rootScope, BaseService) {
+    function AnalyticsDetailController($scope, $rootScope,$routeParams, BaseService) {
         var rid = $routeParams.reportid;
         $scope.Qtyoptions = {
             chart: {
