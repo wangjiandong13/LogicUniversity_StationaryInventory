@@ -69,12 +69,13 @@
             $.each($scope.RetrievalDetails, function (index, value) {
                 var each = {
                     RetID: value.RetID,
-                    ItemID: value.ItemID,
+                    ItemID: "",
                     ActualQty: value.ActualQty,
                 };
+                each.ItemID = value.ItemID;
                 msg.push(each);
             });
-
+            console.log(angular.toJson(msg));
             BaseService.submitRetrieval(angular.toJson(msg))
             .then(function (data) {
                 alert('Saved Successfully!');
