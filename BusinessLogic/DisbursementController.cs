@@ -108,8 +108,9 @@ namespace BusinessLogic
                     disb.Status = "PENDING";
 
                     ctx.Disbursement.Add(disb);
+                    ctx.SaveChanges();
 
-                    Disbursement lastDisb = ctx.Disbursement.LastOrDefault();
+                    Disbursement lastDisb = ctx.Disbursement.ToList().Last();
                     int DisID = 0;
                     if(lastDisb != null)
                     {
