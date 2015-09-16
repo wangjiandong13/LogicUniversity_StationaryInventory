@@ -35,10 +35,10 @@
             }, function (data) {
                 alert(data);
             })
-        BaseService.getReqAllocation(RetID)
+        BaseService.getRetByDept(RetID)
             .then(function (data) {
                 console.log(data);
-                $scope.ReqAllocation = data;
+                $scope.ReqDeptAllocation = data;
             }, function (data) {
                 alert(data);
             })
