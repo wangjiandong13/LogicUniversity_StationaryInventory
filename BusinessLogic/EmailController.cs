@@ -26,6 +26,7 @@ namespace BusinessLogic
             Employee emp = ctx.Employee.Where(x=> x.EmpID == empid).FirstOrDefault();
 
             string email = "logicuniversity.depthead@hotmail.com";
+
             try
             {
                 SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
