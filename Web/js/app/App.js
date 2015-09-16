@@ -213,7 +213,7 @@
             $rootScope.side.DisbursementSC = true;
             $rootScope.side.Adjustment = true;
             $rootScope.side.DepartmentSC = true;
-            $rootScope.side.SupplierSC = true;
+            $rootScope.side.Supplier = true;
             $rootScope.side.Inventory = true;
             $rootScope.side.PurchaseOrder = true;
         }

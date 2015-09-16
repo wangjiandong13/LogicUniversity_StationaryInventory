@@ -9,13 +9,29 @@
         $scope.supplier1 = {};
         $scope.supplier2 = {};
         $scope.supplier3 = {};
-        $scope.setting = {
-            ifedit: true,
-            editPrioritybtn: true,
-            savePrioritybtn: false,
-            disablebox: true,
-            saveDetailbtn: false,
+
+        if ($rootScope.UserInfo.RoleId == "SC") {
+            $scope.setting = {
+                ifedit: false,
+                editPrioritybtn: false,
+                savePrioritybtn: false,
+                //disablebox: true,
+                saveDetailbtn: false,
+                editSupplierRank: false,
+            }
         }
+
+        if ($rootScope.UserInfo.RoleId == "SS" || $rootScope.UserInfo.RoleId == "SM") {
+            $scope.setting = {
+                ifedit: false,
+                editPrioritybtn: false,
+                savePrioritybtn: false,
+                disablebox: true,
+                saveDetailbtn: false,
+                editSupplierRank: true,
+            }
+        }
+
         BaseService.getSupplierList()
             .then(function (data) {
                 $scope.supplierselect.availableOptions = data;
@@ -101,6 +117,15 @@
         $scope.editDetail = function (Supplier)
         {
             location.href = "#/suppliernew/" + Supplier.SupplierID;
+        }
+        $scope.delete = function (Supplier) {
+            BaseService.deleteSupplier(Supplier.SupplierID)
+            .then(function (data) {
+                alert('Success!');
+                location.href = "#/supplier";
+            }, function (data) {
+                alert(data);
+            })
         }
     }
 })
