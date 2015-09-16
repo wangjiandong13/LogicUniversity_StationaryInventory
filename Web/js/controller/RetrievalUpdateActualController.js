@@ -49,7 +49,7 @@
                     value.ActualQty = 0;
                 }
                 var each = {
-                    RetID: value.RetID,
+                    RetID: retid,
                     ItemID: value.ItemID,
                     ActualQty: value.ActualQty,
                 };
@@ -74,7 +74,7 @@
                     value.ActualQty = 0;
                 }
                 var each = {
-                    RetID: value.RetID,
+                    RetID: retid,
                     ItemID: value.ItemID,
                     ActualQty: value.ActualQty,
                 };
