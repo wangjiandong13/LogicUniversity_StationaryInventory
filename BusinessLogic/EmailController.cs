@@ -60,7 +60,7 @@ namespace BusinessLogic
         public void SendMailToEmp(int empid, string status)
         {
             Employee emp = ctx.Employee.Where(x => x.EmpID == -empid).FirstOrDefault();
-            string email = emp.Email;
+            string email = "logicuniversity.employee@hotmail.com";
 
             try
             {
