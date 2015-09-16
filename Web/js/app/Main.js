@@ -6,7 +6,6 @@
         'app': 'App',
         'service':'../Service',
         'fitter': '../fitter/Seftfitter',
-        'jQuery': '../../assets/global/plugins/jquery.min',
         'bootstrap': 'Main',
         'routes': 'Route'
     },
@@ -17,15 +16,12 @@
         'angular-route': {
             deps: ['angular']
         },
-        'Main': {
-            deps: ['jQuery']
-        }
     }
 });
 
 require(
     [
-        'app', 'service', 'fitter', 'jQuery'
+        'app', 'service', 'fitter'
     ], function (app, service, fitter) {
         angular.bootstrap(document, ['app', 'BaseServices', 'appfilter', 'ngMap']);
     });

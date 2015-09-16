@@ -18,7 +18,7 @@ namespace Model
         [DataMember]
         public String MonthYear { get; set; }
         [DataMember]
-        public List<ReportResultItems> ReportItems { get; set; }
+        public ICollection<ReportResultItems> ReportItems { get; set; }
     }
 }
 

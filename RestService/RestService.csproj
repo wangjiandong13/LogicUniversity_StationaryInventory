@@ -52,6 +52,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -86,7 +88,10 @@
     <Content Include="RequisitionAPI.svc" />
     <Content Include="RetrievalAPI.svc" />
     <Content Include="SupplierAPI.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Upload.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdjustvoucherAPI.svc.cs">
@@ -131,6 +136,7 @@
     <Compile Include="IRequisitionAPI.cs" />
     <Compile Include="IRetrievalAPI.cs" />
     <Compile Include="ISupplierAPI.cs" />
+    <Compile Include="IUpload.cs" />
     <Compile Include="NotificationAPI.svc.cs">
       <DependentUpon>NotificationAPI.svc</DependentUpon>
     </Compile>
@@ -149,6 +155,9 @@
     </Compile>
     <Compile Include="SupplierAPI.svc.cs">
       <DependentUpon>SupplierAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Upload.svc.cs">
+      <DependentUpon>Upload.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

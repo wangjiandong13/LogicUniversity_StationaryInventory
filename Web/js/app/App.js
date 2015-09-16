@@ -213,11 +213,11 @@
             $rootScope.side.DisbursementSC = true;
             $rootScope.side.Adjustment = true;
             $rootScope.side.DepartmentSC = true;
-            $rootScope.side.SupplierSC = true;
+            $rootScope.side.Supplier = true;
             $rootScope.side.Inventory = true;
             $rootScope.side.PurchaseOrder = true;
         }
-        if ($rootScope.UserInfo.RoleId == "SM") {
+        if ($rootScope.UserInfo.RoleId == "SM" || $rootScope.UserInfo.RoleId == "SS") {
             $rootScope.side.RequisitionSC = true;
             $rootScope.side.Retrieval = true;
             $rootScope.side.DisbursementSC = true;

@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <br>
-                    <button type="button" class="btn btn-success">
+                    <button type="button" class="btn btn-success" ng-click="new()">
                         <span class="glyphicon glyphicon-plus"></span> New
                     </button>
                 </div>
@@ -32,17 +32,20 @@
                     <div class="col-md-2">
                         <label style="display: inline">Date Range:</label>
                     </div>
-                    <div class="col-md-5 input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
-                        <input type="text" class="form-control" name="from">
-                        <span class="input-group-addon">
-                                    to </span>
-                        <input type="text" class="form-control" name="to">
+                    <div class="col-md-5">
+                        <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" id="datestartdata">
+                            <span class="input-group-addon">
+                                to
+                            </span>
+                            <input type="text" class="form-control" id="dateenddata">
+                        </div>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" placeholder="Enter Voucher No.">
+                        <input type="text" class="form-control" placeholder="Enter Voucher No." ng-model="VoucherNo">
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn yellow">
+                        <button type="button" class="btn btn yellow" ng-click="search()">
                             <span class="glyphicon glyphicon-search"></span> Search
                         </button>
                     </div>
@@ -62,23 +65,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>003</td>
-                                    <td>28 August 2015</td>
-                                    <td>Wong Sook Huey</td>
-                                    <td>New</td>
-                                </tr>
-                                <tr>
-                                    <td>002</td>
-                                    <td>21 August 2015</td>
-                                    <td>Wong Sook Huey</td>
-                                    <td>Approved</td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>15 August 2015</td>
-                                    <td>Wong Sook Huey</td>
-                                    <td>Rejected</td>
+                                <tr ng-repeat="Adjustment in Adjustments"  ng-click="adjdetail(Adjustment)">
+                                    <td>{{Adjustment.AdjID}}</td>
+                                    <td>{{Adjustment.Date|datechange|date : 'dd MMM yyyy'}}</td>
+                                    <td>{{Adjustment.EmpName}}</td>
+                                    <td>{{Adjustment.Status}}</td>
                                 </tr>
                             </tbody>
                         </table>

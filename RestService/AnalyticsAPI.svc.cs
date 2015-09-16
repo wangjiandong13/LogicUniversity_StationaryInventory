@@ -18,17 +18,17 @@ namespace RestService
             BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
             return BL.getReports();
         }
-        public bool updateReport(ReportModel rp)
+        public bool updateReport(Report rp)
         {
             BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
             return BL.updateReport(rp);
         }
-        public ReportModel generateNewReport(ReportModel rp)
+        public string generateNewReport(Report rp)
         {
             BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
             return BL.generateNewReport(rp);
         }
-        public ReportModel generateExistingReport(string reportID)
+        public List<ReportResult> generateExistingReport(string reportID)
         {
             BusinessLogic.AnalyticsController BL = new BusinessLogic.AnalyticsController();
             return BL.generateExistingReport(reportID);

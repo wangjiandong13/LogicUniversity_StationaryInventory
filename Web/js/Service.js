@@ -1,4 +1,4 @@
-﻿var baseurl = "http://www.team5.com/api/";
+﻿var baseurl = "http://www.team5.com/API/";
 
 var BaseServices = angular.module("BaseServices", []);
 
@@ -644,6 +644,18 @@ function service($http, $q) {
             })
         return deferred.promise;
     }
+    //get collection point 
+    this.getCollectionPointByID = function (CPID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "collectionAPI.svc/getCollectionPointbyID/"+CPID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
     //search by CPID
     this.getDisbursementByCPID = function (CPID) {
         var deferred = $q.defer();
@@ -1079,6 +1091,20 @@ function service($http, $q) {
     this.deleteItem = function (ItemID) {
         var deferred = $q.defer();
         $http.get(baseurl + "inventoryAPI.svc/deleteItem/" + ItemID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
+
+    //adjustmentDetail.html
+    //get adjustment by adjID //POST
+    this.getAdjVoucherByID = function (msg) {
+        var deferred = $q.defer();
+        $http.post(baseurl + "adjustvoucherAPI.svc/getAdjVoucherByID", msg)
             .success(function (data) {
                 deferred.resolve(data)
             })

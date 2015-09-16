@@ -33,15 +33,12 @@
                     <hr>
                 </div>
                 <div class="col-md-12">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <h4>Please supply the following items by : </h4>
                     </div>
-                    <div class="col-md-8">
-                        <div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
-                            <input type="text" class="form-control" readonly="">
-                            <span class="input-group-btn">
-                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                            </span>
+                    <div class="col-md-7">
+                        <div id="datetiempicker" class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" id="datedata">
                         </div>
                     </div>
                 </div>
@@ -59,13 +56,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in listitems">
+                                <tr ng-repeat="item in listitems" ng-click="edit(item)">
                                     <td>{{item.ItemID}}</td>
                                     <td>{{item.ItemName}}</td>
                                     <td>
-                                        <input type="number" class="form-control" ng-disabled="true"ng-model="item.supplier1Qty+item.supplier2Qty+item.supplier3Qty">
+                                       {{item.supplier1Qty+item.supplier2Qty+item.supplier3Qty}}
                                     </td>
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                    <td><button type="button" class="btn btn-danger" ng-click="delect(item)">Delete</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -74,15 +71,14 @@
                 <br>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="button" class="btn default">Cancel</button>
-                    <button type="submit" class="btn btn-success">Generate Purchase Orders</button>
+                    <button type="button" class="btn default" ng-click="cancelbtn()">Cancel</button>
+                    <button type="button" class="btn btn-success" ng-click="submit()">Generate Purchase Orders</button>
                     <hr>
                 </div>
             </div>
         </div>
 
     </div>
-    <!-- stackable -->
     <div id="Additem" class="modal fade" tabindex="-1" data-focus-on="input:first">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
@@ -109,7 +105,7 @@
                 </div>
                 <div class="col-md-12" style="height:200px;overflow:auto">
                     <table class="table table-striped">
-                        <tr ng-repeat="item in items" ng-click="supplier(item)">
+                        <tr ng-repeat="item in items" ng-click="supplier(item)" >
                             <td style="width:150px">{{item.ItemID}}</td>
                             <td>{{item.ItemName}}</td>
                         </tr>
@@ -140,17 +136,17 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>{{additem.supplier1}}</td>
+                                <td>{{supplierName.supplier1}}</td>
                                 <td><input type="number" ng-model=additem.supplier1Qty class="form-control" min=1></td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>{{additem.supplier2}}</td>
+                                <td>{{supplierName.supplier2}}</td>
                                 <td><input type="number" ng-model=additem.supplier2Qty class="form-control" min=1></td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>{{additem.supplier3}}</td>
+                                <td>{{supplierName.supplier3}}</td>
                                 <td><input type="number" ng-model=additem.supplier3Qty class="form-control" min=1></td>
                             </tr>
                         </tbody>
@@ -158,10 +154,11 @@
                 </div>
             </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button type="button" class="btn red" ng-click="addtolist">Add to list</button>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                <button type="button" ng-if="addtolistbtn" class="btn red" ng-click="addtolist()">Add to list</button>
+                <button type="button" ng-if="Savebtn" class="btn red" ng-click="save()">Save</button>
+            </div>
         </div>
-    </div>
 </div>
 <!-- END CONTENT -->

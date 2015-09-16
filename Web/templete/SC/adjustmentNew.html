@@ -34,10 +34,10 @@
                                 <label>Item Code:</label>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Enter Item Code">
+                                <input type="text" disabled="disabled" class="form-control" ng-model="readyforadd.ItemID" placeholder="Search Item Code">
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn default">Search</button>
+                                <button type="button" class="btn btn default" ng-click="search()">Search</button>
                             </div>
                         </div>
                         <br>
@@ -45,20 +45,16 @@
                             <div class="col-md-2">
                                 <label>Reason:</label>
                             </div>
-                            <div class="col-md-2">
-                                <select class="form-control">
-                                    <option>Reason 1</option>
-                                    <option>Reason 2</option>
-                                    <option>Reason 3</option>
-                                </select>
+                            <div class="col-md-4">
+                                <select class="form-control" ng-model="reasonSelect.selectedOption" ng-options="option.name for option in reasonSelect.availableOptions track by option.id"></select>
                             </div>
                             <div class="col-md-1">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <label style="display: inline">Quantity:</label>
                             </div>
                             <div id="spinner1" class="col-md-2">
-                                <input type="number" class="form-control" id="spinner" min=1>
+                                <input type="number" class="form-control" ng-model="readyforadd.Qty" id="spinner" min=1>
                             </div>
                         </div>
                         <br>
@@ -67,7 +63,7 @@
                                 <label style="display: inline">Details (optional):</label>
                             </div>
                             <div class="col-md-8">
-                                <textarea id="tb_details" class="form-control" maxlength="225" rows="2">
+                                <textarea id="tb_details" ng-model="readyforadd.Remark" class="form-control" maxlength="225" rows="2">
                                 </textarea>
                             </div>
                         </div>
@@ -77,7 +73,7 @@
                 </div>
                 <br>
                 <div class="row text-center">
-                    <button type="button" class="btn btn yellow">
+                    <button type="button" class="btn btn yellow" ng-click="addtosumbitlist()">
                         <span class="glyphicon glyphicon-plus"></span> Add
                     </button>
                 </div>
@@ -96,17 +92,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>P006</td>
-                                    <td>-6</td>
-                                    <td>Faulty</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>F024</td>
-                                    <td>+3</td>
-                                    <td>Gift</td>
-                                    <td>SG50 gift</td>
+                                <tr ng-repeat="item in subimitlist">
+                                    <td>{{item.ItemID}}</td>
+                                    <td>{{item.Qty}}</td>
+                                    <td>{{item.Reason}}</td>
+                                    <td>{{item.Remark}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -114,13 +104,48 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <br>
-                    <button type="button" class="btn default">Cancel</button>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn default" ng-click="cancel()">Cancel</button>
+                    <button type="submit" class="btn btn-success" ng-click="submit()">Submit</button>
                     <hr>
                 </div>
             </div>
         </div>
+    </div>
+    <div id="SearchItem" class="modal fade" tabindex="-1" data-focus-on="input:first">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">Add Item</h4>
+        </div>
+        <div class="modal-body">
 
+            <div>
+                <input class="form-control" type="text" style="float:left;width:70%" ng-model="additem.ItemName">
+                <button type="button" style="float:left" class="btn btn-default" ng-click="searchitem()">Search</button>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width:150px">Item No</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="col-md-12" style="height:200px;overflow:auto">
+                    <table class="table table-striped">
+                        <tr ng-repeat="item in items" ng-click="addtoready(item)">
+                            <td style="width:150px">{{item.ItemID}}</td>
+                            <td>{{item.ItemName}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+        </div>
     </div>
 </div>
 <!-- END CONTENT -->

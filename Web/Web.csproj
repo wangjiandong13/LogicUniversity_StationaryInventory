@@ -4377,12 +4377,16 @@
     <Content Include="img\item_cat\8.jpg" />
     <Content Include="img\item_cat\9.jpg" />
     <Content Include="img\logo.png" />
+    <Content Include="img\logo\login_logo_1.png" />
+    <Content Include="img\logo\login_logo_2.png" />
+    <Content Include="img\logo\login_logo_3.png" />
     <Content Include="img\logo\logo_100.png" />
     <Content Include="img\logo\logo_200.png" />
     <Content Include="img\logo\logo_30.png" />
     <Content Include="img\logo\logo_50.png" />
     <Content Include="img\logo\logo_500.png" />
     <Content Include="img\logo\logo_500_word.png" />
+    <Content Include="img\logo_500_word.png" />
     <Content Include="img\status\1.png" />
     <Content Include="img\status\2.png" />
     <Content Include="img\status\3.png" />
@@ -4799,7 +4803,11 @@
     <Content Include="vendor\angular-md5.js" />
     <Content Include="vendor\angularAMD.min.map" />
     <Content Include="vendor\angular-simple-logger.js" />
+    <Content Include="vendor\bootstrap.js" />
+    <Content Include="vendor\bootstrap.min.js" />
+    <Content Include="vendor\jquery.min.js" />
     <Content Include="vendor\jquerysession.js" />
+    <Content Include="vendor\GoogleMapjs.js" />
     <Content Include="vendor\lodash.js" />
     <Content Include="vendor\ng-bs3-datepicker.css" />
     <Content Include="vendor\ng-bs3-datepicker.js" />
@@ -4877,6 +4885,7 @@
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="css\" />
+    <Folder Include="img\singnatures\" />
     <Folder Include="js\main\" />
   </ItemGroup>
   <PropertyGroup>
