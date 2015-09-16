@@ -15,7 +15,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat =  WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
                                            UriTemplate = "/Upload")]
         string Upload(string imageStr,string Filename);
     }
