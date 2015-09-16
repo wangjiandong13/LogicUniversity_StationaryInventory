@@ -32,11 +32,38 @@
             .then(function (data) {
                 console.log(data);
                 $scope.RetrievalDetail = data;
+            }, function (data) {
+                alert(data);
             })
         BaseService.getReqAllocation(RetID)
             .then(function (data) {
                 console.log(data);
                 $scope.ReqAllocation = data;
+            }, function (data) {
+                alert(data);
             })
+
+        $scope.confirm = function () {
+            var msg = [];
+            $.each($scope.ReqAllocation, function (index, value) {
+                if (value.ActualQty == "") {
+                    value.ActualQty = 0;
+                }
+                var each = {
+                    ReqID: value.ReqID,
+                    ItemID: value.ItemID,
+                    IssueQty: value.IssueQty,
+                };
+                msg.push(each);
+            });
+            console.log(angular.toJson(msg));
+            BaseService.confirmReqAllocation(angular.toJson(msg))
+            .then(function (data) {
+                alert('Saved Successfully!');
+                location.href = "#/retrievalDetailReq/" + retid;
+            }, function (data) {
+                alert(data);
+            })
+        }
     }
 })

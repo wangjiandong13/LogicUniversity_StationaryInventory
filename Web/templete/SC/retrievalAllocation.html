@@ -97,7 +97,9 @@
                                             <td>{{Ra.Dept}}</td>
                                             <td>{{Ra.Priority}}</td>
                                             <td>{{Ra.RequestQty}}</td>
-                                            <td></td>
+                                            <td>
+                                                <input type="number" class="form-control" ng-model="Ra.IssueQty" min="0">
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -106,7 +108,7 @@
                     </div>
                     <div class="col-md-12 text-center">
                         <br>
-                        <button type="button" class="btn btn-success">Confirm</button>
+                        <button type="button" class="btn btn-success" ng-click="confirm()">Confirm</button>
                         <hr>
                     </div>
                 </div>
