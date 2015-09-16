@@ -47,15 +47,8 @@
                         <h4>Filter :</h4>
                     </td>
                     <td class="col-md-8">
-                        <label class="radio-inline" ng-if="setting.Departmentradio">
-                            <input type="radio" name="optradio">Department
-                        </label>
-                        <label class="radio-inline" ng-if="setting.Categoryradio">
-                            <input type="radio" name="optradio">Item Category
-                        </label>
-                        <label class="radio-inline" ng-if="setting.Supplierradio">
-                            <input type="radio" name="optradio">Supplier
-                        </label>
+                        <select class="form-control" ng-model="FilterData.selectedOption"
+                                ng-options="option.Name for option in FilterData.availableOptions track by option.ID"></select>
                     </td>
                 </tr>
                 <tr ng-if="setting.DepartmentSelect">

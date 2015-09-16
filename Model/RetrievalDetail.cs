@@ -9,12 +9,12 @@
 
 namespace Model
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
     using TrackableEntities;
-
+    
     [JsonObject(IsReference = true)]
     [DataContract]
     public partial class RetrievalDetail : ITrackable

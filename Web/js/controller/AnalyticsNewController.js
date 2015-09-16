@@ -32,20 +32,61 @@
             autoclose: true
         });
         $scope.typechange = function () {
-
+            if ($scope.Reporttype.selectedOption.id == 1) {
+                $scope.setting = {
+                    DepartmentSelect: false,
+                    ItemSelect: false,
+                    SupplierSelect: false,
+                    Departmentradio: true,
+                    Categoryradio: false,
+                    Supplierradio: false
+                };
+            }
+            if ($scope.Reporttype.selectedOption.id == 2) {
+                $scope.setting = {
+                    DepartmentSelect: false,
+                    ItemSelect: false,
+                    SupplierSelect: false,
+                    Departmentradio: true,
+                    Categoryradio: true,
+                    Supplierradio: false
+                };
+            }
+            if ($scope.Reporttype.selectedOption.id == 3) {
+                $scope.setting = {
+                    DepartmentSelect: false,
+                    ItemSelect: false,
+                    SupplierSelect: false,
+                    Departmentradio: false,
+                    Categoryradio: false,
+                    Supplierradio: true
+                };
+            }
+            if ($scope.Reporttype.selectedOption.id == 4) {
+                $scope.setting = {
+                    DepartmentSelect: false,
+                    ItemSelect: false,
+                    SupplierSelect: false,
+                    Departmentradio: false,
+                    Categoryradio: true,
+                    Supplierradio: true
+                };
+            }
         };
         BaseService.getDepartmentList()
             .then(function (data) {
                 $scope.DepartmentData.availableOptions = data;
-                $scope.DepartmentData.availableOptions.unshift()
+                $scope.DepartmentData.availableOptions.unshift({ DeptID: 0, DeptName: '--Over All--' });
             })
         BaseService.getCategory()
             .then(function (data) {
                 $scope.ItemData.availableOptions = data;
+                $scope.ItemData.availableOptions.unshift({ ItemID: 0, ItemName: '--Over All--' });
             })
         BaseService.getSupplierList()
             .then(function (data) {
                 $scope.SupplierData.availableOptions = data;
+                $scope.SupplierData.availableOptions.unshift({ SupplierID: 0, SupplierName: '--Over All--' });
             })
         //$("#datestartdata").val()
     }
