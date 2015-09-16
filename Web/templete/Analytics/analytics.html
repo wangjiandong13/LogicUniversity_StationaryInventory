@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="Report in Reports" ng-click="rptdetail(Report)">
+                    <tr ng-repeat="Report in Reports | orderBy:'-ReportID'" ng-click="rptdetail(Report)">
                         <td>{{Report.ReportID}}</td>
                         <td>{{Report.Title}}</td>
                         <td>{{Report.Date|datechange|date : 'dd MMM yyyy'}}</td>

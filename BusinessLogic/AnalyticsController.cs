@@ -115,7 +115,7 @@ namespace BusinessLogic
             DateTime edate = (DateTime)rp.EndD;
             int monthsNo = (((edate.Year - sdate.Year) * 12) + edate.Month - sdate.Month) + 1;
             int type = Convert.ToInt32(rp.Type);
-            int criteria = Convert.ToInt32(rp.Criteria);
+            string criteria = rp.Criteria;
             int precriteria = Convert.ToInt32(rp.Precriteria);
 
             //fetch results
@@ -214,13 +214,14 @@ namespace BusinessLogic
                         if (precriteria == 0)
                         {
                             var requisitions = new List<RequisitionAnalytics>();
-                            if (criteria > 0)
-                            {
-                                requisitions = ctx.RequisitionAnalytics.Where(x => x.Date >= sdate && x.Date <= edate && x.ItemCatID == criteria).ToList();
-                            }
-                            else if (criteria == 0)
+                            if (criteria == "0")
                             {
                                 requisitions = ctx.RequisitionAnalytics.Where(x => x.Date >= sdate && x.Date <= edate).ToList();
+                            }
+                            else
+                            {
+                                int category = Convert.ToInt32(criteria);
+                                requisitions = ctx.RequisitionAnalytics.Where(x => x.Date >= sdate && x.Date <= edate && x.ItemCatID == category).ToList(); 
                             }
 
                             List<Department> dept = ctx.Department.ToList();
@@ -280,7 +281,7 @@ namespace BusinessLogic
                             List<ItemCategory> itemCat = ctx.ItemCategory.ToList();
 
                             //view all
-                            if (criteria == 0)
+                            if (criteria == "0")
                             {
                                 for (int m = 0; m < monthsNo; m++)
                                 {
@@ -331,9 +332,9 @@ namespace BusinessLogic
                             }
 
                             //view items of 1 department selected
-                            else if (criteria > 0)
+                            else
                             {
-                                List<Department> dept = ctx.Department.ToList();
+                                Department dept = ctx.Department.Where(x=> x.DeptID == criteria).FirstOrDefault();
 
                                 for (int m = 0; m < monthsNo; m++)
                                 {
@@ -356,13 +357,11 @@ namespace BusinessLogic
                                         r.ReportItems.Add(ri);
                                     }
 
-                                    int deptPos = criteria - 1;
-
                                     //get all req items in each month
                                     for (int i = 0; i < requisitions.Count; i++)
                                     {
                                         int reqMonth = Convert.ToDateTime(requisitions[i].Date).Month;
-                                        if (reqMonth == month && requisitions[i].DeptID == dept[deptPos].DeptID)
+                                        if (reqMonth == month)
                                         {
                                             int category = Convert.ToInt32(requisitions[i].ItemCatID);
                                             //get by item cat
@@ -482,13 +481,14 @@ namespace BusinessLogic
                         if (precriteria == 2)
                         {
                             var reorders = new List<ReorderAnalytics>();
-                            if (criteria > 0)
-                            {
-                                reorders = ctx.ReorderAnalytics.Where(x => x.Date >= sdate && x.Date <= edate && x.ItemCatID == criteria).ToList();
-                            }
-                            else if (criteria == 0)
+                            if (criteria == "0")
                             {
                                 reorders = ctx.ReorderAnalytics.Where(x => x.Date >= sdate && x.Date <= edate).ToList();
+                            }
+                            else
+                            {
+                                int category = Convert.ToInt32(criteria);
+                                reorders = ctx.ReorderAnalytics.Where(x => x.Date >= sdate && x.Date <= edate && x.ItemCatID == category).ToList();
                             }
 
                             List<Supplier> sup = ctx.Supplier.ToList();
@@ -547,7 +547,7 @@ namespace BusinessLogic
                             List<ItemCategory> itemCat = ctx.ItemCategory.ToList();
 
                             //all item categories
-                            if (criteria == 0)
+                            if (criteria == "0")
                             {
                                 for (int m = 0; m < monthsNo; m++)
                                 {
@@ -598,9 +598,9 @@ namespace BusinessLogic
                             }
 
                             //by supplier rank selected
-                            else if (criteria > 0)
+                            else
                             {
-                                Supplier sup = ctx.Supplier.Where(x => x.Rank == criteria).FirstOrDefault();
+                                Supplier sup = ctx.Supplier.Where(x => x.SupplierID == criteria).FirstOrDefault();
 
                                 for (int m = 0; m < monthsNo; m++)
                                 {
