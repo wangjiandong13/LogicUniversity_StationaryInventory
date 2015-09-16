@@ -206,6 +206,7 @@
             $rootScope.side.RequestCart = true;
             $rootScope.side.Disbursement = true;
             $rootScope.side.Delegate = true;
+            $rootScope.side.Approval = true;
         }
         if ($rootScope.UserInfo.RoleId == "SC") {
             $rootScope.side.RequisitionSC = true;
