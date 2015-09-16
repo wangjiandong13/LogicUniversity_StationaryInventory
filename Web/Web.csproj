@@ -4180,6 +4180,7 @@
     <Content Include="bin\TrackableEntities.EF.6.dll" />
     <Content Include="bin\Web.dll" />
     <Content Include="bin\Web.pdb" />
+    <Content Include="css\notification.css" />
     <Content Include="img\Item_120\C001.jpg" />
     <Content Include="img\Item_120\C002.jpg" />
     <Content Include="img\Item_120\C003.jpg" />
@@ -4880,7 +4881,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
-    <Folder Include="css\" />
     <Folder Include="img\singnatures\" />
     <Folder Include="js\main\" />
   </ItemGroup>

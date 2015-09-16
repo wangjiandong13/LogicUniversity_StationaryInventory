@@ -36,6 +36,7 @@
     <link href="../assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
     <link href="../assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="../assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="../css/notification.css" rel="stylesheet" />
     <script src="../vendor/angular.js"></script>
     <script src="../vendor/angular.min.js"></script>
     <script src="../vendor/angular-route.js"></script>
@@ -73,15 +74,14 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="external">
-
                                 <h3 class="bold"><i class="fa fa-bell"></i>Notifications</h3>
-                                <a href="notification.html">view all</a>
+                                <a href="#/notification.html">view all</a>
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                                    <li>
-                                        <a href="javascript:;">
-                                            Insert Notification Here
+                                    <li ng-repeat="Notfication in NotificationList" ng-class="{true: 'read', false: 'unready'}[Notfication.isRead]">
+                                        <a>
+                                            {{Notfication.NotifName}}
                                         </a>
                                     </li>
                                 </ul>
