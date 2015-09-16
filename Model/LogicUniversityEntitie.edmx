@@ -297,10 +297,11 @@ warning 6002: The table/view 'StationeryInventory_Team_05.dbo.ReorderAnalytics' 
         <EntityType Name="ReorderAnalytics">
           <Key>
             <PropertyRef Name="PoID" />
+            <PropertyRef Name="ItemID" />
           </Key>
           <Property Name="Date" Type="date" />
           <Property Name="ItemCatID" Type="int" />
-          <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Qty" Type="int" />
           <Property Name="ActualQty" Type="int" />
           <Property Name="PoID" Type="int" Nullable="false" />
@@ -312,11 +313,12 @@ warning 6002: The table/view 'StationeryInventory_Team_05.dbo.RequisitionAnalyti
         <EntityType Name="RequisitionAnalytics">
           <Key>
             <PropertyRef Name="ReqID" />
+            <PropertyRef Name="ItemID" />
           </Key>
           <Property Name="Date" Type="date" />
           <Property Name="DeptID" Type="nvarchar" MaxLength="50" />
           <Property Name="ItemCatID" Type="int" />
-          <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RequestQty" Type="int" />
           <Property Name="IssueQty" Type="int" />
           <Property Name="ReqID" Type="int" Nullable="false" />
@@ -1668,10 +1670,11 @@ warning 6002: The table/view 'StationeryInventory_Team_05.dbo.RequisitionAnalyti
         <EntityType Name="ReorderAnalytics">
           <Key>
             <PropertyRef Name="PoID" />
+            <PropertyRef Name="ItemID" />
           </Key>
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="ItemCatID" Type="Int32" />
-          <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Qty" Type="Int32" />
           <Property Name="ActualQty" Type="Int32" />
           <Property Name="PoID" Type="Int32" Nullable="false" />
@@ -1681,11 +1684,12 @@ warning 6002: The table/view 'StationeryInventory_Team_05.dbo.RequisitionAnalyti
         <EntityType Name="RequisitionAnalytics">
           <Key>
             <PropertyRef Name="ReqID" />
+            <PropertyRef Name="ItemID" />
           </Key>
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="DeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ItemCatID" Type="Int32" />
-          <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RequestQty" Type="Int32" />
           <Property Name="IssueQty" Type="Int32" />
           <Property Name="ReqID" Type="Int32" Nullable="false" />

@@ -47,7 +47,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/generateExistingReportStyle3/{reportID}")]
+                                           UriTemplate = "/generateExistingReportStyle3/{reportID}/{}")]
         List<Model.ReportResultWeb> generateExistingReportStyle3(string reportID, string type);
     }
 }
