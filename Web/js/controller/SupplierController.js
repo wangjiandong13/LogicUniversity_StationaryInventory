@@ -102,5 +102,14 @@
         {
             location.href = "#/suppliernew/" + Supplier.SupplierID;
         }
+        $scope.delete = function (Supplier) {
+            BaseService.deleteSupplier(Supplier.SupplierID)
+            .then(function (data) {
+                alert('Success!');
+                location.href = "#/supplier";
+            }, function (data) {
+                alert(data);
+            })
+        }
     }
 })
