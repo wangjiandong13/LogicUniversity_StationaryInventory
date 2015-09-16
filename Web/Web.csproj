@@ -4846,7 +4846,6 @@
     <Content Include="templete\SC\disbursementStoreClerk.html" />
     <Content Include="templete\SC\inventoryList.html" />
     <Content Include="templete\SC\inventoryNew.html" />
-    <Content Include="templete\SC\notification.html" />
     <Content Include="templete\SC\purchaseOrder.html" />
     <Content Include="templete\SC\purchaseOrderDetail.html" />
     <Content Include="templete\SC\purchaseOrderPropose.html" />

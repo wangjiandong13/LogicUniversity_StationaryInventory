@@ -206,6 +206,7 @@
             $rootScope.side.RequestCart = true;
             $rootScope.side.Disbursement = true;
             $rootScope.side.Delegate = true;
+            $rootScope.side.Approval = true;
         }
         if ($rootScope.UserInfo.RoleId == "SC") {
             $rootScope.side.RequisitionSC = true;
@@ -237,8 +238,8 @@
         }
         BaseService.getNotificationList($rootScope.UserInfo.EmpId)
             .then(function (data) {
-                $scope.NotificationList = data;
-                $.each($scope.NotificationList, function (index, value) {
+                $rootScope.NotificationList = data;
+                $.each($rootScope.NotificationList, function (index, value) {
                     if (value.Status == "READ") {
                         value.isRead = true;
                     }

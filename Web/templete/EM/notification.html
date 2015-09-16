@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="Nofiticationcontroller">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -29,15 +29,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Notification Object . date</td>
-                            <td>Notification Object . name</td>
-                            <td>Notification Object . description</td>
-                        </tr>
-                        <tr>
-                            <td>Notification Object . date</td>
-                            <td>Notification Object . name</td>
-                            <td>Notification Object . description</td>
+                        <tr ng-repeat="Notfication in NotificationList  | orderBy:'isRead'"  ng-class="{true: 'read', false: 'unread'}[Notfication.isRead]">
+                            <td>{{Notfication.DateTime|datechange|date : 'dd MMM yyyy'}}</td>
+                            <td>{{Notfication.NotifName}}</td>
+                            <td>{{Notfication.NotifDesc}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -8,7 +8,7 @@
                     <i class="fa fa-cart-arrow-down"></i>
                     <a href="#/retrieval">Retrieval</a>
                     <i class="fa fa-angle-right"></i>
-                    <a href="#/retrievalAllocation">Allocation</a>
+                    <a href="#/retrievalAllocation/{{reqid}}">Allocation</a>
                 </li>
             </ul>
         </div>
@@ -34,21 +34,21 @@
                                         <td class="col-md-4">
                                             <h5>Retrieval No. : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_RetID">0001</label>
+                                            <label>{{RetrievalData.RetID}}</label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <h5>Date : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_date">23 August 2015</label>
+                                            <label>{{RetrievalData.Date|datechange|date : 'dd MMM yyyy'}}</label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <h5>Requisition Forms : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_reqForms">0019, 0020, 0021, 0022</label>
+                                            <label><span ng-repeat="req in RequisitionData">{{req.ReqID}}  </span></label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -97,7 +97,9 @@
                                             <td>{{Ra.Dept}}</td>
                                             <td>{{Ra.Priority}}</td>
                                             <td>{{Ra.RequestQty}}</td>
-                                            <td></td>
+                                            <td>
+                                                <input type="number" class="form-control" ng-model="Ra.IssueQty" min="0">
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -106,7 +108,7 @@
                     </div>
                     <div class="col-md-12 text-center">
                         <br>
-                        <button type="button" class="btn btn-success">Confirm</button>
+                        <button type="button" class="btn btn-success" ng-click="confirm()">Confirm</button>
                         <hr>
                     </div>
                 </div>
