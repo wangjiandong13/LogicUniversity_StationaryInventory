@@ -23,12 +23,6 @@
             .then(function (data) {
                 console.log(data);
                 $scope.RequisitionData = data;
-                //var msg = "";
-                //$.each($scope.RequisitionData, function (index, value) {
-                //    msg.concat(value.ReqID);
-                //    console.log(">>>>>" + msg);
-                //})
-                //$scope.reqForms = msg;
             }, function (data) {
                 alert(data);
             })
@@ -48,8 +42,17 @@
         }
 
         //save btn
-        $scope.save = function (RetrievalDetail) {
-            var msg = { RetID: RetrievalDetail.RetID, ItemID: RetrievalDetail.ItemID, ActualQty: RetrievalDetail.ActualQty };
+        $scope.save = function () {
+            var msg = [];
+            $.each($rootScope.RetrievalDetails, function (index, value) {
+                var each = {
+                    RetID: RetrievalDetail.RetID,
+                    ItemID: RetrievalDetail.ItemID,
+                    ActualQty: RetrievalDetail.ActualQty,
+                };
+                msg.push(each);
+            });
+
             BaseService.saveRetrieval(angular.toJson(msg))
             .then(function (data) {
                 alert('Saved Successfully!');
@@ -61,8 +64,17 @@
         }
 
         //submit btn
-        $scope.submit = function (RetrievalDetail) {
-            var msg = { RetID: RetrievalDetail.RetID, ItemID: RetrievalDetail.ItemID, ActualQty: RetrievalDetail.ActualQty };
+        $scope.submit = function () {
+            var msg = [];
+            $.each($rootScope.RetrievalDetails, function (index, value) {
+                var each = {
+                    RetID: RetrievalDetail.RetID,
+                    ItemID: RetrievalDetail.ItemID,
+                    ActualQty: RetrievalDetail.ActualQty,
+                };
+                msg.push(each);
+            });
+
             BaseService.submitRetrieval(angular.toJson(msg))
             .then(function (data) {
                 alert('Saved Successfully!');
