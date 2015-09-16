@@ -32,11 +32,13 @@
         $scope.search = function () {
             var empid = $scope.optiondata.selectedOption.EmpID;
             if (empid == 0) { status = "null"; }
+            console.log("EmpID >>> " + empid);
             var status = $scope.statusSelect.selectedOption.name;
             if (status == "ALL") { status = "null"; }
+            console.log("status >>> " + status);
             var RetID = $scope.RetrievalNo;
             if (RetID == null || RetID == "") { RetID = "null"; }
-            console.log(RetID);
+            console.log("RetID >>> " + RetID);
             BaseService.getRetrievalListBySC(empid, status, RetID)
             .then(function (data) {
                 console.log(data);
