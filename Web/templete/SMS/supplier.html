@@ -32,7 +32,7 @@
                     <h4>Supplier Priority</h4>
                 </div>
                 <div class="col-md-6" style="text-align:right;">
-                    <button type="button" class="btn btn-default" ng-if="setting.editPrioritybtn" ng-click="editPriority()">Edit Priority</button>
+                    <button type="button" class="btn btn-success" ng-if="setting.editPrioritybtn" ng-click="editPriority()"><i class="fa fa-pencil"></i> Edit Priority</button>
                     <button class="btn btn-primary" ng-if="setting.savePrioritybtn" ng-click="savePriority()">
                         <span class="glyphicon glyphicon-ok"></span> Save
                     </button>
@@ -113,7 +113,8 @@
                         </table>
                     </div>
                     <div class="col-md-2" style="text-align:right" ng-if="ifedit">
-                        <button type="button" class="btn btn-default" ng-click="editDetail(Supplier)">Edit Details</button>
+                        <button type="button" class="btn red" ng-click="delete(Supplier)"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                        <button type="button" class="btn btn-success" ng-click="editDetail(Supplier)"><i class="fa fa-pencil"></i> Edit Details</button>
                     </div>
                     <div class="col-md-12">
                         <hr />
