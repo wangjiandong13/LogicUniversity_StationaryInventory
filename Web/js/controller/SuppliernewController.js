@@ -48,6 +48,9 @@
                 })
             }
         }
-          
+
+        $scope.back = function () {
+            location.href = "#/supplier";
+        }
     }
 });
