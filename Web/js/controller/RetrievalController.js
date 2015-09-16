@@ -8,13 +8,13 @@
         //store clerk combobox
         $scope.optiondata = {
             availableOptions: [],
-            selectedOption: { 'StoreclerkID': 0, 'StoreclerkName': 'ALL' }
+            selectedOption: { 'EmpID': '0', 'EmpName': 'ALL' }
         };
         BaseService.getStoreClerk()
             .then(function (data) {
                 $scope.optiondata.availableOptions = data;
-                //console.log(data);
-                $scope.optiondata.availableOptions.unshift({ StoreclerkID: 0, StoreclerkName: 'ALL' });
+                console.log(data);
+                $scope.optiondata.availableOptions.unshift({ EmpID: '0', EmpName: 'ALL' });
             }, function (data) {
                 alert(data);
             })
