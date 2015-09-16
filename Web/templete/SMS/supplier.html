@@ -67,6 +67,9 @@
             <div class="col-md-12" id="supplierdetail">
                 <hr />
                 <div class="col-md-12  portlet light" ng-repeat="Supplier in Suppliers">
+                    <div class="portlet-title">
+                        <h4>{{Supplier.SupplierName}}</h4>
+                    </div>
                     <div class="col-md-5">
                         <table>
                             <tr>
@@ -83,20 +86,14 @@
                             </tr>
                             <tr>
                                 <td class="col-md-6">
-                                    <h5>Supplier Name : </h5>
+                                    <h5>Contact Name : </h5>
                                 </td>
-                                <td class="col-md-6">{{Supplier.SupplierName}}</td>
+                                <td class="col-md-6">{{Supplier.Contact}}</td>
                             </tr>
                         </table>
                     </div>
                     <div class="col-md-5">
                         <table>
-                            <tr>
-                                <td class="col-md-6">
-                                    <h5>Contact Name : </h5>
-                                </td>
-                                <td class="col-md-6">{{Supplier.Contact}}</td>
-                            </tr>
                             <tr>
                                 <td class="col-md-6">
                                     <h5>Phone : </h5>
@@ -120,9 +117,6 @@
                     <div class="col-md-2" style="text-align:right" ng-if="setting.ifedit">
                         <button type="button" class="btn red" ng-click="delete(Supplier)"><span class="glyphicon glyphicon-trash"></span> Delete</button>
                         <button type="button" class="btn btn-success"  ng-click="editDetail(Supplier)"><i class="fa fa-pencil"></i> Edit Details</button>
-                    </div>
-                    <div class="col-md-12">
-                        <hr />
                     </div>
                 </div>
             </div>
