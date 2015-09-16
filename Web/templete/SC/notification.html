@@ -29,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="Notfication in NotificationList" ng-class="{true: 'read', false: 'unread'}[Notification.isRead]">
+                        <tr ng-repeat="Notfication in NotificationList">
                             <td>{{Notfication.DateTime}}</td>
                             <td>{{Notfication.NotifName}}</td>
                             <td>{{Notfication.NotifDesc}}</td>
