@@ -7,7 +7,7 @@
                 <li>
                     <i class="fa fa-truck"></i>
                     <a href="#/supplier">Supplier List</a>
-                    <i class="fa fa-angle-right"></i> New Supplier
+                    <i class="fa fa-angle-right"></i> {{Title}}
                 </li>
             </ul>
         </div>
@@ -17,7 +17,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h1>Input Supplier Detail</h1>
+                <h1>{{Title}}</h1>
                 <hr>
             </div>
 
@@ -27,56 +27,56 @@
                         <td class="col-md-5">
                             <h5>GST Registration No. : </h5></td>
                         <td class="col-md-7">
-                            <input type="text" class="form-control" id="tb_supplierreg">
+                            <input type="text" class="form-control" ng-model="{{Supplier.RegNo}}">
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-5">
                             <h5>Supplier Code : </h5></td>
                         <td class="col-md-7">
-                            <input type="text" class="form-control" id="tb_suppliercode" >
+                            <input type="text" class="form-control" ng-model="{{Supplier.SupplierID}}">
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-5">
                             <h5>Supplier Name : </h5></td>
                         <td class="col-md-7">
-                            <input type="text" class="form-control" id="tb_suppliername">
+                            <input type="text" class="form-control" ng-model="{{Supplier.SupplierName}}">
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-5">
                             <h5>Contact Name : </h5></td>
                         <td class="col-md-7">
-                            <input type="text" class="form-control" id="tb_suppliercontact">
+                            <input type="text" class="form-control" ng-model="{{Supplier.Contact}}">
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-5">
                             <h5>Phone : </h5></td>
                         <td class="col-md-7">
-                            <input type="text" class="form-control" id="tb_supplierphone">
+                            <input type="text" class="form-control" ng-model="{{Supplier.Phone}}">
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-5">
                             <h5>Supplier fax : </h5></td>
                         <td class="col-md-7">
-                            <input type="text" class="form-control" id="tb_supplierfax">
+                            <input type="text" class="form-control" ng-model="{{Supplier.Fax}}">
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-5">
                             <h5>Supplier Address : </h5></td>
                         <td class="col-md-7" id="lbl_supplieradd">
-                            <textarea class="form-control" id="tb_supplieraddress"></textarea>
+                            <textarea class="form-control" ng-model="{{Supplier.Address}}"></textarea>
                         </td>
                     </tr>
                 </table>
             </div>
             <div class="col-md-12" style="text-align:center">
                 <hr>
-                <button type="button" class="btn btn-primary" id="btn_save">Save</button>
+                <button type="button" class="btn btn-primary" id="btn_save" ng-click="save()">Save</button>
             </div>
         </div>
     </div>

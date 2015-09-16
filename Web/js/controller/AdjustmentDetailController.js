@@ -20,12 +20,17 @@
                                 }, function (data) {
                                     alert(data);
                                 })
-                        myBaseService.getEmployee(value.ApprovedBy)
+                        if (value.ApprovedBy != null) {
+                            myBaseService.getEmployee(value.ApprovedBy)
                                 .then(function (empdata) {
                                     value.ApprovedBy = empdata.EmpName;
                                 }, function (data) {
                                     alert(data);
                                 })
+                        } else {
+                            value.ApprovedBy = "";
+                        }
+                        
                     })
                 }, function (data) {
                     alert(data);
