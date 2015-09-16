@@ -46,9 +46,9 @@
             var msg = [];
             $.each($scope.RetrievalDetails, function (index, value) {
                 var each = {
-                    RetID: RetrievalDetail.RetID,
-                    ItemID: RetrievalDetail.ItemID,
-                    ActualQty: RetrievalDetail.ActualQty,
+                    RetID: value.RetID,
+                    ItemID: value.ItemID,
+                    ActualQty: value.ActualQty,
                 };
                 msg.push(each);
             });
@@ -68,9 +68,9 @@
             var msg = [];
             $.each($scope.RetrievalDetails, function (index, value) {
                 var each = {
-                    RetID: RetrievalDetail.RetID,
-                    ItemID: RetrievalDetail.ItemID,
-                    ActualQty: RetrievalDetail.ActualQty,
+                    RetID: value.RetID,
+                    ItemID: value.ItemID,
+                    ActualQty: value.ActualQty,
                 };
                 msg.push(each);
             });
