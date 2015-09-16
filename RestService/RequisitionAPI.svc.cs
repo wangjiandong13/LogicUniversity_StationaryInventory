@@ -19,7 +19,7 @@ namespace RestService
         public List<Requisition> getRequisitionList(string DisID)
         {
             BusinessLogic.RequisitionController BL = new BusinessLogic.RequisitionController();
-            return BL.getRequisition(DisID);
+            return BL.getRequisitionList(DisID);
         }
 
         public bool approve(string ReqId, string HandledBy, string Remark)
