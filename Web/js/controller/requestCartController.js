@@ -32,6 +32,7 @@
                         req_id = data;
                         var priority = 2;
                         if ($('#create-switch').is(":checked")) { priority = 1 }
+                        else { priority = 2 }
                         selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
                             .then(function (data) {
                                 alert("success!");
