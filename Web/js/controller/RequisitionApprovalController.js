@@ -17,7 +17,7 @@
                        })
                 myBaseService.getPriorityName(data.PriorityID)
                         .then(function (data) {
-                            //console.log(data);
+                            console.log(data);
                             $scope.RequisitionData.Priority = data;
                         })
                 if (data.HandledBy != null) {
