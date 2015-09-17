@@ -66,7 +66,7 @@
             }
             )
         $scope.back = function () {
-            location.href = "#/requisition";
+            location.href = "#/Approval";
         }
         $scope.reject = function () {
             BaseService.rejectRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
