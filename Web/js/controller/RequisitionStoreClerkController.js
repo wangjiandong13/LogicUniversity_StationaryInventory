@@ -24,6 +24,9 @@
                             alert(data);
                         })
                 })
+                $scope.ifprocess = true;
+                if (data[0].StatusID != 2)
+                    $scope.ifprocess = false;
             }, function (data) {
                 alert(data);
             })
@@ -43,6 +46,9 @@
                                 alert(data);
                             })
                     })
+                    $scope.ifprocess = true;
+                    if (data[0].StatusID != 2)
+                        $scope.ifprocess = false;
 
                 }, function (data) {
                     alert(data);
