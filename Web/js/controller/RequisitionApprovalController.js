@@ -15,6 +15,11 @@
                            //console.log("getEmployee");
                            $scope.RequisitionData.EmpName = data.EmpName;
                        })
+                myBaseService.getPriorityName(data.PriorityID)
+                        .then(function (data) {
+                            //console.log(data);
+                            $scope.RequisitionData.Priority = data;
+                        })
                 if (data.HandledBy != null) {
                     myBaseService.getEmployee(data.HandledBy)
                            .then(function (data) {
