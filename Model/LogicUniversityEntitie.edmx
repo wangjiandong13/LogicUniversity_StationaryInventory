@@ -195,7 +195,7 @@
           <Property Name="EndD" Type="date" />
           <Property Name="Remark" Type="nvarchar" MaxLength="350" />
           <Property Name="Type" Type="int" />
-          <Property Name="Criteria" Type="int" />
+          <Property Name="Criteria" Type="nvarchar" MaxLength="50" />
           <Property Name="Precriteria" Type="int" />
         </EntityType>
         <EntityType Name="Requisition">
@@ -1548,7 +1548,7 @@ warning 6002: The table/view 'StationeryInventory_Team_05.dbo.RequisitionAnalyti
           <Property Name="EndD" Type="DateTime" Precision="0" />
           <Property Name="Remark" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="Int32" />
-          <Property Name="Criteria" Type="Int32" />
+          <Property Name="Criteria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Precriteria" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="StationeryInventory_Team_05Model.FK_Report_Employee" FromRole="Report" ToRole="Employee" />
         </EntityType>
@@ -2223,7 +2223,7 @@ warning 6002: The table/view 'StationeryInventory_Team_05.dbo.RequisitionAnalyti
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

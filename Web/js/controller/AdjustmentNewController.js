@@ -49,7 +49,12 @@
         $scope.addtosumbitlist = function () {
             console.log(">>>>enter addtosumbitlist");
             if ($scope.reasonSelect.selectedOption.id!="0") {
-                if ($scope.readyforadd.Qty!=0) {
+                if ($scope.readyforadd.Qty != 0) {
+                    //validation: if reason is damaged, ensure qty is negative
+                    if ($scope.reasonSelect.selectedOption.name == "Damaged") {
+                        if ($scope.readyforadd.Qty > 0)
+                            $scope.readyforadd.Qty = -$scope.readyforadd.Qty;
+                    }
                     if ($scope.readyforadd.ItemID != "") {
                         $scope.readyforadd.Reason = $scope.reasonSelect.selectedOption.name;
                         $scope.subimitlist.push($scope.readyforadd);

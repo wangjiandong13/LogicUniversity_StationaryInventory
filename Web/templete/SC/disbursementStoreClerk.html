@@ -17,7 +17,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-12">
-                    <h1>Disbursement</h1>
+                    <div class="col-md-6">
+                        <h1>Disbursement</h1>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <br>
+                        <button type="button" class="btn btn-success" ng-click="generate() ">
+                            <i class="fa fa-plus-square"></i> Generate
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <hr />
                 </div>
                 <div class="row">
                     <div class="col-md-1">
@@ -65,7 +76,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="Disbursement in Disbursements"  ng-click="disbursementdetail(Disbursement)">
+                                <tr ng-repeat="Disbursement in Disbursements | orderBy:'-DisID'"  ng-click="disbursementdetail(Disbursement)">
                                     <td>{{Disbursement.DisID}}</td>
                                     <td>{{Disbursement.Date|datechange|date : 'dd MMM yyyy'}}</td>
                                     <td>{{Disbursement.DeptID}}</td>

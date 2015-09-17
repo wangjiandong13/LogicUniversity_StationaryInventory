@@ -190,25 +190,25 @@
                     '../controller/RetrievalController'
                 ]
             },
-            '/retrievalAllocation': {
+            '/retrievalAllocation/:retid': {
                 templateUrl: 'SC/retrievalAllocation.html',
                 dependencies: [
                     '../controller/RetrievalAllocationController'
                 ]
             },
-            '/retrievalDetailDept': {
+            '/retrievalDetailDept/:retid': {
                 templateUrl: 'SC/retrievalDetailDept.html',
                 dependencies: [
                     '../controller/RetrievalDetailDeptController'
                 ]
             },
-            '/retrievalDetailReq': {
+            '/retrievalDetailReq/:retid': {
                 templateUrl: 'SC/retrievalDetailReq.html',
                 dependencies: [
                     '../controller/RetrievalDetailReqController'
                 ]
             },
-            '/retrievalUpdateActual': {
+            '/retrievalUpdateActual/:retid': {
                 templateUrl: 'SC/retrievalUpdateActual.html',
                 dependencies: [
                     '../controller/RetrievalUpdateActualController'
@@ -242,6 +242,25 @@
                 templateUrl: 'SMS/suppliernew.html',
                 dependencies: [
                     '../controller/SuppliernewController'
+                ]
+            },
+            '/analytics': {
+                templateUrl: 'Analytics/analytics.html',
+                dependencies: [
+                    '../controller/AnalyticsController'
+                ]
+            },
+            '/analyticsdetail/:reportid': { 
+                templateUrl: 'Analytics/analyticsDetail.html',
+                dependencies: [
+                    '../controller/AnalyticsDetailController'
+                ]
+            },
+            '/analyticsnew': {
+                templateUrl: 'Analytics/analyticsNew.html',
+                dependencies: [
+                    '../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min',
+                    '../controller/AnalyticsNewController'
                 ]
             },
             '/adjustmentApproval': {

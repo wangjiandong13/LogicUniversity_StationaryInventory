@@ -21,19 +21,19 @@ namespace BusinessLogic
         /// Send Email to Dept Head when emp submit new request form
         /// </summary>
         /// <param name="empid">Employee ID</param>
-        public void SendMailToEmpHead(string empid)
+        public void SendMailToEmpHead(int empid)
         {
-            var name = (from n in ctx.Employee
-                        where n.EmpID == Convert.ToInt32(empid)
-                        select n.EmpName).First();
+            Employee emp = ctx.Employee.Where(x => x.EmpID == empid).FirstOrDefault();
+
             string email = "logicuniversity.depthead@hotmail.com";
+
             try
             {
                 SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
                 var mail = new MailMessage();
                 mail.From = new MailAddress("logicuniversity.team5@hotmail.com");
                 mail.To.Add(email);
-                mail.Subject = string.Format("Hi Department Head, new request has been made by {0}.", name);
+                mail.Subject = string.Format("Hi Department Head, new request has been made by {0}.", emp.EmpName);
                 mail.IsBodyHtml = true;
                 string htmlBody;
                 htmlBody = string.Format("Please process the pending requisition forms");
@@ -57,22 +57,19 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="empid">Employee ID</param>
         /// <param name="status">Approve/Reject</param>
-        public void SendMailToEmp(string empid, string status)
+        /// <param name="reqid">Requistion ID</param>
+        public void SendMailToEmp(int empid, string status, int reqid)
         {
-            Employee emp = new Employee();
+            Employee emp = ctx.Employee.Where(x => x.EmpID == empid).FirstOrDefault();
+            string recipentEmail = emp.Email;
 
-            emp = (from n in ctx.Employee
-                   where n.EmpID == Convert.ToInt32(empid)
-                   select n).First();
-
-            string email = emp.Email;
             try
             {
                 SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
                 var mail = new MailMessage();
                 mail.From = new MailAddress("logicuniversity.depthead@hotmail.com");
-                mail.To.Add(email);
-                mail.Subject = string.Format("Your requesition - {0} .", status);
+                mail.To.Add("logicuniversity.employee@hotmail.com");
+                mail.Subject = string.Format("Your requesition {0} is {1} .", reqid, status);
                 mail.IsBodyHtml = true;
                 string htmlBody;
                 htmlBody = string.Format("Hi {0}, your requesition form has been {1} .", emp.EmpName, status);
@@ -82,13 +79,11 @@ namespace BusinessLogic
                 SmtpServer.Credentials = new System.Net.NetworkCredential("logicuniversity.depthead@hotmail.com", "logicuniversity123");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
-
             }
             catch (SmtpException ex)
             {
                 throw new Exception(ex.Message);
             }
-
         }
     }
 }

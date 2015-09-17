@@ -36,7 +36,7 @@ namespace Model
         [DataMember]
         public Nullable<int> Type { get; set; }
         [DataMember]
-        public Nullable<int> Criteria { get; set; }
+        public string Criteria { get; set; }
         [DataMember]
         public Nullable<int> Precriteria { get; set; }
     

@@ -28,14 +28,26 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat = WebMessageFormat.Json,
-                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           BodyStyle = WebMessageBodyStyle.WrappedRequest,
                                            UriTemplate = "/generateNewReport")]
-        string generateNewReport(Model.Report rp);
+        string generateNewReport(string EmpID, string Title, string StartD, string EndD, string Remark, string Type, string Criteria, string Precriteria);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/getReports/{reportID}")]
+                                           UriTemplate = "/generateExistingReport/{reportID}")]
         List<Model.ReportResult> generateExistingReport(string reportID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/generateExistingReportStyle2/{reportID}")]
+        List<Model.ReportResult> generateExistingReportStyle2(string reportID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/generateExistingReportStyle3/{reportID}/{type}")]
+        List<Model.ReportResultWeb> generateExistingReportStyle3(string reportID, string type);
     }
 }

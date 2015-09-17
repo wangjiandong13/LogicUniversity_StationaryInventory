@@ -80,14 +80,16 @@
                                 <th>Date</th>
                                 <th>Supplier</th>
                                 <th>Clerk Name</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="po in polist" ng-click="detail(po)">
+                            <tr ng-repeat="po in polist | orderBy:'-PoID'" ng-click="detail(po)">
                                 <td>{{po.PoID}}</td>
                                 <td>{{po.Date|datechange|date : 'dd MMM yyyy'}}</td>
                                 <td>{{po.SupplierID}}</td>
                                 <td>{{po.EmpName}}</td>
+                                <td>{{po.Status}}</td>
                             </tr>
                         </tbody>
                     </table>

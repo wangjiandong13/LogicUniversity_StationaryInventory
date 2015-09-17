@@ -1,5 +1,5 @@
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
+<div class="page-content-wrapper" ng-controller="RetUpdateActController">
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <div class="page-bar">
@@ -8,7 +8,7 @@
                     <i class="fa fa-cart-arrow-down"></i>
                     <a href="#/retrieval">Retrieval</a>
                     <i class="fa fa-angle-right"></i>
-                    <a href="#/retrievalUpdateActual">Update</a>
+                    <a href="#/retrievalUpdateActual/{{retid}}">Update</a>
                 </li>
             </ul>
         </div>
@@ -34,21 +34,21 @@
                                         <td class="col-md-4">
                                             <h5>Retrieval No. : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_RetID">0001</label>
+                                            <label>{{RetrievalData.RetID}}</label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <h5>Date : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_date">23 August 2015</label>
+                                            <label>{{RetrievalData.Date|datechange|date : 'dd MMM yyyy'}}</label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <h5>Requisition Forms : </h5></td>
                                         <td class="col-md-8">
-                                            <label id="lbl_reqForms">0019, 0020, 0021, 0022</label>
+                                            <label><span ng-repeat="req in RequisitionData">{{req.ReqID}}  </span></label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -69,22 +69,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>0013</td>
-                                        <td>Staplet</td>
-                                        <td>9</td>
+                                    <tr ng-repeat="RetrievalDetail in RetrievalDetails">
+                                        <td>{{RetrievalDetail.Bin}}</td>
+                                        <td>{{RetrievalDetail.ItemID}}</td>
+                                        <td>{{RetrievalDetail.ItemName}}</td>
+                                        <td>{{RetrievalDetail.TotalQty}}</td>
                                         <td>
-                                            <input type="text" class="form-control" id="actual01">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>5234</td>
-                                        <td>Pencil</td>
-                                        <td>20</td>
-                                        <td>
-                                            <input type="text" class="form-control" id="actual01">
+                                            <input type="number" class="form-control" ng-model="RetrievalDetail.ActualQty" min="0">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -93,9 +84,9 @@
                     </div>
                     <div class="col-md-12 text-center">
                         <br>
-                        <button type="button" class="btn default">Cancel</button>
-                        <button type="button" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-success">Submit</button>
+                        <button type="button" class="btn default" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
+                        <button type="button" class="btn btn-primary" ng-click="save()"><i class="fa fa-floppy-o"></i> Save</button>
+                        <button type="button" class="btn btn-success" ng-click="submit()"><i class="fa fa-check"></i> Submit</button>
                         <hr>
                     </div>
                 </div>

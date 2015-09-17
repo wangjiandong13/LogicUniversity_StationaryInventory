@@ -1,8 +1,8 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
     //console.log("enter app");
-    var app = angular.module('app', ['ngRoute', 'BaseServices']);
-    app.controller('BodyCotroller', ['$rootScope', '$window', BodyCotroller]);
-    function BodyCotroller($rootScope, $window) {
+    var app = angular.module('app', ['ngRoute', 'BaseServices', 'nvd3']);
+    app.controller('BodyCotroller', ['$rootScope','$scope', '$window', 'BaseService', BodyCotroller]);
+    function BodyCotroller($rootScope,$scope, $window, BaseService) {
         $rootScope.mean = {
             Requistion: "",
             Catalog: "",
@@ -206,6 +206,7 @@
             $rootScope.side.RequestCart = true;
             $rootScope.side.Disbursement = true;
             $rootScope.side.Delegate = true;
+            $rootScope.side.Approval = true;
         }
         if ($rootScope.UserInfo.RoleId == "SC") {
             $rootScope.side.RequisitionSC = true;
@@ -235,6 +236,19 @@
             $window.sessionStorage.removeItem("RoleID");
             location.href = "/";
         }
+        BaseService.getNotificationList($rootScope.UserInfo.EmpId)
+            .then(function (data) {
+                $rootScope.NotificationList = data;
+                $.each($rootScope.NotificationList, function (index, value) {
+                    if (value.Status == "READ") {
+                        value.isRead = true;
+                    }
+                    else {
+                        value.isRead = false;
+                    }
+                })
+            }
+            )
 
     }
     app.config(
