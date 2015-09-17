@@ -82,7 +82,7 @@
         $scope.approve = function () {
             console.log("enter approve");
             console.log($scope.Remark);
-            if ($scope.Remark == null || $scope.Remark == "" || $scope.Remark == undefined)
+            if ($scope.Remark == null || $scope.Remark == "")
                 $scope.Remark == "-";
             BaseService.approveRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
