@@ -43,7 +43,6 @@ namespace BusinessLogic
                 SmtpServer.Credentials = new System.Net.NetworkCredential("logicuniversity.team5@hotmail.com", "logicuniversity123");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
-
             }
             catch (SmtpException ex)
             {
