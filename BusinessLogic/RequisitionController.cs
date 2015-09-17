@@ -226,7 +226,7 @@ namespace BusinessLogic
             if (req != null)
             {
                 req.PriorityID = Convert.ToInt32(PriorityID);
-                req.Remark = Remark;
+                req.PRemark = Remark;
             }
 
             try
