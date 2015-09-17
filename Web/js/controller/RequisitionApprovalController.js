@@ -69,6 +69,8 @@
             location.href = "#/Approval";
         }
         $scope.reject = function () {
+            if ($scope.Remark == null || $scope.Remark == "")
+                $scope.Remark == "-";
             BaseService.rejectRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
                     alert("success!");
