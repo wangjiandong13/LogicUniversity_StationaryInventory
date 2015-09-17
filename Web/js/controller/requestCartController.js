@@ -10,7 +10,7 @@
         $scope.PRIORITY = true;
         console.log("enter RequestCartControllers")
         $scope.back = function () {
-            location.href = '#/requisition';
+            location.href = '#/catalogList';
         }
         $scope.submit = function () {
             console.log("enter");
