@@ -267,6 +267,7 @@
             app.filter = $filterProvider.register;
             app.factory = $provide.factory;
             app.service = $provide.service;
+            cfpLoadingBarProvider.includeSpinner = false;
             cfpLoadingBarProvider.includeBar = false;
 
             if (config.routes !== undefined) {
