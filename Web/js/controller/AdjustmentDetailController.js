@@ -20,7 +20,7 @@
                                 }, function (data) {
                                     alert(data);
                                 })
-                        if (value.ApprovedBy != null) {
+                        if (value.ApprovedBy != null || value.ApprovedBy != "") {
                             myBaseService.getEmployee(value.ApprovedBy)
                                 .then(function (empdata) {
                                     value.ApprovedBy = empdata.EmpName;
