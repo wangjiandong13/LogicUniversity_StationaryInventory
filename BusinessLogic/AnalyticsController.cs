@@ -757,6 +757,6 @@ namespace BusinessLogic
             return newReportResult;
         }
 
-        public Report 
+       
     }
 }
