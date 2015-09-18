@@ -41,7 +41,7 @@
                     msg.push(each);
                 })
                 MyBaseService.restockPo(angular.toJson(msg))
-                    .then(data, function (data) {
+                    .then(function (data) {
                         alert("Success!");
                         location.href="#/purchaseOrder";
                     }, function (data) { alert("Failed") })
