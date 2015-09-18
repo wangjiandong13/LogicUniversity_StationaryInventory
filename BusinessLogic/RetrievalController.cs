@@ -286,23 +286,19 @@ namespace BusinessLogic
                 //search for department name
                 string deptName = ctx.Department.Where(x => x.DeptID == req.DeptID).FirstOrDefault().DeptName;
 
-                //update stock card
-                List<StockCard> stockCardList = ctx.StockCard.Where(x => x.ItemID == reqDetail.ItemID).ToList();
-                int balance = 0;
-                if (stockCardList.FirstOrDefault() != null)
-                    balance = (int)stockCardList.Last().Balance;
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == reqDetail.ItemID).FirstOrDefault();
+                item.Stock -= reqDetail.IssueQty;
 
+                //update stock card
+     
                 StockCard stockCard = new StockCard();
                 stockCard.ItemID = reqDetail.ItemID;
                 stockCard.Date = DateTime.Now;
                 stockCard.Description = deptName;
-                stockCard.Qty = -reqDetail.IssueQty;
-                stockCard.Balance = balance - reqDetail.IssueQty;
+                stockCard.Qty = 0 - reqDetail.IssueQty;
+                stockCard.Balance = item.Stock - reqDetail.IssueQty;
                 ctx.StockCard.Add(stockCard);
-
-                //update stock in item
-                Item item = ctx.Item.Where(x => x.ItemID == reqDetail.ItemID).FirstOrDefault();
-                item.Stock = balance - reqDetail.IssueQty;
             }
 
             try
