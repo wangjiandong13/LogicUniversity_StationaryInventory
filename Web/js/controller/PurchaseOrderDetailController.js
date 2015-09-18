@@ -43,7 +43,8 @@
                 MyBaseService.restockPo(angular.toJson(msg))
                     .then(data, function (data) {
                         alert("Success!");
-                    })
+                        location.href="#/purchaseOrder";
+                    }, function (data) { alert("Failed") })
             }
         }
         $scope.back = function () {
