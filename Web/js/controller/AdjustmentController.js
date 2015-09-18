@@ -2,7 +2,6 @@
     app.controller('AdjustmentController', ['$rootScope', '$scope', 'BaseService', AdjustmentController]);
     function AdjustmentController($rootScope, $scope, BaseService) {
         $rootScope.changehighlight(9);
-
         $('.date-picker').datepicker({
             orientation: "left",
             autoclose: true

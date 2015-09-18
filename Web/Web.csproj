@@ -4809,6 +4809,8 @@
     <Content Include="templete\Analytics\analyticsNew.html" />
     <Content Include="templete\ED\requisitionApprovalList.html" />
     <Content Include="templete\EM\catalogTile.html" />
+    <Content Include="vendor\angular-animate.js" />
+    <Content Include="vendor\angular-animate.min.js" />
     <Content Include="vendor\angular-google-maps.min.js" />
     <Content Include="vendor\angular-md5.js" />
     <Content Include="vendor\angular-nvd3.js" />
@@ -4822,6 +4824,8 @@
     <Content Include="vendor\jquery.min.js" />
     <Content Include="vendor\jquerysession.js" />
     <Content Include="vendor\GoogleMapjs.js" />
+    <Content Include="vendor\loading-bar.css" />
+    <Content Include="vendor\loading-bar.js" />
     <Content Include="vendor\lodash.js" />
     <Content Include="vendor\ng-bs3-datepicker.css" />
     <Content Include="vendor\ng-bs3-datepicker.js" />
