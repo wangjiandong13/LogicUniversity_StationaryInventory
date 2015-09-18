@@ -200,11 +200,13 @@ namespace BusinessLogic
                 //create and add poDetail to db
                 foreach (ProposePo proposepo in supplier1)
                 {
+                    ItemPrice itemprice = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID && x.SupplierID == supplier1ID).FirstOrDefault();
+
                     PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
                     poDetail.PoID = poLastID;
                     poDetail.ItemID = proposepo.ItemID;
                     poDetail.Qty = proposepo.supplier1Qty;
-                    poDetail.Price = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID).First().Price;
+                    poDetail.Price = itemprice.Price;
                     ctx.PurchaseOrderDetail.Add(poDetail);
                     totalamt += Convert.ToDouble(poDetail.Qty) * (double)poDetail.Price;
                 }
@@ -236,11 +238,13 @@ namespace BusinessLogic
                 //create and add poDetail to db
                 foreach (ProposePo proposepo in supplier2)
                 {
+                    ItemPrice itemprice = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID && x.SupplierID == supplier1ID).FirstOrDefault();
+
                     PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
                     poDetail.PoID = poLastID;
                     poDetail.ItemID = proposepo.ItemID;
                     poDetail.Qty = proposepo.supplier2Qty;
-                    poDetail.Price = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID).First().Price;
+                    poDetail.Price = itemprice.Price;
                     ctx.PurchaseOrderDetail.Add(poDetail);
                     totalamt += Convert.ToDouble(poDetail.Qty) * (double)poDetail.Price;
                 }
@@ -272,11 +276,13 @@ namespace BusinessLogic
                 //create and add poDetail to db
                 foreach (ProposePo proposepo in supplier3)
                 {
+                    ItemPrice itemprice = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID && x.SupplierID == supplier1ID).FirstOrDefault();
+
                     PurchaseOrderDetail poDetail = new PurchaseOrderDetail();
                     poDetail.PoID = poLastID;
                     poDetail.ItemID = proposepo.ItemID;
                     poDetail.Qty = proposepo.supplier3Qty;
-                    poDetail.Price = ctx.ItemPrice.Where(x => x.ItemID == proposepo.ItemID).First().Price;
+                    poDetail.Price = itemprice.Price;
                     ctx.PurchaseOrderDetail.Add(poDetail);
                     totalamt += Convert.ToDouble(poDetail.Qty) * (double)poDetail.Price;
                 }
