@@ -73,10 +73,10 @@ function CPIDchange() {
 
 function absolute() {
     return function (input) {
-        if (!input) {
-            return 0;
+        if (input < 0) {
+            return -input;
         }
-        return Math.abs(input);
+        return input;
     };
 }
 
