@@ -27,11 +27,11 @@ function logincontroller($scope, $http, $window, md5) {
 
                     if (data.RoleID == "EM" || data.RoleID == "DR" || data.RoleID == "DD" || data.RoleID == "DH")
                     {
-                        location.href="/templete/#/requisition"
+                        window.location.href = "/templete/#/requisition"
                     }
                     else
                     {
-                        location.href = "/templete/#/requisitionStoreClerk"
+                        window.location.href = "/templete/#/requisitionStoreClerk"
                     }
                 })
                 .error(function () {
