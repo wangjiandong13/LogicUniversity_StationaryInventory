@@ -1,6 +1,6 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
     //console.log("enter app");
-    var app = angular.module('app', ['ngRoute', 'BaseServices', 'nvd3', 'angular-loading-bar', 'ngAnimate']);
+    var app = angular.module('app', ['ngRoute', 'ngAnimate', 'BaseServices', 'nvd3', 'angular-loading-bar']);
     app.controller('BodyCotroller', ['$rootScope','$scope', '$window', 'BaseService', BodyCotroller]);
     function BodyCotroller($rootScope,$scope, $window, BaseService) {
         $rootScope.mean = {
@@ -267,8 +267,8 @@
             app.filter = $filterProvider.register;
             app.factory = $provide.factory;
             app.service = $provide.service;
-            cfpLoadingBarProvider.includeSpinner = false;
-            cfpLoadingBarProvider.includeBar = false;
+            cfpLoadingBarProvider.includeSpinner = true;
+            cfpLoadingBarProvider.includeBar = true;
 
             if (config.routes !== undefined) {
                 angular.forEach(config.routes, function (route, path) {
