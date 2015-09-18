@@ -162,7 +162,7 @@
                     };
                     msg.push(each);
                 })
-                //console.log(angular.toJson(msg));
+                console.log(angular.toJson(msg));
                 BaseService.generatePo(angular.toJson(msg))
                     .then(function (data) {
                         alert("Success");
