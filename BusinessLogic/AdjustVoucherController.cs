@@ -210,23 +210,20 @@ namespace BusinessLogic
             {
                 string itemID = adjDetail.ItemID;
 
-                //update stock card
-                List<StockCard> stockCardList = ctx.StockCard.Where(x => x.ItemID == itemID).ToList();
-                int balance = 0;
-                if (stockCardList.FirstOrDefault() != null)
-                    balance = (int)stockCardList.Last().Balance;
+                //update stock in item
+                Item item = ctx.Item.Where(x => x.ItemID == itemID).FirstOrDefault();
+                item.Stock += adjDetail.Qty;
 
+                //update stock card
                 StockCard stockCard = new StockCard();
                 stockCard.ItemID = itemID;
                 stockCard.Date = DateTime.Now;
                 stockCard.Description = "Stock Adjustment " + AdjID;
                 stockCard.Qty = adjDetail.Qty;
-                stockCard.Balance = balance + adjDetail.Qty;
+                stockCard.Balance = item.Stock + adjDetail.Qty;
                 ctx.StockCard.Add(stockCard);
                 
-                //update stock in item
-                Item item = ctx.Item.Where(x => x.ItemID == itemID).FirstOrDefault();
-                item.Stock = balance + adjDetail.Qty;
+                
             }
 
             try
