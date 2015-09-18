@@ -24,10 +24,10 @@ function role() {
             return "Store Clerk"
         }
         if (input == "SM") {
-            return "Stroe Manager"
+            return "Store Manager"
         }
         if (input == "SS") {
-            return "Stroe Supervisor"
+            return "Store Supervisor"
         }
     }
 }
