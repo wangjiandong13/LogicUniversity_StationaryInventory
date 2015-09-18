@@ -4,6 +4,33 @@ appfilter.filter('statuschange', statuschange);
 appfilter.filter('prioritychange', prioritychange);
 appfilter.filter('CPIDchange', CPIDchange);
 appfilter.filter('absolute', absolute);
+appfilter.filter('Role', role);
+
+function role() {
+    return function (input) {
+        if (input == "EM") {
+            return "Employee"
+        }
+        if (input == "DR") {
+            return "Department Representative"
+        }
+        if (input == "DD") {
+            return "Department Delegate"
+        }
+        if (input == "DH") {
+            return "Department Head"
+        }
+        if (input == "SC") {
+            return "Store Clerk"
+        }
+        if (input == "SM") {
+            return "Stroe Manager"
+        }
+        if (input == "SS") {
+            return "Stroe Supervisor"
+        }
+    }
+}
 
 function datefilter() {
     return function (input) {
