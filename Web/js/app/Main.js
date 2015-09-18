@@ -21,8 +21,7 @@
 });
 
 require(
-    [
-        'app', 'service', 'fitter'
+    ['app', 'service', 'fitter'
     ], function (app, service, fitter) {
         angular.bootstrap(document, ['app', 'BaseServices', 'appfilter', 'ngMap', 'nvd3']);
     });
