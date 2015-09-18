@@ -25,15 +25,13 @@ namespace BusinessLogic
         {
             Employee emp = ctx.Employee.Where(x => x.EmpID == empid).FirstOrDefault();
 
-            string email = "logicuniversity.depthead@hotmail.com";
-
             try
             {
                 SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
                 var mail = new MailMessage();
                 mail.From = new MailAddress("logicuniversity.team5@hotmail.com");
-                mail.To.Add(email);
-                mail.Subject = string.Format("Hi Department Head, new request has been made by {0}.", emp.EmpName);
+                mail.To.Add("logicuniversity.depthead@hotmail.com");
+                mail.Subject = string.Format("A new Inventory Request by {0} has been raised.", emp.EmpName);
                 mail.IsBodyHtml = true;
                 string htmlBody;
                 htmlBody = string.Format("Please process the pending requisition forms");
@@ -66,7 +64,7 @@ namespace BusinessLogic
             {
                 SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
                 var mail = new MailMessage();
-                mail.From = new MailAddress("logicuniversity.depthead@hotmail.com");
+                mail.From = new MailAddress("logicuniversity.team5@hotmail.com");
                 mail.To.Add("logicuniversity.employee@hotmail.com");
                 mail.Subject = string.Format("Your requesition {0} is {1} .", reqid, status);
                 mail.IsBodyHtml = true;
@@ -75,7 +73,7 @@ namespace BusinessLogic
                 mail.Body = htmlBody;
                 SmtpServer.Port = 25;
                 SmtpServer.UseDefaultCredentials = false;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("logicuniversity.depthead@hotmail.com", "logicuniversity123");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("logicuniversity.team5@hotmail.com", "logicuniversity123");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
             }
