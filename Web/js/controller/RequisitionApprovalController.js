@@ -70,7 +70,7 @@
         }
         $scope.reject = function () {
             if ($scope.Remark == null || $scope.Remark == "")
-                $scope.Remark == "-";
+                $scope.Remark = "-";
             BaseService.rejectRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
                     alert("success!");
@@ -83,7 +83,7 @@
             console.log("enter approve");
             console.log($scope.Remark);
             if ($scope.Remark == null || $scope.Remark == "")
-                $scope.Remark == "-";
+            { $scope.Remark = "-"; }
             BaseService.approveRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
                     alert("success!");
