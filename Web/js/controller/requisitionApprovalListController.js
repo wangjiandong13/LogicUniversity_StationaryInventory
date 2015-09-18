@@ -71,6 +71,7 @@
                 location.href = "#/requisitionApproval/" + Requisition.ReqID;
             }
             else {
+                $rootScope.backTo = 2;
                 location.href = "#/requisitionDetail/" + Requisition.ReqID;
             }
         };

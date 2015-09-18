@@ -15,6 +15,11 @@
                            //console.log("getEmployee");
                            $scope.RequisitionData.EmpName = data.EmpName;
                        })
+                myBaseService.getPriorityName(data.PriorityID)
+                        .then(function (data) {
+                            console.log(data);
+                            $scope.RequisitionData.Priority = data;
+                        })
                 if (data.HandledBy != null) {
                     myBaseService.getEmployee(data.HandledBy)
                            .then(function (data) {
@@ -61,9 +66,11 @@
             }
             )
         $scope.back = function () {
-            location.href = "#/requisition";
+            location.href = "#/Approval";
         }
         $scope.reject = function () {
+            if ($scope.Remark == null || $scope.Remark == "")
+                $scope.Remark == "-";
             BaseService.rejectRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
                     alert("success!");
@@ -74,6 +81,9 @@
         }
         $scope.approve = function () {
             console.log("enter approve");
+            console.log($scope.Remark);
+            if ($scope.Remark == null || $scope.Remark == "")
+                $scope.Remark == "-";
             BaseService.approveRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)
                 .then(function (data) {
                     alert("success!");

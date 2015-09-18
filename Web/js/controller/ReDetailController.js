@@ -80,8 +80,11 @@
             if ($rootScope.backTo == 0) {
                 location.href = "#/requisition";
             }
-            else {
+            else if ($rootScope.backTo == 1) {
                 location.href = "#/disbursementRequisition/" + $rootScope.disid;
+            }
+            else if ($rootScope.backTo == 2) {
+                location.href = "#/Approval";
             }
             
         }
