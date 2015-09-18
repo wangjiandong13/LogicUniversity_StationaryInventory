@@ -98,7 +98,7 @@
                                             <td>{{Ra.Priority}}</td>
                                             <td>{{Ra.RequestQty}}</td>
                                             <td>
-                                                <input type="number" class="form-control" ng-model="Ra.IssueQty" min="0">
+                                                <input type="number" class="form-control" ng-model="Ra.IssueQty" min="0" max={{Ra.RequestQty}}>
                                             </td>
                                         </tr>
                                     </tbody>

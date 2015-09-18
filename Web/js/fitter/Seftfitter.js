@@ -3,6 +3,7 @@ appfilter.filter('datechange', datefilter);
 appfilter.filter('statuschange', statuschange);
 appfilter.filter('prioritychange', prioritychange);
 appfilter.filter('CPIDchange', CPIDchange);
+appfilter.filter('absolute', absolute);
 
 function datefilter() {
     return function (input) {
@@ -67,6 +68,15 @@ function CPIDchange() {
         if (input == 6) {
             return "LogicU University Hospital (11:00am)";
         }
+    };
+}
+
+function absolute() {
+    return function (input) {
+        if (!input) {
+            return 0;
+        }
+        return Math.abs(input);
     };
 }
 
