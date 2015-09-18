@@ -76,7 +76,7 @@
                                     <td>{{PoDetail.ItemName}}</td>
                                     <td>{{PoDetail.Qty}}</td>
                                     <td>
-                                        <input type="text" class="form-control" ng-model="PoDetail.ActualQty" ng-disabled="ActualQty">
+                                        <input type="text" class="form-control" ng-model="PoDetail.ActualQty" ng-disabled="ActualQty" min="0" max={{PoDetail.Qty}}>
                                     </td>
                                     <td>{{PoDetail.Price}}</td>
                                     <td>{{PoDetail.Qty*PoDetail.Price}}</td>
