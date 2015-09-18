@@ -1,6 +1,6 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
     //console.log("enter app");
-    var app = angular.module('app', ['ngRoute', 'BaseServices', 'nvd3', 'angular-loading-bar']);
+    var app = angular.module('app', ['ngRoute', 'BaseServices', 'nvd3', 'angular-loading-bar', 'ngAnimate']);
     app.controller('BodyCotroller', ['$rootScope','$scope', '$window', 'BaseService', BodyCotroller]);
     function BodyCotroller($rootScope,$scope, $window, BaseService) {
         $rootScope.mean = {
