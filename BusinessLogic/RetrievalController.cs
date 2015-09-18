@@ -291,7 +291,6 @@ namespace BusinessLogic
                 item.Stock -= reqDetail.IssueQty;
 
                 //update stock card
-     
                 StockCard stockCard = new StockCard();
                 stockCard.ItemID = reqDetail.ItemID;
                 stockCard.Date = DateTime.Now;
