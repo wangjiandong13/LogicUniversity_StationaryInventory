@@ -22,6 +22,12 @@
             supplier3Qty: 0,
             total:0
         }
+        BaseService.proposePo()
+            .then(function (data) {
+                $scope.listitems = data;
+            }, function (data) {
+                alert(data);
+            })
         BaseService.getSupplierList()
             .then(function (data) {
                 $scope.supplierName.supplier1 = data[0].SupplierID;
