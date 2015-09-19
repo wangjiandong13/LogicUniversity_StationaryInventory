@@ -7,6 +7,12 @@
         BaseService.getPoList("null", "null", "null", PoID)
             .then(function (data) {
                 $scope.PoData = data[0];
+                myBaseService.getEmployee(value.EmpID)
+                                .then(function (empdata) {
+                                    value.ReportedBy = empdata.EmpName;
+                                }, function (data) {
+                                    alert(data);
+                                })
                 MyBaseService.getPoDetail(PoID)
                     .then(function (data) {
                         $scope.PoDetails = data;
