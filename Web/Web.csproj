@@ -4388,6 +4388,7 @@
     <Content Include="img\logo\logo_500.png" />
     <Content Include="img\logo\logo_500_word.png" />
     <Content Include="img\logo_500_word.png" />
+    <Content Include="img\reportlogo.png" />
     <Content Include="img\status\1.png" />
     <Content Include="img\status\2.png" />
     <Content Include="img\status\3.png" />
@@ -4585,7 +4586,6 @@
     <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="assets\global\plugins\carousel-owl-carousel\demos\.DS_Store" />
     <Content Include="assets\global\plugins\carousel-owl-carousel\demos\.htaccess" />
     <Content Include="assets\global\plugins\carousel-owl-carousel\demos\json\.DS_Store" />
@@ -4803,6 +4803,7 @@
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="bin\Web.dll.config" />
     <Content Include="templete\Analytics\analytics.html" />
     <Content Include="templete\Analytics\analyticsDetail.html" />
