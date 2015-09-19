@@ -62,7 +62,7 @@
                 .then(function (data) {
                     $.each(data, function (index, value) {
                         if ($scope.supplier1.SupplierID == value.SupplierID) {
-                            myBaseService.updateSupplierRank($scope.supplier1.SupplierID, 1)
+                            myBaseService.updateSupplierRank(value.SupplierID, 1)
                             .then(function (data) {
                                 console.log('Success! supplier 1 rank updated');
                             }, function (data) {
@@ -70,7 +70,7 @@
                             })
                         }
                         else if ($scope.supplier2.SupplierID == value.SupplierID) {
-                            myBaseService.updateSupplierRank($scope.supplier1.SupplierID, 2)
+                            myBaseService.updateSupplierRank(value.SupplierID, 2)
                                 .then(function (data) {
                                     console.log('Success! supplier 2 rank updated');
                                 }, function (data) {
@@ -78,7 +78,7 @@
                                 })
                         }
                         else if ($scope.supplier3.SupplierID == value.SupplierID) {
-                            myBaseService.updateSupplierRank($scope.supplier1.SupplierID, 3)
+                            myBaseService.updateSupplierRank(value.SupplierID, 3)
                             .then(function (data) {
                                 console.log('Success! supplier 3 rank updated');
                             }, function (data) {
@@ -86,7 +86,7 @@
                             })
                         }
                         else {
-                            myBaseService.updateSupplierRank($scope.supplier1.SupplierID, 4)
+                            myBaseService.updateSupplierRank(value.SupplierID, 4)
                             .then(function (data) {
                                 console.log('Success! Other rank updated');
                             }, function (data) {
