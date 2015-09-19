@@ -19,14 +19,14 @@
             if (cpid == 0) { cpid = "null"; }
             var disid = $scope.DisID;
             if (disid == null || disid =="") { disid = "null"; }
-            //console.log(disid);
+            ////console.log(disid);
             BaseService.getDisbursementList(dept, cpid, disid, "null", "null")
                 .then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $scope.Disbursements = data;
                     $.each(data, function (index, value) {
-                        //console.log(">>>>" + value);
-                        //console.log(">>>>"+value.EmpID);
+                        ////console.log(">>>>" + value);
+                        ////console.log(">>>>"+value.EmpID);
                         myBaseService.getEmployee(value.EmpID)
                             .then(function (data) {
                                 value.ClerkName = data.EmpName;
@@ -53,11 +53,11 @@
 
         BaseService.getAllDisbursement()
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $rootScope.Disbursements = data;
                 $.each(data, function (index, value) {
-                    //console.log(">>>>" + value);
-                    //console.log(">>>>"+value.EmpID);
+                    ////console.log(">>>>" + value);
+                    ////console.log(">>>>"+value.EmpID);
                     myBaseService.getEmployee(value.EmpID)
                         .then(function (data) {
                             value.ClerkName = data.EmpName;
@@ -90,7 +90,7 @@
         BaseService.getAllDept()
             .then(function (data) {
                 $scope.optiondataDept.availableOptions = data;
-                //console.log(data);
+                ////console.log(data);
                 $scope.optiondataDept.availableOptions.unshift({ DeptID: 0, DeptName: 'ALL' });
             }, function (data) {
                 alert(data);
@@ -99,7 +99,7 @@
         BaseService.getAllCollectionPoint()
            .then(function (data) {
                $scope.optiondataCPID.availableOptions = data;
-               //console.log(data);
+               ////console.log(data);
                $scope.optiondataCPID.availableOptions.unshift({ CPID: 0, CPName: 'ALL' });
            }, function (data) {
                alert(data);

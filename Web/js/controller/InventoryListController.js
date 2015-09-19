@@ -17,7 +17,7 @@
         };
         BaseService.getCategory()
             .then(function (data) {
-                //console.log(data);
+                ////console.log(data);
                 $scope.CategorySelectData.availableOptions = data;
                 $scope.CategorySelectData.availableOptions.unshift({ ItemCatID: 0, ItemDescription: 'ALL' });
             }, function (data) {
@@ -29,24 +29,24 @@
         BaseService.getSupplierList()
         .then(function (supplierdata) {
             $.each(supplierdata, function (index, value) {
-                console.log(value.Rank);
+                //console.log(value.Rank);
                 if (value.Rank == 1)
                     $scope.supplierID = value.SupplierID;
             })
 
             myBaseService.getCatalogList()
             .then(function (data) {
-                //console.log(data);
+                ////console.log(data);
                 $scope.inventoryListdata = data;
                 $.each($scope.inventoryListdata, function (index, value) {
                     myBaseService.getItemPrice(value.ItemID)
                     .then(function (itemdata) {
-                        //console.log(itemdata);
-                        //console.log($scope.supplierID);
+                        ////console.log(itemdata);
+                        ////console.log($scope.supplierID);
                         $.each(itemdata, function (index, ipvalue) {
-                            //console.log(ipvalue.SupplierID);
+                            ////console.log(ipvalue.SupplierID);
                             if (ipvalue.SupplierID == $scope.supplierID) {
-                                //console.log($scope.inventoryListdata.Price);
+                                ////console.log($scope.inventoryListdata.Price);
                                 value.Price = ipvalue.Price;
                             }
 
@@ -67,14 +67,14 @@
 
         //click the Edit button
         $scope.edit = function (item) {
-            console.log(item);
+            //console.log(item);
             $rootScope.toNewInvt = 1;
             location.href = '#/inventoryNew/' + item.ItemID;
         };
 
         //click the Delete button
         $scope.delete = function (item) {
-            console.log(item);
+            //console.log(item);
             BaseService.deleteItem(item.ItemID)
             .then(function (data) {
                 alert('Success!');
@@ -98,22 +98,22 @@
             if (S_categoryname == "" || S_categoryname == null) {
                 S_categoryname = "null";
             }
-            //console.log("S_category"+S_category);
-            console.log("S_categoryname"+S_categoryname);
+            ////console.log("S_category"+S_category);
+            //console.log("S_categoryname"+S_categoryname);
             BaseService.searchItem(S_category, S_categoryname)
                 .then(function (data) {
-                    //console.log(">>>>>itemdata");
-                    //console.log(data);
+                    ////console.log(">>>>>itemdata");
+                    ////console.log(data);
                     $scope.inventoryListdata = data;
                     $.each($scope.inventoryListdata, function (index, value) {
                         myBaseService.getItemPrice(value.ItemID)
                             .then(function (itemdata) {
-                                //console.log("itemdata"+itemdata);
-                                //console.log("$scope.supplierID"+$scope.supplierID);
+                                ////console.log("itemdata"+itemdata);
+                                ////console.log("$scope.supplierID"+$scope.supplierID);
                                 $.each(itemdata, function (index, ipvalue) {
-                                    //console.log(ipvalue.SupplierID);
+                                    ////console.log(ipvalue.SupplierID);
                                     if (ipvalue.SupplierID == $scope.supplierID) {
-                                        //console.log($scope.inventoryListdata.Price);
+                                        ////console.log($scope.inventoryListdata.Price);
                                         value.Price = ipvalue.Price;
                                     }
 

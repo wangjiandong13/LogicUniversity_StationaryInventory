@@ -9,11 +9,11 @@
         var myBaseService = BaseService;
         BaseService.getDisbursementRequisition(disid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.DisbReq = data;
                 $.each($scope.DisbReq, function (index, value) {
-                    //console.log(">>>>" + value);
-                    //console.log(">>>>"+value.EmpID);
+                    ////console.log(">>>>" + value);
+                    ////console.log(">>>>"+value.EmpID);
                     myBaseService.getEmployee(value.EmpID)
                         .then(function (data) {
                             value.EmpName = data.EmpName;

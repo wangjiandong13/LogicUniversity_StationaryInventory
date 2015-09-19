@@ -30,7 +30,7 @@
             BaseService.getBySupplierID(supplierid)
             .then(function (data) {
                 $scope.Supplier = data;
-                console.log(data);
+                ////console.log(data);
             }, function (data) {
                 alert(data);
             })

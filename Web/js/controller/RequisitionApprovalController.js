@@ -5,25 +5,25 @@
         var reqid = $routeParams.reqid;
         $scope.reqid = reqid;
         var myBaseService = BaseService;
-        console.log($scope.reqid);
+        //console.log($scope.reqid);
         BaseService.getRequisitionByReqID($scope.reqid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RequisitionData = data;
                 myBaseService.getEmployee(data.EmpID)
                        .then(function (data) {
-                           //console.log("getEmployee");
+                           ////console.log("getEmployee");
                            $scope.RequisitionData.EmpName = data.EmpName;
                        })
                 myBaseService.getPriorityName(data.PriorityID)
                         .then(function (data) {
-                            console.log(data);
+                            //console.log(data);
                             $scope.RequisitionData.Priority = data;
                         })
                 if (data.HandledBy != null) {
                     myBaseService.getEmployee(data.HandledBy)
                            .then(function (data) {
-                               //console.log("getEmployee");
+                               ////console.log("getEmployee");
                                $scope.RequisitionData.HandledByName = data.EmpName;
                            })
                 } else {
@@ -48,10 +48,10 @@
             )
         BaseService.getRequisitionDetailList(reqid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RequisitionDetailLists = data;
                 $.each($scope.RequisitionDetailLists, function (index, value) {
-                    console.log(value.ItemID);
+                    //console.log(value.ItemID);
                     myBaseService.getItemDetail(value.ItemID)
                         .then(function (data) {
                             value.Description = data.ItemName;
@@ -80,8 +80,8 @@
                 })
         }
         $scope.approve = function () {
-            console.log("enter approve");
-            console.log($scope.Remark);
+            //console.log("enter approve");
+            //console.log($scope.Remark);
             if ($scope.Remark == null || $scope.Remark == "")
             { $scope.Remark = "-"; }
             BaseService.approveRequisition($scope.reqid, $rootScope.UserInfo.EmpId, $scope.Remark)

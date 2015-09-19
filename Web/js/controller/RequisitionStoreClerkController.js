@@ -10,13 +10,13 @@
             var status = $scope.statusSelect.selectedOption.id;
             var ReqID = $scope.RequisitionNo;
             if (ReqID == null || ReqID == "") { ReqID = "null"; }
-            //console.log(ReqID);
+            ////console.log(ReqID);
             BaseService.getRequisitionList(status, ReqID, "null", "null")
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.Requisitions = data;
                 $.each($scope.Requisitions, function (index, value) {
-                    console.log(value.EmpID);
+                    //console.log(value.EmpID);
                     myBaseService.getEmployee(value.EmpID)
                         .then(function (empdata) {
                             value.EmpName = empdata.EmpName;
@@ -35,10 +35,10 @@
         //requisition list
         BaseService.getRequisitionApprovedList()
                 .then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $scope.Requisitions = data;
                     $.each($scope.Requisitions, function (index, value) {
-                        console.log(value.EmpID);
+                        //console.log(value.EmpID);
                         myBaseService.getEmployee(value.EmpID)
                             .then(function (empdata) {
                                 value.EmpName = empdata.EmpName;
@@ -78,7 +78,7 @@
                     msg.push(each);
                 }
             })
-            console.log(msg);
+            //console.log(msg);
             BaseService.createRetrieval(msg)
                 .then(function (data) {
                     alert('Success!');
