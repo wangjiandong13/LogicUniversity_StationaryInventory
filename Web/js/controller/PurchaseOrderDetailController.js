@@ -7,7 +7,7 @@
         BaseService.getPoList("null", "null", "null", PoID)
             .then(function (data) {
                 $scope.PoData = data[0];
-                myBaseService.getEmployee(value.EmpID)
+                MyBaseService.getEmployee(value.EmpID)
                                 .then(function (empdata) {
                                     value.EmpName = empdata.EmpName;
                                 }, function (data) {
