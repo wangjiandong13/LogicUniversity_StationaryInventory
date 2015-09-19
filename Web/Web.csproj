@@ -4585,7 +4585,6 @@
     <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="assets\global\plugins\carousel-owl-carousel\demos\.DS_Store" />
     <Content Include="assets\global\plugins\carousel-owl-carousel\demos\.htaccess" />
     <Content Include="assets\global\plugins\carousel-owl-carousel\demos\json\.DS_Store" />
