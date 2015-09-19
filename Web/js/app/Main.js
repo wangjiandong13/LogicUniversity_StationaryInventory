@@ -8,7 +8,8 @@
         'fitter': '../fitter/Seftfitter',
         'bootstrap': 'Main',
         'routes': 'Route',
-        'nvd3': '../../vendor/nv.dv.min'
+        'nvd3': '../../vendor/nv.dv.min',
+        'ngMap': '../../vendor/ng-map.min'
     },
     skim: {
         'app': {
@@ -21,7 +22,7 @@
 });
 
 require(
-    ['app', 'service', 'fitter'
-    ], function (app, service, fitter) {
+    ['app', 'service', 'fitter', 'ngMap'
+    ], function (app, service, fitter,ngMap) {
         angular.bootstrap(document, ['app', 'BaseServices', 'appfilter', 'ngMap', 'nvd3']);
     });
