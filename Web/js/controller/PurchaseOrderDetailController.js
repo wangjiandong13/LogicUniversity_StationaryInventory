@@ -9,7 +9,7 @@
                 $scope.PoData = data[0];
                 myBaseService.getEmployee(value.EmpID)
                                 .then(function (empdata) {
-                                    value.ReportedBy = empdata.EmpName;
+                                    value.EmpName = empdata.EmpName;
                                 }, function (data) {
                                     alert(data);
                                 })
