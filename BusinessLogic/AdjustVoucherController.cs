@@ -83,34 +83,41 @@ namespace BusinessLogic
             AdjustmentVoucher adj = new AdjustmentVoucher();
             adj = (from a in ctx.AdjustmentVoucher
                    orderby a.AdjID descending
-                   select a).First();
-            
-            string oldID = adj.AdjID; //001/09/2015
-            string oldno = oldID.Substring(0, 3); //001
-            string oldmonth = oldID.Substring(4, 2); //09
-            int oldmonth_Int = Convert.ToInt32(oldmonth);//09 --> 9
-            string month = DateTime.Now.Month.ToString();//09
-            string year = DateTime.Now.Year.ToString();
-            int oldno_Int = Convert.ToInt32(oldno);// 01 --> 1
-            string d = Convert.ToString(oldno_Int + 1);
-            string newID = "";
-            if (oldmonth_Int == Convert.ToInt32(month)) // 9 == 9
+                   select a).FirstOrDefault();
+            if (adj != null)
             {
 
-                if (Convert.ToInt32(oldmonth) < 10)
-                    month = "0" + month;
+                string oldID = adj.AdjID; //001/09/2015
+                string oldno = oldID.Substring(0, 3); //001
+                string oldmonth = oldID.Substring(4, 2); //09
+                int oldmonth_Int = Convert.ToInt32(oldmonth);//09 --> 9
+                string month = DateTime.Now.Month.ToString();//09
+                string year = DateTime.Now.Year.ToString();
+                int oldno_Int = Convert.ToInt32(oldno);// 01 --> 1
+                string d = Convert.ToString(oldno_Int + 1);
+                string newID = "";
+                if (oldmonth_Int == Convert.ToInt32(month)) // 9 == 9
+                {
 
-                d = d.PadLeft(3, '0');
-                newID = d + "/" + month + "/" + year;
+                    if (Convert.ToInt32(oldmonth) < 10)
+                        month = "0" + month;
+
+                    d = d.PadLeft(3, '0');
+                    newID = d + "/" + month + "/" + year;
+                }
+                else
+                {
+                    if (Convert.ToInt32(month) < 10)
+                        month = "0" + month;
+                    newID = "001" + "/" + month + "/" + year;
+                }
+
+                return newID;
             }
             else
             {
-                if (Convert.ToInt32(month) < 10)
-                    month = "0" + month;
-                newID = "001" + "/" + month + "/" + year;
+                return "001/09/2015";
             }
-
-            return newID;
         }
 
         /// <summary>
