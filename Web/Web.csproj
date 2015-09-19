@@ -4388,6 +4388,7 @@
     <Content Include="img\logo\logo_500.png" />
     <Content Include="img\logo\logo_500_word.png" />
     <Content Include="img\logo_500_word.png" />
+    <Content Include="img\reportlogo.png" />
     <Content Include="img\status\1.png" />
     <Content Include="img\status\2.png" />
     <Content Include="img\status\3.png" />
