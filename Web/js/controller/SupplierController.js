@@ -56,6 +56,7 @@
             if ($scope.supplierselect.supplier1.SupplierID == $scope.supplierselect.supplier2.SupplierID || $scope.supplierselect.supplier1.SupplierID == $scope.supplierselect.supplier3.SupplierID || $scope.supplierselect.supplier2.SupplierID == $scope.supplierselect.supplier3.SupplierID) {
                 alert('Please choose three different supplier.');
             }
+            else{
             var myBaseService = BaseService;
             BaseService.getSupplierList()
                 .then(function (data) {
