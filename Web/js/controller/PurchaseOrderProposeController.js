@@ -40,7 +40,7 @@
             })
         $scope.supplier = function (item) {
             openchoosesupplier();
-            ////console.log($('#ChooseSupplier').modal());
+            //////console.log($('#ChooseSupplier').modal());
             $scope.addtolistbtn = true;
             $scope.Savebtn = false;
             $scope.additem.ItemName = item.ItemName;
@@ -51,13 +51,13 @@
             $scope.addtolistbtn = false;
             $scope.Savebtn = true;
             openchoosesupplier();
-            ////console.log(item);
+            //////console.log(item);
             $scope.additem.ItemName = item.ItemName;
             $scope.additem.supplier1Qty = item.supplier1Qty;
             $scope.additem.supplier2Qty = item.supplier2Qty;
             $scope.additem.supplier3Qty = item.supplier3Qty;
             $scope.additem.ItemID = item.ItemID;
-            ////console.log($scope.additem);
+            //////console.log($scope.additem);
         }
         function openchoosesupplier() {
                 $('#ChooseSupplier').modal('toggle');
@@ -140,8 +140,8 @@
         function checkifinlist() {
             var str_return = false;
             $.each($scope.listitems, function (index, value) {
-                ////console.log(value);
-                ////console.log($scope.additem.ItemID);
+                //////console.log(value);
+                //////console.log($scope.additem.ItemID);
                 if (value.ItemID == $scope.additem.ItemID) {
                     str_return = true;
                 }
@@ -168,7 +168,7 @@
                     };
                     msg.push(each);
                 })
-                console.log(angular.toJson(msg));
+                //console.log(angular.toJson(msg));
                 BaseService.generatePo(angular.toJson(msg))
                     .then(function (data) {
                         alert("Success");

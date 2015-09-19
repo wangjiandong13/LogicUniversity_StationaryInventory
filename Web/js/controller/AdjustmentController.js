@@ -13,12 +13,12 @@
             if (endDate == "") { endDate = "null"; }
             var AdjID = $scope.VoucherNo;
             if (AdjID == null || AdjID == "") { AdjID = "null" }
-            console.log(startDate);
-            console.log(endDate);
+            //console.log(startDate);
+            //console.log(endDate);
             msg = { "AdjID": AdjID, "startDate": startDate, "endDate": endDate};
             BaseService.getAdjList(msg)
                 .then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $scope.Adjustments = data;
                     $.each(data, function (index, value) {
                         myBaseService.getEmployee(value.ReportedBy)
@@ -38,7 +38,7 @@
         var myBaseService = BaseService;
         BaseService.getAdjList(msg)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.Adjustments = data;
                 $.each(data, function (index, value) {
                     myBaseService.getEmployee(value.ReportedBy)

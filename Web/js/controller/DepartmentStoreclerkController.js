@@ -5,7 +5,7 @@
         var MyBaseService = BaseService;
         BaseService.getDepartmentList()
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.departmentlist = data;
                 $.each($scope.departmentlist, function (index, value) {
                     //get contact name

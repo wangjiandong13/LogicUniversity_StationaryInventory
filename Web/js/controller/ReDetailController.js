@@ -7,10 +7,10 @@
         var reqid = $routeParams.reqid;
         $scope.reqid = reqid;
         var myBaseService = BaseService;
-        console.log($scope.reqid);
+        //console.log($scope.reqid);
         BaseService.getRequisitionByReqID($scope.reqid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RequisitionData = data;
                 if ($scope.RequisitionData.StatusID == 1) {
                     $scope.cancelbtn = true;
@@ -19,18 +19,18 @@
                 }
                 myBaseService.getEmployee(data.EmpID)
                        .then(function (data) {
-                           //console.log("getEmployee");
+                           ////console.log("getEmployee");
                            $scope.RequisitionData.EmpName = data.EmpName;
                        })
                 myBaseService.getPriorityName(data.PriorityID)
                         .then(function (data) {
-                            //console.log(data);
+                            ////console.log(data);
                             $scope.RequisitionData.Priority = data;
                         })
                 if (data.HandledBy != null) {
                     myBaseService.getEmployee(data.HandledBy)
                            .then(function (data) {
-                               //console.log("getEmployee");
+                               ////console.log("getEmployee");
                                $scope.RequisitionData.HandledByName = data.EmpName;
                            })
                 } else {
@@ -56,10 +56,10 @@
         $scope.reorderbtn = false;
         BaseService.getRequisitionDetailList(reqid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RequisitionDetailLists = data;
                 $.each($scope.RequisitionDetailLists, function (index, value) {
-                    console.log(value.ItemID);
+                    //console.log(value.ItemID);
                     if (value.RequestQty != value.IssueQty && $scope.RequisitionData.StatusID == 4) {
                         $scope.reorderbtn = true;
                     }

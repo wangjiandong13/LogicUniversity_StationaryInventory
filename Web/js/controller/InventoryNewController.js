@@ -7,7 +7,7 @@
 
         var itemid = $routeParams.itemid;
         $scope.itemid = itemid;
-        console.log($scope.itemid);
+        //console.log($scope.itemid);
         var myBaseService = BaseService;
        
         //get categoryselectData
@@ -17,7 +17,7 @@
         };
         BaseService.getCategory()
             .then(function (data) {
-                //console.log(data);
+                ////console.log(data);
                 $scope.CategorySelectData.availableOptions = data;
                 //$scope.CategorySelectData.availableOptions.unshift({ ItemCatID: 0, ItemDescription: 'ALL' });
             }, function (data) {
@@ -30,7 +30,7 @@
             //load supplier info
             BaseService.getSupplierList($scope.itemid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $.each(data, function (index, value) {
                     if (value.Rank == 1)
                         $scope.supplier1 = value.SupplierID;
@@ -45,7 +45,7 @@
 
             //New: click submit
             $scope.submit = function () {
-                console.log("enter");
+                //console.log("enter");
                 var msgItem = {
                     ItemID: $scope.ItemID, ItemName: $scope.ItemDesc, ItemCatID: $scope.CategorySelectData.selectedOption.ItemCatID,
                     RoLvl: $scope.RoLvl, RoQty: $scope.RoQty, UOM: $scope.UOM, Stock: $scope.Stock, Bin: $scope.Bin
@@ -56,7 +56,7 @@
 
                 myBaseService.createItem(angular.toJson(msgItem))
                     .then(function (data) {
-                        console.log(data);
+                        //console.log(data);
                         myBaseService.createItemPrice(angular.toJson(msgItemPrice))
                             .then(function (data) {
                                 alert("success!");
@@ -73,7 +73,7 @@
             //load item data
             BaseService.getItemDetail($scope.itemid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.ItemDesc = data.ItemName;
                 $scope.ItemID = data.ItemID;
                 $scope.CategorySelectData.selectedOption.ItemCatID = data.ItemCatID;
@@ -89,11 +89,11 @@
             //load itemPrice data
             BaseService.getItemPrice($scope.itemid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $.each(data, function (index, itempricedata) {
                     myBaseService.getSupplierList($scope.itemid)
                         .then(function (supplierdata) {
-                            console.log(supplierdata);
+                            //console.log(supplierdata);
                             $.each(supplierdata, function (index, value) {
                                 if (value.Rank == 1)
                                     $scope.supplier1 = value.SupplierID;
@@ -102,9 +102,9 @@
                                 if (value.Rank == 3)
                                     $scope.supplier3 = value.SupplierID;
                             })
-                            console.log($scope.supplier1);
-                            console.log($scope.supplier2);
-                            console.log($scope.supplier3);
+                            //console.log($scope.supplier1);
+                            //console.log($scope.supplier2);
+                            //console.log($scope.supplier3);
 
                             if ($scope.supplier1 == itempricedata.SupplierID)
                                 $scope.supplier1Price = itempricedata.Price;
@@ -121,7 +121,7 @@
 
             //Edit: click submit 
             $scope.submit = function () {
-                console.log("enter");
+                //console.log("enter");
                 var msgItem = {
                     ItemID: $scope.ItemID, ItemName: $scope.ItemDesc, ItemCatID: $scope.CategorySelectData.selectedOption.ItemCatID,
                     RoLvl: $scope.RoLvl, RoQty: $scope.RoQty, UOM: $scope.UOM, Stock: $scope.Stock, Bin: $scope.Bin
@@ -132,7 +132,7 @@
 
                 myBaseService.updateItemInv(angular.toJson(msgItem))
                     .then(function (data) {
-                        console.log(data);
+                        //console.log(data);
                         myBaseService.updateItemPriceInv(angular.toJson(msgItemPrice))
                             .then(function (data) {
                                 alert("success!");

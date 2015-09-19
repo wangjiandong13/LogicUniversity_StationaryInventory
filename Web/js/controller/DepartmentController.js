@@ -74,7 +74,7 @@
                 Phone: $scope.Department.Phone,
                 Fax: $scope.Department.Fax
             }
-            console.log(angular.toJson($scope.updatemodel));
+            //console.log(angular.toJson($scope.updatemodel));
             selfBaseService.updateDepartment(angular.toJson($scope.updatemodel))
                 .then(function (data) {
                     alert("success");
@@ -98,7 +98,7 @@
                 };
             }
         }
-        console.log("enter  departmentCtrl");
+        //console.log("enter  departmentCtrl");
         $rootScope.collectiondata = {
             availableOptions: [],
             selectedOption: { 'CPID': 0, 'CPName': 'ALL' }
@@ -109,10 +109,10 @@
                        depth = data.DeptHead;
                        selfBaseService.getAllCollectionPoint()
                                .then(function (data) {
-                                   console.log(data);
+                                   //console.log(data);
                                    $rootScope.collectiondata.availableOptions = data;
                                    $.each(data, function (index, value) {
-                                       console.log(value.CPID + "+" + $scope.Department.CPID);
+                                       //console.log(value.CPID + "+" + $scope.Department.CPID);
                                        if (value.CPID == $scope.Department.CPID) {
                                            $rootScope.collectiondata.selectedOption = { 'CPID': value.CPID, 'CPName': value.CPName };
                                        }
@@ -120,7 +120,7 @@
                                })
                        selfBaseService.getEmployee(depth)
                            .then(function (data) {
-                               console.log(data.EmpName);
+                               //console.log(data.EmpName);
                                $scope.DeptHeadName = data.EmpName;
                            }, function (data) {
                                alert(data);
@@ -149,15 +149,15 @@
         };
         BaseService.getDeptEmployee($rootScope.UserInfo.DeptId)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $rootScope.optiondata.availableOptions = data;
                 $.each(data, function (index, value) {
                     if (value.RoleID == "DR") {
-                        console.log("enter");
+                        //console.log("enter");
                         $rootScope.optiondata.selectedOption = { 'EmpID': value.EmpID, 'EmpName': value.EmpName }
                     }
                 })
-                console.log($rootScope.optiondata.selectedOption);
+                //console.log($rootScope.optiondata.selectedOption);
 
             }, function (data) {
                 alert(data);

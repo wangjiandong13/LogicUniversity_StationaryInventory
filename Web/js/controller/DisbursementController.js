@@ -14,11 +14,11 @@
             if (endDate == "") { endDate = "null"; }
             var disID = $scope.DisbursementNo;
             if (disID == null || disID == "") { disID = "null" }
-            console.log(startDate);
-            console.log(endDate);
+            //console.log(startDate);
+            //console.log(endDate);
             BaseService.getDisbursementList($rootScope.UserInfo.DeptId, "null", disID, startDate, endDate)
                 .then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $rootScope.Disbursements = data;
                 }, function (data) {
                     alert(data);
@@ -29,7 +29,7 @@
     function DisbursementList($rootScope, $scope, BaseService) {
         BaseService.getDisbursementList($rootScope.UserInfo.DeptId, "null", "null", "null", "null")
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $rootScope.Disbursements = data;
             }, function (data) {
                 alert(data);

@@ -5,10 +5,10 @@
         var itemid = $routeParams.itemid;
         $scope.itemid = itemid;
         var myBaseService = BaseService;
-        console.log($scope.itemid);
+        //console.log($scope.itemid);
         BaseService.getItemDetail($scope.itemid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.ItemData = data;
             }, function (data) {
                 alert(data);
@@ -17,7 +17,7 @@
 
         BaseService.getSupplierInfo()
             .then(function (supplierdata) {
-                console.log(supplierdata);
+                //console.log(supplierdata);
                 $.each(supplierdata, function (index, value) {
                     if (value.Rank == 1)
                         $scope.Supplier1 = value.SupplierID;
@@ -30,7 +30,7 @@
 
         BaseService.getStockCard($scope.itemid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.StockcardList = data;
             }, function (data) {
                 alert(data);

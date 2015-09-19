@@ -73,7 +73,7 @@
             }
         };
         $scope.Filterchange = function () {
-            console.log(">>enter filterchange")
+            //console.log(">>enter filterchange")
             if ($scope.FilterData.selectedOption.ID == 0 || $scope.FilterData.selectedOption.ID == 2) {
                 $scope.setting = {
                     DepartmentSelect: false,
@@ -105,7 +105,7 @@
             })
         BaseService.getCategory()
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.ItemData.availableOptions = data;
                 $scope.ItemData.availableOptions.unshift({ ItemID: 0, ItemDescription: '--Over All--' });
             })
@@ -141,7 +141,7 @@
                     } else {
                         msg.Criteria = "0";
                     }
-                    console.log(angular.toJson(msg));
+                    //console.log(angular.toJson(msg));
                     BaseService.generateNewReport(angular.toJson(msg))
                         .then(function (data) {
                             alert("Success");

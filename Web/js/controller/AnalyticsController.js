@@ -6,7 +6,7 @@
         var myBaseService = BaseService;
         BaseService.getReports()
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.Reports = data;
                 $.each(data, function (index, value) {
                     myBaseService.getEmployee(value.EmpID)

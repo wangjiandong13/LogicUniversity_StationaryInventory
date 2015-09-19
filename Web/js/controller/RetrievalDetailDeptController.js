@@ -6,13 +6,13 @@
 
         var retid = $routeParams.retid;
         $scope.retid = retid;
-        console.log($scope.retid);
+        //console.log($scope.retid);
 
         var myBaseService = BaseService;
 
         BaseService.getRetrievalListBySC("null", "null", $scope.retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RetrievalData = data[0];
 
             }, function (data) {
@@ -21,7 +21,7 @@
 
         BaseService.getRequisitionListByRetID($scope.retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RequisitionData = data;
             }, function (data) {
                 alert(data);
@@ -29,14 +29,14 @@
 
         BaseService.getRetrievalDetail($scope.retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RetrievalDetail = data;
             }, function (data) {
                 alert(data);
             })
         BaseService.getRetByDept($scope.retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.ReqDeptAllocation = data;
             }, function (data) {
                 alert(data);
