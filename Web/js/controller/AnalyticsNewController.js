@@ -141,6 +141,7 @@
                     } else {
                         msg.Criteria = "0";
                     }
+                    console.log(angular.toJson(msg));
                     BaseService.generateNewReport(angular.toJson(msg))
                         .then(function (data) {
                             alert("Success");
