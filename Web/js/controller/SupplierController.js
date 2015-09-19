@@ -9,8 +9,6 @@
             supplier2: { SupplierID: "", SupplierName: "" },
             supplier3: { SupplierID: "", SupplierName: "" }
         }
-
-
         if ($rootScope.UserInfo.RoleId == "SC") {
             $scope.setting = {
                 ifedit: false,
@@ -38,13 +36,13 @@
                 $scope.supplierselect.availableOptions = data;
                 $.each(data, function (index, value) {
                     if (value.Rank == 1) {
-                        $scope.supplier1 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
+                        $scope.supplierselect.supplier1 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
                     }
                     if (value.Rank == 2) {
-                        $scope.supplier2 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
+                        $scope.supplierselect.supplier2 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
                     }
                     if (value.Rank == 3) {
-                        $scope.supplier3 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
+                        $scope.supplierselect.supplier3 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
                     }
                 })
             }
