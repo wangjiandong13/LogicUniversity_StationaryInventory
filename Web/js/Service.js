@@ -1159,6 +1159,18 @@ function service($http, $q) {
         return deferred.promise;
     }
 
+    //Generate Existing Report 
+    this.getReportByID = function (reportID) {
+        var deferred = $q.defer();
+        $http.get(baseurl + "analyticsAPI.svc/getReport/" + reportID)
+            .success(function (data) {
+                deferred.resolve(data)
+            })
+            .error(function () {
+                deferred.reject('There was an error')
+            })
+        return deferred.promise;
+    }
 }
 
 
