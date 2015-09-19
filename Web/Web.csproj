@@ -4802,6 +4802,7 @@
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="bin\Web.dll.config" />
     <Content Include="templete\Analytics\analytics.html" />
     <Content Include="templete\Analytics\analyticsDetail.html" />
