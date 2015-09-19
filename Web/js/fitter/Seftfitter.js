@@ -5,6 +5,24 @@ appfilter.filter('prioritychange', prioritychange);
 appfilter.filter('CPIDchange', CPIDchange);
 appfilter.filter('absolute', absolute);
 appfilter.filter('Role', role);
+appfilter.filter('analyticsType', analyticsType);
+
+function analyticsType() {
+    return function (input) {
+        if (input == 1) {
+            return "Total no. of Requisitions";
+        }
+        if (input == 2) {
+            return "Total no. of Request Items";
+        }
+        if (input == 3) {
+            return "Total no. of Purchase Orders";
+        }
+        if (input == 4) {
+            return "Total no. of Reorder Items";
+        }
+    };
+}
 
 function role() {
     return function (input) {

@@ -757,6 +757,16 @@ namespace BusinessLogic
             return newReportResult;
         }
 
+        /// <summary>
+        /// GetReport
+        /// </summary>
+        /// <param name="reportID">Report ID</param>
+        /// <returns></returns>
+        public Report getReport(string reportID)
+        {
+            int ReportID = Convert.ToInt32(reportID);
+            return ctx.Report.Where(x => x.ReportID == ReportID).FirstOrDefault();
+        }
        
     }
 }

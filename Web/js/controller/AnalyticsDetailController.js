@@ -77,6 +77,10 @@
                 $scope.Pricedata = data;
                 //console.log($scope.data);
             })
+        BaseService.getReport(rid)
+            .then(function (data) {
+                $scope.Report = data;
+            })
     }
     function Chatcontroller($scope, $rootScope,$routeParams, BaseService) {
         //var Pricedata = [];
