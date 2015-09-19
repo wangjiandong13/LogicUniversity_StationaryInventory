@@ -77,7 +77,7 @@
                 $scope.Pricedata = data;
                 //console.log($scope.data);
             })
-        BaseService.getReport(rid)
+        BaseService.getReportByID(rid)
             .then(function (data) {
                 $scope.Report = data;
             })
