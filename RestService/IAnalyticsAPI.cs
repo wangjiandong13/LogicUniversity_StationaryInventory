@@ -21,7 +21,7 @@ namespace RestService
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,
-                                           UriTemplate = "/getReports/{reportID}")]
+                                           UriTemplate = "/getReport/{reportID}")]
         Model.Report getReport(string reportID);
 
         [OperationContract]
