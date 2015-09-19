@@ -58,9 +58,12 @@
                 alert('Please choose three different supplier.');
             }
             var myBaseService = BaseService;
-            BaseService.getSupplierInfo()
+            BaseService.getSupplierList()
                 .then(function (data) {
                     $.each(data, function (index, value) {
+                        console.log(">>>>>>each>>>>");
+                        console.log(value);
+                        console.log($scope.supplier1)
                         if ($scope.supplier1.SupplierID == value.SupplierID) {
                             myBaseService.updateSupplierRank(value.SupplierID, 1)
                             .then(function (data) {
