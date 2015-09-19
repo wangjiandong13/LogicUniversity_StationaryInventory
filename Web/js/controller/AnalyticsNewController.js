@@ -126,7 +126,7 @@
                         StartD: $("#datestartdata").val(),
                         EndD: $("#dateenddata").val(),
                         Remark: $scope.Remarks,
-                        Type: $scope.Reporttype.id,
+                        Type: $scope.Reporttype.selectedOption.id,
                         Precriteria: $scope.FilterData.selectedOption.ID,
                         Criteria: ""
                     }
