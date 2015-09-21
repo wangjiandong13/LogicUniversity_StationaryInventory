@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
-                    <h1>Report #1234</h1>
+                    <h1>Report {{Report.ReportID}}</h1>
                 </div>
                 <div class="col-md-6" style="text-align:right">
                     <br>
-                    <img src="reportlogo.png">
+                    <img src="../../img/reportlogo.png">
                 </div>
             </div>
             <div class="col-md-12">
@@ -21,7 +21,7 @@
             </div>
             <br />
             <br />
-            <!--<div class="col-md-12">
+            <div class="col-md-12">
                 <div class="col-md-5">
                     <table>
                         <tr>
@@ -29,7 +29,7 @@
                                 <label>Title : </label>
                             </td>
                             <td class="col-md-8">
-                                Some Report Title
+                                {{Report.Title}}
                             </td>
                         </tr>
                         <tr>
@@ -37,7 +37,7 @@
                                 <label>Type : </label>
                             </td>
                             <td class="col-md-8">
-                                Some Type
+                                {{Report.Type}}
                             </td>
                         </tr>
                         <tr>
@@ -45,7 +45,7 @@
                                 <label>Created By : </label>
                             </td>
                             <td class="col-md-8">
-                                Some Employee
+                                {{Report.EmpID}}
                             </td>
                         </tr>
                         <tr>
@@ -53,7 +53,7 @@
                                 <label>Created On : </label>
                             </td>
                             <td class="col-md-8">
-                                Some Date
+                                {{Report.Date|datechange|date : 'dd MMM yyyy'}}
                             </td>
                         </tr>
                     </table>
@@ -65,15 +65,15 @@
                                 <label>Remarks : </label>
                             </td>
                             <td class="col-md-8">
-                                Some Remarksssss
+                                {{Report.Remark}}
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="col-md-1">
-                    <i class="fa fa-print fa-2x" onclick="myFunction()"></i>
+                    <div class="col-md-2" onclick="javascript:window.print()"><a class="btn btn-sm default DTTT_button_print" id="ToolTables_sample_2_3" title="View print view"><i class="fa fa-print"></i><span> Print</span></a></div>
                 </div>
-            </div>-->
+            </div>
         </div>
     </div>
 </div>

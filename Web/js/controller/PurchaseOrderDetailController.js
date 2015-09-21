@@ -7,6 +7,12 @@
         BaseService.getPoList("null", "null", "null", PoID)
             .then(function (data) {
                 $scope.PoData = data[0];
+                MyBaseService.getEmployee($scope.PoData.EmpID)
+                                .then(function (empdata) {
+                                    $scope.PoData.EmpName = empdata.EmpName;
+                                }, function (data) {
+                                    alert(data);
+                                })
                 MyBaseService.getPoDetail(PoID)
                     .then(function (data) {
                         $scope.PoDetails = data;
@@ -41,9 +47,10 @@
                     msg.push(each);
                 })
                 MyBaseService.restockPo(angular.toJson(msg))
-                    .then(data, function (data) {
+                    .then(function (data) {
                         alert("Success!");
-                    })
+                        location.href="#/purchaseOrder";
+                    }, function (data) { alert("Failed") })
             }
         }
         $scope.back = function () {

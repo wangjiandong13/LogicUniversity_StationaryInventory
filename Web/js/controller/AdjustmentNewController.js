@@ -37,17 +37,17 @@
             }
         }
         $scope.search = function () {
-            console.log(">>>>enter search button");
+            //console.log(">>>>enter search button");
             //enter search codes here (JD)
             $('#SearchItem').modal('toggle');
         }
         $scope.addtoready = function (item) {
-            console.log(">>>>enter addtoready ");
+            //console.log(">>>>enter addtoready ");
             $scope.readyforadd.ItemID = item.ItemID;
             $('#SearchItem').modal('hide');
         }
         $scope.addtosumbitlist = function () {
-            console.log(">>>>enter addtosumbitlist");
+            //console.log(">>>>enter addtosumbitlist");
             if ($scope.reasonSelect.selectedOption.id!="0") {
                 if ($scope.readyforadd.Qty != 0) {
                     //validation: if reason is damaged, ensure qty is negative
@@ -80,12 +80,12 @@
         }
 
         $scope.cancel = function () {
-            console.log(">>>>enter cancel button");
+            //console.log(">>>>enter cancel button");
             location.href = "#/adjustment";
         }
 
         $scope.submit = function () {
-            console.log(">>>>enter submit button");
+            //console.log(">>>>enter submit button");
             if ($scope.subimitlist.length != 0) {
                 var createAdj={
                     ReportedBy:$rootScope.UserInfo.EmpId,

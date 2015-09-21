@@ -4,12 +4,11 @@
         $rootScope.changehighlight(16);
         $scope.ifedit = true;
         $scope.supplierselect = {
-            availableOptions: []
+            availableOptions: [],
+            supplier1: { SupplierID: "", SupplierName :""},
+            supplier2: { SupplierID: "", SupplierName: "" },
+            supplier3: { SupplierID: "", SupplierName: "" }
         }
-        $scope.supplier1 = {};
-        $scope.supplier2 = {};
-        $scope.supplier3 = {};
-
         if ($rootScope.UserInfo.RoleId == "SC") {
             $scope.setting = {
                 ifedit: false,
@@ -37,13 +36,13 @@
                 $scope.supplierselect.availableOptions = data;
                 $.each(data, function (index, value) {
                     if (value.Rank == 1) {
-                        $scope.supplier1 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
+                        $scope.supplierselect.supplier1 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
                     }
                     if (value.Rank == 2) {
-                        $scope.supplier2 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
+                        $scope.supplierselect.supplier2 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
                     }
                     if (value.Rank == 3) {
-                        $scope.supplier3 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
+                        $scope.supplierselect.supplier3 = { SupplierID: value.SupplierID, SupplierName: value.SupplierName };
                     }
                 })
             }
@@ -54,54 +53,59 @@
             $scope.setting.disablebox = false;
         }
         $scope.savePriority = function () {
-            if ($scope.supplier1.SupplierID == $scope.supplier2.SupplierID || $scope.supplier1.SupplierID == $scope.supplier3.SupplierID || $scope.supplier2.SupplierID == $scope.supplier3.SupplierID) {
+            if ($scope.supplierselect.supplier1.SupplierID == $scope.supplierselect.supplier2.SupplierID || $scope.supplierselect.supplier1.SupplierID == $scope.supplierselect.supplier3.SupplierID || $scope.supplierselect.supplier2.SupplierID == $scope.supplierselect.supplier3.SupplierID) {
                 alert('Please choose three different supplier.');
             }
-            var myBaseService = BaseService;
-            BaseService.getSupplierInfo()
-                .then(function (data) {
-                    $.each(data, function (index, value) {
-                        if ($scope.supplier1.SupplierID == value.SupplierID) {
-                            myBaseService.updateSupplierRank($scope.supplier1.SupplierID, 1)
-                            .then(function (data) {
-                                console.log('Success! supplier 1 rank updated');
-                            }, function (data) {
-                                console.log('Fail to update supplier 1');
-                            })
-                        }
-                        else if ($scope.supplier2.SupplierID == value.SupplierID) {
-                            myBaseService.updateSupplierRank($scope.supplier1.SupplierID, 2)
+            else {
+                var myBaseService = BaseService;
+                BaseService.getSupplierList()
+                    .then(function (data) {
+                        $.each(data, function (index, value) {
+                            //console.log(">>>>>>each>>>>");
+                            //console.log(value);
+                            //console.log($scope.supplierselect.supplier1)
+                            if ($scope.supplierselect.supplier1.SupplierID == value.SupplierID) {
+                                myBaseService.updateSupplierRank($scope.supplierselect.supplier1.SupplierID, 1)
                                 .then(function (data) {
-                                    console.log('Success! supplier 2 rank updated');
+                                    //console.log('Success! supplier 1 rank updated');
                                 }, function (data) {
-                                    console.log('Fail to update supplier 2');
+                                    //console.log('Fail to update supplier 1');
                                 })
-                        }
-                        else if ($scope.supplier3.SupplierID == value.SupplierID) {
-                            myBaseService.updateSupplierRank($scope.supplier1.SupplierID, 3)
-                            .then(function (data) {
-                                console.log('Success! supplier 3 rank updated');
-                            }, function (data) {
-                                console.log('Fail to update supplier 3');
-                            })
-                        }
-                        else {
-                            myBaseService.updateSupplierRank($scope.supplier1.SupplierID, 4)
-                            .then(function (data) {
-                                console.log('Success! Other rank updated');
-                            }, function (data) {
-                                console.log('Fail to update other');
-                            })
-                        }
+                            }
+                            else if ($scope.supplierselect.supplier2.SupplierID == value.SupplierID) {
+                                myBaseService.updateSupplierRank(value.SupplierID, 2)
+                                    .then(function (data) {
+                                        //console.log('Success! supplier 2 rank updated');
+                                    }, function (data) {
+                                        //console.log('Fail to update supplier 2');
+                                    })
+                            }
+                            else if ($scope.supplierselect.supplier3.SupplierID == value.SupplierID) {
+                                myBaseService.updateSupplierRank(value.SupplierID, 3)
+                                .then(function (data) {
+                                    //console.log('Success! supplier 3 rank updated');
+                                }, function (data) {
+                                    //console.log('Fail to update supplier 3');
+                                })
+                            }
+                            else {
+                                myBaseService.updateSupplierRank(value.SupplierID, 4)
+                                .then(function (data) {
+                                    //console.log('Success! Other rank updated');
+                                }, function (data) {
+                                    //console.log('Fail to update other');
+                                })
+                            }
 
+                        })
+
+                        $scope.setting.savePrioritybtn = false;
+                        $scope.setting.editPrioritybtn = true;
+                        $scope.setting.disablebox = true;
+                    }, function (data) {
+                        alert(data);
                     })
-
-                    $scope.setting.savePrioritybtn = false;
-                    $scope.setting.editPrioritybtn = true;
-                    $scope.setting.disablebox = true;
-                }, function (data) {
-                    alert(data);
-                })
+            }
         }
         $scope.NewSupplier = function () {
             location.href = "#/suppliernew/0";
@@ -110,7 +114,7 @@
         BaseService.getSupplierInfo()
                 .then(function (data) {
                     $scope.Suppliers = data;
-                    console.log(data);
+                    //console.log(data);
                 }, function (data) {
                     alert(data);
                 })

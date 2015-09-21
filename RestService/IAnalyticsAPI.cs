@@ -19,6 +19,12 @@ namespace RestService
         List<Model.Report> getReports();
 
         [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+                                           BodyStyle = WebMessageBodyStyle.Bare,
+                                           UriTemplate = "/getReport/{reportID}")]
+        Model.Report getReport(string reportID);
+
+        [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                                     RequestFormat = WebMessageFormat.Json,
                                            BodyStyle = WebMessageBodyStyle.Bare,

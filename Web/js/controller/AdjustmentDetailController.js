@@ -4,14 +4,14 @@
         $rootScope.changehighlight(9);
 
         var adjid = $rootScope.AdjID;
-        console.log(adjid);
+        //console.log(adjid);
 
         var myBaseService = BaseService;
         
         var msg = { "AdjID": adjid, "startDate": "null", "endDate": "null" };
         BaseService.getAdjList(msg)
                 .then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $scope.Adjustment = data[0];
                     $.each(data, function (index, value) {
                         myBaseService.getEmployee(value.ReportedBy)
@@ -20,7 +20,8 @@
                                 }, function (data) {
                                     alert(data);
                                 })
-                        if (value.ApprovedBy != null) {
+                        if (value.ApprovedBy != null && value.ApprovedBy != "") {
+                            //console.log("value.ApprovedBy");
                             myBaseService.getEmployee(value.ApprovedBy)
                                 .then(function (empdata) {
                                     value.ApprovedBy = empdata.EmpName;
@@ -40,7 +41,7 @@
         var msgAdjId = { "adjId": adjid };
         BaseService.getAdjDetail(angular.toJson(msgAdjId))
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.AdjustmentDetails = data;
             }, function (data) {
                 alert(data);

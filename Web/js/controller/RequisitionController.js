@@ -15,10 +15,10 @@
             if (status == 0) { status = "null"; }
             var ReqID = $scope.ReuisitionNo;
             if (ReqID == null || ReqID == "") { ReqID = "null"; }
-            //console.log(ReqID);
+            ////console.log(ReqID);
             BaseService.getRequisitionList(status, ReqID, $rootScope.UserInfo.EmpId, $rootScope.UserInfo.DeptId)
                 .then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $rootScope.Requisitions = data;
                 }, function (data) {
                     alert(data);
@@ -29,7 +29,7 @@
     function RequisitionList($rootScope,$scope, BaseService) {
         BaseService.getRequisitionList("null", "null", $rootScope.UserInfo.EmpId, $rootScope.UserInfo.DeptId)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $rootScope.Requisitions = data;
             }, function (data) {
                 alert(data);
@@ -48,7 +48,7 @@
         BaseService.getRequisitionStatus()
             .then(function (data) {
                 $rootScope.optiondata.availableOptions = data;
-                //console.log(data);
+                ////console.log(data);
                 $rootScope.optiondata.availableOptions.unshift({ StatusID: 0, StatusName: 'ALL' });
             }, function (data) {
                 alert(data);

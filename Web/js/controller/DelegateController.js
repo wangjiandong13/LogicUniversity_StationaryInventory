@@ -7,7 +7,7 @@
         var MyBaseService = BaseService;
         BaseService.getDeptDelegate($rootScope.UserInfo.DeptId)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.Delegates = data;
                 $.each(data, function (index, value) {
                     if (value.EmpID != null) {
@@ -25,7 +25,7 @@
                     alert("Success Delect!");
                     BaseService.getDeptDelegate($rootScope.UserInfo.DeptId)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.Delegates = data;
                 $.each(data, function (index, value) {
                     if (value.EmpID != null) {

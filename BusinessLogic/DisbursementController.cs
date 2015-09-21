@@ -111,7 +111,7 @@ namespace BusinessLogic
                     ctx.SaveChanges();
 
                     Disbursement lastDisb = ctx.Disbursement.ToList().Last();
-                    int DisID = 0;
+                    int DisID = 1;
                     if(lastDisb != null)
                     {
                         DisID = lastDisb.DisID;
@@ -120,6 +120,15 @@ namespace BusinessLogic
                     foreach(Requisition req in reqList)
                     {
                         req.DisID = DisID;
+                        List<RequisitionDetail> reqDetailList = ctx.RequisitionDetail.Where(x => x.ReqID == req.ReqID).ToList();
+                        foreach(RequisitionDetail reqDetail in reqDetailList)
+                        {
+                            DisbursementDetail disbDetail = new DisbursementDetail();
+                            disbDetail.DisID = DisID;
+                            disbDetail.ItemID = reqDetail.ItemID;
+                            disbDetail.Qty = reqDetail.IssueQty;
+                            ctx.DisbursementDetail.Add(disbDetail);
+                        }
                     }
                 }
             }

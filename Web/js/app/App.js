@@ -1,8 +1,8 @@
 ﻿define(['routes', 'dependencyResoverFor'], function (config, dependencyResolverFor) {
     //console.log("enter app");
-    var app = angular.module('app', ['ngRoute', 'BaseServices', 'nvd3']);
-    app.controller('BodyCotroller', ['$rootScope','$scope', '$window', 'BaseService', BodyCotroller]);
-    function BodyCotroller($rootScope,$scope, $window, BaseService) {
+    var app = angular.module('app', ['ngRoute', 'ngAnimate', 'BaseServices', 'nvd3', 'angular-loading-bar']);
+    app.controller('BodyCotroller', ['$rootScope', '$scope', '$window', 'BaseService', BodyCotroller]);
+    function BodyCotroller($rootScope, $scope, $window, BaseService) {
         $rootScope.mean = {
             Requistion: "",
             Catalog: "",
@@ -29,7 +29,7 @@
             ifDisbursement: false,
             ifApproval: false,
             ifDelegate: false,
-            ifRequisitionSC:false,
+            ifRequisitionSC: false,
             ifAdjustment: false,
             ifDepartmentSC: false,
             ifDisbursementSC: false,
@@ -40,7 +40,7 @@
             ifSupplier: false,
             ifAnalytics: false,
         };
-        $rootScope.changehighlight=function(Nowpage){
+        $rootScope.changehighlight = function (Nowpage) {
             $rootScope.mean = {
                 Requistion: "",
                 Catalog: "",
@@ -147,108 +147,108 @@
                 $rootScope.mean.ifAnalytics = true;
             }
         }
-        $rootScope.UserInfo = {
-            EmpId: $window.sessionStorage.EmpID,
-            EmpName: $window.sessionStorage.EmpName,
-            DeptId: $window.sessionStorage.DeptID,
-            RoleId: $window.sessionStorage.RoleID
-            //, 
-            //EmpId: "11233",
-            //EmpName: "Jenny Wong Mei Lin",
-            //DeptId: "REGR",
-            //RoleId: "EM"
-        }
-        //console.log($rootScope.UserInfo);
-        $rootScope.side = {
-            Requistion: false,
-            Catalog: false,
-            Department: false,
-            RequestCart: false,
-            Disbursement: false,
-            Approval: false,
-            Delegate: false,
-            RequisitionSC: false,
-            Adjustment: false,
-            DepartmentSC: false,
-            DisbursementSC: false,
-            Inventory: false,
-            PurchaseOrder: false,
-            Retrieval: false,
-            SupplierSC: false,
-            Supplier: false,
-            Analytics: false
-        }
-        if ($rootScope.UserInfo.RoleId == "EM") {
-            $rootScope.side.Requistion = true;
-            $rootScope.side.Catalog = true;
-            $rootScope.side.Department = true;
-            $rootScope.side.RequestCart = true;
-        }
-        if ($rootScope.UserInfo.RoleId == "DR") {
-            $rootScope.side.Requistion = true;
-            $rootScope.side.Catalog = true;
-            $rootScope.side.Department = true;
-            $rootScope.side.RequestCart = true;
-            $rootScope.side.Disbursement = true;
-        }
-        if ($rootScope.UserInfo.RoleId == "DD") {
-            $rootScope.side.Requistion = true;
-            $rootScope.side.Catalog = true;
-            $rootScope.side.Department = true;
-            $rootScope.side.RequestCart = true;
-            $rootScope.side.Disbursement = true;
-            $rootScope.side.Approval = true;
-        }
-        if ($rootScope.UserInfo.RoleId == "DH") {
-            $rootScope.side.Requistion = true;
-            $rootScope.side.Catalog = true;
-            $rootScope.side.Department = true;
-            $rootScope.side.RequestCart = true;
-            $rootScope.side.Disbursement = true;
-            $rootScope.side.Delegate = true;
-            $rootScope.side.Approval = true;
-        }
-        if ($rootScope.UserInfo.RoleId == "SC") {
-            $rootScope.side.RequisitionSC = true;
-            $rootScope.side.Retrieval = true;
-            $rootScope.side.DisbursementSC = true;
-            $rootScope.side.Adjustment = true;
-            $rootScope.side.DepartmentSC = true;
-            $rootScope.side.Supplier = true;
-            $rootScope.side.Inventory = true;
-            $rootScope.side.PurchaseOrder = true;
-        }
-        if ($rootScope.UserInfo.RoleId == "SM" || $rootScope.UserInfo.RoleId == "SS") {
-            $rootScope.side.RequisitionSC = true;
-            $rootScope.side.Retrieval = true;
-            $rootScope.side.DisbursementSC = true;
-            $rootScope.side.Adjustment = true;
-            $rootScope.side.DepartmentSC = true;
-            $rootScope.side.Supplier = true;
-            $rootScope.side.Inventory = true;
-            $rootScope.side.PurchaseOrder = true;
-            $rootScope.side.Analytics = true;
-        }
-        $rootScope.logout = function () {
-            $window.sessionStorage.removeItem("EmpID");
-            $window.sessionStorage.removeItem("EmpName");
-            $window.sessionStorage.removeItem("DeptID");
-            $window.sessionStorage.removeItem("RoleID");
+        if ($window.sessionStorage.EmpID == undefined) {
+            alert("Please login!");
             location.href = "/";
         }
-        BaseService.getNotificationList($rootScope.UserInfo.EmpId)
-            .then(function (data) {
-                $rootScope.NotificationList = data;
-                $.each($rootScope.NotificationList, function (index, value) {
-                    if (value.Status == "READ") {
-                        value.isRead = true;
-                    }
-                    else {
-                        value.isRead = false;
-                    }
-                })
+        else {
+            $rootScope.UserInfo = {
+                EmpId: $window.sessionStorage.EmpID,
+                EmpName: $window.sessionStorage.EmpName,
+                DeptId: $window.sessionStorage.DeptID,
+                RoleId: $window.sessionStorage.RoleID
             }
-            )
+            $rootScope.side = {
+                Requistion: false,
+                Catalog: false,
+                Department: false,
+                RequestCart: false,
+                Disbursement: false,
+                Approval: false,
+                Delegate: false,
+                RequisitionSC: false,
+                Adjustment: false,
+                DepartmentSC: false,
+                DisbursementSC: false,
+                Inventory: false,
+                PurchaseOrder: false,
+                Retrieval: false,
+                SupplierSC: false,
+                Supplier: false,
+                Analytics: false
+            }
+            if ($rootScope.UserInfo.RoleId == "EM") {
+                $rootScope.side.Requistion = true;
+                $rootScope.side.Catalog = true;
+                $rootScope.side.Department = true;
+                $rootScope.side.RequestCart = true;
+            }
+            if ($rootScope.UserInfo.RoleId == "DR") {
+                $rootScope.side.Requistion = true;
+                $rootScope.side.Catalog = true;
+                $rootScope.side.Department = true;
+                $rootScope.side.RequestCart = true;
+                $rootScope.side.Disbursement = true;
+            }
+            if ($rootScope.UserInfo.RoleId == "DD") {
+                $rootScope.side.Requistion = true;
+                $rootScope.side.Catalog = true;
+                $rootScope.side.Department = true;
+                $rootScope.side.RequestCart = true;
+                $rootScope.side.Disbursement = true;
+                $rootScope.side.Approval = true;
+            }
+            if ($rootScope.UserInfo.RoleId == "DH") {
+                $rootScope.side.Requistion = true;
+                $rootScope.side.Catalog = true;
+                $rootScope.side.Department = true;
+                $rootScope.side.RequestCart = true;
+                $rootScope.side.Disbursement = true;
+                $rootScope.side.Delegate = true;
+                $rootScope.side.Approval = true;
+            }
+            if ($rootScope.UserInfo.RoleId == "SC") {
+                $rootScope.side.RequisitionSC = true;
+                $rootScope.side.Retrieval = true;
+                $rootScope.side.DisbursementSC = true;
+                $rootScope.side.Adjustment = true;
+                $rootScope.side.DepartmentSC = true;
+                $rootScope.side.Supplier = true;
+                $rootScope.side.Inventory = true;
+                $rootScope.side.PurchaseOrder = true;
+            }
+            if ($rootScope.UserInfo.RoleId == "SM" || $rootScope.UserInfo.RoleId == "SS") {
+                $rootScope.side.RequisitionSC = true;
+                $rootScope.side.Retrieval = true;
+                $rootScope.side.DisbursementSC = true;
+                $rootScope.side.Adjustment = true;
+                $rootScope.side.DepartmentSC = true;
+                $rootScope.side.Supplier = true;
+                $rootScope.side.Inventory = true;
+                $rootScope.side.PurchaseOrder = true;
+                $rootScope.side.Analytics = true;
+            }
+            $rootScope.logout = function () {
+                $window.sessionStorage.removeItem("EmpID");
+                $window.sessionStorage.removeItem("EmpName");
+                $window.sessionStorage.removeItem("DeptID");
+                $window.sessionStorage.removeItem("RoleID");
+                location.href = "/";
+            }
+            BaseService.getNotificationList($rootScope.UserInfo.EmpId)
+                .then(function (data) {
+                    $rootScope.NotificationList = data;
+                    $.each($rootScope.NotificationList, function (index, value) {
+                        if (value.Status == "READ") {
+                            value.isRead = true;
+                        }
+                        else {
+                            value.isRead = false;
+                        }
+                    })
+                }
+                )
+        }
 
     }
     app.config(
@@ -259,13 +259,16 @@
         '$compileProvider',
         '$filterProvider',
         '$provide',
+        'cfpLoadingBarProvider',
 
-        function ($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
+        function ($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, cfpLoadingBarProvider) {
             app.controller = $controllerProvider.register;
             app.directive = $compileProvider.directive;
             app.filter = $filterProvider.register;
             app.factory = $provide.factory;
             app.service = $provide.service;
+            cfpLoadingBarProvider.includeSpinner = false;
+            cfpLoadingBarProvider.includeBar = true;
 
             if (config.routes !== undefined) {
                 angular.forEach(config.routes, function (route, path) {

@@ -25,11 +25,11 @@
             if (EmpID == 0) { EmpID = "null" }
             BaseService.getRequisitionList(status, "null", EmpID, $rootScope.UserInfo.DeptId)
                 .then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $rootScope.RequisitionsApproval = data;
                     $.each(data, function (index, value) {
-                        //console.log(">>>>" + value);
-                        //console.log(">>>>"+value.EmpID);
+                        ////console.log(">>>>" + value);
+                        ////console.log(">>>>"+value.EmpID);
                         myBaseService.getEmployee(value.EmpID)
                             .then(function (data) {
                                 value.EmpName = data.EmpName;
@@ -45,15 +45,15 @@
         }
     }
     function RequisitionApprovalList($rootScope, $scope, BaseService) {
-        console.log(">>>enter RequisitionApprovalList")
+        //console.log(">>>enter RequisitionApprovalList")
         var myBaseService = BaseService;
         BaseService.getRequisitionApprovalList($rootScope.UserInfo.DeptId)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $rootScope.RequisitionsApproval = data;
                 $.each(data, function (index, value) {
-                        //console.log(">>>>" +value);
-                        //console.log(">>>>"+value.EmpID);
+                        ////console.log(">>>>" +value);
+                        ////console.log(">>>>"+value.EmpID);
                         myBaseService.getEmployee(value.EmpID)
                             .then(function (data) {
                                 value.EmpName = data.EmpName;
@@ -71,6 +71,7 @@
                 location.href = "#/requisitionApproval/" + Requisition.ReqID;
             }
             else {
+                $rootScope.backTo = 2;
                 location.href = "#/requisitionDetail/" + Requisition.ReqID;
             }
         };
@@ -80,7 +81,7 @@
         BaseService.getRequisitionStatus()
             .then(function (data) {
                 $rootScope.optiondataStatus.availableOptions = data;
-                //console.log(data);
+                ////console.log(data);
                 $rootScope.optiondataStatus.availableOptions.unshift({ StatusID: 0, StatusName: 'ALL' });
             }, function (data) {
                 alert(data);
@@ -91,7 +92,7 @@
         BaseService.getDeptEmployee($rootScope.UserInfo.DeptId)
             .then(function (data) {
                 $rootScope.optiondataEmp.availableOptions = data;
-                //console.log(data);
+                ////console.log(data);
                 $rootScope.optiondataEmp.availableOptions.unshift({ EmpID: 0, EmpName: 'ALL' });
             }, function (data) {
                 alert(data);

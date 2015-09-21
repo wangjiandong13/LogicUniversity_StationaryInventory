@@ -4388,6 +4388,7 @@
     <Content Include="img\logo\logo_500.png" />
     <Content Include="img\logo\logo_500_word.png" />
     <Content Include="img\logo_500_word.png" />
+    <Content Include="img\reportlogo.png" />
     <Content Include="img\status\1.png" />
     <Content Include="img\status\2.png" />
     <Content Include="img\status\3.png" />
@@ -4410,10 +4411,13 @@
     <Content Include="img\user\11252.jpg" />
     <Content Include="img\user\11261.jpg" />
     <Content Include="img\user\11262.jpg" />
+    <Content Include="img\user\11263.jpg" />
+    <Content Include="img\user\11264.jpg" />
     <Content Include="img\user\11271.jpg" />
     <Content Include="img\user\11272.jpg" />
     <Content Include="img\user\11281.jpg" />
     <Content Include="img\user\11282.jpg" />
+    <Content Include="img\user\11283.jpg" />
     <Content Include="img\user\91263.jpg" />
     <Content Include="img\user\98765.jpg" />
     <Content Include="img\user\99877.jpg" />
@@ -4585,7 +4589,6 @@
     <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="assets\global\plugins\carousel-owl-carousel\demos\.DS_Store" />
     <Content Include="assets\global\plugins\carousel-owl-carousel\demos\.htaccess" />
     <Content Include="assets\global\plugins\carousel-owl-carousel\demos\json\.DS_Store" />
@@ -4803,12 +4806,15 @@
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="bin\Web.dll.config" />
     <Content Include="templete\Analytics\analytics.html" />
     <Content Include="templete\Analytics\analyticsDetail.html" />
     <Content Include="templete\Analytics\analyticsNew.html" />
     <Content Include="templete\ED\requisitionApprovalList.html" />
     <Content Include="templete\EM\catalogTile.html" />
+    <Content Include="vendor\angular-animate.js" />
+    <Content Include="vendor\angular-animate.min.js" />
     <Content Include="vendor\angular-google-maps.min.js" />
     <Content Include="vendor\angular-md5.js" />
     <Content Include="vendor\angular-nvd3.js" />
@@ -4822,6 +4828,8 @@
     <Content Include="vendor\jquery.min.js" />
     <Content Include="vendor\jquerysession.js" />
     <Content Include="vendor\GoogleMapjs.js" />
+    <Content Include="vendor\loading-bar.css" />
+    <Content Include="vendor\loading-bar.js" />
     <Content Include="vendor\lodash.js" />
     <Content Include="vendor\ng-bs3-datepicker.css" />
     <Content Include="vendor\ng-bs3-datepicker.js" />

@@ -6,11 +6,11 @@
         var retid = $routeParams.retid;
         $scope.retid = retid;
         var myBaseService = BaseService;
-        console.log($scope.retid);
+        //console.log($scope.retid);
 
         BaseService.getRetrievalListBySC("null", "null", $scope.retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RetrievalData = data[0];
                 
             }, function (data) {
@@ -19,12 +19,12 @@
 
         BaseService.getRequisitionListByRetID($scope.retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RequisitionData = data;
                 //var msg = "";
                 //$.each($scope.RequisitionData, function (index, value) {
                 //    msg.concat(value.ReqID);
-                //    console.log(">>>>>" + msg);
+                //    //console.log(">>>>>" + msg);
                 //})
                 //$scope.reqForms = msg;
             }, function (data) {
@@ -33,10 +33,10 @@
 
         BaseService.getRetrievalDetail(retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RetrievalDetails = data;
                 //$.each($scope.RetrievalDetails, function (index, value) {
-                //    console.log(value.ItemID);
+                //    //console.log(value.ItemID);
                 //    myBaseService.getItemDetail(value.ItemID)
                 //        .then(function (data) {
                 //            value.Bin = data.Bin;

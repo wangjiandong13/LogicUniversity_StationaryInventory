@@ -8,12 +8,12 @@
         //set mean highlight
         $rootScope.changehighlight(4);
         $scope.PRIORITY = true;
-        console.log("enter RequestCartControllers")
+        //console.log("enter RequestCartControllers")
         $scope.back = function () {
-            location.href = '#/requisition';
+            location.href = '#/catalogList';
         }
         $scope.submit = function () {
-            console.log("enter");
+            //console.log("enter");
             var msg = [];
             if ($rootScope.RequestCarts != null) {
                 $.each($rootScope.RequestCarts, function (index, value) {
@@ -28,11 +28,13 @@
                 var req_id = "";
                 selfBaseService.createRequisition(angular.toJson(msg))
                     .then(function (data) {
-                        console.log(data);
+                        //console.log(data);
                         req_id = data;
                         var priority = 2;
                         if ($('#create-switch').is(":checked")) { priority = 1 }
-                        selfBaseService.setReqPriority(req_id, priority, $scope.remoarks)
+                        if ($scope.remarks == null || $scope.Remark == "")
+                            $scope.remarks = "-";
+                        selfBaseService.setReqPriority(req_id, priority, $scope.remarks)
                             .then(function (data) {
                                 alert("success!");
                                 location.href = '#/requisition';
@@ -50,22 +52,22 @@
         //get EmpId from session
         var EmpId = $rootScope.UserInfo.EmpId;
         var selfBaseService = BaseService;
-        console.log("enter requestCartListCtrls");
+        //console.log("enter requestCartListCtrls");
         BaseService.getRequestCart(EmpId)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $rootScope.RequestCarts = data;
             }, function (data) {
                 alert(data);
             })
         $scope.delect = function (RequestCart) {
             var msg = '{"ItemID":"' + RequestCart.ItemID + '" ,"EmpID":' + EmpId + '}';
-            console.log(msg);
+            //console.log(msg);
             BaseService.removeRequestCart(msg)
                     .then(function (data) {
                         selfBaseService.getRequestCart(EmpId)
                         .then(function (data) {
-                            console.log(data);
+                            //console.log(data);
                             $rootScope.RequestCarts = data;
                             if (!$scope.$$phase) {
                                 $rootScope.$apply();

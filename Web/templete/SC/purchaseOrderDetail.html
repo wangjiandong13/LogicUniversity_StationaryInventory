@@ -37,12 +37,13 @@
                                     <td class="col-md-6">
                                         <label id="lbl_supplier">{{PoData.SupplierID}}</label>
                                     </td>
+                                    <td class="col-md-2" onclick="javascript:window.print()"><a class="btn btn-sm default DTTT_button_print" id="ToolTables_sample_2_3" title="View print view"><i class="fa fa-print"></i><span> Print</span></a></td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
                                         <h5>Attn : </h5></td>
                                     <td class="col-md-8">
-                                        <label id="lbl_attn">{{UserInfo.EmpID}}</label>
+                                        <label id="lbl_attn">{{PoData.EmpName}}</label>
                                     </td>
                                 </tr>
                                 <tr>
@@ -76,7 +77,7 @@
                                     <td>{{PoDetail.ItemName}}</td>
                                     <td>{{PoDetail.Qty}}</td>
                                     <td>
-                                        <input type="text" class="form-control" ng-model="PoDetail.ActualQty" ng-disabled="ActualQty">
+                                        <input type="number" class="form-control" ng-model="PoDetail.ActualQty" ng-disabled="ActualQty" min="0" max={{PoDetail.Qty}}>
                                     </td>
                                     <td>{{PoDetail.Price}}</td>
                                     <td>{{PoDetail.Qty*PoDetail.Price}}</td>

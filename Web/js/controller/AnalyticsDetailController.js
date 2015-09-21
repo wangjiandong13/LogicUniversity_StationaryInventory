@@ -1,8 +1,8 @@
 ﻿define(['app'], function (app) {
     app.controller('AnalyticsDetailController', ['$scope', '$rootScope', '$routeParams', 'BaseService', AnalyticsDetailController]);
     function AnalyticsDetailController($scope, $rootScope,$routeParams, BaseService) {
-        //var rid = $routeParams.reportid;
-        var rid = 1;
+        var rid = $routeParams.reportid;
+        //var rid = 1;
         $scope.Qtyoptions = {
             chart: {
                 type: 'multiBarChart',
@@ -77,60 +77,10 @@
                 $scope.Pricedata = data;
                 //console.log($scope.data);
             })
+        BaseService.getReportByID(rid)
+            .then(function (data) {
+                $scope.Report = data;
+            })
     }
-    function Chatcontroller($scope, $rootScope,$routeParams, BaseService) {
-        //var Pricedata = [];
-        //var Qtydata = [];
-        //var each = {
-        //    key: "",
-        //    values: []
-        //};
-        //var test = [];
-        //var eachvalue = {
-        //    x: "",
-        //    y: 0
-        //};
-        
-        //function generateQtyData(data) {
-        //    $.each(data, function (index, value) {
-        //        each.key = value.MonthYear;
-        //        //console.log("value.ReportItems");
-        //        //console.log(value.ReportItems);
-        //        $.each(value.ReportItems, function (index, value) {
-        //            //eachvalue.x = value.Subject;
-        //            //eachvalue.y = value.Qty;
-        //            var eachvalue1 = {
-        //                x: value.Subject,
-        //                y: value.Qty
-        //            };
-        //            //console.log(">>>> enter each");
-        //            //console.log(eachvalue1);
-        //            test.push(eachvalue1);
-        //            //console.log(">>>> enter each.values");
-        //            //console.log(test);
-        //        });
-        //        //Qtydata.push(each);
-        //        ////console.log(each);
-        //    })
-        //    //console.log(Qtydata);
-        //}
-        //function generatePriceData(data) {
-        //    //console.log(">>>>>>Pricedata");
-        //    //console.log(Pricedata);
-        //    $.each(data, function (index, value) {
-        //        each.key = value.MonthYear;
-        //        $.each(value.ReportItems, function (index, value) {
-        //            eachvalue.x = value.Subject;
-        //            eachvalue.y = value.Price;
-        //            each.values.push(eachvalue);
-        //        });
-        //        Pricedata.push(each);
-        //        //console.log(">>>>>>each");
-        //        //console.log(each);
-        //        //console.log(">>>>>>Pricedata");
-        //        //console.log(Pricedata);
-        //    })
-        //    //console.log(Pricedata);
-        //}
-    }})
+})
        

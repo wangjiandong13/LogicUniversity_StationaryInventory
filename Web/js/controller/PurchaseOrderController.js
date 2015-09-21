@@ -13,7 +13,7 @@
         };
         BaseService.getStoreClerk()
             .then(function (data) {
-                ////console.log(data);
+                //////console.log(data);
                 $scope.employeeselectdata.availableOptions = data;
                 $scope.employeeselectdata.availableOptions.unshift({ EmpID: 0, EmpName: 'ALL' });
             })

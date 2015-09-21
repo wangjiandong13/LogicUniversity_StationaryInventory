@@ -6,13 +6,13 @@
 
         var retid = $routeParams.retid;
         $scope.retid = retid;
-        console.log($scope.retid);
+        //console.log($scope.retid);
 
         var myBaseService = BaseService;
         
         BaseService.getRetrievalListBySC("null", "null", $scope.retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RetrievalData = data[0];
 
             }, function (data) {
@@ -21,7 +21,7 @@
 
         BaseService.getRequisitionListByRetID($scope.retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RequisitionData = data;
             }, function (data) {
                 alert(data);
@@ -29,7 +29,7 @@
 
         BaseService.getRetrievalDetail(retid)
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.RetrievalDetails = data;
             }, function (data) {
                 alert(data);
@@ -55,7 +55,7 @@
                 };
                 msg.push(each);
             });
-            console.log(angular.toJson(msg));
+            //console.log(angular.toJson(msg));
             BaseService.saveRetrieval(angular.toJson(msg))
             .then(function (data) {
                 alert('Saved Successfully!');
@@ -80,7 +80,7 @@
                 };
                 msg.push(each);
             });
-            console.log(angular.toJson(msg));
+            //console.log(angular.toJson(msg));
             BaseService.submitRetrieval(angular.toJson(msg))
             .then(function (data) {
                 alert('Saved Successfully!');
