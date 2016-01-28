@@ -1,7 +1,13 @@
-LogicUniversity_StationaryInventory
 
-Including Back end and frond end 
+## LogicUniversity StationaryInventory
 
-Back End is use WCF to create API
+This is LogicUniversity StationaryInventory Webbase system
 
-Frond End is use angularjs and requirejs
+## Technology
+This code is including Back end and frond end 
+
+Back End is using WCF to create API
+
+Frond End is using angularjs and requirejs
+
+## Running
